@@ -1,29 +1,27 @@
 [project]
-name = "glite-arf"
+name = "rezolve-arf-tts"
 version = "0.1.0"
-description = "Glite Autonomous Research Framework (Glite ARF) — a file-based, verified workflow for running AI-driven research projects"
+description = "Rezolve TTS Research Framework — benchmark and fine-tune Kokoro-82M against ElevenLabs for voice filler synthesis"
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.12"
 authors = [
-    { name = "Glite Tech Ltd", email = "info@glite.ai" },
-]
-maintainers = [
-    { name = "Vassili Philippov", email = "vassili@glite.ai" },
+    { name = "Rezolve", email = "margaritatiamanova@rezolve.com" },
 ]
 keywords = [
     "ai",
-    "agents",
+    "tts",
+    "text-to-speech",
+    "kokoro",
+    "elevenlabs",
     "research",
     "reproducibility",
     "claude-code",
-    "codex",
     "llm",
-    "automation",
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
@@ -31,7 +29,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
-    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
 ]
 dependencies = [
     "openai>=1.0",
@@ -43,14 +41,26 @@ dependencies = [
     "vastai>=1.0.1",
     "numpy>=2.0",
     "scipy>=1.0",
+    "kokoro>=0.9",
+    "elevenlabs>=1.0",
+    "soundfile>=0.12",
+    "pydub>=0.25",
+    "matplotlib>=3.0",
+    "seaborn>=0.13",
+    "torch>=2.12.1",
+]
+
+[project.optional-dependencies]
+speaker-sim = [
+    "resemblyzer>=0.1.4",
 ]
 
 [project.urls]
-Homepage = "https://github.com/GliteTech/glite-arf"
-Repository = "https://github.com/GliteTech/glite-arf"
-Issues = "https://github.com/GliteTech/glite-arf/issues"
-Documentation = "https://github.com/GliteTech/glite-arf/tree/main/arf/docs"
-Company = "https://glite.ai"
+Homepage = "https://github.com/rezolved/rail-arf-tts"
+Repository = "https://github.com/rezolved/rail-arf-tts"
+Issues = "https://github.com/rezolved/rail-arf-tts/issues"
+Documentation = "https://github.com/rezolved/rail-arf-tts/tree/main/arf/docs"
+Company = "https://rezolve.com"
 
 [tool.uv]
 override-dependencies = [
@@ -91,6 +101,8 @@ dev = [
     "ruff>=0.8",
     "types-pyyaml",
     "scipy-stubs",
+    "dvc>=3.67.1",
+    "dvc-azure>=3.1.1",
 ]
 
 [tool.flowmark]

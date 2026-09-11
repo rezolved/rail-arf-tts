@@ -1,0 +1,14 @@
+{
+  "spec_version": "1",
+  "vms": [
+    {
+      "name": "LLM-T1-NC80",
+      "workspace": "brainpowa-northeurope",
+      "resource_group": "rezolve-AI",
+      "ssh_host_alias": "LLM-T1-NC80",
+      "hourly_cost_usd": 13.96,
+      "priority": 1,
+      "notes": "Primary TTS training VM — H100 NVL x2 (northeurope). Public IP changes on every stop/start — azure_ml_vm.py refreshes HostName automatically after start."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "spec_version": 1,
+  "name": "Real-Time Factor",
+  "description": "Synthesis wall time divided by output audio duration. RTF < 1.0 means faster than real time. Lower is better.",
+  "unit": "ratio",
+  "value_type": "float",
+  "higher_is_better": false
+}

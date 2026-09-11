@@ -1,0 +1,8 @@
+{
+  "spec_version": 1,
+  "name": "Time to First Byte (ms)",
+  "description": "Wall-clock milliseconds from TTS request issue to first audio byte received. Measured locally (same-machine or loopback). Report p50, p95, p99. Lower is better.",
+  "unit": "ms",
+  "value_type": "float",
+  "higher_is_better": false
+}

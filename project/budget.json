@@ -1,0 +1,14 @@
+{
+  "total_budget": 500.0,
+  "currency": "USD",
+  "per_task_default_limit": 100.0,
+  "available_services": [
+    "anthropic_api",
+    "openai_api",
+    "elevenlabs_api"
+  ],
+  "alerts": {
+    "warn_at_percent": 80,
+    "stop_at_percent": 100
+  }
+}

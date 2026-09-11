@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "provider": "nebius",
+  "vms": [
+    {
+      "name": "LLM-T1-NC80",
+      "ssh_host_alias": "LLM-T1-NC80",
+      "provider_region": "eu-north1",
+      "gpu": "2x H100 SXM5 80GB",
+      "hourly_cost_usd": 8.60,
+      "priority": 1,
+      "notes": "Primary TTS training VM. Nebius 2xH100 SXM5. SSH alias must match ~/.ssh/config. Use for Kokoro Stage 2 finetune and TTS inference benchmarks."
+    }
+  ]
+}
