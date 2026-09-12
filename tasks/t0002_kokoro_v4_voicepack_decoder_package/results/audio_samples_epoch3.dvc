@@ -1,0 +1,6 @@
+outs:
+- md5: 7ec269a983e4bb3cd5fd9e5b061e0b17.dir
+  size: 637288
+  nfiles: 2
+  hash: md5
+  path: audio_samples_epoch3

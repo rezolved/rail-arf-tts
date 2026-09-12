@@ -1,0 +1,5 @@
+outs:
+- md5: 7b37717b5d131ecd1cc99d0ef9e309ad
+  size: 327223755
+  hash: md5
+  path: david_v4_decoder_epoch3.pth

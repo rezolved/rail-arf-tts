@@ -1,0 +1,6 @@
+outs:
+- md5: 963667bf0ed49b4e5d8c2ea75263a8bb.dir
+  size: 6182488
+  nfiles: 2
+  hash: md5
+  path: audio_samples

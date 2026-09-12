@@ -1,0 +1,250 @@
+data/v4/train/wavs/accessing_the_demo_request_page_4300f9.wav|ˈaksɛsɪŋ ðə dˈɛmQ ɹɪkwˈɛst pˈAʤ…|0
+data/v4/train/wavs/checking_for_press_releases_from_may_19th_7161d1.wav|ʧˈɛkɪŋ fɔː pɹˈɛs ɹɪlˈiːsɪz fɹɒm mˈA nˌIntˈiːnθ…|0
+data/v4/train/wavs/checking_integration_options_for_small_businesses_4d6d04.wav|ʧˈɛkɪŋ ˌɪntɪɡɹˈAʃᵊn ˈɒpʃᵊnz fɔː smˈɔːl bˈɪznɪsɪz…|0
+data/v4/train/wavs/checking_supported_languages_now_ba0166.wav|ʧˈɛkɪŋ səpˈɔːtɪd lˈaŋɡwɪʤɪz nˈW…|0
+data/v4/train/wavs/checking_the_current_chief_revenue_officer_at_rezolve_ai_eec3a9.wav|ʧˈɛkɪŋ ðə kˈʌɹənt ʧˈiːf ɹˈɛvɪnjuː ˈɒfɪsə at ɹɪzˈɒlv ˈA ˈI…|0
+data/v4/train/wavs/checking_the_latest_press_release_now_052556.wav|ʧˈɛkɪŋ ðə lˈAtɪst pɹˈɛs ɹɪlˈiːs nˈW…|0
+data/v4/train/wavs/checking_the_most_recent_press_release_from_may_19_9ff166.wav|ʧˈɛkɪŋ ðə mˈQst ɹˈiːsnt pɹˈɛs ɹɪlˈiːs fɹɒm mˈA nˌIntˈiːn…|0
+data/v4/train/wavs/checking_the_release_details_from_may_19_f55a2c.wav|ʧˈɛkɪŋ ðə ɹɪlˈiːs dˈiːtAlz fɹɒm mˈA nˌIntˈiːn…|0
+data/v4/train/wavs/checking_the_supported_languages_0c38b5.wav|ʧˈɛkɪŋ ðə səpˈɔːtɪd lˈaŋɡwɪʤɪz…|0
+data/v4/train/wavs/checking_who_leads_pr_at_rezolve_ca335f.wav|ʧˈɛkɪŋ hˌuː lˈiːdz pˌiːˈɑː at ɹɪzˈɒlv…|0
+data/v4/train/wavs/clarifying_the_distinction_between_the_two_concepts_920c47.wav|klˈaɹɪfˌIɪŋ ðə dɪstˈɪŋkʃᵊn bɪtwˈiːn ðə tˈuː kˈɒnsɛpts…|0
+data/v4/train/wavs/comparing_the_relevant_differences_beec75.wav|kəmpˈɛːɹɪŋ ðə ɹˈɛlɪvᵊnt dˈɪfəɹənsɪz…|0
+data/v4/train/wavs/exploring_discovery_options_for_enterprise_81eccc.wav|ɪksplˈɔːɹɪŋ dɪskˈʌvəɹi ˈɒpʃᵊnz fɔː ˈɛntəpɹIz…|0
+data/v4/train/wavs/exploring_how_conversational_ai_can_transform_shopping_336e0b.wav|ɪksplˈɔːɹɪŋ hˌW kˌɒnvəsˈAʃənᵊl ˈA ˈI kan tɹɑːnsfˈɔːm ʃˈɒpɪŋ…|0
+data/v4/train/wavs/exploring_how_conversational_ai_transforms_shopping_experien_9c8040.wav|ɪksplˈɔːɹɪŋ hˌW kˌɒnvəsˈAʃənᵊl ˈA ˈI tɹɑːnsfˈɔːmz ʃˈɒpɪŋ ɪkspˈɪəɹɪənsɪz…|0
+data/v4/train/wavs/exploring_how_to_improve_product_visibility_in_chatgpt_searc_43fd58.wav|ɪksplˈɔːɹɪŋ hˌW tʊ ɪmpɹˈuːv pɹˈɒdʌkt vˌɪzɪbˈɪlɪti ɪn ʧˌatʤˌiːpˌiːtˈiː sˈɜːʧ…|0
+data/v4/train/wavs/exploring_product_discovery_for_enterprise_retailers_05e447.wav|ɪksplˈɔːɹɪŋ pɹˈɒdʌkt dɪskˈʌvəɹi fɔː ˈɛntəpɹIz ɹˈiːtAləz…|0
+data/v4/train/wavs/exploring_product_discovery_options_for_enterprise_retailers_fd8313.wav|ɪksplˈɔːɹɪŋ pɹˈɒdʌkt dɪskˈʌvəɹi ˈɒpʃᵊnz fɔː ˈɛntəpɹIz ɹˈiːtAləz…|0
+data/v4/train/wavs/exploring_the_one_checkout_solution_9d9a82.wav|ɪksplˈɔːɹɪŋ ðə wˈʌn ʧˈɛkWt səlˈuːʃᵊn…|0
+data/v4/train/wavs/exploring_the_rezolve_leadership_team_now_bf393e.wav|ɪksplˈɔːɹɪŋ ðə ɹɪzˈɒlv lˈiːdəʃɪp tˈiːm nˈW…|0
+data/v4/train/wavs/exploring_what_brain_cortex_refers_to_ae028f.wav|ɪksplˈɔːɹɪŋ wˌɒt bɹˈAn kˈɔːtɛks ɹɪfˈɜːz tuː…|0
+data/v4/train/wavs/exploring_what_conversational_ai_entails_a35f9d.wav|ɪksplˈɔːɹɪŋ wˌɒt kˌɒnvəsˈAʃənᵊl ˈA ˈI ɪntˈAlz…|0
+data/v4/train/wavs/exploring_what_discovery_means_for_enterprise_retailers_45d42e.wav|ɪksplˈɔːɹɪŋ wˌɒt dɪskˈʌvəɹi mˈiːnz fɔː ˈɛntəpɹIz ɹˈiːtAləz…|0
+data/v4/train/wavs/exploring_what_discovery_offers_retailers_464a8b.wav|ɪksplˈɔːɹɪŋ wˌɒt dɪskˈʌvəɹi ˈɒfəz ɹˈiːtAləz…|0
+data/v4/train/wavs/exploring_what_one_checkout_offers_d79cc9.wav|ɪksplˈɔːɹɪŋ wˌɒt wˈʌn ʧˈɛkWt ˈɒfəz…|0
+data/v4/train/wavs/exploring_what_rezolve_advisors_does_2715af.wav|ɪksplˈɔːɹɪŋ wˌɒt ɹɪzˈɒlv ədvˈIzəz dˈʌz…|0
+data/v4/train/wavs/fetching_the_most_recent_press_release_ace92c.wav|fˈɛʧɪŋ ðə mˈQst ɹˈiːsnt pɹˈɛs ɹɪlˈiːs…|0
+data/v4/train/wavs/give_me_a_second_to_see_how_they_relate_c9a4a8.wav|ɡˈɪv mˌiː ɐ sˈɛkᵊnd tə sˈiː hˌW ðA ɹɪlˈAt…|0
+data/v4/train/wavs/got_itchecking_the_offline_status_2e609c.wav|ɡˌɒt ɪt—ʧˈɛkɪŋ ði ɒflˈIn stˈAtəs…|0
+data/v4/train/wavs/got_itfocusing_on_the_company_level_now_52ca9c.wav|ɡˌɒt ɪt—fˈQkəsɪŋ ˌɒn ðə kˈʌmpᵊni lˈɛvᵊl nˈW…|0
+data/v4/train/wavs/got_itlooking_into_that_leadership_team_8d1daa.wav|ɡˌɒt ɪt—lˈʊkɪŋ ˈɪntuː ðˈat lˈiːdəʃɪp tˈiːm…|0
+data/v4/train/wavs/got_itprocessing_that_request_7834ce.wav|ɡˌɒt ɪt—pɹˈQsɛsɪŋ ðˈat ɹɪkwˈɛst…|0
+data/v4/train/wavs/got_itwhat_would_you_like_to_know_92cd26.wav|ɡˌɒt ɪt—wˌɒt wʊd juː lˈIk tə nˈQ?|0
+data/v4/train/wavs/hello_how_can_i_help_c4ec7d.wav|həlˈQ, hˌW kan ˌI hˈɛlp?|0
+data/v4/train/wavs/hi_therewhat_can_i_help_you_with_d52260.wav|hˈI ðˈɛː—wˌɒt kan ˌI hˈɛlp juː wɪð?|0
+data/v4/train/wavs/i_understandlet_me_check_the_status_364c0a.wav|ˌI ˌʌndəstˈand—lˈɛt mˌiː ʧˈɛk ðə stˈAtəs…|0
+data/v4/train/wavs/i_want_to_make_sure_i_get_the_languages_right_d06d88.wav|ˌI wˈɒnt tə mˌAk ʃˈʊə ˌI ɡɛt ðə lˈaŋɡwɪʤɪz ɹˈIt…|0
+data/v4/train/wavs/identifying_enterprise_clients_of_rezolve_7f76d7.wav|IdˈɛntɪfˌIɪŋ ˈɛntəpɹIz klˈIənts ɒv ɹɪzˈɒlv…|0
+data/v4/train/wavs/just_a_moment_while_i_check_that_719dde.wav|ʤˈʌst ɐ mˈQmᵊnt wˌIl ˌI ʧˈɛk ðˈat…|0
+data/v4/train/wavs/just_a_moment_while_i_check_that_specific_solution_9e8869.wav|ʤˈʌst ɐ mˈQmᵊnt wˌIl ˌI ʧˈɛk ðˈat spɪsˈɪfɪk səlˈuːʃᵊn…|0
+data/v4/train/wavs/just_a_moment_while_i_check_the_board_details_d3410b.wav|ʤˈʌst ɐ mˈQmᵊnt wˌIl ˌI ʧˈɛk ðə bˈɔːd dˈiːtAlz…|0
+data/v4/train/wavs/just_a_moment_while_i_pull_up_the_press_releases_3b37dc.wav|ʤˈʌst ɐ mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə pɹˈɛs ɹɪlˈiːsɪz…|0
+data/v4/train/wavs/just_a_second_while_i_check_that_number_59d0e5.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ðˈat nˈʌmbə…|0
+data/v4/train/wavs/just_a_second_while_i_check_the_board_details_9209b5.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ðə bˈɔːd dˈiːtAlz…|0
+data/v4/train/wavs/just_a_second_while_i_check_the_brain_commerce_page_7eb16f.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ðə bɹˈAn kˈɒməːs pˈAʤ…|0
+data/v4/train/wavs/just_a_second_while_i_check_the_current_cro_a719f2.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ðə kˈʌɹənt sˌiːˌɑːˈQ…|0
+data/v4/train/wavs/just_a_second_while_i_check_the_fashion_context_ebb2ca.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ðə fˈaʃᵊn kˈɒntɛkst…|0
+data/v4/train/wavs/just_a_second_while_i_check_the_offline_points_e36bac.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ði ɒflˈIn pˈYnts…|0
+data/v4/train/wavs/just_a_second_while_i_check_the_page_a0c635.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ðə pˈAʤ…|0
+data/v4/train/wavs/just_a_second_while_i_check_the_release_details_2fe271.wav|ʤˈʌst ɐ sˈɛkᵊnd wˌIl ˌI ʧˈɛk ðə ɹɪlˈiːs dˈiːtAlz…|0
+data/v4/train/wavs/let_me_check_availability_for_a_demo_f899a0.wav|lˈɛt mˌiː ʧˈɛk əvˌAləbˈɪlɪti fɔː ɐ dˈɛmQ…|0
+data/v4/train/wavs/let_me_check_how_conversational_ai_transforms_shopping_exper_9b64a5.wav|lˈɛt mˌiː ʧˈɛk hˌW kˌɒnvəsˈAʃənᵊl ˈA ˈI tɹɑːnsfˈɔːmz ʃˈɒpɪŋ ɪkspˈɪəɹɪənsɪz…|0
+data/v4/train/wavs/let_me_check_how_rezolve_ai_helps_retailers_ad2bc2.wav|lˈɛt mˌiː ʧˈɛk hˌW ɹɪzˈɒlv ˈA ˈI hˈɛlps ɹˈiːtAləz…|0
+data/v4/train/wavs/let_me_check_how_rezolve_ai_improves_productivity_05017b.wav|lˈɛt mˌiː ʧˈɛk hˌW ɹɪzˈɒlv ˈA ˈI ɪmpɹˈuːvz pɹˌɒdʌktˈɪvɪti…|0
+data/v4/train/wavs/let_me_check_how_rezolve_ai_is_improving_f3b38b.wav|lˈɛt mˌiː ʧˈɛk hˌW ɹɪzˈɒlv ˈA ˈI ɪz ɪmpɹˈuːvɪŋ…|0
+data/v4/train/wavs/let_me_check_how_to_book_a_demo_7f9098.wav|lˈɛt mˌiː ʧˈɛk hˌW tə bˈʊk ɐ dˈɛmQ…|0
+data/v4/train/wavs/let_me_check_how_we_use_conversational_ai_927c45.wav|lˈɛt mˌiː ʧˈɛk hˌW wiː jˈuːz kˌɒnvəsˈAʃənᵊl ˈA ˈI…|0
+data/v4/train/wavs/let_me_check_if_resolve_ai_is_publicly_traded_55f169.wav|lˈɛt mˌiː ʧˈɛk ɪf ɹɪzˈɒlv ˈA ˈI ɪz pˈʌblɪkli tɹˈAdɪd…|0
+data/v4/train/wavs/let_me_check_the_acquisition_details_09062e.wav|lˈɛt mˌiː ʧˈɛk ði ˌakwɪzˈɪʃᵊn dˈiːtAlz…|0
+data/v4/train/wavs/let_me_check_the_board_of_advisors_at_rezolve_ai_71d983.wav|lˈɛt mˌiː ʧˈɛk ðə bˈɔːd ɒv ədvˈIzəz at ɹɪzˈɒlv ˈA ˈI…|0
+data/v4/train/wavs/let_me_check_the_current_board_of_directors_839004.wav|lˈɛt mˌiː ʧˈɛk ðə kˈʌɹənt bˈɔːd ɒv dɪɹˈɛktəz…|0
+data/v4/train/wavs/let_me_check_the_enterprise_clients_list_for_rezolve_c6f666.wav|lˈɛt mˌiː ʧˈɛk ði ˈɛntəpɹIz klˈIənts lˈɪst fɔː ɹɪzˈɒlv…|0
+data/v4/train/wavs/let_me_check_the_exact_release_date_fc30a6.wav|lˈɛt mˌiː ʧˈɛk ði ɪɡzˈakt ɹɪlˈiːs dˈAt…|0
+data/v4/train/wavs/let_me_check_the_most_recent_acquisitions_eb3701.wav|lˈɛt mˌiː ʧˈɛk ðə mˈQst ɹˈiːsnt ˌakwɪzˈɪʃᵊnz…|0
+data/v4/train/wavs/let_me_check_the_most_recent_press_release_now_f0405d.wav|lˈɛt mˌiː ʧˈɛk ðə mˈQst ɹˈiːsnt pɹˈɛs ɹɪlˈiːs nˈW…|0
+data/v4/train/wavs/let_me_check_the_specific_press_release_from_that_date_19f607.wav|lˈɛt mˌiː ʧˈɛk ðə spɪsˈɪfɪk pɹˈɛs ɹɪlˈiːs fɹɒm ðˈat dˈAt…|0
+data/v4/train/wavs/let_me_check_what_brain_assistant_is_b72ddd.wav|lˈɛt mˌiː ʧˈɛk wˌɒt bɹˈAn əsˈɪstᵊnt ɪz...|0
+data/v4/train/wavs/let_me_check_what_conversational_ai_covers_3af0f7.wav|lˈɛt mˌiː ʧˈɛk wˌɒt kˌɒnvəsˈAʃənᵊl ˈA ˈI kˈʌvəz...|0
+data/v4/train/wavs/let_me_check_what_conversational_ai_means_86781f.wav|lˈɛt mˌiː ʧˈɛk wˌɒt kˌɒnvəsˈAʃənᵊl ˈA ˈI mˈiːnz…|0
+data/v4/train/wavs/let_me_check_what_happened_in_2019_1f111e.wav|lˈɛt mˌiː ʧˈɛk wˌɒt hˈapᵊnd ɪn twˈɛnti nˌIntˈiːn…|0
+data/v4/train/wavs/let_me_check_what_happened_on_may_19_f683fa.wav|lˈɛt mˌiː ʧˈɛk wˌɒt hˈapᵊnd ˌɒn mˈA nˌIntˈiːn…|0
+data/v4/train/wavs/let_me_check_what_open_source_tools_are_in_use_cbda71.wav|lˈɛt mˌiː ʧˈɛk wˌɒt ˈQpᵊn sˈɔːs tˈuːlz ɑː ɪn jˈuːs…|0
+data/v4/train/wavs/let_me_check_what_pr_activities_are_possible_at_rezolve_13b697.wav|lˈɛt mˌiː ʧˈɛk wˌɒt pˌiːˈɑː aktˈɪvɪtiz ɑː pˈɒsɪbᵊl at ɹɪzˈɒlv…|0
+data/v4/train/wavs/let_me_check_what_pr_options_are_available_3ed307.wav|lˈɛt mˌiː ʧˈɛk wˌɒt pˌiːˈɑː ˈɒpʃᵊnz ɑː əvˈAləbᵊl…|0
+data/v4/train/wavs/let_me_check_what_rezolve_advisors_offers_ee992c.wav|lˈɛt mˌiː ʧˈɛk wˌɒt ɹɪzˈɒlv ədvˈIzəz ˈɒfəz…|0
+data/v4/train/wavs/let_me_check_what_rezolve_ai_does_84711d.wav|lˈɛt mˌiː ʧˈɛk wˌɒt ɹɪzˈɒlv ˈA ˈI dˈʌz…|0
+data/v4/train/wavs/let_me_check_what_rezolve_offers_for_hotels_8fd198.wav|lˈɛt mˌiː ʧˈɛk wˌɒt ɹɪzˈɒlv ˈɒfəz fɔː hˌQtˈɛlz…|0
+data/v4/train/wavs/let_me_check_what_rezolve_solutions_fit_enterprise_retailers_21a290.wav|lˈɛt mˌiː ʧˈɛk wˌɒt ɹɪzˈɒlv səlˈuːʃᵊnz fˈɪt ˈɛntəpɹIz ɹˈiːtAləz…|0
+data/v4/train/wavs/let_me_check_what_rezolve_solutions_fit_hotels_7d8f85.wav|lˈɛt mˌiː ʧˈɛk wˌɒt ɹɪzˈɒlv səlˈuːʃᵊnz fˈɪt hˌQtˈɛlz…|0
+data/v4/train/wavs/let_me_check_what_solutions_are_available_5d3f63.wav|lˈɛt mˌiː ʧˈɛk wˌɒt səlˈuːʃᵊnz ɑː əvˈAləbᵊl…|0
+data/v4/train/wavs/let_me_check_what_the_one_checkout_solution_is_0a011e.wav|lˈɛt mˌiː ʧˈɛk wˌɒt ðə wˈʌn ʧˈɛkWt səlˈuːʃᵊn ɪz…|0
+data/v4/train/wavs/let_me_check_which_enterprises_use_rezolve_01dc94.wav|lˈɛt mˌiː ʧˈɛk wˌɪʧ ˈɛntəpɹIzɪz jˈuːz ɹɪzˈɒlv...|0
+data/v4/train/wavs/let_me_check_who_handles_pr_at_rezolve_78b103.wav|lˈɛt mˌiː ʧˈɛk hˌuː hˈandᵊlz pˌiːˈɑː at ɹɪzˈɒlv…|0
+data/v4/train/wavs/let_me_check_who_holds_that_role_at_rezolve_ai_905929.wav|lˈɛt mˌiː ʧˈɛk hˌuː hˈQldz ðˈat ɹˈQl at ɹɪzˈɒlv ˈA ˈI…|0
+data/v4/train/wavs/let_me_check_who_the_ceo_of_rezolve_is_afa5b6.wav|lˈɛt mˌiː ʧˈɛk hˌuː ðə sˌiːˌiːˈQ ɒv ɹɪzˈɒlv ɪz…|0
+data/v4/train/wavs/let_me_check_who_the_cro_is_cfe161.wav|lˈɛt mˌiː ʧˈɛk hˌuː ðə sˌiːˌɑːˈQ ɪz…|0
+data/v4/train/wavs/let_me_check_who_the_enterprise_clients_are_b50263.wav|lˈɛt mˌiː ʧˈɛk hˌuː ði ˈɛntəpɹIz klˈIənts ɑː…|0
+data/v4/train/wavs/let_me_check_who_was_involved_in_that_discussion_de9ff8.wav|lˈɛt mˌiː ʧˈɛk hˌuː wɒz ɪnvˈɒlvd ɪn ðˈat dɪskˈʌʃᵊn…|0
+data/v4/train/wavs/let_me_clarify_the_benefits_of_working_with_us_3226c3.wav|lˈɛt mˌiː klˈaɹɪfI ðə bˈɛnɪfɪts ɒv wˈɜːkɪŋ wɪð ˌʌs…|0
+data/v4/train/wavs/let_me_explain_what_brain_checkout_is_cbfbc9.wav|lˈɛt mˌiː ɪksplˈAn wˌɒt bɹˈAn ʧˈɛkWt ɪz.|0
+data/v4/train/wavs/let_me_explain_what_conversational_ai_is_695f19.wav|lˈɛt mˌiː ɪksplˈAn wˌɒt kˌɒnvəsˈAʃənᵊl ˈA ˈI ɪz…|0
+data/v4/train/wavs/let_me_explain_what_rezolve_ai_does_141eb1.wav|lˈɛt mˌiː ɪksplˈAn wˌɒt ɹɪzˈɒlv ˈA ˈI dˈʌz…|0
+data/v4/train/wavs/let_me_find_a_demo_for_you_16e2ab.wav|lˈɛt mˌiː fˈInd ɐ dˈɛmQ fɔː juː…|0
+data/v4/train/wavs/let_me_find_a_demo_that_shows_the_purchasing_process_e28491.wav|lˈɛt mˌiː fˈInd ɐ dˈɛmQ ðat ʃˈQz ðə pˈɜːʧɪsɪŋ pɹˈQsɛs…|0
+data/v4/train/wavs/let_me_find_ai_discovery_solutions_for_enterprise_retailers_c4252e.wav|lˈɛt mˌiː fˈInd ˈA ˈI dɪskˈʌvəɹi səlˈuːʃᵊnz fɔː ˈɛntəpɹIz ɹˈiːtAləz…|0
+data/v4/train/wavs/let_me_find_out_more_about_that_056a32.wav|lˈɛt mˌiː fˈInd ˈWt mˈɔː əbˈWt ðˈat…|0
+data/v4/train/wavs/let_me_find_the_2019_press_release_d4fb9f.wav|lˈɛt mˌiː fˈInd ðə twˈɛnti nˌIntˈiːn pɹˈɛs ɹɪlˈiːs…|0
+data/v4/train/wavs/let_me_find_the_latest_press_releases_4adeed.wav|lˈɛt mˌiː fˈInd ðə lˈAtɪst pɹˈɛs ɹɪlˈiːsɪz…|0
+data/v4/train/wavs/let_me_find_the_management_section_for_you_54f9ff.wav|lˈɛt mˌiː fˈInd ðə mˈanɪʤmᵊnt sˈɛkʃᵊn fɔː juː…|0
+data/v4/train/wavs/let_me_go_into_more_detail_about_the_hospitality_offering_048371.wav|lˈɛt mˌiː ɡˌQ ˈɪntuː mˈɔː dˈiːtAl əbˈWt ðə hˌɒspɪtˈalɪti ˈɒfəɹɪŋ…|0
+data/v4/train/wavs/let_me_help_you_set_that_up_60b530.wav|lˈɛt mˌiː hˈɛlp juː sˈɛt ðˈat ˌʌp…|0
+data/v4/train/wavs/let_me_help_you_set_up_that_demo_debc86.wav|lˈɛt mˌiː hˈɛlp juː sˈɛt ˌʌp ðat dˈɛmQ…|0
+data/v4/train/wavs/let_me_look_into_how_rezolve_ai_enhances_product_discovery_3744d9.wav|lˈɛt mˌiː lˈʊk ˈɪntuː hˌW ɹɪzˈɒlv ˈA ˈI ɪnhˈɑːnsɪz pɹˈɒdʌkt dɪskˈʌvəɹi…|0
+data/v4/train/wavs/let_me_look_into_that_specific_term_18c69f.wav|lˈɛt mˌiː lˈʊk ˈɪntuː ðˈat spɪsˈɪfɪk tˈɜːm…|0
+data/v4/train/wavs/let_me_look_into_what_conversational_ai_does_b67492.wav|lˈɛt mˌiː lˈʊk ˈɪntuː wˌɒt kˌɒnvəsˈAʃənᵊl ˈA ˈI dˈʌz…|0
+data/v4/train/wavs/let_me_look_into_what_rezolve_ai_is_23a468.wav|lˈɛt mˌiː lˈʊk ˈɪntuː wˌɒt ɹɪzˈɒlv ˈA ˈI ɪz…|0
+data/v4/train/wavs/let_me_look_into_who_the_ceo_of_rezolve_is_a67357.wav|lˈɛt mˌiː lˈʊk ˈɪntuː hˌuː ðə sˌiːˌiːˈQ ɒv ɹɪzˈɒlv ɪz…|0
+data/v4/train/wavs/let_me_pull_up_the_details_on_conversational_ai_23329b.wav|lˈɛt mˌiː pˈʊl ˌʌp ðə dˈiːtAlz ˌɒn kˌɒnvəsˈAʃənᵊl ˈA ˈI…|0
+data/v4/train/wavs/let_me_pull_up_the_details_on_rezolve_advisors_c07303.wav|lˈɛt mˌiː pˈʊl ˌʌp ðə dˈiːtAlz ˌɒn ɹɪzˈɒlv ədvˈIzəz…|0
+data/v4/train/wavs/let_me_pull_up_what_rezolve_ai_does_804f20.wav|lˈɛt mˌiː pˈʊl ˌʌp wˌɒt ɹɪzˈɒlv ˈA ˈI dˈʌz…|0
+data/v4/train/wavs/let_me_see_how_rezolve_fits_into_the_conversation_5cfffd.wav|lˈɛt mˌiː sˈiː hˌW ɹɪzˈɒlv fˈɪts ˈɪntuː ðə kˌɒnvəsˈAʃᵊn…|0
+data/v4/train/wavs/let_me_see_how_that_transformation_unfolds_4daa8c.wav|lˈɛt mˌiː sˈiː hˌW ðˈat tɹˌansfəmˈAʃᵊn ʌnfˈQldz…|0
+data/v4/train/wavs/let_me_see_how_to_schedule_a_rezolve_demo_c25eb5.wav|lˈɛt mˌiː sˈiː hˌW tə ʃˈɛdjuːl ɐ ɹɪzˈɒlv dˈɛmQ…|0
+data/v4/train/wavs/let_me_see_what_checkout_solutions_are_available_ff0235.wav|lˈɛt mˌiː sˈiː wˌɒt ʧˈɛkWt səlˈuːʃᵊnz ɑː əvˈAləbᵊl…|0
+data/v4/train/wavs/let_me_see_what_rezolve_ai_does_69022c.wav|lˈɛt mˌiː sˈiː wˌɒt ɹɪzˈɒlv ˈA ˈI dˈʌz…|0
+data/v4/train/wavs/let_me_see_what_rezolve_offers_for_hotels_760b81.wav|lˈɛt mˌiː sˈiː wˌɒt ɹɪzˈɒlv ˈɒfəz fɔː hˌQtˈɛlz…|0
+data/v4/train/wavs/let_me_see_which_retailers_specialize_in_ties_8755d7.wav|lˈɛt mˌiː sˈiː wˌɪʧ ɹˈiːtAləz spˈɛʃəlIz ɪn tˈIz…|0
+data/v4/train/wavs/let_me_verify_how_rezolve_ai_enhances_discovery_c10f96.wav|lˈɛt mˌiː vˈɛɹɪfI hˌW ɹɪzˈɒlv ˈA ˈI ɪnhˈɑːnsɪz dɪskˈʌvəɹi…|0
+data/v4/train/wavs/let_me_verify_how_rezolve_ai_enhances_product_discovery_62d41b.wav|lˈɛt mˌiː vˈɛɹɪfI hˌW ɹɪzˈɒlv ˈA ˈI ɪnhˈɑːnsɪz pɹˈɒdʌkt dɪskˈʌvəɹi…|0
+data/v4/train/wavs/let_me_verify_that_claim_for_you_fcd28b.wav|lˈɛt mˌiː vˈɛɹɪfI ðˈat klˈAm fɔː juː…|0
+data/v4/train/wavs/let_me_verify_the_press_release_date_c3a794.wav|lˈɛt mˌiː vˈɛɹɪfI ðə pɹˈɛs ɹɪlˈiːs dˈAt…|0
+data/v4/train/wavs/llm_sess_02b1b0353e9649f2_resp_79e05c38ee224eff_002.wav|ɹˈɪʧəd bˈɜː ʧˈɪl, ɡɹˈuːp fˈInans dɪɹˈɛktə, mˈɑːk tˈɜːnə, ʧˈiːf ɡɹˈQθ ˈɒfɪsə, and kɹˈɪs bˈɪn lˈɒɹi, pɹˈɛzɪdᵊnt stɹətˈiːʤɪk pˈɑːtnəʃɪps and kˈapɪtᵊl mˈɑːkɪts.|0
+data/v4/train/wavs/llm_sess_036c0ae3e9c446ec_resp_b97753b5c7c6417d.wav|wˌʊd juː lˈIk ɐ bɹˈiːf ˈQvəvjuː ɒv hˌW ˌWə vˈYs ˈAʤᵊnt ˈɪntɪɡɹAts wɪð jɔː sˈIt and ðə kˈiː kˌApəbˈɪlɪtiz ɪt pɹəvˈIdz?|0
+data/v4/train/wavs/llm_sess_036c0ae3e9c446ec_resp_c936145bf209433e.wav|ˈQpᵊnɪŋ ðə ɹɪkwˈɛst dˈɛmQ pˈAʤ fɔː juː nˈW.|0
+data/v4/train/wavs/llm_sess_18eed1b104274339_resp_072a474e6491478c.cancelled.wav|ðˈats ɹˈIt, wiː mAntˈAn ɐ pˈʌblɪk pɹədˈʌkʃᵊn sˈIt and ɐ sˈɛpəɹət stˈɛp|0
+data/v4/train/wavs/llm_sess_18eed1b104274339_resp_9e5991a7dda34a6e.cancelled.wav|wˌiː ɹˈʌn ɐ pˈʌblɪk pɹədˈʌkʃᵊn sˈIt and ɐ sˈɛpəɹət stˈAʤɪŋ sˈIt wˌɛː wiː tˈɛst njˈuː fˈiːʧəz.|0
+data/v4/train/wavs/llm_sess_18eed1b104274339_resp_ae580d0351f9424b.wav|ʃˈʊə θˈɪŋ, wˌɒt wʊd juː lˈIk tə fˈQkəs ˌɒn nˈɛkst?|0
+data/v4/train/wavs/llm_sess_1d0f76bd7600489c_resp_d5283a964f31466f.wav|ʃˈʊə, wˌɒt wʊd juː lˈIk tʊ ɪksplˈɔː ɔː lˈɜːn əbˈWt tədˈA?|0
+data/v4/train/wavs/llm_sess_1e426c8f62f6495c_resp_217b2448145e4511_001.wav|ˈɔːlwAz ˌɒn ɪkspˈɪəɹɪəns. wˌʊd juː lˈIk tə hˈɪə mˈɔː əbˈWt ˈɛni spɪsˈɪfɪk fˈiːʧə?|0
+data/v4/train/wavs/llm_sess_28b1093a173642a6_resp_94736eb1187543f8_002.wav|ðˌɪs Aʤˈɛntɪk kˈɒməːs mˈɒdᵊl lˈɛts ˈA ˈI ˈAʤᵊnts ˈakt az ɔːtˈɒnəməs ˌɪntəmˈiːdɪəɹiz ðat dɪskˈʌvə, kəmpˈɛː, ɹˌɛkəmˈɛnd and tɹɑːnzˈakt ˌɒn bɪhˈɑːf ɒv ʃˈɒpəz.|0
+data/v4/train/wavs/llm_sess_31148a15f8c044de_resp_ad1430b436d24381.cancelled_000.wav|wˌiː ɑː ɹɪzˈɒlv ˈA ˈI, ɐ ɡlˈQbᵊl lˈiːdə ɪn ˌA ˌIdɹˈɪvᵊn kˈɒməːs ðat dɪlˈɪvəz ɐn ˈɛndtʊˈɛnd plˈatfɔːm, bɹˈAn kˈɒməːs, jˈuːnɪfˌIɪŋ kˌɒnvəsˈAʃənᵊl ˈA ˈI, dɪskˈʌvəɹi ˈA ˈI, dˈAtə ɪntˈɛlɪʤᵊns ɪnɹˈɪʧmᵊnt and ɐn Aʤˈɛntɪk ʧˈɛkWt tə tˈɜːn pɹˈɒdʌkt sˈɜːʧ, dˈIəlɒɡ and pˈɜːʧɪs|0
+data/v4/train/wavs/llm_sess_31a51fee4f624dbb_resp_252863f7c18d4f4c_000.wav|wˌiː ɹˈiːsᵊntli ˈadɪd fˈɔː kˈʌmpᵊniz ɪn twˈɛnti twˈɛnti fˈIv, ɡɹˈuːpt bI kɹˈWn pˈiːk, smˈɑːtpˌA and sˈʌb skwˈɪd, tə stɹˈɛŋθn ˌWə ˌA ˌIdɹˈɪvᵊn sˈɜːʧ, dˈɪʤɪtᵊl ɪkspˈɪəɹɪəns, pˈAmᵊnt and dˈAtə lˈAə kˌApəbˈɪlɪtiz. ˌand ɪn fˈɛbɹəɹi twˈɛnti twˈɛnti|0
+data/v4/train/wavs/llm_sess_4341b9e0774a4b9f_resp_cf6c5a7b5fff4420.wav|ˌIm ɐn ˈA ˈI əsˈɪstᵊnt hˈɪə tə hˈɛlp juː. hˌW kan ˌI əsˈɪst juː tədˈA?|0
+data/v4/train/wavs/llm_sess_4fc8172f54a34036_resp_55429f691055412b_001.wav|dˈɒktə dˈɛɹɪk smˈɪθ, nˌɒnɪɡzˈɛkjʊtɪv dɪɹˈɛktə.|0
+data/v4/train/wavs/llm_sess_5c0e2d8d65ca4b56_resp_c030e0aaf88e4081_001.wav|fɔː fˈɑːstə pɹˈɒdʌkt fˈIndɪŋ. dˈAtə ɪntˈɛlɪʤᵊns and ɪnˈAblmᵊnt ɪn ɹˈɪʧɪz and stɹˈʌkʧəz kˈatəlɒɡ dˈAtə bˈuːsts ˌɛsˌiːˈQ, ˌAˌiːˈQ and ɹˈɛdizˌɪt fɔː ˈA ˈI jˈuːs. ˌand ðə pˈɜːʧɪs swˈiːt pɹəvˈIdz ɐ jˌuːnɪvˈɜːsᵊl, Aʤˈɛntɪk ʧˈɛkWt ðat səpˈɔːts kɹˌɒsmˈɜːʧənt kˈɑːts,|0
+data/v4/train/wavs/llm_sess_5c0e2d8d65ca4b56_resp_e457c761ab9d4802.wav|wˌʊd juː lˈIk mˌiː tʊ ˈQpᵊn ðə səlˈuːʃᵊnz pˈAʤ sˌQ juː kan ɪksplˈɔː ˌWə ˈA ˈI dɹˈɪvᵊn ˈɒfəɹɪŋz?|0
+data/v4/train/wavs/llm_sess_5c0e2d8d65ca4b56_resp_efa37807b6e34ffb_000.wav|wˌiː ˈɒfə fˈɔː ˌA ˌIdɹˈɪvᵊn səlˈuːʃᵊnz. kˌɒnvəsˈAʃənᵊl ˈA ˈI fɔː ɪntˈɛntəwˌɛː ʃˈɒpɪŋ əsˈɪstᵊnts, dɪskˈʌvəɹi ˈA ˈI fɔː sɪmˈantɪk sˈɜːʧ and vˈɪzjʊəl mˈaʧɪŋ, dˈAtə ɪntˈɛlɪʤᵊns and ɪnˈAblmᵊnt tʊ ɪnɹˈɪʧ pɹˈɒdʌkt dˈAtə and bˈuːst ˌɛsˌiːˈQ, ˌAˌiːˈQ, and ðə pˈɜːʧɪs swˈiːt.|0
+data/v4/train/wavs/llm_sess_5c0e2d8d65ca4b56_resp_efa37807b6e34ffb_001.wav|fɔː jˌuːnɪvˈɜːsᵊl, Aʤˈɛntɪk ʧˈɛkWt, ɪnklˈuːdɪŋ stˈAblkYn pˈAmᵊnts. wˌʊd juː lˈIk ɐ kwˈɪk lˈʊk at ˈɛni wˈʌn ɒv ðiːz ɪn mˈɔː dˈiːtAl, ɔː tʊ ˈQpᵊn ðə səlˈuːʃᵊnz pˈAʤ?|0
+data/v4/train/wavs/llm_sess_5c0e2d8d65ca4b56_resp_f041cdfe8d2643c3.wav|wˌʊd juː lˈIk mˌiː tə tˈAk juː tə ðə səlˈuːʃᵊnz pˈAʤ ɔː ɪz ðɛː ɐ spɪsˈɪfɪk səlˈuːʃᵊn juːd lˈIk tə lˈɜːn mˈɔː əbˈWt?|0
+data/v4/train/wavs/llm_sess_6013dd633eab425a_resp_ad9585b5e5034c9e.wav|wˌiː tɹˈAd ˌɒn ðə nˈazdak ɪksʧˈAnʤ ˈʌndə ðə tˈɪkə ˌɑːzˌiːˌɛlvˈiː, hˈavɪŋ lˈɪstɪd ˌɒn ˈɔːɡəst sˌɪkstˈiːnθ twˈɛnti twˈɛnti fˈɔː.|0
+data/v4/train/wavs/llm_sess_6837060e82a140f3_resp_b4ae7b2629934a8c.wav|ɡˌɒt ɪt, θˈaŋks fɔː ði ˈʌpdAt. lˈɛt mˌiː nˈQ ɪf juːd lˈIk mˌiː tə nˈavɪɡAt tʊ ˈɛni pɹˈɒdʌkt pˈAʤ ˌɒn ðə stˈAʤɪŋ sˈIt.|0
+data/v4/train/wavs/llm_sess_71c9ad916fe2485c_resp_95e23a3982b94d3c.wav|wˌɒt wʊd juː lˈIk tə lˈɜːn əbˈWt ˌWə kˌɒnvəsˈAʃənᵊl ˈA ˈI?|0
+data/v4/train/wavs/llm_sess_8aec47ec80ae42b9_resp_1b54b6d308f0439a_001.wav|dˈanjəl ˈɛm vˈaɡnə, ʧˈɛːmən and sˌiːˌiːˈQ|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_4e46840c464d4378_000.wav|ˌWə ˈA ˈI dɹˈɪvᵊn plˈatfɔːm tˈɜːnz ˈɛvəɹi ʃˈɒp az ɪntˈɛnt ˈɪntuː ɐ sˈiːmlɪs, kˌɒnvəsˈAʃənᵊl ɪkspˈɪəɹɪəns, dɪskˈʌvəɹɪŋ pɹˈɒdʌkts, ɹɪsˈiːvɪŋ kjʊəɹˈAtɪd ɹˌɛkəmɛndˈAʃᵊnz wɪð klˈɪə ɹˈiːzᵊnz and kəmplˈiːtɪŋ ʧˈɛkWt ˈɔːl wɪðˈɪn ðə sˈAm dˈIəlɒɡ.|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_522456da2cd74a59_001.wav|mˈɛnz wˈɛːhWs and dˌʌbᵊljuːbˈiː mˈAsᵊn|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_5e8ec6104bc7441e_000.wav|ðə bɹˈAnpˌWə ʤˈɛnəɹəl kˌɒnvəsˈAʃənᵊl ˌɛlvˈiː wˈʌn mˈɒdᵊl ɪz ðə lˈɑːʤə kəpˈasɪti mˈɛmbə ɒv ˌWə kˌɒməːstjˈuːnd swˈiːt. ˌɪts ˈɒptɪmIzd fɔː hˌIvˈɒljuːm, mˈʌltitˌɜːn dˈIəlɒɡz, səpˈɔːts tˈuːl kˈɔːlɪŋ fɔː ɹˌɪəltˈIm ˈakʃᵊnz and ɪz ʃˈɪpt az ɐ kəntˈAnə ˈɪmɪʤ juː kan dɪplˈY|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_5e8ec6104bc7441e_001.wav|ɪn jɔː ˈQn ˈaʒə səbskɹˈɪpʃᵊn vˈIə ði ˈaʒə ˈA ˈI fˈWndɹi kˈatəlɒɡ. ðˌɪs mˈɒdᵊl, təɡˈɛðə wɪð ði ˈɛmsˌIz and tˈuːl kˈɔːlɪŋ vˈɛːɹɪənts, fˈɔːmz ðə bɹˈAn pˈWə fˈamɪli ðat pˈWəz ˌWə pɹədˈʌkʃᵊn ˈAʤᵊnts.|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_922a83f016634581_000.wav|ˌWə bɹˈAnpˌWə mˈɒdᵊlz ɑː tɹˈAnd ˌɒn ɐ pɹəpɹˈIətəɹi, kˌɒməːsfˈQkəst dˈAtə sˈɛt ðat ɪnklˈuːdz ɹˌɪəlwˈɜːld ɹˈiːtAl ˌɪntəɹˈakʃᵊnz, pɹˈɒdʌkt kˈatəlɒɡz, mˈɜːʧənt pˈɒlɪsiz, kˈʌstəmə sˈɜːvɪs dˈIəlɒɡz, and ʃˈɒpɪŋ əsˈɪstᵊnt kˌɒnvəsˈAʃᵊnz. ɪn tˈQtᵊl, ðə tɹˈAnɪŋ kˈɔːpəs kəntˈAnz ˈQvə θɹˈiː hˈʌndɹəd|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_922a83f016634581_001.wav|bˈɪljən tˈQkᵊnz dɹˈɔːn fɹɒm ðiːz ˈiːkˌɒməːs sˈɔːsɪz. ˌand ðə mˈɒdᵊlz ɑː fIntjˈuːnd wɪð ɹˌiːɪnfˈɔːsmᵊnt lˈɜːnɪŋ fɹɒm hjˈuːmən fˈiːdbak tə ɹɪwˈɔːd fˈakʧʊəl ɡɹˈWndɪd ˈɑːnsəz and pˈiːnəlIz həlˌuːsɪnˈAʃᵊnz.|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_c615c6ca95574133.wav|ˌIm sˈɒɹi, bˌʌt ˌI wˈɒzᵊnt ˈAbᵊl tə lQkˈAt ˌɪnfəmˈAʃᵊn əbˈWt ɐ bɹˈAn sˈuːt pɹˈɒdʌkt tˈiːm. ˌɪf juː hav ənˈʌðə kwˈɛsʧᵊn əbˈWt ɹɪzˈɒlv səlˈuːʃᵊnz, ˌIm hˈapi tə hˈɛlp.|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_efe67f4b1aae467a_003.wav|ɐ dˈɛdɪkAtɪd ɪnɹˈɪʧ ˈɒps tˈiːm ɹɪvjˈuːz ˈɛʤ kˈAsɪz, vˈalɪdAts ði ˈA ˈI ˈWtpʊt, and ɹɪkˈɔːdz ˈɛvəɹi ʧˈAnʤ fɔː ˈɔːdɪt əbˈɪlɪti. sˌQ juː ɡɛt ˈA ˈI skˈAl spˈiːd plˈʌs ˈɛkspəːt ɡˈʌvᵊnd kwˈɒlɪti.|0
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_f122705b40c343f2.wav|ˌIm sˈɒɹi, bˌʌt ˌI wˈɒzᵊnt ˈAbᵊl tə lQkˈAt ɐ lˈɪst ɒv spɪsˈɪfɪk ˈiːkˌɒməːs plˈatfɔːmz jˈuːzd fɔː ðˈat dˈAtə.|0
+data/v4/train/wavs/llm_sess_b4ceda25b8ea41fe_resp_68c9348d22de4239.cancelled.wav|ʤˈʌst tə kənfˈɜːm, ɑː juː ˈaskɪŋ əbˈWt ɐ pˈɑːtnəʃɪp wɪð bˈɪl dɪɹˈɛkt?|0
+data/v4/train/wavs/llm_sess_b59f46f71e0d4284_resp_0d96580d42a44d3a_001.wav|wˌʊd juː lˈIk mˈɔː dˈiːtAlz ɔː tə ʤˈʌmp tə ðə bˈɔːd ɒv dɪɹˈɛktəz sˈɛkʃᵊn ˌɒn ˌWə əbˈWt pˈAʤ?|0
+data/v4/train/wavs/llm_sess_dcce5f92bb7444f8_resp_01f2c9143c3642cb.cancelled.wav|ˌWə mˈɪʃᵊn ɪz tə ɹˌiːɪnvˈɛnt kˈɒməːs θɹuː ˌɑːtɪfˈɪʃl ɪntˈɛlɪʤᵊns, bˈɪldɪŋ ˈA ˈIpˌWəd səlˈuːʃᵊnz ðat tɹɑːnsfˈɔːm hˌW ɹˈiːtAləz, bɹˈandz and fɪnˈanʃl ˌɪnstɪtjˈuːʃᵊnz|0
+data/v4/train/wavs/llm_sess_dcce5f92bb7444f8_resp_226cbd46c745488b.cancelled.wav|bɹˌAnkˈɒməːs ɹˈʌnz ˌɒn ˌWə kˌɒməːstɹˈAnd bɹˈAnpˌWə ˌɛlˌɛlˈɛm, sˌQ ˈɛvəɹi ɹɪspˈɒns ɪz ɡɹˈWndɪd ɪn lˈIv pɹˈɒdʌkt dˈAtə and stˈAz ˈakjʊɹət, wˌIl tɹədˈɪʃənᵊl ʧˈatbɒts jˈuːz skɹˈɪptɪd dɪsˈɪʒᵊn tɹˈiːz ɔː sˈɪmpᵊl kˈiːwəːd mˈaʧɪŋ ðat kan mˈɪs ʃˈɒpə ɪntˈɛnt and tə lˈuːz|0
+data/v4/train/wavs/llm_sess_dcce5f92bb7444f8_resp_38d37366e8c74104_000.wav|ɡɹˈuːp bˈI ɪz ɐ lˈiːdɪŋ pɹəvˈIdə ɒv kˈɒməːs, sˈIts, sˈɜːʧ and mˈɜːʧᵊndIzɪŋ tɛknˈɒləʤi ðat hˈɛlps ɹˈiːtAləz ɪmpɹˈuːv pɹˈɒdʌkt dɪskˈʌvəɹi, pˌɜːsənəlIzˈAʃᵊn and kənvˈɜːʃᵊn.|0
+data/v4/train/wavs/llm_sess_f08acaf26e4a44f8_resp_bbb6e1fbab5042c4.wav|ˌIm ʤˈʌst ʧˈɛkɪŋ hˌW ˌI kan hˈɛlp juː. ˌɑː juː lˈʊkɪŋ fɔː ˌɪnfəmˈAʃᵊn əbˈWt ɹɪzˈɒlvz pɹˈɒdʌkts, ɐ spɪsˈɪfɪk fˈiːʧə ɔː sˈʌmθɪŋ ˈɛls?|0
+data/v4/train/wavs/looking_for_the_press_release_from_may_19_25b7e4.wav|lˈʊkɪŋ fɔː ðə pɹˈɛs ɹɪlˈiːs fɹɒm mˈA nˌIntˈiːn…|0
+data/v4/train/wavs/looking_into_ai_improvements_now_a60967.wav|lˈʊkɪŋ ˈɪntuː ˈA ˈI ɪmpɹˈuːvmᵊnts nˈW…|0
+data/v4/train/wavs/looking_into_contextual_discovery_for_enterprise_retailers_c965b7.wav|lˈʊkɪŋ ˈɪntuː kəntˈɛksʧʊəl dɪskˈʌvəɹi fɔː ˈɛntəpɹIz ɹˈiːtAləz...|0
+data/v4/train/wavs/looking_into_discovery_options_for_retailers_d4693b.wav|lˈʊkɪŋ ˈɪntuː dɪskˈʌvəɹi ˈɒpʃᵊnz fɔː ɹˈiːtAləz…|0
+data/v4/train/wavs/looking_into_end-to-end_shopping_experiences_020c1b.wav|lˈʊkɪŋ ˈɪntuː ˈɛndtʊˈɛnd ʃˈɒpɪŋ ɪkspˈɪəɹɪənsɪz…|0
+data/v4/train/wavs/looking_into_how_end-to-end_shopping_experiences_are_transfo_0efaee.wav|lˈʊkɪŋ ˈɪntuː hˌW ˈɛndtʊˈɛnd ʃˈɒpɪŋ ɪkspˈɪəɹɪənsɪz ɑː tɹɑːnsfˈɔːmd…|0
+data/v4/train/wavs/looking_into_how_rezolve_ai_improves_discovery_acda93.wav|lˈʊkɪŋ ˈɪntuː hˌW ɹɪzˈɒlv ˈA ˈI ɪmpɹˈuːvz dɪskˈʌvəɹi…|0
+data/v4/train/wavs/looking_into_product_discovery_solutions_for_enterprise_reta_8d4fbe.wav|lˈʊkɪŋ ˈɪntuː pɹˈɒdʌkt dɪskˈʌvəɹi səlˈuːʃᵊnz fɔː ˈɛntəpɹIz ɹˈiːtAləz…|0
+data/v4/train/wavs/looking_into_retail_industry_updates_374484.wav|lˈʊkɪŋ ˈɪntuː ɹˈiːtAl ˈɪndəstɹi ˈʌpdAts…|0
+data/v4/train/wavs/looking_into_retailers_that_specialize_in_ties_76e1c3.wav|lˈʊkɪŋ ˈɪntuː ɹˈiːtAləz ðat spˈɛʃəlIz ɪn tˈIz…|0
+data/v4/train/wavs/looking_into_telecom_industry_applications_99e129.wav|lˈʊkɪŋ ˈɪntuː tˈɛli kˈɒm ˈɪndəstɹi ˌaplɪkˈAʃᵊnz…|0
+data/v4/train/wavs/looking_into_that_end-to-end_transformation_cc9d7f.wav|lˈʊkɪŋ ˈɪntuː ðˈat ˈɛndtʊˈɛnd tɹˌansfəmˈAʃᵊn…|0
+data/v4/train/wavs/looking_into_that_specific_retailer_0652a5.wav|lˈʊkɪŋ ˈɪntuː ðˈat spɪsˈɪfɪk ɹˈiːtAlə…|0
+data/v4/train/wavs/looking_into_that_specific_retailer_3f5321.wav|lˈʊkɪŋ ˈɪntuː ðˈat spɪsˈɪfɪk ɹˈiːtAlə...|0
+data/v4/train/wavs/looking_into_that_specific_transformation_approach_c1ee3a.wav|lˈʊkɪŋ ˈɪntuː ðˈat spɪsˈɪfɪk tɹˌansfəmˈAʃᵊn əpɹˈQʧ…|0
+data/v4/train/wavs/looking_into_the_19_may_press_release_68a0a9.wav|lˈʊkɪŋ ˈɪntuː ðə nˌIntˈiːn mˈA pɹˈɛs ɹɪlˈiːs…|0
+data/v4/train/wavs/looking_into_the_board_of_advisors_at_rezolve_ai_c469c3.wav|lˈʊkɪŋ ˈɪntuː ðə bˈɔːd ɒv ədvˈIzəz at ɹɪzˈɒlv ˈA ˈI…|0
+data/v4/train/wavs/looking_into_the_chief_revenue_officer_role_1ff1b8.wav|lˈʊkɪŋ ˈɪntuː ðə ʧˈiːf ɹˈɛvɪnjuː ˈɒfɪsə ɹˈQl…|0
+data/v4/train/wavs/looking_into_the_current_leadership_at_rezolve_469e9d.wav|lˈʊkɪŋ ˈɪntuː ðə kˈʌɹənt lˈiːdəʃɪp at ɹɪzˈɒlv...|0
+data/v4/train/wavs/looking_into_the_current_market_presence_d68d1c.wav|lˈʊkɪŋ ˈɪntuː ðə kˈʌɹənt mˈɑːkɪt pɹˈɛzᵊns…|0
+data/v4/train/wavs/looking_into_the_definition_of_conversational_ai_53e063.wav|lˈʊkɪŋ ˈɪntuː ðə dˌɛfɪnˈɪʃᵊn ɒv kˌɒnvəsˈAʃənᵊl ˈA ˈI…|0
+data/v4/train/wavs/looking_into_the_details_from_that_date_c99858.wav|lˈʊkɪŋ ˈɪntuː ðə dˈiːtAlz fɹɒm ðˈat dˈAt…|0
+data/v4/train/wavs/looking_into_the_end-to-end_shopping_experience_transformati_1cc213.wav|lˈʊkɪŋ ˈɪntuː ði ˈɛndtʊˈɛnd ʃˈɒpɪŋ ɪkspˈɪəɹɪəns tɹˌansfəmˈAʃᵊn…|0
+data/v4/train/wavs/looking_into_the_latest_financial_updates_0c4c7f.wav|lˈʊkɪŋ ˈɪntuː ðə lˈAtɪst fɪnˈanʃl ˈʌpdAts…|0
+data/v4/train/wavs/looking_into_the_may_19_press_release_3077fa.wav|lˈʊkɪŋ ˈɪntuː ðə mˈA nˌIntˈiːn pɹˈɛs ɹɪlˈiːs…|0
+data/v4/train/wavs/looking_into_the_most_recent_acquisitions_e8f376.wav|lˈʊkɪŋ ˈɪntuː ðə mˈQst ɹˈiːsnt ˌakwɪzˈɪʃᵊnz…|0
+data/v4/train/wavs/looking_into_the_most_recent_press_release_156f86.wav|lˈʊkɪŋ ˈɪntuː ðə mˈQst ɹˈiːsnt pɹˈɛs ɹɪlˈiːs…|0
+data/v4/train/wavs/looking_into_the_press_release_from_19_may_01dc2a.wav|lˈʊkɪŋ ˈɪntuː ðə pɹˈɛs ɹɪlˈiːs fɹɒm nˌIntˈiːn mˈA|0
+data/v4/train/wavs/looking_into_the_press_release_from_2019_cc4133.wav|lˈʊkɪŋ ˈɪntuː ðə pɹˈɛs ɹɪlˈiːs fɹɒm twˈɛnti nˌIntˈiːn…|0
+data/v4/train/wavs/looking_into_the_release_details_ba03f6.wav|lˈʊkɪŋ ˈɪntuː ðə ɹɪlˈiːs dˈiːtAlz…|0
+data/v4/train/wavs/looking_into_the_release_details_now_f06597.wav|lˈʊkɪŋ ˈɪntuː ðə ɹɪlˈiːs dˈiːtAlz nˈW…|0
+data/v4/train/wavs/looking_into_the_release_from_19_may_e0dc53.wav|lˈʊkɪŋ ˈɪntuː ðə ɹɪlˈiːs fɹɒm nˌIntˈiːn mˈA…|0
+data/v4/train/wavs/looking_into_the_relevant_fashion_details_0b3516.wav|lˈʊkɪŋ ˈɪntuː ðə ɹˈɛlɪvᵊnt fˈaʃᵊn dˈiːtAlz…|0
+data/v4/train/wavs/looking_into_the_specific_press_release_from_that_date_8b4d22.wav|lˈʊkɪŋ ˈɪntuː ðə spɪsˈɪfɪk pɹˈɛs ɹɪlˈiːs fɹɒm ðˈat dˈAt…|0
+data/v4/train/wavs/looking_into_the_talent_industry_landscape_8f683b.wav|lˈʊkɪŋ ˈɪntuː ðə tˈalənt ˈɪndəstɹi lˈandskAp…|0
+data/v4/train/wavs/looking_into_tie_retailers_now_93ceff.wav|lˈʊkɪŋ ˈɪntuː tˈI ɹˈiːtAləz nˈW…|0
+data/v4/train/wavs/looking_into_what_resolve_advisors_does_9999a4.wav|lˈʊkɪŋ ˈɪntuː wˌɒt ɹɪzˈɒlv ədvˈIzəz dˈʌz…|0
+data/v4/train/wavs/looking_into_what_rezolve_ai_actually_does_ec6c75.wav|lˈʊkɪŋ ˈɪntuː wˌɒt ɹɪzˈɒlv ˈA ˈI ˈakʧʊəli dˈʌz…|0
+data/v4/train/wavs/looking_into_who_leads_rezolve_now_e21299.wav|lˈʊkɪŋ ˈɪntuː hˌuː lˈiːdz ɹɪzˈɒlv nˈW…|0
+data/v4/train/wavs/looking_up_the_exact_name_of_the_solution_fc2a35.wav|lˈʊkɪŋ ˌʌp ði ɪɡzˈakt nˈAm ɒv ðə səlˈuːʃᵊn…|0
+data/v4/train/wavs/one_moment_while_i_check_the_exact_release_a69b81.wav|wˈʌn mˈQmᵊnt wˌIl ˌI ʧˈɛk ði ɪɡzˈakt ɹɪlˈiːs…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_investor_rezolve_1f4dec.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ɪnvˈɛstə ɹɪzˈɒlv…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_advisor_details_13ac60.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ði ədvˈIzə dˈiːtAlz…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_board_details_d952fd.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə bˈɔːd dˈiːtAlz…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_current_board_members_29e90a.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə kˈʌɹənt bˈɔːd mˈɛmbəz…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_exact_release_3f0af8.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ði ɪɡzˈakt ɹɪlˈiːs…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_fashion-related_details_5c9bb9.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə fˌaʃᵊnɹɪlˈAtɪd dˈiːtAlz…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_latest_release_17714a.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə lˈAtɪst ɹɪlˈiːs…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_leadership_details_24c33f.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə lˈiːdəʃɪp dˈiːtAlz…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_may_19_release_7c8e43.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə mˈA nˌIntˈiːn ɹɪlˈiːs.|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_page_6e44c5.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə pˈAʤ…|0
+data/v4/train/wavs/one_moment_while_i_pull_up_the_precise_meaning_8fe2a4.wav|wˈʌn mˈQmᵊnt wˌIl ˌI pˈʊl ˌʌp ðə pɹɪsˈIs mˈiːnɪŋ…|0
+data/v4/train/wavs/one_moment_while_i_sort_that_out_4ff02b.wav|wˈʌn mˈQmᵊnt wˌIl ˌI sˈɔːt ðˈat ˈWt…|0
+data/v4/train/wavs/opening_the_contact_us_page_now_829598.wav|ˈQpᵊnɪŋ ðə kˈɒntakt ˌʌs pˈAʤ nˈW…|0
+data/v4/train/wavs/pulling_up_information_about_tie_retailers_6c8b14.wav|pˈʊlɪŋ ˌʌp ˌɪnfəmˈAʃᵊn əbˈWt tˈI ɹˈiːtAləz…|0
+data/v4/train/wavs/pulling_up_the_details_on_that_checkout_solution_a071fc.wav|pˈʊlɪŋ ˌʌp ðə dˈiːtAlz ˌɒn ðˈat ʧˈɛkWt səlˈuːʃᵊn…|0
+data/v4/train/wavs/pulling_up_the_documented_productivity_improvements_ede0d3.wav|pˈʊlɪŋ ˌʌp ðə dˈɒkjʊmɛntɪd pɹˌɒdʌktˈɪvɪti ɪmpɹˈuːvmᵊnts…|0
+data/v4/train/wavs/pulling_up_the_exact_press_release_565dc1.wav|pˈʊlɪŋ ˌʌp ði ɪɡzˈakt pɹˈɛs ɹɪlˈiːs…|0
+data/v4/train/wavs/pulling_up_the_press_release_from_may_19_686f69.wav|pˈʊlɪŋ ˌʌp ðə pɹˈɛs ɹɪlˈiːs fɹɒm mˈA nˌIntˈiːn…|0
+data/v4/train/wavs/pulling_up_the_price-related_details_5b490e.wav|pˈʊlɪŋ ˌʌp ðə pɹˌIsɹɪlˈAtɪd dˈiːtAlz…|0
+data/v4/train/wavs/pulling_up_what_rezolve_ai_does_ede758.wav|pˈʊlɪŋ ˌʌp wˌɒt ɹɪzˈɒlv ˈA ˈI dˈʌz…|0
+data/v4/train/wavs/rezolve_ailet_me_get_the_details_on_that_b5749f.wav|ɹɪzˈɒlv ˈA ˈI—lˈɛt mˌiː ɡɛt ðə dˈiːtAlz ˌɒn ðˈat…|0
+data/v4/train/wavs/searching_for_the_press_release_from_may_19th_e0b1e6.wav|sˈɜːʧɪŋ fɔː ðə pɹˈɛs ɹɪlˈiːs fɹɒm mˈA nˌIntˈiːnθ…|0
+data/v4/train/wavs/setting_up_a_demo_for_you_now_f48f41.wav|sˈɛtɪŋ ˌʌp ɐ dˈɛmQ fɔː juː nˈW…|0
+data/v4/train/wavs/setting_up_a_purchase_demo_for_you_b06bd8.wav|sˈɛtɪŋ ˌʌp ɐ pˈɜːʧɪs dˈɛmQ fɔː juː…|0
+data/v4/train/wavs/sure_i_can_help_with_that_fc5f3e.wav|ʃˈʊə, ˌI kan hˈɛlp wɪð ðˈat.|0
+data/v4/train/wavs/sure_let_me_expand_on_that_dca746.wav|ʃˈʊə, lˈɛt mˌiː ɪkspˈand ˌɒn ðˈat.|0
+data/v4/train/wavs/sure_let_me_explain_what_i_can_share_6be307.wav|ʃˈʊə, lˈɛt mˌiː ɪksplˈAn wˌɒt ˌI kan ʃˈɛː.|0
+data/v4/train/wavs/sure_let_me_pull_that_up_for_you_908f2e.wav|ʃˈʊə, lˈɛt mˌiː pˈʊl ðˈat ˌʌp fɔː juː…|0
+data/v4/train/wavs/sure_let_me_see_what_other_languages_are_supported_1e2a63.wav|ʃˈʊə, lˈɛt mˌiː sˈiː wˌɒt ˈʌðə lˈaŋɡwɪʤɪz ɑː səpˈɔːtɪd…|0
+data/v4/train/wavs/sure_let_me_set_that_up_for_you_3de749.wav|ʃˈʊə, lˈɛt mˌiː sˈɛt ðˈat ˌʌp fɔː juː…|0
+data/v4/train/wavs/sure_taking_you_to_the_leadership_page_now_5af750.wav|ʃˈʊə, tˈAkɪŋ juː tə ðə lˈiːdəʃɪp pˈAʤ nˈW…|0
+data/v4/train/wavs/sure_thinglet_me_check_availability_4d8692.wav|ʃˈʊə θˈɪŋ—lˈɛt mˌiː ʧˈɛk əvˌAləbˈɪlɪti…|0
+data/v4/train/wavs/sure_thinglet_me_get_you_set_up_da67d3.wav|ʃˈʊə θˈɪŋ—lˈɛt mˌiː ɡɛt juː sˈɛt ˌʌp…|0
+data/v4/train/wavs/sure_thingnavigating_to_the_page_now_eadda9.wav|ʃˈʊə θˈɪŋ—nˈavɪɡˌAtɪŋ tə ðə pˈAʤ nˈW…|0
+data/v4/train/wavs/sure_thingright_away_db8339.wav|ʃˈʊə θˈɪŋ—ɹˈIt əwˈA.|0
+data/v4/train/wavs/sure_thingshowing_it_now_25c8fe.wav|ʃˈʊə θˈɪŋ—ʃˈQɪŋ ɪt nˈW.|0
+data/v4/train/wavs/sure_thingtaking_you_to_the_contact_us_page_now_04845b.wav|ʃˈʊə θˈɪŋ—tˈAkɪŋ juː tə ðə kˈɒntakt ˌʌs pˈAʤ nˈW.|0
+data/v4/train/wavs/sure_thingtaking_you_to_the_demo_request_page_40551b.wav|ʃˈʊə θˈɪŋ—tˈAkɪŋ juː tə ðə dˈɛmQ ɹɪkwˈɛst pˈAʤ…|0
+data/v4/train/wavs/sure_thingtaking_you_to_the_press_releases_page_now_468a7b.wav|ʃˈʊə θˈɪŋ—tˈAkɪŋ juː tə ðə pɹˈɛs ɹɪlˈiːsɪz pˈAʤ nˈW.|0
+data/v4/train/wavs/taking_a_look_at_the_board_of_advisors_e37fe7.wav|tˈAkɪŋ ɐ lˈʊk at ðə bˈɔːd ɒv ədvˈIzəz…|0
+data/v4/train/wavs/taking_a_look_at_the_current_board_composition_f33e2d.wav|tˈAkɪŋ ɐ lˈʊk at ðə kˈʌɹənt bˈɔːd kˌɒmpəzˈɪʃᵊn…|0
+data/v4/train/wavs/taking_a_look_at_the_current_senior_leadership_team_37a3e8.wav|tˈAkɪŋ ɐ lˈʊk at ðə kˈʌɹənt sˈiːnɪə lˈiːdəʃɪp tˈiːm…|0
+data/v4/train/wavs/taking_a_look_at_what_rezolve_one_is_c89222.wav|tˈAkɪŋ ɐ lˈʊk at wˌɒt ɹɪzˈɒlv wˈʌn ɪz…|0
+data/v4/train/wavs/transforming_end-to-end_shopping_experienceslet_me_find_more_9305e9.wav|tɹɑːnsfˈɔːmɪŋ ˈɛndtʊˈɛnd ʃˈɒpɪŋ ɪkspˈɪəɹɪənsɪz—lˈɛt mˌiː fˈInd mˈɔː dˈiːtAlz ˌɒn ðˈat.|0
+data/v4/train/wavs/transforming_end-to-end_shopping_experienceslet_me_look_into_b9d5f1.wav|tɹɑːnsfˈɔːmɪŋ ˈɛndtʊˈɛnd ʃˈɒpɪŋ ɪkspˈɪəɹɪənsɪz—lˈɛt mˌiː lˈʊk ˈɪntuː ðˈat.|0
+data/v4/train/wavs/verifying_the_current_board_of_advisors_at_rezolve_ai_07ad9a.wav|vˈɛɹɪfˌIɪŋ ðə kˈʌɹənt bˈɔːd ɒv ədvˈIzəz at ɹɪzˈɒlv ˈA ˈI…|0
+data/v4/train/wavs/verifying_the_current_ceo_of_resolve_375bbc.wav|vˈɛɹɪfˌIɪŋ ðə kˈʌɹənt sˌiːˌiːˈQ ɒv ɹɪzˈɒlv…|0
+data/v4/train/wavs/verifying_the_current_chief_revenue_officer_at_rezolve_ai_c0d44a.wav|vˈɛɹɪfˌIɪŋ ðə kˈʌɹənt ʧˈiːf ɹˈɛvɪnjuː ˈɒfɪsə at ɹɪzˈɒlv ˈA ˈI…|0
+data/v4/train/wavs/verifying_the_latest_press_release_details_665bb4.wav|vˈɛɹɪfˌIɪŋ ðə lˈAtɪst pɹˈɛs ɹɪlˈiːs dˈiːtAlz…|0
+data/v4/train/wavs/verifying_the_most_recent_acquisition_activity_80676d.wav|vˈɛɹɪfˌIɪŋ ðə mˈQst ɹˈiːsnt ˌakwɪzˈɪʃᵊn aktˈɪvɪti…|0
+data/v4/train/wavs/we_can_look_at_what_that_might_refer_to_6eefe4.wav|wˌiː kan lˈʊk at wˌɒt ðˈat mˌIt ɹɪfˈɜː tuː…|0

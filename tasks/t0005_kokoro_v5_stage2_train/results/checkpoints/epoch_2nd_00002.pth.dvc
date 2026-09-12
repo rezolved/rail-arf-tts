@@ -1,0 +1,5 @@
+outs:
+- md5: 60e1c17ad248bae6f68fd606860a010e
+  size: 1003057267
+  hash: md5
+  path: epoch_2nd_00002.pth
