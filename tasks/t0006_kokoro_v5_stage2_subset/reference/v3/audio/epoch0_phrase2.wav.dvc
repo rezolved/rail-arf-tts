@@ -1,0 +1,5 @@
+outs:
+- md5: 58ded81d2c3a2dc0a00ce04656ae9994
+  size: 625244
+  hash: md5
+  path: epoch0_phrase2.wav
