@@ -46,3 +46,6 @@ Thumbs.db
 
 # Task context archives — generated, not committed
 tasks/*/ctx/
+
+# Audio files — tracked via DVC, never raw in git
+**/*.wav
