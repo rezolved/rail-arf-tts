@@ -1,0 +1,17 @@
+{
+  "spec_version": 4,
+  "task_id": "t0004_kokoro_v5_stage1_train",
+  "task_index": 4,
+  "name": "Kokoro v5 Stage 1 fine-tune",
+  "short_description": "Run StyleTTS2 Stage 1 on the v5 phoneme-corrected corpus, with live progress and top-2 checkpoint syncing.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": ["t0003_kokoro_v5_phoneme_data"],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "model": 1
+  },
+  "task_types": ["tts-finetuning-eval"],
+  "source_suggestion": null
+}

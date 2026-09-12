@@ -1,0 +1,6 @@
+outs:
+- md5: 800a71ff07f9757b47461527e74fa41c.dir
+  size: 637288
+  nfiles: 2
+  hash: md5
+  path: audio_samples_stage1

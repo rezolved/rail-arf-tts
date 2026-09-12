@@ -1,0 +1,5 @@
+[core]
+    remote = azureblob
+['remote "azureblob"']
+    url = azure://ml-dvc-datasets/datasets/rail-arf-tts
+    account_name = mldvcstorerezolve

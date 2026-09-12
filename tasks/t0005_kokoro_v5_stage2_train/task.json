@@ -1,0 +1,17 @@
+{
+  "spec_version": 4,
+  "task_id": "t0005_kokoro_v5_stage2_train",
+  "task_index": 5,
+  "name": "Kokoro v5 Stage 2 fine-tune",
+  "short_description": "Run StyleTTS2 Stage 2 from t0004's Stage 1 checkpoint on both GPUs, with the t0003 stop-early criterion checked at the first logged step.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": ["t0004_kokoro_v5_stage1_train"],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "model": 1
+  },
+  "task_types": ["tts-finetuning-eval"],
+  "source_suggestion": null
+}

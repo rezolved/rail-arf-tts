@@ -1,0 +1,5 @@
+outs:
+- md5: 7df69db77d2c02228d9a54f42ace35a9
+  size: 327226315
+  hash: md5
+  path: david_v3_best_decoder_kokoro.pth

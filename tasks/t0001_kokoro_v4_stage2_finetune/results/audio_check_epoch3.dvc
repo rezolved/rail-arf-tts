@@ -1,0 +1,6 @@
+outs:
+- md5: cbbdef0e1632f48aa2c0da5bf4d55736.dir
+  size: 629888
+  nfiles: 2
+  hash: md5
+  path: audio_check_epoch3

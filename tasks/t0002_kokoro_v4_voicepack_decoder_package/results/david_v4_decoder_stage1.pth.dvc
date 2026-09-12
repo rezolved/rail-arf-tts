@@ -1,0 +1,5 @@
+outs:
+- md5: 745cf3a0579d2820d5dafbaebbe29f38
+  size: 327223755
+  hash: md5
+  path: david_v4_decoder_stage1.pth
