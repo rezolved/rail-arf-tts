@@ -1,0 +1,5 @@
+outs:
+- md5: 3dba42d3eafe1a3c6bd3841427eceec7
+  size: 1724784307
+  hash: md5
+  path: first_stage.pth

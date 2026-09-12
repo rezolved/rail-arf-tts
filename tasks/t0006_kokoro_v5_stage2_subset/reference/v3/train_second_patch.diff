@@ -1,0 +1,152 @@
+diff --git a/train_second.py b/train_second.py
+index ba3b989..12c35bc 100644
+--- a/train_second.py
++++ b/train_second.py
+@@ -641,71 +641,74 @@ def main(config_path):
+                     ref_lengths = input_lengths
+                     ref_texts = texts
+ 
+-                slm_out = slmadv(
+-                    i,
+-                    y_rec_gt,
+-                    y_rec_gt_pred,
+-                    waves,
+-                    mel_input_length,
+-                    ref_texts,
+-                    ref_lengths,
+-                    use_ind,
+-                    s_trg.detach(),
+-                    ref if multispeaker else None,
+-                )
+-
+-                if slm_out is None:
+-                    continue
+-
+-                d_loss_slm, loss_gen_lm, y_pred = slm_out
+-
+-                # SLM generator loss
+-                optimizer.zero_grad()
+-                loss_gen_lm.backward()
+-
+-                # compute the gradient norm
+-                total_norm = {}
+-                for key in model.keys():
+-                    total_norm[key] = 0
+-                    parameters = [
+-                        p
+-                        for p in model[key].parameters()
+-                        if p.grad is not None and p.requires_grad
+-                    ]
+-                    for p in parameters:
+-                        param_norm = p.grad.detach().data.norm(2)
+-                        total_norm[key] += param_norm.item() ** 2
+-                    total_norm[key] = total_norm[key] ** 0.5
+-
+-                # gradient scaling
+-                if total_norm["predictor"] > slmadv_params.thresh:
+-                    for key in model.keys():
+-                        for p in model[key].parameters():
+-                            if p.grad is not None:
+-                                p.grad *= 1 / total_norm["predictor"]
+-
+-                for p in model.predictor.duration_proj.parameters():
+-                    if p.grad is not None:
+-                        p.grad *= slmadv_params.scale
+-
+-                for p in model.predictor.lstm.parameters():
+-                    if p.grad is not None:
+-                        p.grad *= slmadv_params.scale
+-
+-                for p in model.diffusion.parameters():
+-                    if p.grad is not None:
+-                        p.grad *= slmadv_params.scale
+-
+-                optimizer.step("bert_encoder")
+-                optimizer.step("bert")
+-                optimizer.step("predictor")
+-                optimizer.step("diffusion")
+-
+-                # SLM discriminator loss
+-                if d_loss_slm != 0:
++                if loss_params.lambda_slm > 0:
++                    slm_out = slmadv(
++                        i,
++                        y_rec_gt,
++                        y_rec_gt_pred,
++                        waves,
++                        mel_input_length,
++                        ref_texts,
++                        ref_lengths,
++                        use_ind,
++                        s_trg.detach(),
++                        ref if multispeaker else None,
++                    )
++    
++                    if slm_out is None:
++                        continue
++    
++                    d_loss_slm, loss_gen_lm, y_pred = slm_out
++    
++                    # SLM generator loss
+                     optimizer.zero_grad()
+-                    d_loss_slm.backward(retain_graph=True)
+-                    optimizer.step("wd")
++                    loss_gen_lm.backward()
++    
++                    # compute the gradient norm
++                    total_norm = {}
++                    for key in model.keys():
++                        total_norm[key] = 0
++                        parameters = [
++                            p
++                            for p in model[key].parameters()
++                            if p.grad is not None and p.requires_grad
++                        ]
++                        for p in parameters:
++                            param_norm = p.grad.detach().data.norm(2)
++                            total_norm[key] += param_norm.item() ** 2
++                        total_norm[key] = total_norm[key] ** 0.5
++    
++                    # gradient scaling
++                    if total_norm["predictor"] > slmadv_params.thresh:
++                        for key in model.keys():
++                            for p in model[key].parameters():
++                                if p.grad is not None:
++                                    p.grad *= 1 / total_norm["predictor"]
++    
++                    for p in model.predictor.duration_proj.parameters():
++                        if p.grad is not None:
++                            p.grad *= slmadv_params.scale
++    
++                    for p in model.predictor.lstm.parameters():
++                        if p.grad is not None:
++                            p.grad *= slmadv_params.scale
++    
++                    for p in model.diffusion.parameters():
++                        if p.grad is not None:
++                            p.grad *= slmadv_params.scale
++    
++                    optimizer.step("bert_encoder")
++                    optimizer.step("bert")
++                    optimizer.step("predictor")
++                    optimizer.step("diffusion")
++    
++                    # SLM discriminator loss
++                    if d_loss_slm != 0:
++                        optimizer.zero_grad()
++                        d_loss_slm.backward(retain_graph=True)
++                        optimizer.step("wd")
++                else:
++                    d_loss_slm, loss_gen_lm = 0, 0
+ 
+             else:
+                 d_loss_slm, loss_gen_lm = 0, 0
+diff --git a/utils.py b/utils.py
+index c2206d9..27e2485 100644
+--- a/utils.py
++++ b/utils.py
+@@ -1,3 +1,4 @@
++import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), "monotonic_align"))
+ from monotonic_align import maximum_path
+ from monotonic_align import mask_from_lens
+ from monotonic_align.core import maximum_path_c
