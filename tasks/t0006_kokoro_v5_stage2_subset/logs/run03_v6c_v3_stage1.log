@@ -1,0 +1,252 @@
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+TensorBoard inference: prepared 7 test sentences
+Extracting Stage 1 baseline voicepack for TensorBoard...
+extract_voicepack: skipping test-48000Hz-2ch-64bit-float-le-wavex.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 240]
+  acoustic_norm=0.3604  prosodic_norm=0.3604
+  baseline/test_01: Schön, dass du da bist. Die Bücher liegen auf dem großen Tis
+  baseline/test_02: Ich mache mich auf den Weg nach Aachen, um auch nachts wach 
+  baseline/test_03: Er aß die Maße in der Straße, aber das Maß war voll.
+  baseline/test_04: Zwei weiße Zwerge zwängen sich zwischen zwei Zweige.
+  baseline/test_05: Ein Pfau pflegt seine Federn an der Pfütze.
+  baseline/test_06: Warum hast du das getan? Das ist ja unglaublich!
+  baseline/test_07: Das kostet genau einhundertdreiundzwanzig Millionen Euro.
+Loading the first stage model at logs/kokoro-david-v6c/first_stage_v3.pth ...
+bert loaded
+bert_encoder loaded
+predictor loaded
+decoder loaded
+text_encoder loaded
+style_encoder loaded
+text_aligner loaded
+pitch_extractor loaded
+BERT AdamW (
+Parameter Group 0
+    amsgrad: False
+    base_momentum: 0.85
+    betas: (0.9, 0.99)
+    capturable: False
+    differentiable: False
+    eps: 1e-09
+    foreach: None
+    fused: None
+    initial_lr: 1e-06
+    lr: 1e-06
+    max_lr: 2e-06
+    max_momentum: 0.95
+    maximize: False
+    min_lr: 0
+    weight_decay: 0.01
+)
+decoder AdamW (
+Parameter Group 0
+    amsgrad: False
+    base_momentum: 0.85
+    betas: (0.0, 0.99)
+    capturable: False
+    differentiable: False
+    eps: 1e-09
+    foreach: None
+    fused: None
+    initial_lr: 0.0001
+    lr: 0.0001
+    max_lr: 0.0002
+    max_momentum: 0.95
+    maximize: False
+    min_lr: 0
+    weight_decay: 0.0001
+)
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+Epoch [1/10], Step [10/31], Loss: 0.15010, Disc Loss: 0.00000, Dur Loss: 9.66929, CE Loss: 0.26508, Norm Loss: 3.65292, F0 Loss: 10.97912, LM Loss: 1.27298, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [1/10], Step [20/31], Loss: 0.15094, Disc Loss: 0.00000, Dur Loss: 3.92817, CE Loss: 0.11550, Norm Loss: 2.57742, F0 Loss: 9.29504, LM Loss: 1.29928, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [1/10], Step [30/31], Loss: 0.15075, Disc Loss: 0.00000, Dur Loss: 1.78141, CE Loss: 0.06774, Norm Loss: 2.48124, F0 Loss: 4.36370, LM Loss: 1.30234, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Validation loss: 1.643, Dur loss: 0.716, F0 loss: 5.058
+
+
+
+Epoch 0: extracting voicepack for TensorBoard inference...
+  acoustic_norm=0.3550  prosodic_norm=41.7097
+Time elasped: 37.01924681663513
+Time elasped: 47.260576248168945
+Time elasped: 57.354045152664185
+Epochs: 1
+
+
+
+
+Saving..
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+Epoch [2/10], Step [10/31], Loss: 0.14989, Disc Loss: 0.00000, Dur Loss: 0.94683, CE Loss: 0.04983, Norm Loss: 2.37112, F0 Loss: 4.29775, LM Loss: 1.31219, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [2/10], Step [20/31], Loss: 0.14974, Disc Loss: 0.00000, Dur Loss: 0.62927, CE Loss: 0.04161, Norm Loss: 3.02095, F0 Loss: 4.54415, LM Loss: 1.28700, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [2/10], Step [30/31], Loss: 0.15004, Disc Loss: 0.00000, Dur Loss: 0.45992, CE Loss: 0.03288, Norm Loss: 2.45257, F0 Loss: 4.41911, LM Loss: 1.29894, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Validation loss: 1.659, Dur loss: 0.042, F0 loss: 4.219
+
+
+
+Epoch 1: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-44100Hz-le-1ch-4bytes-early-eof.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 129]
+extract_voicepack: skipping test-8000Hz-le-3ch-5S-24bit-inconsistent.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 15]
+extract_voicepack: skipping test-8000Hz-le-3ch-5S-24bit.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 15]
+  acoustic_norm=0.3551  prosodic_norm=33.3721
+Time elasped: 10.663644790649414
+Time elasped: 19.727860927581787
+Time elasped: 28.761326551437378
+Epochs: 2
+
+
+
+
+Saving..
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+Epoch [3/10], Step [10/31], Loss: 0.14979, Disc Loss: 0.00000, Dur Loss: 0.39606, CE Loss: 0.02496, Norm Loss: 2.45240, F0 Loss: 4.49924, LM Loss: 1.29417, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [3/10], Step [20/31], Loss: 0.14985, Disc Loss: 0.00000, Dur Loss: 0.33220, CE Loss: 0.02129, Norm Loss: 3.03363, F0 Loss: 4.76396, LM Loss: 1.27767, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [3/10], Step [30/31], Loss: 0.14987, Disc Loss: 0.00000, Dur Loss: 0.29457, CE Loss: 0.01707, Norm Loss: 2.40632, F0 Loss: 4.38030, LM Loss: 1.27084, Gen Loss: 0.00000, Sty Loss: 0.00000, Diff Loss: 0.00000, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Validation loss: 1.644, Dur loss: 0.054, F0 loss: 4.327
+
+
+
+Epoch 2: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-8000Hz-le-1ch-1byte-ulaw.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 27]
+extract_voicepack: skipping test-1234Hz-le-1ch-10S-20bit-extra.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 195]
+extract_voicepack: skipping test-44100Hz-le-1ch-4bytes-early-eof.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 129]
+  acoustic_norm=0.3551  prosodic_norm=36.3977
+Time elasped: 10.273956298828125
+Time elasped: 19.640549182891846
+Time elasped: 29.518598556518555
+Epochs: 3
+
+
+
+
+Saving..
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+Validation loss: 0.884, Dur loss: 0.097, F0 loss: 5.779
+
+
+
+Epoch 3: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-8000Hz-le-5ch-9S-5bit.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 27]
+extract_voicepack: skipping test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav: Error opening '../venv/lib/python3.10/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav': Error in WAV file. No 'data' chunk marker.
+  acoustic_norm=9.7514  prosodic_norm=21.8551
+Epochs: 4
+
+
+
+
+Saving..
+Validation loss: 0.911, Dur loss: 0.042, F0 loss: 7.191
+
+
+
+Epoch 4: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-8000Hz-le-5ch-9S-5bit.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 27]
+extract_voicepack: skipping test-8000Hz-le-3ch-5S-24bit.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 15]
+extract_voicepack: skipping test-44100Hz-2ch-32bit-float-be.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 240]
+extract_voicepack: skipping test-8000Hz-le-3ch-5S-36bit.wav: Error opening '../venv/lib/python3.10/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-36bit.wav': File contains data in an unimplemented format.
+  acoustic_norm=9.2957  prosodic_norm=16.8665
+Epochs: 5
+
+
+
+
+Saving..
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+Validation loss: 0.849, Dur loss: 0.034, F0 loss: 7.227
+
+
+
+Epoch 5: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-48000Hz-2ch-64bit-float-le-wavex.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 240]
+extract_voicepack: skipping test-8000Hz-le-3ch-5S-45bit.wav: Error opening '../venv/lib/python3.10/site-packages/scipy/io/tests/data/test-8000Hz-le-3ch-5S-45bit.wav': File contains data in an unimplemented format.
+extract_voicepack: skipping test-44100Hz-le-1ch-4bytes-early-eof.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 129]
+  acoustic_norm=6.0780  prosodic_norm=16.6861
+Epochs: 6
+
+
+
+
+Saving..
+Validation loss: 0.883, Dur loss: 0.027, F0 loss: 7.346
+
+
+
+Epoch 6: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-44100Hz-le-1ch-4bytes-incomplete-chunk.wav: Error opening '../venv/lib/python3.10/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-incomplete-chunk.wav': Error in WAV file. No 'data' chunk marker.
+  acoustic_norm=6.4172  prosodic_norm=17.3158
+Epochs: 7
+
+
+
+
+Saving..
+Validation loss: 0.997, Dur loss: 0.025, F0 loss: 7.160
+
+
+
+Epoch 7: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav: Error opening '../venv/lib/python3.10/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav': Error in WAV file. No 'data' chunk marker.
+extract_voicepack: skipping test-8000Hz-le-3ch-5S-24bit.wav: Argument #4: Padding size should be less than the corresponding input dimension, but got: padding (1024, 1024) at dimension 2 of input [1, 1, 15]
+  acoustic_norm=10.3139  prosodic_norm=16.1328
+Epochs: 8
+
+
+
+
+Saving..
+warning: audio amplitude out of range, auto clipped.
+Validation loss: 2.309, Dur loss: 0.017, F0 loss: 6.336
+
+
+
+Epoch 8: extracting voicepack for TensorBoard inference...
+  acoustic_norm=5.2367  prosodic_norm=20.4983
+Epochs: 9
+
+
+
+
+Saving..
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+Validation loss: 3.743, Dur loss: 0.015, F0 loss: 7.229
+
+
+
+Epoch 9: extracting voicepack for TensorBoard inference...
+extract_voicepack: skipping test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav: Error opening '../venv/lib/python3.10/site-packages/scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav': Error in WAV file. No 'data' chunk marker.
+  acoustic_norm=3.9714  prosodic_norm=16.8744
+Epochs: 10
+
+
+
+
+Saving..
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
+warning: audio amplitude out of range, auto clipped.
