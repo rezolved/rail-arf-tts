@@ -1,0 +1,11 @@
+{
+  "spec_version": 1,
+  "task_id": "t0005_kokoro_v5_stage2_train",
+  "metrics": [
+    {"name": "best_val_loss", "value": 0.848, "unit": null, "variant": "run06"},
+    {"name": "best_epoch", "value": 3, "unit": null, "variant": "run06"},
+    {"name": "runs_attempted", "value": 6, "unit": null, "variant": null},
+    {"name": "train_clips", "value": 1557, "unit": null, "variant": null},
+    {"name": "divergence_epoch", "value": 4, "unit": null, "variant": "run06"}
+  ]
+}

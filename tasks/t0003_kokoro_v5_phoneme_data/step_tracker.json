@@ -1,0 +1,48 @@
+{
+  "spec_version": "7",
+  "task_id": "t0003_kokoro_v5_phoneme_data",
+  "steps": [
+    {
+      "step": 1,
+      "name": "init-folders",
+      "description": "Create task branch and folder structure.",
+      "status": "completed",
+      "started_at": "2026-09-12T08:00:00Z",
+      "completed_at": "2026-09-12T08:02:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 120
+    },
+    {
+      "step": 2,
+      "name": "implementation",
+      "description": "Build v5 manifests with misaki G2P, brand-name lexicon, and Kokoro vocab gate.",
+      "status": "completed",
+      "started_at": "2026-09-12T08:02:00Z",
+      "completed_at": "2026-09-12T13:30:00Z",
+      "log_file": "logs/steps/002_implementation/",
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 19680
+    },
+    {
+      "step": 3,
+      "name": "reporting",
+      "description": "Write results summary, detailed analysis, and metrics.",
+      "status": "completed",
+      "started_at": "2026-09-12T13:30:00Z",
+      "completed_at": "2026-09-12T14:00:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 1800
+    }
+  ]
+}

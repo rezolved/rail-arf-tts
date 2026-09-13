@@ -1,0 +1,15 @@
+{
+  "spec_version": 1,
+  "task_id": "t0001_kokoro_v4_stage2_finetune",
+  "costs": [
+    {
+      "provider": "azure_ml",
+      "resource": "LLM-T1-NC80",
+      "rate_usd_per_hour": 13.96,
+      "hours": 10.5,
+      "usd": 146.58,
+      "note": "2x H100 NVL, ~10.5h total (setup + 8 training epochs)"
+    }
+  ],
+  "total_usd": 146.58
+}

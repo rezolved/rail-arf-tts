@@ -1,0 +1,12 @@
+{
+  "spec_version": 1,
+  "task_id": "t0001_kokoro_v4_stage2_finetune",
+  "metrics": [
+    {"name": "best_val_loss", "value": 0.751, "unit": null, "variant": null},
+    {"name": "best_epoch", "value": 6, "unit": null, "variant": null},
+    {"name": "epochs_completed", "value": 8, "unit": null, "variant": null},
+    {"name": "divergence_epoch", "value": 7, "unit": null, "variant": null},
+    {"name": "train_clips", "value": 1557, "unit": null, "variant": null},
+    {"name": "val_clips", "value": 96, "unit": null, "variant": null}
+  ]
+}
