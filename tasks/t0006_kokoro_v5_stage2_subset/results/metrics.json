@@ -1,0 +1,13 @@
+{
+  "spec_version": 1,
+  "task_id": "t0006_kokoro_v5_stage2_subset",
+  "metrics": [
+    {"name": "best_val_loss", "value": 0.846, "unit": null, "variant": "v6d_ep6"},
+    {"name": "best_val_loss", "value": 0.849, "unit": null, "variant": "v6c_ep5"},
+    {"name": "best_val_loss", "value": 0.895, "unit": null, "variant": "v6b_ep4"},
+    {"name": "acoustic_norm_at_joint_epoch", "value": 8.51, "unit": null, "variant": "v6d"},
+    {"name": "acoustic_norm_at_joint_epoch", "value": 0.37, "unit": null, "variant": "v6c"},
+    {"name": "joint_epoch", "value": 6, "unit": null, "variant": "v6d"},
+    {"name": "lambda_gen", "value": 0.05, "unit": null, "variant": "v6d"}
+  ]
+}

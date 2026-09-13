@@ -5,10 +5,10 @@
   "name": "Kokoro v5 Stage 1 fine-tune",
   "short_description": "Run StyleTTS2 Stage 1 on the v5 phoneme-corrected corpus, with live progress and top-2 checkpoint syncing.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "completed",
   "dependencies": ["t0003_kokoro_v5_phoneme_data"],
-  "start_time": null,
-  "end_time": null,
+  "start_time": "2026-09-12T14:00:00Z",
+  "end_time": "2026-09-12T23:00:00Z",
   "expected_assets": {
     "model": 1
   },

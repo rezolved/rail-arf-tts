@@ -1,0 +1,15 @@
+{
+  "spec_version": 1,
+  "task_id": "t0005_kokoro_v5_stage2_train",
+  "costs": [
+    {
+      "provider": "azure_ml",
+      "resource": "LLM-T1-NC80",
+      "rate_usd_per_hour": 13.96,
+      "hours": 7.0,
+      "usd": 97.72,
+      "note": "2x H100 NVL, 6 runs, ~7h total across all attempts"
+    }
+  ],
+  "total_usd": 97.72
+}

@@ -1,0 +1,17 @@
+{
+  "spec_version": 4,
+  "task_id": "t0001_kokoro_v4_stage2_finetune",
+  "task_index": 1,
+  "name": "Kokoro v4 Stage 2 fine-tune",
+  "short_description": "Train StyleTTS2 Stage 2 on LLM-T1-NC80 using ElevenLabs David v4 dataset to produce a Kokoro-82M checkpoint for voicepack extraction.",
+  "long_description_file": "task_description.md",
+  "status": "completed",
+  "dependencies": [],
+  "start_time": "2026-09-10T08:00:00Z",
+  "end_time": "2026-09-11T19:00:00Z",
+  "expected_assets": {
+    "model": 1
+  },
+  "task_types": ["tts-finetuning-eval"],
+  "source_suggestion": null
+}

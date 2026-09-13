@@ -1,0 +1,9 @@
+[
+  {
+    "machine_id": "LLM-T1-NC80",
+    "provider": "azure_ml",
+    "gpu_type": "H100 SXM5",
+    "gpu_count": 2,
+    "task_id": "t0005_kokoro_v5_stage2_train"
+  }
+]

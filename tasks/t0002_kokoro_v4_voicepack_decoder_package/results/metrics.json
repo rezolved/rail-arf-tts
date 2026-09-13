@@ -1,0 +1,9 @@
+{
+  "spec_version": 1,
+  "task_id": "t0002_kokoro_v4_voicepack_decoder_package",
+  "metrics": [
+    {"name": "voicepack_ref_s_std", "value": 1.208, "unit": null, "variant": null},
+    {"name": "pipeline_validated", "value": 1, "unit": null, "variant": "v3_control"},
+    {"name": "v4_duration_explosion_factor", "value": 10, "unit": null, "variant": null}
+  ]
+}

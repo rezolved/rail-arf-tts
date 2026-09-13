@@ -1,0 +1,62 @@
+{
+  "spec_version": "7",
+  "task_id": "t0006_kokoro_v5_stage2_subset",
+  "steps": [
+    {
+      "step": 1,
+      "name": "init-folders",
+      "description": "Create task branch and folder structure.",
+      "status": "completed",
+      "started_at": "2026-09-12T19:00:00Z",
+      "completed_at": "2026-09-12T19:02:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 120
+    },
+    {
+      "step": 2,
+      "name": "implementation",
+      "description": "Run 4 training experiments (v6, v6b, v6c, v6d) on LLM-T1-NC80, varying lambda_gen and joint_epoch.",
+      "status": "completed",
+      "started_at": "2026-09-12T19:05:00Z",
+      "completed_at": "2026-09-12T23:30:00Z",
+      "log_file": "logs/steps/002_implementation/",
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 15900
+    },
+    {
+      "step": 3,
+      "name": "analysis",
+      "description": "Analyse 4 runs, identify best checkpoint (v6d ep6 val=0.846), document divergence pattern.",
+      "status": "completed",
+      "started_at": "2026-09-12T23:30:00Z",
+      "completed_at": "2026-09-12T23:55:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 1500
+    },
+    {
+      "step": 4,
+      "name": "reporting",
+      "description": "Write results summary, metrics, and next-task recommendations.",
+      "status": "completed",
+      "started_at": "2026-09-12T23:55:00Z",
+      "completed_at": "2026-09-13T00:00:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 300
+    }
+  ]
+}

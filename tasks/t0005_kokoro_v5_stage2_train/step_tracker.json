@@ -1,0 +1,76 @@
+{
+  "spec_version": "7",
+  "task_id": "t0005_kokoro_v5_stage2_train",
+  "steps": [
+    {
+      "step": 1,
+      "name": "init-folders",
+      "description": "Create task branch and folder structure.",
+      "status": "completed",
+      "started_at": "2026-09-12T23:00:00Z",
+      "completed_at": "2026-09-12T23:02:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 120
+    },
+    {
+      "step": 2,
+      "name": "setup-machines",
+      "description": "Provision LLM-T1-NC80, upload Stage 1 checkpoint and v5 data.",
+      "status": "completed",
+      "started_at": "2026-09-12T23:02:00Z",
+      "completed_at": "2026-09-12T23:32:00Z",
+      "log_file": "logs/steps/002_setup-machines/",
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 1800
+    },
+    {
+      "step": 3,
+      "name": "implementation",
+      "description": "Run 6 Stage 2 training attempts, accumulate crash fixes, sync top checkpoints.",
+      "status": "completed",
+      "started_at": "2026-09-12T23:32:00Z",
+      "completed_at": "2026-09-13T05:30:00Z",
+      "log_file": "logs/steps/003_implementation/",
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 21480
+    },
+    {
+      "step": 4,
+      "name": "teardown",
+      "description": "Stop LLM-T1-NC80 and release task lock.",
+      "status": "completed",
+      "started_at": "2026-09-13T05:30:00Z",
+      "completed_at": "2026-09-13T05:40:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 600
+    },
+    {
+      "step": 5,
+      "name": "reporting",
+      "description": "Write results summary, detailed analysis, metrics, costs.",
+      "status": "completed",
+      "started_at": "2026-09-13T05:40:00Z",
+      "completed_at": "2026-09-13T06:00:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 1200
+    }
+  ]
+}

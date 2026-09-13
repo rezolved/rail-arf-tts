@@ -1,0 +1,12 @@
+{
+  "spec_version": 1,
+  "task_id": "t0003_kokoro_v5_phoneme_data",
+  "metrics": [
+    {"name": "v5_clean_train_lines", "value": 1557, "unit": null, "variant": null},
+    {"name": "v5_clean_val_lines", "value": 96, "unit": null, "variant": null},
+    {"name": "v4_raw_text_leaked_train", "value": 329, "unit": null, "variant": null},
+    {"name": "v4_raw_text_leaked_val", "value": 31, "unit": null, "variant": null},
+    {"name": "oov_words_repaired_distinct", "value": 64, "unit": null, "variant": null},
+    {"name": "oov_words_repaired_occurrences", "value": 480, "unit": null, "variant": null}
+  ]
+}

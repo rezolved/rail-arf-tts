@@ -1,0 +1,15 @@
+{
+  "spec_version": 1,
+  "task_id": "t0004_kokoro_v5_stage1_train",
+  "costs": [
+    {
+      "provider": "azure_ml",
+      "resource": "LLM-T1-NC80",
+      "rate_usd_per_hour": 13.96,
+      "hours": 9.0,
+      "usd": 125.64,
+      "note": "2x H100 NVL billed, 1 GPU used (train_first.py single-GPU), ~9h total"
+    }
+  ],
+  "total_usd": 125.64
+}

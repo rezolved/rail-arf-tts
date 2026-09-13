@@ -1,0 +1,48 @@
+{
+  "spec_version": "7",
+  "task_id": "t0002_kokoro_v4_voicepack_decoder_package",
+  "steps": [
+    {
+      "step": 1,
+      "name": "init-folders",
+      "description": "Create task branch and folder structure.",
+      "status": "completed",
+      "started_at": "2026-09-11T20:00:00Z",
+      "completed_at": "2026-09-11T20:02:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 120
+    },
+    {
+      "step": 2,
+      "name": "implementation",
+      "description": "Extract voicepack from Stage 1, extract decoder from Stage 2 best checkpoint, test inference via KModel/KPipeline.",
+      "status": "completed",
+      "started_at": "2026-09-11T20:02:00Z",
+      "completed_at": "2026-09-12T09:30:00Z",
+      "log_file": "logs/steps/002_implementation/",
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 48480
+    },
+    {
+      "step": 3,
+      "name": "reporting",
+      "description": "Write results_summary.md, metrics.json, costs.json.",
+      "status": "completed",
+      "started_at": "2026-09-12T09:30:00Z",
+      "completed_at": "2026-09-12T10:00:00Z",
+      "log_file": null,
+      "current_owner": null,
+      "last_heartbeat_at": null,
+      "heartbeat_interval_seconds": null,
+      "expected_completion_at": null,
+      "actual_duration_seconds": 1800
+    }
+  ]
+}
