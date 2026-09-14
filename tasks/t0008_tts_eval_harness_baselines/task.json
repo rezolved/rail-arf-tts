@@ -5,12 +5,12 @@
   "name": "TTS evaluation harness and baselines",
   "short_description": "Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0006_kokoro_v5_stage2_subset"
   ],
   "start_time": "2026-09-14T15:27:17Z",
-  "end_time": null,
+  "end_time": "2026-09-14T18:07:30Z",
   "expected_assets": {
     "library": 1
   },

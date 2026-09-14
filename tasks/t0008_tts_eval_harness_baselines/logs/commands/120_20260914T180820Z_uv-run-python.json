@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "command": "uv run python -m arf.scripts.utils.capture_task_sessions --task-id t0008_tts_eval_harness_baselines",
+  "exit_code": 0,
+  "duration_seconds": 0.553,
+  "started_at": "2026-09-14T18:08:20Z",
+  "completed_at": "2026-09-14T18:08:20Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines",
+  "stdout_file": "120_20260914T180820Z_uv-run-python.stdout.txt",
+  "stderr_file": "120_20260914T180820Z_uv-run-python.stderr.txt",
+  "stdout_lines": 2,
+  "stderr_lines": 0,
+  "truncated": false
+}

@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T18:25:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-14T18:08:00Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -114,6 +114,14 @@ metric registration, and filler corpus augmentation. No duplicates against exist
 in project) or existing tasks. `verify_suggestions`: PASSED (0 errors, 0 warnings). Key output:
 `results/suggestions.json`.
 
+### Step 15 — reporting
+
+All 9 verificators ran with 0 errors (verify_task_file, verify_task_dependencies,
+verify_suggestions, verify_task_metrics, verify_task_results, verify_task_folder, verify_logs,
+verify_library_asset, verify_machines_destroyed, verify_research_papers, verify_research_internet).
+Session capture ran; 0 transcripts found (capture_report.json written). task.json set to `completed`
+with `end_time: 2026-09-14T18:07:30Z`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -140,10 +148,5 @@ in project) or existing tasks. `verify_suggestions`: PASSED (0 errors, 0 warning
 
 ## Next Step Notes
 
-Step 15 (reporting): Run all verificators (verify_task_file, verify_task_dependencies,
-verify_suggestions, verify_task_metrics, verify_task_results, verify_task_folder, verify_logs,
-verify_library_asset, verify_machines_destroyed), capture session transcripts via
-capture_task_sessions, set task.json status to "completed" with end_time, then commit and run
-poststep. Key assets to verify: library asset tts_eval_harness v0.1.0, suggestions.json (5 items),
-metrics.json (16 variants), 3 charts in results/images/. DVC push should already be complete from
-implementation step; confirm before finalizing.
+All steps complete. Task is fully done — no further step-executor work required. The coordinator
+should now proceed to Phase 7 (PR creation and merge) and Phase 9 (overview sync on main).

@@ -192,10 +192,14 @@
       "step": 15,
       "name": "reporting",
       "description": "Run all verificators, capture session transcripts, update task.json status to completed.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T18:06:52Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/015_reporting/",
+      "current_owner": "step-executor/reporting",
+      "last_heartbeat_at": "2026-09-14T18:06:52Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T19:06:52Z"
     }
   ]
 }
