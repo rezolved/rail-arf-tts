@@ -66,14 +66,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0005 and t0006 task code, logs, checkpoints, and pipeline config to gather forensic inputs before planning.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T15:35:24Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T15:44:49Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T15:35:24Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-14T16:35:24Z"
+      "expected_completion_at": "2026-09-14T16:35:24Z",
+      "actual_duration_seconds": 565
     },
     {
       "step": 7,
