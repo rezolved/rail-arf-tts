@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T18:15:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-14T18:25:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -106,6 +106,14 @@ Verified existing `results_summary.md` and `results_detailed.md` against spec. A
 across systems). `verify_task_results`: PASSED (0 errors, 0 warnings). `verify_task_metrics`: PASSED
 (0 errors, 0 warnings).
 
+### Step 14 — suggestions
+
+Generated 5 follow-up suggestions (S-0008-01 through S-0008-05) covering: continued Stage 2 training
+from v6d epoch 6, val96 speaker_sim collapse investigation, full-corpus training experiment, WER
+metric registration, and filler corpus augmentation. No duplicates against existing suggestions (0
+in project) or existing tasks. `verify_suggestions`: PASSED (0 errors, 0 warnings). Key output:
+`results/suggestions.json`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -132,9 +140,10 @@ across systems). `verify_task_results`: PASSED (0 errors, 0 warnings). `verify_t
 
 ## Next Step Notes
 
-Step 14 (suggestions): Generate follow-up task suggestions based on the harness results. The key
-findings are: no Kokoro system meets the 0.85 speaker_sim target (best is v3_bundle at 0.63); 7/8
-Kokoro variants meet TTFB ≤300ms on fillers; t0005_best is not viable due to duration explosions;
-t0006_v6d matches ElevenLabs TTFB (132ms) on fillers. The gaps to target and the best-performing
-checkpoint (v3_bundle) are the primary inputs for suggestions. Step 15 (reporting) follows with all
-verificators.
+Step 15 (reporting): Run all verificators (verify_task_file, verify_task_dependencies,
+verify_suggestions, verify_task_metrics, verify_task_results, verify_task_folder, verify_logs,
+verify_library_asset, verify_machines_destroyed), capture session transcripts via
+capture_task_sessions, set task.json status to "completed" with end_time, then commit and run
+poststep. Key assets to verify: library asset tts_eval_harness v0.1.0, suggestions.json (5 items),
+metrics.json (16 variants), 3 charts in results/images/. DVC push should already be complete from
+implementation step; confirm before finalizing.
