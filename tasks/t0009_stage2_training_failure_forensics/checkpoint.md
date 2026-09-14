@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T15:34:00Z"
-completed_steps: 8
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-14T15:50:00Z"
+completed_steps: 9
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -56,16 +56,31 @@ plus `__init__.py` files for the code package. Aggregator cache written to
 Skipped: this is a forensic audit task; results are not comparable to published quantitative
 baselines.
 
+### Step 6 — research-code
+
+Reviewed 7 completed tasks; cited 6. No registered libraries found. Key output:
+`tasks/t0009_stage2_training_failure_forensics/research/research_code.md` documenting the 7-patch
+stack in `train_second_patched.py`, the checkpoint loading silent-failure bug in t0005/t0006, the
+top-2 val_loss pruning risk, and all config-code inconsistencies. Research summary also produced at
+`tasks/t0009_stage2_training_failure_forensics/research/research_summary.md`.
+
 * * *
 
 ## Cross-Step Decisions
+
+* All reusable code must be copied into `tasks/t0009_stage2_training_failure_forensics/code/`; no
+  libraries exist to import.
+* v3's `train_second_patch.diff` is the forensic baseline — use it as the starting point for the
+  pipeline audit in planning.
 
 * * *
 
 ## Next Step Notes
 
-Step 3 (`init-folders`) completed successfully; all mandatory directories exist and the aggregator
-cache is populated in `ctx/`. Proceed to step 6 (`research-code`): review t0005 and t0006 task code,
-training logs, config files, and checkpoints to gather forensic inputs before the planning step
-designs the analysis and safeguard approach. The `ctx/tasks.json` cache already has metadata for all
-completed tasks; use it instead of re-running the aggregator.
+Step 6 (`research-code`) completed. The primary forensic inputs are documented in
+`research/research_code.md` and compressed in `research/research_summary.md`. Proceed to step 7
+(`planning`): load `research/research_summary.md` and `research/research_code.md` to design the full
+forensic approach. Key decisions for planning: (1) which logs to parse and in what order, (2) health
+gate thresholds derived from the log data, (3) safeguard library structure (JSONL logger,
+health-gate monitor, per-epoch checkpoint retention with SHA-256), (4) offline replay test scope.
+Budget is local/CPU only except for optional VM access to retrieve surviving logs (~30 min, ~$7).
