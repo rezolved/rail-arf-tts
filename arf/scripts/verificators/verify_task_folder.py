@@ -89,6 +89,7 @@ REQUIRED_TOP_DIRS: list[str] = [
 ALLOWED_ROOT_FILES: set[str] = {
     "task.json",
     "step_tracker.json",
+    "checkpoint.md",
     "__init__.py",
 }
 

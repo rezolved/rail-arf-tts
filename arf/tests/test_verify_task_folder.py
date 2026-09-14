@@ -511,3 +511,21 @@ def test_fd_w006_no_session_transcripts(
     _build_completed_task_with_all_files(repo_root=tmp_path)
     result: VerificationResult = _verify()
     assert "FD-W006" in _codes(result=result)
+
+
+def test_checkpoint_md_in_root_is_allowed(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    _setup(monkeypatch=monkeypatch, repo_root=tmp_path)
+    build_task_folder(repo_root=tmp_path, task_id=TASK_ID)
+    build_task_json(
+        repo_root=tmp_path,
+        task_id=TASK_ID,
+        task_index=TASK_INDEX,
+        status="not_started",
+    )
+    build_step_tracker(repo_root=tmp_path, task_id=TASK_ID)
+    (paths.task_dir(task_id=TASK_ID) / "checkpoint.md").write_text("# Task Objective\n")
+    result: VerificationResult = _verify()
+    assert "FD-E016" not in _codes(result=result)
