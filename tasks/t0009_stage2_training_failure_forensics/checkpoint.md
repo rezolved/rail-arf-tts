@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T16:30:00Z"
-completed_steps: 11
-next_step_number: 9
-next_step_id: "creative-thinking"
+updated_at: "2026-09-14T16:45:00Z"
+completed_steps: 12
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -72,6 +72,14 @@ confirmed at ≤ \$25 (local/CPU + ≤ 30 min VM for log retrieval). The safegua
 `train_second_patched.py` from t0005; health gate thresholds derived from research (Dur Loss step-1
 < 2.0, `acoustic_norm` < 20, val spike ≤ 0.05, consecutive skips ≤ 50).
 
+### Step 9 — creative-thinking
+
+Six alternative failure hypotheses explored and stress-tested against the step 8 findings. Four new
+safeguards identified (startup param-count assertion, per-loss gradient norm logging, warm-up epoch
+calibration, audio quality pre-filter) — all are recommendations for the next training task. Key
+caveat: the causal independence of joint\_epoch=3 from the checkpoint mismatch is weaker than stated
+in full\_answer.md; the two factors were never crossed in a controlled experiment.
+
 ### Step 8 — implementation
 
 All forensic analysis complete. Produced: log inventory (1 of 13 runs has a surviving log), confound
@@ -97,9 +105,15 @@ verified. Root cause: DP checkpoint mismatch + joint\_epoch=3 too early.
 
 ## Next Step Notes
 
-Step 8 (implementation) completed. All forensic deliverables are committed. Proceed to step 9
-(creative-thinking): explore alternative failure hypotheses and safeguard strategies not captured in
-the main analysis. The research\_summary.md and the full\_answer.md contain the primary findings.
-Key open questions for creative thinking: (1) whether val\_loss 0.506 (v3) is comparable to v5
-numbers, (2) whether the 7 t0005 patches mask deeper issues, (3) alternative checkpoint selection
-criteria beyond val\_loss.
+Step 9 (creative-thinking) completed. Six alternative hypothesis threads explored. Key findings: (1)
+the DP checkpoint mismatch claim is directionally correct but the "trained from scratch" conclusion
+for v6a/v6b cannot be confirmed without a startup parameter-count assertion; (2) joint\_epoch=3 and
+the checkpoint mismatch were never crossed in a controlled experiment — joint\_epoch may be
+correlated rather than independently causal; (3) late divergence in v6c (epoch 9+) is most likely
+SLM gradient instability, not LR schedule; (4) val\_loss 0.506 (v3) and 0.849 (v6c) are not
+comparable due to different loss configurations; (5) health gate thresholds should be documented as
+v6c-calibrated and may need warm-up epoch recalibration for new datasets; (6) audio quality
+pre-filtering is an unaddressed risk (malformed batches). Four new safeguards identified: startup
+param-count assertion, per-loss gradient norm logging, warm-up epoch with dynamic gate calibration,
+and audio quality pre-filter. These are recommendations for the next training task, not changes to
+step 8 deliverables. Proceed to step 12 (results).
