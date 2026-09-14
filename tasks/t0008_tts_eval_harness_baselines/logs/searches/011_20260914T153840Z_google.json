@@ -1,0 +1,24 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:38:40Z",
+  "source": "Google (via WebSearch)",
+  "query": "GE2E speaker verification LSTM 3 layers 256 dimensions d-vector cosine similarity threshold EER",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "Generalized End-to-End Loss for Speaker Verification | Medium",
+      "url": "https://medium.com/@gurugubellik/generalized-end-to-end-loss-for-speaker-verification-e2c08b3b0b02",
+      "snippet": "3 LSTM layers + projection. D-vectors 256d. Cosine similarity used for batch loss training.",
+      "relevance_note": "Architecture details needed to understand resemblyzer internals"
+    },
+    {
+      "title": "An Empirical Study on Text-Independent Speaker Verification based on the GE2E Method",
+      "url": "https://arxiv.org/pdf/2011.04896",
+      "snippet": "Empirical validation of GE2E on multiple datasets. EER comparison vs TE2E.",
+      "relevance_note": "Follow-up study validating GE2E approach"
+    }
+  ],
+  "error": null
+}

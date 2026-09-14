@@ -62,10 +62,14 @@
       "step": 5,
       "name": "research-internet",
       "description": "Search for current resemblyzer/GE2E usage patterns, ElevenLabs streaming API TTFB measurement, and Kokoro evaluation practices.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T15:36:27Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/005_research-internet/",
+      "current_owner": "step-executor/research-internet",
+      "last_heartbeat_at": "2026-09-14T15:36:27Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T16:36:27Z"
     },
     {
       "step": 6,

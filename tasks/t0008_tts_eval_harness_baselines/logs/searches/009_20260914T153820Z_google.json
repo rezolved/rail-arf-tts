@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:38:20Z",
+  "source": "Google (via WebSearch)",
+  "query": "TTS evaluation harness speaker similarity WER latency reproducible open source Python 2025",
+  "results_count": 8,
+  "results": [
+    {
+      "title": "Benchmarking the Responsiveness of Open-Source TTS Systems",
+      "url": "https://www.preprints.org/manuscript/202508.0654",
+      "snippet": "13 open-source TTS models benchmarked for TTFA, tail latency, intelligibility. TTFA = only metric correlating with user-perceived responsiveness.",
+      "relevance_note": "Most relevant preprint for this task — methodology and Kokoro benchmarks"
+    },
+    {
+      "title": "GitHub - inworld-ai/open-tts-eval",
+      "url": "https://github.com/inworld-ai/open-tts-eval",
+      "snippet": "WER via faster-whisper + JiWER 3.0; ECAPA speaker similarity; NISQAv2 MOS. WER warn 0.05 / fail 0.10.",
+      "relevance_note": "Reference implementation for TTS evaluation pipeline"
+    },
+    {
+      "title": "VERSA: A Versatile Evaluation Toolkit for Speech, Audio, and Music",
+      "url": "https://arxiv.org/abs/2412.17667",
+      "snippet": "65 metrics, 729 variations. WER, MCD, UTMOS, speaker sim. Standardized evaluation framework.",
+      "relevance_note": "Comprehensive evaluation framework covering all metrics in this task"
+    }
+  ],
+  "error": null
+}

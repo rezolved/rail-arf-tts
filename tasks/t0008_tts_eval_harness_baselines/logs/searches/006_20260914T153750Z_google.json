@@ -1,0 +1,24 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:37:50Z",
+  "source": "Google (via WebSearch)",
+  "query": "StyleTTS2 speaker similarity evaluation cosine GE2E metric benchmark",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "StyleTTS 2: Towards Human-Level TTS (NeurIPS 2023)",
+      "url": "https://arxiv.org/abs/2306.07691",
+      "snippet": "Human-level TTS using style diffusion. CMOS +0.30 on VCTK. Strong speaker similarity.",
+      "relevance_note": "Architecture paper for Kokoro-82M base model"
+    },
+    {
+      "title": "Analyzing and Improving Speaker Similarity Assessment for Speech Synthesis",
+      "url": "https://arxiv.org/html/2507.02176v1",
+      "snippet": "Critical analysis of speaker similarity metrics including cosine-based approaches",
+      "relevance_note": "Methodological insights on speaker_sim evaluation in TTS"
+    }
+  ],
+  "error": null
+}

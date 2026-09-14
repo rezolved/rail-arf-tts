@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:37:10Z",
+  "source": "Google (via WebSearch)",
+  "query": "resemblyzer speaker similarity cosine threshold calibration verification",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "Evaluation of Resemblyzer Ability to Authenticate the ...",
+      "url": "https://ceur-ws.org/Vol-4164/paper7.pdf",
+      "snippet": "Threshold similarity score of 0.84 for English voices; authentication possible with clips as short as 2.63s.",
+      "relevance_note": "Direct calibration study of resemblyzer thresholds"
+    },
+    {
+      "title": "GitHub - resemble-ai/Resemblyzer",
+      "url": "https://github.com/resemble-ai/Resemblyzer",
+      "snippet": "256-dimensional GE2E-based speaker embeddings. preprocess_wav + embed_utterance API.",
+      "relevance_note": "Primary library for speaker_sim computation in this task"
+    },
+    {
+      "title": "Cosine similarity is inconsistent with the cluster · Issue #42",
+      "url": "https://github.com/resemble-ai/Resemblyzer/issues/42",
+      "snippet": "Community discussion on cosine similarity inconsistency across different audio conditions",
+      "relevance_note": "Practical usage notes on resemblyzer edge cases"
+    }
+  ],
+  "error": null
+}

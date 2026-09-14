@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T15:36:30Z"
-completed_steps: 6
-next_step_number: 5
-next_step_id: "research-internet"
+updated_at: "2026-09-14T15:47:11Z"
+completed_steps: 7
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -48,6 +48,13 @@ Paper corpus is empty (zero papers, zero categories) — all prior tasks were im
 tasks without paper downloads. Wrote `research/research_papers.md` with `status: "partial"`, all 7
 mandatory sections present, and an empty Paper Index; verificator passes with zero errors.
 
+### Step 5 — research-internet
+
+Conducted 11 searches, found 23 sources, discovered 4 papers (GE2E/Wan2018, StyleTTS2/Li2023,
+VERSA2024, AnalyzeSim2025). Key findings: resemblyzer same-speaker cosine ≈ 0.85+ validates the
+success criterion; Kokoro GPU RTF ≈ 0.03 on A100, first-chunk 28–97 ms; ElevenLabs p50 TTFB 264–335
+ms; WER thresholds < 5% clean, > 20% hard failure. Output: `research/research_internet.md`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -56,9 +63,9 @@ mandatory sections present, and an empty Paper Index; verificator passes with ze
 
 ## Next Step Notes
 
-Step 4 research-papers complete: corpus was empty so output is `status: "partial"` with no cited
-papers. Step 5 research-internet is the primary literature step for this task — it should search for
-GE2E speaker embeddings (Wan et al. 2018), resemblyzer, StyleTTS2/Kokoro-82M architecture, streaming
-TTS TTFB measurement methodology, and WER thresholds for TTS quality. The research-internet output
-will be the main literature foundation for planning (step 7). The ctx/ aggregator cache is still
-available from step 3.
+Step 5 research-internet complete. Step 6 research-code should review: t0002
+extract_decoder_generic.py (voicepack extraction for packaging custom checkpoints), t0003
+build_pipeline.py (the required synthesis entry point for all Kokoro arms with British lang_code and
+brand lexicon), t0005/t0006 checkpoint paths and naming conventions, and any existing scoring or
+eval utilities across prior tasks. Four discovered papers need corpus addition — these will be
+handled during reporting to avoid blocking downstream steps.
