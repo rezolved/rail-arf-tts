@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T16:01:00Z"
-completed_steps: 9
-next_step_number: 8
-next_step_id: "setup-machines"
+updated_at: "2026-09-14T16:35:00Z"
+completed_steps: 10
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -72,6 +72,17 @@ VM as Step 1; five-module extraction via adapted `extract_decoder.py`; all Kokor
 `build_pipeline` import from t0003; variant metrics.json with 16+ variants (8 systems × 2 prompt
 sets). Verificator passes with 0 errors.
 
+### Step 8 — setup-machines
+
+LLM-T1-NC80 acquired (started from stopped state, provisioning 502s); 2× H100 NVL (95,830 MiB each),
+CUDA 12.2, driver 535.274.02. Environment: `stt` conda env at `/home/azureuser/miniconda3/envs/stt`
+has kokoro 0.9.4, faster-whisper 1.2.1, torch 2.5.1+cu121 (CUDA working). resemblyzer 0.1.4
+installed to `/mnt/tmp/t0008-resemblyzer-venv` (root disk full at 118/119GB).
+`HF_HOME=/mnt/cache/persist/hf-cache` (persistent). Idle watchdog deployed (PID confirmed). Kokoro
+engine smoke gate passed (1 chunk, 6.84s). Key finding: 11labs_david corpus absent (ephemeral `/mnt`
+wiped) — implementation step must regenerate via ElevenLabs API. Machine log:
+`logs/steps/008_setup-machines/machine_log.json`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -85,14 +96,21 @@ sets). Verificator passes with 0 errors.
   criterion specifies "local inference, H100"); CPU TTFB may be reported in addition.
 * **resemblyzer in optional extra only**: do NOT add to main `pyproject.toml` dependencies — use
   `[speaker-sim]` extra (webrtcvad/pkg_resources breakage).
+* **VM environment (setup-machines)**: use `/home/azureuser/miniconda3/envs/stt` conda env (Python
+  3.11, torch 2.5.1+cu121, kokoro 0.9.4, faster-whisper 1.2.1). resemblyzer venv at
+  `/mnt/tmp/t0008-resemblyzer-venv` (root disk full). `HF_HOME=/mnt/cache/persist/hf-cache` for all
+  remote runs. 11labs_david corpus absent from VM — must regenerate via ElevenLabs API in
+  implementation step (plan Step 1 fallback path).
 
 * * *
 
 ## Next Step Notes
 
-Step 8 is setup-machines. The setup executor should: (1) start LLM-T1-NC80 via the
-`setup-remote-machine` skill; (2) verify the `kokoro-finetune` conda environment or install `kokoro`
-\+ `resemblyzer` + `faster-whisper`; (3) confirm `/mnt/kikiri-tts/data/11labs_david/` exists (if
-absent, the implementation step must regenerate via ElevenLabs API); (4) capture `nvidia-smi` and
-torch/CUDA versions for `results/metadata.json`; (5) deploy the idle watchdog per CLAUDE.md. Budget
-context: ~$21 of the $30 task budget is for VM time (~1.5 h at $13.96/h).
+Step 9 is implementation. LLM-T1-NC80 is UP and running with watchdog (PID confirmed). The
+implementation step must: (1) regenerate the 11labs_david corpus via ElevenLabs API (corpus absent
+from VM — plan Step 1 fallback) — budget ~$5 extra, ~30 min; (2) use
+`/home/azureuser/miniconda3/envs/stt/bin/python` on the VM for all Kokoro synthesis; (3) set
+`HF_HOME=/mnt/cache/persist/hf-cache` before any HF model loads; (4) use resemblyzer from
+`/mnt/tmp/t0008-resemblyzer-venv` (add to PYTHONPATH or activate venv); (5) after Kokoro synthesis
+runs on GPU, call teardown (step 10) immediately — do not leave VM idle. Machine log is at
+`logs/steps/008_setup-machines/machine_log.json`. VM acquired_at: 2026-09-14T16:11:25Z.

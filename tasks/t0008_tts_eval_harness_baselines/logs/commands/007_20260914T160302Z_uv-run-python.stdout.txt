@@ -1,0 +1,13 @@
+{
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "vm_name": "LLM-T1-NC80",
+  "ssh_host_alias": "LLM-T1-NC80",
+  "hourly_cost_usd": 13.96,
+  "acquired_at": "2026-09-14T16:11:25.208176Z",
+  "started_vm": true,
+  "billing_started_at": "2026-09-14T16:03:28.115505Z",
+  "billing_anchor": "az_start_issued",
+  "search_started_at": "2026-09-14T16:03:02.843803Z",
+  "total_provisioning_seconds": 502.3643613620002,
+  "failed_attempts": []
+}

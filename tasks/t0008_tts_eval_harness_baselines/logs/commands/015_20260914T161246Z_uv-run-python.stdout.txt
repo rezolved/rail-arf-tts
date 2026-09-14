@@ -1,0 +1,1 @@
+Updated machine_log.json with GPU/CUDA/watchdog fields

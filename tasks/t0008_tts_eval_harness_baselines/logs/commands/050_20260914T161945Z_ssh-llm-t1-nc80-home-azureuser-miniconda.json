@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "command": "ssh LLM-T1-NC80 /home/azureuser/miniconda3/envs/stt/bin/python -c 'import torch; assert torch.cuda.is_available(), \"CUDA not available\"; assert torch.cuda.device_count() == 2, f\"Expected 2 GPUs, got {torch.cuda.device_count()}\"; print(f\"torch {torch.__version__} cuda True devs {torch.cuda.device_count()}\")'",
+  "exit_code": 0,
+  "duration_seconds": 2.183,
+  "started_at": "2026-09-14T16:19:45Z",
+  "completed_at": "2026-09-14T16:19:48Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines",
+  "stdout_file": "050_20260914T161945Z_ssh-llm-t1-nc80-home-azureuser-miniconda.stdout.txt",
+  "stderr_file": "050_20260914T161945Z_ssh-llm-t1-nc80-home-azureuser-miniconda.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

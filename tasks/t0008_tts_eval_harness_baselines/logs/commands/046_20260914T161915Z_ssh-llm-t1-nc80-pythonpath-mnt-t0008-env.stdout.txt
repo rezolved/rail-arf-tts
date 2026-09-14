@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/mnt/t0008_env/resemblyzer/__init__.py", line 3, in <module>
+    from resemblyzer.audio import preprocess_wav, wav_to_mel_spectrogram, trim_long_silences, \
+  File "/mnt/t0008_env/resemblyzer/audio.py", line 1, in <module>
+    from scipy.ndimage.morphology import binary_dilation
+  File "/mnt/t0008_env/scipy/__init__.py", line 44, in <module>
+    from numpy import __version__ as __numpy_version__
+  File "/mnt/t0008_env/numpy/__init__.py", line 457, in <module>
+    from . import lib, matrixlib as _mat
+  File "/mnt/t0008_env/numpy/lib/__init__.py", line 18, in <module>
+    from . import (
+  File "/mnt/t0008_env/numpy/lib/_arraypad_impl.py", line 6, in <module>
+    import typing
+  File "/mnt/t0008_env/typing.py", line 1359, in <module>
+    class Callable(extra=collections_abc.Callable, metaclass=CallableMeta):
+  File "/mnt/t0008_env/typing.py", line 1007, in __new__
+    self._abc_registry = extra._abc_registry
+                         ^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Callable' has no attribute '_abc_registry'
