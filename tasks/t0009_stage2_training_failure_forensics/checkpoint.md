@@ -88,6 +88,17 @@ audit. Library asset `t0009_training_safeguards` (4 modules: jsonl\_logger, heal
 checkpoint\_manager, run\_config) and answer asset `t0009-stage2-forensics-answer` both produced and
 verified. Root cause: DP checkpoint mismatch + joint\_epoch=3 too early.
 
+### Step 12 — results
+
+All results files written and verified. `results_summary.md`, `results_detailed.md` (spec\_version
+"2"), `metrics.json` (`{}`), `costs.json` (`$0`), `remote_machines_used.json` (`[]`). Two new
+charts generated: `results/images/log_availability.png` (log survival rate, 1/13) and
+`results/images/confound_heatmap.png` (normalised hyperparameter heatmap). `verify_task_metrics`
+PASS; `verify_task_results` PASS (1 expected warning TR-W013 for data-analysis task type). Both
+assets (answer, library) present and confirmed. `## Task Requirement Coverage` section lists
+REQ-1 through REQ-8 with Done/Partial status. REQ-2 and REQ-4 are Partial due to 12/13 logs being
+permanently deleted and audio DVC not pulled.
+
 * * *
 
 ## Cross-Step Decisions
@@ -100,19 +111,6 @@ verified. Root cause: DP checkpoint mismatch + joint\_epoch=3 too early.
   too early; recommended fix: DP-aware loader + joint\_epoch≥6.
 * Health gate thresholds from log analysis: Dur Loss step-1 < 2.0, acoustic\_norm < 20, val spike ≤
   0.05, consecutive skips ≤ 50.
-
-* * *
-
-### Step 12 — results
-
-All results files written and verified. `results_summary.md`, `results_detailed.md` (spec\_version
-"2"), `metrics.json` (`{}`), `costs.json` (`$0`), `remote_machines_used.json` (`[]`). Two new
-charts generated: `results/images/log_availability.png` (log survival rate, 1/13) and
-`results/images/confound_heatmap.png` (normalised hyperparameter heatmap). `verify_task_metrics`
-PASS; `verify_task_results` PASS (1 expected warning TR-W013 for data-analysis task type). Both
-assets (answer, library) present and confirmed. `## Task Requirement Coverage` section lists
-REQ-1 through REQ-8 with Done/Partial status. REQ-2 and REQ-4 are Partial due to 12/13 logs being
-permanently deleted and audio DVC not pulled.
 
 * * *
 
