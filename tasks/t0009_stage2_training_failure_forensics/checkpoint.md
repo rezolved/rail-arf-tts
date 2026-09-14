@@ -99,6 +99,16 @@ assets (answer, library) present and confirmed. `## Task Requirement Coverage` s
 through REQ-8 with Done/Partial status. REQ-2 and REQ-4 are Partial due to 12/13 logs being
 permanently deleted and audio DVC not pulled.
 
+### Step 14 — suggestions
+
+Five follow-up suggestions generated in `results/suggestions.json` and verified by
+`verify_suggestions` (0 errors). Suggestions cover: controlled Stage 2 run with safeguards applied
+(high priority), controlled joint_epoch ablation to test causal independence (high priority), audio
+quality pre-filter for v5 train set (medium priority), v3 config recovery to resolve val_loss
+comparability gap (medium priority), and safeguard library extension with startup param-count
+assertion and per-loss gradient norm logging (medium priority). No duplicate suggestions or existing
+tasks cover these objectives.
+
 * * *
 
 ## Cross-Step Decisions
@@ -111,18 +121,6 @@ permanently deleted and audio DVC not pulled.
   too early; recommended fix: DP-aware loader + joint\_epoch≥6.
 * Health gate thresholds from log analysis: Dur Loss step-1 < 2.0, acoustic\_norm < 20, val spike ≤
   0.05, consecutive skips ≤ 50.
-
-* * *
-
-### Step 14 — suggestions
-
-Five follow-up suggestions generated in `results/suggestions.json` and verified by
-`verify_suggestions` (0 errors). Suggestions cover: controlled Stage 2 run with safeguards applied
-(high priority), controlled joint_epoch ablation to test causal independence (high priority), audio
-quality pre-filter for v5 train set (medium priority), v3 config recovery to resolve val_loss
-comparability gap (medium priority), and safeguard library extension with startup param-count
-assertion and per-loss gradient norm logging (medium priority). No duplicate suggestions or existing
-tasks cover these objectives.
 
 * * *
 
