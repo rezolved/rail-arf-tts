@@ -146,6 +146,7 @@ files may be created in the root of a task folder.
 * The markdown file referenced by `task.json` `long_description_file` (spec version `4` only;
   recommended name: `task_description.md`)
 * `step_tracker.json` — step execution tracking
+* `checkpoint.md` — step handoff document (see `checkpoint_specification.md`)
 * `__init__.py` — Python package marker (auto-created, do not remove)
 
 ### Allowed root directories

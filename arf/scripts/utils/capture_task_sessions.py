@@ -359,7 +359,7 @@ def _jsonl_content_has_worktree_cwd(
     task_prefix: str = task_id.split("_")[0] if "_" in task_id else task_id
 
     try:
-        with file_path.open("r", encoding="utf-8") as handle:
+        with file_path.open("r", encoding="utf-8", errors="replace") as handle:
             for line in handle:
                 if WORKTREE_PARENT_SUFFIX not in line:
                     continue
