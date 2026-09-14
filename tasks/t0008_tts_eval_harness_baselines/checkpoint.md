@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T15:54:00Z"
-completed_steps: 8
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-14T16:01:00Z"
+completed_steps: 9
+next_step_number: 8
+next_step_id: "setup-machines"
 ---
 # Task Objective
 
@@ -63,19 +63,36 @@ entry point `tasks/t0003.../code/build_pipeline.py` (import directly; `lang_code
 lexicon); t0005 best = `epoch_2nd_00003.pth` (val 0.848); t0006 v6d best = `epoch_2nd_00006.pth`
 (val 0.846); all checkpoints DVC-only. Research summary written to `research/research_summary.md`.
 
+### Step 7 — planning
+
+Produced `plan/plan.md`: 21 REQ items, 17-step plan across 5 milestones, cost estimate ~$21.50
+(ElevenLabs ~$0.30, H100 VM ~$21), 9 risks, 6 verification criteria, and a Rejection Criteria
+section. Key decisions: centroid-half split 679/679 seed=42 for speaker_sim; filler corpus copy from
+VM as Step 1; five-module extraction via adapted `extract_decoder.py`; all Kokoro synthesis via
+`build_pipeline` import from t0003; variant metrics.json with 16+ variants (8 systems × 2 prompt
+sets). Verificator passes with 0 errors.
+
 * * *
 
 ## Cross-Step Decisions
+
+* **Speaker_sim reference design**: centroid from half-A (679 clips, seed=42); ElevenLabs scored
+  against half-B (679 clips) to avoid self-comparison; all other systems scored against half-A
+  centroid.
+* **Checkpoint packaging**: t0005/t0006 raw `.pth` files packaged via adapted `extract_decoder.py`
+  (five modules) before any synthesis.
+* **GPU required for TTFB**: Kokoro TTFB/RTF must be measured on LLM-T1-NC80 H100 (project success
+  criterion specifies "local inference, H100"); CPU TTFB may be reported in addition.
+* **resemblyzer in optional extra only**: do NOT add to main `pyproject.toml` dependencies — use
+  `[speaker-sim]` extra (webrtcvad/pkg_resources breakage).
 
 * * *
 
 ## Next Step Notes
 
-Step 7 is planning. The planner should read `research/research_summary.md` for a compact overview,
-then dive into `research/research_internet.md` for detailed TTFB measurement methodology and
-`research/research_code.md` for checkpoint paths and the five-module extraction requirement. The
-plan must specify: (1) checkpoint packaging steps for t0005/t0006 raw `.pth` files via a copy of
-`extract_decoder_generic.py`; (2) the eight synthesis adapters (each calling `build_pipeline`); (3)
-the centroid-half split design (679/679 seed=42) for resemblyzer; (4) the VM setup for TTFB
-measurement (filler corpus confirmation/copy + `dvc push`); and (5) the reporting format (variant
-metrics.json, tables, two charts). Budget ≤ $30 total for this task.
+Step 8 is setup-machines. The setup executor should: (1) start LLM-T1-NC80 via the
+`setup-remote-machine` skill; (2) verify the `kokoro-finetune` conda environment or install `kokoro`
+\+ `resemblyzer` + `faster-whisper`; (3) confirm `/mnt/kikiri-tts/data/11labs_david/` exists (if
+absent, the implementation step must regenerate via ElevenLabs API); (4) capture `nvidia-smi` and
+torch/CUDA versions for `results/metadata.json`; (5) deploy the idle watchdog per CLAUDE.md. Budget
+context: ~$21 of the $30 task budget is for VM time (~1.5 h at $13.96/h).
