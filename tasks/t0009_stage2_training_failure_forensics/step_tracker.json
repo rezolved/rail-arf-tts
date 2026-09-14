@@ -80,10 +80,14 @@
       "step": 7,
       "name": "planning",
       "description": "Design the forensic analysis approach: which logs to parse, which metrics to compare, and what safeguards to implement.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T15:45:32Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/007_planning/",
+      "current_owner": "step-executor/planning",
+      "last_heartbeat_at": "2026-09-14T15:45:32Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T16:45:32Z"
     },
     {
       "step": 8,

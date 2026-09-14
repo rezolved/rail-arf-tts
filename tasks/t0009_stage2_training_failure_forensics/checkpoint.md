@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T15:50:00Z"
-completed_steps: 9
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-14T15:49:30Z"
+completed_steps: 10
+next_step_number: 8
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -64,6 +64,14 @@ stack in `train_second_patched.py`, the checkpoint loading silent-failure bug in
 top-2 val_loss pruning risk, and all config-code inconsistencies. Research summary also produced at
 `tasks/t0009_stage2_training_failure_forensics/research/research_summary.md`.
 
+### Step 7 — planning
+
+Full forensic plan written at `tasks/t0009_stage2_training_failure_forensics/plan/plan.md` — 15
+steps across 8 milestones covering all 8 REQ items. `verify_plan` passed with 0 errors. Budget
+confirmed at ≤ \$25 (local/CPU + ≤ 30 min VM for log retrieval). The safeguard library base is
+`train_second_patched.py` from t0005; health gate thresholds derived from research (Dur Loss step-1
+< 2.0, `acoustic_norm` < 20, val spike ≤ 0.05, consecutive skips ≤ 50).
+
 * * *
 
 ## Cross-Step Decisions
@@ -77,10 +85,10 @@ top-2 val_loss pruning risk, and all config-code inconsistencies. Research summa
 
 ## Next Step Notes
 
-Step 6 (`research-code`) completed. The primary forensic inputs are documented in
-`research/research_code.md` and compressed in `research/research_summary.md`. Proceed to step 7
-(`planning`): load `research/research_summary.md` and `research/research_code.md` to design the full
-forensic approach. Key decisions for planning: (1) which logs to parse and in what order, (2) health
-gate thresholds derived from the log data, (3) safeguard library structure (JSONL logger,
-health-gate monitor, per-epoch checkpoint retention with SHA-256), (4) offline replay test scope.
-Budget is local/CPU only except for optional VM access to retrieve surviving logs (~30 min, ~$7).
+Step 7 (`planning`) completed. The implementation plan is at `plan/plan.md`. Proceed to step 8
+(`implementation`): read `plan/plan.md` and execute all 15 steps across the 8 milestones in order.
+Start with Milestone 1 (log collection from git — no VM needed first). Milestone 2 requires VM SSH
+only if surviving logs are found. The safeguard library (Milestone 7) should be implemented after
+log parsing (Milestones 2-3) so that health gate thresholds can be cross-checked against actual log
+data. Key files to produce: `code/parse_logs.py`, `code/jsonl_logger.py`, `code/health_gates.py`,
+`code/checkpoint_manager.py`, `code/test_replay.py`, and the answer asset.
