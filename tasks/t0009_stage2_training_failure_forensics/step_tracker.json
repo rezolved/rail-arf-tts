@@ -108,14 +108,15 @@
       "step": 9,
       "name": "creative-thinking",
       "description": "Explore alternative failure hypotheses and safeguard strategies not captured in the main analysis.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T16:31:24Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T16:33:34Z",
       "log_file": "logs/steps/009_creative-thinking/",
-      "current_owner": "step-executor/creative-thinking",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T16:31:24Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-14T17:31:24Z"
+      "expected_completion_at": "2026-09-14T17:31:24Z",
+      "actual_duration_seconds": 130
     },
     {
       "step": 10,
