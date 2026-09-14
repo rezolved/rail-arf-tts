@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts/arf/scripts/utils/capture_task_sessions.py", line 1216, in <module>
+    main()
+    ~~~~^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts/arf/scripts/utils/capture_task_sessions.py", line 1190, in main
+    outcome: SessionCaptureOutcome = capture_task_sessions(task_id=args.task_id)
+                                     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts/arf/scripts/utils/capture_task_sessions.py", line 1062, in capture_task_sessions
+    and _jsonl_content_has_worktree_cwd(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        file_path=candidate_file,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+        task_id=task_id,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts/arf/scripts/utils/capture_task_sessions.py", line 363, in _jsonl_content_has_worktree_cwd
+    for line in handle:
+                ^^^^^^
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd0 in position 4095: invalid continuation byte

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-09-14T13:48:27Z">
+  <archive_summary>
+    <title>Research History</title>
+    <description>Research-stage documents across completed tasks, plus core project context.</description>
+    <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
+    <section_count>8</section_count>
+    <char_count>19238</char_count>
+    <byte_count>19320</byte_count>
+    <estimated_tokens>4809</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>project description</item>
+    <item>completed task summaries</item>
+    <item>planned tasks</item>
+    <item>question and short-answer coverage</item>
+    <item>all task research documents</item>
+  </included_content>
+  <sections>
+    <section id="project-description" source_kind="file">
+      <title>Project Description</title>
+      <source_name>project/description.md</source_name>
+      <repo_paths>
+        <path>project/description.md</path>
+      </repo_paths>
+      <content>
+# TTS Research — Kokoro-82M vs ElevenLabs for Rezolve Fillers
+
+## Goal
+
+Replace ElevenLabs David voice (currently used for filler synthesis in Rezolve&#x27;s voice commerce
+assistant) with a self-hosted Kokoro-82M fine-tuned model that matches ElevenLabs speaker
+similarity and latency at a fraction of the cost. The current ElevenLabs integration costs $0.30
+per 1000 characters; the target is a local model with TTFB ≤ 300 ms and GE2E cosine similarity
+≥ 0.85 against the ElevenLabs David reference.
+
+## Scope
+
+### In Scope
+
+* Benchmarking ElevenLabs David baseline: TTFB, speaker similarity, RTF on the 1358-clip filler
+  corpus.
+* Evaluating Kokoro-82M base (no fine-tuning) on the same filler corpus.
+* Fine-tuning Kokoro-82M on David voice data (Stage 2 StyleTTS2, 1557 training clips from
+  `data/v4/train/train_list.txt`).
+* Evaluating the fine-tuned Kokoro v4 model on val_96 (96 held-out clips) and the 1358 filler
+  prompts.
+* Producing a viability report: can Kokoro replace ElevenLabs for Rezolve fillers within budget?
+
+### Out of Scope
+
+* Full pipeline integration and A/B testing (follow-up after PoC).
+* Non-David voices or multi-speaker generalization.
+* Streaming TTS protocol changes.
+* STT — see `rezolved/rail-arf-stt` for that project.
+
+## Research Questions
+
+1. What is the TTFB, speaker similarity (GE2E cosine), and RTF of the ElevenLabs David baseline
+   on the 1358-clip filler corpus?
+2. How does Kokoro-82M base (no fine-tuning) compare to ElevenLabs David on speaker similarity
+   and RTF?
+3. Does fine-tuning Kokoro-82M on the David voice dataset (1557 clips, StyleTTS2 Stage 2) close
+   the speaker-similarity gap to ≥ 0.85 GE2E cosine while keeping TTFB ≤ 300 ms?
+4. What is the minimum viable checkpoint (epoch) for the fine-tuned Kokoro v4 that meets the
+   quality bar, and does further training help?
+5. Is Kokoro-82M v4 a viable ElevenLabs replacement for Rezolve fillers on cost, quality, and
+   latency grounds?
+
+## Success Criteria
+
+* ElevenLabs David baseline benchmarked: TTFB, speaker_sim, RTF on ≥ 50 filler prompts.
+* Kokoro-82M base benchmarked on the same prompt set.
+* Fine-tuned Kokoro v4 achieves speaker_sim (GE2E cosine) ≥ 0.85 on val_96.
+* Fine-tuned Kokoro v4 achieves TTFB ≤ 300 ms on the filler corpus (local inference, H100).
+* Viability report produced with a clear go / no-go recommendation.
+
+## Key References
+
+* Training data: `data/v4/train/train_list.txt` (1557 clips), `data/v4/val/val_list.txt` (96
+  clips).
+* ElevenLabs reference audio: `data/11labs_david/` (1358 WAVs).
+* Finetune config: `kokoro-finetune/configs/config_david_v4.yml` (Stage 2, starts from
+  `first_stage.pth`).
+* GPU machine: LLM-T1-NC80 (Nebius, 2×H100 SXM5) — see `project/nebius_vm.json`.
+* StyleTTS2 paper: Hu et al. (2023) — &quot;StyleTTS 2: Towards Human-Level Text-to-Speech through
+  Style Diffusion and Adversarial Training with Large Speech Language Models&quot;.
+* Kokoro-82M: open-weight StyleTTS2-based model by hexgrad.
+
+## Current Phase
+
+Setup complete. Next: run ElevenLabs baseline benchmark (t0002) and Kokoro base eval (t0003)
+in parallel, then evaluate fine-tuned Kokoro v4 once Stage 2 training completes (t0004).
+      </content>
+    </section>
+    <section id="completed-task-summaries" source_kind="aggregator">
+      <title>Completed Tasks and Results</title>
+      <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0001_kokoro_v4_stage2_finetune</id>
+        <id>t0002_kokoro_v4_voicepack_decoder_package</id>
+        <id>t0003_kokoro_v5_phoneme_data</id>
+        <id>t0004_kokoro_v5_stage1_train</id>
+        <id>t0005_kokoro_v5_stage2_train</id>
+        <id>t0006_kokoro_v5_stage2_subset</id>
+        <id>t0007_brainstorm_results_1</id>
+      </source_ids>
+      <content>
+Completed tasks: 7
+
+## Kokoro v4 Stage 2 fine-tune
+ID: t0001_kokoro_v4_stage2_finetune
+Completed: 2026-09-11
+Short description: Train StyleTTS2 Stage 2 on LLM-T1-NC80 using ElevenLabs David v4 dataset to produce a Kokoro-82M checkpoint for voicepack extraction.
+Result summary: Results Summary: Kokoro v4 Stage 2 Fine-tune Summary Trained StyleTTS2 Stage 2 on LLM-T1-NC80 (2× H100 NVL) for 8 epochs on 1557 ElevenLabs David v4 clips. Best checkpoint: **epoch 6, val_loss=0.751**. GAN diverged at epoch 7 (val 0.751 → 1.147), cutting the run short. Root cause (discovered in t0003): 21% of the training manifest contained raw grapheme text instead of phonemes. The epoch 6 checkpoint was used as source for voicepack extraction in t0002 but produced a broken duration predictor (10× duration explosion). Key Metrics | Metric | Value | | --- | --- | | Best val loss | 0.751 | | Best epoch | 6 | | Epochs completed | 8 (diverged at 7) | | Machine | LLM-T1-NC80 (2× H100 NVL) | |...
+
+## Package Kokoro v4 voicepack + decoder
+ID: t0002_kokoro_v4_voicepack_decoder_package
+Completed: 2026-09-12
+Short description: Extract v4 Stage1 style encoder + Stage2 best decoder into Kokoro-API voicepack/decoder format, following v3&#x27;s proven packaging pipeline.
+Result summary: Results: Kokoro v4 Voicepack + Decoder Packaging Summary Reproduced v3&#x27;s Kokoro-API packaging recipe (voicepack from Stage 1 style encoder, decoder+ predictor+text_encoder+bert from Stage 2) for v4&#x27;s checkpoints. Audio remained noisy across every variant tested (Stage 1 decoder, Stage 2 epoch 3 pre-GAN, Stage 2 epoch 6 best-by-val_loss). Root cause isolated to two independent bugs — one in this task&#x27;s extraction script (fixed), one in t0001&#x27;s underlying checkpoint (not fixable by repackaging). **v4 Stage 2 has no usable checkpoint for production packaging as-is; a re-run with a revised training schedule is required.** Methodology - Extracted `voicepack` (ref_s, `[510,1,256]`) from...
+
+## Regenerate v5 phoneme manifests
+ID: t0003_kokoro_v5_phoneme_data
+Completed: 2026-09-12
+Short description: Rebuild the Kokoro fine-tune train/val manifests with validated British IPA and a brand-name lexicon, fixing the silent grapheme fallback that poisoned 21% of the v4 training set.
+Result summary: Results Summary: v5 Phoneme Manifest Regeneration Summary Rebuilt the Kokoro fine-tune manifests: **1557/1557 train and 96/96 val lines pass every validation gate, 0 rejected**, against 329 raw-text and 9 unknown-word lines in the manifest t0001 actually trained on. Root cause of t0001&#x27;s divergence and t0002&#x27;s 10× duration explosion is a silent grapheme fallback in `prepare_v4_data.py` that fired on every clip containing a word misaki does not know — 21% of the training set. No training has been run yet. Key Metrics | Metric | Value | | --- | --- | | v5 clean train lines | 1557 / 1557 | | v5 clean val lines | 96 / 96 | | v4 raw_text_leaked (train) | 329 / 1557 (21%) | | OOV words repaired |...
+
+## Kokoro v5 Stage 1 fine-tune
+ID: t0004_kokoro_v5_stage1_train
+Completed: 2026-09-12
+Short description: Run StyleTTS2 Stage 1 on the v5 phoneme-corrected corpus, with live progress and top-2 checkpoint syncing.
+Result summary: Results Summary: Kokoro v5 Stage 1 Fine-tune Summary Ran StyleTTS2 Stage 1 on v5 phoneme-corrected corpus (1557 clips) for 10 epochs on LLM-T1-NC80 (single GPU — train_first.py does not support DDP). Best checkpoint: **epoch 10, val_loss=0.740**. Checkpoint handed off to t0005 for Stage 2. Note: ran on GPU0 only due to plain python3 invocation (not accelerate launch) — silently half-speed but trained correctly. Key Metrics | Metric | Value | | --- | --- | | Best val loss | 0.740 | | Best epoch | 10 | | Epochs completed | 10 | | Machine | LLM-T1-NC80 (1× H100 NVL, GPU0 only) | | Training clips | 1557 (v5 phoneme-corrected) | Training Curve | Epoch | Val loss | | --- | --- | | 1 | 1.170 | | 2...
+
+## Kokoro v5 Stage 2 fine-tune
+ID: t0005_kokoro_v5_stage2_train
+Completed: 2026-09-13
+Short description: Run StyleTTS2 Stage 2 from t0004&#x27;s Stage 1 checkpoint on both GPUs, with the t0003 stop-early criterion checked at the first logged step.
+Result summary: Results Summary: Kokoro v5 Stage 2 Fine-tune Summary 6 Stage 2 training runs on LLM-T1-NC80 (DataParallel, both GPUs). All converged through GAN activation but all diverged within 4 post-GAN epochs. Best checkpoint: **run06 epoch 3, val_loss=0.848**. Root cause: 1557-clip dataset is too large for the discriminator at joint_epoch transition — GAN gradient overwhelms the generator. 7 crash fixes accumulated across runs. All fixes carried forward to t0006 (250-clip subset). Key Metrics | Metric | Value | | --- | --- | | Best val loss | 0.848 | | Best run | run06 | | Best epoch | 3 | | Runs attempted | 6 | | Machine | LLM-T1-NC80 (2× H100 NVL, DataParallel) | | Training clips | 1557 (v5...
+
+## Kokoro v5 Stage 2: 250-clip subset, multispeaker: false
+ID: t0006_kokoro_v5_stage2_subset
+Completed: 2026-09-13
+Short description: Test 250-clip data scale + multispeaker:false combination to isolate why t0005 Stage 2 diverged, using all seven crash fixes from t0005 run 6.
+Result summary: t0006 Results Summary Objective Test 250-clip data scale + `multispeaker: false` in combination to isolate Stage 2 divergence cause from t0005. Key Results | Run | Config | lambda_gen | joint_epoch | Best val | Audio | |-----|--------|-----------|-------------|----------|-------| | run01 | v6 | 1.0 | 3 | ~0.89 | diverged ep7 | | run02 | v6b | 0.2 | 3 | 0.895 (ep4) | diverged ep7 | | run03 | v6c | 0.2 | 3 | 0.849 (ep5) | noisy | | run04 | v6d | 0.05 | 6 | **0.846 (ep6)** | noisy | **Best checkpoint**: v6d epoch 6, val_loss = 0.846. Target not reached (v3 gold: 0.506). Conclusion GAN activates stably with `lambda_gen=0.05` but 10 epochs insufficient for convergence. v6b used wrong...
+
+## Brainstorm results session 1
+ID: t0007_brainstorm_results_1
+Completed: 2026-09-14
+Short description: First brainstorm: review t0001-t0006 training attempts and create an evaluation-harness task and a training-failure forensics task.
+Result summary: Brainstorm Results Session 1 Summary First brainstorm after six Kokoro fine-tuning tasks (t0001-t0006) that produced no clean-audio checkpoint and measured none of the project&#x27;s success criteria. The session created **2 new tasks** (t0008 evaluation harness and baselines, t0009 Stage 2 training failure forensics and safeguards) and raised the project budget from $500 to **$5000**. No suggestions existed, so none were rejected or reprioritized. Session Overview * Date: 2026-09-14. * Context: t0001-t0006 were all Kokoro StyleTTS2 fine-tuning attempts. t0003 found and fixed a grapheme fallback that poisoned 21% of the v4 manifests. t0005 fixed seven crashes but every Stage 2 run diverged after...
+      </content>
+    </section>
+    <section id="planned-tasks" source_kind="aggregator">
+      <title>Planned Tasks</title>
+      <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0008_tts_eval_harness_baselines</id>
+        <id>t0009_stage2_training_failure_forensics</id>
+      </source_ids>
+      <content>
+Planned or active tasks: 2
+
+## TTS evaluation harness and baselines
+ID: t0008_tts_eval_harness_baselines
+Status: not_started
+Effective date: 2026-09-14
+Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
+Dependencies: t0006_kokoro_v5_stage2_subset
+
+## Stage 2 training failure forensics and safeguards
+ID: t0009_stage2_training_failure_forensics
+Status: not_started
+Effective date: 2026-09-14
+Short description: Audit every Kokoro training run&#x27;s logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.
+Dependencies: t0005_kokoro_v5_stage2_train, t0006_kokoro_v5_stage2_subset
+      </content>
+    </section>
+    <section id="questions-and-answers" source_kind="aggregator">
+      <title>Questions and Answers</title>
+      <source_name>aggregate_answers_full</source_name>
+      <content>
+Answers: 0
+      </content>
+    </section>
+    <section id="t0001_kokoro_v4_stage2_finetune-research_internet" source_kind="file">
+      <title>t0001_kokoro_v4_stage2_finetune — Kokoro v4 Stage 2 fine-tune — research_internet.md</title>
+      <source_name>research_internet.md</source_name>
+      <source_ids>
+        <id>t0001_kokoro_v4_stage2_finetune</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0001_kokoro_v4_stage2_finetune/research/research_internet.md</path>
+      </repo_paths>
+      <content>
+#### Objective
+
+Run StyleTTS2 Stage 2 fine-tuning of Kokoro-82M on the ElevenLabs David voice dataset to produce a
+self-hosted checkpoint that matches ElevenLabs David speaker similarity (GE2E cosine ≥ 0.85) and
+inference latency (TTFB ≤ 300 ms).
+
+#### Background
+
+Prior work in `rail-benchmarks/kokoro-finetune` (Kokoro finetune v3/v4 experiments):
+
+- Stage 1 complete: `best_v4/first_stage.pth` (epoch 10, val=0.594).
+- Stage 2 reached epoch 4 with val=1.539; epoch 5 hit OOM before checkpoint save.
+- Training data: 1557 clips (`data/v4/train/train_list.txt`), val: 96 clips (`data/v4/val/val_list.txt`).
+- ElevenLabs David reference audio: 1358 WAVs (`data/11labs_david/`).
+
+#### Known Issues from v3/v4 Experiments
+
+##### OOM at GAN epoch
+
+- `batch_size: 4` caused CUDA OOM at epoch 5 when GAN discriminator activates (`joint_epoch: 3`).
+- Fix 1: `batch_size: 2` (already set in config).
+- Fix 2: `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True` — prevents fragmentation during
+  discriminator forward passes.
+- Fix 3: patched `train_second.py` guards `slmadv()` call when `lambda_slm == 0`. Without patch:
+  `RuntimeError: Given groups=1, weight of size [64, 9984, 1], expected input[4, 9926400, 62] to have 9984 channels`.
+
+##### NaN collapse
+
+- NaN at epoch 4 with `lr: 1e-4`; reduced to `lr: 3e-05`, `ft_lr: 3e-05`, `bert_lr: 1e-06`.
+- `train_LM: false` — freeze BERT; `train_LM: true` causes LM Loss explosion (23→400+).
+
+##### WavLM discriminator
+
+- `lambda_slm: 0.0` — WavLM shape mismatch crash at GAN activation. Must stay 0.
+
+#### Multi-GPU Strategy
+
+Two H100 NVL GPUs (95 GB each) on LLM-T1-NC80. Using DDP via `accelerate launch --num_processes 2`:
+
+- DDP doubles throughput (2× faster epochs) but does NOT reduce per-GPU peak memory — each GPU
+  holds a full model copy + optimizer state.
+- OOM fix is `expandable_segments` + `batch_size: 2`, not DDP itself.
+- DDP benefit: faster iteration over 20 epochs.
+
+#### Key Config Parameters
+
+| Parameter | Value | Why |
+| --- | --- | --- |
+| `batch_size` | 2 | OOM fix — 4 crashes at GAN phase |
+| `lr`, `ft_lr` | 3e-05 | NaN fix — 1e-4 collapsed at epoch 4 |
+| `bert_lr` | 1e-06 | Stable BERT fine-tuning |
+| `train_LM` | false | LM Loss explosion fix |
+| `lambda_slm` | 0.0 | WavLM shape mismatch crash fix |
+| `joint_epoch` | 3 | GAN activates from epoch 4 onward |
+| `load_only_params` | true | Fresh Stage 2 — no corrupted optimizer state |
+| `second_stage_load_pretrained` | true | Load from first_stage.pth |
+
+#### References
+
+- StyleTTS2: Hu et al. (2023) — &quot;StyleTTS 2: Towards Human-Level Text-to-Speech through Style
+  Diffusion and Adversarial Training with Large Speech Language Models&quot;.
+- Kokoro-82M: hexgrad/kokoro (open-weight StyleTTS2 variant).
+- kikiri-tts: semidark/kikiri-tts — training harness used in prior experiments.
+- Prior experiment notes: `rail-benchmarks/kokoro-finetune/RESUME_TOMORROW.md`.
+      </content>
+    </section>
+    <section id="t0007_brainstorm_results_1-research_papers" source_kind="file">
+      <title>t0007_brainstorm_results_1 — Brainstorm results session 1 — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0007_brainstorm_results_1</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0007_brainstorm_results_1/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+#### Objective
+
+No research required for brainstorming session.
+
+#### Background
+
+No research required for brainstorming session.
+
+#### Methodology Review
+
+No research required for brainstorming session.
+
+#### Key Findings
+
+No research required for brainstorming session.
+
+#### Recommended Approach
+
+No research required for brainstorming session.
+
+#### References
+
+No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0007_brainstorm_results_1-research_internet" source_kind="file">
+      <title>t0007_brainstorm_results_1 — Brainstorm results session 1 — research_internet.md</title>
+      <source_name>research_internet.md</source_name>
+      <source_ids>
+        <id>t0007_brainstorm_results_1</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0007_brainstorm_results_1/research/research_internet.md</path>
+      </repo_paths>
+      <content>
+#### Objective
+
+No research required for brainstorming session.
+
+#### Background
+
+No research required for brainstorming session.
+
+#### Methodology Review
+
+No research required for brainstorming session.
+
+#### Key Findings
+
+No research required for brainstorming session.
+
+#### Recommended Approach
+
+No research required for brainstorming session.
+
+#### References
+
+No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0007_brainstorm_results_1-research_code" source_kind="file">
+      <title>t0007_brainstorm_results_1 — Brainstorm results session 1 — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0007_brainstorm_results_1</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0007_brainstorm_results_1/research/research_code.md</path>
+      </repo_paths>
+      <content>
+#### Objective
+
+No research required for brainstorming session.
+
+#### Background
+
+No research required for brainstorming session.
+
+#### Methodology Review
+
+No research required for brainstorming session.
+
+#### Key Findings
+
+No research required for brainstorming session.
+
+#### Recommended Approach
+
+No research required for brainstorming session.
+
+#### References
+
+No research required for brainstorming session.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>

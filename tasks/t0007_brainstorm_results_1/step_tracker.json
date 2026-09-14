@@ -1,0 +1,44 @@
+{
+  "task_id": "t0007_brainstorm_results_1",
+  "steps": [
+    {
+      "step": 1,
+      "name": "review-project-state",
+      "description": "Aggregate and present project state to researcher.",
+      "status": "completed",
+      "started_at": "2026-09-14T13:00:00Z",
+      "completed_at": "2026-09-14T13:25:00Z",
+      "log_file": "logs/steps/001_review-project-state/"
+    }
+,
+    {
+      "step": 2,
+      "name": "discuss-decisions",
+      "description": "Structured discussion with researcher on tasks and suggestions.",
+      "status": "completed",
+      "started_at": "2026-09-14T13:25:00Z",
+      "completed_at": "2026-09-14T13:40:00Z",
+      "log_file": "logs/steps/002_discuss-decisions/"
+    }
+,
+    {
+      "step": 3,
+      "name": "apply-decisions",
+      "description": "Create new task folders, correction files, and suggestion updates.",
+      "status": "completed",
+      "started_at": "2026-09-14T13:40:00Z",
+      "completed_at": "2026-09-14T14:10:00Z",
+      "log_file": "logs/steps/003_apply-decisions/"
+    }
+,
+    {
+      "step": 4,
+      "name": "finalize",
+      "description": "Write results, step logs, session capture, run verificators, PR, merge.",
+      "status": "completed",
+      "started_at": "2026-09-14T14:10:00Z",
+      "completed_at": "2026-09-14T14:30:00Z",
+      "log_file": "logs/steps/004_finalize/"
+    }
+  ]
+}

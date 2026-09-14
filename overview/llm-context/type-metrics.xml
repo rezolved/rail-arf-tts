@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="metrics" generated_at_utc="2026-09-14T13:48:27Z">
+  <archive_summary>
+    <title>All Metrics</title>
+    <description>Complete metric definitions with full descriptions, units, and associated datasets.</description>
+    <section_count>1</section_count>
+    <char_count>1685</char_count>
+    <byte_count>1685</byte_count>
+    <estimated_tokens>421</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all metrics with full descriptions</item>
+  </included_content>
+  <sections>
+    <section id="full-metrics" source_kind="aggregator">
+      <title>All Metrics (Full Detail)</title>
+      <source_name>aggregate_metrics_full</source_name>
+      <source_ids>
+        <id>rtf</id>
+        <id>speaker_sim</id>
+        <id>ttfb_ms</id>
+      </source_ids>
+      <content>
+Metrics: 3
+
+## Real-Time Factor
+Key: rtf
+Unit: ratio
+Value type: float
+Version: 1
+
+Synthesis wall time divided by output audio duration. RTF &lt; 1.0 means faster than real time. Lower is better.
+
+## Speaker Similarity (GE2E Cosine)
+Key: speaker_sim
+Unit: ratio
+Value type: float
+Version: 1
+
+Cosine similarity between synthesized clip GE2E embedding and mean GE2E embedding of ElevenLabs David reference set. Computed via resemblyzer. Higher is better.
+
+## Time to First Byte (ms)
+Key: ttfb_ms
+Unit: ms
+Value type: float
+Version: 1
+
+Wall-clock milliseconds from TTS request issue to first audio byte received. Measured locally (same-machine or loopback). Report p50, p95, p99. Lower is better.
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>
