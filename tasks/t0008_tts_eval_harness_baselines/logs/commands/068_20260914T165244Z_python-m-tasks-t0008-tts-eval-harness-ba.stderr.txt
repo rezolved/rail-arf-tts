@@ -1,0 +1,10 @@
+2026-09-14 16:52:44,811 INFO __main__ Systems to evaluate: ['elevenlabs_david']
+2026-09-14 16:52:44,811 INFO __main__ Prompt set: val96, warmup: 1
+2026-09-14 16:52:44,812 INFO __main__ Prompts loaded: {'val96': 96}
+2026-09-14 16:52:45,390 WARNING __main__ Fuzzy-matched ElevenLabs voice 'David - British Radio Host & Storyteller' → 5gLuKtB16QIQv1vuSas1
+2026-09-14 16:52:45,392 INFO __main__ ElevenLabs voice_id: 5gLuKtB16QIQv1vuSas1
+2026-09-14 16:52:45,392 INFO __main__ === ElevenLabs David ===
+2026-09-14 16:52:45,399 INFO __main__ [elevenlabs_david] Running 1 warmup synthesis(es)...
+2026-09-14 16:52:50,860 INFO __main__ [elevenlabs_david/val96] Synthesizing 3 prompts...
+2026-09-14 16:52:52,900 INFO __main__ Saved 3 ElevenLabs records → tasks/t0008_tts_eval_harness_baselines/results/per_clip_preflight_elevenlabs.json
+2026-09-14 16:52:52,901 INFO __main__ Saved 3 total records → tasks/t0008_tts_eval_harness_baselines/results/per_clip_preflight.json

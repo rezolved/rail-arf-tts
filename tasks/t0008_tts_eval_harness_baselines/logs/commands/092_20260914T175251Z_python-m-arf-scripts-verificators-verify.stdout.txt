@@ -1,0 +1,39 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 008_20260914T161133Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 011_20260914T161219Z_ssh-llm-t1-nc80-nvcc-version.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 019_20260914T161341Z_ssh-llm-t1-nc80-conda-info-envs-2-dev-nu.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 025_20260914T161445Z_ssh-llm-t1-nc80-ls-mnt-cache-persist-2-d.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 031_20260914T161513Z_ssh-llm-t1-nc80-pip3-show-torch-2-dev-nu.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 038_20260914T161715Z_ssh-llm-t1-nc80-df-h-echo-du-sh-home-azu.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 039_20260914T161723Z_ssh-llm-t1-nc80-ls-home-azureuser-minico.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 044_20260914T161802Z_ssh-llm-t1-nc80-mkdir-p-mnt-t0008-env-ho.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 046_20260914T161915Z_ssh-llm-t1-nc80-pythonpath-mnt-t0008-env.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 051_20260914T161955Z_ssh-llm-t1-nc80-home-azureuser-miniconda.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 054_20260914T162034Z_ssh-llm-t1-nc80-ls-mnt-cache-persist-hf-.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 057_20260914T164048Z_dvc-pull-tasks-t0008-tts-eval-harness-ba.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 058_20260914T164101Z_dvc-pull-tasks-t0005-kokoro-v5-stage2-tr.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 059_20260914T164132Z_dvc-pull-tasks-t0006-kokoro-v5-stage2-su.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 072_20260914T170720Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 073_20260914T173645Z_python-m-tasks-t0008-tts-eval-harness-ba.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 074_20260914T173657Z_python-m-tasks-t0008-tts-eval-harness-ba.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 076_20260914T173738Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 077_20260914T173741Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 079_20260914T174142Z_python-m-arf-scripts-utils-azure-ml-vm.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 080_20260914T174501Z_dvc-add-tasks-t0008-tts-eval-harness-bas.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 083_20260914T174853Z_dvc-push.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 084_20260914T175044Z_dvc-push.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 084_20260914T175048Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 085_20260914T175051Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 087_20260914T175100Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 090_20260914T175142Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 091_20260914T175146Z_python-m-arf-scripts-verificators-verify.json has non-zero exit code: 1[0m
+[33m  LG-W006 warning: Step 11 is 'skipped' but log_file is null in step_tracker.json[0m
+[33m  LG-W006 warning: Step 13 is 'skipped' but log_file is null in step_tracker.json[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 32 warning(s)
+

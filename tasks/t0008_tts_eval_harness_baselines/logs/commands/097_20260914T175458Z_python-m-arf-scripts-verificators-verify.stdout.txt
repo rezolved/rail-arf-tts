@@ -1,0 +1,8 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/meta/metrics/t0008_tts_eval_harness_baselines/description.json
+
+[31m[1mERRORS:[0m
+[31m  MT-E001 error: Metric definition does not exist or is not valid JSON: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/meta/metrics/t0008_tts_eval_harness_baselines/description.json[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+

@@ -1,0 +1,3 @@
+A       
+tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth
+1 file fetched and 1 file added

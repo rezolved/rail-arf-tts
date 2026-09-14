@@ -1,0 +1,5 @@
+outs:
+- md5: 4763eff0eee8953a4c2331cd3050fb09
+  size: 327220107
+  hash: md5
+  path: t0006_v6d_epoch6.pth

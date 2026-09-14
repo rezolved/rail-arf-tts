@@ -1,0 +1,17 @@
+Existing: 0 / 1364 files
+  100/1364 (7%) errors=0
+  200/1364 (15%) errors=0
+  300/1364 (22%) errors=0
+  400/1364 (29%) errors=0
+  500/1364 (37%) errors=0
+  600/1364 (44%) errors=0
+  700/1364 (51%) errors=0
+  800/1364 (59%) errors=0
+  900/1364 (66%) errors=0
+  1000/1364 (73%) errors=0
+  1100/1364 (81%) errors=0
+  1200/1364 (88%) errors=0
+  1300/1364 (95%) errors=0
+
+Done: 1364 generated, 0 errors
+WAV files in dir: 1364

@@ -1,0 +1,8 @@
+
+To track the changes with git, run:
+
+	git add tasks/t0008_tts_eval_harness_baselines/data/packaged/t0005_run06_epoch3.pth.dvc tasks/t0008_tts_eval_harness_baselines/data/packaged/t0006_v6d_epoch6.pth.dvc tasks/t0008_tts_eval_harness_baselines/data/packaged/.gitignore
+
+To enable auto staging, run:
+
+	dvc config core.autostage true

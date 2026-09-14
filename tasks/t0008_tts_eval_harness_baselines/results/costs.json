@@ -1,0 +1,17 @@
+{
+  "total_cost_usd": 35.1,
+  "breakdown": {
+    "elevenlabs_api": {
+      "cost_usd": 7.18,
+      "description": "ElevenLabs TTS API calls: 1364 corpus clips (62 phrases x 22 reps) + 196 timing eval clips (96 val96 + 100 fillers). ~39,865 chars at $0.18/1000.",
+      "model": "eleven_turbo_v2_5"
+    },
+    "azure_ml_vm_h100": {
+      "cost_usd": 27.92,
+      "description": "LLM-T1-NC80 (2x H100 NVL) compute at ~$13.96/hr for ~2 hours.",
+      "machine": "LLM-T1-NC80",
+      "vm_sku": "Standard_NC80adis_H100_v5",
+      "hours": 2.0
+    }
+  }
+}

@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T16:35:00Z"
+updated_at: "2026-09-14T17:45:00Z"
 completed_steps: 10
-next_step_number: 9
-next_step_id: "implementation"
+next_step_number: 10
+next_step_id: "teardown"
 ---
 # Task Objective
 
@@ -102,15 +102,26 @@ wiped) — implementation step must regenerate via ElevenLabs API. Machine log:
   remote runs. 11labs_david corpus absent from VM — must regenerate via ElevenLabs API in
   implementation step (plan Step 1 fallback path).
 
+### Step 9 — implementation
+
+Built `tts_eval_harness` library (v0.1.0). Ran synthesis for all 8 TTS systems on val96 and filler
+prompt sets on LLM-T1-NC80 (2×H100 NVL). Scored all 1568 per-clip records for speaker_sim (GE2E GPU
+via resemblyzer), WER (faster-whisper base.en CPU), and duration ratio. Generated `metrics.json` (16
+explicit-format variants), `tables.json`, 3 PNG charts, and both results files. DVC-tracked
+11labs_david corpus, synth_audio, and packaged checkpoints. VM torn down at 17:42Z. Library
+verificator: PASSED. Unit tests: 11/11. Task results verificator: PASSED (0 errors).
+
+Key results:
+- ElevenLabs David: speaker_sim=0.832 (fillers) / 0.792 (val96), TTFB_p50=132ms / 153ms
+- kokoro_v3_bundle (best Kokoro): 0.631 / 0.588, TTFB=185ms / 282ms
+- kokoro_t0006_v6d (best TTFB): 132ms on fillers, speaker_sim=0.601 / 0.482
+- kokoro_t0005_best: not viable — duration explosions, nan speaker_sim
+- Gap to 0.85 target: ~0.20 GE2E cosine units
+
 * * *
 
 ## Next Step Notes
 
-Step 9 is implementation. LLM-T1-NC80 is UP and running with watchdog (PID confirmed). The
-implementation step must: (1) regenerate the 11labs_david corpus via ElevenLabs API (corpus absent
-from VM — plan Step 1 fallback) — budget ~$5 extra, ~30 min; (2) use
-`/home/azureuser/miniconda3/envs/stt/bin/python` on the VM for all Kokoro synthesis; (3) set
-`HF_HOME=/mnt/cache/persist/hf-cache` before any HF model loads; (4) use resemblyzer from
-`/mnt/tmp/t0008-resemblyzer-venv` (add to PYTHONPATH or activate venv); (5) after Kokoro synthesis
-runs on GPU, call teardown (step 10) immediately — do not leave VM idle. Machine log is at
-`logs/steps/008_setup-machines/machine_log.json`. VM acquired_at: 2026-09-14T16:11:25Z.
+Step 10 (teardown): VM already deallocated at 2026-09-14T17:42:17Z. Step 10 can be marked completed
+— the orchestrator should run it as a formality to update the step tracker. Step 12 (results) and
+Step 14 (suggestions) remain pending.
