@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T18:02:00Z"
-completed_steps: 12
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-14T18:15:00Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -99,6 +99,13 @@ VM was already deallocated during implementation at 2026-09-14T17:42:17Z. Update
 with `destroyed_at`, `total_duration_hours` (2.0), and `total_cost_usd` (27.92). Fixed provider
 field to "azure_ml" enum value. `verify_machines_destroyed`: PASSED (0 errors).
 
+### Step 12 — results
+
+Verified existing `results_summary.md` and `results_detailed.md` against spec. Added mandatory
+`## Examples` section (10+ concrete per-clip instances: random, best, worst, boundary, contrastive
+across systems). `verify_task_results`: PASSED (0 errors, 0 warnings). `verify_task_metrics`: PASSED
+(0 errors, 0 warnings).
+
 * * *
 
 ## Cross-Step Decisions
@@ -125,9 +132,9 @@ field to "azure_ml" enum value. `verify_machines_destroyed`: PASSED (0 errors).
 
 ## Next Step Notes
 
-Step 12 (results): Write `results_summary.md`, `results_detailed.md` (with full REQ-1 through REQ-21
-coverage and `## Task Requirement Coverage` as the final section), and verify `metrics.json`
-(already exists with 16 explicit-format variants), `costs.json`, and `remote_machines_used.json`.
-Load `results/metrics.json` and `results/tables.json` for the exact figures — do not approximate.
-Charts are already in `results/images/`. All result files from the implementation step are committed
-and ready. Step 14 (suggestions) and step 15 (reporting) follow.
+Step 14 (suggestions): Generate follow-up task suggestions based on the harness results. The key
+findings are: no Kokoro system meets the 0.85 speaker_sim target (best is v3_bundle at 0.63); 7/8
+Kokoro variants meet TTFB ≤300ms on fillers; t0005_best is not viable due to duration explosions;
+t0006_v6d matches ElevenLabs TTFB (132ms) on fillers. The gaps to target and the best-performing
+checkpoint (v3_bundle) are the primary inputs for suggestions. Step 15 (reporting) follows with all
+verificators.
