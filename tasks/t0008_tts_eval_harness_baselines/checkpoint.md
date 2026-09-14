@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T15:47:11Z"
-completed_steps: 7
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-14T15:54:00Z"
+completed_steps: 8
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -55,6 +55,14 @@ VERSA2024, AnalyzeSim2025). Key findings: resemblyzer same-speaker cosine ≈ 0.
 success criterion; Kokoro GPU RTF ≈ 0.03 on A100, first-chunk 28–97 ms; ElevenLabs p50 TTFB 264–335
 ms; WER thresholds < 5% clean, > 20% hard failure. Output: `research/research_internet.md`.
 
+### Step 6 — research-code
+
+Reviewed 7 completed tasks, 0 registered libraries. Key outputs: five-module checkpoint packaging
+via `tasks/t0002.../code/extract_decoder_generic.py` (38 lines, copy into task); mandatory synthesis
+entry point `tasks/t0003.../code/build_pipeline.py` (import directly; `lang_code="b"` + brand
+lexicon); t0005 best = `epoch_2nd_00003.pth` (val 0.848); t0006 v6d best = `epoch_2nd_00006.pth`
+(val 0.846); all checkpoints DVC-only. Research summary written to `research/research_summary.md`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -63,9 +71,11 @@ ms; WER thresholds < 5% clean, > 20% hard failure. Output: `research/research_in
 
 ## Next Step Notes
 
-Step 5 research-internet complete. Step 6 research-code should review: t0002
-extract_decoder_generic.py (voicepack extraction for packaging custom checkpoints), t0003
-build_pipeline.py (the required synthesis entry point for all Kokoro arms with British lang_code and
-brand lexicon), t0005/t0006 checkpoint paths and naming conventions, and any existing scoring or
-eval utilities across prior tasks. Four discovered papers need corpus addition — these will be
-handled during reporting to avoid blocking downstream steps.
+Step 7 is planning. The planner should read `research/research_summary.md` for a compact overview,
+then dive into `research/research_internet.md` for detailed TTFB measurement methodology and
+`research/research_code.md` for checkpoint paths and the five-module extraction requirement. The
+plan must specify: (1) checkpoint packaging steps for t0005/t0006 raw `.pth` files via a copy of
+`extract_decoder_generic.py`; (2) the eight synthesis adapters (each calling `build_pipeline`); (3)
+the centroid-half split design (679/679 seed=42) for resemblyzer; (4) the VM setup for TTFB
+measurement (filler corpus confirmation/copy + `dvc push`); and (5) the reporting format (variant
+metrics.json, tables, two charts). Budget ≤ $30 total for this task.
