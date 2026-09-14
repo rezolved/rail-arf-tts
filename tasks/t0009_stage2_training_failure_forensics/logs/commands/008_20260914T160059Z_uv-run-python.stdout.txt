@@ -1,0 +1,9 @@
+=== collect_logs.py: git-committed log collection ===
+  OK: run03_v6c stage2.log -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics/tasks/t0009_stage2_training_failure_forensics/data/logs/t0006_run03_v6c/stage2.log
+  OK: v3 train_second_patch.diff -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics/tasks/t0009_stage2_training_failure_forensics/data/reference/v3/train_second_patch.diff
+
+VM retrieval attempt:
+  SSH to LLM-T1-NC80 timed out (VM stopped). /mnt/kikiri-tts/ not accessible. Logs for t0005 runs 1-5 and t0001 are not recoverable.
+
+Result: 1 log file copied, 1 diff file copied
+Logs available: t0006_run03_v6c only.

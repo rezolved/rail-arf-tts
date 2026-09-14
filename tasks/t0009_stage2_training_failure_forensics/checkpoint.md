@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T15:49:30Z"
-completed_steps: 10
-next_step_number: 8
-next_step_id: "implementation"
+updated_at: "2026-09-14T16:30:00Z"
+completed_steps: 11
+next_step_number: 9
+next_step_id: "creative-thinking"
 ---
 # Task Objective
 
@@ -72,6 +72,14 @@ confirmed at ≤ \$25 (local/CPU + ≤ 30 min VM for log retrieval). The safegua
 `train_second_patched.py` from t0005; health gate thresholds derived from research (Dur Loss step-1
 < 2.0, `acoustic_norm` < 20, val spike ≤ 0.05, consecutive skips ≤ 50).
 
+### Step 8 — implementation
+
+All forensic analysis complete. Produced: log inventory (1 of 13 runs has a surviving log), confound
+table, data audit (v5 val == val\_96, no overlap), pipeline diff (7 patches classified), checkpoint
+audit. Library asset `t0009_training_safeguards` (4 modules: jsonl\_logger, health\_gates,
+checkpoint\_manager, run\_config) and answer asset `t0009-stage2-forensics-answer` both produced and
+verified. Root cause: DP checkpoint mismatch + joint\_epoch=3 too early.
+
 * * *
 
 ## Cross-Step Decisions
@@ -80,15 +88,18 @@ confirmed at ≤ \$25 (local/CPU + ≤ 30 min VM for log retrieval). The safegua
   libraries exist to import.
 * v3's `train_second_patch.diff` is the forensic baseline — use it as the starting point for the
   pipeline audit in planning.
+* Root cause finding: DataParallel checkpoint mismatch (missing "module." prefix) + joint\_epoch=3
+  too early; recommended fix: DP-aware loader + joint\_epoch≥6.
+* Health gate thresholds from log analysis: Dur Loss step-1 < 2.0, acoustic\_norm < 20, val spike ≤
+  0.05, consecutive skips ≤ 50.
 
 * * *
 
 ## Next Step Notes
 
-Step 7 (`planning`) completed. The implementation plan is at `plan/plan.md`. Proceed to step 8
-(`implementation`): read `plan/plan.md` and execute all 15 steps across the 8 milestones in order.
-Start with Milestone 1 (log collection from git — no VM needed first). Milestone 2 requires VM SSH
-only if surviving logs are found. The safeguard library (Milestone 7) should be implemented after
-log parsing (Milestones 2-3) so that health gate thresholds can be cross-checked against actual log
-data. Key files to produce: `code/parse_logs.py`, `code/jsonl_logger.py`, `code/health_gates.py`,
-`code/checkpoint_manager.py`, `code/test_replay.py`, and the answer asset.
+Step 8 (implementation) completed. All forensic deliverables are committed. Proceed to step 9
+(creative-thinking): explore alternative failure hypotheses and safeguard strategies not captured in
+the main analysis. The research\_summary.md and the full\_answer.md contain the primary findings.
+Key open questions for creative thinking: (1) whether val\_loss 0.506 (v3) is comparable to v5
+numbers, (2) whether the 7 t0005 patches mask deeper issues, (3) alternative checkpoint selection
+criteria beyond val\_loss.

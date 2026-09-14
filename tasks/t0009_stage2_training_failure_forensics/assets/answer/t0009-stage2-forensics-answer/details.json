@@ -1,0 +1,25 @@
+{
+  "spec_version": "2",
+  "answer_id": "t0009-stage2-forensics-answer",
+  "question": "Why does Kokoro-82M Stage 2 fine-tuning diverge across 19+ training launches, and what configuration changes reliably prevent divergence?",
+  "short_title": "Root causes of Kokoro Stage 2 divergence and recommended fix",
+  "short_answer_path": "short_answer.md",
+  "full_answer_path": "full_answer.md",
+  "categories": [],
+  "answer_methods": [
+    "code-experiment",
+    "internet"
+  ],
+  "source_paper_ids": [],
+  "source_urls": [
+    "https://github.com/resemble-ai/StyleTTS2",
+    "https://github.com/hexgrad/kokoro"
+  ],
+  "source_task_ids": [
+    "t0001_kokoro_v4_stage2_finetune",
+    "t0005_kokoro_v5_stage2_train"
+  ],
+  "confidence": "high",
+  "created_by_task": "t0009_stage2_training_failure_forensics",
+  "date_created": "2026-09-14"
+}

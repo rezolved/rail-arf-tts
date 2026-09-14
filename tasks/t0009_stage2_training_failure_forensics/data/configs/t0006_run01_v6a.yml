@@ -1,0 +1,13 @@
+# Reconstructed from task README (t0006_kokoro_v5_stage2_subset)
+# Run: v6a — epoch_1st_00007.pth (multispeaker=false), lambda_gen=1.0
+loss_params:
+  joint_epoch: 3      # assumed (same as t0005 default)
+  lambda_gen: 1.0
+  lambda_slm: 0.0
+optimizer_params:
+  lr: 0.0001
+  ft_lr: 0.0001
+  bert_lr: 0.000001
+model_params:
+  multispeaker: false  # MISMATCH with stage1 checkpoint
+first_stage_path: epoch_1st_00007.pth

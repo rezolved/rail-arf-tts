@@ -1,0 +1,4 @@
+Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics/tasks/t0009_stage2_training_failure_forensics/data/log_inventory.json
+Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics/tasks/t0009_stage2_training_failure_forensics/results/log_inventory.md
+
+Inventory: 13 runs, 1 with logs.
