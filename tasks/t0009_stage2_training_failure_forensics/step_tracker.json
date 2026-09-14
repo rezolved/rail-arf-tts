@@ -34,10 +34,14 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create mandatory task folder structure: assets/, results/, research/, logs/ subdirs and .gitkeep files.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T15:33:34Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/003_init-folders/",
+      "current_owner": "step-executor/init-folders",
+      "last_heartbeat_at": "2026-09-14T15:33:34Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T16:33:34Z"
     },
     {
       "step": 4,

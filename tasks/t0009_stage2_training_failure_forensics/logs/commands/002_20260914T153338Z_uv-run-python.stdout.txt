@@ -1,0 +1,17 @@
+plan
+research
+results
+results/images
+corrections
+intervention
+code
+logs/commands
+logs/searches
+logs/sessions
+logs/steps
+assets/answer
+assets/library
+
+Created 13 directories with .gitkeep files.
+Created __init__.py
+Created code/__init__.py

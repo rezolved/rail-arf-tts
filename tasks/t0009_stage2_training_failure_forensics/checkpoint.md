@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T15:32:30Z"
-completed_steps: 7
-next_step_number: 3
-next_step_id: "init-folders"
+updated_at: "2026-09-14T15:34:00Z"
+completed_steps: 8
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -45,6 +45,12 @@ Skipped: analysis runs locally on stored logs and checkpoints; no GPU required.
 
 Skipped: no remote machines provisioned.
 
+### Step 3 — init-folders
+
+Mandatory task folder structure created by `init_task_folders`; 13 directories with `.gitkeep` files
+plus `__init__.py` files for the code package. Aggregator cache written to
+`tasks/t0009_stage2_training_failure_forensics/ctx/` (gitignored).
+
 ### Step 13 — compare-literature
 
 Skipped: this is a forensic audit task; results are not comparable to published quantitative
@@ -58,6 +64,8 @@ baselines.
 
 ## Next Step Notes
 
-Step 2 completed successfully; both upstream training tasks are done and their logs/checkpoints are
-available for forensic analysis. Proceed to step 3 (`init-folders`) to create the mandatory task
-directory structure before research-code can begin.
+Step 3 (`init-folders`) completed successfully; all mandatory directories exist and the aggregator
+cache is populated in `ctx/`. Proceed to step 6 (`research-code`): review t0005 and t0006 task code,
+training logs, config files, and checkpoints to gather forensic inputs before the planning step
+designs the analysis and safeguard approach. The `ctx/tasks.json` cache already has metadata for all
+completed tasks; use it instead of re-running the aggregator.
