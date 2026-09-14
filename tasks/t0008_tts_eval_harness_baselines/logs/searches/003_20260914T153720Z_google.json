@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:37:20Z",
+  "source": "Google (via WebSearch)",
+  "query": "Kokoro-82M TTS TTFB latency benchmark evaluation H100 GPU inference",
+  "results_count": 9,
+  "results": [
+    {
+      "title": "Kokoro TTS Latency by GPU GIGAGPU",
+      "url": "https://gigagpu.com/kokoro-tts-latency-by-gpu/",
+      "snippet": "RTF 0.03 on GPU; RTX 3050 delivers 180ms, RTX 5090 at 22ms. 10-second clip synthesized in ~0.3s on A100.",
+      "relevance_note": "GPU-specific Kokoro latency benchmarks"
+    },
+    {
+      "title": "TTS Latency Benchmarks GIGAGPU",
+      "url": "https://gigagpu.com/tts-latency-benchmarks/",
+      "snippet": "Comprehensive TTS latency comparison across Kokoro and other models",
+      "relevance_note": "Comparative latency data needed for TTFB baseline expectations"
+    },
+    {
+      "title": "Kokoro 82M vs Supertonic 3: A Real CPU TTS Benchmark",
+      "url": "https://heyneo.com/blog/kokoro-tts-vs-supertonic-3-tts",
+      "snippet": "CPU benchmark comparing Kokoro with RTF values",
+      "relevance_note": "CPU TTFB reference for comparison"
+    }
+  ],
+  "error": null
+}

@@ -1,0 +1,9 @@
+CACHEDIR.TAG
+hub
+models--google--gemma-4-12B-it
+models--nvidia--Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16
+models--nvidia--gpt-oss-120b-Eagle3-v3
+models--openai--gpt-oss-120b
+modules
+testfile
+xet

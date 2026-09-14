@@ -1,0 +1,10 @@
+/home/azureuser/STT/brainpowa-realtime-api/.venv/lib/python3.13/site-packages
+/home/azureuser/t0027-dvc-tools/dvc-venv/lib/python3.10/site-packages
+/home/azureuser/brainpowa-realtime-api/.venv/lib/python3.13/site-packages
+/home/azureuser/.local/lib/python3.10/site-packages
+/home/azureuser/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/site-packages
+/home/azureuser/rail-arf-stt-worktree-broken/.venv/lib/python3.14/site-packages
+/home/azureuser/miniconda3/envs/stt/lib/python3.11/site-packages
+/home/azureuser/miniconda3/pkgs/conda-anaconda-tos-0.2.2-py313h06a4308_1/lib/python3.13/site-packages
+/home/azureuser/miniconda3/pkgs/pip-26.0.1-pyhc872135_1/site-packages
+/home/azureuser/miniconda3/pkgs/jaraco.context-6.1.0-py313h06a4308_0/lib/python3.13/site-packages

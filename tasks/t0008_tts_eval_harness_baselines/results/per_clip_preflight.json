@@ -1,0 +1,41 @@
+[
+  {
+    "system": "elevenlabs_david",
+    "prompt_set": "val96",
+    "text": "checking for the latest press release",
+    "ttfb_ms": 141.54624200000399,
+    "rtf": 0.08661822547511742,
+    "speaker_sim": null,
+    "duration_ratio": null,
+    "wer": null,
+    "audio_path": "tasks/t0008_tts_eval_harness_baselines/data/synth_audio/elevenlabs_david/val96/0000.wav",
+    "ref_duration_s": 2.13625,
+    "synth_duration_s": 1.933061224489796
+  },
+  {
+    "system": "elevenlabs_david",
+    "prompt_set": "val96",
+    "text": "checking supported language options",
+    "ttfb_ms": 132.80877799934387,
+    "rtf": 0.0740623339981158,
+    "speaker_sim": null,
+    "duration_ratio": null,
+    "wer": null,
+    "audio_path": "tasks/t0008_tts_eval_harness_baselines/data/synth_audio/elevenlabs_david/val96/0001.wav",
+    "ref_duration_s": 2.13625,
+    "synth_duration_s": 2.220408163265306
+  },
+  {
+    "system": "elevenlabs_david",
+    "prompt_set": "val96",
+    "text": "checking the most recent updates",
+    "ttfb_ms": 125.27152199982083,
+    "rtf": 0.07305053128096449,
+    "speaker_sim": null,
+    "duration_ratio": null,
+    "wer": null,
+    "audio_path": "tasks/t0008_tts_eval_harness_baselines/data/synth_audio/elevenlabs_david/val96/0002.wav",
+    "ref_duration_s": 2.043375,
+    "synth_duration_s": 1.9853061224489796
+  }
+]

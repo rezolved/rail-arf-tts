@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "command": "ssh LLM-T1-NC80 ls /home/azureuser/brainpowa-venv/lib/python*/site-packages/ | grep -i 'kokoro\\|torch\\|resemblyzer\\|faster-whisper' 2>/dev/null | head -20",
+  "exit_code": 0,
+  "duration_seconds": 0.357,
+  "started_at": "2026-09-14T16:15:05Z",
+  "completed_at": "2026-09-14T16:15:05Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines",
+  "stdout_file": "029_20260914T161505Z_ssh-llm-t1-nc80-ls-home-azureuser-brainp.stdout.txt",
+  "stderr_file": "029_20260914T161505Z_ssh-llm-t1-nc80-ls-home-azureuser-brainp.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 1,
+  "truncated": false
+}

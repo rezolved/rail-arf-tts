@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "command": "python -m arf.scripts.verificators.verify_metrics t0008_tts_eval_harness_baselines",
+  "exit_code": 1,
+  "duration_seconds": 0.142,
+  "started_at": "2026-09-14T17:54:58Z",
+  "completed_at": "2026-09-14T17:54:58Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines",
+  "stdout_file": "097_20260914T175458Z_python-m-arf-scripts-verificators-verify.stdout.txt",
+  "stderr_file": "097_20260914T175458Z_python-m-arf-scripts-verificators-verify.stderr.txt",
+  "stdout_lines": 8,
+  "stderr_lines": 0,
+  "truncated": false
+}

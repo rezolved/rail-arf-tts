@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "command": "ssh LLM-T1-NC80 find / -name 'kokoro*' -type d 2>/dev/null | head -10; pip3 show kokoro 2>/dev/null | head -5 || echo 'kokoro not installed'",
+  "exit_code": 0,
+  "duration_seconds": 74.022,
+  "started_at": "2026-09-14T16:13:59Z",
+  "completed_at": "2026-09-14T16:15:13Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines",
+  "stdout_file": "022_20260914T161359Z_ssh-llm-t1-nc80-find-name-kokoro-type-d-.stdout.txt",
+  "stderr_file": "022_20260914T161359Z_ssh-llm-t1-nc80-find-name-kokoro-type-d-.stderr.txt",
+  "stdout_lines": 6,
+  "stderr_lines": 0,
+  "truncated": false
+}

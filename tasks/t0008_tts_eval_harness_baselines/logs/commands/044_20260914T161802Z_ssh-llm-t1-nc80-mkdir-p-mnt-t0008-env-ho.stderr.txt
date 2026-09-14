@@ -1,0 +1,1 @@
+mkdir: cannot create directory ‘/mnt/t0008_env’: Permission denied

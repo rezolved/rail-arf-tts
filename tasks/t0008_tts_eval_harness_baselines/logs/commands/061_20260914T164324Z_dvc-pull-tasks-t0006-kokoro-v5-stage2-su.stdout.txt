@@ -1,0 +1,4 @@
+A       
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_decoder
+_kokoro.pth
+1 file fetched and 1 file added

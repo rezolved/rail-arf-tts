@@ -1,0 +1,20 @@
+2026-09-14 17:36:45,993 INFO __main__ Loaded 1568 per-clip records
+2026-09-14 17:36:45,994 INFO __main__ Systems: ['elevenlabs_david', 'kokoro_base_george', 'kokoro_base_lewis', 'kokoro_base_v3_voicepack', 'kokoro_floor_control', 'kokoro_t0005_best', 'kokoro_t0006_v6d', 'kokoro_v3_bundle']
+2026-09-14 17:36:45,994 INFO __main__ Prompt sets: ['fillers', 'val96']
+2026-09-14 17:36:46,037 INFO __main__ Saved metrics.json → tasks/t0008_tts_eval_harness_baselines/results/metrics.json
+2026-09-14 17:36:46,056 INFO __main__ Saved tables.json → tasks/t0008_tts_eval_harness_baselines/results/tables.json
+2026-09-14 17:36:48,796 INFO __main__ Saved speaker_sim boxplot → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/images/speaker_sim_boxplot.png
+2026-09-14 17:36:49,328 INFO __main__ Saved TTFB CDF → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/images/ttfb_cdf.png
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/code/report.py", line 436, in <module>
+    main()
+    ~~~~^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/code/report.py", line 409, in main
+    plot_speaker_sim_wer_scatter(records, systems, CHART_SPEAKER_SIM_WER_SCATTER)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/code/report.py", line 310, in plot_speaker_sim_wer_scatter
+    colors = cm.get_cmap("tab10")
+             ^^^^^^^^^^^
+AttributeError: module 'matplotlib.cm' has no attribute 'get_cmap'

@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:38:00Z",
+  "source": "Google (via WebSearch)",
+  "query": "streaming TTS TTFB measurement methodology warmup requests benchmark reproducible",
+  "results_count": 8,
+  "results": [
+    {
+      "title": "Streaming TTS benchmark: Async vs Elevenlabs vs Cartesia",
+      "url": "https://async.com/blog/tts-latency-vs-quality-benchmark/",
+      "snippet": "Methodology: warmup run triggers scale-up, HTTP/2 multiplexing, p95 latency reporting",
+      "relevance_note": "Reference benchmark methodology for streaming TTS latency"
+    },
+    {
+      "title": "benchmarks/docs/methodology.md at main · coval-ai/benchmarks",
+      "url": "https://github.com/coval-ai/benchmarks/blob/main/docs/methodology.md",
+      "snippet": "TTFA = first chunk arrival − synthesis start + leading silence. Warmup via 6-min handshake budget.",
+      "relevance_note": "Detailed TTFA measurement methodology used by Coval benchmark"
+    },
+    {
+      "title": "Picovoice TTS Latency Benchmark docs",
+      "url": "https://picovoice.ai/docs/benchmark/tts/",
+      "snippet": "~200 taskmaster2 interactions. AMD Ryzen 7 5700X + 64GB RAM. Kokoro FTTS: 3,658ms CPU baseline.",
+      "relevance_note": "Comprehensive open-source benchmark framework with Kokoro CPU numbers"
+    }
+  ],
+  "error": null
+}

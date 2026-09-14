@@ -1,0 +1,8 @@
+Installing collected packages: resemblyzer
+Successfully installed resemblyzer-0.1.4
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: /mnt/tmp/t0008-resemblyzer-venv/bin/python -m pip install --upgrade pip
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: /mnt/tmp/t0008-resemblyzer-venv/bin/python -m pip install --upgrade pip

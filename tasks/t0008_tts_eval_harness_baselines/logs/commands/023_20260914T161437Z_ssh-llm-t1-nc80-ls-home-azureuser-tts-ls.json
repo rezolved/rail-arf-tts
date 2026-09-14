@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "command": "ssh LLM-T1-NC80 ls /home/azureuser/TTS/ && ls /home/azureuser/TTS/kokoro-finetune/ 2>/dev/null || echo 'no kokoro-finetune in TTS'",
+  "exit_code": 0,
+  "duration_seconds": 0.367,
+  "started_at": "2026-09-14T16:14:37Z",
+  "completed_at": "2026-09-14T16:14:37Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines",
+  "stdout_file": "023_20260914T161437Z_ssh-llm-t1-nc80-ls-home-azureuser-tts-ls.stdout.txt",
+  "stderr_file": "023_20260914T161437Z_ssh-llm-t1-nc80-ls-home-azureuser-tts-ls.stderr.txt",
+  "stdout_lines": 11,
+  "stderr_lines": 0,
+  "truncated": false
+}

@@ -1,0 +1,14 @@
+{
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "checked_at": "2026-09-14T15:30:43Z",
+  "result": "passed",
+  "dependencies": [
+    {
+      "task_id": "t0006_kokoro_v5_stage2_subset",
+      "status": "completed",
+      "satisfied": true
+    }
+  ],
+  "errors": 0,
+  "warnings": 0
+}

@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:37:00Z",
+  "source": "Google (via WebSearch)",
+  "query": "GE2E generalized end-to-end loss speaker verification embedding Wan 2018",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "Generalized End-to-End Loss for Speaker Verification",
+      "url": "https://arxiv.org/abs/1710.10467",
+      "snippet": "New GE2E loss function that updates network emphasizing hard examples; reduces EER by >10% and training time by 60%.",
+      "relevance_note": "Core paper defining the speaker embedding model used by resemblyzer and this task's speaker_sim metric"
+    },
+    {
+      "title": "GitHub - funcwj/ge2e-speaker-verification",
+      "url": "https://github.com/funcwj/ge2e-speaker-verification",
+      "snippet": "PyTorch implementation of GE2E loss for speaker verification",
+      "relevance_note": "Reference implementation"
+    },
+    {
+      "title": "Generalized End-to-End Loss for Speaker Verification (Google)",
+      "url": "https://google.github.io/speaker-id/publications/GE2E/",
+      "snippet": "Official Google publication page with audio samples and supplementary material",
+      "relevance_note": "Official paper page"
+    }
+  ],
+  "error": null
+}

@@ -1,0 +1,8 @@
+epoch_2nd_00006.pth: val_loss=0.8461818099021912, epoch=6
+Saved → tasks/t0008_tts_eval_harness_baselines/data/packaged/t0006_v6d_epoch6.pth
+  bert: 25 params
+  bert_encoder: 2 params
+  predictor: 122 params
+  text_encoder: 24 params
+  decoder: 375 params
+Validation OK: t0006_v6d_epoch6.pth keys = ['bert', 'bert_encoder', 'decoder', 'predictor', 'text_encoder']

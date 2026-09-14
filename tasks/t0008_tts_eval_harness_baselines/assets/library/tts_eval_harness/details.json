@@ -1,0 +1,117 @@
+{
+  "spec_version": "2",
+  "library_id": "tts_eval_harness",
+  "name": "TTS Evaluation Harness",
+  "version": "0.1.0",
+  "short_description": "Reusable evaluation harness for TTS systems measuring speaker similarity (GE2E cosine), TTFB, RTF, WER, and duration ratio across multiple prompt sets.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/harness.py",
+    "code/adapters.py",
+    "code/scoring.py",
+    "code/report.py",
+    "code/extract_decoder.py",
+    "code/constants.py",
+    "code/paths.py",
+    "code/run_eval.py",
+    "code/prepare_prompts.py",
+    "code/score_speaker_sim.py"
+  ],
+  "entry_points": [
+    {
+      "name": "run_eval",
+      "kind": "script",
+      "module": "code/run_eval.py",
+      "description": "CLI entry point: run synthesis + timing across any combination of 8 TTS systems and 2 prompt sets, saving per-clip metrics JSON."
+    },
+    {
+      "name": "score_speaker_sim",
+      "kind": "script",
+      "module": "code/score_speaker_sim.py",
+      "description": "CLI entry point: compute GE2E speaker similarity and WER on synthesized audio, updating per-clip metrics JSON in place."
+    },
+    {
+      "name": "report",
+      "kind": "script",
+      "module": "code/report.py",
+      "description": "CLI entry point: aggregate per-clip metrics into metrics.json (variant format), tables.json, and three charts."
+    },
+    {
+      "name": "elevenlabs_david",
+      "kind": "function",
+      "module": "code/adapters.py",
+      "description": "Synthesize text via ElevenLabs streaming API, measuring TTFB from first non-empty chunk."
+    },
+    {
+      "name": "kokoro_george",
+      "kind": "function",
+      "module": "code/adapters.py",
+      "description": "Synthesize via Kokoro-82M base model with bm_george voice through build_pipeline."
+    },
+    {
+      "name": "kokoro_v3_bundle",
+      "kind": "function",
+      "module": "code/adapters.py",
+      "description": "Synthesize via Kokoro-82M with fine-tuned v3 decoder + David voicepack."
+    },
+    {
+      "name": "load_kokoro_model_with_checkpoint",
+      "kind": "function",
+      "module": "code/adapters.py",
+      "description": "Load KModel (stock or with a five-module packaged checkpoint) ready for build_pipeline."
+    },
+    {
+      "name": "build_centroid",
+      "kind": "function",
+      "module": "code/scoring.py",
+      "description": "Compute L2-normalized mean GE2E embedding from a list of reference WAV files."
+    },
+    {
+      "name": "compute_speaker_sim",
+      "kind": "function",
+      "module": "code/scoring.py",
+      "description": "Score synthesized audio against a reference centroid or half-B embeddings using GE2E cosine similarity."
+    },
+    {
+      "name": "compute_wer",
+      "kind": "function",
+      "module": "code/scoring.py",
+      "description": "Transcribe synthesized audio with Whisper base.en and compute WER vs reference text."
+    },
+    {
+      "name": "compute_duration_ratio",
+      "kind": "function",
+      "module": "code/scoring.py",
+      "description": "Compute per-clip synthesis/reference duration ratio; flag clips with ratio > 5.0 as explosions."
+    },
+    {
+      "name": "extract",
+      "kind": "function",
+      "module": "code/extract_decoder.py",
+      "description": "Extract five-module state dict from a raw StyleTTS2/Kokoro training checkpoint."
+    },
+    {
+      "name": "build_reference_split",
+      "kind": "function",
+      "module": "code/harness.py",
+      "description": "Split ElevenLabs reference corpus 679/679 (seed=42), compute centroid from half-A, return (centroid, half_b_paths)."
+    }
+  ],
+  "dependencies": [
+    "numpy",
+    "soundfile",
+    "torch",
+    "kokoro",
+    "requests"
+  ],
+  "test_paths": [
+    "code/test_harness.py"
+  ],
+  "categories": [
+    "evaluation",
+    "tts",
+    "benchmark"
+  ],
+  "created_by_task": "t0008_tts_eval_harness_baselines",
+  "date_created": "2026-09-14"
+}

@@ -1,0 +1,11 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results
+
+[31m[1mERRORS:[0m
+[31m  TR-E001 error: results_summary.md does not exist: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/results_summary.md[0m
+[31m  TR-E002 error: results_detailed.md does not exist: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/results_detailed.md[0m
+[31m  TR-E011 error: costs.json is missing 'total_cost_usd'[0m
+[31m  TR-E005 error: remote_machines_used.json does not exist: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/remote_machines_used.json[0m
+
+[31m[1mFAILED[0m — 4 error(s), 0 warning(s)
+

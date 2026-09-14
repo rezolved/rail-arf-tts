@@ -1,0 +1,4 @@
+/usr/bin/python3
+Python 3.10.12
+torchaudio                               2.11.0
+torchcodec                               0.16.0

@@ -1,0 +1,46 @@
+{
+  "eval_date": "2026-09-14",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "environment": {
+    "machine": "LLM-T1-NC80",
+    "gpu": "2x NVIDIA H100 NVL (95830 MiB each)",
+    "driver_version": "535.274.02",
+    "cuda_version": "12.1",
+    "torch_version": "2.5.1+cu121",
+    "kokoro_version": "0.9.4",
+    "python_version": "3.11",
+    "conda_env": "stt",
+    "resemblyzer_version": "0.1.4",
+    "resemblyzer_venv": "/mnt/tmp/t0008-resemblyzer-venv"
+  },
+  "corpus": {
+    "11labs_david_clips": 1364,
+    "corpus_description": "62 production filler phrases x 22 repetitions, regenerated 2026-09-14 via ElevenLabs API",
+    "voice_id": "5gLuKtB16QIQv1vuSas1",
+    "voice_name": "David - British Radio Host & Storyteller",
+    "reference_split_seed": 42,
+    "half_a_size": 679,
+    "half_b_size": 685
+  },
+  "eval_configs": {
+    "n_warmup": 1,
+    "prompt_sets": ["val96", "fillers"],
+    "val96_prompts": 96,
+    "filler_prompts": 100
+  },
+  "checkpoints": {
+    "t0005_run06_epoch3": {
+      "source_task": "t0005_kokoro_v5_stage2_train",
+      "source_file": "results/checkpoints/epoch_2nd_00003.pth",
+      "epoch": 3,
+      "modules": ["bert", "bert_encoder", "predictor", "text_encoder", "decoder"]
+    },
+    "t0006_v6d_epoch6": {
+      "source_task": "t0006_kokoro_v5_stage2_subset",
+      "source_file": "results/checkpoints/v6d/epoch_2nd_00006.pth",
+      "epoch": 6,
+      "val_loss": 0.8461818099021912,
+      "modules": ["bert", "bert_encoder", "predictor", "text_encoder", "decoder"]
+    }
+  }
+}

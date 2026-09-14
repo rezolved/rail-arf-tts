@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "command": "uv run python -c \nimport json, datetime\nfrom arf.scripts.utils.azure_ml_vm import to_machine_log_entry\n\nacquire_result = {\n    'task_id': 't0008_tts_eval_harness_baselines',\n    'vm_name': 'LLM-T1-NC80',\n    'ssh_host_alias': 'LLM-T1-NC80',\n    'hourly_cost_usd': 13.96,\n    'acquired_at': '2026-09-14T16:11:25.208176Z',\n    'started_vm': True,\n    'billing_started_at': '2026-09-14T16:03:28.115505Z',\n    'billing_anchor': 'az_start_issued',\n    'search_started_at': '2026-09-14T16:03:02.843803Z',\n    'total_provisioning_seconds': 502.3643613620002,\n    'failed_attempts': []\n}\n\nentry = to_machine_log_entry(acquire_result=acquire_result)\nlog = [entry]\nout_path = 'tasks/t0008_tts_eval_harness_baselines/logs/steps/008_setup-machines/machine_log.json'\nwith open(out_path, 'w') as f:\n    json.dump(log, f, indent=2, default=str)\nprint('Wrote machine_log.json')\nprint(json.dumps(entry, indent=2, default=str))\n",
+  "exit_code": 1,
+  "duration_seconds": 0.386,
+  "started_at": "2026-09-14T16:11:33Z",
+  "completed_at": "2026-09-14T16:11:33Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines",
+  "stdout_file": "008_20260914T161133Z_uv-run-python.stdout.txt",
+  "stderr_file": "008_20260914T161133Z_uv-run-python.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 7,
+  "truncated": false
+}
