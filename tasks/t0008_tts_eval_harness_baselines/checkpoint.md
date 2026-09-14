@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
 updated_at: "2026-09-14T17:45:00Z"
-completed_steps: 10
+completed_steps: 11
 next_step_number: 10
 next_step_id: "teardown"
 ---
@@ -83,6 +83,16 @@ engine smoke gate passed (1 chunk, 6.84s). Key finding: 11labs_david corpus abse
 wiped) — implementation step must regenerate via ElevenLabs API. Machine log:
 `logs/steps/008_setup-machines/machine_log.json`.
 
+### Step 9 — implementation
+
+Built `tts_eval_harness` library (v0.1.0). Ran synthesis for all 8 TTS systems on val96 and filler
+prompt sets on LLM-T1-NC80 (2×H100 NVL). Scored all 1568 per-clip records for speaker_sim (GE2E GPU
+via resemblyzer), WER (faster-whisper base.en CPU), and duration ratio. Generated `metrics.json` (16
+explicit-format variants), `tables.json`, 3 PNG charts, and both results files. DVC-tracked
+11labs_david corpus, synth_audio, and packaged checkpoints. VM torn down at 17:42Z. Library
+verificator: PASSED. Unit tests: 11/11. Task results verificator: PASSED (0 errors). Gap to 0.85
+target: ~0.20 GE2E cosine units.
+
 * * *
 
 ## Cross-Step Decisions
@@ -101,22 +111,9 @@ wiped) — implementation step must regenerate via ElevenLabs API. Machine log:
   `/mnt/tmp/t0008-resemblyzer-venv` (root disk full). `HF_HOME=/mnt/cache/persist/hf-cache` for all
   remote runs. 11labs_david corpus absent from VM — must regenerate via ElevenLabs API in
   implementation step (plan Step 1 fallback path).
-
-### Step 9 — implementation
-
-Built `tts_eval_harness` library (v0.1.0). Ran synthesis for all 8 TTS systems on val96 and filler
-prompt sets on LLM-T1-NC80 (2×H100 NVL). Scored all 1568 per-clip records for speaker_sim (GE2E GPU
-via resemblyzer), WER (faster-whisper base.en CPU), and duration ratio. Generated `metrics.json` (16
-explicit-format variants), `tables.json`, 3 PNG charts, and both results files. DVC-tracked
-11labs_david corpus, synth_audio, and packaged checkpoints. VM torn down at 17:42Z. Library
-verificator: PASSED. Unit tests: 11/11. Task results verificator: PASSED (0 errors).
-
-Key results:
-- ElevenLabs David: speaker_sim=0.832 (fillers) / 0.792 (val96), TTFB_p50=132ms / 153ms
-- kokoro_v3_bundle (best Kokoro): 0.631 / 0.588, TTFB=185ms / 282ms
-- kokoro_t0006_v6d (best TTFB): 132ms on fillers, speaker_sim=0.601 / 0.482
-- kokoro_t0005_best: not viable — duration explosions, nan speaker_sim
-- Gap to 0.85 target: ~0.20 GE2E cosine units
+* **Implementation results**: ElevenLabs David speaker_sim=0.832 (fillers)/0.792 (val96),
+  TTFB_p50=132ms/153ms; v3_bundle=0.631/0.588; t0006_v6d=0.601/0.482, TTFB=132ms; t0005=not viable
+  (duration explosions). No Kokoro system meets the 0.85 target; 7/8 Kokoro meet TTFB ≤300ms.
 
 * * *
 
