@@ -1,0 +1,145 @@
+{
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "spec_version": "7",
+  "steps": [
+    {
+      "step": 1,
+      "name": "create-branch",
+      "description": "Create task/t0008_tts_eval_harness_baselines branch from main and plan the step list.",
+      "status": "in_progress",
+      "started_at": "2026-09-14T15:28:37Z",
+      "completed_at": null,
+      "log_file": "logs/steps/001_create-branch/",
+      "current_owner": "step-executor/create-branch",
+      "last_heartbeat_at": "2026-09-14T15:28:37Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T16:28:37Z"
+    },
+    {
+      "step": 2,
+      "name": "check-deps",
+      "description": "Verify t0006_kokoro_v5_stage2_subset is completed and its checkpoints/reference bundles are accessible.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 3,
+      "name": "init-folders",
+      "description": "Create mandatory task folder structure including library asset subdirectory.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 4,
+      "name": "research-papers",
+      "description": "Review corpus for papers on GE2E speaker embeddings, resemblyzer, WER evaluation, and TTS latency benchmarking.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 5,
+      "name": "research-internet",
+      "description": "Search for current resemblyzer/GE2E usage patterns, ElevenLabs streaming API TTFB measurement, and Kokoro evaluation practices.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 6,
+      "name": "research-code",
+      "description": "Review t0002 voicepack extraction, t0003 build_pipeline.py, t0005/t0006 checkpoints and training logs to understand available artifacts.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 7,
+      "name": "planning",
+      "description": "Design the evaluation harness architecture, prompt-set loading, per-system synthesis adapters, scoring pipeline, and GPU budget for TTFB measurement on LLM-T1-NC80.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 8,
+      "name": "setup-machines",
+      "description": "Provision LLM-T1-NC80 H100 VM for Kokoro TTFB/RTF measurement and install kokoro-finetune environment.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 9,
+      "name": "implementation",
+      "description": "Build the evaluation harness library, copy ElevenLabs filler corpus from VM and DVC-track it, run all 7 systems plus floor control on val_96 and filler prompt sets, produce metrics.json and charts.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 10,
+      "name": "teardown",
+      "description": "Destroy LLM-T1-NC80 after TTFB/RTF runs are complete and update costs.json.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 11,
+      "name": "creative-thinking",
+      "description": "Skipped — structured evaluation against fixed success criteria; no open-ended analysis needed at this stage.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 12,
+      "name": "results",
+      "description": "Write results_summary.md, results_detailed.md with all required tables and charts, metrics.json (variant format per system), and costs.json.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 13,
+      "name": "compare-literature",
+      "description": "Skipped — no published speaker_sim/TTFB baselines for Kokoro-82M David voice fine-tuning exist in the corpus to compare against.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 14,
+      "name": "suggestions",
+      "description": "Generate follow-up task suggestions based on harness results and which systems pass/fail the success criteria.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 15,
+      "name": "reporting",
+      "description": "Run all verificators, capture session transcripts, update task.json status to completed.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    }
+  ]
+}
