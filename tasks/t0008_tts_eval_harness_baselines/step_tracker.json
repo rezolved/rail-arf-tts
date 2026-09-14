@@ -20,14 +20,15 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0006_kokoro_v5_stage2_subset is completed and its checkpoints/reference bundles are accessible.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T15:30:43Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T15:31:37Z",
       "log_file": "logs/steps/002_check-deps/",
-      "current_owner": "step-executor/check-deps",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T15:30:43Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-14T16:30:43Z"
+      "expected_completion_at": "2026-09-14T16:30:43Z",
+      "actual_duration_seconds": 54
     },
     {
       "step": 3,
