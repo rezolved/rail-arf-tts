@@ -177,14 +177,15 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verificator pass, session capture, and mark task completed.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T16:46:38Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T16:51:49Z",
       "log_file": "logs/steps/015_reporting/",
-      "current_owner": "step-executor/reporting",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T16:46:38Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-14T17:46:38Z"
+      "expected_completion_at": "2026-09-14T17:46:38Z",
+      "actual_duration_seconds": 311
     }
   ]
 }
