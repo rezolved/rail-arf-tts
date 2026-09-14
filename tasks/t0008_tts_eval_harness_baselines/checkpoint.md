@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
 updated_at: "2026-09-14T15:31:00Z"
-completed_steps: 2
+completed_steps: 4
 next_step_number: 3
 next_step_id: "init-folders"
 ---
@@ -25,6 +25,16 @@ output.
 
 Dependency `t0006_kokoro_v5_stage2_subset` verified as completed. Output written to
 `logs/steps/002_check-deps/deps_report.json`.
+
+### Step 11 — creative-thinking
+
+Skipped — structured evaluation against fixed success criteria; no open-ended analysis needed at
+this stage.
+
+### Step 13 — compare-literature
+
+Skipped — no published speaker_sim/TTFB baselines for Kokoro-82M David voice fine-tuning exist in
+the corpus to compare against.
 
 * * *
 
