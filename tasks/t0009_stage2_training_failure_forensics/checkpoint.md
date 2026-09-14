@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T16:45:00Z"
-completed_steps: 12
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-14T17:00:00Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -103,17 +103,19 @@ verified. Root cause: DP checkpoint mismatch + joint\_epoch=3 too early.
 
 * * *
 
+### Step 12 — results
+
+All results files written and verified. `results_summary.md`, `results_detailed.md` (spec\_version
+"2"), `metrics.json` (`{}`), `costs.json` (`$0`), `remote_machines_used.json` (`[]`). Two new
+charts generated: `results/images/log_availability.png` (log survival rate, 1/13) and
+`results/images/confound_heatmap.png` (normalised hyperparameter heatmap). `verify_task_metrics`
+PASS; `verify_task_results` PASS (1 expected warning TR-W013 for data-analysis task type). Both
+assets (answer, library) present and confirmed. `## Task Requirement Coverage` section lists
+REQ-1 through REQ-8 with Done/Partial status. REQ-2 and REQ-4 are Partial due to 12/13 logs being
+permanently deleted and audio DVC not pulled.
+
+* * *
+
 ## Next Step Notes
 
-Step 9 (creative-thinking) completed. Six alternative hypothesis threads explored. Key findings: (1)
-the DP checkpoint mismatch claim is directionally correct but the "trained from scratch" conclusion
-for v6a/v6b cannot be confirmed without a startup parameter-count assertion; (2) joint\_epoch=3 and
-the checkpoint mismatch were never crossed in a controlled experiment — joint\_epoch may be
-correlated rather than independently causal; (3) late divergence in v6c (epoch 9+) is most likely
-SLM gradient instability, not LR schedule; (4) val\_loss 0.506 (v3) and 0.849 (v6c) are not
-comparable due to different loss configurations; (5) health gate thresholds should be documented as
-v6c-calibrated and may need warm-up epoch recalibration for new datasets; (6) audio quality
-pre-filtering is an unaddressed risk (malformed batches). Four new safeguards identified: startup
-param-count assertion, per-loss gradient norm logging, warm-up epoch with dynamic gate calibration,
-and audio quality pre-filter. These are recommendations for the next training task, not changes to
-step 8 deliverables. Proceed to step 12 (results).
+Proceed to step 14 (suggestions).
