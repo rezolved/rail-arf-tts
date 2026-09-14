@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T15:32:30Z"
-completed_steps: 5
-next_step_number: 4
-next_step_id: "research-papers"
+updated_at: "2026-09-14T15:36:30Z"
+completed_steps: 6
+next_step_number: 5
+next_step_id: "research-internet"
 ---
 # Task Objective
 
@@ -42,6 +42,12 @@ Created all mandatory task subdirectories including `assets/library` for the exp
 aggregator cache populated in `tasks/t0008_tts_eval_harness_baselines/ctx/` (5 files: task_types,
 costs, tasks, metrics, suggestions). Key output: `logs/steps/003_init-folders/folders_created.txt`.
 
+### Step 4 — research-papers
+
+Paper corpus is empty (zero papers, zero categories) — all prior tasks were implementation/training
+tasks without paper downloads. Wrote `research/research_papers.md` with `status: "partial"`, all 7
+mandatory sections present, and an empty Paper Index; verificator passes with zero errors.
+
 * * *
 
 ## Cross-Step Decisions
@@ -50,8 +56,9 @@ costs, tasks, metrics, suggestions). Key output: `logs/steps/003_init-folders/fo
 
 ## Next Step Notes
 
-Step 3 init-folders complete: all 12 directories created with `.gitkeep` files, `__init__.py` and
-`code/__init__.py` written, and aggregator cache ready in `ctx/`. Proceed to step 4 research-papers
-per step_tracker.json. The research-papers step should focus on GE2E speaker embeddings,
-resemblyzer, and TTS latency benchmarking papers in the corpus. The ctx/tasks.json,
-ctx/metrics.json, and ctx/suggestions.json cache files are available for downstream steps.
+Step 4 research-papers complete: corpus was empty so output is `status: "partial"` with no cited
+papers. Step 5 research-internet is the primary literature step for this task — it should search for
+GE2E speaker embeddings (Wan et al. 2018), resemblyzer, StyleTTS2/Kokoro-82M architecture, streaming
+TTS TTFB measurement methodology, and WER thresholds for TTS quality. The research-internet output
+will be the main literature foundation for planning (step 7). The ctx/ aggregator cache is still
+available from step 3.
