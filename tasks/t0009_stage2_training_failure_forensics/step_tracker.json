@@ -20,10 +20,14 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify that t0005_kokoro_v5_stage2_train and t0006_kokoro_v5_stage2_subset are both completed.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T15:31:26Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/002_check-deps/",
+      "current_owner": "step-executor/check-deps",
+      "last_heartbeat_at": "2026-09-14T15:31:26Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T16:31:26Z"
     },
     {
       "step": 3,

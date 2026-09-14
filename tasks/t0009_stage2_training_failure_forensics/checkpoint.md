@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T15:32:00Z"
-completed_steps: 1
-next_step_number: 2
-next_step_id: "check-deps"
+updated_at: "2026-09-14T15:32:30Z"
+completed_steps: 2
+next_step_number: 3
+next_step_id: "init-folders"
 ---
 # Task Objective
 
@@ -21,6 +21,12 @@ Branch `task/t0009_stage2_training_failure_forensics` created. Initial folder st
 in `tasks/t0009_stage2_training_failure_forensics/`. Step 1 is a mechanical setup step with no
 research output.
 
+### Step 2 — check-deps
+
+Both dependencies verified as completed: `t0005_kokoro_v5_stage2_train` and
+`t0006_kokoro_v5_stage2_subset`. Verification passed with zero errors and zero warnings. Output:
+`logs/steps/002_check-deps/deps_report.json`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -29,7 +35,6 @@ research output.
 
 ## Next Step Notes
 
-Step 1 completed successfully. The task branch and folder are ready. Proceed to step 2 per
-step_tracker.json. The step plan is: create-branch → check-deps → init-folders → research-code →
-planning → implementation → creative-thinking → results → suggestions → reporting (research-papers,
-research-internet, setup-machines, teardown, compare-literature are skipped).
+Step 2 completed successfully; both upstream training tasks are done and their logs/checkpoints are
+available for forensic analysis. Proceed to step 3 (`init-folders`) to create the mandatory task
+directory structure before research-code can begin.
