@@ -51,7 +51,7 @@
       "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/004_research-papers/"
     },
     {
       "step": 5,
@@ -60,7 +60,7 @@
       "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/005_research-internet/"
     },
     {
       "step": 6,
@@ -125,7 +125,7 @@
       "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/010_setup-machines/"
     },
     {
       "step": 11,
@@ -134,7 +134,7 @@
       "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/011_teardown/"
     },
     {
       "step": 12,
@@ -157,7 +157,7 @@
       "status": "skipped",
       "started_at": null,
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/013_compare-literature/"
     },
     {
       "step": 14,
@@ -177,10 +177,14 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verificator pass, session capture, and mark task completed.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T16:46:38Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/015_reporting/",
+      "current_owner": "step-executor/reporting",
+      "last_heartbeat_at": "2026-09-14T16:46:38Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T17:46:38Z"
     }
   ]
 }

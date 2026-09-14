@@ -1,11 +1,12 @@
 ---
-step: results
-task_id: t0009_stage2_training_failure_forensics
-started_at: 2026-09-14T16:35:31Z
-completed_at: 2026-09-14T17:00:00Z
-status: completed
+spec_version: "3"
+task_id: "t0009_stage2_training_failure_forensics"
+step_number: 12
+step_name: "results"
+status: "completed"
+started_at: "2026-09-14T16:35:31Z"
+completed_at: "2026-09-14T17:00:00Z"
 ---
-
 ## Summary
 
 Wrote all results files for t0009_stage2_training_failure_forensics. Generated 2 new charts
@@ -24,6 +25,7 @@ section lists REQ-1 through REQ-8.
 4. Wrote `results/results_summary.md` with mandatory ## Summary, ## Metrics, ## Verification.
 5. Wrote `results/results_detailed.md` (spec_version: "2") with all mandatory sections including
    ## Task Requirement Coverage (REQ-1 through REQ-8, Done/Partial, with evidence paths).
+
 6. Ran `verify_task_metrics`: PASS.
 7. Ran `verify_task_results`: fixed TR-E007 (added ## Verification section), re-ran — PASS.
 8. Ran flowmark on both markdown files.

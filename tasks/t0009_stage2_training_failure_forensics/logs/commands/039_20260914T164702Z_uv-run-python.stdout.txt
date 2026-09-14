@@ -1,0 +1,5 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics/tasks/t0009_stage2_training_failure_forensics/task.json
+
+[32m[1mPASSED[0m — no errors or warnings
+

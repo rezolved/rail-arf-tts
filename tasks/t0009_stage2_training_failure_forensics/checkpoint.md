@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T17:15:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-14T17:20:00Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -109,6 +109,13 @@ comparability gap (medium priority), and safeguard library extension with startu
 assertion and per-loss gradient norm logging (medium priority). No duplicate suggestions or existing
 tasks cover these objectives.
 
+### Step 15 — reporting
+
+All verificators passed (verify_task_file, verify_task_dependencies, verify_suggestions,
+verify_task_metrics, verify_task_results, verify_task_folder, verify_logs, answer asset, library
+asset). Fixed missing step logs for 5 skipped steps and wrong frontmatter on 012_results step_log.
+Session capture ran and produced `logs/sessions/capture_report.json`. Task status set to completed.
+
 * * *
 
 ## Cross-Step Decisions
@@ -126,7 +133,4 @@ tasks cover these objectives.
 
 ## Next Step Notes
 
-Step 14 (suggestions) complete. Proceed to step 15 (reporting): run all relevant verificators,
-capture session transcripts, update task.json status to completed, write final step log, and commit.
-The main deliverables (answer asset, library asset, results files, suggestions) are all verified.
-REQ-2 and REQ-4 are Partial (documented in results_detailed.md). Report the $0 cost in costs.json.
+Task complete. All steps finished and verified. PR ready for creation by the coordinator.

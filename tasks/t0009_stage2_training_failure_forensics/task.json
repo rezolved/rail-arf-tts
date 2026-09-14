@@ -5,13 +5,13 @@
   "name": "Stage 2 training failure forensics and safeguards",
   "short_description": "Audit every Kokoro training run's logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0005_kokoro_v5_stage2_train",
     "t0006_kokoro_v5_stage2_subset"
   ],
   "start_time": "2026-09-14T15:28:39Z",
-  "end_time": null,
+  "end_time": "2026-09-14T17:20:00Z",
   "expected_assets": {
     "answer": 1,
     "library": 1

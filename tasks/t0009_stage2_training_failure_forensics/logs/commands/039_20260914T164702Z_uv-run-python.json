@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_stage2_training_failure_forensics",
+  "command": "uv run python -m arf.scripts.verificators.verify_task_file t0009_stage2_training_failure_forensics",
+  "exit_code": 0,
+  "duration_seconds": 0.362,
+  "started_at": "2026-09-14T16:47:02Z",
+  "completed_at": "2026-09-14T16:47:03Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics",
+  "stdout_file": "039_20260914T164702Z_uv-run-python.stdout.txt",
+  "stderr_file": "039_20260914T164702Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}
