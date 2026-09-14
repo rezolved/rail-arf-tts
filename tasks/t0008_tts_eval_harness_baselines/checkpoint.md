@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T15:31:00Z"
-completed_steps: 4
-next_step_number: 3
-next_step_id: "init-folders"
+updated_at: "2026-09-14T15:32:30Z"
+completed_steps: 5
+next_step_number: 4
+next_step_id: "research-papers"
 ---
 # Task Objective
 
@@ -36,6 +36,12 @@ this stage.
 Skipped — no published speaker_sim/TTFB baselines for Kokoro-82M David voice fine-tuning exist in
 the corpus to compare against.
 
+### Step 3 — init-folders
+
+Created all mandatory task subdirectories including `assets/library` for the expected library asset;
+aggregator cache populated in `tasks/t0008_tts_eval_harness_baselines/ctx/` (5 files: task_types,
+costs, tasks, metrics, suggestions). Key output: `logs/steps/003_init-folders/folders_created.txt`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -44,8 +50,8 @@ the corpus to compare against.
 
 ## Next Step Notes
 
-Step 2 check-deps passed: `t0006_kokoro_v5_stage2_subset` is completed and its checkpoints and
-reference bundles are available. Proceed to step 3 init-folders per step_tracker.json. The 15-step
-plan continues with research-papers, research-internet, research-code, planning, setup-machines,
-implementation, teardown, results, suggestions, and reporting; creative-thinking (step 11) and
-compare-literature (step 13) are pre-skipped.
+Step 3 init-folders complete: all 12 directories created with `.gitkeep` files, `__init__.py` and
+`code/__init__.py` written, and aggregator cache ready in `ctx/`. Proceed to step 4 research-papers
+per step_tracker.json. The research-papers step should focus on GE2E speaker embeddings,
+resemblyzer, and TTS latency benchmarking papers in the corpus. The ctx/tasks.json,
+ctx/metrics.json, and ctx/suggestions.json cache files are available for downstream steps.
