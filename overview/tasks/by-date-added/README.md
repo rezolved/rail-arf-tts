@@ -8,20 +8,21 @@
 
 ## 2026-09-14 (3)
 
-## ⏹ Not Started
+## ⏳ In Progress
 
 <details>
-<summary>⏹ 0009 — <strong>Stage 2 training failure forensics and safeguards</strong></summary>
+<summary>⏳ 0009 — <strong>Stage 2 training failure forensics and safeguards</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0009_stage2_training_failure_forensics` |
-| **Status** | not_started |
+| **Status** | in_progress |
 | **Effective date** | 2026-09-14 |
 | **Dependencies** | [`t0005_kokoro_v5_stage2_train`](../../../overview/tasks/task_pages/t0005_kokoro_v5_stage2_train.md), [`t0006_kokoro_v5_stage2_subset`](../../../overview/tasks/task_pages/t0006_kokoro_v5_stage2_subset.md) |
 | **Expected assets** | 1 answer, 1 library |
 | **Source suggestion** | — |
 | **Task types** | [`data-analysis`](../../../meta/task_types/data-analysis/) |
+| **Start time** | 2026-09-14T15:28:39Z |
 | **Task page** | [Stage 2 training failure forensics and safeguards](../../../overview/tasks/task_pages/t0009_stage2_training_failure_forensics.md) |
 | **Task folder** | [`t0009_stage2_training_failure_forensics/`](../../../tasks/t0009_stage2_training_failure_forensics/) |
 
@@ -190,20 +191,26 @@ variable at a time relative to the closest known-good run.
 
 </details>
 
+## ✅ Completed
+
 <details>
-<summary>⏹ 0008 — <strong>TTS evaluation harness and baselines</strong></summary>
+<summary>✅ 0008 — <strong>TTS evaluation harness and baselines</strong></summary>
 
 | Field | Value |
 |---|---|
 | **ID** | `t0008_tts_eval_harness_baselines` |
-| **Status** | not_started |
+| **Status** | completed |
 | **Effective date** | 2026-09-14 |
 | **Dependencies** | [`t0006_kokoro_v5_stage2_subset`](../../../overview/tasks/task_pages/t0006_kokoro_v5_stage2_subset.md) |
 | **Expected assets** | 1 library |
 | **Source suggestion** | — |
 | **Task types** | [`tts-benchmark-run`](../../../meta/task_types/tts-benchmark-run/), [`baseline-evaluation`](../../../meta/task_types/baseline-evaluation/) |
+| **Start time** | 2026-09-14T15:27:17Z |
+| **End time** | 2026-09-14T18:07:30Z |
+| **Step progress** | 13/15 |
 | **Task page** | [TTS evaluation harness and baselines](../../../overview/tasks/task_pages/t0008_tts_eval_harness_baselines.md) |
 | **Task folder** | [`t0008_tts_eval_harness_baselines/`](../../../tasks/t0008_tts_eval_harness_baselines/) |
+| **Detailed report** | [results_detailed.md](../../../tasks/t0008_tts_eval_harness_baselines/results/results_detailed.md) |
 
 # TTS Evaluation Harness and Baselines
 
@@ -327,9 +334,37 @@ change the token stream.
 * `t0006_kokoro_v5_stage2_subset` — provides the v3 reference bundle and the v6d checkpoint.
 * Independent of t0009; the two can run in parallel.
 
-</details>
+**Results summary:**
 
-## ✅ Completed
+> ---
+> spec_version: "1"
+> task_id: "t0008_tts_eval_harness_baselines"
+> ---
+> **Summary**
+>
+> Built and deployed a reusable TTS evaluation harness (`tts_eval_harness` library) that
+> measures
+> speaker similarity (GE2E cosine via resemblyzer), TTFB, RTF, WER, and duration ratio across
+> 8 TTS
+> systems on two prompt sets (96 held-out val96 texts + 100 production fillers). All systems
+> were
+> benchmarked on LLM-T1-NC80 (2×H100 NVL). ElevenLabs David establishes the baseline; none of
+> the
+> Kokoro variants reached the 0.85 speaker_sim target, with the best being `kokoro_v3_bundle`
+> at 0.63
+> (fillers).
+>
+> **Metrics**
+>
+> Key results (mean speaker_sim GE2E cosine, TTFB p50 ms, all systems on combined prompt
+> sets):
+>
+> - **ElevenLabs David** (scored vs half-B): speaker_sim=0.832 (fillers), 0.792 (val96);
+> TTFB_p50=132ms (fillers), 153ms (val96) — target ≥0.85, ≤300ms
+> - **kokoro_v3_bundle** (best Kokoro): speaker_sim=0.631 (fillers), 0.588 (val96);
+>   TTFB_p50=185ms
+
+</details>
 
 <details>
 <summary>✅ 0007 — <strong>Brainstorm results session 1</strong></summary>

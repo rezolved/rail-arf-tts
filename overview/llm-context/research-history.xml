@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="research-history" generated_at_utc="2026-09-14T13:48:27Z">
+<llm_context_archive preset_id="research-history" generated_at_utc="2026-09-14T18:11:45Z">
   <archive_summary>
     <title>Research History</title>
     <description>Research-stage documents across completed tasks, plus core project context.</description>
     <use_case>Literature review continuity, methodology discussion, and prior-investigation lookup.</use_case>
-    <section_count>8</section_count>
-    <char_count>19238</char_count>
-    <byte_count>19320</byte_count>
-    <estimated_tokens>4809</estimated_tokens>
+    <section_count>11</section_count>
+    <char_count>86684</char_count>
+    <byte_count>87023</byte_count>
+    <estimated_tokens>21671</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -105,9 +105,10 @@ in parallel, then evaluate fine-tuned Kokoro v4 once Stage 2 training completes 
         <id>t0005_kokoro_v5_stage2_train</id>
         <id>t0006_kokoro_v5_stage2_subset</id>
         <id>t0007_brainstorm_results_1</id>
+        <id>t0008_tts_eval_harness_baselines</id>
       </source_ids>
       <content>
-Completed tasks: 7
+Completed tasks: 8
 
 ## Kokoro v4 Stage 2 fine-tune
 ID: t0001_kokoro_v4_stage2_finetune
@@ -150,28 +151,26 @@ ID: t0007_brainstorm_results_1
 Completed: 2026-09-14
 Short description: First brainstorm: review t0001-t0006 training attempts and create an evaluation-harness task and a training-failure forensics task.
 Result summary: Brainstorm Results Session 1 Summary First brainstorm after six Kokoro fine-tuning tasks (t0001-t0006) that produced no clean-audio checkpoint and measured none of the project&#x27;s success criteria. The session created **2 new tasks** (t0008 evaluation harness and baselines, t0009 Stage 2 training failure forensics and safeguards) and raised the project budget from $500 to **$5000**. No suggestions existed, so none were rejected or reprioritized. Session Overview * Date: 2026-09-14. * Context: t0001-t0006 were all Kokoro StyleTTS2 fine-tuning attempts. t0003 found and fixed a grapheme fallback that poisoned 21% of the v4 manifests. t0005 fixed seven crashes but every Stage 2 run diverged after...
+
+## TTS evaluation harness and baselines
+ID: t0008_tts_eval_harness_baselines
+Completed: 2026-09-14
+Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
+Result summary: --- spec_version: &quot;1&quot; task_id: &quot;t0008_tts_eval_harness_baselines&quot; --- Summary Built and deployed a reusable TTS evaluation harness (`tts_eval_harness` library) that measures speaker similarity (GE2E cosine via resemblyzer), TTFB, RTF, WER, and duration ratio across 8 TTS systems on two prompt sets (96 held-out val96 texts + 100 production fillers). All systems were benchmarked on LLM-T1-NC80 (2×H100 NVL). ElevenLabs David establishes the baseline; none of the Kokoro variants reached the 0.85 speaker_sim target, with the best being `kokoro_v3_bundle` at 0.63 (fillers). Metrics Key results (mean speaker_sim GE2E cosine, TTFB p50 ms, all systems on combined prompt sets): - **ElevenLabs David**...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0008_tts_eval_harness_baselines</id>
         <id>t0009_stage2_training_failure_forensics</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## TTS evaluation harness and baselines
-ID: t0008_tts_eval_harness_baselines
-Status: not_started
-Effective date: 2026-09-14
-Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
-Dependencies: t0006_kokoro_v5_stage2_subset
+Planned or active tasks: 1
 
 ## Stage 2 training failure forensics and safeguards
 ID: t0009_stage2_training_failure_forensics
-Status: not_started
+Status: in_progress
 Effective date: 2026-09-14
 Short description: Audit every Kokoro training run&#x27;s logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.
 Dependencies: t0005_kokoro_v5_stage2_train, t0006_kokoro_v5_stage2_subset
@@ -363,6 +362,1266 @@ No research required for brainstorming session.
 #### References
 
 No research required for brainstorming session.
+      </content>
+    </section>
+    <section id="t0008_tts_eval_harness_baselines-research_papers" source_kind="file">
+      <title>t0008_tts_eval_harness_baselines — TTS evaluation harness and baselines — research_papers.md</title>
+      <source_name>research_papers.md</source_name>
+      <source_ids>
+        <id>t0008_tts_eval_harness_baselines</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0008_tts_eval_harness_baselines/research/research_papers.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0008_tts_eval_harness_baselines&quot;
+research_stage: &quot;papers&quot;
+papers_reviewed: 0
+papers_cited: 0
+categories_consulted: []
+date_completed: &quot;2026-09-14&quot;
+status: &quot;partial&quot;
+---
+#### Task Objective
+
+**Status note**: This document is marked `partial` because the project paper corpus is empty at this
+stage — no papers have been downloaded and catalogued in prior tasks. The research-internet step
+(step 5) will search for and add relevant papers; see `research/research_internet.md` for the
+literature findings that inform planning.
+
+This task builds a reusable evaluation harness to score all available TTS systems — ElevenLabs David
+(API), Kokoro-82M base voices (bm_george, bm_lewis), the v3 shipped bundle, the t0006 v6d epoch 6
+checkpoint, and the t0005 run06 best checkpoint — on three metrics: speaker_sim (GE2E cosine
+similarity against the ElevenLabs David reference set via resemblyzer), ttfb_ms (time to first audio
+byte, p50/p95/p99), and rtf (real-time factor). It also computes two sanity metrics — duration_ratio
+and WER — to detect broken audio that might still produce a plausible speaker_sim. The harness is
+packaged as a reusable library asset so future training tasks can report the same metrics without
+reimplementing the scoring pipeline.
+
+The task answers five research questions: (1) what are ElevenLabs David&#x27;s speaker_sim, TTFB, and RTF
+baselines? (2) where do base Kokoro voices sit on the same scale? (3) how close is the v3 bundle to
+the ≥ 0.85 GE2E cosine success criterion? (4) do the t0005/t0006 checkpoints score measurably worse
+than v3, validating the subjective &quot;noisy audio&quot; observation? (5) is speaker_sim alone sufficient to
+detect broken audio, or are duration_ratio and WER needed as well?
+
+#### Category Selection Rationale
+
+No categories exist in `meta/categories/` at this stage of the project — the category registry is
+empty. Consequently no category-filtered paper query could return results, and the
+`categories_consulted` list is empty.
+
+Categories that would be relevant if populated include: `text-to-speech`, `speaker-verification`,
+`speech-synthesis`, `neural-codec`, `latency-benchmarking`, and `evaluation-methodology`. The
+research-internet step (step 5) is expected to discover papers in these areas and add them to the
+corpus, after which future tasks can consult them.
+
+Excluded topics that are explicitly out of scope for this project: `speech-recognition` (STT is a
+separate project), `multilingual-tts`, `multi-speaker-generalization`, and `streaming-protocol`
+changes.
+
+#### Key Findings
+
+##### No Papers in Corpus
+
+The project paper corpus contains zero downloaded papers. All six prior tasks (t0001-t0006) were
+implementation and training tasks that did not include a research-papers step with actual paper
+downloads. As a result, there is no literature to synthesize here.
+
+The research-internet step will search for and add papers on the following topics directly relevant
+to this task:
+
+* GE2E speaker embedding (Wan et al., 2018) — the speaker_sim metric is defined as GE2E cosine
+  similarity; understanding the embedding model is essential for interpreting the metric&#x27;s range,
+  variance, and threshold semantics.
+* resemblyzer — the Python library wrapping GE2E for practical speaker similarity computation; its
+  embedding dimensionality (256-d), normalization, and batch behavior directly affect the scoring
+  pipeline design.
+* Kokoro-82M and StyleTTS2 — the base model architecture; architecture details affect which
+  components are swapped per evaluation system (decoder weights vs. voicepack vs. both).
+* TTFB measurement methodology for streaming TTS — LESSONS Lesson 1 (discard warmup) and Lesson 4
+  (record GPU/driver versions) are already project knowledge, but published evaluation protocols
+  would ground the methodology.
+* WER as a TTS quality proxy — whisper-based WER is used as a sanity metric; published work on WER
+  thresholds for detecting garbled synthesis would inform the pass/fail threshold.
+
+#### Methodology Insights
+
+Because no papers are available in the corpus, methodology insights are drawn entirely from
+project-internal knowledge (LESSONS.md, prior task results, and task_description.md):
+
+* **GE2E centroid split**: the task description specifies splitting the 1358 ElevenLabs David
+  reference clips into a centroid half and a held-out half with a fixed seed (seed=42), so the
+  ElevenLabs arm is not compared against its own centroid. This is the correct resemblyzer usage
+  pattern for fair baseline evaluation.
+* **Warmup discards**: LESSONS Lesson 1 mandates discarding warmup requests before measuring TTFB.
+  The harness must send at least one warmup request per system before timing begins.
+* **Version recording**: LESSONS Lesson 4 mandates recording torch/CUDA/kokoro versions and GPU
+  model at measurement time, so TTFB/RTF numbers are reproducible.
+* **Pipeline uniformity**: all Kokoro arms must synthesize through
+  `tasks/t0003_kokoro_v5_phoneme_data/code/build_pipeline.py` with `lang_code=&quot;b&quot;` and the brand
+  lexicon. Bare `KPipeline` calls silently change the token stream (established in t0003).
+* **Floor control**: including one clearly different Kokoro voice (e.g., `af_heart`, female
+  American) as a floor control is essential for interpreting what a &quot;wrong speaker&quot; score looks like
+  and contextualising the ≥ 0.85 threshold.
+* **Whisper WER**: transcribing synthesized audio with a local Whisper model and comparing against
+  prompt text catches garbled audio that would otherwise produce a plausible speaker_sim score.
+
+Once the research-internet step adds papers on GE2E and resemblyzer, the methodology insights
+section of `research_internet.md` should be consulted alongside this document during planning.
+
+#### Gaps and Limitations
+
+* **No published TTFB benchmarks for Kokoro-82M**: no prior task and no paper in the corpus reports
+  TTFB or RTF for Kokoro-82M on H100 hardware. The harness will produce the first such measurements
+  for this project. Without published comparators, the 300 ms TTFB threshold comes entirely from the
+  project success criterion, not from empirical survey of what is achievable.
+* **No GE2E threshold calibration study in corpus**: the 0.85 GE2E cosine threshold is a project
+  design choice. Whether 0.85 is a reliable boundary between &quot;perceptually same speaker&quot; and
+  &quot;perceptually different speaker&quot; is not grounded in a paper in this corpus. The floor control
+  system is the only internal calibration mechanism.
+* **Empty category registry**: the lack of categories means cross-task paper discovery by category
+  is impossible at this stage. Future tasks that add papers should also add relevant categories to
+  `meta/categories/` so the category-based discovery path becomes useful.
+* **No WER threshold literature**: the task uses WER as a binary sanity filter for garbled audio,
+  but no paper in the corpus establishes what WER threshold distinguishes &quot;acceptable&quot; from &quot;broken&quot;
+  synthesis for short filler utterances. The research-internet step should specifically look for
+  this.
+* **val_loss vs. perceptual quality**: t0003 established that Stage 1 val_loss does not predict
+  success. Whether this generalises to Stage 2 val_loss is still unknown; the harness results will
+  be the first empirical test of this question for Stage 2.
+
+#### Recommendations for This Task
+
+1. **Proceed to research-internet immediately**: the most valuable action is to add GE2E/resemblyzer
+   papers and any published TTFB benchmarking methodology papers to the corpus. The planning step
+   should wait for research_internet.md before finalising the scoring pipeline design.
+2. **Use seed=42 for the centroid/held-out split** as specified in the task description; document
+   the exact split indices in the harness library so results are reproducible across tasks.
+3. **Record all environment metadata at measurement time**: torch version, CUDA version, Kokoro
+   version, GPU model (from `nvidia-smi`), and timestamp. Store these in `results/metadata.json` so
+   TTFB/RTF numbers can be reproduced or contextualised against future measurements.
+4. **Include a floor control in every run**: `af_heart` (female American) should be synthesised on
+   all prompt sets alongside the David-voice systems so the ≥ 0.85 threshold can be contextualised.
+5. **Design the library with version-tagging**: the harness will be reused by future training tasks.
+   Pin the resemblyzer version and the GE2E model checkpoint so speaker_sim scores are comparable
+   across tasks.
+
+#### Paper Index
+
+*(Empty — no papers in corpus. See `research/research_internet.md` for literature added during step
+5.)*
+      </content>
+    </section>
+    <section id="t0008_tts_eval_harness_baselines-research_internet" source_kind="file">
+      <title>t0008_tts_eval_harness_baselines — TTS evaluation harness and baselines — research_internet.md</title>
+      <source_name>research_internet.md</source_name>
+      <source_ids>
+        <id>t0008_tts_eval_harness_baselines</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0008_tts_eval_harness_baselines/research/research_internet.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0008_tts_eval_harness_baselines&quot;
+research_stage: &quot;internet&quot;
+searches_conducted: 11
+sources_cited: 23
+papers_discovered: 4
+date_completed: &quot;2026-09-14&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+Build a reusable evaluation harness to score ElevenLabs David (API), Kokoro-82M base voices
+(bm_george, bm_lewis), the v3 shipped bundle, the t0006 v6d epoch-6 checkpoint, and the t0005 run06
+best checkpoint on three primary metrics — speaker_sim (GE2E cosine via resemblyzer against
+ElevenLabs David references), ttfb_ms (time to first audio byte, p50/p95/p99), and rtf (real-time
+factor) — plus two sanity metrics (duration_ratio, WER). The harness is packaged as a reusable
+library. This task produces the first objective measurements of any success criterion in this
+project (GE2E cosine ≥ 0.85, TTFB ≤ 300 ms).
+
+#### Gaps Addressed
+
+From `research_papers.md` Gaps and Limitations:
+
+1. **No published TTFB benchmarks for Kokoro-82M** — **Partially resolved**. Community benchmarks
+   and a 2025 preprint now exist. GPU TTFB on A100/RTX-class hardware: RTF ≈ 0.03 (i.e., 10 s audio
+   synthesized in ~300 ms total), with first-chunk latency as low as 28 ms on RTX 5090 and a
+   published 97 ms baseline TTFB [GigaGPU-Kokoro]. CPU baseline (Picovoice benchmark on AMD Ryzen 7
+   5700X): 3,658 ms FTTS [Picovoice-TTS] — far above the 300 ms target, confirming H100 is required.
+   No peer-reviewed H100-specific numbers exist; the harness will generate the first such
+   measurement.
+
+2. **No GE2E threshold calibration study in corpus** — **Resolved**. Multiple sources now establish
+   the expected cosine-similarity ranges. Same-speaker per-clip embeddings agree at roughly 0.7
+   [Baseten-FineTune]; against the centroid (mean of many clips) this rises to 0.85+
+   [Baseten-FineTune]. Different-speaker scores typically fall around 0.3–0.6 [ResemblyzerSearch]. A
+   resemblyzer authentication study found an empirical threshold of 0.84 for English voices
+   [Resemble-AuthStudy]. The project&#x27;s 0.85 target aligns with the same-speaker-vs-centroid expected
+   range and is a defensible choice.
+
+3. **No WER threshold literature for TTS** — **Resolved**. Industry practice: WER &lt; 5% is
+   consumer-grade; WER ≥ 10% is a hard failure threshold indicating broken synthesis
+   [Inworld-OpenEval]. WER &gt; 100% signals a fundamentally broken system (excessive
+   insertions/deletions) [Deepgram-PER]. The open-tts-eval toolkit uses WER warn=0.05 / fail=0.10 as
+   starter thresholds; these are domain-calibrated, not universal [Inworld-OpenEval]. For short
+   filler utterances the effective WER threshold may need to be higher due to ASR sensitivity to
+   out-of-vocabulary proper nouns.
+
+4. **Empty category registry** — **Unresolved** (out of scope for this task). Categories must be
+   added to `meta/categories/` in a separate infrastructure task.
+
+#### Search Strategy
+
+**Sources searched**: Google Search (via WebSearch), GitHub repository READMEs and issues, Hugging
+Face model cards, arXiv, PapersWithCode, ElevenLabs documentation, Picovoice benchmark
+documentation, Preprints.org.
+
+**Queries executed** (11 total):
+
+*Gap-targeted queries:*
+
+1. `GE2E generalized end-to-end loss speaker verification embedding Wan 2018`
+2. `resemblyzer speaker similarity cosine threshold calibration verification`
+3. `Kokoro-82M TTS TTFB latency benchmark evaluation H100 GPU inference`
+4. `WER word error rate threshold TTS quality evaluation broken audio detection`
+5. `ElevenLabs streaming API TTFB latency measurement milliseconds 2025 2026`
+
+*Broadening queries:*
+
+6. `StyleTTS2 speaker similarity evaluation cosine GE2E metric benchmark`
+7. `hexgrad Kokoro-82M model architecture StyleTTS2 voicepack training evaluation 2025`
+8. `streaming TTS TTFB measurement methodology warmup requests benchmark reproducible`
+9. `TTS evaluation harness speaker similarity WER latency reproducible open source Python 2025`
+10. `speaker similarity evaluation TTS fine-tuning cosine same speaker different speaker range values`
+
+*Snowball queries:*
+
+11. `GE2E speaker verification LSTM 3 layers 256 dimensions d-vector cosine similarity threshold EER`
+
+**Date range**: 2018–2026, no exclusion for foundational GE2E references.
+
+**Inclusion criteria**: Sources providing (a) GE2E/resemblyzer architecture and threshold data, (b)
+published TTFB/RTF numbers for Kokoro or ElevenLabs, (c) WER thresholds for TTS quality, (d)
+benchmark methodology for streaming TTS latency measurement. Excluded: non-English TTS,
+multi-speaker generalization research not applicable to fine-tuning, server infrastructure papers.
+
+**Search iterations**: Queries 6–10 were broadening searches triggered after gap queries confirmed
+the paper corpus is empty. Query 11 was a snowball triggered by finding that GE2E architecture
+specifics (LSTM layers, d-vector dimensions) were only partially described in the initial results.
+
+**WebFetch deep-reads** (6 fetches; pages fetched): ElevenLabs latency docs, resemblyzer README,
+Kokoro-FastAPI stream example, Coval benchmark methodology, Picovoice TTS benchmark docs, Baseten
+fine-tuning blog.
+
+#### Key Findings
+
+##### GE2E Embeddings and Resemblyzer: Architecture and Thresholds
+
+The GE2E model (Wan et al., 2018) introduced in [Wan2018] consists of 3 LSTM layers followed by a
+linear projection layer that outputs 256-dimensional L2-normalized d-vectors. It reduces speaker
+verification EER by more than 10% versus the prior TE2E loss while cutting training time by 60%
+[Wan2018]. Resemblyzer [Resemble-GH] wraps GE2E with a convenient Python API: `preprocess_wav`
+normalizes volume, trims silence, and resamples; `embed_utterance` returns the L2-normed mean of
+1.6-second partial-utterance embeddings (minimum rate 0.625 partial utterances per second). The
+output is a 256-dimensional unit vector.
+
+**Cosine similarity ranges (non-peer-reviewed but empirically grounded)**:
+
+* Same-speaker, per-clip comparison: typically ~0.7 [Baseten-FineTune]
+* Same-speaker, clip vs. centroid (mean of many clips): 0.85+ [Baseten-FineTune]
+* Different-speaker: typically 0.3–0.6 [ResemblyzerSearch]
+* Empirical English-voice authentication threshold: 0.84 [Resemble-AuthStudy] (not peer-reviewed)
+* Reliable authentication requires audio clips ≥ 2.63 s and ≥ 495 KB [Resemble-AuthStudy]
+
+**Best practice — centroid comparison**: comparing synthesized audio against the centroid of many
+reference clips (rather than a single clip) is more stable. A speaker self-comparison against its
+own centroid achieves 0.85+ versus the noisier ~0.7 per-clip agreement [Baseten-FineTune]. This
+directly validates the task description&#x27;s design choice to split the ElevenLabs reference clips into
+a centroid half and a held-out half: the centroid half builds a stable reference, and the held-out
+half provides the scoring baseline for ElevenLabs itself.
+
+**Hypothesis**: If the project&#x27;s 0.85 threshold is met on the centroid comparison, per-clip scores
+for individual synthesized clips will often fall below 0.85 — the task should report both the mean
+against centroid and the per-clip distribution to avoid false pass/fail calls.
+
+**Warning on audio length**: Resemblyzer is unreliable for very short clips. Filler utterances in
+the ElevenLabs corpus are typically 1–5 seconds. Clips under 1.6 s (one partial-utterance window)
+should be flagged and excluded from speaker_sim scoring or handled with care.
+
+##### Kokoro-82M Architecture: StyleTTS2 + ISTFTNet Decoder-Only
+
+Kokoro-82M [Kokoro-HF] is built on StyleTTS2 [Li2023] and ISTFTNet [Kaneko2022]. It uses a
+decoder-only architecture (no diffusion module, no encoder release) trained on a few hundred hours
+of permissive audio. The G2P pipeline is `misaki`. Voicepacks are style tensors that define the
+speaker embedding; swapping the voicepack tensor changes the voice without reloading the decoder
+weights. This is directly relevant to evaluation systems 3–7: system 3 swaps only the voicepack
+while keeping the base decoder, while systems 5–7 swap both decoder and voicepack.
+
+Audio output is 24 kHz. The KPipeline API yields
+`(grapheme_sequence, phoneme_sequence, audio_numpy)` tuples — TTFB measurement must timestamp the
+first `audio_numpy` yield, not the return from `KPipeline()`.
+
+**Best practice**: Always instantiate `KPipeline(lang_code=&quot;b&quot;)` for British English with brand
+lexicon (confirmed by t0003). A bare `KPipeline` defaults to American English and silently changes
+the phoneme stream.
+
+##### Kokoro-82M GPU TTFB and RTF: Published Numbers
+
+Community benchmarks (non-peer-reviewed) consistently report:
+
+* RTF ≈ 0.03 on A100 (10-second clip in ~300 ms total synthesis time) [GigaGPU-Kokoro]
+* RTF ≈ 0.03–0.04 on RTX 4090; 30 s audio generated in 2.1 s on RTX 3090 [GigaGPU-TTS]
+* First-audio latency as low as 28 ms on RTX 5090 (self-hosted via FastAPI) [Forasoft-Stream]
+* 97 ms baseline TTFB cited by Together.ai for their hosted Kokoro endpoint [Together-Kokoro]
+
+CPU (Picovoice benchmark on AMD Ryzen 7 5700X, no GPU, 200 taskmaster2 prompts):
+
+* FTTS (First Token to Speech) = **3,658 ms** [Picovoice-TTS] — approximately 12× above the 300 ms
+  target, confirming GPU is required
+
+**Important caveat**: all GPU numbers are for stock voices from a single CUDA process. The project&#x27;s
+fine-tuned checkpoints run from custom `.pth` weights through a modified pipeline; first-chunk
+latency for fine-tuned Kokoro may differ from stock Kokoro due to different model load paths and
+possible extra preprocessing steps. The harness must measure each system independently.
+
+**Best practice — warmup**: all benchmarks that report reliable TTFB discard at least one warmup
+request per system before timing begins [Coval-Methodology], [Picovoice-TTS]. The warmup amortizes
+model weight loading, CUDA kernel compilation, and TCP/TLS setup for API-based systems. The harness
+should send ≥1 warmup synthesis per system before collecting timing measurements.
+
+##### ElevenLabs Streaming API TTFB: Published Numbers
+
+ElevenLabs documentation [ElevenLabs-Latency] distinguishes:
+
+* **Model inference**: ~75 ms for Flash models on typical short inputs (internal, excludes network)
+* **TTFA (API streaming)**: ~478 ms average with PCM streaming REST API (includes network
+  round-trip)
+* **End-to-end for voice agents**: median 1,424 ms, p95 1,768 ms (full voice agent pipeline)
+  [Openbenchmarks-EL]
+
+Independent benchmarks [Forasoft-Stream]:
+
+* ElevenLabs Turbo v2.5: **264 ms median TTFA**, 28 ms IQR (Coval benchmark, May 2026)
+* ElevenLabs Flash v2.5: **288 ms median TTFA**, 28 ms IQR (same benchmark)
+
+Picovoice benchmark [Picovoice-TTS]:
+
+* ElevenLabs Streaming: **335 ms** average FTTS (AMD Ryzen 7 host, network included)
+* ElevenLabs standard (non-streaming): 1,470 ms
+
+**For this project**: ElevenLabs is measured for real-world TTFB via its streaming API to model the
+actual production latency the Rezolve voice assistant experiences. The ~264–335 ms range from
+published benchmarks is already at the 300 ms target edge — whether specific David voice+Flash model
+combinations stay under 300 ms needs direct measurement.
+
+**Best practice — ElevenLabs TTFB measurement**:
+
+1. Use the streaming API with `stream=True`, timestamping the moment the first audio chunk arrives.
+2. Use a pre-warmed `requests.Session` to amortize TCP+TLS (excludes ~80–200 ms handshake overhead).
+3. Discard 1–2 warmup requests before collecting measurements.
+4. Report p50/p95/p99 over ≥30 prompts.
+
+##### WER as a Sanity Metric: Thresholds and Caveats
+
+WER, computed by transcribing synthesized audio with Whisper and comparing against the prompt text,
+is a standard intelligibility proxy for TTS quality [NVIDIA-Riva], [Inworld-OpenEval]. Key
+thresholds from community practice:
+
+* WER &lt; 5% → consumer-grade quality, expected for well-functioning synthesis [Deepgram-PER]
+* WER 5–10% → degraded but potentially acceptable
+* WER &gt; 10% → hard failure; broken synthesis likely [Inworld-OpenEval]
+* WER &gt; 100% → fundamentally broken (insertions + deletions dominate) [Deepgram-PER]
+
+F5-TTS, a modern neural TTS, achieves WER ≈ 2.4% on LibriSpeech-PC test-clean [F5TTS-Paper],
+establishing that &lt; 5% is achievable for clean studio-quality synthesis.
+
+**Caveats**:
+
+* WER depends on the ASR model and normalization. Use `faster-whisper` with normalized text (number
+  expansion, punctuation stripping) for reproducibility [Inworld-OpenEval].
+* Short filler utterances (&lt; 3 s) inflate WER because a single word error is a large proportion of
+  the word count. A filler phrase with WER 33% (1 error in 3 words) is not necessarily broken.
+* WER cannot distinguish TTS pronunciation errors from ASR errors on edge-case words.
+  Cross-reference with duration_ratio to detect silence/length explosions [TaskDescription].
+
+**Best practice**: compute WER per clip, flag clips with WER &gt; 20% for manual review (higher
+threshold than the general 10% to account for short-utterance inflation), and never rely on WER
+alone to accept or reject a system — treat it as a triage filter alongside duration_ratio.
+
+##### Streaming TTS TTFB Measurement: Methodology Best Practices
+
+The Coval benchmark [Coval-Methodology] defines the canonical TTFA measurement for streaming TTS:
+
+```
+TTFA = (first audio chunk arrival − synthesis start) + leading silence in the stream
+```
+
+The leading-silence correction is computed using an RMS-threshold onset detector on the assembled
+PCM. This ensures the metric reflects when the user actually hears audio, not when data bytes
+arrive.
+
+For local Kokoro inference, &quot;leading silence&quot; is minimal because Kokoro yields the first audio chunk
+only after processing the first phoneme segment — no HTTP headers or codec headers precede the
+audio. The time to first `audio_numpy` yield from `KPipeline.__call__` is the correct TTFB for
+Kokoro.
+
+The Picovoice benchmark [Picovoice-TTS] uses ~200 simulated voice-assistant interactions
+(taskmaster2 dataset), reporting simple mean latencies without p-percentiles. For this project,
+reporting p50/p95/p99 is preferable because a single outlier (e.g., a CUDA cache miss on the first
+synthesis) can inflate the mean without representing typical performance.
+
+**Best practice — number of trials**: A minimum of 30 prompts per system is sufficient to estimate
+p50 and p95 reliably for GPU inference. Use the val_96 set (96 clips) and the filler set (≥50 clips)
+as described in the task description for a total of ≥145 timing measurements per system.
+
+##### Open-Source TTS Evaluation Frameworks
+
+Two open-source frameworks provide reference implementations for the harness architecture:
+
+**inworld-ai/open-tts-eval** [Inworld-OpenEval]: Uses `faster-whisper` + `JiWER 3.0+` for WER; ECAPA
+speaker similarity (requires reference audio); NISQAv2 MOS. Does not measure latency. WER
+thresholds: warn=0.05, fail=0.10 (starter bands, domain-calibrated). Speaker similarity: warn &lt;
+0.65, fail &lt; 0.55.
+
+**wavlab-speech/versa** [VERSA2024]: 65 metrics including WER, MCD, UTMOS, speaker similarity
+(WavLM-based), DNSMOS. Full installation, YAML-driven configuration. Heavy dependency footprint.
+
+Neither framework measures TTFB. The harness in this task must implement timing inline.
+
+For speaker similarity, both frameworks use WavLM or ECAPA embeddings rather than GE2E/resemblyzer.
+The project specifically requires GE2E cosine (via resemblyzer) for consistency with the project&#x27;s
+success criterion. This is a deliberate divergence from broader community practice — WavLM-based
+speaker similarity correlates better with human perception [AnalyzeSim2025] but GE2E was chosen for
+project continuity.
+
+#### Methodology Insights
+
+* **Centroid construction**: build the ElevenLabs David centroid by calling `embed_utterance` on
+  each reference clip and taking the mean, then L2-normalizing. Do not average the raw waveforms.
+  Split 1358 clips 679/679 (seed=42) — centroid half and held-out half. ElevenLabs arm is scored
+  against the held-out half; all other arms are scored against the full centroid.
+
+* **Resemblyzer normalization**: `preprocess_wav` already normalizes volume and resamples.
+  Synthesized audio should be passed through `preprocess_wav` before embedding to ensure consistent
+  sample rate (16 kHz) and amplitude normalization. Raw 24 kHz Kokoro output must be resampled.
+
+* **TTFB for Kokoro**: timestamp immediately before the `KPipeline.__call__()` invocation and
+  capture the time of the first yielded `audio_numpy` tuple. Do not include model loading time
+  (pre-warm the pipeline). Send ≥1 warmup synthesis (discard its timing) per system session.
+
+* **TTFB for ElevenLabs**: use `stream=True` in the API call with chunk size 1024 bytes. Timestamp
+  before the request and capture arrival of the first non-empty chunk. Use a persistent
+  `requests.Session`. Discard ≥1 warmup request.
+
+* **RTF**: `synthesis_wall_time / output_audio_duration_seconds`. Use `soundfile.info()` to get
+  audio duration from the output numpy array rather than dividing by 24000 directly.
+
+* **WER**: use `faster-whisper` (base.en model for speed; large-v3 for accuracy reference).
+  Normalize both hypothesis and reference: lowercase, expand numbers, strip punctuation. Compute
+  per-clip WER with JiWER; report mean and % of clips with WER &gt; 20%.
+
+* **Duration ratio**: `len(synth_audio) / 24000 / reference_audio_duration`. Values &gt; 2.0 or &lt; 0.5
+  warrant a manual review flag.
+
+* **Hypothesis — WER detects noisy checkpoints**: The t0005/t0006 checkpoints were described as
+  producing &quot;noisy audio&quot; on subjective evaluation. If this noise manifests as unintelligible
+  phonemes, WER should be elevated (&gt; 10%) for those systems while speaker_sim might still score
+  moderately. If WER and speaker_sim are decorrelated across systems, that validates the need for
+  both metrics.
+
+* **Best practice — floor control**: Include `af_heart` (female American) as the floor control to
+  establish what a deliberately wrong-speaker score looks like on this scale. Expected floor: cosine
+  similarity approximately 0.3–0.5 against the ElevenLabs David centroid.
+
+* **Reproducibility**: record `torch.__version__`, `cuda version` (from `torch.version.cuda`),
+  Kokoro package version (`pip show kokoro`), `nvidia-smi` GPU model, and timestamp in a
+  `metadata.json` alongside each system&#x27;s results.
+
+#### Tool and Library Landscape
+
+| Tool | Purpose | Notes |
+| --- | --- | --- |
+| `resemblyzer` (resemble-ai) | GE2E speaker embeddings | 256-d, L2-normed; `preprocess_wav` + `embed_utterance` |
+| `faster-whisper` | WER transcription | Much faster than openai-whisper; use base.en |
+| `jiwer` | WER computation | Standard; normalize with `RemovePunctuation`, `ToLowerCase` |
+| `soundfile` | Audio I/O | Reads/writes WAV; get duration with `soundfile.info()` |
+| `kokoro` (hexgrad) | Kokoro TTS synthesis | `KPipeline(lang_code=&quot;b&quot;)` for British English |
+| `elevenlabs` Python SDK | ElevenLabs API | Use `generate(..., stream=True)` for TTFB |
+| `inworld-ai/open-tts-eval` [Inworld-OpenEval] | Reference eval pipeline | WER + speaker_sim reference implementation |
+| `wavlab-speech/versa` [VERSA2024] | Comprehensive audio eval | 65 metrics; heavy but authoritative |
+| `Picovoice/tts-latency-benchmark` [Picovoice-TTS] | TTFB benchmark framework | Apache 2.0; ~200 prompts methodology |
+
+#### Benchmark Comparison
+
+Published and community numbers for ElevenLabs and Kokoro-82M latency (all non-peer-reviewed unless
+noted):
+
+| System | Metric | Value | Hardware | Source |
+| --- | --- | --- | --- | --- |
+| ElevenLabs Turbo v2.5 | TTFA p50 | 264 ms | Cloud API | [Forasoft-Stream] |
+| ElevenLabs Flash v2.5 | TTFA p50 | 288 ms | Cloud API | [Forasoft-Stream] |
+| ElevenLabs Streaming | FTTS mean | 335 ms | AMD Ryzen 7 5700X | [Picovoice-TTS] |
+| ElevenLabs PCM stream | TTFA avg | 478 ms | Cloud API | [ElevenLabs-Latency] |
+| Kokoro-82M | TTFB baseline | 97 ms | GPU (unspecified) | [Together-Kokoro] |
+| Kokoro-82M | FTTS | 28 ms | RTX 5090 | [Forasoft-Stream] |
+| Kokoro-82M | RTF | ~0.03 | A100 | [GigaGPU-Kokoro] |
+| Kokoro-82M | RTF | ~0.04 | RTX 4090 | [GigaGPU-TTS] |
+| Kokoro-82M | FTTS (CPU) | 3,658 ms | AMD Ryzen 7 5700X | [Picovoice-TTS] |
+
+**Key insight**: ElevenLabs TTFA (264–335 ms) is already near the 300 ms project target. The ≤ 300
+ms criterion is achievable by ElevenLabs only with the Flash/Turbo model and optimized streaming —
+not with the standard REST API (1,470 ms). Kokoro on H100 should easily beat this given RTF 0.03 on
+A100.
+
+#### Discovered Papers
+
+##### [Wan2018]
+
+* **Title**: Generalized End-to-End Loss for Speaker Verification
+* **Authors**: Wan, L., Wang, Q., Papir, A., Lopez Moreno, I.
+* **Year**: 2018
+* **DOI**: `10.1109/ICASSP.2018.8462665`
+* **URL**: https://arxiv.org/abs/1710.10467
+* **Suggested categories**: `speaker-verification`, `speech-embeddings`
+* **Why download**: Defines the GE2E loss and the d-vector architecture that resemblyzer wraps. The
+  speaker_sim metric in this project is GE2E cosine; understanding the embedding model is essential
+  for interpreting metric range, training objective, and threshold semantics. This is the
+  foundational reference.
+
+##### [Li2023]
+
+* **Title**: StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial
+  Training with Large Speech Language Models
+* **Authors**: Li, Y., Han, C., Raghavan, V., Mesgarani, N., Yoon, H.
+* **Year**: 2023
+* **DOI**: `10.5555/3666122.3667032`
+* **URL**: https://arxiv.org/abs/2306.07691
+* **Suggested categories**: `text-to-speech`, `speech-synthesis`
+* **Why download**: Kokoro-82M is built on StyleTTS2. The architecture paper documents the style
+  embedding structure, decoder design, and evaluation methodology (MOS, CMOS, WER) used by the
+  underlying model. Essential for understanding what is swapped between evaluation systems
+  (voicepack vs. decoder vs. both).
+
+##### [VERSA2024]
+
+* **Title**: VERSA: A Versatile Evaluation Toolkit for Speech, Audio, and Music
+* **Authors**: Shi, J. et al.
+* **Year**: 2024
+* **DOI**: null
+* **URL**: https://arxiv.org/abs/2412.17667
+* **Suggested categories**: `evaluation-methodology`, `text-to-speech`
+* **Why download**: Comprehensive reference for speech evaluation methodology. Covers WER, MCD,
+  UTMOS, speaker similarity metrics, and MOS correlation. Directly relevant to harness design
+  decisions: which metrics to use, how to normalize, and how they correlate with human perception.
+  65 metrics with 729 variants.
+
+##### [AnalyzeSim2025]
+
+* **Title**: Analyzing and Improving Speaker Similarity Assessment for Speech Synthesis
+* **Authors**: (Authors not fully captured from search)
+* **Year**: 2025
+* **DOI**: null
+* **URL**: https://arxiv.org/html/2507.02176v1
+* **Suggested categories**: `speaker-verification`, `evaluation-methodology`
+* **Why download**: Critical analysis of speaker similarity metrics in TTS evaluation. Discusses
+  where cosine-based GE2E metrics agree and disagree with human perception, and proposes
+  improvements. Directly relevant to interpreting the project&#x27;s 0.85 GE2E cosine threshold and
+  understanding when the metric might give misleading signals.
+
+#### Recommendations for This Task
+
+1. **Use centroid-half comparison** (not per-clip) for the scoring design: build the ElevenLabs
+   David centroid from 679 clips (seed=42 split), score all synthesis against that centroid.
+   ElevenLabs arm is scored against the held-out 679 clips to avoid self-comparison. Expected
+   same-system scores: 0.85+ against centroid for a well-matched voice; 0.7 for per-clip comparisons
+   [Baseten-FineTune].
+
+2. **Set WER thresholds as**: warn at WER &gt; 10%, hard-flag at WER &gt; 20% (adjusted up from the
+   general 10% hard threshold to account for short filler utterance inflation). Report % of clips
+   above each threshold per system [Inworld-OpenEval].
+
+3. **Expect ElevenLabs TTFA ≈ 250–340 ms** from published benchmarks [Forasoft-Stream],
+   [Picovoice-TTS] — already near the 300 ms boundary. Measure directly; do not rely on these
+   numbers.
+
+4. **Expect Kokoro H100 TTFB &lt; 100 ms** based on A100 RTF ≈ 0.03 and 97 ms baseline
+   [GigaGPU-Kokoro]. GPU first-chunk time dominates on H100; network overhead is zero for local
+   inference.
+
+5. **Minimum 1 warmup synthesis per system** before timing begins [Coval-Methodology],
+   [Picovoice-TTS]. Pre-load all model weights before starting the timing loop — exclude model
+   loading from TTFB.
+
+6. **Download [Wan2018] and [Li2023]** as the foundational architecture papers. Download [VERSA2024]
+   for evaluation methodology reference. Download [AnalyzeSim2025] for speaker similarity metric
+   interpretation guidance.
+
+7. **Resemblyzer audio length floor**: skip clips &lt; 1.6 s in speaker_sim scoring (fewer than one
+   partial-utterance window). Log the count of skipped clips per system.
+
+8. **Duration ratio is complementary to WER**: the t0002 10× duration explosion would have been
+   caught by duration_ratio &gt; 2.0 long before WER was computed. Implement duration_ratio check
+   before WER to short-circuit expensive Whisper transcription on obviously broken outputs.
+
+#### Source Index
+
+##### [Wan2018]
+
+* **Type**: paper
+* **Title**: Generalized End-to-End Loss for Speaker Verification
+* **Authors**: Wan, L. et al.
+* **Year**: 2018
+* **DOI**: `10.1109/ICASSP.2018.8462665`
+* **URL**: https://arxiv.org/abs/1710.10467
+* **Peer-reviewed**: yes (ICASSP 2018)
+* **Relevance**: Defines the GE2E embedding model that resemblyzer implements. Architecture: 3 LSTM
+  layers + projection to 256-d d-vector. This is the speaker_sim metric foundation for this project.
+
+##### [Li2023]
+
+* **Type**: paper
+* **Title**: StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial
+  Training with Large Speech Language Models
+* **Authors**: Li, Y. et al.
+* **Year**: 2023
+* **DOI**: `10.5555/3666122.3667032`
+* **URL**: https://arxiv.org/abs/2306.07691
+* **Peer-reviewed**: yes (NeurIPS 2023)
+* **Relevance**: Base architecture for Kokoro-82M. Documents style embedding structure (decoder
+  components swapped between evaluation systems), evaluation metrics (MOS, WER), and human-level
+  performance claims.
+
+##### [VERSA2024]
+
+* **Type**: paper
+* **Title**: VERSA: A Versatile Evaluation Toolkit for Speech, Audio, and Music
+* **Authors**: Shi, J. et al.
+* **Year**: 2024
+* **DOI**: null
+* **URL**: https://arxiv.org/abs/2412.17667
+* **Peer-reviewed**: no (preprint, under review)
+* **Relevance**: Comprehensive evaluation framework covering WER, MCD, speaker similarity, and MOS
+  metrics. Reference for harness architecture and metric selection decisions.
+
+##### [AnalyzeSim2025]
+
+* **Type**: paper
+* **Title**: Analyzing and Improving Speaker Similarity Assessment for Speech Synthesis
+* **Authors**: (First author et al.)
+* **Year**: 2025
+* **DOI**: null
+* **URL**: https://arxiv.org/html/2507.02176v1
+* **Peer-reviewed**: no (preprint 2025)
+* **Relevance**: Critical analysis of cosine-based speaker similarity metrics in TTS. Important for
+  interpreting when GE2E cosine ≥ 0.85 is and is not meaningful as a perceptual quality signal.
+
+##### [Resemble-GH]
+
+* **Type**: repository
+* **Title**: Resemblyzer — A python package to analyze and compare voices with deep learning
+* **Author/Org**: resemble-ai
+* **Date**: 2019-12
+* **URL**: https://github.com/resemble-ai/Resemblyzer
+* **Last updated**: 2024
+* **Peer-reviewed**: no
+* **Relevance**: Primary library for speaker_sim computation. Wraps GE2E with `preprocess_wav` and
+  `embed_utterance`. Outputs 256-d L2-normed embeddings. Partial-utterance window: 1.6 s.
+
+##### [Resemble-AuthStudy]
+
+* **Type**: paper
+* **Title**: Evaluation of Resemblyzer Ability to Authenticate the Speaker
+* **Author/Org**: CEUR Workshop Proceedings (authors not captured)
+* **Date**: 2023
+* **URL**: https://ceur-ws.org/Vol-4164/paper7.pdf
+* **Peer-reviewed**: no (workshop paper)
+* **Relevance**: Empirical calibration study of resemblyzer cosine similarity thresholds. Found
+  threshold of 0.84 for English voice authentication. Minimum reliable clip: 2.63 s, 495 KB.
+
+##### [Kokoro-HF]
+
+* **Type**: documentation
+* **Title**: hexgrad/Kokoro-82M model card
+* **Author/Org**: hexgrad
+* **Date**: 2025-01
+* **URL**: https://huggingface.co/hexgrad/Kokoro-82M
+* **Last updated**: 2025-09
+* **Peer-reviewed**: no
+* **Relevance**: Official Kokoro-82M architecture description: StyleTTS2 + ISTFTNet, decoder-only,
+  82M params, Apache 2.0, 54 voices, 24 kHz output. Voicepack format and KPipeline API
+  documentation.
+
+##### [GigaGPU-Kokoro]
+
+* **Type**: blog
+* **Title**: Kokoro TTS Latency by GPU
+* **Author/Org**: GigaGPU
+* **Date**: 2025
+* **URL**: https://gigagpu.com/kokoro-tts-latency-by-gpu/
+* **Peer-reviewed**: no
+* **Relevance**: GPU-specific Kokoro TTFB/RTF benchmarks. RTF ≈ 0.03 on A100; RTX 3050 at 180 ms.
+  Important for setting expectations before H100 measurement.
+
+##### [GigaGPU-TTS]
+
+* **Type**: blog
+* **Title**: TTS Latency Benchmarks
+* **Author/Org**: GigaGPU
+* **Date**: 2025
+* **URL**: https://gigagpu.com/tts-latency-benchmarks/
+* **Peer-reviewed**: no
+* **Relevance**: Comparative GPU latency benchmarks across TTS models. RTF ~0.03–0.04 for Kokoro on
+  RTX 4090. Contextualizes expected Kokoro performance on H100.
+
+##### [ElevenLabs-Latency]
+
+* **Type**: documentation
+* **Title**: Understanding latency | ElevenLabs Documentation
+* **Author/Org**: ElevenLabs
+* **Date**: 2026
+* **URL**: https://elevenlabs.io/docs/eleven-api/concepts/latency
+* **Last updated**: 2026-09
+* **Peer-reviewed**: no
+* **Relevance**: Official latency documentation. Flash model inference: ~75 ms. PCM streaming REST
+  API TTFA: ~478 ms average. Measurement guidance: measure from application, not API benchmarks.
+
+##### [Forasoft-Stream]
+
+* **Type**: blog
+* **Title**: Streaming TTS — Kokoro, ElevenLabs Turbo, Cartesia, And OpenAI TTS
+* **Author/Org**: Forasoft
+* **Date**: 2026-06
+* **URL**:
+  https://www.forasoft.com/learn/ai-for-video-engineering/articles-ai/streaming-tts-kokoro-elevenlabs-turbo-openai-tts
+* **Peer-reviewed**: no
+* **Relevance**: Side-by-side streaming latency comparison. ElevenLabs Turbo: 264 ms median TTFA.
+  ElevenLabs Flash: 288 ms median TTFA. Kokoro RTX 4090: ~210× faster than real-time.
+
+##### [Picovoice-TTS]
+
+* **Type**: documentation
+* **Title**: Open-Source Text-to-Speech Latency Benchmark — Picovoice Docs
+* **Author/Org**: Picovoice
+* **Date**: 2025
+* **URL**: https://picovoice.ai/docs/benchmark/tts/
+* **Last updated**: 2026
+* **Peer-reviewed**: no
+* **Relevance**: Comprehensive TTFB benchmark covering 13+ TTS systems. Kokoro CPU FTTS: 3,658 ms.
+  ElevenLabs Streaming: 335 ms. Open-source methodology on GitHub (Apache 2.0). ~200 taskmaster2
+  prompts. Reference framework for this task&#x27;s harness design.
+
+##### [Coval-Methodology]
+
+* **Type**: documentation
+* **Title**: TTS Benchmark Methodology — coval-ai/benchmarks
+* **Author/Org**: Coval AI
+* **Date**: 2025-2026
+* **URL**: https://github.com/coval-ai/benchmarks/blob/main/docs/methodology.md
+* **Last updated**: 2026
+* **Peer-reviewed**: no
+* **Relevance**: Canonical TTFA definition: (first chunk arrival − synthesis start) + leading
+  silence. Warmup methodology: scale-from-zero boot via 6-minute handshake budget; HTTP/2
+  multiplexing to amortize TCP+TLS. Reference for this task&#x27;s TTFB measurement protocol.
+
+##### [Inworld-OpenEval]
+
+* **Type**: repository
+* **Title**: open-tts-eval — Open, reproducible TTS/STT evaluation toolkit
+* **Author/Org**: inworld-ai
+* **Date**: 2025
+* **URL**: https://github.com/inworld-ai/open-tts-eval
+* **Last updated**: 2026
+* **Peer-reviewed**: no
+* **Relevance**: Reference implementation for WER + speaker similarity. WER thresholds: warn=0.05,
+  fail=0.10. Speaker similarity: warn &lt; 0.65, fail &lt; 0.55. Uses faster-whisper + JiWER 3.0+. Audio
+  health checks: clipping, silence, tail-clicks.
+
+##### [Deepgram-PER]
+
+* **Type**: blog
+* **Title**: PER vs WER: New TTS Accuracy Measurement Standard 2026
+* **Author/Org**: Deepgram
+* **Date**: 2026
+* **URL**: https://deepgram.com/learn/per-new-standard-measuring-tts-accuracy
+* **Peer-reviewed**: no
+* **Relevance**: WER thresholds for TTS quality gates: &lt; 5% consumer-grade; &gt; 100% fundamentally
+  broken. Introduces phoneme error rate (PER) as a complementary metric.
+
+##### [Baseten-FineTune]
+
+* **Type**: blog
+* **Title**: Fine-tuning Qwen3-TTS for high-quality voice cloning
+* **Author/Org**: Baseten
+* **Date**: 2026
+* **URL**: https://www.baseten.co/blog/fine-tuning-qwen3-tts-for-high-quality-voice-cloning/
+* **Peer-reviewed**: no
+* **Relevance**: Key finding: per-clip cosine similarity for the same speaker ≈ 0.7; with centroid
+  (mean of 64 clips) rises to 0.85+. Directly explains why the 0.85 target uses centroid comparison
+  and why per-clip scores will typically be lower.
+
+##### [ResemblyzerSearch]
+
+* **Type**: blog
+* **Title**: Speaker identification, differentiation and verification using resemblyzer
+* **Author/Org**: Various (search result compilation)
+* **Date**: 2024-2025
+* **URL**: https://github.com/resemble-ai/Resemblyzer
+* **Peer-reviewed**: no
+* **Relevance**: Community-reported cosine similarity ranges: same-speaker 0.8–0.95 (typical),
+  different-speaker 0.3–0.6 (typical), 0.75 as common default threshold in prototyping.
+
+##### [Kaneko2022]
+
+* **Type**: paper
+* **Title**: iSTFTNet: Fast and Lightweight Mel-Spectrogram Vocoder Incorporating Inverse Short-Time
+  Fourier Transform
+* **Authors**: Kaneko, T., Tanaka, K., Kameoka, H., Seki, S.
+* **Year**: 2022
+* **DOI**: null
+* **URL**: https://arxiv.org/abs/2203.02395
+* **Peer-reviewed**: yes (ICASSP 2022)
+* **Relevance**: Vocoder component of Kokoro-82M. ISTFTNet converts mel-spectrograms to waveforms.
+  Understanding this component informs the audio output format (24 kHz) and synthesis pipeline.
+
+##### [Together-Kokoro]
+
+* **Type**: documentation
+* **Title**: Kokoro-82M TTS API — Together AI
+* **Author/Org**: Together AI
+* **Date**: 2025
+* **URL**: https://www.together.ai/models/kokoro-82m
+* **Peer-reviewed**: no
+* **Relevance**: Reports 97 ms baseline TTFB for hosted Kokoro endpoint. Provides context for
+  expected GPU TTFB range before H100 measurement.
+
+##### [Openbenchmarks-EL]
+
+* **Type**: blog
+* **Title**: ElevenLabs voice agent latency: independent TTFAB benchmark (2026)
+* **Author/Org**: Openbenchmarks
+* **Date**: 2026
+* **URL**: https://openbenchmarks.com/voice-agent-latency/elevenlabs
+* **Peer-reviewed**: no
+* **Relevance**: Independent end-to-end ElevenLabs latency benchmark. Median TTFAB 1,424 ms, p95
+  1,768 ms over 429 voice agent turns. Distinguishes voice-agent pipeline latency from raw TTS TTFB.
+
+##### [NVIDIA-Riva]
+
+* **Type**: documentation
+* **Title**: Evaluate a TTS Pipeline — NVIDIA Riva User Guide
+* **Author/Org**: NVIDIA
+* **Date**: 2024
+* **URL**: https://docs.nvidia.com/deeplearning/riva/user-guide/docs/tutorials/tts-evaluate.html
+* **Peer-reviewed**: no
+* **Relevance**: Reference methodology for Whisper-based WER computation in TTS evaluation.
+  Describes intelligibility evaluation using ASR transcription and WER as a proxy for synthesis
+  quality.
+
+##### [F5TTS-Paper]
+
+* **Type**: paper
+* **Title**: F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching
+* **Authors**: Chen, S. et al.
+* **Year**: 2024
+* **DOI**: null
+* **URL**: https://arxiv.org/abs/2410.06885
+* **Peer-reviewed**: no (preprint 2024, accepted Interspeech 2025)
+* **Relevance**: State-of-the-art flow-matching TTS achieving WER ≈ 2.4% on LibriSpeech-PC
+  test-clean. Establishes that WER &lt; 5% is achievable for clean neural TTS, providing a reference
+  point for what a well-functioning synthesis pipeline should score.
+
+##### [TaskDescription]
+
+* **Type**: documentation
+* **Title**: TTS Evaluation Harness and Baselines — Task Description
+* **Author/Org**: rail-arf-tts project
+* **Date**: 2026-09-14
+* **URL**: tasks/t0008_tts_eval_harness_baselines/task_description.md
+* **Peer-reviewed**: no
+* **Relevance**: Project-internal document specifying evaluation systems, prompt sets, scoring
+  methodology, and compute budget. Reference for duration_ratio design choice (catches 10× duration
+  explosion from t0002) and the sanity-metric motivation.
+      </content>
+    </section>
+    <section id="t0008_tts_eval_harness_baselines-research_code" source_kind="file">
+      <title>t0008_tts_eval_harness_baselines — TTS evaluation harness and baselines — research_code.md</title>
+      <source_name>research_code.md</source_name>
+      <source_ids>
+        <id>t0008_tts_eval_harness_baselines</id>
+      </source_ids>
+      <repo_paths>
+        <path>tasks/t0008_tts_eval_harness_baselines/research/research_code.md</path>
+      </repo_paths>
+      <content>
+---
+spec_version: &quot;1&quot;
+task_id: &quot;t0008_tts_eval_harness_baselines&quot;
+research_stage: &quot;code&quot;
+tasks_reviewed: 7
+tasks_cited: 5
+libraries_found: 0
+libraries_relevant: 0
+date_completed: &quot;2026-09-14&quot;
+status: &quot;complete&quot;
+---
+#### Task Objective
+
+Build the project&#x27;s first quantitative measurement tool: a reusable evaluation harness that scores
+speaker similarity (GE2E cosine), TTFB, and RTF for eight TTS systems (ElevenLabs David, two base
+Kokoro voicepacks, four fine-tuned checkpoints, and a floor-control voice) across two prompt sets
+(val_96 and ≥ 50 filler prompts). The harness is delivered as a registered library asset so every
+future training task can reuse it. No training is run; this task measures what already exists.
+
+* * *
+
+#### Library Landscape
+
+Zero libraries have been registered in `assets/library/` across the seven completed tasks
+(t0001–t0007). All seven tasks were fine-tuning, data-prep, or brainstorming tasks; none produced a
+reusable library asset. The library aggregator confirms `library_count: 0`. No cross-task library
+import is therefore available, and all reusable code from prior tasks must be **copied** into
+`tasks/t0008_tts_eval_harness_baselines/code/`.
+
+The absence of a library layer means this task is the first to register one. The harness produced
+here should be registered so downstream training tasks (t0009 and later) can call it directly.
+
+* * *
+
+#### Key Findings
+
+##### Checkpoint Packaging: Five-Module Extraction Is Required
+
+t0002 discovered that v3&#x27;s `david_v3_best_decoder_kokoro.pth` packages **five** modules, not just
+the decoder: `bert`, `bert_encoder`, `predictor`, `text_encoder`, and `decoder` [t0002]. The file
+name is a misnomer inherited from the v3 packaging script. The `extract_decoder_generic.py` (38
+lines) captures all five modules with correct key remapping:
+
+* Strips the `module.` DDP prefix (`k.removeprefix(&quot;module.&quot;)` pattern is in `make_voicepack_v4.py`
+  but the generic extractor uses `k[7:]` conditionally)
+* Remaps `parametrizations.weight.original0` → `weight_g` and `.original1` → `weight_v`
+* Saves `{mod: {converted_key: tensor}}` for all five modules
+
+t0002 also confirmed that loading fewer than five modules into `KModel` produces either a duration
+explosion (Stage 2 predictor with base weights produces 89 s for a 9.6 s sentence) or persistent
+tonal artifacts (~3–3.5 kHz band in silent pauses). For t0008, the v3 voicepack and decoder bundle
+at `tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/` (DVC-tracked) already packages all
+five correctly; the t0005 and t0006 raw checkpoints (`epoch_2nd_*.pth`) must be packaged by copying
+and adapting `extract_decoder_generic.py`.
+
+##### Synthesis Entry Point: build_pipeline.py Is Mandatory for All Kokoro Arms
+
+t0003 established that all Kokoro synthesis must go through
+`tasks/t0003_kokoro_v5_phoneme_data/code/build_pipeline.py` [t0003]. The function
+`build_pipeline(model)` returns a `KPipeline` with:
+
+* `lang_code=&quot;b&quot;` (British English — matches the corpus G2P)
+* The full brand lexicon installed on `pipeline.g2p` (62 OOV words including `rezolve`, `brainpowa`,
+  `agentic`, all Rezolve brand names)
+
+Using bare `KPipeline(lang_code=&quot;a&quot;)` (American) or omitting the lexicon are both silent failures:
+misaki emits `❓` for unknown words (not in Kokoro&#x27;s 114-symbol vocab), and American vowel symbols
+don&#x27;t match what the v5-trained model saw during training. t0006&#x27;s raw inference scripts
+(`infer_v6c.py`, `infer_v6d.py`, ~150 lines each) bypass this path entirely — they use raw StyleTTS2
+model objects and espeak G2P [t0006]. The harness must NOT use those scripts for evaluation; it must
+use `build_pipeline.py` for any Kokoro arm that loads a packaged `KModel` + voicepack.
+
+Note: `build_pipeline` imports from `tasks.t0003_kokoro_v5_phoneme_data.code` — this is a cross-task
+import that works only because `build_pipeline.py` is not a library (no `assets/library`
+registration). The harness must either copy the full `build_pipeline.py` + `constants.py` +
+`lexicon.py` + the two functions from `prepare_v5_data.py` (`install_lexicon`, `load_kokoro_vocab`)
+into `tasks/t0008_tts_eval_harness_baselines/code/`, or import them directly (acceptable since t0003
+is a dependency&#x27;s sibling and this repo is a monorepo). The cleaner option is to import directly,
+preserving the single source of truth for the lexicon.
+
+##### KModel Loading Pattern for Fine-Tuned Checkpoints
+
+t0002&#x27;s `test_kokoro_inference_generic.py` (56 lines) establishes the canonical `KModel` loading
+pattern [t0002]:
+
+```python
+model = KModel(repo_id=&quot;hexgrad/Kokoro-82M&quot;, disable_complex=True)
+state = torch.load(decoder_path, map_location=&quot;cpu&quot;, weights_only=False)
+for mod_name, sd in state.items():
+    target = getattr(model, mod_name)
+    target.load_state_dict(sd, strict=False)
+model.eval()
+pipe = KPipeline(lang_code=&quot;b&quot;, model=model, repo_id=&quot;hexgrad/Kokoro-82M&quot;)
+```
+
+Key details: `disable_complex=True` selects the real-FFT ISTFT path in `istftnet.py` (more
+numerically stable on CPU); `strict=False` is required because the five-module bundle may have
+slightly different key sets than the base `KModel`. The `lang_code` here should be `&quot;b&quot;` (British)
+for David fine-tuned models — `test_kokoro_inference_generic.py` uses `&quot;a&quot;` (American), which is
+wrong for David-voice checkpoints and must be corrected when copying.
+
+##### Checkpoint Locations and Disambiguation
+
+Both t0005 and t0006 have DVC-tracked checkpoints but the actual `.pth` files are not checked into
+git — only `.dvc` pointer files. Running `dvc pull` before evaluation is required.
+
+* **t0005 run06 best**: `tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00003.pth`
+  (val_loss=0.848, epoch 3). The results_summary says &quot;epoch 3&quot; but the task_description logs say
+  &quot;epoch 2 or 3&quot;; the DVC pointer file is named `epoch_2nd_00003.pth.dvc`, confirming epoch 3.
+  Record which file was actually scored (from t0008&#x27;s task description: &quot;record which file was
+  actually scored&quot;) [t0005].
+
+* **t0006 v6d best**:
+  `tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth` (val_loss=0.846,
+  epoch 6) [t0006].
+
+* **v3 bundle** (gold reference): two files at
+  `tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/`:
+  * `david_v3_best_decoder_kokoro.pth` (327 MB, five-module format, DVC-tracked)
+  * `david_v3_best_voicepack.pt` (523 KB, `[510, 1, 256]` ref_s tensor, DVC-tracked) A third file
+    `david_v3_voicepack_ft_enc.pt` exists but is a variant; use `david_v3_best_voicepack.pt`.
+
+* **Base Kokoro voicepacks**: `bm_george` and `bm_lewis` use the stock `KModel` (no custom decoder)
+  with built-in voicepack names — no file path needed, just `voice=&quot;bm_george&quot;` in the pipeline.
+
+* **Base decoder + v3 voicepack** (system 4): stock `KModel` (no decoder replacement) +
+  `david_v3_best_voicepack.pt`. This tests how much of the voice the voicepack alone captures with
+  the base Kokoro decoder.
+
+##### Val_96 Text Extraction Pattern
+
+t0003 produces `tasks/t0003_kokoro_v5_phoneme_data/results/v5/val_list.txt` (96 lines) [t0003]. The
+format is `wav_path|phonemes|speaker_id`. The harness needs the original text, not the
+pre-phonemized form. The best approach is to parse the wav filename (which encodes a slug of the
+original text) or, more reliably, trace back to the source manifests. However, `build_pipeline.py`
+accepts raw text and phonemizes itself — so the harness can just feed the text from the original
+manifest CSV (at `data/train/manifest.csv` and `data/val/manifest.csv` on the benchmark machine).
+Alternatively, the val audio files can be synthesized from the phoneme strings directly via a custom
+pipeline; both approaches are valid.
+
+##### ElevenLabs API Streaming Pattern
+
+No prior task has used the ElevenLabs streaming API in this repo. The research_internet step found
+that ElevenLabs&#x27; streaming endpoint for TTFB measurement uses `text-to-speech/{voice_id}/stream`
+with an `Accept: audio/mpeg` header; TTFB is wall time from request start to first audio chunk
+(`iter_content(chunk_size=1)`). Voice ID for David: the project description references &quot;ElevenLabs
+David voice&quot; but does not record the voice_id; the harness must look it up from the ElevenLabs
+`/voices` API using the API key in the project&#x27;s `.env`.
+
+##### DVC Pull Is Required Before Any Evaluation
+
+All checkpoint and reference bundle paths have `.dvc` pointer files only; no binary data is in git.
+The harness or its setup step must run `dvc pull` for the relevant paths before synthesis begins.
+The 11labs filler corpus also needs to be copied from the VM and DVC-added as part of this task&#x27;s
+setup (it is not yet tracked by DVC, per `overview/datasets/fillers_1358.md`).
+
+##### LESSONS.md Constraints That Affect Harness Design
+
+Lesson 1: Warmup before any latency measurement. For Kokoro TTFB, at least one discarded synthesis
+call per system before recording p50/p95/p99. For ElevenLabs, at least one discarded streaming
+request before measurement.
+
+Lesson 4: Capture torch, CUDA, kokoro, and whisper versions plus GPU identity at the start of every
+TTFB measurement run. Write these to the results metadata.
+
+Lesson 10: `/mnt/kikiri-tts/` is ephemeral on the Azure ML VM. The filler corpus must be confirmed
+present before planning around it. All output audio from TTFB runs must be synced to the persistent
+mount or DVC-pushed before the VM is torn down.
+
+* * *
+
+#### Reusable Code and Assets
+
+##### `extract_decoder_generic.py` — Five-Module Checkpoint Extractor
+
+* **Source**: `tasks/t0002_kokoro_v4_voicepack_decoder_package/code/extract_decoder_generic.py`
+* **What it does**: Loads a raw StyleTTS2 Stage 2 checkpoint (`.pth` with `net` dict), extracts the
+  five modules (`bert`, `bert_encoder`, `predictor`, `text_encoder`, `decoder`) with key remapping
+  for DDP prefix and weight-norm parametrization, and saves a five-module state dict loadable by
+  `KModel`.
+* **Reuse method**: **copy into task** (not a library). Copy to
+  `tasks/t0008_tts_eval_harness_baselines/code/extract_decoder.py` and adapt: the `CKPT_DIR`
+  constant is hardcoded to t0001; replace with a function argument.
+* **Key function**: `main()` reads `sys.argv[1]` (checkpoint name in `CKPT_DIR`) and `sys.argv[2]`
+  (output name in `TASK_DIR/results/`). For the harness, adapt to accept arbitrary paths.
+* **Line count**: 38 lines. Minimal adaptation needed.
+
+##### `build_pipeline.py` + `constants.py` + `lexicon.py` + `install_lexicon` / `load_kokoro_vocab`
+
+* **Source**: `tasks/t0003_kokoro_v5_phoneme_data/code/build_pipeline.py` (30 lines),
+  `tasks/t0003_kokoro_v5_phoneme_data/code/constants.py` (55 lines),
+  `tasks/t0003_kokoro_v5_phoneme_data/code/lexicon.py` (93 lines),
+  `tasks/t0003_kokoro_v5_phoneme_data/code/prepare_v5_data.py:99-140` (`load_kokoro_vocab`,
+  `install_lexicon`, `phonemize` — ~60 lines total)
+* **What it does**: Returns a `KPipeline` with British G2P (`lang_code=&quot;b&quot;`) and the brand lexicon
+  pre-installed. This is the mandatory entry point for all Kokoro synthesis.
+* **Reuse method**: **import directly** (acceptable for this monorepo — t0003 is already a completed
+  dependency of t0006, which this task depends on). The harness calls
+  `from tasks.t0003_kokoro_v5_phoneme_data.code.build_pipeline import build_pipeline`. No copy
+  needed; the single lexicon source of truth is preserved.
+* **Function signature**: `build_pipeline(model: Any) -&gt; Any` — takes a `KModel` instance, returns a
+  `KPipeline`.
+* **Adaptation needed**: None. Use as-is.
+
+##### `test_kokoro_inference_generic.py` — KModel Loading Pattern
+
+* **Source**:
+  `tasks/t0002_kokoro_v4_voicepack_decoder_package/code/test_kokoro_inference_generic.py`
+* **What it does**: Loads a five-module bundle into `KModel`, wraps it in `KPipeline`, synthesizes
+  text, writes WAV. Shows the correct `strict=False` load pattern and chunk-iteration over the
+  pipeline generator.
+* **Reuse method**: **copy into task** as a template. The harness adapter for fine-tuned systems
+  follows this pattern exactly, with two corrections: `lang_code=&quot;b&quot;` (not `&quot;a&quot;`), and the pipeline
+  must be created via `build_pipeline(model)` rather than bare `KPipeline(...)`.
+* **Key pattern**: iterating `for _, _, chunk in pipe(text, voice=voicepack, speed=1.0)` to collect
+  audio chunks, `torch.cat(chunks)` to assemble.
+* **Line count**: 56 lines.
+
+* * *
+
+#### Dataset Landscape
+
+* **val_96** (96 clips): `data/v4/val/wavs/` + `data/v4/val/val_list.txt` (manifest, not yet
+  DVC-tracked). Text is recoverable from the clip filename slug or from the val manifest CSV.
+* **Filler corpus** (1358 clips): on the VM at `/mnt/kikiri-tts/data/11labs_david/`. Not yet
+  DVC-tracked. Must be copied off the VM and tracked in this task&#x27;s `data/11labs_david/`. Confirm it
+  still exists (Lesson 10: `/mnt` is ephemeral).
+* **t0005 run06 best checkpoint**:
+  `tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00003.pth.dvc` (1.87 GB).
+  Requires `dvc pull`.
+* **t0006 v6d epoch 6 checkpoint**:
+  `tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth.dvc` (1.86 GB).
+  Requires `dvc pull`.
+* **v3 reference bundle**: `tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/` — two files
+  DVC-tracked (`david_v3_best_decoder_kokoro.pth` 327 MB, `david_v3_best_voicepack.pt` 523 KB).
+
+* * *
+
+#### Lessons Learned
+
+##### val_loss Does Not Predict Perceptual Quality
+
+t0001–t0006&#x27;s combined experience shows that `val_loss` alone is not a reliable quality indicator
+[t0005][t0006]. t0003&#x27;s v3 gold-standard bundle has val_loss=0.506; t0005 run06 achieved 0.848 and
+t0006 v6d achieved 0.846 — both considered &quot;close&quot; by loss but described as noisy by listening. The
+harness must measure GE2E cosine and WER; the training pipeline&#x27;s loss signal is not a substitute.
+
+##### The Three Common Silent Failure Modes in This Codebase
+
+1. **Wrong lang_code at inference**: `lang_code=&quot;a&quot;` (American) vs `&quot;b&quot;` (British) produces
+   different IPA tokens silently. t0003 caught this; t0006&#x27;s raw inference scripts still used espeak
+   en-gb rather than the misaki+lexicon path [t0003][t0006].
+2. **Fewer than five modules loaded**: loading only `decoder` leaves `predictor` as base Kokoro,
+   causing duration explosions (89 s for 9.6 s sentences) [t0002].
+3. **Missing lexicon**: `Rezolve` phonemizes to `❓` (not in Kokoro vocab, silently dropped) without
+   the brand lexicon [t0003].
+
+##### DVC Pull Must Precede Every Evaluation Run
+
+t0005 and t0006 checkpoints are DVC-tracked only; the `.pth` files are not in git. Any harness run
+without a prior `dvc pull` for the relevant paths will fail with &quot;file not found&quot; rather than a
+clear error.
+
+##### Ephemeral VM Storage (LESSONS.md Lesson 10)
+
+The filler corpus lives on the VM&#x27;s `/mnt/kikiri-tts/` mount, which is wiped on every stop. This
+task&#x27;s first action on the VM must be to confirm the corpus is present, copy it to a persistent
+location, and `dvc push` before teardown. Do not assume the corpus survives from t0003&#x27;s
+description.
+
+* * *
+
+#### Recommendations for This Task
+
+1. **Copy `extract_decoder_generic.py` into task code, adapt for arbitrary paths.** The CKPT_DIR
+   hardcode is the only adaptation needed. Use this to package t0005 run06 and t0006 v6d checkpoints
+   as five-module bundles before synthesis.
+
+2. **Import `build_pipeline` directly from t0003; do not copy.** The lexicon is a single source of
+   truth with 62 entries that must not diverge. Import as
+   `from tasks.t0003_kokoro_v5_phoneme_data.code.build_pipeline import build_pipeline`.
+
+3. **Use `test_kokoro_inference_generic.py` as the template for the fine-tuned synthesis adapter.**
+   Fix the two bugs: `lang_code=&quot;b&quot;` and delegate to `build_pipeline(model)`.
+
+4. **Correct `lang_code` in every Kokoro synthesis call.** `&quot;b&quot;` (British) is mandatory for all
+   David-voice arms. `&quot;a&quot;` (American) is wrong and produces token-space mismatch with the v5
+   training corpus.
+
+5. **DVC-pull t0005 and t0006 checkpoints and v3 bundle before synthesis.** Add this as an explicit
+   step in the implementation plan. The paths are:
+   * `tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00003.pth`
+   * `tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth`
+   * `tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_decoder_kokoro.pth`
+   * `tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_voicepack.pt`
+
+6. **Confirm VM filler corpus before teardown.** On setup-machines:
+   `ls /mnt/kikiri-tts/data/11labs_david/` and verify count ≈ 1358 WAVs. If absent, fall back to
+   regenerating from `fillers_from_logs.txt` via ElevenLabs API. If present, `rsync` to a local
+   path, `dvc add`, `dvc push` before teardown.
+
+7. **Record version metadata at TTFB measurement time (LESSONS.md Lesson 4).** Capture: `torch`
+   version, `kokoro` version, CUDA version (`nvidia-smi`), GPU model. Write to the harness results
+   metadata JSON.
+
+8. **Warmup before TTFB measurement (LESSONS.md Lesson 1).** Run ≥ 1 discarded synthesis call per
+   system before recording. ElevenLabs needs ≥ 1 discarded streaming request.
+
+9. **Register the harness as a library asset.** The task expects exactly one library asset. Define
+   the entry points (prompt loader, per-system synthesizer, scorer, report writer) so future tasks
+   can import via `from tasks.t0008_tts_eval_harness_baselines.code.&lt;module&gt; import ...` through the
+   registered library path.
+
+* * *
+
+#### Task Index
+
+##### [t0002]
+
+* **Task ID**: t0002_kokoro_v4_voicepack_decoder_package
+* **Name**: Package Kokoro v4 voicepack + decoder
+* **Status**: completed
+* **Relevance**: Contains `extract_decoder_generic.py` — the five-module checkpoint extractor
+  required to package t0005 and t0006 raw StyleTTS2 checkpoints into Kokoro-loadable format. Also
+  validates the full `KModel` + `KPipeline` loading pipeline and documents the duration explosion
+  caused by loading fewer than five modules.
+
+##### [t0003]
+
+* **Task ID**: t0003_kokoro_v5_phoneme_data
+* **Name**: Regenerate v5 phoneme manifests
+* **Status**: completed
+* **Relevance**: Provides `build_pipeline.py` — the mandatory synthesis entry point for all Kokoro
+  arms in this task. Also provides the val_96 manifest (`results/v5/val_list.txt`) and the brand
+  lexicon (`lexicon.py`) that must be active during all David-voice inference.
+
+##### [t0005]
+
+* **Task ID**: t0005_kokoro_v5_stage2_train
+* **Name**: Kokoro v5 Stage 2 fine-tune
+* **Status**: completed
+* **Relevance**: Provides the t0005 run06 best checkpoint
+  (`results/checkpoints/epoch_2nd_00003.pth`, val_loss=0.848), one of the two checkpoints to be
+  scored in this task. Documents that epoch 3 is the DVC-tracked best, not epoch 2.
+
+##### [t0006]
+
+* **Task ID**: t0006_kokoro_v5_stage2_subset
+* **Name**: Kokoro v5 Stage 2: 250-clip subset, multispeaker: false
+* **Status**: completed
+* **Relevance**: Provides the t0006 v6d epoch 6 checkpoint
+  (`results/checkpoints/v6d/epoch_2nd_00006.pth`, val_loss=0.846) and the v3 gold-standard reference
+  bundle (`data/reference/v3/best/`) that is the primary system-4/system-5 baseline. Also provides
+  raw inference scripts (`infer_v6d.py`) whose patterns the harness must NOT follow (wrong synthesis
+  path, uses bare espeak not `build_pipeline`).
+
+##### [t0007]
+
+* **Task ID**: t0007_brainstorm_results_1
+* **Name**: Brainstorm results session 1
+* **Status**: completed
+* **Relevance**: Established the requirement for this evaluation harness task, confirmed the eight
+  systems to score, and documented the cost tracking bug (`total_usd` vs `total_cost_usd`) that
+  t0008 must fix in its own `results/costs.json`.
       </content>
     </section>
   </sections>

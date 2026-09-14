@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive type_id="costs" generated_at_utc="2026-09-14T13:48:27Z">
+<llm_context_archive type_id="costs" generated_at_utc="2026-09-14T18:11:45Z">
   <archive_summary>
     <title>Project Costs</title>
     <description>Complete cost breakdown with budget, per-service, and per-task details.</description>
     <section_count>1</section_count>
-    <char_count>1009</char_count>
-    <byte_count>1009</byte_count>
-    <estimated_tokens>252</estimated_tokens>
+    <char_count>1193</char_count>
+    <byte_count>1193</byte_count>
+    <estimated_tokens>298</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -18,13 +18,23 @@
       <source_name>aggregate_costs_full</source_name>
       <content>
 Total budget: $5000.00
-Total spent: $0.00
-Budget remaining: $5000.00
-Spent: 0.0%
+Total spent: $35.10
+Budget remaining: $4964.90
+Spent: 0.7%
+
+### Cost Breakdown by Category
+
+* azure_ml_vm_h100: $27.92
+* elevenlabs_api: $7.18
+
+### Cost Breakdown by Service
+
+* elevenlabs_api: $7.18
 
 ### Per-Task Costs
 
 * t0007_brainstorm_results_1: $0.00
+* t0008_tts_eval_harness_baselines: $35.10
       </content>
     </section>
   </sections>

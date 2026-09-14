@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-09-14T13:48:27Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-09-14T18:11:45Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>29440</char_count>
-    <byte_count>29546</byte_count>
-    <estimated_tokens>7360</estimated_tokens>
+    <char_count>27160</char_count>
+    <byte_count>27244</byte_count>
+    <estimated_tokens>6790</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -105,9 +105,10 @@ in parallel, then evaluate fine-tuned Kokoro v4 once Stage 2 training completes 
         <id>t0005_kokoro_v5_stage2_train</id>
         <id>t0006_kokoro_v5_stage2_subset</id>
         <id>t0007_brainstorm_results_1</id>
+        <id>t0008_tts_eval_harness_baselines</id>
       </source_ids>
       <content>
-Completed tasks: 7
+Completed tasks: 8
 
 ## Kokoro v4 Stage 2 fine-tune
 ID: t0001_kokoro_v4_stage2_finetune
@@ -150,140 +151,26 @@ ID: t0007_brainstorm_results_1
 Completed: 2026-09-14
 Short description: First brainstorm: review t0001-t0006 training attempts and create an evaluation-harness task and a training-failure forensics task.
 Result summary: Brainstorm Results Session 1 Summary First brainstorm after six Kokoro fine-tuning tasks (t0001-t0006) that produced no clean-audio checkpoint and measured none of the project&#x27;s success criteria. The session created **2 new tasks** (t0008 evaluation harness and baselines, t0009 Stage 2 training failure forensics and safeguards) and raised the project budget from $500 to **$5000**. No suggestions existed, so none were rejected or reprioritized. Session Overview * Date: 2026-09-14. * Context: t0001-t0006 were all Kokoro StyleTTS2 fine-tuning attempts. t0003 found and fixed a grapheme fallback that poisoned 21% of the v4 manifests. t0005 fixed seven crashes but every Stage 2 run diverged after...
+
+## TTS evaluation harness and baselines
+ID: t0008_tts_eval_harness_baselines
+Completed: 2026-09-14
+Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
+Result summary: --- spec_version: &quot;1&quot; task_id: &quot;t0008_tts_eval_harness_baselines&quot; --- Summary Built and deployed a reusable TTS evaluation harness (`tts_eval_harness` library) that measures speaker similarity (GE2E cosine via resemblyzer), TTFB, RTF, WER, and duration ratio across 8 TTS systems on two prompt sets (96 held-out val96 texts + 100 production fillers). All systems were benchmarked on LLM-T1-NC80 (2×H100 NVL). ElevenLabs David establishes the baseline; none of the Kokoro variants reached the 0.85 speaker_sim target, with the best being `kokoro_v3_bundle` at 0.63 (fillers). Metrics Key results (mean speaker_sim GE2E cosine, TTFB p50 ms, all systems on combined prompt sets): - **ElevenLabs David**...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0008_tts_eval_harness_baselines</id>
         <id>t0009_stage2_training_failure_forensics</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## TTS evaluation harness and baselines
-ID: t0008_tts_eval_harness_baselines
-Status: not_started
-Effective date: 2026-09-14
-Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
-Dependencies: t0006_kokoro_v5_stage2_subset
-
-#### Motivation
-
-After six tasks (t0001-t0006) the project has not measured a single one of its success criteria.
-Every training attempt was judged by StyleTTS2 `val_loss` and by listening. The success criteria in
-`project/description.md` are speaker similarity (GE2E cosine ≥ 0.85 against ElevenLabs David) and
-TTFB ≤ 300 ms. There is no ElevenLabs baseline, no base-Kokoro baseline, and no speaker-similarity
-code anywhere in the repo.
-
-t0003 also showed that Stage 1 `val_loss` does not predict success (0.770 preceded the working v3
-Stage 2, 0.545 did not), so `val_loss` alone cannot be trusted as a quality signal.
-
-This task builds the measurement tool once, as a reusable library, and uses it to answer research
-questions 1 and 2 and to place every existing checkpoint on the same scale. It runs no training.
-
-#### Key Questions
-
-1. What are speaker_sim, TTFB (p50/p95/p99) and RTF for ElevenLabs David on ≥ 50 filler prompts?
-2. What do base Kokoro-82M British male voices score on the same prompts?
-3. How close is the v3 shipped bundle (the only checkpoint with clean audio) to speaker_sim ≥ 0.85?
-4. Do the t0005 and t0006 best checkpoints score measurably worse than v3, i.e. does the harness
-   detect the &quot;noisy audio&quot; that listening detected?
-5. Is speaker_sim alone enough to reject broken audio, or are the duration and intelligibility
-   sanity metrics needed as well?
-
-#### Systems to Evaluate
-
-Every system is scored on the same prompt sets with the same harness:
-
-1. **ElevenLabs David** — API (voice ID David). TTFB and RTF measured live through the streaming
-   API; speaker_sim computed on held-out reference clips (see Scoring below).
-2. **Kokoro-82M base, `bm_george`** — stock voicepack.
-3. **Kokoro-82M base, `bm_lewis`** — stock voicepack.
-4. **Kokoro-82M base decoder + v3 David voicepack** — `david_v3_best_voicepack.pt` with stock
-   decoder/predictor. Tells us how much of the voice a voicepack alone captures, with no fine-tuned
-   weights.
-5. **v3 shipped bundle** — `david_v3_best_decoder_kokoro.pth` + `david_v3_best_voicepack.pt` from
-   `tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/` (DVC).
-6. **t0006 v6d epoch 6** —
-   `tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth`, packaged with
-   t0002&#x27;s five-module extraction (`extract_decoder_generic.py`).
-7. **t0005 run06 best** — `tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/` best checkpoint,
-   same packaging. Note: t0005&#x27;s results say epoch 3 but `logs/README.md` says epoch 2; record which
-   file was actually scored.
-
-Floor control: one clearly different Kokoro voice (e.g. `af_heart`, female American) to show what a
-&quot;wrong speaker&quot; score looks like, so 0.85 can be interpreted.
-
-All Kokoro arms must synthesize through `tasks/t0003_kokoro_v5_phoneme_data/code/build_pipeline.py`
-(British `lang_code=&quot;b&quot;` plus brand lexicon), not a bare `KPipeline` — t0003 showed accent and
-lexicon mismatches silently change the token stream.
-
-#### Prompt Sets and Data
-
-* **val_96**: the 96 held-out clips (`data/v4/val/`, text from
-  `tasks/t0003_kokoro_v5_phoneme_data/results/v5/val_list.txt`). Real David audio is available for
-  each prompt, so per-prompt paired comparison is possible. Never train on these.
-* **Fillers**: ≥ 50 prompts sampled with a fixed seed (seed=42) from the 1358-clip ElevenLabs filler
-  corpus. The corpus currently lives only on the VM (`kokoro-finetune/data/11labs_david/`, see
-  `overview/datasets/fillers_1358.md`) and is not DVC-tracked. First step: copy it off the VM,
-  `dvc add` it under this task&#x27;s `data/`, and `dvc push`. Beware LESSONS Lesson 10 — `/mnt` on Azure
-  ML is ephemeral; confirm the corpus still exists before planning around it.
-
-#### Scoring
-
-* **speaker_sim** (registered metric): resemblyzer GE2E cosine between each synthesized clip and the
-  mean embedding of the ElevenLabs David reference set. Split the reference clips into a centroid
-  half and a held-out half with a fixed seed; the ElevenLabs arm is scored on the held-out half so
-  it is not compared against itself. Report mean, std and per-clip distribution.
-* **ttfb_ms** (registered metric): for ElevenLabs, wall time from request to first streamed audio
-  byte. For Kokoro, wall time from pipeline call to the first audio chunk yielded. Follow LESSONS
-  Lesson 1 (discarded warmup requests before measuring) and Lesson 4 (record torch/CUDA/kokoro
-  versions and GPU at measurement time). Report p50/p95/p99.
-* **rtf** (registered metric): synthesis wall time divided by output audio duration.
-* **duration_ratio** (sanity): synthesized duration divided by reference clip duration. Catches the
-  10× duration explosion seen in t0002 before anyone listens.
-* **WER** (sanity): transcribe synthesized audio with a local Whisper model and compare against the
-  prompt text. Catches garbled or noisy audio that could still score a plausible speaker_sim.
-
-#### Compute and Budget
-
-* Quality metrics (speaker_sim, duration_ratio, WER) can run on CPU or a single GPU.
-* The success criterion defines TTFB &quot;local inference, H100&quot;. Kokoro TTFB/RTF should be measured on
-  LLM-T1-NC80 in one short window (target ≤ 1.5 h, ~$21), with setup and teardown through the
-  `setup-remote-machine` skill. A CPU TTFB number may be reported in addition, clearly labeled.
-* ElevenLabs API: ~150 streaming requests of short filler text, well under $5.
-* **Budget note**: the project budget was raised to $5000 in t0007. `aggregate_costs` still reports
-  $0 spent because t0001-t0006 write `total_usd` instead of `total_cost_usd`; real spend so far is
-  about $370 recorded plus about $70 of unrecorded t0006 GPU time. This task must write
-  `total_cost_usd`. Planned total for this task: ≤ $30.
-
-#### Expected Outputs
-
-* **Library asset**: the evaluation harness (prompt-set loader, per-system synth adapters, scoring,
-  report writer), reusable by every future training task.
-* `results/metrics.json` with speaker_sim, ttfb_ms, rtf per system (as variants).
-* Tables in `results_detailed.md`:
-  * Main table: rows = systems 1-7 + floor control; columns = speaker_sim mean/std, ttfb_ms
-    p50/p95/p99, rtf, duration_ratio median, WER; plus delta vs ElevenLabs.
-  * Per-prompt-set breakdown (val_96 vs fillers).
-* Charts in `results/images/`, embedded in `results_detailed.md`:
-  * speaker_sim distribution per system (box plot; y = GE2E cosine, dashed line at 0.85) — answers
-    Q1-Q4.
-  * TTFB CDF per system (x = ms, dashed line at 300 ms) — answers Q1-Q2.
-  * speaker_sim vs WER scatter per clip — answers Q5.
-* A few synthesized examples per system (DVC-tracked, not git).
-* A clear statement: which systems (if any) already pass each success criterion.
-
-#### Dependencies
-
-* `t0006_kokoro_v5_stage2_subset` — provides the v3 reference bundle and the v6d checkpoint.
-* Independent of t0009; the two can run in parallel.
+Planned or active tasks: 1
 
 ## Stage 2 training failure forensics and safeguards
 ID: t0009_stage2_training_failure_forensics
-Status: not_started
+Status: in_progress
 Effective date: 2026-09-14
 Short description: Audit every Kokoro training run&#x27;s logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.
 Dependencies: t0005_kokoro_v5_stage2_train, t0006_kokoro_v5_stage2_subset
@@ -452,8 +339,50 @@ Answers: 0
     <section id="open-suggestions" source_kind="aggregator">
       <title>Open Suggestions</title>
       <source_name>aggregate_suggestions_full</source_name>
+      <source_ids>
+        <id>S-0008-01</id>
+        <id>S-0008-02</id>
+        <id>S-0008-03</id>
+        <id>S-0008-04</id>
+        <id>S-0008-05</id>
+      </source_ids>
       <content>
-Open suggestions: 0
+Open suggestions: 5
+
+## Continue Stage 2 fine-tuning from v6d epoch 6 to close the 0.20 GE2E cosine gap
+ID: S-0008-01
+Priority: high
+Kind: experiment
+Source task: t0008_tts_eval_harness_baselines
+t0008 measured the best Kokoro checkpoint (kokoro_v3_bundle) at speaker_sim=0.631 vs the ElevenLabs target of 0.83 — a gap of ~0.20 GE2E cosine units. The t0006_v6d checkpoint was trained for only 6 epochs on a 250-clip subset and already shows competitive TTFB (132ms, matching ElevenLabs). Run additional Stage 2 epochs from epoch_2nd_00006.pth (multispeaker:false, 250-clip subset) and evaluate each checkpoint with the tts_eval_harness to find the epoch where speaker_sim plateaus or reaches 0.83. Use the harness library registered in t0008. Recommended task types: tts-finetuning-eval.
+
+## Investigate t0006_v6d val96 speaker_sim collapse (0.601 fillers → 0.482 val96)
+ID: S-0008-02
+Priority: high
+Kind: experiment
+Source task: t0008_tts_eval_harness_baselines
+The t0006_v6d checkpoint shows a striking degradation on val96 texts: speaker_sim drops from 0.601 (fillers) to 0.482 (val96), the largest cross-set gap of any system. The worst-case clips all have WER=1.00 and duration_ratio &lt; 0.80, with prompts containing brand names (Rezolve AI, Brain Commerce). This suggests v6d has not learned to synthesize longer, brand-name-heavy utterances correctly. Investigate whether the brand lexicon in build_pipeline.py fully covers the val96 prompts, whether val96 texts are systematically out-of-distribution for the 250-clip training subset, and whether more training data or a broader lexicon would recover performance. Recommended task types: data-analysis.
+
+## Expand Stage 2 training corpus beyond 250 clips to improve speaker identity transfer
+ID: S-0008-03
+Priority: high
+Kind: experiment
+Source task: t0008_tts_eval_harness_baselines
+The v6d model was trained on a 250-clip subset to test whether a smaller corpus would avoid the divergence seen in t0005. It achieves TTFB parity with ElevenLabs but lags in speaker_sim (0.601 vs 0.83 target). The full training set contains 1557 clips. Run Stage 2 with the full corpus (or a larger 500–800 clip subset) from first_stage.pth with the same multispeaker:false and crash-fix settings from t0006, then evaluate with tts_eval_harness. This tests whether more speaker data closes the GE2E cosine gap. Recommended task types: tts-finetuning-eval.
+
+## Register WER as a project metric and track it in harness evaluations
+ID: S-0008-04
+Priority: medium
+Kind: evaluation
+Source task: t0008_tts_eval_harness_baselines
+t0008 computed WER with faster-whisper base.en as a sanity metric but did not register it as a project metric. WER proved critical as a secondary failure detector alongside duration_ratio — the combination of duration_ratio &gt; 5.0 AND WER &gt; 0.5 reliably identifies exploded clips. Registering WER in meta/metrics/ would let the aggregator track intelligibility trends across future fine-tuning tasks and alert when a new checkpoint degrades transcription quality. Recommended task types: infrastructure-setup.
+
+## Augment the ElevenLabs filler corpus with val96-style longer utterances for harness scoring
+ID: S-0008-05
+Priority: medium
+Kind: dataset
+Source task: t0008_tts_eval_harness_baselines
+The current evaluation uses 100 filler prompts (short, 2–8 words) and 96 val96 prompts (mixed length). The speaker_sim scores diverge significantly between the two sets for fine-tuned Kokoro systems, suggesting filler-length bias. Adding a third prompt set of 50–100 medium-length utterances (10–20 words) sampled from the training corpus texts — but not in val96 — would give a more complete picture of speaker similarity across utterance lengths and reduce the chance that a checkpoint overfits to short fillers. Recommended task types: dataset.
       </content>
     </section>
   </sections>

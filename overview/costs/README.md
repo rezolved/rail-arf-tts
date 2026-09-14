@@ -1,6 +1,6 @@
 # Project Costs
 
-Spent $0.00 of $5000.00 USD. $5000.00 remains overall and $5000.00 remains before the 100%
+Spent $35.10 of $5000.00 USD. $4964.90 remains overall and $4964.90 remains before the 100%
 stop threshold.
 
 ## Budget Summary
@@ -8,30 +8,37 @@ stop threshold.
 | Field | Value |
 |-------|-------|
 | Total budget | $5000.00 USD |
-| Total spent | $0.00 USD |
-| Budget left | $5000.00 USD |
-| Budget left before stop threshold | $5000.00 USD |
-| Spent percent | 0.00% |
+| Total spent | $35.10 USD |
+| Budget left | $4964.90 USD |
+| Budget left before stop threshold | $4964.90 USD |
+| Spent percent | 0.70% |
 | Warn threshold | 80% ($4000.00) |
 | Stop threshold | 100% ($5000.00) |
 | Default per-task limit | $100.00 USD |
-| Tasks with cost records | 1 |
-| Tasks with non-zero spend | 0 |
-| Skipped tasks | 8 |
+| Tasks with cost records | 2 |
+| Tasks with non-zero spend | 1 |
+| Skipped tasks | 7 |
 
 ## Service Totals
 
-No entries found.
+| Key | Cost (USD) |
+|-----|------------|
+| `elevenlabs_api` | $7.18 |
 
 ## Breakdown Totals
 
-No entries found.
+| Key | Cost (USD) |
+|-----|------------|
+| `azure_ml_vm_h100` | $27.92 |
+| `elevenlabs_api` | $7.18 |
 
 1 task cost record(s) are zero-cost and omitted from the main spend table.
 
 ## Task Spend
 
-No task cost records found.
+| Task | Status | Total (USD) | Limit (USD) | Over limit |
+|------|--------|-------------|-------------|------------|
+| [`t0008_tts_eval_harness_baselines`](../../overview/tasks/task_pages/t0008_tts_eval_harness_baselines.md) | completed | $35.10 | $100.00 | no |
 
 ## Skipped Tasks
 
@@ -43,5 +50,4 @@ No task cost records found.
 | `t0004_kokoro_v5_stage1_train` | results/costs.json missing a numeric total_cost_usd |
 | `t0005_kokoro_v5_stage2_train` | results/costs.json missing a numeric total_cost_usd |
 | `t0006_kokoro_v5_stage2_subset` | results/costs.json missing a numeric total_cost_usd |
-| `t0008_tts_eval_harness_baselines` | results/costs.json is missing or invalid |
 | `t0009_stage2_training_failure_forensics` | results/costs.json is missing or invalid |

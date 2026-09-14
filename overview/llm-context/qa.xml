@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="qa" generated_at_utc="2026-09-14T13:48:27Z">
+<llm_context_archive preset_id="qa" generated_at_utc="2026-09-14T18:11:45Z">
   <archive_summary>
     <title>Questions and Answers</title>
     <description>Question-centric preset with the full answer corpus and compact project state.</description>
     <use_case>Answer review, follow-up questioning, and project knowledge-base chats.</use_case>
     <section_count>4</section_count>
-    <char_count>13053</char_count>
-    <byte_count>13094</byte_count>
-    <estimated_tokens>3263</estimated_tokens>
+    <char_count>13723</char_count>
+    <byte_count>13765</byte_count>
+    <estimated_tokens>3430</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -104,9 +104,10 @@ in parallel, then evaluate fine-tuned Kokoro v4 once Stage 2 training completes 
         <id>t0005_kokoro_v5_stage2_train</id>
         <id>t0006_kokoro_v5_stage2_subset</id>
         <id>t0007_brainstorm_results_1</id>
+        <id>t0008_tts_eval_harness_baselines</id>
       </source_ids>
       <content>
-Completed tasks: 7
+Completed tasks: 8
 
 ## Kokoro v4 Stage 2 fine-tune
 ID: t0001_kokoro_v4_stage2_finetune
@@ -149,28 +150,26 @@ ID: t0007_brainstorm_results_1
 Completed: 2026-09-14
 Short description: First brainstorm: review t0001-t0006 training attempts and create an evaluation-harness task and a training-failure forensics task.
 Result summary: Brainstorm Results Session 1 Summary First brainstorm after six Kokoro fine-tuning tasks (t0001-t0006) that produced no clean-audio checkpoint and measured none of the project&#x27;s success criteria. The session created **2 new tasks** (t0008 evaluation harness and baselines, t0009 Stage 2 training failure forensics and safeguards) and raised the project budget from $500 to **$5000**. No suggestions existed, so none were rejected or reprioritized. Session Overview * Date: 2026-09-14. * Context: t0001-t0006 were all Kokoro StyleTTS2 fine-tuning attempts. t0003 found and fixed a grapheme fallback that poisoned 21% of the v4 manifests. t0005 fixed seven crashes but every Stage 2 run diverged after...
+
+## TTS evaluation harness and baselines
+ID: t0008_tts_eval_harness_baselines
+Completed: 2026-09-14
+Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
+Result summary: --- spec_version: &quot;1&quot; task_id: &quot;t0008_tts_eval_harness_baselines&quot; --- Summary Built and deployed a reusable TTS evaluation harness (`tts_eval_harness` library) that measures speaker similarity (GE2E cosine via resemblyzer), TTFB, RTF, WER, and duration ratio across 8 TTS systems on two prompt sets (96 held-out val96 texts + 100 production fillers). All systems were benchmarked on LLM-T1-NC80 (2×H100 NVL). ElevenLabs David establishes the baseline; none of the Kokoro variants reached the 0.85 speaker_sim target, with the best being `kokoro_v3_bundle` at 0.63 (fillers). Metrics Key results (mean speaker_sim GE2E cosine, TTFB p50 ms, all systems on combined prompt sets): - **ElevenLabs David**...
       </content>
     </section>
     <section id="planned-tasks" source_kind="aggregator">
       <title>Planned Tasks</title>
       <source_name>aggregate_tasks_full</source_name>
       <source_ids>
-        <id>t0008_tts_eval_harness_baselines</id>
         <id>t0009_stage2_training_failure_forensics</id>
       </source_ids>
       <content>
-Planned or active tasks: 2
-
-## TTS evaluation harness and baselines
-ID: t0008_tts_eval_harness_baselines
-Status: not_started
-Effective date: 2026-09-14
-Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
-Dependencies: t0006_kokoro_v5_stage2_subset
+Planned or active tasks: 1
 
 ## Stage 2 training failure forensics and safeguards
 ID: t0009_stage2_training_failure_forensics
-Status: not_started
+Status: in_progress
 Effective date: 2026-09-14
 Short description: Audit every Kokoro training run&#x27;s logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.
 Dependencies: t0005_kokoro_v5_stage2_train, t0006_kokoro_v5_stage2_subset

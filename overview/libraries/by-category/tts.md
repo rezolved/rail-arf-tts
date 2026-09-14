@@ -1,12 +1,10 @@
-# Libraries by Date Added
+# Libraries: `tts`
 
-1 librar(y/ies) grouped by creation date.
+1 librar(y/ies).
 
 [Back to all libraries](../README.md)
 
 ---
-
-## 2026-09-14 (1)
 
 <details>
 <summary>📦 <strong>TTS Evaluation Harness</strong> (<code>tts_eval_harness</code>)</summary>

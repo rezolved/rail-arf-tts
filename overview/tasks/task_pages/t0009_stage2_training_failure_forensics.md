@@ -1,4 +1,4 @@
-# ⏹ Stage 2 training failure forensics and safeguards
+# ⏳ Stage 2 training failure forensics and safeguards
 
 [Back to all tasks](../README.md)
 
@@ -7,7 +7,8 @@
 | Field | Value |
 |---|---|
 | **ID** | `t0009_stage2_training_failure_forensics` |
-| **Status** | ⏹ not_started |
+| **Status** | ⏳ in_progress |
+| **Started** | 2026-09-14T15:28:39Z |
 | **Dependencies** | [`t0005_kokoro_v5_stage2_train`](../../../overview/tasks/task_pages/t0005_kokoro_v5_stage2_train.md), [`t0006_kokoro_v5_stage2_subset`](../../../overview/tasks/task_pages/t0006_kokoro_v5_stage2_subset.md) |
 | **Task types** | `data-analysis` |
 | **Expected assets** | 1 answer, 1 library |
