@@ -132,10 +132,14 @@
       "step": 10,
       "name": "teardown",
       "description": "Destroy LLM-T1-NC80 after TTFB/RTF runs are complete and update costs.json.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T17:58:54Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/010_teardown/",
+      "current_owner": "step-executor/teardown",
+      "last_heartbeat_at": "2026-09-14T17:58:54Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T18:58:54Z"
     },
     {
       "step": 11,

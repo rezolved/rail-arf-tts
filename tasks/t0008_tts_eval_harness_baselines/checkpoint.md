@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0008_tts_eval_harness_baselines"
-updated_at: "2026-09-14T17:45:00Z"
-completed_steps: 11
-next_step_number: 10
-next_step_id: "teardown"
+updated_at: "2026-09-14T18:02:00Z"
+completed_steps: 12
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -93,6 +93,12 @@ explicit-format variants), `tables.json`, 3 PNG charts, and both results files. 
 verificator: PASSED. Unit tests: 11/11. Task results verificator: PASSED (0 errors). Gap to 0.85
 target: ~0.20 GE2E cosine units.
 
+### Step 10 — teardown
+
+VM was already deallocated during implementation at 2026-09-14T17:42:17Z. Updated `machine_log.json`
+with `destroyed_at`, `total_duration_hours` (2.0), and `total_cost_usd` (27.92). Fixed provider
+field to "azure_ml" enum value. `verify_machines_destroyed`: PASSED (0 errors).
+
 * * *
 
 ## Cross-Step Decisions
@@ -119,6 +125,9 @@ target: ~0.20 GE2E cosine units.
 
 ## Next Step Notes
 
-Step 10 (teardown): VM already deallocated at 2026-09-14T17:42:17Z. Step 10 can be marked completed
-— the orchestrator should run it as a formality to update the step tracker. Step 12 (results) and
-Step 14 (suggestions) remain pending.
+Step 12 (results): Write `results_summary.md`, `results_detailed.md` (with full REQ-1 through REQ-21
+coverage and `## Task Requirement Coverage` as the final section), and verify `metrics.json`
+(already exists with 16 explicit-format variants), `costs.json`, and `remote_machines_used.json`.
+Load `results/metrics.json` and `results/tables.json` for the exact figures — do not approximate.
+Charts are already in `results/images/`. All result files from the implementation step are committed
+and ready. Step 14 (suggestions) and step 15 (reporting) follow.
