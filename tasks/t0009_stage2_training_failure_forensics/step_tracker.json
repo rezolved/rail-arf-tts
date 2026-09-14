@@ -94,14 +94,15 @@
       "step": 8,
       "name": "implementation",
       "description": "Run forensic analysis scripts; produce answer asset explaining root cause; ship checkpoint and log safeguard library.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T15:51:15Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T16:30:14Z",
       "log_file": "logs/steps/008_implementation/",
-      "current_owner": "step-executor/implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T15:52:54Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-14T17:51:15Z"
+      "expected_completion_at": "2026-09-14T17:51:15Z",
+      "actual_duration_seconds": 2339
     },
     {
       "step": 9,
