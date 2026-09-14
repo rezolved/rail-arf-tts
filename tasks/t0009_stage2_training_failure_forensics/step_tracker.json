@@ -163,10 +163,14 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up task suggestions from forensic findings and safeguard recommendations.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-14T16:42:21Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/014_suggestions/",
+      "current_owner": "step-executor/suggestions",
+      "last_heartbeat_at": "2026-09-14T16:42:21Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-14T17:42:21Z"
     },
     {
       "step": 15,

@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
-updated_at: "2026-09-14T17:00:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-14T17:15:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -91,12 +91,12 @@ verified. Root cause: DP checkpoint mismatch + joint\_epoch=3 too early.
 ### Step 12 — results
 
 All results files written and verified. `results_summary.md`, `results_detailed.md` (spec\_version
-"2"), `metrics.json` (`{}`), `costs.json` (`$0`), `remote_machines_used.json` (`[]`). Two new
-charts generated: `results/images/log_availability.png` (log survival rate, 1/13) and
+"2"), `metrics.json` (`{}`), `costs.json` (`$0`), `remote_machines_used.json` (`[]`). Two new charts
+generated: `results/images/log_availability.png` (log survival rate, 1/13) and
 `results/images/confound_heatmap.png` (normalised hyperparameter heatmap). `verify_task_metrics`
 PASS; `verify_task_results` PASS (1 expected warning TR-W013 for data-analysis task type). Both
-assets (answer, library) present and confirmed. `## Task Requirement Coverage` section lists
-REQ-1 through REQ-8 with Done/Partial status. REQ-2 and REQ-4 are Partial due to 12/13 logs being
+assets (answer, library) present and confirmed. `## Task Requirement Coverage` section lists REQ-1
+through REQ-8 with Done/Partial status. REQ-2 and REQ-4 are Partial due to 12/13 logs being
 permanently deleted and audio DVC not pulled.
 
 * * *
@@ -114,6 +114,21 @@ permanently deleted and audio DVC not pulled.
 
 * * *
 
+### Step 14 — suggestions
+
+Five follow-up suggestions generated in `results/suggestions.json` and verified by
+`verify_suggestions` (0 errors). Suggestions cover: controlled Stage 2 run with safeguards applied
+(high priority), controlled joint_epoch ablation to test causal independence (high priority), audio
+quality pre-filter for v5 train set (medium priority), v3 config recovery to resolve val_loss
+comparability gap (medium priority), and safeguard library extension with startup param-count
+assertion and per-loss gradient norm logging (medium priority). No duplicate suggestions or existing
+tasks cover these objectives.
+
+* * *
+
 ## Next Step Notes
 
-Proceed to step 14 (suggestions).
+Step 14 (suggestions) complete. Proceed to step 15 (reporting): run all relevant verificators,
+capture session transcripts, update task.json status to completed, write final step log, and commit.
+The main deliverables (answer asset, library asset, results files, suggestions) are all verified.
+REQ-2 and REQ-4 are Partial (documented in results_detailed.md). Report the $0 cost in costs.json.
