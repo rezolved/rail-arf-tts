@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0009_stage2_training_failure_forensics"
 updated_at: "2026-09-14T15:32:30Z"
-completed_steps: 2
+completed_steps: 7
 next_step_number: 3
 next_step_id: "init-folders"
 ---
@@ -26,6 +26,29 @@ research output.
 Both dependencies verified as completed: `t0005_kokoro_v5_stage2_train` and
 `t0006_kokoro_v5_stage2_subset`. Verification passed with zero errors and zero warnings. Output:
 `logs/steps/002_check-deps/deps_report.json`.
+
+### Step 4 — research-papers
+
+Skipped: no papers in the corpus are directly relevant to forensic analysis of local Kokoro training
+logs.
+
+### Step 5 — research-internet
+
+Skipped: all inputs (logs, checkpoints, code) are local; no external data or new documentation
+needed.
+
+### Step 10 — setup-machines
+
+Skipped: analysis runs locally on stored logs and checkpoints; no GPU required.
+
+### Step 11 — teardown
+
+Skipped: no remote machines provisioned.
+
+### Step 13 — compare-literature
+
+Skipped: this is a forensic audit task; results are not comparable to published quantitative
+baselines.
 
 * * *
 
