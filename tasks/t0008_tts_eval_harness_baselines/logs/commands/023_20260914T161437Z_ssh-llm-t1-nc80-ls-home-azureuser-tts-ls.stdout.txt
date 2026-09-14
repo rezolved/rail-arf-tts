@@ -1,0 +1,11 @@
+MODELS.md
+README.md
+__pycache__
+_common_tts.py
+docker
+out
+phrases.json
+requirements
+runners
+setup_venv.sh
+no kokoro-finetune in TTS

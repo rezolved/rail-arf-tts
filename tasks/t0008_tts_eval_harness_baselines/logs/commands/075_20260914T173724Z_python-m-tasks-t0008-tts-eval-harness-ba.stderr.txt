@@ -1,0 +1,26 @@
+2026-09-14 17:37:25,172 INFO __main__ Loaded 1568 per-clip records
+2026-09-14 17:37:25,173 INFO __main__ Systems: ['elevenlabs_david', 'kokoro_base_george', 'kokoro_base_lewis', 'kokoro_base_v3_voicepack', 'kokoro_floor_control', 'kokoro_t0005_best', 'kokoro_t0006_v6d', 'kokoro_v3_bundle']
+2026-09-14 17:37:25,173 INFO __main__ Prompt sets: ['fillers', 'val96']
+2026-09-14 17:37:25,200 INFO __main__ Saved metrics.json → tasks/t0008_tts_eval_harness_baselines/results/metrics.json
+2026-09-14 17:37:25,219 INFO __main__ Saved tables.json → tasks/t0008_tts_eval_harness_baselines/results/tables.json
+2026-09-14 17:37:26,360 INFO __main__ Saved speaker_sim boxplot → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/images/speaker_sim_boxplot.png
+2026-09-14 17:37:26,912 INFO __main__ Saved TTFB CDF → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/images/ttfb_cdf.png
+2026-09-14 17:37:27,591 INFO __main__ Saved speaker_sim vs WER scatter → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/images/speaker_sim_wer_scatter.png
+2026-09-14 17:37:27,591 INFO __main__ metrics.json: 16 variants
+2026-09-14 17:37:27,591 INFO __main__ === Pass/Fail Summary ===
+2026-09-14 17:37:27,591 INFO __main__   elevenlabs_david_fillers                      speaker_sim=0.832 [FAIL]  ttfb_ms=131.6 [PASS]
+2026-09-14 17:37:27,591 INFO __main__   elevenlabs_david_val96                        speaker_sim=0.792 [FAIL]  ttfb_ms=152.8 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_base_george_fillers                    speaker_sim=0.563 [FAIL]  ttfb_ms=233.1 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_base_george_val96                      speaker_sim=0.595 [FAIL]  ttfb_ms=340.3 [FAIL]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_base_lewis_fillers                     speaker_sim=0.505 [FAIL]  ttfb_ms=215.4 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_base_lewis_val96                       speaker_sim=0.500 [FAIL]  ttfb_ms=333.9 [FAIL]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_base_v3_voicepack_fillers              speaker_sim=0.603 [FAIL]  ttfb_ms=196.1 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_base_v3_voicepack_val96                speaker_sim=0.582 [FAIL]  ttfb_ms=296.2 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_floor_control_fillers                  speaker_sim=0.444 [FAIL]  ttfb_ms=165.4 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_floor_control_val96                    speaker_sim=0.434 [FAIL]  ttfb_ms=289.5 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_t0005_best_fillers                     speaker_sim=nan [FAIL]  ttfb_ms=688.3 [FAIL]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_t0005_best_val96                       speaker_sim=N/A [FAIL]  ttfb_ms=2156.1 [FAIL]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_t0006_v6d_fillers                      speaker_sim=0.601 [FAIL]  ttfb_ms=132.2 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_t0006_v6d_val96                        speaker_sim=0.482 [FAIL]  ttfb_ms=250.6 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_v3_bundle_fillers                      speaker_sim=0.631 [FAIL]  ttfb_ms=185.4 [PASS]
+2026-09-14 17:37:27,592 INFO __main__   kokoro_v3_bundle_val96                        speaker_sim=0.588 [FAIL]  ttfb_ms=282.3 [PASS]

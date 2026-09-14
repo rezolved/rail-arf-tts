@@ -1,0 +1,3 @@
+usage: python -m arf.scripts.verificators.verify_task_file [-h] [--all]
+                                                           [task_id]
+python -m arf.scripts.verificators.verify_task_file: error: unrecognized arguments: --task-id

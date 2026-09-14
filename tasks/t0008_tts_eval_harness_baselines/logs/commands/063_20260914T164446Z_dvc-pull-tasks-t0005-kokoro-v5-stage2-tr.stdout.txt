@@ -1,0 +1,3 @@
+A       
+tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00003.pth
+1 file fetched and 1 file added

@@ -1,0 +1,5 @@
+outs:
+- md5: 124d31483ec41c17f058dae1c7915b39
+  size: 327221131
+  hash: md5
+  path: t0005_run06_epoch3.pth

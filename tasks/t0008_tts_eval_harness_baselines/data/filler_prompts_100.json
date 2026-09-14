@@ -1,0 +1,502 @@
+[
+  {
+    "text": "pulling that up 03",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/pulling_that_up_03.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "putting that together 21",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/putting_that_together_21.wav",
+    "ref_duration_s": 1.3003333333333333
+  },
+  {
+    "text": "let me think 04",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/let_me_think_04.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "cross-checking that 00",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/cross-checking_that_00.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "double-checking 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/double-checking_12.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "matching them up 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/matching_them_up_12.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "pulling that up 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/pulling_that_up_16.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "running it through 20",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/running_it_through_20.wav",
+    "ref_duration_s": 1.253875
+  },
+  {
+    "text": "handling it 19",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/handling_it_19.wav",
+    "ref_duration_s": 0.7894583333333334
+  },
+  {
+    "text": "cross-checking that 17",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/cross-checking_that_17.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "drawing the line 06",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/drawing_the_line_06.wav",
+    "ref_duration_s": 1.161
+  },
+  {
+    "text": "right with you 14",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/right_with_you_14.wav",
+    "ref_duration_s": 0.9287916666666667
+  },
+  {
+    "text": "side by side 18",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/side_by_side_18.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "side by side 06",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/side_by_side_06.wav",
+    "ref_duration_s": 1.161
+  },
+  {
+    "text": "more coming 19",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/more_coming_19.wav",
+    "ref_duration_s": 0.882375
+  },
+  {
+    "text": "comparing now 15",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/comparing_now_15.wav",
+    "ref_duration_s": 0.97525
+  },
+  {
+    "text": "bringing that up 13",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/bringing_that_up_13.wav",
+    "ref_duration_s": 1.161
+  },
+  {
+    "text": "right with you 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/right_with_you_16.wav",
+    "ref_duration_s": 0.8359166666666666
+  },
+  {
+    "text": "processing that now 19",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/processing_that_now_19.wav",
+    "ref_duration_s": 1.253875
+  },
+  {
+    "text": "pulling that up 07",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/pulling_that_up_07.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "on the case 14",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/on_the_case_14.wav",
+    "ref_duration_s": 0.882375
+  },
+  {
+    "text": "on the case 11",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/on_the_case_11.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "of course here 14",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/of_course_here_14.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "carrying on 00",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/carrying_on_00.wav",
+    "ref_duration_s": 0.97525
+  },
+  {
+    "text": "comparing now 11",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/comparing_now_11.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "narrowing it down 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/narrowing_it_down_12.wav",
+    "ref_duration_s": 1.34675
+  },
+  {
+    "text": "making sure of it 08",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/making_sure_of_it_08.wav",
+    "ref_duration_s": 1.253875
+  },
+  {
+    "text": "putting them head to head 17",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/putting_them_head_to_head_17.wav",
+    "ref_duration_s": 1.3932083333333334
+  },
+  {
+    "text": "weighing differences 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/weighing_differences_16.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "working on it 02",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/working_on_it_02.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "weighing differences 13",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/weighing_differences_13.wav",
+    "ref_duration_s": 1.34675
+  },
+  {
+    "text": "looking at picks 07",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/looking_at_picks_07.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "bringing that up 05",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/bringing_that_up_05.wav",
+    "ref_duration_s": 1.161
+  },
+  {
+    "text": "contrasting now 09",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/contrasting_now_09.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "continuing from there 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/continuing_from_there_12.wav",
+    "ref_duration_s": 1.4860833333333334
+  },
+  {
+    "text": "of course 08",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/of_course_08.wav",
+    "ref_duration_s": 0.882375
+  },
+  {
+    "text": "processing that now 21",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/processing_that_now_21.wav",
+    "ref_duration_s": 1.253875
+  },
+  {
+    "text": "matching them up 01",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/matching_them_up_01.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "processing that now 10",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/processing_that_now_10.wav",
+    "ref_duration_s": 1.253875
+  },
+  {
+    "text": "looking at picks 11",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/looking_at_picks_11.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "getting it ready 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/getting_it_ready_16.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "sure 15",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/sure_15.wav",
+    "ref_duration_s": 0.5572916666666666
+  },
+  {
+    "text": "confirming that 00",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/confirming_that_00.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "absolutely 08",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/absolutely_08.wav",
+    "ref_duration_s": 0.882375
+  },
+  {
+    "text": "let me think 03",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/let_me_think_03.wav",
+    "ref_duration_s": 0.7894583333333334
+  },
+  {
+    "text": "sure 13",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/sure_13.wav",
+    "ref_duration_s": 0.6501666666666667
+  },
+  {
+    "text": "bringing that up 08",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/bringing_that_up_08.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "looking at picks 01",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/looking_at_picks_01.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "of course 17",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/of_course_17.wav",
+    "ref_duration_s": 0.6501666666666667
+  },
+  {
+    "text": "let me think 06",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/let_me_think_06.wav",
+    "ref_duration_s": 0.97525
+  },
+  {
+    "text": "confirming that 21",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/confirming_that_21.wav",
+    "ref_duration_s": 0.97525
+  },
+  {
+    "text": "side by side 02",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/side_by_side_02.wav",
+    "ref_duration_s": 0.97525
+  },
+  {
+    "text": "on the case 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/on_the_case_12.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "stacking them up 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/stacking_them_up_16.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "right away 07",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/right_away_07.wav",
+    "ref_duration_s": 0.7894583333333334
+  },
+  {
+    "text": "right away 04",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/right_away_04.wav",
+    "ref_duration_s": 0.7430416666666667
+  },
+  {
+    "text": "verifying now 18",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/verifying_now_18.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "narrowing it down 09",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/narrowing_it_down_09.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "running it through 04",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/running_it_through_04.wav",
+    "ref_duration_s": 1.161
+  },
+  {
+    "text": "no problem 13",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/no_problem_13.wav",
+    "ref_duration_s": 0.7430416666666667
+  },
+  {
+    "text": "triple-checking 04",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/triple-checking_04.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "continuing from there 03",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/continuing_from_there_03.wav",
+    "ref_duration_s": 1.439625
+  },
+  {
+    "text": "cross-checking that 11",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/cross-checking_that_11.wav",
+    "ref_duration_s": 1.253875
+  },
+  {
+    "text": "lining them up 14",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/lining_them_up_14.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "of course here 17",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/of_course_here_17.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "bringing that up 04",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/bringing_that_up_04.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "weighing the options 13",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/weighing_the_options_13.wav",
+    "ref_duration_s": 1.161
+  },
+  {
+    "text": "just making sure 19",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/just_making_sure_19.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "hold on searching 14",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/hold_on_searching_14.wav",
+    "ref_duration_s": 1.0216666666666667
+  },
+  {
+    "text": "absolutely 15",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/absolutely_15.wav",
+    "ref_duration_s": 0.882375
+  },
+  {
+    "text": "carrying on 02",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/carrying_on_02.wav",
+    "ref_duration_s": 0.9287916666666667
+  },
+  {
+    "text": "no problem 01",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/no_problem_01.wav",
+    "ref_duration_s": 0.7894583333333334
+  },
+  {
+    "text": "handling it 14",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/handling_it_14.wav",
+    "ref_duration_s": 0.8359166666666666
+  },
+  {
+    "text": "validating that 01",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/validating_that_01.wav",
+    "ref_duration_s": 1.253875
+  },
+  {
+    "text": "on it 15",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/on_it_15.wav",
+    "ref_duration_s": 0.7430416666666667
+  },
+  {
+    "text": "weighing differences 02",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/weighing_differences_02.wav",
+    "ref_duration_s": 1.34675
+  },
+  {
+    "text": "validating that 05",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/validating_that_05.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "sorting choices 13",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/sorting_choices_13.wav",
+    "ref_duration_s": 1.34675
+  },
+  {
+    "text": "right away 18",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/right_away_18.wav",
+    "ref_duration_s": 0.9287916666666667
+  },
+  {
+    "text": "let me think 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/let_me_think_16.wav",
+    "ref_duration_s": 0.9287916666666667
+  },
+  {
+    "text": "going to find it 08",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/going_to_find_it_08.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "matching them up 20",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/matching_them_up_20.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "getting it ready 02",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/getting_it_ready_02.wav",
+    "ref_duration_s": 1.1145416666666668
+  },
+  {
+    "text": "contrasting now 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/contrasting_now_16.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "checking that 11",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/checking_that_11.wav",
+    "ref_duration_s": 0.882375
+  },
+  {
+    "text": "let me look that up 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/let_me_look_that_up_12.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "triple-checking 09",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/triple-checking_09.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "absolutely 21",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/absolutely_21.wav",
+    "ref_duration_s": 0.9287916666666667
+  },
+  {
+    "text": "adding to that 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/adding_to_that_12.wav",
+    "ref_duration_s": 1.068125
+  },
+  {
+    "text": "putting them head to head 00",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/putting_them_head_to_head_00.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "one moment 19",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/one_moment_19.wav",
+    "ref_duration_s": 0.882375
+  },
+  {
+    "text": "side by side 19",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/side_by_side_19.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "right away 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/right_away_12.wav",
+    "ref_duration_s": 0.9287916666666667
+  },
+  {
+    "text": "cross-checking that 15",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/cross-checking_that_15.wav",
+    "ref_duration_s": 1.161
+  },
+  {
+    "text": "double-checking 11",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/double-checking_11.wav",
+    "ref_duration_s": 0.97525
+  },
+  {
+    "text": "looking at picks 17",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/looking_at_picks_17.wav",
+    "ref_duration_s": 0.9287916666666667
+  },
+  {
+    "text": "weighing in 12",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/weighing_in_12.wav",
+    "ref_duration_s": 0.7894583333333334
+  },
+  {
+    "text": "continuing from there 16",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/continuing_from_there_16.wav",
+    "ref_duration_s": 1.34675
+  },
+  {
+    "text": "glad to 13",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/glad_to_13.wav",
+    "ref_duration_s": 0.6965833333333333
+  },
+  {
+    "text": "triple-checking 06",
+    "ref_wav": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david/triple-checking_06.wav",
+    "ref_duration_s": 0.97525
+  }
+]

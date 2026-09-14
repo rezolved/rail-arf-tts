@@ -1,0 +1,22 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/task.json
+
+[31m[1mERRORS:[0m
+[31m  TC-E001 error: task.json status is 'in_progress', expected one of: cancelled, completed, permanently_failed[0m
+[31m  TC-E002 error: task.json end_time is null[0m
+[31m  TC-E004 error: Step 'implementation' has status 'in_progress', not finished[0m
+[31m  TC-E004 error: Step 'teardown' has status 'pending', not finished[0m
+[31m  TC-E004 error: Step 'results' has status 'pending', not finished[0m
+[31m  TC-E004 error: Step 'suggestions' has status 'pending', not finished[0m
+[31m  TC-E004 error: Step 'reporting' has status 'pending', not finished[0m
+[31m  TC-E006 error: Mandatory result file missing: results/suggestions.json[0m
+[31m  TC-E007 error: Sub-verificator failed: verify_suggestions
+    [31m  SG-E001 error: suggestions.json does not exist: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results/suggestions.json[0m; [31m[1mFAILED[0m — 1 error(s), 0 warning(s)[0m
+[31m  TC-E007 error: Sub-verificator failed: verify_machines_destroyed
+    [31m  RM-E007 error: Machine LLM-T1-NC80 has unknown provider value 'azure-ml' (expected one of ('vast_ai', 'vast.ai', 'azure_ml', 'nebius'))[0m; [31m[1mFAILED[0m — 1 error(s), 1 warning(s)[0m
+
+[33m[1mWARNINGS:[0m
+[33m  TC-W005 warning: No merged PR found for branch 'task/t0008_tts_eval_harness_baselines'[0m
+
+[31m[1mFAILED[0m — 10 error(s), 1 warning(s)
+

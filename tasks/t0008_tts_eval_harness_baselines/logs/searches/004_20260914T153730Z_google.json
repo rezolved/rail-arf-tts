@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:37:30Z",
+  "source": "Google (via WebSearch)",
+  "query": "WER word error rate threshold TTS quality evaluation broken audio detection",
+  "results_count": 7,
+  "results": [
+    {
+      "title": "PER vs WER: New TTS Accuracy Measurement Standard 2026",
+      "url": "https://deepgram.com/learn/per-new-standard-measuring-tts-accuracy",
+      "snippet": "Raw WER above 100% signals fundamentally broken system. Consumer quality below 5% WER.",
+      "relevance_note": "WER thresholds for TTS quality gate"
+    },
+    {
+      "title": "GitHub - inworld-ai/open-tts-eval",
+      "url": "https://github.com/inworld-ai/open-tts-eval",
+      "snippet": "Open TTS evaluation toolkit. WER warn at 0.05, fail at 0.10; speaker_sim warn below 0.65, fail below 0.55.",
+      "relevance_note": "Industry standard thresholds for WER and speaker_sim"
+    },
+    {
+      "title": "Evaluate a TTS Pipeline — NVIDIA Riva",
+      "url": "https://docs.nvidia.com/deeplearning/riva/user-guide/docs/tutorials/tts-evaluate.html",
+      "snippet": "Intelligibility evaluation using Whisper ASR. WER as proxy for intelligibility.",
+      "relevance_note": "Reference methodology for Whisper-based WER in TTS evaluation"
+    }
+  ],
+  "error": null
+}

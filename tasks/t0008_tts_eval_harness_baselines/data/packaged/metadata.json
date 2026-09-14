@@ -1,0 +1,23 @@
+{
+  "t0005_run06_epoch3": {
+    "source_task": "t0005_kokoro_v5_stage2_train",
+    "source_file": "results/checkpoints/epoch_2nd_00003.pth",
+    "epoch": 3,
+    "val_loss": null,
+    "modules": ["bert", "bert_encoder", "predictor", "text_encoder", "decoder"]
+  },
+  "t0006_v6d_epoch6": {
+    "source_task": "t0006_kokoro_v5_stage2_subset",
+    "source_file": "results/checkpoints/v6d/epoch_2nd_00006.pth",
+    "epoch": 6,
+    "val_loss": 0.8461818099021912,
+    "modules": ["bert", "bert_encoder", "predictor", "text_encoder", "decoder"]
+  },
+  "v3_bundle": {
+    "source_task": "t0006_kokoro_v5_stage2_subset",
+    "decoder_file": "data/reference/v3/best/david_v3_best_decoder_kokoro.pth",
+    "voicepack_file": "data/reference/v3/best/david_v3_best_voicepack.pt",
+    "note": "Already in five-module packaged format, no extraction needed",
+    "modules": ["bert", "bert_encoder", "predictor", "text_encoder", "decoder"]
+  }
+}

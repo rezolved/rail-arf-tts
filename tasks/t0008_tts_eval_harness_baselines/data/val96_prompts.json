@@ -1,0 +1,482 @@
+[
+  {
+    "text": "checking for the latest press release",
+    "ref_wav": "data/v4/val/wavs/checking_for_the_latest_press_release_9fb93e.wav",
+    "ref_duration_s": 2.13625
+  },
+  {
+    "text": "checking supported language options",
+    "ref_wav": "data/v4/val/wavs/checking_supported_language_options_df6ddb.wav",
+    "ref_duration_s": 2.13625
+  },
+  {
+    "text": "checking the most recent updates",
+    "ref_wav": "data/v4/val/wavs/checking_the_most_recent_updates_717daa.wav",
+    "ref_duration_s": 2.043375
+  },
+  {
+    "text": "checking the one-click checkout capability",
+    "ref_wav": "data/v4/val/wavs/checking_the_one-click_checkout_capability_055d8b.wav",
+    "ref_duration_s": 2.229125
+  },
+  {
+    "text": "checking the release from 19 may",
+    "ref_wav": "data/v4/val/wavs/checking_the_release_from_19_may_0341de.wav",
+    "ref_duration_s": 2.461333333333333
+  },
+  {
+    "text": "checking who handles pr at rezolve",
+    "ref_wav": "data/v4/val/wavs/checking_who_handles_pr_at_rezolve_f68435.wav",
+    "ref_duration_s": 2.322
+  },
+  {
+    "text": "clarifying the difference between brain cortex and brain",
+    "ref_wav": "data/v4/val/wavs/clarifying_the_difference_between_brain_cortex_and_brain_b34ca1.wav",
+    "ref_duration_s": 3.2507916666666667
+  },
+  {
+    "text": "exploring ai solutions tailored for small businesses",
+    "ref_wav": "data/v4/val/wavs/exploring_ai_solutions_tailored_for_small_businesses_73b211.wav",
+    "ref_duration_s": 3.575875
+  },
+  {
+    "text": "exploring how agentic conversational ai can transform shoppi",
+    "ref_wav": "data/v4/val/wavs/exploring_how_agentic_conversational_ai_can_transform_shoppi_7f6f59.wav",
+    "ref_duration_s": 4.597541666666666
+  },
+  {
+    "text": "exploring how rezolve ai boosts productivity",
+    "ref_wav": "data/v4/val/wavs/exploring_how_rezolve_ai_boosts_productivity_3754f9.wav",
+    "ref_duration_s": 2.6935
+  },
+  {
+    "text": "exploring how to transform end-to-end shopping experiences",
+    "ref_wav": "data/v4/val/wavs/exploring_how_to_transform_end-to-end_shopping_experiences_6ae707.wav",
+    "ref_duration_s": 3.29725
+  },
+  {
+    "text": "exploring the rezolve senior leadership team",
+    "ref_wav": "data/v4/val/wavs/exploring_the_rezolve_senior_leadership_team_f5430a.wav",
+    "ref_duration_s": 2.461333333333333
+  },
+  {
+    "text": "exploring what discovery ai entails",
+    "ref_wav": "data/v4/val/wavs/exploring_what_discovery_ai_entails_f9d506.wav",
+    "ref_duration_s": 2.972166666666667
+  },
+  {
+    "text": "got itjust a moment",
+    "ref_wav": "data/v4/val/wavs/got_itjust_a_moment_0ec7ed.wav",
+    "ref_duration_s": 1.2074583333333333
+  },
+  {
+    "text": "i hear youlet me continue from where i left off",
+    "ref_wav": "data/v4/val/wavs/i_hear_youlet_me_continue_from_where_i_left_off_3859e4.wav",
+    "ref_duration_s": 3.0650416666666667
+  },
+  {
+    "text": "improving product discovery for retailerslet me look into th",
+    "ref_wav": "data/v4/val/wavs/improving_product_discovery_for_retailerslet_me_look_into_th_3a174f.wav",
+    "ref_duration_s": 3.29725
+  },
+  {
+    "text": "just a second while i check the board of advisors",
+    "ref_wav": "data/v4/val/wavs/just_a_second_while_i_check_the_board_of_advisors_75ae1b.wav",
+    "ref_duration_s": 2.6470833333333332
+  },
+  {
+    "text": "just a second while i pull up the press releases",
+    "ref_wav": "data/v4/val/wavs/just_a_second_while_i_pull_up_the_press_releases_a9e10d.wav",
+    "ref_duration_s": 2.414875
+  },
+  {
+    "text": "let me check that specific date",
+    "ref_wav": "data/v4/val/wavs/let_me_check_that_specific_date_87fc97.wav",
+    "ref_duration_s": 1.9969166666666667
+  },
+  {
+    "text": "let me check the board composition for rezolve ai",
+    "ref_wav": "data/v4/val/wavs/let_me_check_the_board_composition_for_rezolve_ai_390f7d.wav",
+    "ref_duration_s": 2.8328333333333333
+  },
+  {
+    "text": "let me check the board of advisors for rezolve ai",
+    "ref_wav": "data/v4/val/wavs/let_me_check_the_board_of_advisors_for_rezolve_ai_bf5e74.wav",
+    "ref_duration_s": 2.786375
+  },
+  {
+    "text": "let me check the details from may 19",
+    "ref_wav": "data/v4/val/wavs/let_me_check_the_details_from_may_19_413574.wav",
+    "ref_duration_s": 2.322
+  },
+  {
+    "text": "let me check the exact date of that press release",
+    "ref_wav": "data/v4/val/wavs/let_me_check_the_exact_date_of_that_press_release_548463.wav",
+    "ref_duration_s": 2.3684166666666666
+  },
+  {
+    "text": "let me check where their headquarters are located",
+    "ref_wav": "data/v4/val/wavs/let_me_check_where_their_headquarters_are_located_3d0573.wav",
+    "ref_duration_s": 2.414875
+  },
+  {
+    "text": "let me check which public companies use rezolve ai",
+    "ref_wav": "data/v4/val/wavs/let_me_check_which_public_companies_use_rezolve_ai_379683.wav",
+    "ref_duration_s": 3.2043333333333335
+  },
+  {
+    "text": "let me check who leads rezolve",
+    "ref_wav": "data/v4/val/wavs/let_me_check_who_leads_rezolve_ef9153.wav",
+    "ref_duration_s": 1.5325
+  },
+  {
+    "text": "let me explain what rezolve ai does",
+    "ref_wav": "data/v4/val/wavs/let_me_explain_what_rezolve_ai_does_6ebacd.wav",
+    "ref_duration_s": 2.1826666666666665
+  },
+  {
+    "text": "let me find the most relevant press release for you",
+    "ref_wav": "data/v4/val/wavs/let_me_find_the_most_relevant_press_release_for_you_9ded42.wav",
+    "ref_duration_s": 2.461333333333333
+  },
+  {
+    "text": "let me get the details on the advisory board",
+    "ref_wav": "data/v4/val/wavs/let_me_get_the_details_on_the_advisory_board_355903.wav",
+    "ref_duration_s": 2.275541666666667
+  },
+  {
+    "text": "let me look into how rezolve transforms the shopping experie",
+    "ref_wav": "data/v4/val/wavs/let_me_look_into_how_rezolve_transforms_the_shopping_experie_4cfa67.wav",
+    "ref_duration_s": 3.5294166666666666
+  },
+  {
+    "text": "let me look into the one-click checkout solution",
+    "ref_wav": "data/v4/val/wavs/let_me_look_into_the_one-click_checkout_solution_2cc89d.wav",
+    "ref_duration_s": 2.3684166666666666
+  },
+  {
+    "text": "let me see how that transformation is being implemented",
+    "ref_wav": "data/v4/val/wavs/let_me_see_how_that_transformation_is_being_implemented_0b6488.wav",
+    "ref_duration_s": 2.7399583333333335
+  },
+  {
+    "text": "llm sess 1e17701177a141a1 resp d7c52c6c12e546e7",
+    "ref_wav": "data/v4/val/wavs/llm_sess_1e17701177a141a1_resp_d7c52c6c12e546e7_001.wav",
+    "ref_duration_s": 6.738666666666667
+  },
+  {
+    "text": "llm sess 1e426c8f62f6495c resp 217b2448145e4511",
+    "ref_wav": "data/v4/val/wavs/llm_sess_1e426c8f62f6495c_resp_217b2448145e4511_000.wav",
+    "ref_duration_s": 15.0
+  },
+  {
+    "text": "llm sess 1f4bbf4db2604037 resp 3d246884a2e44045",
+    "ref_wav": "data/v4/val/wavs/llm_sess_1f4bbf4db2604037_resp_3d246884a2e44045_000.wav",
+    "ref_duration_s": 12.096041666666666
+  },
+  {
+    "text": "llm sess 1f4bbf4db2604037 resp 3d246884a2e44045",
+    "ref_wav": "data/v4/val/wavs/llm_sess_1f4bbf4db2604037_resp_3d246884a2e44045_001.wav",
+    "ref_duration_s": 4.162041666666667
+  },
+  {
+    "text": "llm sess 285011dd231e4206 resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_285011dd231e4206_resp_94a2dc02a6bc4d7b.wav",
+    "ref_duration_s": 5.730041666666667
+  },
+  {
+    "text": "llm sess 31148a15f8c044de resp 86da10485d234847",
+    "ref_wav": "data/v4/val/wavs/llm_sess_31148a15f8c044de_resp_86da10485d234847_000.wav",
+    "ref_duration_s": 15.0
+  },
+  {
+    "text": "llm sess 31148a15f8c044de resp 86da10485d234847",
+    "ref_wav": "data/v4/val/wavs/llm_sess_31148a15f8c044de_resp_86da10485d234847_001.wav",
+    "ref_duration_s": 12.148708333333333
+  },
+  {
+    "text": "llm sess 5d548d414f904abb resp 260b6bb7df0d4a75",
+    "ref_wav": "data/v4/val/wavs/llm_sess_5d548d414f904abb_resp_260b6bb7df0d4a75_000.wav",
+    "ref_duration_s": 15.0
+  },
+  {
+    "text": "llm sess 5d548d414f904abb resp 260b6bb7df0d4a75",
+    "ref_wav": "data/v4/val/wavs/llm_sess_5d548d414f904abb_resp_260b6bb7df0d4a75_001.wav",
+    "ref_duration_s": 15.0
+  },
+  {
+    "text": "llm sess 6013dd633eab425a resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_6013dd633eab425a_resp_eeb7c3b9e1fd440f.wav",
+    "ref_duration_s": 3.2500416666666667
+  },
+  {
+    "text": "llm sess 72aae5dcaced48ba resp ce14bbcd5cff4aa6",
+    "ref_wav": "data/v4/val/wavs/llm_sess_72aae5dcaced48ba_resp_ce14bbcd5cff4aa6_002.wav",
+    "ref_duration_s": 5.068708333333333
+  },
+  {
+    "text": "llm sess 812bef00221243c5 resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_812bef00221243c5_resp_40d6f32e09d647fd.wav",
+    "ref_duration_s": 3.7
+  },
+  {
+    "text": "llm sess 8aec47ec80ae42b9 resp 1b54b6d308f0439a",
+    "ref_wav": "data/v4/val/wavs/llm_sess_8aec47ec80ae42b9_resp_1b54b6d308f0439a_004.wav",
+    "ref_duration_s": 5.702041666666666
+  },
+  {
+    "text": "llm sess 8aec47ec80ae42b9 resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_8aec47ec80ae42b9_resp_4399dd1b7db64c65.cancelled.wav",
+    "ref_duration_s": 3.804708333333333
+  },
+  {
+    "text": "llm sess 9f5a324d76f840f6 resp b91449ed9df84ba2",
+    "ref_wav": "data/v4/val/wavs/llm_sess_9f5a324d76f840f6_resp_b91449ed9df84ba2_002.wav",
+    "ref_duration_s": 6.422041666666667
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp 2ce82600378c46b8",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_2ce82600378c46b8_003.wav",
+    "ref_duration_s": 5.698041666666667
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp b8de67ecfb094cb1",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_b8de67ecfb094cb1_000.wav",
+    "ref_duration_s": 8.298666666666668
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp c73cb5ba73e648b4",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_c73cb5ba73e648b4_001.wav",
+    "ref_duration_s": 15.0
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp c73cb5ba73e648b4",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_c73cb5ba73e648b4_003.wav",
+    "ref_duration_s": 2.063375
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp c980850b078342b1",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_c980850b078342b1_000.wav",
+    "ref_duration_s": 3.861375
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp c980850b078342b1",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_c980850b078342b1_003.wav",
+    "ref_duration_s": 2.903375
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp efe67f4b1aae467a",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_efe67f4b1aae467a_001.wav",
+    "ref_duration_s": 15.0
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_f0e5bfd8339347b7.wav",
+    "ref_duration_s": 8.610041666666667
+  },
+  {
+    "text": "llm sess a5158e64865142c3 resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_a5158e64865142c3_resp_f79b21440a7a4f62.wav",
+    "ref_duration_s": 3.890041666666667
+  },
+  {
+    "text": "llm sess d3d46d2cc5064e5c resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_d3d46d2cc5064e5c_resp_06c2e5c30a3f4abe.wav",
+    "ref_duration_s": 12.050041666666667
+  },
+  {
+    "text": "llm sess dc836b4f4b7b4934 resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_dc836b4f4b7b4934_resp_4c292662ddc44f2f.cancelled.wav",
+    "ref_duration_s": 2.58
+  },
+  {
+    "text": "llm sess dc836b4f4b7b4934 resp",
+    "ref_wav": "data/v4/val/wavs/llm_sess_dc836b4f4b7b4934_resp_8e4ae8117f3942a2.wav",
+    "ref_duration_s": 11.490041666666666
+  },
+  {
+    "text": "llm sess dcce5f92bb7444f8 resp 5daa58b09ed04f2f",
+    "ref_wav": "data/v4/val/wavs/llm_sess_dcce5f92bb7444f8_resp_5daa58b09ed04f2f_000.wav",
+    "ref_duration_s": 15.0
+  },
+  {
+    "text": "llm sess dcce5f92bb7444f8 resp 7ca67e20c9d34e90",
+    "ref_wav": "data/v4/val/wavs/llm_sess_dcce5f92bb7444f8_resp_7ca67e20c9d34e90_000.wav",
+    "ref_duration_s": 12.608041666666667
+  },
+  {
+    "text": "locating the headquarters now",
+    "ref_wav": "data/v4/val/wavs/locating_the_headquarters_now_b8591a.wav",
+    "ref_duration_s": 1.7182916666666668
+  },
+  {
+    "text": "looking into ai solutions suitable for small businesses",
+    "ref_wav": "data/v4/val/wavs/looking_into_ai_solutions_suitable_for_small_businesses_039a94.wav",
+    "ref_duration_s": 3.29725
+  },
+  {
+    "text": "looking into checkout solution options",
+    "ref_wav": "data/v4/val/wavs/looking_into_checkout_solution_options_831fbc.wav",
+    "ref_duration_s": 2.229125
+  },
+  {
+    "text": "looking into end-to-end shopping transformation",
+    "ref_wav": "data/v4/val/wavs/looking_into_end-to-end_shopping_transformation_fa84dd.wav",
+    "ref_duration_s": 2.600625
+  },
+  {
+    "text": "looking into how rezolve ai improves",
+    "ref_wav": "data/v4/val/wavs/looking_into_how_rezolve_ai_improves_bc4bff.wav",
+    "ref_duration_s": 2.7399583333333335
+  },
+  {
+    "text": "looking into telecom industry developments",
+    "ref_wav": "data/v4/val/wavs/looking_into_telecom_industry_developments_e4a64f.wav",
+    "ref_duration_s": 2.229125
+  },
+  {
+    "text": "looking into the details of the checkout solution",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_details_of_the_checkout_solution_db9d1b.wav",
+    "ref_duration_s": 2.5542083333333334
+  },
+  {
+    "text": "looking into the exact definition",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_exact_definition_4cb806.wav",
+    "ref_duration_s": 1.9969166666666667
+  },
+  {
+    "text": "looking into the latest press release",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_latest_press_release_c176fe.wav",
+    "ref_duration_s": 2.3684166666666666
+  },
+  {
+    "text": "looking into the leadership team at rezolve ai",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_leadership_team_at_rezolve_ai_5ec48a.wav",
+    "ref_duration_s": 2.8328333333333333
+  },
+  {
+    "text": "looking into the most recent press release now",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_most_recent_press_release_now_80aed2.wav",
+    "ref_duration_s": 2.3684166666666666
+  },
+  {
+    "text": "looking into the pr possibilities at resolve",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_pr_possibilities_at_resolve_904a6a.wav",
+    "ref_duration_s": 3.0185833333333334
+  },
+  {
+    "text": "looking into the press release from 19th may",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_press_release_from_19th_may_3be3f8.wav",
+    "ref_duration_s": 2.925708333333333
+  },
+  {
+    "text": "looking into the reality industry context",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_reality_industry_context_9dff7f.wav",
+    "ref_duration_s": 2.5542083333333334
+  },
+  {
+    "text": "looking into the retail industry",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_retail_industry_00403f.wav",
+    "ref_duration_s": 1.8575833333333334
+  },
+  {
+    "text": "looking into the specific retail sector",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_specific_retail_sector_d7b805.wav",
+    "ref_duration_s": 2.3684166666666666
+  },
+  {
+    "text": "looking into the telecom industry context",
+    "ref_wav": "data/v4/val/wavs/looking_into_the_telecom_industry_context_736657.wav",
+    "ref_duration_s": 2.5542083333333334
+  },
+  {
+    "text": "looking into what enterprise plus offers",
+    "ref_wav": "data/v4/val/wavs/looking_into_what_enterprise_plus_offers_8131fd.wav",
+    "ref_duration_s": 2.3684166666666666
+  },
+  {
+    "text": "looking into what happened in 2019",
+    "ref_wav": "data/v4/val/wavs/looking_into_what_happened_in_2019_50f438.wav",
+    "ref_duration_s": 2.322
+  },
+  {
+    "text": "looking up the chief revenue officer of rezolve ai",
+    "ref_wav": "data/v4/val/wavs/looking_up_the_chief_revenue_officer_of_rezolve_ai_685277.wav",
+    "ref_duration_s": 3.0185833333333334
+  },
+  {
+    "text": "notedlooking into relevant retail tie options",
+    "ref_wav": "data/v4/val/wavs/notedlooking_into_relevant_retail_tie_options_2da6fb.wav",
+    "ref_duration_s": 3.0185833333333334
+  },
+  {
+    "text": "one moment while i check who leads rezolve",
+    "ref_wav": "data/v4/val/wavs/one_moment_while_i_check_who_leads_rezolve_9a919d.wav",
+    "ref_duration_s": 2.3684166666666666
+  },
+  {
+    "text": "opening the press release hub now",
+    "ref_wav": "data/v4/val/wavs/opening_the_press_release_hub_now_132f99.wav",
+    "ref_duration_s": 1.9504583333333334
+  },
+  {
+    "text": "redirecting you to the demo request page",
+    "ref_wav": "data/v4/val/wavs/redirecting_you_to_the_demo_request_page_d0d459.wav",
+    "ref_duration_s": 2.1826666666666665
+  },
+  {
+    "text": "rezolve ailet me get the details on that",
+    "ref_wav": "data/v4/val/wavs/rezolve_ailet_me_get_the_details_on_that_b11e4c.wav",
+    "ref_duration_s": 2.1826666666666665
+  },
+  {
+    "text": "sure let me help you with that",
+    "ref_wav": "data/v4/val/wavs/sure_let_me_help_you_with_that_60390b.wav",
+    "ref_duration_s": 1.6254166666666667
+  },
+  {
+    "text": "sure let me share what we offer",
+    "ref_wav": "data/v4/val/wavs/sure_let_me_share_what_we_offer_9da897.wav",
+    "ref_duration_s": 1.5789583333333332
+  },
+  {
+    "text": "sure opening that section now",
+    "ref_wav": "data/v4/val/wavs/sure_opening_that_section_now_2fffa1.wav",
+    "ref_duration_s": 1.7647083333333333
+  },
+  {
+    "text": "sure thingtaking you to the contact us page now",
+    "ref_wav": "data/v4/val/wavs/sure_thingtaking_you_to_the_contact_us_page_now_77c287.wav",
+    "ref_duration_s": 2.6935
+  },
+  {
+    "text": "taking a look at rezolve advisors",
+    "ref_wav": "data/v4/val/wavs/taking_a_look_at_rezolve_advisors_dca3ec.wav",
+    "ref_duration_s": 2.043375
+  },
+  {
+    "text": "taking a look at the brain commerce page",
+    "ref_wav": "data/v4/val/wavs/taking_a_look_at_the_brain_commerce_page_747595.wav",
+    "ref_duration_s": 2.322
+  },
+  {
+    "text": "taking a look at the current ceo",
+    "ref_wav": "data/v4/val/wavs/taking_a_look_at_the_current_ceo_857493.wav",
+    "ref_duration_s": 2.322
+  },
+  {
+    "text": "taking a look at the exact details",
+    "ref_wav": "data/v4/val/wavs/taking_a_look_at_the_exact_details_7282ba.wav",
+    "ref_duration_s": 2.1826666666666665
+  },
+  {
+    "text": "taking a look at what resolve ai is",
+    "ref_wav": "data/v4/val/wavs/taking_a_look_at_what_resolve_ai_is_912922.wav",
+    "ref_duration_s": 2.5542083333333334
+  },
+  {
+    "text": "verifying the current details about rezolve advisors",
+    "ref_wav": "data/v4/val/wavs/verifying_the_current_details_about_rezolve_advisors_5e3d63.wav",
+    "ref_duration_s": 2.972166666666667
+  }
+]

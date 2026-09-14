@@ -1,0 +1,6 @@
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/brainpowa-env/venv/lib/python3.13/site-packages/kokoro
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/brainpowa-env/venv/lib/python3.13/site-packages/kokoro-0.9.4.dist-info
+/home/azureuser/STT/brainpowa-realtime-api/.venv/lib/python3.13/site-packages/kokoro-0.9.4.dist-info
+/home/azureuser/STT/brainpowa-realtime-api/.venv/lib/python3.13/site-packages/kokoro
+/home/azureuser/miniconda3/envs/stt/lib/python3.11/site-packages/kokoro-0.9.4.dist-info
+/home/azureuser/miniconda3/envs/stt/lib/python3.11/site-packages/kokoro

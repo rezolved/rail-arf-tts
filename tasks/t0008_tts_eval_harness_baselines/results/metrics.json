@@ -1,0 +1,212 @@
+{
+  "variants": [
+    {
+      "variant_id": "elevenlabs_david_fillers",
+      "label": "elevenlabs_david / fillers",
+      "dimensions": {
+        "system": "elevenlabs_david",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.8324960142374038,
+        "ttfb_ms": 131.64102200016714,
+        "rtf": 0.11269287443324151
+      }
+    },
+    {
+      "variant_id": "elevenlabs_david_val96",
+      "label": "elevenlabs_david / val96",
+      "dimensions": {
+        "system": "elevenlabs_david",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.7923689279705286,
+        "ttfb_ms": 152.79576700049802,
+        "rtf": 0.06728752851632007
+      }
+    },
+    {
+      "variant_id": "kokoro_base_george_fillers",
+      "label": "kokoro_base_george / fillers",
+      "dimensions": {
+        "system": "kokoro_base_george",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.5628819969296456,
+        "ttfb_ms": 233.0862614999205,
+        "rtf": 0.12440019667764884
+      }
+    },
+    {
+      "variant_id": "kokoro_base_george_val96",
+      "label": "kokoro_base_george / val96",
+      "dimensions": {
+        "system": "kokoro_base_george",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.5954564306885004,
+        "ttfb_ms": 340.2694194999185,
+        "rtf": 0.08153901481034025
+      }
+    },
+    {
+      "variant_id": "kokoro_base_lewis_fillers",
+      "label": "kokoro_base_lewis / fillers",
+      "dimensions": {
+        "system": "kokoro_base_lewis",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.5053677418828011,
+        "ttfb_ms": 215.35949499980234,
+        "rtf": 0.10413011021301431
+      }
+    },
+    {
+      "variant_id": "kokoro_base_lewis_val96",
+      "label": "kokoro_base_lewis / val96",
+      "dimensions": {
+        "system": "kokoro_base_lewis",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.4997421832134326,
+        "ttfb_ms": 333.93777599985697,
+        "rtf": 0.07943685032174448
+      }
+    },
+    {
+      "variant_id": "kokoro_base_v3_voicepack_fillers",
+      "label": "kokoro_base_v3_voicepack / fillers",
+      "dimensions": {
+        "system": "kokoro_base_v3_voicepack",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.6027204036712647,
+        "ttfb_ms": 196.09755249985028,
+        "rtf": 0.1402866228285387
+      }
+    },
+    {
+      "variant_id": "kokoro_base_v3_voicepack_val96",
+      "label": "kokoro_base_v3_voicepack / val96",
+      "dimensions": {
+        "system": "kokoro_base_v3_voicepack",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.5819188111151258,
+        "ttfb_ms": 296.2192074999166,
+        "rtf": 0.09244443949944625
+      }
+    },
+    {
+      "variant_id": "kokoro_floor_control_fillers",
+      "label": "kokoro_floor_control / fillers",
+      "dimensions": {
+        "system": "kokoro_floor_control",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.44350694090127946,
+        "ttfb_ms": 165.36447149997002,
+        "rtf": 0.1073962914100093
+      }
+    },
+    {
+      "variant_id": "kokoro_floor_control_val96",
+      "label": "kokoro_floor_control / val96",
+      "dimensions": {
+        "system": "kokoro_floor_control",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.43354621063917875,
+        "ttfb_ms": 289.4921130000512,
+        "rtf": 0.0826164461322109
+      }
+    },
+    {
+      "variant_id": "kokoro_t0005_best_fillers",
+      "label": "kokoro_t0005_best / fillers",
+      "dimensions": {
+        "system": "kokoro_t0005_best",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": NaN,
+        "ttfb_ms": 688.3287169998766,
+        "rtf": 0.06345616441853913
+      }
+    },
+    {
+      "variant_id": "kokoro_t0005_best_val96",
+      "label": "kokoro_t0005_best / val96",
+      "dimensions": {
+        "system": "kokoro_t0005_best",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": 2156.0768535000534,
+        "rtf": 0.08719415799887982
+      }
+    },
+    {
+      "variant_id": "kokoro_t0006_v6d_fillers",
+      "label": "kokoro_t0006_v6d / fillers",
+      "dimensions": {
+        "system": "kokoro_t0006_v6d",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.601133947968483,
+        "ttfb_ms": 132.15857950012833,
+        "rtf": 0.18161571017059192
+      }
+    },
+    {
+      "variant_id": "kokoro_t0006_v6d_val96",
+      "label": "kokoro_t0006_v6d / val96",
+      "dimensions": {
+        "system": "kokoro_t0006_v6d",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.48216814702997607,
+        "ttfb_ms": 250.56644949995643,
+        "rtf": 0.11549553931792515
+      }
+    },
+    {
+      "variant_id": "kokoro_v3_bundle_fillers",
+      "label": "kokoro_v3_bundle / fillers",
+      "dimensions": {
+        "system": "kokoro_v3_bundle",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.6309629625082016,
+        "ttfb_ms": 185.42622549989574,
+        "rtf": 0.14482521243185945
+      }
+    },
+    {
+      "variant_id": "kokoro_v3_bundle_val96",
+      "label": "kokoro_v3_bundle / val96",
+      "dimensions": {
+        "system": "kokoro_v3_bundle",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.5876460997387767,
+        "ttfb_ms": 282.2771579999426,
+        "rtf": 0.0957059522566965
+      }
+    }
+  ]
+}

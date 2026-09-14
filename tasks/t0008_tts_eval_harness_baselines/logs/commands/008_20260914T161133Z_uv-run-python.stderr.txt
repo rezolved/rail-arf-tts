@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<string>", line 19, in <module>
+    entry = to_machine_log_entry(acquire_result=acquire_result)
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/arf/scripts/utils/azure_ml_vm.py", line 1765, in to_machine_log_entry
+    vm: VmPoolEntry = acquire_result.vm
+                      ^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'vm'

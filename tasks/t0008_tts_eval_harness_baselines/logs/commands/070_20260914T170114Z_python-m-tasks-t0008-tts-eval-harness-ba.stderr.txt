@@ -1,0 +1,5 @@
+2026-09-14 17:01:15,036 INFO Built 96 val96 prompt items
+2026-09-14 17:01:15,037 INFO Saved → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/val96_prompts.json
+2026-09-14 17:01:15,054 INFO Found 1364 WAV files in /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/11labs_david
+2026-09-14 17:01:15,069 INFO Built 100 filler prompt items
+2026-09-14 17:01:15,071 INFO Saved → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/data/filler_prompts_100.json

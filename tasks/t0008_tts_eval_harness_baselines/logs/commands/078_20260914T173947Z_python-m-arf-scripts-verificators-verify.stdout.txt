@@ -1,0 +1,8 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0008_tts_eval_harness_baselines/tasks/t0008_tts_eval_harness_baselines/results
+
+[33m[1mWARNINGS:[0m
+[33m  TR-W013 warning: results_detailed.md is missing ## Examples section (mandatory for experiment-type tasks)[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+

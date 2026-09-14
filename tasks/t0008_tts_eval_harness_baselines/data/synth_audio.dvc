@@ -1,0 +1,6 @@
+outs:
+- md5: 91cec6562fab6159c88ed0b27f6bf32b.dir
+  size: 85070144
+  nfiles: 196
+  hash: md5
+  path: synth_audio

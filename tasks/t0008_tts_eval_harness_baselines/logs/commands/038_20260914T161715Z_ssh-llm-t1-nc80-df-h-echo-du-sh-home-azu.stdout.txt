@@ -1,0 +1,13 @@
+Filesystem                                                                                  Size  Used Avail Use% Mounted on
+/dev/root                                                                                   119G  118G  438M 100% /
+tmpfs                                                                                       315G     0  315G   0% /dev/shm
+tmpfs                                                                                       126G  1.5M  126G   1% /run
+tmpfs                                                                                       5.0M     0  5.0M   0% /run/lock
+efivarfs                                                                                    128M   34K  128M   1% /sys/firmware/efi/efivars
+/dev/sda15                                                                                  105M  6.1M   99M   6% /boot/efi
+/dev/sdb1                                                                                   251G   62G  177G  26% /mnt
+tmpfs                                                                                        63G  8.0K   63G   1% /run/user/1000
+//brainpowstorage51fdd32f4.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6  100T  1.8T   99T   2% /mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+---
+7.6G	/home/azureuser/.local/
+8.0K	/tmp/

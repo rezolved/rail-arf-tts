@@ -1,0 +1,24 @@
+{
+  "spec_version": "1",
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "step_number": 5,
+  "timestamp": "2026-09-14T15:38:30Z",
+  "source": "Google (via WebSearch)",
+  "query": "speaker similarity evaluation TTS fine-tuning cosine same speaker different speaker range values",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "Fine-tuning Qwen3-TTS for high-quality voice cloning",
+      "url": "https://www.baseten.co/blog/fine-tuning-qwen3-tts-for-high-quality-voice-cloning/",
+      "snippet": "Per-clip embeddings of same speaker agree at ~0.7. With centroid: 0.85+. TTFA ~130ms on H100.",
+      "relevance_note": "Key finding: per-clip vs centroid comparison explains why 0.85 threshold uses centroid"
+    },
+    {
+      "title": "An Exploration of ECAPA-TDNN and x-vector Speaker Representations in Zero-shot Multi-speaker TTS",
+      "url": "https://arxiv.org/html/2506.20190v1",
+      "snippet": "Speaker cosine similarity comparison across different embedding models for TTS evaluation",
+      "relevance_note": "Comparison of different speaker embedding approaches in TTS evaluation"
+    }
+  ],
+  "error": null
+}
