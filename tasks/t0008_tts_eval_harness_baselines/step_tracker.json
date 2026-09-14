@@ -48,14 +48,15 @@
       "step": 4,
       "name": "research-papers",
       "description": "Review corpus for papers on GE2E speaker embeddings, resemblyzer, WER evaluation, and TTS latency benchmarking.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T15:33:32Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T15:35:54Z",
       "log_file": "logs/steps/004_research-papers/",
-      "current_owner": "step-executor/research-papers",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T15:33:32Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-14T16:33:32Z"
+      "expected_completion_at": "2026-09-14T16:33:32Z",
+      "actual_duration_seconds": 142
     },
     {
       "step": 5,
