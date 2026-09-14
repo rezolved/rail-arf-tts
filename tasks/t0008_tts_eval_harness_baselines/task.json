@@ -1,0 +1,17 @@
+{
+  "spec_version": 4,
+  "task_id": "t0008_tts_eval_harness_baselines",
+  "task_index": 8,
+  "name": "TTS evaluation harness and baselines",
+  "short_description": "Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": ["t0006_kokoro_v5_stage2_subset"],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "library": 1
+  },
+  "task_types": ["tts-benchmark-run", "baseline-evaluation"],
+  "source_suggestion": null
+}
