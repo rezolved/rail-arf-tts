@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /home/azureuser/rail-metarepo/real-repos/rail-arf-tts/tasks/t0007_brainstorm_results_1/logs/sessions.
+Wrote capture report to /home/azureuser/rail-metarepo/real-repos/rail-arf-tts/tasks/t0007_brainstorm_results_1/logs/sessions/capture_report.json.

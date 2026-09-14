@@ -26,7 +26,7 @@
 [results](llm-context/results-deep-dive.xml) (10K) |
 [assets](llm-context/literature-and-assets.xml) (4K)
 
-*Last updated: 2026-09-14 13:43 UTC*
+*Last updated: 2026-09-14 13:48 UTC*
 
 * **Budget**: **$0** spent of $5000
 * **Remaining**: **$5000**
@@ -50,8 +50,8 @@ No tasks in progress.
 
 | # | Task | Description | Date Added |
 |---|------|-------------|------------|
-| 0008 | [TTS evaluation harness and baselines](../overview/tasks/task_pages/t0008_tts_eval_harness_baselines.md) | [`description`](../tasks/t0008_tts_eval_harness_baselines/task_description.md) | — |
-| 0009 | [Stage 2 training failure forensics and safeguards](../overview/tasks/task_pages/t0009_stage2_training_failure_forensics.md) | [`description`](../tasks/t0009_stage2_training_failure_forensics/task_description.md) | — |
+| 0008 | [TTS evaluation harness and baselines](../overview/tasks/task_pages/t0008_tts_eval_harness_baselines.md) | [`description`](../tasks/t0008_tts_eval_harness_baselines/task_description.md) | 2026-09-14 |
+| 0009 | [Stage 2 training failure forensics and safeguards](../overview/tasks/task_pages/t0009_stage2_training_failure_forensics.md) | [`description`](../tasks/t0009_stage2_training_failure_forensics/task_description.md) | 2026-09-14 |
 
 ---
 

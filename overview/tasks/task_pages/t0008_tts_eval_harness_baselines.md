@@ -116,8 +116,8 @@ change the token stream.
 * ElevenLabs API: ~150 streaming requests of short filler text, well under $5.
 * **Budget note**: the project budget was raised to $5000 in t0007. `aggregate_costs` still
   reports $0 spent because t0001-t0006 write `total_usd` instead of `total_cost_usd`; real
-  spend so far is ~~$370 recorded plus unrecorded t0006 GPU time (~~$70). This task must write
-  `total_cost_usd`. Planned total for this task: ≤ $30.
+  spend so far is about $370 recorded plus about $70 of unrecorded t0006 GPU time. This task
+  must write `total_cost_usd`. Planned total for this task: ≤ $30.
 
 ## Expected Outputs
 

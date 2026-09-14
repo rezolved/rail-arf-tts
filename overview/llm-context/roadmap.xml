@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="roadmap" generated_at_utc="2026-09-14T13:43:33Z">
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-09-14T13:48:27Z">
   <archive_summary>
     <title>Roadmap</title>
     <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
     <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
     <section_count>5</section_count>
-    <char_count>29425</char_count>
-    <byte_count>29531</byte_count>
-    <estimated_tokens>7356</estimated_tokens>
+    <char_count>29440</char_count>
+    <byte_count>29546</byte_count>
+    <estimated_tokens>7360</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -165,7 +165,7 @@ Planned or active tasks: 2
 ## TTS evaluation harness and baselines
 ID: t0008_tts_eval_harness_baselines
 Status: not_started
-Effective date: unknown
+Effective date: 2026-09-14
 Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
 Dependencies: t0006_kokoro_v5_stage2_subset
 
@@ -256,8 +256,8 @@ lexicon mismatches silently change the token stream.
 * ElevenLabs API: ~150 streaming requests of short filler text, well under $5.
 * **Budget note**: the project budget was raised to $5000 in t0007. `aggregate_costs` still reports
   $0 spent because t0001-t0006 write `total_usd` instead of `total_cost_usd`; real spend so far is
-  ~~$370 recorded plus unrecorded t0006 GPU time (~~$70). This task must write `total_cost_usd`.
-  Planned total for this task: ≤ $30.
+  about $370 recorded plus about $70 of unrecorded t0006 GPU time. This task must write
+  `total_cost_usd`. Planned total for this task: ≤ $30.
 
 #### Expected Outputs
 
@@ -284,7 +284,7 @@ lexicon mismatches silently change the token stream.
 ## Stage 2 training failure forensics and safeguards
 ID: t0009_stage2_training_failure_forensics
 Status: not_started
-Effective date: unknown
+Effective date: 2026-09-14
 Short description: Audit every Kokoro training run&#x27;s logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.
 Dependencies: t0005_kokoro_v5_stage2_train, t0006_kokoro_v5_stage2_subset
 

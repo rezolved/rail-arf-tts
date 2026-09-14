@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<llm_context_archive preset_id="project-overview" generated_at_utc="2026-09-14T13:43:33Z">
+<llm_context_archive preset_id="project-overview" generated_at_utc="2026-09-14T13:48:27Z">
   <archive_summary>
     <title>Project Overview</title>
     <description>Compact starter context for general project chats.</description>
     <use_case>General orientation, quick status questions, and lightweight strategy chats.</use_case>
     <section_count>4</section_count>
-    <char_count>13047</char_count>
-    <byte_count>13088</byte_count>
-    <estimated_tokens>3261</estimated_tokens>
+    <char_count>13053</char_count>
+    <byte_count>13094</byte_count>
+    <estimated_tokens>3263</estimated_tokens>
     <compatibility>131k-class, 200k-class, 1M-class</compatibility>
   </archive_summary>
   <included_content>
@@ -164,14 +164,14 @@ Planned or active tasks: 2
 ## TTS evaluation harness and baselines
 ID: t0008_tts_eval_harness_baselines
 Status: not_started
-Effective date: unknown
+Effective date: 2026-09-14
 Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
 Dependencies: t0006_kokoro_v5_stage2_subset
 
 ## Stage 2 training failure forensics and safeguards
 ID: t0009_stage2_training_failure_forensics
 Status: not_started
-Effective date: unknown
+Effective date: 2026-09-14
 Short description: Audit every Kokoro training run&#x27;s logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.
 Dependencies: t0005_kokoro_v5_stage2_train, t0006_kokoro_v5_stage2_subset
       </content>

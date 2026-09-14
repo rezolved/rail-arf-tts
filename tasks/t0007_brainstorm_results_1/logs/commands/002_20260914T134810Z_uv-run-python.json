@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0007_brainstorm_results_1",
+  "command": "uv run python -m arf.scripts.utils.capture_task_sessions --task-id t0007_brainstorm_results_1",
+  "exit_code": 0,
+  "duration_seconds": 0.492,
+  "started_at": "2026-09-14T13:48:10Z",
+  "completed_at": "2026-09-14T13:48:10Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts",
+  "stdout_file": "002_20260914T134810Z_uv-run-python.stdout.txt",
+  "stderr_file": "002_20260914T134810Z_uv-run-python.stderr.txt",
+  "stdout_lines": 2,
+  "stderr_lines": 0,
+  "truncated": false
+}

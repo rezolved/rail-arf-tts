@@ -26,5 +26,6 @@ overview materializer, then committed, opened the pull request and merged it.
 
 ## Issues
 
-capture_task_sessions crashed with UnicodeDecodeError on a transcript containing invalid UTF-8
-(likely truncated when the disk filled), so no session transcripts were captured.
+capture_task_sessions first crashed on a transcript with invalid UTF-8, and verify_pr_premerge
+failed on the budget file being outside the task folder and on a checkpoint.md verificator conflict.
+All three were fixed in infra PR #4, merged before this task's PR.

@@ -44,8 +44,8 @@ Compact starter context for general project chats.
 * Short label: `overview` (3K)
 * Best for: General orientation, quick status questions, and lightweight strategy chats.
 * File: [`project-overview.xml`](project-overview.xml)
-* Size: 12.8 KiB (13,088 bytes; 13,047 chars)
-* Estimated tokens: 3,261
+* Size: 12.8 KiB (13,094 bytes; 13,053 chars)
+* Estimated tokens: 3,263
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -65,8 +65,8 @@ Largest preset with detailed completed-task reports and the full project knowled
 * Short label: `full` (14K)
 * Best for: Deep project review, comprehensive planning, and long-context synthesis.
 * File: [`full.xml`](full.xml)
-* Size: 54.8 KiB (56,131 bytes; 55,813 chars)
-* Estimated tokens: 13,953
+* Size: 55.0 KiB (56,342 bytes; 56,022 chars)
+* Estimated tokens: 14,005
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -92,8 +92,8 @@ Research-stage documents across completed tasks, plus core project context.
 * Best for: Literature review continuity, methodology discussion, and prior-investigation
   lookup.
 * File: [`research-history.xml`](research-history.xml)
-* Size: 18.9 KiB (19,314 bytes; 19,232 chars)
-* Estimated tokens: 4,808
+* Size: 18.9 KiB (19,320 bytes; 19,238 chars)
+* Estimated tokens: 4,809
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -114,8 +114,8 @@ Completed-task result summaries plus all detailed results reports.
 * Short label: `results` (10K)
 * Best for: Performance analysis, experiment comparison, and result interpretation.
 * File: [`results-deep-dive.xml`](results-deep-dive.xml)
-* Size: 37.4 KiB (38,275 bytes; 38,022 chars)
-* Estimated tokens: 9,505
+* Size: 37.6 KiB (38,477 bytes; 38,222 chars)
+* Estimated tokens: 9,555
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -136,8 +136,8 @@ Project planning preset centered on upcoming tasks and open suggestions.
 * Short label: `roadmap` (7K)
 * Best for: Deciding what to do next, prioritizing experiments, and planning follow-up work.
 * File: [`roadmap.xml`](roadmap.xml)
-* Size: 28.8 KiB (29,531 bytes; 29,425 chars)
-* Estimated tokens: 7,356
+* Size: 28.9 KiB (29,546 bytes; 29,440 chars)
+* Estimated tokens: 7,360
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -158,8 +158,8 @@ Paper summaries and reusable project assets without the heaviest task reports.
 * Short label: `assets` (4K)
 * Best for: Method discussion, resource selection, and related-work chats.
 * File: [`literature-and-assets.xml`](literature-and-assets.xml)
-* Size: 14.4 KiB (14,794 bytes; 14,753 chars)
-* Estimated tokens: 3,688
+* Size: 14.5 KiB (14,800 bytes; 14,759 chars)
+* Estimated tokens: 3,689
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -183,8 +183,8 @@ Question-centric preset with the full answer corpus and compact project state.
 * Short label: `qa` (3K)
 * Best for: Answer review, follow-up questioning, and project knowledge-base chats.
 * File: [`qa.xml`](qa.xml)
-* Size: 12.8 KiB (13,088 bytes; 13,047 chars)
-* Estimated tokens: 3,261
+* Size: 12.8 KiB (13,094 bytes; 13,053 chars)
+* Estimated tokens: 3,263
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -204,8 +204,8 @@ Mid-size preset intended as a reusable working memory for ongoing chats.
 * Short label: `memory` (4K)
 * Best for: Keeping a durable project memory in medium-size chat sessions.
 * File: [`project-memory.xml`](project-memory.xml)
-* Size: 14.7 KiB (15,046 bytes; 15,005 chars)
-* Estimated tokens: 3,751
+* Size: 14.7 KiB (15,052 bytes; 15,011 chars)
+* Estimated tokens: 3,752
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### Included Types
@@ -230,8 +230,8 @@ Complete task data with full descriptions, results summaries, dependencies, and 
 
 * Type id: `tasks`
 * File: [`type-tasks.xml`](type-tasks.xml)
-* Size: 64.8 KiB (66,396 bytes; 66,043 chars)
-* Estimated tokens: 16,510
+* Size: 64.9 KiB (66,411 bytes; 66,058 chars)
+* Estimated tokens: 16,514
 * Fits: 131k-class, 200k-class, 1M-class
 
 ### All Metrics

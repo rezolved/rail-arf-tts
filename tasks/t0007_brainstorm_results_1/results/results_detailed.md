@@ -52,9 +52,10 @@ $13.96/h); they were not re-derived from Azure billing.
 * `verify_task_file` t0008, t0009 — PASSED, 0 errors, 0 warnings.
 * `verify_corrections` t0007 — PASSED, 0 errors.
 * `verify_suggestions` t0007 — PASSED, 0 errors.
-* `verify_logs` t0007 — PASSED, 0 errors, 3 warnings. LG-W007 and LG-W008: `capture_task_sessions`
-  crashed with `UnicodeDecodeError` in `_jsonl_content_has_worktree_cwd`
-  (`arf/scripts/utils/capture_task_sessions.py:362` opens JSONL as strict UTF-8). A transcript on
-  disk contains invalid UTF-8, most likely truncated when the local disk filled up during this
-  session. LG-W004 is that failed capture command. Framework fix (`errors="replace"`) belongs in a
-  separate infrastructure change.
+* `verify_logs` t0007 — PASSED, 0 errors. The first `capture_task_sessions` run crashed with
+  `UnicodeDecodeError` on a transcript with invalid UTF-8 (likely truncated when the disk filled);
+  LG-W004 records that failed command. Fixed in PR #4 (`errors="replace"`); the re-run completed and
+  wrote `capture_report.json` but matched 0 transcripts (LG-W007).
+* `verify_pr_premerge` — first run failed on PM-E003 (`project/budget.json` outside the task folder)
+  and a framework conflict (CK-E001 requires `checkpoint.md`, FD-E016 rejected it). Both resolved in
+  PR #4; see the PR for the final result.
