@@ -178,14 +178,15 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up task suggestions based on harness results and which systems pass/fail the success criteria.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T18:03:46Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T18:06:18Z",
       "log_file": "logs/steps/014_suggestions/",
-      "current_owner": "step-executor/suggestions",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T18:03:46Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-14T19:03:46Z"
+      "expected_completion_at": "2026-09-14T19:03:46Z",
+      "actual_duration_seconds": 152
     },
     {
       "step": 15,
