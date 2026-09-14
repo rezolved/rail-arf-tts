@@ -118,14 +118,15 @@
       "step": 9,
       "name": "implementation",
       "description": "Build the evaluation harness library, copy ElevenLabs filler corpus from VM and DVC-track it, run all 7 systems plus floor control on val_96 and filler prompt sets, produce metrics.json and charts.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-14T16:23:38Z",
-      "completed_at": null,
+      "completed_at": "2026-09-14T17:58:14Z",
       "log_file": "logs/steps/009_implementation/",
-      "current_owner": "implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-14T17:32:15Z",
       "heartbeat_interval_seconds": 600,
-      "expected_completion_at": "2026-09-15T00:23:38Z"
+      "expected_completion_at": "2026-09-15T00:23:38Z",
+      "actual_duration_seconds": 5676
     },
     {
       "step": 10,
