@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive preset_id="roadmap" generated_at_utc="2026-09-14T13:43:33Z">
+  <archive_summary>
+    <title>Roadmap</title>
+    <description>Project planning preset centered on upcoming tasks and open suggestions.</description>
+    <use_case>Deciding what to do next, prioritizing experiments, and planning follow-up work.</use_case>
+    <section_count>5</section_count>
+    <char_count>29425</char_count>
+    <byte_count>29531</byte_count>
+    <estimated_tokens>7356</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>project description</item>
+    <item>completed task summaries</item>
+    <item>planned tasks with long descriptions</item>
+    <item>question and short-answer coverage</item>
+    <item>open suggestions</item>
+  </included_content>
+  <sections>
+    <section id="project-description" source_kind="file">
+      <title>Project Description</title>
+      <source_name>project/description.md</source_name>
+      <repo_paths>
+        <path>project/description.md</path>
+      </repo_paths>
+      <content>
+# TTS Research — Kokoro-82M vs ElevenLabs for Rezolve Fillers
+
+## Goal
+
+Replace ElevenLabs David voice (currently used for filler synthesis in Rezolve&#x27;s voice commerce
+assistant) with a self-hosted Kokoro-82M fine-tuned model that matches ElevenLabs speaker
+similarity and latency at a fraction of the cost. The current ElevenLabs integration costs $0.30
+per 1000 characters; the target is a local model with TTFB ≤ 300 ms and GE2E cosine similarity
+≥ 0.85 against the ElevenLabs David reference.
+
+## Scope
+
+### In Scope
+
+* Benchmarking ElevenLabs David baseline: TTFB, speaker similarity, RTF on the 1358-clip filler
+  corpus.
+* Evaluating Kokoro-82M base (no fine-tuning) on the same filler corpus.
+* Fine-tuning Kokoro-82M on David voice data (Stage 2 StyleTTS2, 1557 training clips from
+  `data/v4/train/train_list.txt`).
+* Evaluating the fine-tuned Kokoro v4 model on val_96 (96 held-out clips) and the 1358 filler
+  prompts.
+* Producing a viability report: can Kokoro replace ElevenLabs for Rezolve fillers within budget?
+
+### Out of Scope
+
+* Full pipeline integration and A/B testing (follow-up after PoC).
+* Non-David voices or multi-speaker generalization.
+* Streaming TTS protocol changes.
+* STT — see `rezolved/rail-arf-stt` for that project.
+
+## Research Questions
+
+1. What is the TTFB, speaker similarity (GE2E cosine), and RTF of the ElevenLabs David baseline
+   on the 1358-clip filler corpus?
+2. How does Kokoro-82M base (no fine-tuning) compare to ElevenLabs David on speaker similarity
+   and RTF?
+3. Does fine-tuning Kokoro-82M on the David voice dataset (1557 clips, StyleTTS2 Stage 2) close
+   the speaker-similarity gap to ≥ 0.85 GE2E cosine while keeping TTFB ≤ 300 ms?
+4. What is the minimum viable checkpoint (epoch) for the fine-tuned Kokoro v4 that meets the
+   quality bar, and does further training help?
+5. Is Kokoro-82M v4 a viable ElevenLabs replacement for Rezolve fillers on cost, quality, and
+   latency grounds?
+
+## Success Criteria
+
+* ElevenLabs David baseline benchmarked: TTFB, speaker_sim, RTF on ≥ 50 filler prompts.
+* Kokoro-82M base benchmarked on the same prompt set.
+* Fine-tuned Kokoro v4 achieves speaker_sim (GE2E cosine) ≥ 0.85 on val_96.
+* Fine-tuned Kokoro v4 achieves TTFB ≤ 300 ms on the filler corpus (local inference, H100).
+* Viability report produced with a clear go / no-go recommendation.
+
+## Key References
+
+* Training data: `data/v4/train/train_list.txt` (1557 clips), `data/v4/val/val_list.txt` (96
+  clips).
+* ElevenLabs reference audio: `data/11labs_david/` (1358 WAVs).
+* Finetune config: `kokoro-finetune/configs/config_david_v4.yml` (Stage 2, starts from
+  `first_stage.pth`).
+* GPU machine: LLM-T1-NC80 (Nebius, 2×H100 SXM5) — see `project/nebius_vm.json`.
+* StyleTTS2 paper: Hu et al. (2023) — &quot;StyleTTS 2: Towards Human-Level Text-to-Speech through
+  Style Diffusion and Adversarial Training with Large Speech Language Models&quot;.
+* Kokoro-82M: open-weight StyleTTS2-based model by hexgrad.
+
+## Current Phase
+
+Setup complete. Next: run ElevenLabs baseline benchmark (t0002) and Kokoro base eval (t0003)
+in parallel, then evaluate fine-tuned Kokoro v4 once Stage 2 training completes (t0004).
+      </content>
+    </section>
+    <section id="completed-task-summaries" source_kind="aggregator">
+      <title>Completed Tasks and Results</title>
+      <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0001_kokoro_v4_stage2_finetune</id>
+        <id>t0002_kokoro_v4_voicepack_decoder_package</id>
+        <id>t0003_kokoro_v5_phoneme_data</id>
+        <id>t0004_kokoro_v5_stage1_train</id>
+        <id>t0005_kokoro_v5_stage2_train</id>
+        <id>t0006_kokoro_v5_stage2_subset</id>
+        <id>t0007_brainstorm_results_1</id>
+      </source_ids>
+      <content>
+Completed tasks: 7
+
+## Kokoro v4 Stage 2 fine-tune
+ID: t0001_kokoro_v4_stage2_finetune
+Completed: 2026-09-11
+Short description: Train StyleTTS2 Stage 2 on LLM-T1-NC80 using ElevenLabs David v4 dataset to produce a Kokoro-82M checkpoint for voicepack extraction.
+Result summary: Results Summary: Kokoro v4 Stage 2 Fine-tune Summary Trained StyleTTS2 Stage 2 on LLM-T1-NC80 (2× H100 NVL) for 8 epochs on 1557 ElevenLabs David v4 clips. Best checkpoint: **epoch 6, val_loss=0.751**. GAN diverged at epoch 7 (val 0.751 → 1.147), cutting the run short. Root cause (discovered in t0003): 21% of the training manifest contained raw grapheme text instead of phonemes. The epoch 6 checkpoint was used as source for voicepack extraction in t0002 but produced a broken duration predictor (10× duration explosion). Key Metrics | Metric | Value | | --- | --- | | Best val loss | 0.751 | | Best epoch | 6 | | Epochs completed | 8 (diverged at 7) | | Machine | LLM-T1-NC80 (2× H100 NVL) | |...
+
+## Package Kokoro v4 voicepack + decoder
+ID: t0002_kokoro_v4_voicepack_decoder_package
+Completed: 2026-09-12
+Short description: Extract v4 Stage1 style encoder + Stage2 best decoder into Kokoro-API voicepack/decoder format, following v3&#x27;s proven packaging pipeline.
+Result summary: Results: Kokoro v4 Voicepack + Decoder Packaging Summary Reproduced v3&#x27;s Kokoro-API packaging recipe (voicepack from Stage 1 style encoder, decoder+ predictor+text_encoder+bert from Stage 2) for v4&#x27;s checkpoints. Audio remained noisy across every variant tested (Stage 1 decoder, Stage 2 epoch 3 pre-GAN, Stage 2 epoch 6 best-by-val_loss). Root cause isolated to two independent bugs — one in this task&#x27;s extraction script (fixed), one in t0001&#x27;s underlying checkpoint (not fixable by repackaging). **v4 Stage 2 has no usable checkpoint for production packaging as-is; a re-run with a revised training schedule is required.** Methodology - Extracted `voicepack` (ref_s, `[510,1,256]`) from...
+
+## Regenerate v5 phoneme manifests
+ID: t0003_kokoro_v5_phoneme_data
+Completed: 2026-09-12
+Short description: Rebuild the Kokoro fine-tune train/val manifests with validated British IPA and a brand-name lexicon, fixing the silent grapheme fallback that poisoned 21% of the v4 training set.
+Result summary: Results Summary: v5 Phoneme Manifest Regeneration Summary Rebuilt the Kokoro fine-tune manifests: **1557/1557 train and 96/96 val lines pass every validation gate, 0 rejected**, against 329 raw-text and 9 unknown-word lines in the manifest t0001 actually trained on. Root cause of t0001&#x27;s divergence and t0002&#x27;s 10× duration explosion is a silent grapheme fallback in `prepare_v4_data.py` that fired on every clip containing a word misaki does not know — 21% of the training set. No training has been run yet. Key Metrics | Metric | Value | | --- | --- | | v5 clean train lines | 1557 / 1557 | | v5 clean val lines | 96 / 96 | | v4 raw_text_leaked (train) | 329 / 1557 (21%) | | OOV words repaired |...
+
+## Kokoro v5 Stage 1 fine-tune
+ID: t0004_kokoro_v5_stage1_train
+Completed: 2026-09-12
+Short description: Run StyleTTS2 Stage 1 on the v5 phoneme-corrected corpus, with live progress and top-2 checkpoint syncing.
+Result summary: Results Summary: Kokoro v5 Stage 1 Fine-tune Summary Ran StyleTTS2 Stage 1 on v5 phoneme-corrected corpus (1557 clips) for 10 epochs on LLM-T1-NC80 (single GPU — train_first.py does not support DDP). Best checkpoint: **epoch 10, val_loss=0.740**. Checkpoint handed off to t0005 for Stage 2. Note: ran on GPU0 only due to plain python3 invocation (not accelerate launch) — silently half-speed but trained correctly. Key Metrics | Metric | Value | | --- | --- | | Best val loss | 0.740 | | Best epoch | 10 | | Epochs completed | 10 | | Machine | LLM-T1-NC80 (1× H100 NVL, GPU0 only) | | Training clips | 1557 (v5 phoneme-corrected) | Training Curve | Epoch | Val loss | | --- | --- | | 1 | 1.170 | | 2...
+
+## Kokoro v5 Stage 2 fine-tune
+ID: t0005_kokoro_v5_stage2_train
+Completed: 2026-09-13
+Short description: Run StyleTTS2 Stage 2 from t0004&#x27;s Stage 1 checkpoint on both GPUs, with the t0003 stop-early criterion checked at the first logged step.
+Result summary: Results Summary: Kokoro v5 Stage 2 Fine-tune Summary 6 Stage 2 training runs on LLM-T1-NC80 (DataParallel, both GPUs). All converged through GAN activation but all diverged within 4 post-GAN epochs. Best checkpoint: **run06 epoch 3, val_loss=0.848**. Root cause: 1557-clip dataset is too large for the discriminator at joint_epoch transition — GAN gradient overwhelms the generator. 7 crash fixes accumulated across runs. All fixes carried forward to t0006 (250-clip subset). Key Metrics | Metric | Value | | --- | --- | | Best val loss | 0.848 | | Best run | run06 | | Best epoch | 3 | | Runs attempted | 6 | | Machine | LLM-T1-NC80 (2× H100 NVL, DataParallel) | | Training clips | 1557 (v5...
+
+## Kokoro v5 Stage 2: 250-clip subset, multispeaker: false
+ID: t0006_kokoro_v5_stage2_subset
+Completed: 2026-09-13
+Short description: Test 250-clip data scale + multispeaker:false combination to isolate why t0005 Stage 2 diverged, using all seven crash fixes from t0005 run 6.
+Result summary: t0006 Results Summary Objective Test 250-clip data scale + `multispeaker: false` in combination to isolate Stage 2 divergence cause from t0005. Key Results | Run | Config | lambda_gen | joint_epoch | Best val | Audio | |-----|--------|-----------|-------------|----------|-------| | run01 | v6 | 1.0 | 3 | ~0.89 | diverged ep7 | | run02 | v6b | 0.2 | 3 | 0.895 (ep4) | diverged ep7 | | run03 | v6c | 0.2 | 3 | 0.849 (ep5) | noisy | | run04 | v6d | 0.05 | 6 | **0.846 (ep6)** | noisy | **Best checkpoint**: v6d epoch 6, val_loss = 0.846. Target not reached (v3 gold: 0.506). Conclusion GAN activates stably with `lambda_gen=0.05` but 10 epochs insufficient for convergence. v6b used wrong...
+
+## Brainstorm results session 1
+ID: t0007_brainstorm_results_1
+Completed: 2026-09-14
+Short description: First brainstorm: review t0001-t0006 training attempts and create an evaluation-harness task and a training-failure forensics task.
+Result summary: Brainstorm Results Session 1 Summary First brainstorm after six Kokoro fine-tuning tasks (t0001-t0006) that produced no clean-audio checkpoint and measured none of the project&#x27;s success criteria. The session created **2 new tasks** (t0008 evaluation harness and baselines, t0009 Stage 2 training failure forensics and safeguards) and raised the project budget from $500 to **$5000**. No suggestions existed, so none were rejected or reprioritized. Session Overview * Date: 2026-09-14. * Context: t0001-t0006 were all Kokoro StyleTTS2 fine-tuning attempts. t0003 found and fixed a grapheme fallback that poisoned 21% of the v4 manifests. t0005 fixed seven crashes but every Stage 2 run diverged after...
+      </content>
+    </section>
+    <section id="planned-tasks" source_kind="aggregator">
+      <title>Planned Tasks</title>
+      <source_name>aggregate_tasks_full</source_name>
+      <source_ids>
+        <id>t0008_tts_eval_harness_baselines</id>
+        <id>t0009_stage2_training_failure_forensics</id>
+      </source_ids>
+      <content>
+Planned or active tasks: 2
+
+## TTS evaluation harness and baselines
+ID: t0008_tts_eval_harness_baselines
+Status: not_started
+Effective date: unknown
+Short description: Build a reusable speaker_sim/TTFB/RTF harness and score ElevenLabs David, base Kokoro, v3 and the best t0005/t0006 checkpoints.
+Dependencies: t0006_kokoro_v5_stage2_subset
+
+#### Motivation
+
+After six tasks (t0001-t0006) the project has not measured a single one of its success criteria.
+Every training attempt was judged by StyleTTS2 `val_loss` and by listening. The success criteria in
+`project/description.md` are speaker similarity (GE2E cosine ≥ 0.85 against ElevenLabs David) and
+TTFB ≤ 300 ms. There is no ElevenLabs baseline, no base-Kokoro baseline, and no speaker-similarity
+code anywhere in the repo.
+
+t0003 also showed that Stage 1 `val_loss` does not predict success (0.770 preceded the working v3
+Stage 2, 0.545 did not), so `val_loss` alone cannot be trusted as a quality signal.
+
+This task builds the measurement tool once, as a reusable library, and uses it to answer research
+questions 1 and 2 and to place every existing checkpoint on the same scale. It runs no training.
+
+#### Key Questions
+
+1. What are speaker_sim, TTFB (p50/p95/p99) and RTF for ElevenLabs David on ≥ 50 filler prompts?
+2. What do base Kokoro-82M British male voices score on the same prompts?
+3. How close is the v3 shipped bundle (the only checkpoint with clean audio) to speaker_sim ≥ 0.85?
+4. Do the t0005 and t0006 best checkpoints score measurably worse than v3, i.e. does the harness
+   detect the &quot;noisy audio&quot; that listening detected?
+5. Is speaker_sim alone enough to reject broken audio, or are the duration and intelligibility
+   sanity metrics needed as well?
+
+#### Systems to Evaluate
+
+Every system is scored on the same prompt sets with the same harness:
+
+1. **ElevenLabs David** — API (voice ID David). TTFB and RTF measured live through the streaming
+   API; speaker_sim computed on held-out reference clips (see Scoring below).
+2. **Kokoro-82M base, `bm_george`** — stock voicepack.
+3. **Kokoro-82M base, `bm_lewis`** — stock voicepack.
+4. **Kokoro-82M base decoder + v3 David voicepack** — `david_v3_best_voicepack.pt` with stock
+   decoder/predictor. Tells us how much of the voice a voicepack alone captures, with no fine-tuned
+   weights.
+5. **v3 shipped bundle** — `david_v3_best_decoder_kokoro.pth` + `david_v3_best_voicepack.pt` from
+   `tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/` (DVC).
+6. **t0006 v6d epoch 6** —
+   `tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth`, packaged with
+   t0002&#x27;s five-module extraction (`extract_decoder_generic.py`).
+7. **t0005 run06 best** — `tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/` best checkpoint,
+   same packaging. Note: t0005&#x27;s results say epoch 3 but `logs/README.md` says epoch 2; record which
+   file was actually scored.
+
+Floor control: one clearly different Kokoro voice (e.g. `af_heart`, female American) to show what a
+&quot;wrong speaker&quot; score looks like, so 0.85 can be interpreted.
+
+All Kokoro arms must synthesize through `tasks/t0003_kokoro_v5_phoneme_data/code/build_pipeline.py`
+(British `lang_code=&quot;b&quot;` plus brand lexicon), not a bare `KPipeline` — t0003 showed accent and
+lexicon mismatches silently change the token stream.
+
+#### Prompt Sets and Data
+
+* **val_96**: the 96 held-out clips (`data/v4/val/`, text from
+  `tasks/t0003_kokoro_v5_phoneme_data/results/v5/val_list.txt`). Real David audio is available for
+  each prompt, so per-prompt paired comparison is possible. Never train on these.
+* **Fillers**: ≥ 50 prompts sampled with a fixed seed (seed=42) from the 1358-clip ElevenLabs filler
+  corpus. The corpus currently lives only on the VM (`kokoro-finetune/data/11labs_david/`, see
+  `overview/datasets/fillers_1358.md`) and is not DVC-tracked. First step: copy it off the VM,
+  `dvc add` it under this task&#x27;s `data/`, and `dvc push`. Beware LESSONS Lesson 10 — `/mnt` on Azure
+  ML is ephemeral; confirm the corpus still exists before planning around it.
+
+#### Scoring
+
+* **speaker_sim** (registered metric): resemblyzer GE2E cosine between each synthesized clip and the
+  mean embedding of the ElevenLabs David reference set. Split the reference clips into a centroid
+  half and a held-out half with a fixed seed; the ElevenLabs arm is scored on the held-out half so
+  it is not compared against itself. Report mean, std and per-clip distribution.
+* **ttfb_ms** (registered metric): for ElevenLabs, wall time from request to first streamed audio
+  byte. For Kokoro, wall time from pipeline call to the first audio chunk yielded. Follow LESSONS
+  Lesson 1 (discarded warmup requests before measuring) and Lesson 4 (record torch/CUDA/kokoro
+  versions and GPU at measurement time). Report p50/p95/p99.
+* **rtf** (registered metric): synthesis wall time divided by output audio duration.
+* **duration_ratio** (sanity): synthesized duration divided by reference clip duration. Catches the
+  10× duration explosion seen in t0002 before anyone listens.
+* **WER** (sanity): transcribe synthesized audio with a local Whisper model and compare against the
+  prompt text. Catches garbled or noisy audio that could still score a plausible speaker_sim.
+
+#### Compute and Budget
+
+* Quality metrics (speaker_sim, duration_ratio, WER) can run on CPU or a single GPU.
+* The success criterion defines TTFB &quot;local inference, H100&quot;. Kokoro TTFB/RTF should be measured on
+  LLM-T1-NC80 in one short window (target ≤ 1.5 h, ~$21), with setup and teardown through the
+  `setup-remote-machine` skill. A CPU TTFB number may be reported in addition, clearly labeled.
+* ElevenLabs API: ~150 streaming requests of short filler text, well under $5.
+* **Budget note**: the project budget was raised to $5000 in t0007. `aggregate_costs` still reports
+  $0 spent because t0001-t0006 write `total_usd` instead of `total_cost_usd`; real spend so far is
+  ~~$370 recorded plus unrecorded t0006 GPU time (~~$70). This task must write `total_cost_usd`.
+  Planned total for this task: ≤ $30.
+
+#### Expected Outputs
+
+* **Library asset**: the evaluation harness (prompt-set loader, per-system synth adapters, scoring,
+  report writer), reusable by every future training task.
+* `results/metrics.json` with speaker_sim, ttfb_ms, rtf per system (as variants).
+* Tables in `results_detailed.md`:
+  * Main table: rows = systems 1-7 + floor control; columns = speaker_sim mean/std, ttfb_ms
+    p50/p95/p99, rtf, duration_ratio median, WER; plus delta vs ElevenLabs.
+  * Per-prompt-set breakdown (val_96 vs fillers).
+* Charts in `results/images/`, embedded in `results_detailed.md`:
+  * speaker_sim distribution per system (box plot; y = GE2E cosine, dashed line at 0.85) — answers
+    Q1-Q4.
+  * TTFB CDF per system (x = ms, dashed line at 300 ms) — answers Q1-Q2.
+  * speaker_sim vs WER scatter per clip — answers Q5.
+* A few synthesized examples per system (DVC-tracked, not git).
+* A clear statement: which systems (if any) already pass each success criterion.
+
+#### Dependencies
+
+* `t0006_kokoro_v5_stage2_subset` — provides the v3 reference bundle and the v6d checkpoint.
+* Independent of t0009; the two can run in parallel.
+
+## Stage 2 training failure forensics and safeguards
+ID: t0009_stage2_training_failure_forensics
+Status: not_started
+Effective date: unknown
+Short description: Audit every Kokoro training run&#x27;s logs, data, pipeline and checkpoints to explain why Stage 2 breaks, and ship checkpoint and log safeguards.
+Dependencies: t0005_kokoro_v5_stage2_train, t0006_kokoro_v5_stage2_subset
+
+#### Motivation
+
+Four training tasks (t0001, t0004, t0005, t0006; 19+ launches, ~$440 of GPU) have not produced a
+checkpoint with clean audio. Each task fixed the symptom in front of it and moved on:
+
+* t0001 (v4) diverged at epoch 7. t0003 traced it to 21% grapheme-poisoned manifests.
+* t0005 (v5, clean data) crashed five times, then diverged after the GAN switched on
+  (`acoustic_norm` 10 → 671, val 0.848 → 2.07). Seven patches were stacked, including grad-skip
+  guards and an `exp` clamp in `istftnet.py` that &quot;stops the crash; does NOT stop the divergence&quot;.
+* t0006 stopped divergence with `lambda_gen=0.05`, but changed six variables at once (data size,
+  `multispeaker`, Stage 1 checkpoint, `joint_epoch`, `lambda_gen`, LR 3e-5 → 1e-4). The audio is
+  still noisy, and the cause is still unknown.
+
+The researcher asked for a systematic review before any more training: read every log, check the
+data, check the pipeline, check that checkpoints are saved and loaded correctly, and build
+protection so that the next failure is caught early, rolled back from a checkpoint, and explainable
+from the logs.
+
+This task runs **no new training** (see Compute for the one optional smoke test).
+
+#### Key Questions
+
+1. At which step does each failed run first go wrong, and which logged signal moves first (Dur loss,
+   `acoustic_norm`, generator/discriminator loss, grad norms, skip counts)?
+2. What separates v3&#x27;s successful Stage 2 from every failure, once confounds are listed explicitly?
+   t0003 found v3&#x27;s success depended on which `first_stage.pth` happened to be in the log directory.
+3. Is the training data consistent: sample rate, duration distribution, clipping, silence, text
+   length vs audio length, and how does the 1557-clip v5 set differ from v3&#x27;s 266 clips?
+4. Is the training pipeline correct: does `train_second_patched.py` match upstream StyleTTS2 and
+   v3&#x27;s patch, do any of the seven t0005 patches mask a real problem, and are DataParallel and the
+   loading path (`load_only_params`, `ignore_modules`, `multispeaker`) doing what the configs
+   assume?
+5. Are checkpoints saved, labeled and loaded correctly? Known inconsistencies to resolve:
+   * t0004: `epoch_1st_00007.pth` labeled &quot;epoch 10&quot; (zero-indexed it looks like epoch 8, val
+     0.757).
+   * t0005: best checkpoint reported as epoch 3 in results but epoch 2 in `logs/README.md`.
+   * t0006: `epochs_2nd: 10` instead of the intended 15; v6d metrics report `acoustic_norm` 8.51
+     while the text says v3&#x27;s Stage 1 dropped it to 0.36.
+   * Only the top-2 checkpoints by `val_loss` are kept, although `val_loss` is not proven to track
+     audio quality.
+6. Is `val_loss` 0.506 (v3) even comparable to the v5 numbers — same val set, same loss definition?
+7. Why did v3&#x27;s audio go from exploded durations (`v3/audio/v3/`) to clean (`v3b/`) six minutes
+   apart with no retraining (open question from t0003)?
+
+#### Scope
+
+##### 1. Log inventory and collection
+
+Almost no training logs are in git: `.gitignore` excludes `*.log`, and the only committed training
+log is `tasks/t0006_kokoro_v5_stage2_subset/logs/run03_v6c_v3_stage1.log`. t0005&#x27;s `logs/README.md`
+describes `crash_01`-`crash_06`, `run06_divergence_full.log` and `stage2_v5.log`, none of which are
+in the repo. t0005 also notes the launch command `rm -f`s the remote log and the config file was
+edited in place between launches.
+
+Collect every log that still exists, per run: t0001 (`stage2_v4.log`), v3
+(`stage2_v3_frozen_lm.log`, `stage2_clean.log`, `stage2_dirty.log`, Stage 1 logs), t0004 Stage 1,
+t0005 launches 1-6, t0006 runs 01-04, plus any TensorBoard event files and configs. Likely
+locations: LLM-T1-NC80 (`/mnt/kikiri-tts/StyleTTS2/logs/`, `kokoro-finetune/`),
+`rezolved/rail-benchmarks` (`kokoro-finetune/`), and the original author&#x27;s machine. LESSONS Lesson
+10: `/mnt` on Azure ML is ephemeral, so some logs may be gone — record what is missing rather than
+guessing.
+
+Store logs in this task&#x27;s `data/logs/&lt;run_id&gt;/` (text logs are small; force-add past `*.log` or
+DVC-track if large). Produce an inventory table: run_id, task, log present (y/n), config present,
+Stage 1 checkpoint used (with SHA-256 where recoverable), data list, outcome.
+
+##### 2. Per-run timelines
+
+Parse every loss field per step into one tidy table (run_id, epoch, step, field, value). Plot each
+run aligned on `joint_epoch`. Mark the first anomalous step per run and the leading indicator.
+
+##### 3. Confound table
+
+For every run, list the effective settings: data list and size, `multispeaker`, `first_stage_path`
+(and hash), `joint_epoch`, `lambda_gen`, `lambda_slm`, `lr`/`ft_lr`/`bert_lr`, `batch_size`, GPU
+count and parallelism mode, `train_LM`, which of the seven patches were active. Reconstruct t0005&#x27;s
+per-launch configs from log headers and git history, since the file was edited in place.
+
+##### 4. Data audit
+
+On the v5 train/val lists and v3&#x27;s 266-clip list: sample rate, channels, duration histogram,
+peak/clipping rate, leading/trailing silence, loudness (LUFS), frames per phoneme outliers, OOV or
+vocab-invalid tokens, train/val overlap, and whether v3&#x27;s val set equals val_96.
+
+##### 5. Pipeline audit
+
+Diff `tasks/t0005_kokoro_v5_stage2_train/code/train_second_patched.py` against upstream StyleTTS2
+`train_second.py` and against v3&#x27;s
+`tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/train_second_patch.diff`. Review each of the
+seven t0005 patches and state whether it fixes a cause or hides one. Compare against the published
+StyleTTS2 fine-tuning recipe (`train_finetune.py`, which starts from a pretrained multi-speaker
+model) and against public Kokoro fine-tuning recipes. Check that mel extraction and the 24 kHz setup
+match what Kokoro&#x27;s decoder expects.
+
+##### 6. Checkpoint audit
+
+Map every checkpoint file to its epoch, step, `val_loss`, config and launch. Resolve the
+inconsistencies in Key Question 5. Verify from code how &quot;best&quot; checkpoints are selected and
+overwritten, and whether a healthy checkpoint from before each divergence still exists. Verify with
+hashes which `first_stage.pth` each Stage 2 run actually loaded.
+
+##### 7. Safeguards (library asset)
+
+Ship a small, tested patch plus a monitor that future training tasks reuse:
+
+* Save a checkpoint every epoch (and every N steps near `joint_epoch`), with a retention policy that
+  always keeps the last healthy one. Never select only by `val_loss`.
+* Write a structured JSONL metrics log (one record per step: all losses, grad norms, skip count, LR,
+  epoch) next to the text log. Never `rm -f` or overwrite logs between launches; one directory per
+  launch, with the resolved config and checkpoint hashes saved alongside.
+* Health gates checked live, with thresholds derived from Step 2 (for example Dur loss on the first
+  Stage 2 step near v3&#x27;s 0.81, `acoustic_norm` ceiling, val spike limit, consecutive skips). When a
+  gate fires: stop, record why, and point to the last healthy checkpoint to resume from.
+* **Offline replay test**: run the gates over the collected logs. They must fire on t0001, t0005
+  run06 and t0006 run01/run02 at or before divergence, and must not fire on v3&#x27;s successful run.
+
+##### 8. Answer asset
+
+Answer: &quot;Why does Kokoro Stage 2 fine-tuning break in this project, and how should the next run be
+configured and monitored?&quot; Root causes ranked with evidence and confidence, what is still unknown,
+and a single recommended configuration for the next training task, changing one variable at a time
+relative to the closest known-good run.
+
+#### Compute and Budget
+
+* Analysis runs locally or on CPU: $0.
+* VM time only to retrieve logs and checkpoint hashes from LLM-T1-NC80: target ≤ 30 min (~$7), with
+  teardown through `setup-remote-machine`.
+* Optional: one short GPU smoke test (≤ 1 h, ~$14) to confirm the patched training script writes the
+  JSONL log, saves per-epoch checkpoints and triggers a gate. Only if the offline replay cannot
+  exercise the code path.
+* Planned total: ≤ $25. Write `results/costs.json` with `total_cost_usd` (t0001-t0006 used the wrong
+  key and are invisible to `aggregate_costs`).
+
+#### Expected Outputs
+
+* **Answer asset** (see Scope 8).
+* **Library asset**: safeguard patch, JSONL metrics logger, health-gate monitor, log parser, and a
+  `test_*.py` offline replay test.
+* `results_detailed.md` tables: log inventory, confound table, checkpoint map, data audit summary,
+  patch review (patch, fixes cause or hides symptom, keep/remove).
+* Charts in `results/images/`, embedded in `results_detailed.md`:
+  * Loss timelines per run aligned on `joint_epoch` (x = step, y = loss, one panel per field) — Q1.
+  * `acoustic_norm` and grad norm per run on log scale — Q1.
+  * Duration and loudness histograms, v5 vs v3 — Q3.
+* Suggestions for the next training task.
+
+#### Dependencies
+
+* `t0005_kokoro_v5_stage2_train`, `t0006_kokoro_v5_stage2_subset` — the runs under audit.
+* Independent of t0008; the two can run in parallel. Audio-quality verdicts for checkpoints come
+  from t0008&#x27;s harness when available, but this task does not wait for it.
+      </content>
+    </section>
+    <section id="questions-and-answers" source_kind="aggregator">
+      <title>Questions and Answers</title>
+      <source_name>aggregate_answers_full</source_name>
+      <content>
+Answers: 0
+      </content>
+    </section>
+    <section id="open-suggestions" source_kind="aggregator">
+      <title>Open Suggestions</title>
+      <source_name>aggregate_suggestions_full</source_name>
+      <content>
+Open suggestions: 0
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>

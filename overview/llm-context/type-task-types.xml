@@ -1,0 +1,1524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<llm_context_archive type_id="task-types" generated_at_utc="2026-09-14T13:43:33Z">
+  <archive_summary>
+    <title>All Task Types</title>
+    <description>Complete task type definitions with descriptions and instructions.</description>
+    <section_count>1</section_count>
+    <char_count>91379</char_count>
+    <byte_count>91495</byte_count>
+    <estimated_tokens>22844</estimated_tokens>
+    <compatibility>131k-class, 200k-class, 1M-class</compatibility>
+  </archive_summary>
+  <included_content>
+    <item>all task types with descriptions and instructions</item>
+  </included_content>
+  <sections>
+    <section id="full-task-types" source_kind="aggregator">
+      <title>All Task Types (Full Detail)</title>
+      <source_name>aggregate_task_types</source_name>
+      <source_ids>
+        <id>answer-question</id>
+        <id>baseline-evaluation</id>
+        <id>brainstorming</id>
+        <id>build-model</id>
+        <id>code-reproduction</id>
+        <id>comparative-analysis</id>
+        <id>correction</id>
+        <id>data-analysis</id>
+        <id>deduplication</id>
+        <id>download-dataset</id>
+        <id>download-paper</id>
+        <id>experiment-run</id>
+        <id>feature-engineering</id>
+        <id>infrastructure-setup</id>
+        <id>internet-research</id>
+        <id>literature-survey</id>
+        <id>tts-benchmark-run</id>
+        <id>tts-finetuning-eval</id>
+        <id>write-library</id>
+      </source_ids>
+      <content>
+Task types: 19
+
+## Answer Question
+ID: answer-question
+Version: 2
+Short description: Answer one or more research questions and register the results as answer assets.
+Optional steps: research-papers, research-internet, research-code, planning, creative-thinking
+
+Covers tasks whose primary deliverable is a well-supported answer to a specific free-form question. The question may be answered through existing papers, internet research, prior project findings, or new code experiments, with the final output stored as one or more answer assets. Examples include clarifying a framework design choice, resolving a methodological uncertainty, or determining whether an implementation claim is supported by evidence.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Define the exact question or list of questions before planning the work. The question text must be
+  stable enough to become the canonical text in `assets/answer/`.
+* Plan for one answer asset per question. If the task covers multiple questions, list every planned
+  `answer_id` explicitly.
+* Decide which evidence channels are needed: existing papers, internet sources, prior project
+  assets, new code experiments, or a combination.
+* The plan must name the expected source types and the stopping criterion for the research.
+  Question-answering tasks expand indefinitely if &quot;enough evidence&quot; is not defined.
+* The plan must identify what would count as insufficient evidence and how uncertainty will be
+  reported in the final answer.
+
+#### Implementation Guidelines
+
+* Treat the question as the core deliverable, not as background context. Every action during
+  implementation should improve the evidence base for the answer.
+* Create one answer asset per question under `assets/answer/&lt;answer_id&gt;/`. Set `short_answer_path`
+  and `full_answer_path` in `details.json` to the canonical answer document paths.
+* Write the canonical short answer document only after the evidence is stable. It must answer the
+  question directly in 2-5 sentences and identify the evidence basis.
+* **Answer style**: Write in a direct, authoritative tone. State the conclusion first, then the
+  supporting reason. If the question is yes/no, begin the answer with &quot;Yes&quot;, &quot;No&quot;, or &quot;I don&#x27;t
+  know&quot;. No evasive language, hedging, filler, or diplomatic softening.
+* **No inline citations in short answers**: The `## Answer` section in the canonical short answer
+  document and the `## Short Answer` section in the canonical full answer document must never
+  contain bracketed references like `[AuthorYear]` or `[tNNNN]`. All citations belong in
+  `## Sources`.
+* Write the canonical full answer document as a mini-paper: explain the research process, summarize
+  evidence by source type, synthesize the conclusion, and state limitations clearly.
+* **Reference links**: The `## Sources` section in the canonical full answer document must include
+  markdown reference link definitions so that inline citations in the body sections render as
+  clickable links on GitHub. See the answer asset specification for the exact format.
+* If code experiments are needed, create reproducible scripts in `code/` and reference them
+  explicitly in the `## Evidence from Code or Experiments` section.
+* When evidence conflicts, state the conflict instead of forcing a false certainty. Confidence
+  should reflect the strength of the evidence, not the agent&#x27;s preference.
+
+#### Common Pitfalls
+
+* **Answering vaguely**: The short answer must actually answer the question, not merely restate the
+  question or summarize background context. Be direct and decisive — no &quot;maybe&quot;, &quot;perhaps&quot;, or &quot;it
+  depends&quot; unless factually required.
+* **Using inline citations in short answers**: `[AuthorYear]` and `[tNNNN]` brackets must not appear
+  in the `## Answer` or `## Short Answer` sections. Citations belong exclusively in `## Sources`.
+* **Losing source traceability**: Every answer must name the concrete supporting paper IDs, URLs,
+  and task IDs. Unsourced conclusions are not acceptable.
+* **Skipping negative evidence**: If an experiment failed or a source contradicted the emerging
+  answer, include that in the full answer. Omitting it weakens the audit trail.
+* **Bundling multiple questions into one asset**: Keep one question per answer asset so aggregators
+  and overview pages remain clear.
+
+#### Verification Additions
+
+* Confirm every answer asset passes `verify_answer_asset.py`.
+* Confirm the canonical short answer document contains an `## Answer` section with 2-5 sentences.
+* Confirm the canonical full answer document lists all cited paper IDs, task IDs, and URLs in
+  `## Sources`.
+* Confirm the evidence sections used by the task are substantive and match `details.json`
+  `answer_methods`.
+
+#### Related Skills
+
+* `/research-papers` — review already-downloaded papers relevant to the question
+* `/research-internet` — search for documentation and external sources
+* `/research-code` — review prior task findings, code, and assets
+* `/planning` — define the evidence plan and output answer assets
+* `/implementation` — run experiments, create answer assets, and verify them
+
+## Baseline Evaluation
+ID: baseline-evaluation
+Version: 2
+Short description: Run a baseline or benchmark evaluation against standard datasets.
+Optional steps: research-papers, research-internet, research-code, planning, setup-machines, teardown, creative-thinking, compare-literature
+
+Covers tasks that implement and evaluate a known baseline method on standard benchmarks. The goal is establishing a reference point for comparison, not inventing new methods. Baselines may be simple heuristics, published systems, or standard model architectures. Results must be compared against published numbers.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Identify the exact baseline method to implement and the paper that defines it. Use the
+  `/research-papers` skill to review relevant literature first.
+* Specify which datasets and subsets will be evaluated (e.g., Raganato ALL, per-dataset
+  SE2/SE3/SE07/SE13/SE15 breakdowns).
+* Plan per-subset and per-POS metric breakdowns from the start. Aggregate F1 alone is insufficient;
+  include noun, verb, adjective, and adverb scores.
+* If the task compares more than one baseline, prompt, checkpoint, or decoding configuration, plan
+  explicit metrics variants rather than collapsing results to one flat metrics object.
+* Estimate inference runtime and any API or machine cost before execution. Decide how
+  `efficiency_inference_time_per_item_seconds` and `efficiency_inference_cost_per_item_usd` will be
+  computed from total runtime, total cost, and inferred item count. If the baseline must be trained
+  from scratch, also plan `efficiency_training_time_seconds`.
+* Check whether existing WSD libraries in the project (data loaders, scorers) already support the
+  needed evaluation. Reuse them rather than reimplementing.
+* If GPU compute is needed, plan remote machine setup using `/setup-remote-machine`.
+
+#### Implementation Guidelines
+
+* Reproduce the baseline methodology exactly as described in the source paper. Do not add
+  improvements or modifications; the goal is a faithful reference point.
+* Use the project&#x27;s existing WSD data loader and scorer when available. Import them via absolute
+  paths per the Python style guide.
+* Report metrics for every individual dataset subset, not just the concatenated ALL score. Include
+  precision, recall, and F1. When multiple compared conditions are reported in one task, use the
+  explicit multi-variant metrics format.
+* Record the relevant registered efficiency metrics in `results/metrics.json`. Use
+  `efficiency_inference_time_per_item_seconds` and `efficiency_inference_cost_per_item_usd` for
+  baseline runs that execute inference, and `efficiency_training_time_seconds` only when the
+  baseline requires training. Omit non-applicable metrics instead of writing placeholder zeroes.
+* Document the efficiency-metric formulas and raw inputs in `results/results_detailed.md`, including
+  total seconds, inferred item count, and the API spend or machine hourly rate used in the cost
+  calculation.
+* The compare-literature step is **critical** for this task type. Create a comparison table showing
+  your reproduced numbers alongside published results. Flag any discrepancy greater than 2 F1 points
+  and investigate the cause.
+* **Predictions asset**: Save all per-instance predictions as a `predictions` asset in
+  `assets/predictions/&lt;predictions_id&gt;/`. Follow the specification in
+  `meta/asset_types/predictions/specification.md`. Include instance IDs, gold labels, predicted
+  labels, and confidence scores. This enables later re-scoring with different sense groupings or
+  metrics without re-running the baseline.
+* Save all predictions to enable later re-scoring and error analysis.
+* **Research traceability**: Baseline results become reference points for all future experiments.
+  Save enough detail to diagnose any anomalies:
+  * Save per-item predictions with confidence scores (not just correct/wrong).
+  * Log which items the baseline gets wrong — these form the &quot;hard set&quot; that future models should
+    improve on.
+  * In `results/results_detailed.md`, include an error analysis: what POS categories, sense counts,
+    or frequency ranges cause the most failures.
+  * When results differ from published numbers, document which subsets diverge and hypothesize why.
+
+#### Common Pitfalls
+
+* Implementing a modified version of the baseline instead of the exact published method. Even small
+  changes (different tokenizer, different back-off strategy) can shift results by several F1 points.
+* Reporting only aggregate metrics without per-subset breakdowns. This hides important variation
+  across datasets and makes comparison with literature harder.
+* Skipping the compare-literature step. Without comparison to published numbers, the baseline has no
+  validation of correctness.
+* Using a different sense inventory version (e.g., WordNet 3.1 instead of 3.0) or different
+  evaluation splits than the reference paper.
+
+#### Verification Additions
+
+* Confirm per-subset metrics exist for all evaluated datasets.
+* Confirm relevant `efficiency_*` metrics exist for baselines that performed training or inference,
+  and that the raw inputs for those calculations are documented.
+* Verify that a comparison table with published results is present in the results summary.
+* Confirm a `predictions` asset exists in `assets/predictions/` with per-instance prediction files
+  matching the specification. Check that instance counts match the dataset sizes.
+* Validate that the sense inventory version matches the one used in the reference paper.
+
+#### Related Skills
+
+* `/implementation` -- general implementation workflow for coding steps.
+* `/setup-remote-machine` -- provision GPU machines for model inference.
+* `/research-papers` -- review papers defining the baseline method.
+
+## Brainstorming
+ID: brainstorming
+Version: 2
+Short description: Record decisions and outcomes from a brainstorming session.
+
+Covers tasks that capture the results of brainstorming sessions between human researchers and AI agents. The primary output is a set of suggestions for future tasks, decisions about project direction, and documented rationale. No research or planning steps are needed since the brainstorming session itself drives the content.
+
+### Instructions
+
+#### Planning Guidelines
+
+No formal planning step is needed. The brainstorming session itself defines the
+direction. Before starting, review existing suggestions by running
+`aggregate_suggestions.py` to avoid proposing duplicates.
+
+#### Implementation Guidelines
+
+* Use the `/human-brainstorm` skill to conduct the interactive session.
+* Record the **full session transcript** verbatim in `logs/`. Never summarize or
+  truncate the conversation -- the complete exchange must be preserved for later review.
+* After the session, extract actionable suggestions and produce them using the
+  `/generate-suggestions` skill.
+* Each suggestion must include a clear rationale traceable to a specific point in the
+  brainstorming transcript.
+* If the session produces decisions about project direction, document them in
+  `results/results_summary.md` with the reasoning behind each decision.
+
+#### Common Pitfalls
+
+* **Summarizing instead of transcribing**: The log must contain the full verbatim
+  session, not a condensed version. Summaries lose nuance and make it impossible to
+  revisit the original reasoning.
+* **Duplicate suggestions**: Always check existing suggestions before writing new ones.
+  Run the suggestions aggregator first.
+* **Missing rationale**: Every suggestion needs a &quot;why&quot; that connects back to the
+  discussion. Suggestions without rationale are not actionable.
+
+#### Verification Additions
+
+* Confirm the session log in `logs/` is a complete transcript (not a summary).
+* Confirm at least one suggestion file exists in `assets/` or
+  `results/suggestions.json`.
+* Verify no duplicate suggestions against the aggregated suggestions list.
+
+#### Related Skills
+
+* `/human-brainstorm` -- conduct the interactive brainstorming session
+* `/generate-suggestions` -- produce structured suggestion files from outcomes
+
+## Build/Train Model
+ID: build-model
+Version: 2
+Short description: Build, train, or fine-tune a machine learning model.
+Optional steps: research-papers, research-internet, research-code, planning, setup-machines, teardown, creative-thinking, compare-literature
+
+Covers tasks that involve designing, implementing, training, and evaluating ML models. This includes fine-tuning pretrained models, training from scratch, and hyperparameter optimization. Typically requires GPU compute and produces trained model checkpoints, evaluation metrics, and analysis. Examples include fine-tuning a pretrained model, training a bi-encoder, or implementing a new architecture from scratch.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Specify the GPU requirements: GPU type (A100, A10G, etc.), VRAM needed, and estimated training
+  time. Include this in the plan&#x27;s Cost Estimation and Remote Machines sections.
+* Set a hard budget ceiling for compute costs. Monitor costs during training and stop early if
+  approaching the limit.
+* Plan how `efficiency_training_time_seconds`, `efficiency_inference_time_per_item_seconds`, and
+  `efficiency_inference_cost_per_item_usd` will be measured. Define which steps count as training
+  vs. inference, how inferred items are counted, and whether inference cost comes from API billing
+  or machine hourly pricing.
+* Define the evaluation protocol before training: which datasets, which metrics, which baselines to
+  compare against. Do not design evaluation after seeing results.
+* If the task will compare multiple checkpoints, hyperparameter settings, or training conditions in
+  one task, define the explicit metrics variants that will be written to `results/metrics.json`.
+* Record all hyperparameters in the plan: learning rate, batch size, warmup steps, weight decay,
+  number of epochs, random seeds. These must be logged before training starts, not reconstructed
+  afterward.
+* Identify the pretrained model checkpoint and its exact version (e.g., `bert-base-uncased` from
+  HuggingFace, specific commit hash).
+* Plan checkpoint saving frequency. Save at least every epoch and keep the best checkpoint by
+  validation metric.
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute imports,
+  keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`, centralized paths in
+  `code/paths.py`, named constants, explicit type annotations, 100-char line limit.
+* Set random seeds for Python, NumPy, and PyTorch at the start of every training script. Log the
+  seed values in the run metadata.
+* Log training metrics (loss, learning rate, validation scores) at regular intervals. Use structured
+  logging or W&amp;B for tracking.
+* **Model asset**: Save the final (best) model checkpoint as a `model` asset in
+  `assets/model/&lt;model_id&gt;/`. Follow the specification in `meta/asset_types/model/specification.md`.
+  Include checkpoint files, config, and tokenizer in the asset&#x27;s `files/` directory, and set
+  `description_path` in `details.json` to the canonical documentation file path.
+* **Predictions asset**: After evaluation, save all per-instance predictions as a `predictions`
+  asset in `assets/predictions/&lt;predictions_id&gt;/`. Follow the specification in
+  `meta/asset_types/predictions/specification.md`. This enables later metric recomputation without
+  re-running inference. Set `description_path` in `details.json` for the predictions asset too.
+* Save model checkpoints to the task&#x27;s `results/` or a designated output directory. Include the
+  epoch number and validation metric in the checkpoint filename.
+* Evaluate on all target benchmarks after training completes. Report per-dataset and aggregate
+  metrics in `results/metrics.json`. Use explicit variants when the task keeps multiple comparable
+  model conditions in one task; use the legacy flat format only when there is one reported metrics
+  set.
+* Record efficiency metrics in `results/metrics.json` whenever they apply. Use
+  `efficiency_training_time_seconds` for total wall-clock training or fine-tuning time. Use
+  `efficiency_inference_time_per_item_seconds` and `efficiency_inference_cost_per_item_usd` by
+  dividing total inference time or cost by the number of inferred items. Omit non-applicable
+  metrics; do not encode missing measurements as zero.
+* Document the efficiency-metric formulas and raw inputs in `results/results_detailed.md`, including
+  total seconds, inferred item count, and the API spend or machine hourly rate used in the cost
+  calculation.
+* Compare results against published baselines from the literature. Include the comparison in
+  `results/results_detailed.md` with exact numbers from both your run and the published paper.
+* Record the full training configuration in a reproducible format (JSON config file or command-line
+  arguments logged in the session).
+* Monitor GPU memory usage and training throughput. Report these in the results as they inform cost
+  analysis.
+* If training diverges (loss spikes, NaN gradients), log the failure and try a different approach.
+  When training fails, try at least 3 different approaches before creating an intervention file.
+  Document each attempt and its result in the intervention file. A single failed attempt is
+  insufficient evidence that training is impossible.
+* **Research traceability**: This is a research task with uncertain outcomes. Someone will later
+  read the results to understand *why* the model performed the way it did. Save enough raw data to
+  answer diagnostic questions:
+  * Save all predictions (not just scores) so errors can be analyzed later.
+  * Log per-item scores, not just aggregate metrics. Which instances were hardest? Which senses were
+    confused most often?
+  * Save training curves (loss, validation metric per epoch) as CSV or JSON, not just final numbers.
+  * Log example predictions — especially wrong ones — with the model&#x27;s confidence scores and the
+    gold labels.
+  * In `results/results_detailed.md`, include an error analysis section: what categories of errors
+    dominate, what patterns appear in failures, what hypotheses explain the results.
+
+#### Common Pitfalls
+
+* **Exceeding budget**: GPU compute costs accumulate quickly. Set alerts or periodic cost checks.
+  Kill runs that will exceed the budget rather than hoping they converge faster.
+* **Not saving checkpoints**: A crashed training run without checkpoints wastes all compute spent.
+  Save frequently and verify checkpoints can be loaded before relying on them.
+* **Not logging hyperparameters**: Unreproducible results are scientifically useless. Every
+  hyperparameter must be logged before training starts. &quot;I think I used lr=2e-5&quot; is not acceptable.
+* **Evaluating on training data**: Always evaluate on held-out sets. Double-check that evaluation
+  data was excluded from training.
+* **Ignoring training stability**: Report variance across seeds, not just best-run results. A single
+  lucky seed does not demonstrate a method works.
+* **Forgetting to tear down machines**: Remote GPU instances left running after training waste
+  budget. Destroy machines immediately after results are saved and verified.
+
+#### Verification Additions
+
+* Confirm `results/metrics.json` contains evaluation scores for all target benchmarks.
+* Confirm relevant `efficiency_*` metrics exist whenever the task performed training or inference,
+  and that the raw inputs for those calculations are documented.
+* Confirm hyperparameters are logged in a structured format (JSON or equivalent) within the task
+  folder.
+* Confirm at least one model checkpoint exists and can be loaded. Confirm a `model` asset exists in
+  `assets/model/` with valid `details.json` and a canonical description document.
+* Confirm a `predictions` asset exists in `assets/predictions/` with per-instance prediction files.
+* Confirm comparison against published baselines appears in the results with specific numbers from
+  both sources.
+* Confirm compute costs are recorded in `results/costs.json`.
+
+#### Related Skills
+
+* `/implementation` -- for the training and evaluation code
+* `/setup-remote-machine` -- for provisioning GPU instances
+
+## Code Reproduction
+ID: code-reproduction
+Version: 2
+Short description: Reproduce results from an existing paper or codebase.
+Optional steps: research-papers, research-internet, research-code, planning, setup-machines, teardown, compare-literature
+
+Covers tasks that reproduce published results by running the original code or reimplementing the method. The goal is verifying that results can be replicated and understanding the method deeply. This involves finding code repositories, setting up environments, running training or inference, and comparing outputs to published numbers. Compare-literature is critical for validating reproduction fidelity.
+
+### Instructions
+
+#### Planning Guidelines
+
+* **&quot;Reproduce&quot; means training from scratch.** The primary approach must always be to train the
+  model independently using the published procedure, data, and hyperparameters. Pre-trained
+  checkpoints may be downloaded as validation references (to compare predictions against), but NEVER
+  as a substitute for training. Using a pre-trained checkpoint for inference is evaluation, not
+  reproduction.
+* Use `/research-internet` to find the original code repository, any errata or known issues filed
+  against the codebase, and pre-trained checkpoints (as validation references only).
+* Use `/research-papers` to read the paper thoroughly before attempting reproduction. Note exact
+  hyperparameters, dataset splits, and evaluation protocols.
+* Document the exact environment requirements: Python version, CUDA version, library versions. Pin
+  all dependencies to match the original setup.
+* Plan how to measure `efficiency_training_time_seconds`,
+  `efficiency_inference_time_per_item_seconds`, and `efficiency_inference_cost_per_item_usd`. Define
+  which reproduction stages count as training vs. inference, how inferred items are counted, and
+  whether inference cost comes from API billing or machine hourly pricing.
+* If the reproduction task will report more than one comparable run, checkpoint, or configuration in
+  the same task, define the explicit metrics variants that will be written to
+  `results/metrics.json`.
+* If the original code is unavailable, create an intervention file in `intervention/` requesting
+  human assistance before proceeding.
+* Plan remote machine setup via `/setup-remote-machine` if GPU training or inference is required.
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute imports,
+  keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`, centralized paths in
+  `code/paths.py`, named constants, explicit type annotations, 100-char line limit.
+* **[CRITICAL]** The plan must mark the training step as `[CRITICAL]` in the Step by Step section.
+  For models that require training, this means training from scratch using the published data and
+  hyperparameters — not loading a pre-trained checkpoint for inference. If training becomes blocked
+  (environment issues, missing data), create an intervention file — not silently substitute a
+  different approach (such as using pre-trained checkpoints or existing predictions).
+* Reproduce the exact environment first. Use the same library versions as the original paper.
+  Document any version substitutions and their justification.
+* Run the original code with minimal modifications. When changes are needed (e.g., path fixes, API
+  updates), document every modification in the logs.
+* Preserve all logging and debug output from the original code per the plan. Do not strip features
+  when copying external code.
+* Success criterion: reproduced results within **2 F1 points** of published numbers. If the gap is
+  larger, investigate and document the cause before concluding.
+* Record the relevant registered efficiency metrics in `results/metrics.json`. Use
+  `efficiency_training_time_seconds` for total training or fine-tuning wall-clock time, and use
+  `efficiency_inference_time_per_item_seconds` plus `efficiency_inference_cost_per_item_usd` for
+  inference by dividing total inference time or cost by the number of inferred items. Omit
+  non-applicable metrics instead of writing placeholder zeroes. When multiple comparable conditions
+  are reported in one task, use the explicit multi-variant metrics format.
+* Document the efficiency-metric formulas and raw inputs in `results/results_detailed.md`, including
+  total seconds, inferred item count, and the API spend or machine hourly rate used in the cost
+  calculation.
+* The compare-literature step is essential. Create a detailed comparison table showing reproduced
+  vs. published results for every reported metric.
+* **Model asset**: Save the reproduced model as a `model` asset in `assets/model/&lt;model_id&gt;/`.
+  Follow the specification in `meta/asset_types/model/specification.md`. Include the final
+  checkpoint, config, and any tokenizer files. Set `description_path` in `details.json`. This allows
+  future tasks to run inference without re-training.
+* **Predictions asset**: Save all per-instance predictions as a `predictions` asset in
+  `assets/predictions/&lt;predictions_id&gt;/`. Follow the specification in
+  `meta/asset_types/predictions/specification.md`. Include instance IDs, gold labels, predicted
+  labels, and confidence scores. Set `description_path` in `details.json`. This enables later metric
+  recomputation (e.g., with different sense groupings) without re-running inference.
+* **Research traceability**: Reproduction results will be scrutinized closely. Save enough raw data
+  to diagnose discrepancies with published numbers:
+  * Save all predictions so per-item comparison is possible later.
+  * Log per-subset and per-POS breakdowns, not just aggregate scores.
+  * When results diverge from published numbers, include a diagnostic section in
+    `results/results_detailed.md`: which subsets diverge most, which item categories are affected,
+    what environmental differences might explain the gap.
+  * Save the full training/inference logs including any warnings or errors from the original code.
+
+#### Common Pitfalls
+
+* **Using a pre-trained checkpoint instead of training from scratch.** This is NOT reproduction — it
+  is evaluation. Even if the checkpoint produces matching numbers, it proves nothing about
+  reproducibility of the training procedure. The entire point of reproduction is to verify that
+  independently following the published methodology yields the same results.
+* Modifying the original code &quot;for cleanup&quot; and accidentally changing behavior. Keep the original
+  code as close to unmodified as possible.
+* Using different random seeds, batch sizes, or training epochs than the paper specifies. These can
+  cause significant result variation.
+* Not checking for errata or updated results. Some papers have corrections posted after publication.
+* Assuming the repository&#x27;s main branch is the version used in the paper. Check for tagged releases
+  or paper-specific branches.
+* Skipping environment pinning and using latest library versions, which may introduce breaking API
+  changes.
+
+#### Verification Additions
+
+* Confirm that reproduced metrics are within 2 F1 points of published results, or that the deviation
+  is documented with a root-cause analysis.
+* Confirm relevant `efficiency_*` metrics exist whenever reproduction performed training or
+  inference, and that the raw inputs for those calculations are documented.
+* Verify that the comparison table includes all metrics reported in the paper.
+* Check that environment details (library versions, hardware specs) are logged.
+* Confirm a `model` asset exists in `assets/model/` with valid `details.json` and a canonical
+  description document.
+* Confirm a `predictions` asset exists in `assets/predictions/` with per-instance prediction files
+  matching the specification.
+* Validate that the original code modifications are documented in the logs.
+
+#### Related Skills
+
+* `/implementation` -- general implementation workflow for coding steps.
+* `/setup-remote-machine` -- provision machines matching the original hardware.
+* `/research-internet` -- find code repositories and known issues.
+
+## Comparative Analysis
+ID: comparative-analysis
+Version: 2
+Short description: Compare multiple approaches, models, versions, or configurations.
+Optional steps: research-papers, research-code, planning, creative-thinking, compare-literature
+
+Covers tasks that systematically compare two or more alternatives along defined dimensions. This includes comparing model architectures, dataset versions, evaluation methods, or experimental configurations. The output is comparative tables, charts, and recommendations. Examples include comparing fine-tuned models vs LLMs on a benchmark, analyzing which evaluation dataset best measures capability, or comparing preprocessing strategies.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Define the comparison dimensions upfront: quality metrics, cost, speed, model size, training data
+  requirements, or any other relevant axes.
+* Establish fair comparison criteria before running experiments. All compared approaches must use
+  the same evaluation data, preprocessing, and scoring.
+* Plan statistical significance testing. Decide on the test (paired bootstrap, McNemar&#x27;s,
+  permutation test) and significance threshold (typically p &lt; 0.05) during planning, not after
+  seeing results.
+* Decide whether the comparison includes new training or inference runs. If it does, define how
+  `efficiency_training_time_seconds`, `efficiency_inference_time_per_item_seconds`, and
+  `efficiency_inference_cost_per_item_usd` will be measured consistently across all compared
+  approaches.
+* Define the variant dimensions that will appear in `results/metrics.json` (for example `model`,
+  `prompt`, `dataset_size`, `tokenizer`, `preprocessing`). Comparative-analysis tasks should use the
+  explicit multi-variant metrics format whenever they compare more than one approach.
+* Use `/research-papers` to identify published comparison baselines and ensure the analysis covers
+  the approaches that matter most.
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute imports,
+  keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`, centralized paths in
+  `code/paths.py`, named constants, explicit type annotations, 100-char line limit.
+* Create structured comparison tables with one row per approach and one column per metric. Include
+  confidence intervals or standard deviations where possible.
+* Generate visualizations for every comparison. At minimum, produce a bar chart comparing the
+  primary metric across approaches. For multi-dimensional comparisons, create Pareto frontier charts
+  showing trade-offs (e.g., quality vs. cost, quality vs. speed).
+* Run statistical significance tests for all pairwise comparisons on the primary metric. Report
+  p-values in the comparison table.
+* If the task performs new training or inference, record the relevant registered `efficiency_*`
+  metrics in `results/metrics.json` using one explicit variant per compared approach or condition,
+  and keep the full per-approach efficiency table in `results/results_detailed.md`.
+* Control for confounding variables. When comparing models, use identical preprocessing,
+  tokenization, and evaluation splits. Document any differences that could not be controlled.
+* **Predictions assets**: If the analysis generates new predictions (not reusing existing prediction
+  assets from prior tasks), save per-instance predictions as `predictions` assets in
+  `assets/predictions/&lt;predictions_id&gt;/`. Follow the specification in
+  `meta/asset_types/predictions/specification.md`. This enables later recomputation with different
+  metrics or sense groupings.
+* Write a clear recommendation section summarizing which approach is best under which conditions.
+  Avoid declaring a single winner when the trade-off depends on use-case constraints.
+* **Research traceability**: Comparison results inform major project decisions. Save enough detail
+  so someone can later understand *why* one approach beat another:
+  * Save per-item predictions for every compared approach so item-level disagreements can be
+    inspected.
+  * Identify items where approaches disagree most — these reveal what each approach is actually good
+    or bad at, beyond aggregate scores.
+  * In `results/results_detailed.md`, include qualitative examples: pick representative items where
+    approach A succeeds and B fails (and vice versa) and explain what properties of the item drive
+    the difference.
+
+#### Common Pitfalls
+
+* Unfair comparisons: using different data splits, preprocessing, or evaluation metrics for
+  different approaches. This invalidates the entire analysis.
+* Reporting only aggregate metrics without per-subset breakdowns. An approach that wins on average
+  may lose badly on specific subsets.
+* Omitting statistical significance tests. Small differences in F1 may not be meaningful, especially
+  on small test sets.
+* Cherry-picking metrics that favor a preferred approach. Report all planned metrics regardless of
+  which approach they favor.
+* Not visualizing results. Tables alone are harder to interpret than charts for multi-dimensional
+  comparisons.
+
+#### Verification Additions
+
+* Confirm that comparison tables include all planned approaches and metrics.
+* Confirm that any new training or inference runs have matching `efficiency_*` metrics in
+  `results/metrics.json` and per-approach efficiency tables in `results/results_detailed.md`.
+* Verify that statistical significance tests are reported for pairwise comparisons on the primary
+  metric.
+* Check that at least one visualization (chart or graph) is present in the results images folder.
+* Validate that all compared approaches used identical evaluation data and scoring methodology.
+
+#### Related Skills
+
+* `/implementation` -- general implementation workflow for coding steps.
+* `/research-papers` -- review published comparisons and baselines.
+
+## Correction
+ID: correction
+Version: 2
+Short description: Correct aggregated artifacts from earlier completed tasks.
+
+Covers tasks whose main purpose is correcting mistakes in the effective aggregated view of earlier completed-task outputs. Typical outputs are correction files, and sometimes replacement assets created in the current task and referenced by those corrections. The default optional step list is empty because many correction tasks are straightforward, but the execute-task orchestrator may still add research or planning when the correction request is complex.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Many correction tasks do not need a planning step. If the correction request already names the
+  target artifact, the required fix, and the verification method clearly, the execute-task
+  orchestrator may skip planning entirely.
+* If planning is included, keep the plan tightly focused on the exact target artifacts to correct,
+  whether each fix is `update`, `delete`, `replace`, or `file_changes`, whether replacement assets
+  must be created in the current task, and how aggregators and verificators will confirm the
+  corrected effective state.
+* When a correction affects only part of a multi-file asset, plan both sides of the change:
+  * the file overlay itself
+  * any structured metadata that must stay aligned with the effective file list
+
+#### Implementation Guidelines
+
+* Do not modify the completed upstream task folder directly.
+* Write correction files only in the current task&#x27;s `corrections/` folder.
+* Use `update` for structured metadata fixes, `delete` to remove an effective artifact, and
+  `replace` when a downstream artifact should become the new effective version.
+* Use `file_changes` only when a file-based asset needs a partial correction. Keep structured
+  metadata aligned when the effective file inventory changes.
+* If the correction needs new content, create the replacement asset in the current task first, then
+  point the correction at it.
+
+#### Common Pitfalls
+
+1. Editing the old task directly instead of creating a correction file.
+2. Replacing files without updating matching metadata when the effective file inventory changes.
+3. Using a correction when the real fix requires a new replacement asset that does not exist yet.
+
+#### Verification Additions
+
+* Run `uv run python -m arf.scripts.verificators.verify_corrections $TASK_ID`.
+* Re-run the relevant aggregator to confirm the corrected effective state.
+* If replacement assets were created, run their asset verificators too.
+
+#### Related Skills
+
+* `/research-code` — inspect the target artifact and prior outputs when needed
+* `/planning` — define the correction strategy for complex fixes
+* `/implementation` — create replacement assets and correction files
+
+## Data Analysis
+ID: data-analysis
+Version: 2
+Short description: Analyze data, compute statistics, and generate visualizations.
+Optional steps: research-papers, research-code, planning, creative-thinking
+
+Covers tasks whose primary purpose is analyzing existing data to extract insights, compute metrics, generate charts, and summarize findings. The input is typically a dataset produced by a prior task. The output includes statistical summaries, visualizations, and interpretive results. Examples include sense frequency analysis, error distribution studies, and dataset comparison reports.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Identify the input dataset(s) and confirm they exist from prior tasks.
+* Define the specific questions the analysis must answer before writing code.
+* List all metrics and chart types to produce upfront so nothing is missed during implementation.
+* If the analysis requires statistical tests, decide which tests are appropriate during planning
+  (e.g., paired t-test, bootstrap confidence intervals, chi-squared).
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute imports,
+  keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`, centralized paths in
+  `code/paths.py`, named constants, explicit type annotations, 100-char line limit.
+* Use `matplotlib` and `seaborn` for all visualizations. Save every chart to `results/images/` as
+  PNG files with descriptive filenames.
+* Produce structured metrics in `results/metrics.json` using only keys registered in
+  `meta/metrics/`. If the analysis reports separate metric sets for multiple compared conditions,
+  use the explicit multi-variant format with one variant per condition.
+* Include per-subset and per-category breakdowns wherever the data supports them. Aggregate-only
+  numbers hide important variation.
+* Use explicit dtypes when loading data with pandas. Follow the project Python style guide for all
+  DataFrame operations.
+* Print summary statistics to stdout so they appear in run logs. Use
+  `uv run python -m arf.scripts.utils.run_with_logs` for all script executions.
+* When computing percentages or ratios, report both the ratio and the raw counts (e.g., **82.3%**
+  (1,234 / 1,500)).
+* **Research traceability**: Analysis results will be used to guide project decisions. Save enough
+  detail so someone can later verify findings and explore follow-up questions:
+  * Save intermediate data (filtered subsets, computed features) as CSV or JSON, not just final
+    charts and metrics.
+  * Log the exact data transformations applied so the analysis is reproducible from the raw input.
+  * In `results/results_detailed.md`, explain surprising findings — don&#x27;t just report them. Why is a
+    distribution skewed? Why does a subset behave differently? Propose hypotheses.
+
+#### Common Pitfalls
+
+* **Charts without titles or axis labels**: Every chart must have a descriptive title, labeled axes,
+  and a legend when multiple series appear.
+* **Missing statistical context**: Report confidence intervals or standard deviations alongside
+  point estimates. A single number without variance is not informative.
+* **Unlabeled images in results**: Reference every chart in `results/results_summary.md` with a
+  description of what it shows.
+* **Using 0.0 for missing data**: Use `None`/`null` when data is unavailable. Zero is a valid
+  measurement.
+
+#### Verification Additions
+
+* Confirm at least one chart exists in `results/images/`.
+* Confirm `results/metrics.json` contains only registered metric keys.
+* Confirm `results/results_summary.md` references all generated charts.
+* Confirm no hardcoded file paths in analysis scripts (use `paths.py` constants).
+
+#### Related Skills
+
+* `/implementation` -- execute analysis scripts with logging
+* `/research-code` -- review prior task code for reusable loaders or utilities
+
+## Deduplication
+ID: deduplication
+Version: 2
+Short description: Scan for and resolve duplicate assets across tasks.
+Optional steps: research-code, planning
+
+Covers tasks that identify duplicate papers, suggestions, or other assets that accumulated from parallel task execution. Uses the corrections mechanism to mark duplicates without modifying completed task folders. The output is correction files that downstream aggregators use to filter duplicates. This is typically run at project checkpoints.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Use the `/create-dedup-task` skill if available to bootstrap the task structure.
+* Run the appropriate aggregator script (e.g., `aggregate_papers.py`,
+  `aggregate_suggestions.py`) to collect all assets across tasks before starting.
+* Identify the duplicate detection strategy: exact match on DOI/paper ID, fuzzy title
+  matching, or semantic similarity for suggestions.
+* Plan which asset types to scan: papers, suggestions, datasets, answers, or all of them.
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute
+  imports, keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`,
+  centralized paths in `code/paths.py`, named constants, explicit type annotations,
+  100-char line limit.
+* **NEVER** modify files in completed task folders. All deduplication is done via the
+  corrections mechanism: create correction files in the current task&#x27;s `corrections/`
+  folder that mark duplicates for removal or replacement.
+* Run aggregators first to get a full inventory of assets. Parse the aggregated output
+  to find duplicates programmatically.
+* For each duplicate group, keep the earliest (lowest task ID) instance as the canonical
+  version. Create a correction file that removes the later duplicates.
+* Correction files must reference the exact task ID, asset type, and asset ID being
+  corrected. Follow the correction format in `arf/specifications/`.
+* Log every duplicate found with both the kept and removed asset identifiers.
+
+#### Common Pitfalls
+
+* Modifying completed task folders instead of using corrections. This violates the
+  immutability principle and will be caught by verificators.
+* Missing near-duplicates that differ only in metadata (same paper, different DOI format
+  or slightly different title).
+* Not running aggregators before scanning, leading to an incomplete inventory.
+* Creating correction files with incorrect task ID references.
+
+#### Verification Additions
+
+* Confirm no files outside the current task folder were modified.
+* Verify each correction file references a valid task ID and asset ID.
+* Run the aggregator again after corrections to confirm duplicates are filtered.
+* Check that the canonical (kept) asset is complete and well-formed.
+
+#### Related Skills
+
+* `/create-dedup-task` -- bootstraps the deduplication task structure.
+* `/implementation` -- general implementation workflow for the coding steps.
+
+## Download Dataset
+ID: download-dataset
+Version: 2
+Short description: Download one or more datasets and register them as dataset assets.
+Optional steps: planning
+
+Covers tasks that download datasets from external sources, verify their integrity, document their structure and statistics, and register them as dataset assets. The primary output is one or more dataset assets in the standard format. Examples include downloading evaluation benchmarks, training corpora, or challenge test sets.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Record the exact download URL(s) in the plan. If the dataset requires navigating a web page to
+  find the link, document the steps.
+* Check whether the dataset requires authentication, account creation, or acceptance of terms of
+  use. If so, create an intervention file in `intervention/` describing what the human must do.
+* Identify the expected file format (ZIP, tar.gz, CSV, XML, etc.) and approximate size. Plan disk
+  space accordingly.
+* If the dataset has a known checksum (SHA256, MD5), record it in the plan for verification after
+  download.
+* Determine which dataset asset specification version to follow by reading
+  `meta/asset_types/dataset/specification.md`.
+
+#### Implementation Guidelines
+
+* Download files using `curl` or `wget` wrapped in `run_with_logs.py`. Log the HTTP status code and
+  file size after download.
+* Verify file integrity immediately after download: check file size is nonzero, verify checksums if
+  available, and confirm the file can be decompressed or parsed.
+* Extract and inspect the dataset structure. Document the number of files, records, columns, and any
+  splits (train/dev/test).
+* Compute basic statistics: total instances, unique labels, class distribution, average sequence
+  length, or other relevant measures.
+* Create the dataset asset folder under `assets/dataset/&lt;dataset_id&gt;/` containing `details.json`,
+  the canonical description document, and `files/` following the dataset asset specification. Set
+  `description_path` in `details.json`.
+* Store raw downloaded files in the asset&#x27;s `files/` subdirectory. Do not modify the original files;
+  create processed versions separately if needed.
+* Record download metadata: source URL, download date, file sizes, checksums, and any preprocessing
+  applied.
+
+#### Common Pitfalls
+
+* **Not verifying checksums**: A corrupted download produces silent errors downstream. Always verify
+  file integrity before proceeding.
+* **Not documenting structure**: Future tasks depend on understanding the dataset layout. Document
+  column names, file formats, encoding, and any quirks (missing values, inconsistent delimiters).
+* **Forgetting intervention files**: Datasets behind authentication walls or license agreements
+  require human action. Create an intervention file immediately when you encounter access
+  restrictions rather than trying to work around them.
+* **Not recording statistics**: Raw file counts and sizes are not enough. Compute and report
+  domain-relevant statistics (instance counts, label distributions, vocabulary size).
+* **Modifying original files**: Keep raw downloads untouched. Apply any transformations to copies,
+  and document what was changed.
+
+#### Verification Additions
+
+* Confirm each dataset asset folder contains `details.json`, the canonical description document, and
+  at least one file in `files/`.
+* Verify `details.json` matches the dataset asset specification schema.
+* Confirm reported file sizes and record counts match actual files.
+* Run the dataset verificator if one exists.
+
+#### Related Skills
+
+* `/implementation` -- for the download and processing steps
+
+## Download Paper
+ID: download-paper
+Version: 2
+Short description: Download one or more research papers and register them as paper assets.
+
+Covers tasks that find, download, and summarize academic papers. Each paper becomes a paper asset with metadata, PDF file, and detailed summary. This is typically a focused task downloading a specific set of papers identified by prior research or brainstorming. The output is paper assets following the paper asset specification.
+
+### Instructions
+
+#### Planning Guidelines
+
+* List each paper to download with its DOI (preferred) or title and authors if no DOI is available.
+* Read `meta/asset_types/paper/specification.md` before starting. The paper asset spec defines the
+  exact folder structure, `details.json` schema, and canonical summary document section
+  requirements.
+* Generate paper IDs using `uv run python -u -m arf.scripts.utils.doi_to_slug &lt;doi&gt;` for DOI-based
+  papers. For papers without a DOI, use the `no-doi_&lt;AuthorYear&gt;_&lt;slug&gt;` format defined in the spec.
+* Check existing paper assets (run the paper aggregator) to avoid downloading duplicates.
+
+#### Implementation Guidelines
+
+* Use the `/download_paper` or `/add-paper` skills for each paper. These skills handle the download,
+  metadata extraction, and asset creation workflow.
+* For each paper, create the asset folder at `assets/paper/&lt;paper_id&gt;/` containing `details.json`,
+  the canonical summary document, and `files/` with the downloaded PDF.
+* Fill `details.json` completely: all required fields including `spec_version`, `paper_id`, `doi`,
+  `title`, `authors`, `institutions`, `venue_type`, `categories`, `abstract`, `citation_key`,
+  `summary_path`, `files`, `download_status`, and `added_by_task`.
+* Write the canonical summary document after reading the full paper, not just the abstract. The
+  summary must contain all mandatory sections: Metadata, Abstract, Overview,
+  Architecture/Models/Methods, Results, Innovations, Datasets, Main Ideas, and Summary.
+* The Overview section must go beyond the abstract. It should reflect knowledge gained from reading
+  the full paper text.
+* The Results section must contain at least 5 bullet points with specific quantitative values (F1
+  scores, accuracy, etc.).
+* If a paper cannot be downloaded, set `download_status` to `&quot;failed&quot;`, provide
+  `download_failure_reason`, and write the summary based on available information (abstract, related
+  papers). State explicitly that the full paper was not available.
+
+#### Common Pitfalls
+
+* **Wrong DOI format**: Always use `arf.scripts.utils.doi_to_slug` to convert DOIs to folder names.
+  Manual conversion often misses edge cases like parentheses or multiple slashes.
+* **Incomplete summaries**: Summaries that paraphrase only the abstract violate the spec. The
+  Overview and Architecture sections must contain information from the full paper body.
+* **Not running the paper verificator**: Run
+  `uv run python -m arf.scripts.verificators.verify_paper_asset --task-id $TASK_ID &lt;paper_id&gt;` after
+  creating each paper asset. It catches missing fields, format errors, and section omissions.
+* **Missing quantitative results**: Vague statements like &quot;results were good&quot; are not acceptable.
+  Extract specific numbers from the paper&#x27;s results tables and include them in the Results section.
+* **Forgetting `spec_version`**: Both `details.json` and the canonical summary document frontmatter
+  must include `spec_version` matching the current paper asset specification version.
+
+#### Verification Additions
+
+* Run `uv run python -m arf.scripts.verificators.verify_paper_asset --task-id $TASK_ID &lt;paper_id&gt;`
+  for each paper.
+* Confirm `details.json` passes schema validation with no errors.
+* Confirm the canonical summary document contains all mandatory sections.
+* Confirm `paper_id` in both files matches the folder name.
+* Confirm `files/` contains the PDF when `download_status` is `&quot;success&quot;`.
+
+#### Related Skills
+
+* `/download_paper` -- downloads and creates a paper asset from a URL
+* `/add-paper` -- adds a paper asset with metadata and summary
+
+## Experiment Run
+ID: experiment-run
+Version: 2
+Short description: Run a designed experiment combining training, inference, and evaluation.
+Optional steps: research-papers, research-internet, research-code, planning, setup-machines, teardown, creative-thinking, compare-literature
+
+Covers tasks that execute a complete experimental pipeline: data preparation, model training or inference, prediction generation, and evaluation against benchmarks. This type combines multiple activities into a single coherent experiment. Examples include testing LLM zero-shot performance across multiple models, running ablation studies, or comparing prompting strategies.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Define the hypothesis or research question the experiment tests.
+* Specify all independent variables (models, hyperparameters, prompting strategies) and dependent
+  variables (F1, accuracy, cost, latency).
+* Decide which independent variables will become explicit metrics variants in `results/metrics.json`
+  when the task reports more than one compared condition.
+* List the evaluation benchmarks and subsets to report on (e.g., Raganato ALL, per-dataset
+  SE2/SE3/SE07/SE13/SE15).
+* Estimate API costs and compute time before running. Include cost caps in the plan to prevent
+  budget overruns.
+* Decide upfront how to compute `efficiency_training_time_seconds`,
+  `efficiency_inference_time_per_item_seconds`, and `efficiency_inference_cost_per_item_usd`. Record
+  which stages are counted, how inferred items are counted, and whether inference cost comes from
+  API billing or machine hourly pricing.
+* Identify baseline results to compare against (MFS baseline, prior task results, published
+  numbers).
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute imports,
+  keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`, centralized paths in
+  `code/paths.py`, named constants, explicit type annotations, 100-char line limit.
+* **Reproducibility**: Set and record random seeds for all stochastic components. Log the exact
+  model versions, API endpoints, and library versions used.
+* **Cost tracking**: Record all API call costs in `results/costs.json`. Track token counts and
+  per-call costs for LLM experiments.
+* **Structured results**: Report per-subset metric breakdowns in `results/metrics.json`. Never
+  report only aggregate numbers -- include per-dataset, per-POS, and per-category breakdowns where
+  applicable. If the task evaluates multiple models, prompts, hyperparameter settings, or other
+  conditions, use the explicit multi-variant metrics format with one variant per condition.
+* **Efficiency metrics**: When the task trains a model or prompt-tuned system, record
+  `efficiency_training_time_seconds` in `results/metrics.json`. When the task runs inference over
+  items, record `efficiency_inference_time_per_item_seconds` and
+  `efficiency_inference_cost_per_item_usd` by dividing total inference time or cost by the number of
+  inferred items. Omit metrics that do not apply; never encode missing measurements as zero.
+* Document the efficiency-metric formulas and raw inputs in `results/results_detailed.md`, including
+  total seconds, inferred item count, and the API spend or machine hourly rate used in the cost
+  calculation.
+* **Charts**: Generate at least 2 matplotlib/seaborn charts during implementation. Save all charts
+  to `results/images/` as PNG files. Typical charts: metric comparison across conditions (bar
+  chart), per-category breakdown (grouped bar or heatmap), cost vs quality tradeoff (scatter plot).
+* **Comparison to baselines**: Include at least the MFS baseline and one prior published result in
+  all comparison tables and charts.
+* **Error analysis**: When predictions are wrong, sample and categorize errors. Include error
+  examples in `results/results_detailed.md`.
+* **Predictions asset**: Save all per-instance predictions as a `predictions` asset in
+  `assets/predictions/&lt;predictions_id&gt;/`. Follow the specification in
+  `meta/asset_types/predictions/specification.md`. Include instance IDs, gold labels, predicted
+  labels, and confidence scores. This enables later metric recomputation (e.g., with different sense
+  groupings) without re-running inference.
+* **Model asset** (when applicable): If the experiment trains or fine-tunes a model, save it as a
+  `model` asset in `assets/model/&lt;model_id&gt;/`. Follow the specification in
+  `meta/asset_types/model/specification.md`.
+* Use `uv run python -m arf.scripts.utils.run_with_logs` for every script execution.
+* **Research traceability**: Experiments have uncertain outcomes. Someone will later read the
+  results to understand *why* they turned out this way. Save enough raw data to answer diagnostic
+  questions:
+  * Save all raw model outputs (predictions, confidence scores, LLM responses), not just final
+    metrics. For LLM experiments, save the full prompt and full response for every call.
+  * Log per-item results so individual failures can be inspected. Which items were hardest? Which
+    models disagreed? What patterns appear?
+  * Include an error analysis section in `results/results_detailed.md`: sample wrong predictions,
+    categorize failure modes, and propose hypotheses for why they occurred.
+  * Save intermediate results at each pipeline stage (e.g., after preprocessing, after inference,
+    after scoring) so problems can be localized to a specific stage.
+
+#### Common Pitfalls
+
+* **Missing seeds**: Without fixed seeds, results are not reproducible. Set seeds for Python
+  `random`, `numpy`, and `torch` at minimum.
+* **Aggregate-only metrics**: Reporting only ALL F1 hides per-subset variation. Always include
+  per-dataset and per-POS breakdowns.
+* **No cost tracking**: LLM experiments can exceed budget silently. Log costs per call and check
+  cumulative spend against the budget cap.
+* **Unfair comparisons**: Ensure all systems are evaluated on identical data splits with identical
+  preprocessing and scoring.
+* **No baseline reference**: Results without a baseline comparison are uninterpretable. Always
+  include MFS and at least one published result.
+* **Below-baseline results treated as findings instead of bugs**: If any model scores at or below
+  the trivial baseline (MFS for WSD, majority class for classification), the pipeline is broken —
+  not the approach. A model with access to context that performs worse than a context-free heuristic
+  has a bug in its input construction, output parsing, or evaluation logic. Treat below-baseline as
+  a hard stop: inspect individual inputs and outputs, verify the model receives correct data, verify
+  scoring logic on known-answer instances, and fix the bug before proceeding. Never run expensive
+  full-scale experiments without first validating on a small sample with individual-level
+  inspection.
+* **Skipping individual-output inspection**: Aggregate metrics (F1, accuracy) hide semantic bugs
+  that affect a systematic subset of instances. After every debug or validation run, read 5
+  individual predictions: verify the input was correctly formatted, the model response is
+  reasonable, and the scoring is correct for each specific case. A single manual inspection of one
+  wrong prediction can reveal a bug that aggregate metrics cannot.
+
+#### Verification Additions
+
+* Confirm `results/metrics.json` contains per-subset breakdowns, not only aggregate scores.
+* Confirm multi-condition experiment tasks use explicit variants rather than collapsing everything
+  to one flat metrics object.
+* Confirm relevant `efficiency_*` metrics are present whenever the task performed training or
+  inference, and that their formulas are documented in `results/results_detailed.md`.
+* Confirm `results/costs.json` exists and records non-zero costs for any paid API calls.
+* Confirm random seeds are logged in the implementation logs.
+* Confirm a `predictions` asset exists in `assets/predictions/` with per-instance prediction files
+  matching the specification.
+* Confirm baseline comparisons appear in `results/results_summary.md`.
+
+#### Related Skills
+
+* `/implementation` -- execute experiment scripts with logging
+* `/setup-remote-machine` -- provision GPU machines for training or inference
+
+## Feature Engineering
+ID: feature-engineering
+Version: 2
+Short description: Extract, compute, or generate features from data for model training.
+Optional steps: research-papers, research-internet, research-code, planning, creative-thinking
+
+Covers tasks that create new features from existing data. This includes extracting linguistic features, computing statistical measures, generating LLM-based features, or deriving meta-features from model outputs. The output is typically enriched data files or feature extraction code that downstream model training tasks consume. Examples include computing word frequency features, generating LLM embeddings, or extracting phonological distance measures.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Use `/research-papers` to survey what features have been effective for the target task
+  in published literature.
+* Define each feature clearly: name, data type, value range, and semantic meaning. Plan
+  the output schema before writing extraction code.
+* Identify source data dependencies. Confirm that all input datasets and libraries are
+  available from completed upstream tasks.
+* Estimate computational cost for feature extraction. LLM-based features (embeddings,
+  generated annotations) can be expensive; include API cost estimates in the plan.
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute
+  imports, keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`,
+  centralized paths in `code/paths.py`, named constants, explicit type annotations,
+  100-char line limit.
+* Document every feature in a feature manifest file that lists the feature name,
+  description, data type, source, and any parameters used to compute it.
+* Handle missing values explicitly using `None`/`null`, never `0.0` or empty strings. A
+  missing feature value means &quot;not computed&quot;, which is different from a computed value of
+  zero.
+* Test feature distributions after extraction. Log basic statistics (mean, median, min,
+  max, null count) for numeric features and value counts for categorical features.
+  Include histograms or distribution charts in the results images folder.
+* Store features in standard formats: CSV with explicit dtypes, or JSON with typed
+  schemas. Follow the Python style guide for dtype specifications.
+* Write feature extraction as deterministic, reproducible functions. Pin random seeds,
+  document API model versions, and log all parameters so that re-running the extraction
+  produces identical output.
+* Keep extraction code generic and reusable. Downstream tasks should be able to import
+  the feature extraction functions directly.
+* **Research traceability**: Feature quality directly affects downstream model
+  performance. Save enough detail so someone can later diagnose why a feature helped or
+  hurt:
+  * Log the full distribution of each feature (histograms, percentiles) in
+    `results/images/` and reference them in `results/results_detailed.md`.
+  * For LLM-generated features, save the raw LLM responses alongside the extracted
+    values. If a feature looks wrong, the raw response reveals whether the LLM
+    misunderstood the prompt or the parsing was faulty.
+  * Document feature correlations with the target variable. A feature with zero
+    correlation is either uninformative or extracted incorrectly — the detailed results
+    should distinguish these cases.
+  * Save per-item feature values (not just aggregates) so downstream error analysis can
+    check what feature values corresponded to model failures.
+
+#### Common Pitfalls
+
+* Using `0.0` for missing feature values instead of `None`. This corrupts downstream
+  statistics and model training.
+* Not documenting feature semantics. A column named `f1` could mean anything; use
+  descriptive names like `sense_frequency_ratio`.
+* Generating features that leak target information (data leakage). Verify that no
+  feature uses the gold-standard label as input.
+* Skipping distribution analysis. Degenerate features (all zeros, all identical values)
+  waste model capacity and indicate extraction bugs.
+
+#### Verification Additions
+
+* Confirm that a feature manifest file exists documenting all extracted features.
+* Verify that no feature column contains only null or only a single value.
+* Check that output files have explicit dtype specifications or JSON schemas.
+* Validate that re-running extraction on the same input produces identical output.
+
+#### Related Skills
+
+* `/implementation` — general implementation workflow for coding steps.
+* `/research-papers` — survey effective features in published literature.
+
+## Infrastructure Setup
+ID: infrastructure-setup
+Version: 2
+Short description: Set up environments, tools, dependencies, or infrastructure.
+Optional steps: research-internet, research-code, planning
+
+Covers tasks that install dependencies, configure environments, set up remote machines, or create tooling needed by downstream tasks. The primary output is working infrastructure rather than research results. Examples include installing a lexical resource or knowledge base, configuring GPU environments, testing remote machine lifecycles, or setting up evaluation frameworks.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Identify exactly what downstream tasks need from this setup and confirm those requirements before
+  starting.
+* Check whether the dependency or tool is already installed or configured by reviewing prior task
+  results and the current environment.
+* Plan for idempotency: the setup should succeed whether run for the first time or repeated on an
+  already-configured environment.
+
+#### Implementation Guidelines
+
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute imports,
+  keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`, centralized paths in
+  `code/paths.py`, named constants, explicit type annotations, 100-char line limit.
+* **Idempotency**: Write setup scripts that can be re-run safely. Check whether a dependency exists
+  before installing it. Use version pins for all installed packages.
+* **Verification**: After every installation or configuration step, run a concrete test that proves
+  the setup works. For example, after installing NLTK WordNet data, write a script that loads a
+  synset and prints it.
+* **Documentation**: Record exactly what was installed, which versions, and how to reproduce the
+  setup. Include this in `results/results_summary.md`.
+* **Dependency tracking**: If the setup adds Python packages, update `pyproject.toml` and run
+  `uv sync`. If it adds system-level tools, document the installation command.
+* **Cleanup**: If the setup creates temporary files or downloads large artifacts, clean them up or
+  document where they live and how to remove them.
+* Use `uv run python -m arf.scripts.utils.run_with_logs` for all script executions so the full
+  installation output is captured in logs.
+
+#### Common Pitfalls
+
+* **Non-idempotent scripts**: A setup script that fails on second run is fragile. Always check state
+  before modifying it.
+* **Missing version pins**: Installing packages without version pins leads to unreproducible
+  environments. Pin every dependency.
+* **No verification step**: &quot;It installed without errors&quot; is not sufficient. Run a functional test
+  that exercises the installed tool or library.
+* **Undocumented side effects**: If the setup modifies global state (env variables, system packages,
+  config files), document every change.
+* **Large downloads without caching**: If the setup downloads large files, check for existing copies
+  first and document the expected file sizes.
+
+#### Verification Additions
+
+* Confirm the setup script runs successfully when executed a second time (idempotency check).
+* Confirm a functional test exists that exercises the installed tool or library and passes.
+* Confirm `results/results_summary.md` documents what was installed, which versions, and how to
+  reproduce.
+* Confirm any new Python dependencies are added to `pyproject.toml`.
+
+#### Related Skills
+
+* `/implementation` — execute setup scripts with logging
+* `/setup-remote-machine` — provision and configure remote machines
+
+## Internet Research
+ID: internet-research
+Version: 2
+Short description: Research a specific question using internet sources, documentation, and online resources.
+Optional steps: planning
+
+Covers tasks whose primary purpose is answering a research question by searching the internet, reading documentation, forums, blog posts, and other online resources. The output is typically a structured research document, not code or datasets. This type is appropriate when the task goal is knowledge gathering rather than asset production. Examples include investigating API capabilities, comparing tool options, or understanding a technology landscape.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Define the research question precisely before starting any searches. A well-scoped
+  question prevents rabbit holes and unfocused browsing.
+* List 3-5 specific search queries you plan to use, covering different angles of the
+  question (synonyms, related terms, specific tools).
+* Identify which types of sources are most relevant: official docs, academic papers,
+  blog posts, GitHub repos, forum threads.
+* Set a time budget. Internet research expands to fill available time without a clear
+  stopping criterion.
+
+#### Implementation Guidelines
+
+* Start with broad searches to understand the landscape, then narrow to specific
+  subtopics identified in the initial pass.
+* Record every source URL immediately when you find useful information. Reconstructing
+  sources after the fact is unreliable and wastes time.
+* For each source, note: URL, date accessed, author/organization, and a one-sentence
+  summary of what it contributes to the research question.
+* Cross-reference claims across multiple independent sources. A single blog post is not
+  sufficient evidence for factual claims.
+* Write findings into `research/research_internet.md` incrementally as you discover
+  them, not in a single pass at the end.
+* Structure the output document by subtopic, not by source. Group related findings
+  together even if they came from different searches.
+* Include direct quotes with attribution for key claims. Paraphrasing without citation
+  is not acceptable.
+
+#### Common Pitfalls
+
+* **Not documenting sources**: Every claim must have a URL. Unsourced claims are
+  indistinguishable from hallucinations and will be flagged during review.
+* **Search tunnel vision**: Using only one search query or one type of source misses
+  important perspectives. Vary your queries and check official docs, forums, and
+  independent benchmarks.
+* **Not verifying claims**: Blog posts and forum answers may be outdated or wrong.
+  Cross-check version numbers, API availability, and benchmark results against official
+  documentation.
+* **Summarizing without synthesizing**: Listing what each source says is not research.
+  Synthesize findings into actionable conclusions that answer the original research
+  question.
+* **Ignoring recency**: Check publication dates. A 2020 comparison of tools may be
+  irrelevant if major releases happened since then.
+
+#### Verification Additions
+
+* Confirm `research/research_internet.md` exists and exceeds 500 words.
+* Every factual claim has an inline citation with a URL.
+* The document contains a clear answer or conclusion addressing the original research
+  question, not just a collection of notes.
+* At least 3 independent sources are cited.
+
+#### Related Skills
+
+* `/research-internet` — primary skill for conducting internet research
+
+## Literature Survey
+ID: literature-survey
+Version: 2
+Short description: Survey and summarize academic literature on a specific topic.
+Optional steps: research-papers, research-internet, research-code, planning
+
+Covers tasks that systematically search for, download, and summarize research papers on a topic. Unlike download-paper tasks which target specific known papers, literature surveys cast a wide net to discover papers across a research area. The output is a collection of paper assets plus a synthesis document. Examples include surveying recent approaches to a problem, collecting papers on a new technique, or mapping a research landscape.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Define the search scope: topic keywords, year range, venues to prioritize.
+* Set a target number of papers to find (minimum and maximum).
+* Plan the search strategy: which databases to query (Semantic Scholar, Google Scholar, ACL
+  Anthology, arXiv), which keyword combinations to use.
+* Check existing paper assets by running `aggregate_papers.py` to avoid downloading papers already
+  in the project.
+
+#### Implementation Guidelines
+
+* Use the `/research-internet` skill to discover papers systematically.
+* Use the `/add-paper` skill for each paper to create properly structured paper assets with
+  `details.json` and the canonical summary document.
+* Use the `/download_paper` skill to obtain PDF files when available.
+* Organize discovered papers by theme or category. Assign appropriate categories from
+  `meta/categories/` to each paper.
+* Produce a synthesis document in `results/results_summary.md` that organizes findings by theme,
+  identifies gaps in the literature, and highlights consensus vs. disagreement across papers.
+* **NEVER fabricate citations.** Every paper referenced must have a corresponding paper asset with
+  verifiable metadata. If a paper cannot be found or verified, do not include it.
+* For each paper, read the full text before writing the summary. Abstract-only summaries are
+  acceptable only when download fails (mark this explicitly).
+
+#### Common Pitfalls
+
+* **Citation fabrication**: This is the most critical risk. Never invent paper titles, authors, or
+  DOIs. Every claim must trace to a real, downloaded paper.
+* **Shallow coverage**: Searching only one database or one keyword combination misses relevant work.
+  Use at least 3 different search queries.
+* **Missing synthesis**: A list of paper summaries is not a survey. The results must include a
+  synthesis that identifies themes, trends, and gaps.
+* **Duplicate papers**: Check the aggregated paper list before adding each paper. The same paper may
+  appear under different titles or URLs.
+
+#### Verification Additions
+
+* Confirm each paper asset passes the paper verificator with no errors.
+* Confirm `results/results_summary.md` contains a synthesis section that goes beyond listing
+  individual papers.
+* Confirm no paper is duplicated against the existing aggregated paper list.
+* Confirm every citation in the synthesis traces to an actual paper asset.
+
+#### Related Skills
+
+* `/research-internet` — systematic web search for papers
+* `/research-papers` — review papers already in the project
+* `/add-paper` — create structured paper assets
+* `/download_paper` — download PDF files for discovered papers
+
+## TTS Benchmark Run
+ID: tts-benchmark-run
+Version: 2
+Short description: Run a TTS inference benchmark measuring TTFB, speaker similarity, and RTF.
+Optional steps: research-papers, research-internet, research-code, planning, setup-machines, teardown, creative-thinking, compare-literature
+
+Covers tasks that benchmark a TTS system (ElevenLabs API or local Kokoro model) on the filler corpus or val_96 set. Measures time-to-first-byte, GE2E speaker similarity against ElevenLabs David reference, and real-time factor. Results must include per-clip metrics and aggregate p50/p95/p99 for latency.
+
+### Instructions
+
+#### Goal
+
+Benchmark a TTS system on the Rezolve filler corpus or val_96, measuring TTFB, speaker similarity
+(GE2E cosine vs ElevenLabs David reference), and real-time factor.
+
+#### Context
+
+Read before starting:
+
+* `project/description.md` — success criteria and metric targets.
+* `overview/metrics/ttfb_ms.md`, `overview/metrics/speaker_sim.md`, `overview/metrics/rtf.md` —
+  metric definitions and targets.
+* `overview/datasets/fillers_1358.md` or `overview/datasets/val_96.md` — dataset description.
+* `LESSONS.md` — warmup protocol (Lesson 1), smoke-gate before measurement (Lesson 2).
+
+#### Steps
+
+1. Run the smoke gate: one synthesis request must succeed before warmup begins.
+2. Discard 50 warmup requests (same prompt corpus, same engine session).
+3. Run N ≥ 100 measured requests; record per-clip TTFB, RTF, audio duration.
+4. Compute GE2E speaker embeddings for synthesized clips and compare to mean embedding of
+   `data/11labs_david/` reference set. Install `resemblyzer` via `pip install .[speaker-sim]`
+   (do NOT add to main deps — see `overview/metrics/speaker_sim.md`).
+5. Report: p50, p95, p99 TTFB; mean ± std speaker_sim; mean ± std RTF.
+6. Save per-clip results to `results/per_clip_metrics.json`.
+
+#### Done When
+
+* `results/per_clip_metrics.json` exists with at least 100 rows.
+* `results/metrics.json` contains `ttfb_ms`, `speaker_sim`, `rtf` keys.
+* `results/results_summary.md` includes the aggregate table and per-clip charts.
+* Verificator passes with no errors.
+
+#### Forbidden
+
+* NEVER skip the warmup protocol (Lesson 1).
+* NEVER add `resemblyzer` to main `dependencies` in `pyproject.toml` — keep it in `[speaker-sim]`
+  extra only (webrtcvad/pkg_resources breakage on setuptools ≥ 81).
+* NEVER train or tune on val_96.
+
+## TTS Fine-tuning Evaluation
+ID: tts-finetuning-eval
+Version: 2
+Short description: Evaluate a Kokoro fine-tuned checkpoint on val_96 and filler corpus.
+Optional steps: research-papers, research-internet, research-code, planning, setup-machines, teardown, creative-thinking, compare-literature
+
+Covers tasks that evaluate a specific Kokoro-82M fine-tuned checkpoint (StyleTTS2 Stage 2) on the held-out val_96 set and the filler corpus. Measures speaker similarity, TTFB, and RTF. Results are compared against the ElevenLabs David baseline and Kokoro base. The task does not run training — it loads a checkpoint and runs inference only.
+
+### Instructions
+
+#### Goal
+
+Evaluate a Kokoro-82M fine-tuned checkpoint on val_96 and the filler corpus, measuring speaker
+similarity, TTFB, and RTF. Compare against the ElevenLabs David baseline and Kokoro base.
+
+#### Context
+
+Read before starting:
+
+* `project/description.md` — success criteria (speaker_sim ≥ 0.85, TTFB ≤ 300 ms).
+* `overview/models/kokoro_82m_v4_finetune.md` — training config and known issues.
+* `overview/metrics/` — all three metric definitions.
+* `LESSONS.md` — warmup protocol (Lesson 1), smoke-gate (Lesson 2).
+
+Key training config facts (from `configs/config_david_v4.yml`):
+
+* Stage 2 starts from `first_stage.pth` with `load_only_params: true`, `multispeaker: true`.
+* `train_LM: false`, `lambda_slm: 0.0` (WavLM discriminator disabled — keep 0.0 or shape
+  mismatch crash at GAN epoch).
+* Prior checkpoints `epoch_2nd_00000–00003.pth` are ALL corrupted (OOM recovery) — do not use
+  them. Only load checkpoints generated after the clean restart from `first_stage.pth`.
+
+#### Steps
+
+1. Identify the checkpoint to evaluate (epoch number, val loss from training log).
+2. Load checkpoint on LLM-T1-NC80; run smoke-gate synthesis.
+3. Discard 50 warmup clips; run N ≥ 96 inference passes on val_96 prompts.
+4. Compute per-clip TTFB, RTF, GE2E speaker_sim vs ElevenLabs David reference.
+5. Repeat on the 1358-clip filler corpus (N ≥ 100 measured, after 50 warmup).
+6. Save per-clip results and aggregate metrics.
+7. Compare against t0002 (ElevenLabs baseline) and t0003 (Kokoro base) results.
+
+#### Done When
+
+* `results/per_clip_metrics.json` exists with ≥ 96 rows for val_96 and ≥ 100 for filler corpus.
+* `results/metrics.json` contains `ttfb_ms`, `speaker_sim`, `rtf` with val_96 and filler splits.
+* `results/results_summary.md` includes comparison table vs baseline and base model.
+* Verificator passes with no errors.
+
+#### Forbidden
+
+* NEVER evaluate a checkpoint from the corrupted `epoch_2nd_00000–00003.pth` series.
+* NEVER add `resemblyzer` to main deps (keep in `[speaker-sim]` extra).
+* NEVER train or tune on val_96.
+* NEVER set `lambda_slm &gt; 0` in inference config — causes WavLM shape mismatch crash.
+
+## Write Library
+ID: write-library
+Version: 2
+Short description: Create a reusable Python library for use by downstream tasks.
+Optional steps: research-internet, research-code, planning
+
+Covers tasks that produce shared Python code registered as library assets. Libraries provide data loaders, scorers, utilities, or other reusable functionality. Code lives in the task&#x27;s code/ directory and is referenced via module_paths in the library asset. Examples include building a data loader, creating an evaluation scorer, or implementing shared preprocessing utilities.
+
+### Instructions
+
+#### Planning Guidelines
+
+* Define the library&#x27;s public API before writing code. List the functions and classes that
+  downstream tasks will import, with their signatures and return types.
+* Check existing library assets (run the library aggregator) to avoid duplicating functionality
+  already provided by a completed task.
+* Review the library asset specification in `meta/asset_types/library/specification.md` for the
+  required folder structure and `details.json` schema.
+* Identify which downstream tasks will consume this library. Design the API to serve their needs
+  without coupling to any single task&#x27;s data format.
+* Plan the test strategy: which functions need unit tests, what test data is required, and where
+  test files will live.
+
+#### Implementation Guidelines
+
+* Place all library code in the task&#x27;s `code/` directory. Use absolute imports from the repository
+  root (e.g., `from tasks.t0012_build_wsd_data_loader.code.loader import load`).
+* Never use relative imports or `sys.path` manipulation. The task folder name is a valid Python
+  identifier by design.
+* Follow `arf/styleguide/python_styleguide.md` for all Python code. Key rules: absolute imports,
+  keyword arguments for 2+ params, `@dataclass(frozen=True, slots=True)`, centralized paths in
+  `code/paths.py`, named constants, explicit type annotations, 100-char line limit.
+* Write focused modules with single responsibilities. A loader module loads data; a scorer module
+  computes metrics. Do not combine unrelated functionality.
+* Keep the library generic. Do not hardcode paths, task IDs, or dataset-specific constants into
+  shared modules. Accept these as parameters.
+* Create the library asset folder at `assets/library/&lt;library_id&gt;/` with `details.json` containing
+  `module_paths` pointing to the code files downstream tasks should import. Set `description_path`
+  in `details.json` to the canonical documentation file path.
+* Write tests in `code/test_*.py` files within the task folder. Tests must be runnable with
+  `uv run pytest &lt;test_path&gt; -v`.
+* Run `uv run ruff check --fix . &amp;&amp; uv run ruff format . &amp;&amp; uv run mypy .` before every commit.
+  Library code must pass all checks cleanly.
+
+##### Library Documentation
+
+Read `meta/asset_types/library/specification.md` for the required description-document format. The
+canonical document path comes from `details.json` `description_path`. The documentation is what
+makes the library usable. A library without clear documentation will be ignored or misused by
+downstream tasks. Follow these rules:
+
+**Source code documentation (follow `arf/styleguide/python_styleguide.md`):**
+
+* Do NOT add docstrings when the name and type hints make the purpose obvious. The style guide
+  explicitly says to avoid unnecessary docstrings — they add noise and maintenance burden. A
+  function `def load_raganato_xml(*, path: Path) -&gt; WsdDataset` needs no docstring.
+* Add docstrings only for non-obvious behavior: surprising side effects, complex algorithms, or
+  functions where the name + types are insufficient to understand usage.
+* All dataclasses: use descriptive field names and type hints. No class docstrings unless the
+  semantics are genuinely unclear from the field names.
+
+**Description document — the consumer&#x27;s primary reference:**
+
+* **Overview**: Explain what problem the library solves and why it exists. A developer should
+  understand whether this library is relevant to their task after reading the overview alone.
+* **API Reference**: List every public function with its full signature, parameter descriptions,
+  return type, and behavior. Group by module. Use code blocks for signatures. This section must be
+  detailed enough that a consumer never needs to read source code to use the library correctly.
+* **Usage Examples**: Include at least two concrete, runnable examples: (1) the simplest possible
+  usage (import + one call), and (2) a realistic workflow showing how a downstream task would use
+  the library with actual data. Use real class/function names and realistic (not `foo`/`bar`)
+  variable names.
+* **Data formats**: Document all input and output data structures. For each dataclass returned by
+  the library, list its fields, types, and what each field means. For example, if
+  `load_raganato_xml()` returns a `WsdDataset`, document what `WsdDataset`, `WsdDocument`,
+  `WsdSentence`, `WsdInstance`, and `WsdToken` contain.
+* **Dependencies**: List third-party packages and explain why each is needed. Also list which
+  internal project libraries this library depends on, with their absolute import paths.
+* **Testing**: Include the exact command to run tests and describe what the tests cover. Mention
+  edge cases tested.
+* **Limitations and assumptions**: State what the library does NOT handle (e.g., &quot;Only supports
+  WordNet 3.0 sense keys&quot;, &quot;Does not handle multi-word expressions&quot;).
+
+**details.json `entry_points`:**
+
+* List every public function and class that consumers should import. Each entry point needs the full
+  import path and a one-line description. Missing entry points mean consumers won&#x27;t discover the
+  functionality.
+
+#### Common Pitfalls
+
+* **Relative imports**: Using `from .loader import X` breaks when other tasks try to import the
+  module. Always use absolute imports from the repository root.
+* **No tests**: Untested library code breaks silently when downstream tasks use it in unexpected
+  ways. Write at least one test per public function.
+* **Not running the library verificator**: Run the verificator after creating the asset to catch
+  missing fields, broken `module_paths`, or import errors.
+* **Coupling to specific task data**: Hardcoding file paths or dataset-specific column names into a
+  shared library forces every consumer to match that exact data layout. Accept paths and names as
+  parameters.
+* **Missing type annotations**: Library code is consumed by other tasks that rely on mypy for
+  correctness. Every public function must have complete type annotations for parameters and return
+  values.
+* **Skeleton documentation**: Writing a description document that just restates function signatures
+  without explaining behavior, edge cases, or data formats. The API Reference must explain *what
+  happens* when you call each function, not just its signature.
+* **No usage examples or toy examples**: Examples using `foo`/`bar` or empty data are useless. Show
+  realistic usage with actual project data paths and real dataclass instances.
+* **Undocumented data structures**: Returning a dataclass without documenting what each field
+  contains forces consumers to read source code — defeating the purpose of documentation.
+
+#### Verification Additions
+
+* Confirm all files listed in `module_paths` exist and are importable with
+  `uv run python -c &quot;import &lt;module_path&gt;&quot;`.
+* Confirm `details.json` matches the library asset specification.
+* Confirm all tests pass: `uv run pytest &lt;task_folder&gt;/tests/`.
+* Confirm `ruff check`, `ruff format`, and `mypy` report no errors on the library code.
+* Confirm no relative imports or `sys.path` hacks exist in library modules.
+* Confirm the canonical description document API Reference documents every public function listed in
+  `details.json` `entry_points`.
+* Confirm the canonical description document Usage Examples contain at least two runnable code
+  blocks with realistic data.
+* Confirm every public dataclass has its fields documented in the canonical description document.
+
+#### Related Skills
+
+* `/implementation` — for writing the library code and tests
+* `/research-code` — for reviewing existing code assets before design
+      </content>
+    </section>
+  </sections>
+</llm_context_archive>
