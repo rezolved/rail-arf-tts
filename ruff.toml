@@ -1,6 +1,19 @@
 line-length = 100
 target-version = "py312"
-extend-exclude = ["tasks/*/assets/dataset/*/files/"]
+extend-exclude = [
+    "tasks/*/assets/dataset/*/files/",
+    # ponytail: pre-existing lint debt in completed (immutable) task folders, frozen out
+    # rather than fixed in place per CLAUDE.md rule 5. New task code stays linted.
+    "tasks/t0001_kokoro_v4_stage2_finetune/code/train_second_patched.py",
+    "tasks/t0002_kokoro_v4_voicepack_decoder_package/code/make_voicepack_v4.py",
+    "tasks/t0002_kokoro_v4_voicepack_decoder_package/code/extract_decoder_generic.py",
+    "tasks/t0005_kokoro_v5_stage2_train/code/istftnet_patched.py",
+    "tasks/t0005_kokoro_v5_stage2_train/code/train_second_patched.py",
+    "tasks/t0006_kokoro_v5_stage2_subset/code/infer_v6c.py",
+    "tasks/t0006_kokoro_v5_stage2_subset/code/infer_v6d.py",
+    "tasks/t0002_kokoro_v4_voicepack_decoder_package/code/test_kokoro_inference.py",
+    "tasks/t0002_kokoro_v4_voicepack_decoder_package/code/test_kokoro_inference_generic.py",
+]
 
 [lint]
 select = [
