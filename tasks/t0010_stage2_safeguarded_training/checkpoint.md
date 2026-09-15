@@ -27,15 +27,15 @@ Step 1 is a mechanical setup step with no research output.
 Both dependencies verified as completed: `t0008_tts_eval_harness_baselines` and
 `t0009_stage2_training_failure_forensics`. Output: `logs/steps/002_check-deps/deps_report.json`.
 
-### Step 4 — research-papers (skipped)
+### Step 4 — research-papers
 
 Skipped: no new literature needed; approach is fully specified from t0009 forensics findings.
 
-### Step 5 — research-internet (skipped)
+### Step 5 — research-internet
 
 Skipped: all required knowledge comes from prior tasks t0008 and t0009; no external research needed.
 
-### Step 11 — creative-thinking (skipped)
+### Step 11 — creative-thinking
 
 Skipped: single-variable controlled experiment; approach is fully defined by t0009 root-cause
 findings.
