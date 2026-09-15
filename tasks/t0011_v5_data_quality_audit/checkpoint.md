@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T10:46:00Z"
-completed_steps: 8
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-15T10:55:00Z"
+completed_steps: 9
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -54,6 +54,15 @@ Skipped: no remote machines provisioned.
 
 Skipped: data audit produces no quantitative results comparable to published baselines.
 
+### Step 6 — research-code
+
+Reviewed 9 completed tasks; found 2 libraries (`tts_eval_harness`, `t0009_training_safeguards`);
+identified 6 reusable code items. Key output: `research/research_code.md` (verified, zero errors)
+and `research/research_summary.md` (101-line compressed summary for downstream agents). Critical
+finding: t0009 explicitly deferred all audio-level metrics because DVC data was not pulled — t0011
+must `dvc pull` first, then reuse the manifest-parsing, histogram, and OOV-detection patterns from
+t0003/t0009.
+
 * * *
 
 ## Cross-Step Decisions
@@ -62,7 +71,10 @@ Skipped: data audit produces no quantitative results comparable to published bas
 
 ## Next Step Notes
 
-Step 4 (research-papers) completed. Key finding: use ITU-R BS.1770/EBU R128 integrated loudness via
-pyloudnorm; flag clips with peak > -1 dBFS, silence > 30%, duration < 1.5s or > 15s. Proceed to step
-6 (research-code) to review t0009 code for reusable audio loading and metrics utilities. The
-research_summary.md is produced after all research steps complete.
+All research steps are now complete (research-papers, research-code; research-internet skipped).
+`research/research_summary.md` is written and ready. Proceed to step 7 (planning): design the audit
+pipeline using `soundfile`/`librosa`/`pyloudnorm` for audio metrics, the `_parse_list`
+manifest-parser pattern from t0009, OOV constants from t0003, and the histogram helper pattern from
+t0009. The plan must specify which scripts will be created in `code/` (e.g. `paths.py`,
+`audit_audio.py`, `audit_transcripts.py`, `plot_histograms.py`, `build_manifest.py`), inputs,
+outputs, and algorithm for each. DVC pull of `data/v5/` is the first implementation step.
