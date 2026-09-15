@@ -339,10 +339,7 @@ def _check_task_id(
         return [
             Diagnostic(
                 code=CODE_CK_E004,
-                message=(
-                    f"task_id has wrong type:"
-                    f" expected str, got {type(fm_task_id).__name__}"
-                ),
+                message=(f"task_id has wrong type: expected str, got {type(fm_task_id).__name__}"),
                 file_path=file_path,
             )
         ]
@@ -640,8 +637,7 @@ def _check_updated_at(
             Diagnostic(
                 code=CODE_CK_E003,
                 message=(
-                    f"updated_at has wrong type: expected str,"
-                    f" got {type(updated_at_raw).__name__}"
+                    f"updated_at has wrong type: expected str, got {type(updated_at_raw).__name__}"
                 ),
                 file_path=file_path,
             )
