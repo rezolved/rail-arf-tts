@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-15T10:35:00Z"
-completed_steps: 1
-next_step_number: 2
-next_step_id: "check-deps"
+updated_at: "2026-09-15T10:36:20Z"
+completed_steps: 2
+next_step_number: 3
+next_step_id: "init-folders"
 ---
 # Task Objective
 
@@ -22,6 +22,11 @@ Branch `task/t0010_stage2_safeguarded_training` created. Worktree initialized at
 `/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training`.
 Step 1 is a mechanical setup step with no research output.
 
+### Step 2 — check-deps
+
+Both dependencies verified as completed: `t0008_tts_eval_harness_baselines` and
+`t0009_stage2_training_failure_forensics`. Output: `logs/steps/002_check-deps/deps_report.json`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -30,6 +35,8 @@ Step 1 is a mechanical setup step with no research output.
 
 ## Next Step Notes
 
-Step 1 completed successfully. The task branch and folder are ready. Proceed to step 2 (check-deps)
-per step_tracker.json. Dependencies are t0008_tts_eval_harness_baselines and
-t0009_stage2_training_failure_forensics — both should be completed.
+Step 2 (check-deps) passed with zero errors. Both required dependencies are completed. Proceed to
+step 3 (init-folders): create the mandatory task folder structure and populate the aggregator cache
+(`ctx/task_types.json`, `ctx/costs.json`, `ctx/tasks.json`, `ctx/metrics.json`,
+`ctx/suggestions.json`). The t0009 safeguard library and t0008 eval harness are both available for
+use in subsequent steps.
