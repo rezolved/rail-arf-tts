@@ -1,0 +1,117 @@
+{
+  "budget": {
+    "total_budget": 5000.0,
+    "currency": "USD",
+    "per_task_default_limit": 100.0,
+    "available_services": [
+      "anthropic_api",
+      "openai_api",
+      "elevenlabs_api"
+    ],
+    "warn_at_percent": 80,
+    "stop_at_percent": 100,
+    "warn_threshold_usd": 4000.0,
+    "stop_threshold_usd": 5000.0
+  },
+  "summary": {
+    "discovered_task_count": 11,
+    "cost_record_count": 3,
+    "skipped_task_count": 8,
+    "nonzero_cost_task_count": 1,
+    "total_cost_usd": 35.1,
+    "budget_left_usd": 4964.9,
+    "budget_left_before_warn_usd": 3964.9,
+    "budget_left_before_stop_usd": 4964.9,
+    "spent_percent": 0.7020000000000001,
+    "warn_threshold_reached": false,
+    "stop_threshold_reached": false,
+    "tasks_over_limit": []
+  },
+  "breakdown_totals": {
+    "azure_ml_vm_h100": 27.92,
+    "elevenlabs_api": 7.18
+  },
+  "service_totals": {
+    "elevenlabs_api": 7.18
+  },
+  "tasks": [
+    {
+      "task_id": "t0007_brainstorm_results_1",
+      "task_index": 7,
+      "name": "Brainstorm results session 1",
+      "status": "completed",
+      "total_cost_usd": 0.0,
+      "task_budget_limit_usd": null,
+      "effective_budget_limit_usd": 100.0,
+      "exceeds_budget_limit": false,
+      "cost_breakdown": {},
+      "service_breakdown": {},
+      "note": null
+    },
+    {
+      "task_id": "t0008_tts_eval_harness_baselines",
+      "task_index": 8,
+      "name": "TTS evaluation harness and baselines",
+      "status": "completed",
+      "total_cost_usd": 35.1,
+      "task_budget_limit_usd": null,
+      "effective_budget_limit_usd": 100.0,
+      "exceeds_budget_limit": false,
+      "cost_breakdown": {
+        "azure_ml_vm_h100": 27.92,
+        "elevenlabs_api": 7.18
+      },
+      "service_breakdown": {
+        "elevenlabs_api": 7.18
+      },
+      "note": null
+    },
+    {
+      "task_id": "t0009_stage2_training_failure_forensics",
+      "task_index": 9,
+      "name": "Stage 2 training failure forensics and safeguards",
+      "status": "completed",
+      "total_cost_usd": 0.0,
+      "task_budget_limit_usd": null,
+      "effective_budget_limit_usd": 100.0,
+      "exceeds_budget_limit": false,
+      "cost_breakdown": {},
+      "service_breakdown": {},
+      "note": null
+    }
+  ],
+  "skipped_tasks": [
+    {
+      "task_id": "t0001_kokoro_v4_stage2_finetune",
+      "reason": "results/costs.json missing a numeric total_cost_usd"
+    },
+    {
+      "task_id": "t0002_kokoro_v4_voicepack_decoder_package",
+      "reason": "results/costs.json missing a numeric total_cost_usd"
+    },
+    {
+      "task_id": "t0003_kokoro_v5_phoneme_data",
+      "reason": "results/costs.json missing a numeric total_cost_usd"
+    },
+    {
+      "task_id": "t0004_kokoro_v5_stage1_train",
+      "reason": "results/costs.json missing a numeric total_cost_usd"
+    },
+    {
+      "task_id": "t0005_kokoro_v5_stage2_train",
+      "reason": "results/costs.json missing a numeric total_cost_usd"
+    },
+    {
+      "task_id": "t0006_kokoro_v5_stage2_subset",
+      "reason": "results/costs.json missing a numeric total_cost_usd"
+    },
+    {
+      "task_id": "t0010_stage2_safeguarded_training",
+      "reason": "results/costs.json is missing or invalid"
+    },
+    {
+      "task_id": "t0011_v5_data_quality_audit",
+      "reason": "results/costs.json is missing or invalid"
+    }
+  ]
+}

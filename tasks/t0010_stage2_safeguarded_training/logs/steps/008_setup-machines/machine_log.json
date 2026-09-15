@@ -1,0 +1,53 @@
+[
+  {
+    "spec_version": "10",
+    "provider": "azure-ml",
+    "instance_id": "LLM-T1-NC80",
+    "vm_name": "LLM-T1-NC80",
+    "hourly_cost_usd": 13.96,
+    "started_vm": true,
+    "selected_offer": {
+      "vm_name": "LLM-T1-NC80",
+      "priority": 1,
+      "gpu": "H100 80GB",
+      "gpu_count": 2,
+      "gpu_ram_gb": 80.0,
+      "cpu_ram_gb": 880.0,
+      "disk_gb": 1024.0,
+      "image": "Standard_NC80adis_H100_v5",
+      "region": "northeurope",
+      "hourly_cost_usd": 13.96
+    },
+    "selection_rationale": "Pool priority 1 (northeurope), no lock present. VM started from stopped state via az ml compute start. SSH confirmed reachable; remote preflight passed (linger_enabled=true, persist_writable=true). Note: az ml compute show API consistently times out (>60s hardcoded limit), so acquire() exited 75; VM was confirmed Running via ARM REST API and preflight was executed manually.",
+    "disk_gb": 1024,
+    "label": "rail-arf-tts/t0010_stage2_safeguarded_training",
+    "ssh_host": "LLM-T1-NC80",
+    "ssh_port": 22,
+    "gpu_verified": "NVIDIA H100 NVL, 2 x 94249 MiB",
+    "cuda_version": "12.2",
+    "watchdog_active": true,
+    "watchdog_idle_timeout_seconds": 3600,
+    "created_at": "2026-09-15T11:37:52Z",
+    "ready_at": "2026-09-15T11:37:52Z",
+    "destroyed_at": null,
+    "total_duration_hours": null,
+    "total_cost_usd": null,
+    "search_started_at": "2026-09-15T11:08:40Z",
+    "total_provisioning_seconds": 1752.0,
+    "failed_attempts": [
+      {
+        "provider_ref": "LLM-T1-NC80",
+        "instance_id": null,
+        "gpu": "H100 80GB",
+        "failure_reason": "VM LLM-T1-NC80 did not reach running state within 480s (az ml compute show API timed out at 60s hardcoded limit; ARM REST API confirmed Running state but acquire() could not observe it in time)",
+        "failure_phase": "vm_start_timeout",
+        "duration_seconds": 480.0,
+        "wasted_cost_usd": 0.0,
+        "timestamp": "2026-09-15T11:08:40Z"
+      }
+    ],
+    "checkpoint_path": "~/kokoro-finetune/logs/v10",
+    "heartbeat_path": "~/kokoro-finetune/logs/v10/metrics.jsonl",
+    "smoke_test_output": "torch 2.5.1+cu121 cuda True devs 2"
+  }
+]

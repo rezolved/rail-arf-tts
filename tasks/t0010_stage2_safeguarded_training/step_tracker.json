@@ -94,10 +94,14 @@
       "step": 8,
       "name": "setup-machines",
       "description": "Start LLM-T1-NC80 H100 VM, verify GPU, deploy idle watchdog, copy safeguard code and configs.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-15T10:56:58Z",
       "completed_at": null,
-      "log_file": "logs/steps/008_setup-machines/"
+      "log_file": "logs/steps/008_setup-machines/",
+      "current_owner": "setup-remote-machine/setup-machines",
+      "last_heartbeat_at": "2026-09-15T12:52:49Z",
+      "heartbeat_interval_seconds": 300,
+      "expected_completion_at": "2026-09-15T11:56:58Z"
     },
     {
       "step": 9,
