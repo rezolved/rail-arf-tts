@@ -1,0 +1,9 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics/tasks/t0009_stage2_training_failure_forensics/plan/plan.md
+
+[33m[1mWARNINGS:[0m
+[33m  PL-W005 warning: '## Verification Criteria' has 0 bullet points (minimum: 3)[0m
+[33m  PL-W008 warning: Step by Step contains expensive operations (inference, training, API calls) but does not reference a baseline comparison or validation gate[0m
+
+[33m[1mPASSED[0m — 0 error(s), 2 warning(s)
+

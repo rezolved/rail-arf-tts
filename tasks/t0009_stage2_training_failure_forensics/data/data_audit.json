@@ -1,0 +1,47 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_stage2_training_failure_forensics",
+  "v5_train_clips": 1557,
+  "v5_val_clips": 96,
+  "val_96_clips": 96,
+  "train_stats": {
+    "count": 1557,
+    "mean_phoneme_len": 64.12,
+    "std_phoneme_len": 51.21,
+    "min_phoneme_len": 8,
+    "max_phoneme_len": 324,
+    "note": "Duration in seconds not available without audio files. Phoneme count used as proxy."
+  },
+  "val_stats": {
+    "count": 96,
+    "mean_phoneme_len": 79.38,
+    "std_phoneme_len": 68.48,
+    "min_phoneme_len": 24,
+    "max_phoneme_len": 278,
+    "note": "Duration in seconds not available without audio files. Phoneme count used as proxy."
+  },
+  "overlap": {
+    "train_val_overlap": 0,
+    "train_val_overlap_files": [],
+    "val_val96_overlap": 96,
+    "val_val96_overlap_files": [
+      "checking_for_the_latest_press_release_9fb93e.wav",
+      "checking_supported_language_options_df6ddb.wav",
+      "checking_the_most_recent_updates_717daa.wav",
+      "checking_the_one-click_checkout_capability_055d8b.wav",
+      "checking_the_release_from_19_may_0341de.wav",
+      "checking_who_handles_pr_at_rezolve_f68435.wav",
+      "clarifying_the_difference_between_brain_cortex_and_brain_b34ca1.wav",
+      "exploring_ai_solutions_tailored_for_small_businesses_73b211.wav",
+      "exploring_how_agentic_conversational_ai_can_transform_shoppi_7f6f59.wav",
+      "exploring_how_rezolve_ai_boosts_productivity_3754f9.wav"
+    ],
+    "train_val96_overlap": 0,
+    "train_val96_overlap_files": [],
+    "val_equals_val96": true
+  },
+  "audio_audit": {
+    "available": false,
+    "reason": "Audio files DVC-tracked; dvc pull not run in this task. Peak/LUFS/silence stats not computed."
+  }
+}

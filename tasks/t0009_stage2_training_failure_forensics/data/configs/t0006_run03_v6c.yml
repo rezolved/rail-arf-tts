@@ -1,0 +1,22 @@
+# Reconstructed from log header and task README (t0006_kokoro_v5_stage2_subset)
+# Run: v6c — first_stage_v3.pth, lambda_gen=1.0, joint_epoch=6
+loss_params:
+  joint_epoch: 6
+  lambda_gen: 1.0
+  lambda_slm: 0.0
+  lambda_dur: 1.0
+  lambda_ce: 20.0
+  lambda_F0: 1.0
+  lambda_norm: 1.0
+  lambda_mel: 5.0
+optimizer_params:
+  lr: 0.0001          # reverted to 1e-4 from t0005's 3e-5
+  ft_lr: 0.0001
+  bert_lr: 0.000001
+epochs: 10
+epochs_2nd: 10        # same key bug present
+model_params:
+  multispeaker: true
+first_stage_path: first_stage_v3.pth
+second_stage_load_pretrained: false
+train_LM: false

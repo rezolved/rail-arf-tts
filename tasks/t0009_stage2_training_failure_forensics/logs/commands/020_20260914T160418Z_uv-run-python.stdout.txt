@@ -1,0 +1,15 @@
+=== test_replay.py: offline health-gate replay ===
+  Parsed t0006_run03_v6c: 20 records from stage2.log
+
+  Replaying t0006_run03_v6c (outcome=success, joint_epoch=6):
+
+[HealthGate FIRED] val_loss spike at epoch 8: 0.883 -> 0.997 (+0.1140 > threshold 0.05). Diverging — aborting.
+  Gate fired on t0006_run03_v6c: [val_spike] val_loss spike at epoch 8: 0.883 -> 0.997 (+0.1140 > threshold 0.05). Diverging — aborting.
+  FAIL: gate fired on SUCCESS run t0006_run03_v6c (false positive)
+
+=== SUMMARY ===
+  Runs replayed: 1
+  Skipped (no outcome): 0
+  True positives (gate fired on failure): 0 — []
+  True negatives (no gate on success): 0 — []
+  False positives (gate fired on success): 1 — ['t0006_run03_v6c']

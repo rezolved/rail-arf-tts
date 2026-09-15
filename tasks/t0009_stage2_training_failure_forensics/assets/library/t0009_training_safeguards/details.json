@@ -1,0 +1,56 @@
+{
+  "spec_version": "2",
+  "library_id": "t0009_training_safeguards",
+  "name": "Kokoro Stage 2 Training Safeguards",
+  "version": "0.1.0",
+  "short_description": "JSONL step logger, per-epoch checkpoint manager, health gates, and run config capture for Kokoro StyleTTS2 Stage 2 training.",
+  "description_path": "description.md",
+  "module_paths": [
+    "code/jsonl_logger.py",
+    "code/checkpoint_manager.py",
+    "code/health_gates.py",
+    "code/run_config.py",
+    "code/constants.py",
+    "code/paths.py"
+  ],
+  "entry_points": [
+    {
+      "name": "StepLogger",
+      "kind": "class",
+      "module": "code/jsonl_logger.py",
+      "description": "Appends per-step training metrics to a JSONL file for offline analysis."
+    },
+    {
+      "name": "CheckpointManager",
+      "kind": "class",
+      "module": "code/checkpoint_manager.py",
+      "description": "Saves per-epoch checkpoints with SHA-256 manifest; replaces top-2 pruning with full retention."
+    },
+    {
+      "name": "HealthGate",
+      "kind": "class",
+      "module": "code/health_gates.py",
+      "description": "Monitors dur_loss, acoustic_norm, val_loss spike, and consecutive NaN skips; fires and exits when a threshold is exceeded."
+    },
+    {
+      "name": "capture_run_config",
+      "kind": "function",
+      "module": "code/run_config.py",
+      "description": "Saves config YAML and launch_info.json (git SHA, timestamp) at training startup."
+    },
+    {
+      "name": "GateResult",
+      "kind": "class",
+      "module": "code/health_gates.py",
+      "description": "Frozen dataclass returned by HealthGate.check(); carries fired flag, gate name, value, threshold, and last healthy checkpoint path."
+    }
+  ],
+  "dependencies": [],
+  "test_paths": [
+    "code/test_replay.py",
+    "code/test_gates_v5.py"
+  ],
+  "categories": [],
+  "created_by_task": "t0009_stage2_training_failure_forensics",
+  "date_created": "2026-09-14"
+}

@@ -1,0 +1,23 @@
+# Reconstructed from task README (t0006_kokoro_v5_stage2_subset)
+# Run: v6d — first_stage_v3.pth, lambda_gen=0.05, joint_epoch=6
+# ONLY 10 epochs ran (intended 15) due to epochs_2nd: 10 config bug
+loss_params:
+  joint_epoch: 6
+  lambda_gen: 0.05    # KEY CHANGE from v6c; this is the isolating variable
+  lambda_slm: 0.0
+  lambda_dur: 1.0
+  lambda_ce: 20.0
+  lambda_F0: 1.0
+  lambda_norm: 1.0
+  lambda_mel: 5.0
+optimizer_params:
+  lr: 0.0001
+  ft_lr: 0.0001
+  bert_lr: 0.000001
+epochs: 15
+epochs_2nd: 10        # script reads epochs_2nd, not epochs — only 10 ran
+model_params:
+  multispeaker: true
+first_stage_path: first_stage_v3.pth
+second_stage_load_pretrained: false
+train_LM: false

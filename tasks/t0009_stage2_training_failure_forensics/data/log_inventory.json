@@ -1,0 +1,138 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_stage2_training_failure_forensics",
+  "description": "Log inventory for all known Kokoro Stage 2 training runs",
+  "vm_retrieval": "SSH to LLM-T1-NC80 timed out; /mnt/kikiri-tts/ not accessible",
+  "runs": [
+    {
+      "run_id": "t0001_run01",
+      "task": "t0001_kokoro_v4_stage2_finetune",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": "epoch_1st_00007.pth (via t0001)",
+      "stage1_ckpt_sha256": null,
+      "data_list": "v4 train list (~800 clips)",
+      "outcome": "diverged"
+    },
+    {
+      "run_id": "t0004_run01",
+      "task": "t0004_kokoro_v5_stage1_train",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": "epoch_1st_00007.pth (v4 Stage 1, 0-based epoch 7)",
+      "stage1_ckpt_sha256": null,
+      "data_list": "v4 train list",
+      "outcome": "incomplete"
+    },
+    {
+      "run_id": "t0005_run01",
+      "task": "t0005_kokoro_v5_stage2_train",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": null,
+      "stage1_ckpt_sha256": null,
+      "data_list": "v5 train list",
+      "outcome": "unknown"
+    },
+    {
+      "run_id": "t0005_run02",
+      "task": "t0005_kokoro_v5_stage2_train",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": null,
+      "stage1_ckpt_sha256": null,
+      "data_list": "v5 train list",
+      "outcome": "unknown"
+    },
+    {
+      "run_id": "t0005_run03",
+      "task": "t0005_kokoro_v5_stage2_train",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": null,
+      "stage1_ckpt_sha256": null,
+      "data_list": "v5 train list",
+      "outcome": "unknown"
+    },
+    {
+      "run_id": "t0005_run04",
+      "task": "t0005_kokoro_v5_stage2_train",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": null,
+      "stage1_ckpt_sha256": null,
+      "data_list": "v5 train list",
+      "outcome": "unknown"
+    },
+    {
+      "run_id": "t0005_run05",
+      "task": "t0005_kokoro_v5_stage2_train",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": null,
+      "stage1_ckpt_sha256": null,
+      "data_list": "v5 train list",
+      "outcome": "unknown"
+    },
+    {
+      "run_id": "t0005_run06",
+      "task": "t0005_kokoro_v5_stage2_train",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": null,
+      "stage1_ckpt_sha256": null,
+      "data_list": "v5 train list (600+ clips, lambda_gen=1.0)",
+      "outcome": "diverged"
+    },
+    {
+      "run_id": "t0006_run01_v6a",
+      "task": "t0006_kokoro_v5_stage2_subset",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": "epoch_1st_00007.pth (multispeaker=false)",
+      "stage1_ckpt_sha256": null,
+      "data_list": "250-clip subset, lambda_gen=1.0",
+      "outcome": "diverged"
+    },
+    {
+      "run_id": "t0006_run02_v6b",
+      "task": "t0006_kokoro_v5_stage2_subset",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": "epoch_1st_00007.pth (multispeaker=false; mismatch)",
+      "stage1_ckpt_sha256": null,
+      "data_list": "250-clip subset, lambda_gen=0.2",
+      "outcome": "diverged"
+    },
+    {
+      "run_id": "t0006_run03_v6c",
+      "task": "t0006_kokoro_v5_stage2_subset",
+      "log_present": true,
+      "config_present": false,
+      "stage1_ckpt_path": "first_stage_v3.pth (multispeaker=true)",
+      "stage1_ckpt_sha256": null,
+      "data_list": "250-clip subset, lambda_gen=1.0, joint_epoch=6",
+      "outcome": "success"
+    },
+    {
+      "run_id": "t0006_run04_v6d",
+      "task": "t0006_kokoro_v5_stage2_subset",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": "first_stage_v3.pth (multispeaker=true)",
+      "stage1_ckpt_sha256": null,
+      "data_list": "250-clip subset, lambda_gen=0.05, joint_epoch=6",
+      "outcome": "incomplete"
+    },
+    {
+      "run_id": "v3",
+      "task": "v3 (reference; not in this repo)",
+      "log_present": false,
+      "config_present": false,
+      "stage1_ckpt_path": "first_stage_v3.pth (assumed)",
+      "stage1_ckpt_sha256": null,
+      "data_list": "v3 266-clip list (DVC-tracked in t0006)",
+      "outcome": "success"
+    }
+  ]
+}

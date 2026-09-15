@@ -1,0 +1,55 @@
+{
+  "spec_version": "1",
+  "suggestions": [
+    {
+      "id": "S-0009-01",
+      "title": "Run controlled Stage 2 training with safeguards applied and joint_epoch=8",
+      "description": "Apply the t0009_training_safeguards library to a new Stage 2 run using the v6c baseline (first_stage_v3.pth, multispeaker=true, 250 clips, lr=1e-4) and change exactly one variable: set joint_epoch=8 (up from 6) to verify whether later GAN activation further reduces divergence risk. Use the DP-aware load_checkpoint, per-epoch checkpoint retention, JSONL metrics logger, and health gates. This is the first controlled experiment after forensics — it verifies the root-cause fix and generates a log for health-gate calibration on a fresh run. Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0009_stage2_training_failure_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0009-02",
+      "title": "Run controlled joint_epoch ablation: correct checkpoint + joint_epoch=3 vs 6",
+      "description": "The forensic audit established that the only successful run (v6c) changed two variables simultaneously from failed runs: correct checkpoint alignment (multispeaker=true) and joint_epoch=6. The causal independence of these two factors was never tested. Run two short experiments (≤6 epochs each) using the same first_stage_v3.pth checkpoint: one with joint_epoch=3 and one with joint_epoch=6, all other settings held constant. This directly tests whether joint_epoch=3 is an independent cause or merely correlated with the v6c success. Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0009_stage2_training_failure_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0009-03",
+      "title": "Audio quality pre-filter: audit v5 1557-clip train set for silence, clipping, duration",
+      "description": "The forensic data audit could not compute audio stats (peak amplitude, LUFS, silence rate, clipping) because audio files are DVC-tracked and were not pulled. The creative-thinking step identified malformed or silent clips as a potential third contributing factor to training instability (hypothesis 6). Run a one-pass quality audit on all 1557 v5 train clips: flag clips with silence >30%, peak >-1 dBFS (clipping), or duration <1.5 s. Discard flagged clips and produce a cleaned manifest before the next training run. Recommended task types: data-analysis.",
+      "kind": "dataset",
+      "priority": "medium",
+      "source_task": "t0009_stage2_training_failure_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0009-04",
+      "title": "Recover v3 training configuration to resolve val_loss 0.506 vs 0.849 comparability gap",
+      "description": "The v3 reference run achieved val_loss=0.506 while v6c (the only other non-diverged run) achieved 0.849. No v3 config YAML has been committed to git. The forensic audit speculates v3 may have used joint_epoch=0 (GAN active from epoch 1), which would make its val_loss non-comparable to v6c. Locate and commit the v3 config from the original author's machine or rail-benchmarks repo. If irrecoverable, document definitively as unknown and establish a canonical held-out evaluation set (GE2E cosine on val_96) as the cross-run comparison metric instead of training val_loss. Recommended task types: answer-question.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0009_stage2_training_failure_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0009-05",
+      "title": "Add startup parameter-count assertion and per-loss gradient norm logging to safeguard library",
+      "description": "The creative-thinking step identified two safeguards not included in the t0009_training_safeguards library: (1) a startup assertion after load_checkpoint that raises if fewer than 80% of expected parameters are matched — catches DP prefix issues before any training epoch, not after divergence; (2) per-loss gradient norm logging for the SLM discriminator path, which the hypothesis 3 analysis identified as the likely driver of v6c's epoch 9+ late divergence. Both are one-line additions to train_second_safeguarded.py and StepLogger. Extend the library with these two additions and add a test case to test_replay.py for the parameter-count assertion. Recommended task types: write-library.",
+      "kind": "library",
+      "priority": "medium",
+      "source_task": "t0009_stage2_training_failure_forensics",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "task_id": "t0009_stage2_training_failure_forensics",
+  "checked_at": "2026-09-14T15:31:50Z",
+  "result": "passed",
+  "dependencies": [
+    {"task_id": "t0005_kokoro_v5_stage2_train", "status": "completed", "satisfied": true},
+    {"task_id": "t0006_kokoro_v5_stage2_subset", "status": "completed", "satisfied": true}
+  ],
+  "errors": 0,
+  "warnings": 0
+}

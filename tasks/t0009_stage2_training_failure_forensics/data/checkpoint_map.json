@@ -1,0 +1,57 @@
+{
+  "spec_version": "1",
+  "task_id": "t0009_stage2_training_failure_forensics",
+  "vm_note": "VM not accessible; SHA-256 hashes not computed",
+  "checkpoints": [
+    {
+      "run_id": "t0004_run01",
+      "filename": "epoch_1st_00007.pth",
+      "epoch_0based": 7,
+      "epoch_1based": 8,
+      "val_loss": null,
+      "is_pre_joint_epoch": null,
+      "sha256": null,
+      "notes": "Stage 1 checkpoint. 0-based epoch 7. README incorrectly labels it 'epoch 10' \u2014 the filename is authoritative."
+    },
+    {
+      "run_id": "t0005_run06",
+      "filename": "epoch_2nd_00003.pth",
+      "epoch_0based": 3,
+      "epoch_1based": 4,
+      "val_loss": null,
+      "is_pre_joint_epoch": false,
+      "sha256": null,
+      "notes": "t0005 best checkpoint. 0-based epoch 3 (4th epoch). README says 'epoch 2' \u2014 off by one; filename is authoritative. Top-2 pruning kept this; pre-joint_epoch checkpoints may have been pruned."
+    },
+    {
+      "run_id": "t0006_run03_v6c",
+      "filename": "epoch_2nd_00003.pth",
+      "epoch_0based": 3,
+      "epoch_1based": 4,
+      "val_loss": 0.884,
+      "is_pre_joint_epoch": true,
+      "sha256": null,
+      "notes": "t0006 v6c best. 0-based epoch 3. val=0.884 from committed log. joint_epoch=6 \u2192 all v6c checkpoints are pre-joint_epoch (GAN not yet active). Top-2 pruning would delete epoch 0, 1, 2 or 4+ \u2014 all before GAN activated."
+    },
+    {
+      "run_id": "t0006_run03_v6c",
+      "filename": "epoch_2nd_00005.pth",
+      "epoch_0based": 5,
+      "epoch_1based": 6,
+      "val_loss": 0.849,
+      "is_pre_joint_epoch": true,
+      "sha256": null,
+      "notes": "v6c best by val_loss. 0-based epoch 5. val=0.849. Still pre-joint_epoch (5 < 6). This is the reference 'good' checkpoint but GAN never activated in this run."
+    },
+    {
+      "run_id": "t0006_run04_v6d",
+      "filename": "epoch_2nd_00003.pth",
+      "epoch_0based": 3,
+      "epoch_1based": 4,
+      "val_loss": 0.846,
+      "is_pre_joint_epoch": true,
+      "sha256": null,
+      "notes": "v6d best. 0-based epoch 3. val=0.846. Training stopped at epoch 10 (0-based) due to epochs_2nd=10 config bug (script reads epochs_2nd; config has epochs: 15, epochs_2nd: 10)."
+    }
+  ]
+}

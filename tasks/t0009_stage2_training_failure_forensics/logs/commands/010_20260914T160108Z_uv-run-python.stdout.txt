@@ -1,0 +1,5 @@
+=== parse_logs.py: parse training logs into timelines ===
+  Parsed t0006_run03_v6c: 19 records from stage2.log
+  t0006_run03_v6c: 19 total, 10 val records, 0 non-finite val_loss
+  -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0009_stage2_training_failure_forensics/tasks/t0009_stage2_training_failure_forensics/data/timelines/t0006_run03_v6c_steps.csv
+Done.
