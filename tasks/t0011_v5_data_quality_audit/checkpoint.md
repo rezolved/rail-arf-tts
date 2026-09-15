@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T10:55:00Z"
-completed_steps: 9
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-15T11:10:00Z"
+completed_steps: 10
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -63,18 +63,29 @@ finding: t0009 explicitly deferred all audio-level metrics because DVC data was 
 must `dvc pull` first, then reuse the manifest-parsing, histogram, and OOV-detection patterns from
 t0003/t0009.
 
+### Step 7 — planning
+
+Plan written to `plan/plan.md` (verified, zero errors). Seven REQ items cover: DVC pull (REQ-1),
+per-clip audio metrics (REQ-2), flag thresholds + manifests (REQ-3, REQ-4), OOV audit (REQ-5), four
+histograms (REQ-6), and distribution stats (REQ-7). Five scripts specified in `code/`: `paths.py`,
+`constants.py`, `audit_audio.py`, `audit_transcripts.py`, `build_manifest.py`, `plot_histograms.py`.
+Budget: $0. Remote machines: none.
+
 * * *
 
 ## Cross-Step Decisions
+
+* Budget confirmed $0 — CPU-only local compute; DVC pull from existing Azure Blob storage.
+* val_96 (`data/v4/val/val_list.txt`) must never appear in `train_list_v5_clean.txt` — verified in
+  the plan's verification criteria.
 
 * * *
 
 ## Next Step Notes
 
-All research steps are now complete (research-papers, research-code; research-internet skipped).
-`research/research_summary.md` is written and ready. Proceed to step 7 (planning): design the audit
-pipeline using `soundfile`/`librosa`/`pyloudnorm` for audio metrics, the `_parse_list`
-manifest-parser pattern from t0009, OOV constants from t0003, and the histogram helper pattern from
-t0009. The plan must specify which scripts will be created in `code/` (e.g. `paths.py`,
-`audit_audio.py`, `audit_transcripts.py`, `plot_histograms.py`, `build_manifest.py`), inputs,
-outputs, and algorithm for each. DVC pull of `data/v5/` is the first implementation step.
+Planning complete; `plan/plan.md` verified with zero errors. Step 8 (setup-machines) is skipped.
+Proceed to step 9 (implementation): follow the 9-step plan in `plan/plan.md` in milestone order.
+Start with Milestone A (DVC pull + clip count verification), then Milestone B (write `paths.py`,
+`constants.py`, `audit_audio.py` and run it), then Milestones C–G. All scripts go in
+`tasks/t0011_v5_data_quality_audit/code/`. Run ruff, ruff format, and mypy before committing. Every
+CLI invocation must use `run_with_logs.py`.
