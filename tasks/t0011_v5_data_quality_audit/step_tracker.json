@@ -48,14 +48,15 @@
       "step": 4,
       "name": "research-papers",
       "description": "Review existing papers in corpus relevant to audio quality metrics, LUFS, clipping detection, and OOV token analysis.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:40:52Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:44:23Z",
       "log_file": "logs/steps/004_research-papers/",
-      "current_owner": "step-executor/research-papers",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:40:52Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:40:52Z"
+      "expected_completion_at": "2026-09-15T11:40:52Z",
+      "actual_duration_seconds": 211
     },
     {
       "step": 5,
