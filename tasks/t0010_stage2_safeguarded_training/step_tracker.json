@@ -34,14 +34,15 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create task folder structure, populate aggregator cache.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:38:25Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:39:44Z",
       "log_file": "logs/steps/003_init-folders/",
-      "current_owner": "step-executor/init-folders",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:38:25Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:38:25Z"
+      "expected_completion_at": "2026-09-15T11:38:25Z",
+      "actual_duration_seconds": 79
     },
     {
       "step": 4,
