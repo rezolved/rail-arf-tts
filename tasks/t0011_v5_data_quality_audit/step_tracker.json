@@ -71,14 +71,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review prior task code (t0009) for reusable audio-loading and metrics utilities.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:44:52Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:50:22Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:44:52Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:44:52Z"
+      "expected_completion_at": "2026-09-15T11:44:52Z",
+      "actual_duration_seconds": 330
     },
     {
       "step": 7,
