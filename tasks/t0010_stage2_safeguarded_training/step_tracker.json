@@ -6,14 +6,15 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0010_stage2_safeguarded_training branch from main and initialize step tracker.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:33:47Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:34:53Z",
       "log_file": "logs/steps/001_create-branch/",
-      "current_owner": "step-executor/create-branch",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:33:47Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:33:47Z"
+      "expected_completion_at": "2026-09-15T11:33:47Z",
+      "actual_duration_seconds": 66
     },
     {
       "step": 2,
