@@ -108,14 +108,15 @@
       "step": 9,
       "name": "implementation",
       "description": "Run audit scripts over 1557 v5 training clips; produce per-clip report and cleaned train manifest.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:56:21Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T12:22:36Z",
       "log_file": "logs/steps/009_implementation/",
-      "current_owner": "step-executor/implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T12:16:06Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-15T12:56:21Z"
+      "expected_completion_at": "2026-09-15T12:56:21Z",
+      "actual_duration_seconds": 5175
     },
     {
       "step": 10,
