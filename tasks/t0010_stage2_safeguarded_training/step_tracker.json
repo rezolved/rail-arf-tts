@@ -66,14 +66,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0009 safeguard library (train_second_safeguarded.py, health_gates, jsonl_logger, checkpoint_manager, run_config) and t0008 tts_eval_harness to understand interfaces for implementation.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:40:16Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:47:37Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:40:16Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:40:16Z"
+      "expected_completion_at": "2026-09-15T11:40:16Z",
+      "actual_duration_seconds": 441
     },
     {
       "step": 7,
