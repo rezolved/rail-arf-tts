@@ -157,33 +157,294 @@ encoded by ElevenLabs. No multi-channel or non-standard sample-rate clips exist.
 
 ## Examples
 
-### Clipped clips (peak_dbfs > -0.1)
+Each example shows the per-clip audit record (input: WAV file path and the raw per-clip metrics
+computed by `audit_clips.py`) alongside the flag decision (output: flag reason string written to
+`flagged_clips.txt`, or "clean" if accepted into `train_list_v5_clean.txt`).
 
-| wav_path | peak_dbfs | duration_s | lufs |
-| --- | --- | --- | --- |
-| data/v4/train/wavs/accessing_the_brain_commerce_page_cddbb5.wav | -0.186 | 2.18 | -13.11 |
-| data/v4/train/wavs/checking_for_press_releases_from_may_19_0d7bd5.wav | -0.645 | 2.46 | -18.95 |
-| data/v4/train/wavs/checking_for_the_19th_may_press_release_5399f4.wav | -2.001 | 2.32 | -19.71 |
+### Example 1 — Clipping: peak at 0.0 dBFS (extreme case)
 
-Note: the first example is below -0.1 (not flagged); examples 2 and 3 are below -0.1 as well. The
-actual clipping flags occur in clips where `peak_dbfs > -0.1`, meaning they are within 0.1 dB of
-full scale. These are peak-normalized outputs.
+Input WAV: `data/v4/train/wavs/checking_the_last_update_timestamp_for_the_website_9e770d.wav`
 
-### Short clips (duration_low)
+```json
+{
+  "wav_path": "data/v4/train/wavs/checking_the_last_update_timestamp_for_the_website_9e770d.wav",
+  "duration_s": 2.6935,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": 8.69e-09,
+  "lufs": -12.571,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.065,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
 
-From the preflight inspection, short clips include brief phrases like: "checking for any press
-release" (2.32 s) — but the truly short flagged clips are < 1.5 s and likely single-word or very
-brief utterances.
+Output flag decision:
 
-### Clean clip examples (from preflight)
+```text
+data/v4/train/wavs/checking_the_last_update_timestamp_for_the_website_9e770d.wav	clipping
+```
 
-| clip | duration_s | peak_dbfs | lufs | silence_fraction |
-| --- | --- | --- | --- | --- |
-| accessing_the_brain_commerce_page_cddbb5.wav | 2.183 | -0.186 | -13.107 | 0.023 |
-| accessing_the_demo_request_page_4300f9.wav | 1.95 | -0.263 | -14.986 | 0.016 |
-| assessing_how_rezolve_ai_improves_d61704.wav | 2.276 | -0.408 | -14.134 | 0.072 |
-| assessing_the_relevance_to_the_hospitality_industry_3c7caa.wav | 2.879 | -0.381 | -14.545 | 0.059 |
-| checking_for_any_press_release_on_may_19_dcbbfc.wav | 2.322 | -0.759 | -14.861 | 0.017 |
+Rationale: `peak_dbfs ≈ 0.0` — exactly at full scale, above the -0.1 dBFS threshold. ElevenLabs
+peak-normalized output.
+
+### Example 2 — Clipping: peak at -0.045 dBFS
+
+Input WAV: `data/v4/train/wavs/checking_telecom_industry_updates_now_0051c3.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/checking_telecom_industry_updates_now_0051c3.wav",
+  "duration_s": 2.322,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.0446,
+  "lufs": -13.399,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.0,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+data/v4/train/wavs/checking_telecom_industry_updates_now_0051c3.wav	clipping
+```
+
+Rationale: `peak_dbfs = -0.045` exceeds the -0.1 dBFS threshold.
+
+### Example 3 — Clipping: peak at -0.051 dBFS
+
+Input WAV: `data/v4/train/wavs/checking_the_details_of_the_may_19_press_release_0eaea5.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/checking_the_details_of_the_may_19_press_release_0eaea5.wav",
+  "duration_s": 2.926,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.0508,
+  "lufs": -13.837,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.030,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+data/v4/train/wavs/checking_the_details_of_the_may_19_press_release_0eaea5.wav	clipping
+```
+
+Rationale: `peak_dbfs = -0.051` exceeds the -0.1 dBFS threshold.
+
+### Example 4 — Clipping: peak at -0.086 dBFS (near boundary)
+
+Input WAV: `data/v4/train/wavs/checking_the_exact_date_of_the_press_release_4cbcaa.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/checking_the_exact_date_of_the_press_release_4cbcaa.wav",
+  "duration_s": 2.368,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.0855,
+  "lufs": -14.045,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.0002,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+data/v4/train/wavs/checking_the_exact_date_of_the_press_release_4cbcaa.wav	clipping
+```
+
+Rationale: `peak_dbfs = -0.086` exceeds the -0.1 dBFS threshold — close to the boundary.
+
+### Example 5 — Duration too short (1.30 s)
+
+Input WAV: `data/v4/train/wavs/glad_that_was_helpful_3574c1.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/glad_that_was_helpful_3574c1.wav",
+  "duration_s": 1.3003,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.2435,
+  "lufs": -16.484,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.0,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+data/v4/train/wavs/glad_that_was_helpful_3574c1.wav	duration_low
+```
+
+Rationale: `duration_s = 1.30` is below the 1.5 s minimum. This is a short filler phrase.
+
+### Example 6 — Duration too short (0.74 s, single-word utterance)
+
+Input WAV: `data/v4/train/wavs/got_it_06c73d.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/got_it_06c73d.wav",
+  "duration_s": 0.7430,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.4907,
+  "lufs": -22.753,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.0,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+data/v4/train/wavs/got_it_06c73d.wav	duration_low
+```
+
+Rationale: `duration_s = 0.74` — the shortest clip in the corpus, below 1.5 s threshold.
+
+### Example 7 — Excessive silence (33.5% silence)
+
+Input WAV: `data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_365834082e2a40dc.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_365834082e2a40dc.wav",
+  "duration_s": 5.410,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -3.133,
+  "lufs": -18.117,
+  "lufs_method": "bs1770",
+  "silence_fraction": 0.3352,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+data/v4/train/wavs/llm_sess_a5158e64865142c3_resp_365834082e2a40dc.wav	silence
+```
+
+Rationale: `silence_fraction = 0.335` exceeds the 30% threshold — only clip in the corpus to do so.
+This is the sole silence-flagged clip. Its LUFS uses `bs1770` method (duration ≥ 3 s).
+
+### Example 8 — Clean clip (typical filler phrase, rms_fallback LUFS)
+
+Input WAV: `data/v4/train/wavs/accessing_the_brain_commerce_page_cddbb5.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/accessing_the_brain_commerce_page_cddbb5.wav",
+  "duration_s": 2.1827,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.1857,
+  "lufs": -13.107,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.0226,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+(accepted — no flags; written to train_list_v5_clean.txt)
+```
+
+Rationale: `peak_dbfs = -0.186` is below the -0.1 dBFS threshold. Duration 2.18 s, silence 2.3%,
+zero OOV — passes all checks.
+
+### Example 9 — Clean clip (slightly longer, low silence)
+
+Input WAV: `data/v4/train/wavs/assessing_the_relevance_to_the_hospitality_industry_3c7caa.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/assessing_the_relevance_to_the_hospitality_industry_3c7caa.wav",
+  "duration_s": 2.8793,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.3806,
+  "lufs": -14.545,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.0590,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+(accepted — no flags; written to train_list_v5_clean.txt)
+```
+
+Rationale: All metrics within spec. `peak_dbfs = -0.38` safely below threshold, LUFS −14.5 within
+[-30, -6] range, silence 5.9% below 30%.
+
+### Example 10 — Clean clip (higher silence fraction, still within threshold)
+
+Input WAV: `data/v4/train/wavs/assessing_how_rezolve_ai_improves_d61704.wav`
+
+```json
+{
+  "wav_path": "data/v4/train/wavs/assessing_how_rezolve_ai_improves_d61704.wav",
+  "duration_s": 2.2755,
+  "sample_rate": 24000,
+  "channels": 1,
+  "peak_dbfs": -0.4081,
+  "lufs": -14.134,
+  "lufs_method": "rms_fallback",
+  "silence_fraction": 0.0719,
+  "oov_count": 0,
+  "oov_fraction": 0.0,
+  "error": null
+}
+```
+
+Output flag decision:
+
+```text
+(accepted — no flags; written to train_list_v5_clean.txt)
+```
+
+Rationale: `silence_fraction = 7.2%` — typical inter-word pause for a longer phrase. All other
+metrics clean. Accepted into the 1311-clip clean manifest.
 
 ## Verification
 

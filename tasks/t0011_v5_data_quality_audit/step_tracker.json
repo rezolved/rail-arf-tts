@@ -145,10 +145,14 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md, results_detailed.md, metrics.json, costs.json, and remote_machines_used.json.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-15T12:27:42Z",
       "completed_at": null,
-      "log_file": "logs/steps/012_results/"
+      "log_file": "logs/steps/012_results/",
+      "current_owner": "step-executor/results",
+      "last_heartbeat_at": "2026-09-15T12:27:42Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-15T13:27:42Z"
     },
     {
       "step": 13,

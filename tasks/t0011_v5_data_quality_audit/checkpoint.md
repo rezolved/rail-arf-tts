@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T12:30:00Z"
-completed_steps: 12
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-15T12:45:00Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -83,6 +83,13 @@ Five alternative strategies explored for the peak-normalization and short-clip f
 recommendation: LUFS-normalize the full 1557-clip corpus to −14 LUFS before Stage 2 training instead
 of flagging 224 peak-normalized clips. Output at `results/creative_thinking.md`.
 
+### Step 12 — results
+
+All results files verified: `results_summary.md`, `results_detailed.md`, `metrics.json`,
+`costs.json`, `remote_machines_used.json`, 4 PNG charts. Fixed `## Examples` section to include 10
+fenced-code-block examples from actual `per_clip_stats.jsonl` data (required by `data-analysis` task
+type). Both `verify_task_metrics` and `verify_task_results` pass with zero errors.
+
 ### Step 13 — compare-literature
 
 Skipped: data audit produces no quantitative results comparable to published baselines.
@@ -100,8 +107,9 @@ Skipped: data audit produces no quantitative results comparable to published bas
 
 ## Next Step Notes
 
-Proceed to step 12 (results). All result files already exist from the implementation step:
-metrics.json, costs.json, remote_machines_used.json, results_detailed.md, results_summary.md. Step
-12 should verify these files are complete and consistent, run the results verificator if one exists,
-and commit. The creative_thinking.md produced in step 11 is now committed and does not need to be
-regenerated. Downstream steps 14 (suggestions) and 15 (reporting) follow.
+Step 14 (suggestions): spawn the `/generate-suggestions` skill subagent to produce
+`results/suggestions.json`. The audit findings (1311 clean clips, 224 peak-normalized clips, 25
+short clips, 1 silence clip, 0 OOV/LUFS flags, the LUFS-normalize alternative from
+creative_thinking) are all committed and available for the suggestions agent. After suggestions,
+step 15 (reporting) runs all verificators, captures session transcripts, and marks `task.json` as
+completed.
