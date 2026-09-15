@@ -1,0 +1,6 @@
+=== audit_transcripts.py: OOV audit for v5 train manifest ===
+  Loaded 1557 train manifest entries
+  Merged OOV fields for 1557 clips (0 not in manifest)
+  Updated: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/data/per_clip_stats.jsonl
+  Verification: oov_fraction and oov_count present in first record
+Done.

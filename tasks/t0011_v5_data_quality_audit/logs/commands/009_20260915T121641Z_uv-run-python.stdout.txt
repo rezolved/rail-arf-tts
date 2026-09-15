@@ -1,0 +1,23 @@
+=== build_manifest.py: flag clips and build clean manifest ===
+  Loaded 1557 clip records from JSONL
+
+  Flag counts:
+    channels            : 0
+    clipping            : 224
+    duration_high       : 0
+    duration_low        : 25
+    error               : 0
+    lufs_high           : 0
+    lufs_low            : 0
+    oov                 : 0
+    samplerate          : 0
+    silence             : 1
+
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/data/flagged_clips.txt (246 flagged clips)
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/data/train_list_v5_clean.txt (1311 clean clips)
+  Consistency check: 246 flagged + 1311 clean = 1557 (expected 1557)
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/data/distribution_stats.json
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/data/flag_counts.json
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/results/results_detailed.md
+
+Done.

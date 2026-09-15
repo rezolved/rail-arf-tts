@@ -1,0 +1,24 @@
+=== audit_audio.py: per-clip audio metrics for v5 train+val ===
+  v5 train: 1557 clips
+  v5 val:   96 clips
+  Train progress: 100/1557 clips processed
+  Train progress: 200/1557 clips processed
+  Train progress: 300/1557 clips processed
+  Train progress: 400/1557 clips processed
+  Train progress: 500/1557 clips processed
+  Train progress: 600/1557 clips processed
+  Train progress: 700/1557 clips processed
+  Train progress: 800/1557 clips processed
+  Train progress: 900/1557 clips processed
+  Train progress: 1000/1557 clips processed
+  Train progress: 1100/1557 clips processed
+  Train progress: 1200/1557 clips processed
+  Train progress: 1300/1557 clips processed
+  Train progress: 1400/1557 clips processed
+  Train progress: 1500/1557 clips processed
+  Train: 1557 clips processed, 0 errors
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/data/per_clip_stats.jsonl
+  Validation: 1557 lines in JSONL (expected 1557)
+  Val: 96 clips processed, 0 errors
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0011_v5_data_quality_audit/tasks/t0011_v5_data_quality_audit/data/val_clip_stats.jsonl
+Done.

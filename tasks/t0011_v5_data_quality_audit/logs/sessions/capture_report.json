@@ -1,0 +1,23 @@
+{
+  "spec_version": "1",
+  "task_id": "t0011_v5_data_quality_audit",
+  "captured_at": "2026-09-15T12:38:01Z",
+  "checked_roots": [
+    {
+      "source_kind": "codex",
+      "root_path": "/home/azureuser/.codex/sessions",
+      "exists": false,
+      "candidate_file_count": 0,
+      "matched_file_count": 0
+    },
+    {
+      "source_kind": "claude_code",
+      "root_path": "/home/azureuser/.claude/projects",
+      "exists": true,
+      "candidate_file_count": 278,
+      "matched_file_count": 0
+    }
+  ],
+  "copied_sessions": [],
+  "errors": []
+}
