@@ -1,8 +1,8 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-15T12:15:00Z"
-completed_steps: 9
+updated_at: "2026-09-15T15:54:43Z"
+completed_steps: 8
 next_step_number: 9
 next_step_id: "implementation"
 ---
@@ -70,45 +70,55 @@ training data staged: 1557 train wavs, 96 val wavs, `first_stage_v3.pth` (1.7 GB
 `config_david_v10.yml` (joint_epoch=8, epochs=20), safeguard modules. `az ml compute show` API timed
 out; acquire done manually via ARM REST. **Caution**: ephemeral disk lost on VM stop.
 
+### Step 9 — implementation (paused_waiting)
+
+Training launched on LLM-T1-NC80 as PID 82356 in tmux session `train_v10`. At pause time: epoch
+5/20, val_loss 2.066 (improving from 2.097 baseline). Step paused with watchdog-protected VM and
+liveness probe `ssh LLM-T1-NC80 pgrep -f train_second_v10`. Resume after 2026-09-15T18:50:00Z. On
+resume: run `resume_check`, download `logs/v10/`, run batch eval and aggregation, package model
+asset.
+
 * * *
 
 ## Cross-Step Decisions
 
-* **`CheckpointManager` bug**: line 403 of `train_second_safeguarded.py` omits required
-  `joint_epoch` — implementation must apply one-line fix:
+* **`CheckpointManager` bug fixed**: line 403 of `train_second_v10.py` now has
   `CheckpointManager(log_dir=log_dir, run_id=_run_id, joint_epoch=joint_epoch)`.
-* **Training script is copy-not-import**: `train_second_safeguarded.py` is not a registered library;
-  must be copied into `tasks/t0010_stage2_safeguarded_training/code/`.
+* **Training script is copy-not-import**: `train_second_safeguarded.py` copied to
+  `code/train_second_v10.py` with fix.
 * **Safeguard library components are import-not-copy**: `StepLogger`, `CheckpointManager`,
   `HealthGate`, `capture_run_config` are all registered under `t0009_training_safeguards` — import
   directly.
+* **Training PID 82356** in tmux `train_v10` on LLM-T1-NC80; val_loss improving (2.066 at epoch 5).
+* **Paused sentinel**: `~/kokoro-finetune/logs/v10/checkpoint_manifest.json` (written when training
+  completes).
+* **Resemblyzer venv**: must be built on VM before batch eval
+  (`python -m venv ~/resemblyzer-venv && pip install resemblyzer webrtcvad`).
 
 * * *
 
 ## Next Step Notes
 
-Step 9 (implementation) is next. The implementation agent must:
+Step 9 (implementation) is `paused_waiting`. Training is running on LLM-T1-NC80 (PID 82356, tmux
+session `train_v10`, epoch 5/20, val_loss 2.066). The resume agent must:
 
-1. Copy `tasks/t0009_stage2_training_failure_forensics/code/train_second_safeguarded.py` to
-   `tasks/t0010_stage2_safeguarded_training/code/train_second_v10.py` and apply the one-line
-   `CheckpointManager` fix at line 403 (add `joint_epoch=joint_epoch`). Run ruff + mypy; confirm 0
-   errors.
+1. Run `uv run python -m arf.scripts.utils.resume_check t0010_stage2_safeguarded_training 9` and act
+   on the result: `sentinel present` → proceed, `job_alive` → re-pause, `job_dead` → write
+   intervention file and fail.
 
-2. Write `code/eval_all_checkpoints.py` and `code/aggregate_results.py` (plan Steps 2–3).
+2. On sentinel present:
+   `rsync -av LLM-T1-NC80:~/kokoro-finetune/logs/v10/ tasks/t0010_stage2_safeguarded_training/data/run_v10/`
+   to download checkpoints + JSONL.
 
-3. SSH to LLM-T1-NC80 and launch training from `~/kokoro-finetune/`:
-   `python train_second_v10.py -p configs/config_david_v10.yml --run-id v10` (wrapped in
-   `run_with_logs.py`). Monitor the first 50 lines for the parameter-count assertion.
+3. Build resemblyzer venv on VM:
+   `python -m venv ~/resemblyzer-venv && pip install resemblyzer webrtcvad`. Then run
+   `eval_all_checkpoints.py` on VM.
 
-4. After training (≤20 epochs or health-gate fire): download `logs/v10/` to
-   `tasks/t0010_stage2_safeguarded_training/data/run_v10/`.
+4. Download `data/run_v10/eval_results/` locally. Run `aggregate_results.py` locally.
 
-5. Run batch checkpoint evaluation and results aggregation per plan Steps 8–10.
+5. Package model asset: `assets/model/kokoro-v10-best/` with DVC-tracked best checkpoint `.pth`.
 
-**Critical VM caution**: `~/kokoro-finetune` is on ephemeral disk — download ALL outputs before
-teardown. The watchdog will shut down the VM after 60 min idle; ensure training completes or the VM
-is kept busy.
+6. Run `verify_model_asset --task-id t0010_stage2_safeguarded_training` — fix all errors.
 
-**VM state at step 8 completion**: LLM-T1-NC80 is RUNNING with watchdog active. All data is staged.
-No lock file currently held (manual acquire; implementation step must place a fresh lock or use
-`azure_ml_vm run` to hold it).
+**Critical**: ephemeral disk — download ALL outputs before teardown. `~/kokoro-finetune` is lost on
+VM stop.
