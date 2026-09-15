@@ -25,6 +25,7 @@ from arf.scripts.utils import azure_ml_vm
 from arf.scripts.utils.azure_ml_vm import (
     AcquireResult,
     CommandResult,
+    ComputeStateResult,
     VmPoolEntry,
     acquire,
 )
@@ -389,9 +390,14 @@ def _patch_acquire_world(
     preflight_failing_vm_name: str,
     placed_locks: list[str],
 ) -> None:
-    # "running" is the module's normalized state string; the VM is already up so no
-    # start/poll path runs and nothing sleeps.
-    monkeypatch.setattr(azure_ml_vm, "get_compute_state", lambda *, vm: "running")
+    # The acquire path reads state via get_compute_state_result, not the get_compute_state
+    # wrapper -- patching only the wrapper let this fall through to a real `az` call and a
+    # real 480s-per-VM timeout. "running" is the module's normalized state string; the VM
+    # is already up so no start/poll path runs and nothing sleeps.
+    running_state: ComputeStateResult = ComputeStateResult(
+        state="running", failure=None, stderr=None
+    )
+    monkeypatch.setattr(azure_ml_vm, "get_compute_state_result", lambda *, vm: running_state)
     monkeypatch.setattr(azure_ml_vm, "_ssh_ok", lambda *, vm: True)
     monkeypatch.setattr(azure_ml_vm, "list_remote_locks", lambda *, vm: [])
 
