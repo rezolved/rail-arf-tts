@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-15T11:10:00Z"
-completed_steps: 7
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-15T11:05:00Z"
+completed_steps: 8
+next_step_number: 8
+next_step_id: "setup-machines"
 ---
 # Task Objective
 
@@ -54,6 +54,14 @@ errors) and `research/research_summary.md` (126 lines). Critical bug found: `Che
 line 403 of training script is missing required `joint_epoch` argument — must fix when copying
 script into task `code/`.
 
+### Step 7 — planning
+
+Produced `plan/plan.md` (spec_version "2", 12 REQ items, 12 steps across 5 milestones). Key
+decisions: copy `train_second_safeguarded.py` → `code/train_second_v10.py` with one-line
+CheckpointManager fix (REQ-3); batch evaluation after training completes; explicit variant format
+for `results/metrics.json` (one variant per epoch + `best`); rejection criteria pre-registered.
+Verificator PASSED with 0 errors.
+
 * * *
 
 ## Cross-Step Decisions
@@ -71,11 +79,10 @@ script into task `code/`.
 
 ## Next Step Notes
 
-Step 7 (planning) is next. The planning agent should read `research/research_summary.md` for a
-compact overview. Key inputs: (1) base config at
-`tasks/t0009_stage2_training_failure_forensics/data/configs/t0006_run03_v6c.yml` — change only
-`joint_epoch: 6 → 8` and `epochs_2nd: 10 → 20`; (2) training script to copy is
-`tasks/t0009_stage2_training_failure_forensics/code/train_second_safeguarded.py` with one-line
-CheckpointManager fix; (3) evaluation requires batch approach post-training: `extract_decoder` →
-`run_eval.py` → `score_speaker_sim.py` per epoch checkpoint; (4) expected compute ~$35 for 20 epochs
-× 6 min + eval on LLM-T1-NC80.
+Step 8 (setup-machines) is next. The setup-machines agent should start LLM-T1-NC80 via the
+`setup-remote-machine` skill, verify 2 × H100 NVL GPUs via `nvidia-smi`, confirm
+`~/kokoro-finetune/` repo is present, and deploy the idle watchdog
+(`arf/scripts/utils/idle_watchdog.sh` with 60-min idle threshold and `TERMINATE_CMD` pointing to
+Azure ML compute stop). Key plan references: `plan/plan.md` Steps 4–6 (Milestone 2: VM Setup). The
+full config for `config_david_v10.yml` is specified in Step 6 of the plan. Expected cost: ~$35–42
+total for training + eval on H100. Budget remaining: $5,000 project budget, ~$45 task cap.
