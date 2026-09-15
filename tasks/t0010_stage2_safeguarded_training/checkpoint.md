@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
 updated_at: "2026-09-15T12:15:00Z"
-completed_steps: 8
+completed_steps: 9
 next_step_number: 9
 next_step_id: "implementation"
 ---
@@ -64,26 +64,11 @@ Verificator PASSED with 0 errors.
 
 ### Step 8 — setup-machines
 
-LLM-T1-NC80 acquired (2×H100 NVL, CUDA 12.2, driver 535.161.08). Idle watchdog deployed (PID
-confirmed, 60-min idle threshold). Full environment rebuilt from scratch — ephemeral disk was wiped
-after prior VM stop and root disk is 100% full; `~/kokoro-finetune` symlinked to
-`/mnt/tmp/kikiri-tts/StyleTTS2`.
-
-Key outputs on VM:
-
-* `~/kokoro-finetune/first_stage_v3.pth` (1.7 GB Stage 1 checkpoint)
-* `~/kokoro-finetune/data/v4/train/wavs/` — 1557 training wav files
-* `~/kokoro-finetune/data/v4/val/wavs/` — 96 val wav files
-* `~/kokoro-finetune/data/data_list_v5_train_250.txt` and `data/val_list.txt`
-* `~/kokoro-finetune/configs/config_david_v10.yml` (joint_epoch=8, epochs=20)
-* `~/kokoro-finetune/train_second_safeguarded.py` + 4 support modules from t0009
-
-Machine log: `logs/steps/008_setup-machines/machine_log.json`. Notable issue: `az ml compute show`
-API consistently exceeds the 60s hardcoded timeout; acquire was performed manually via ARM REST +
-SSH preflight + on-VM lock placement.
-
-**Caution**: `~/kokoro-finetune` is on ephemeral disk (`/mnt/tmp/`). All training outputs
-(checkpoints, JSONL log) must be downloaded to local worktree before VM teardown.
+LLM-T1-NC80 acquired (2×H100 NVL, CUDA 12.2). Idle watchdog deployed (60-min idle threshold). Root
+disk 100% full — `~/kokoro-finetune` symlinked to ephemeral `/mnt/tmp/kikiri-tts/StyleTTS2`. All
+training data staged: 1557 train wavs, 96 val wavs, `first_stage_v3.pth` (1.7 GB),
+`config_david_v10.yml` (joint_epoch=8, epochs=20), safeguard modules. `az ml compute show` API timed
+out; acquire done manually via ARM REST. **Caution**: ephemeral disk lost on VM stop.
 
 * * *
 
