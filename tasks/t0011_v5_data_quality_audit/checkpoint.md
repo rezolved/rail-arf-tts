@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T12:33:41Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-15T12:40:00Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -102,6 +102,14 @@ full-corpus Stage 2 on the 1311-clip clean manifest after t0010 validates safegu
 high), replace peak_dbfs threshold with clipped-fraction filter for a more principled audit
 (S-0011-03, medium). Verificator passed zero errors.
 
+### Step 15 — reporting
+
+All verificators passed (0 errors each): `verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`. Fixed four step logs missing mandatory sections (steps 5, 8, 10, 13) and removed the
+gitignored `ctx/` directory that triggered FD-E016. Session capture ran; 0 transcripts found
+(worktree-based execution). `task.json` updated to `status: completed` with `end_time`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -115,9 +123,6 @@ high), replace peak_dbfs threshold with clipped-fraction filter for a more princ
 
 ## Next Step Notes
 
-Step 15 (reporting): run all verificators (`verify_task_file`, `verify_task_dependencies`,
-`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
-`verify_logs`), capture session transcripts via `capture_task_sessions`, update `task.json` status
-to `completed` with `end_time`, then write `step_log.md` and commit. No asset verificators apply
-(expected_assets is `{}`). No remote machines to verify. The creative_thinking.md file should be
-included in the reporting verificator pass.
+Task t0011_v5_data_quality_audit is complete. All 15 steps finished (11 completed, 4 skipped). The
+coordinator should now proceed to Phases 7-9: create the PR, run `verify_pr_premerge`, merge, remove
+the worktree, and rebuild `overview/` on `main`.
