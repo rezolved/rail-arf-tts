@@ -80,14 +80,15 @@
       "step": 7,
       "name": "planning",
       "description": "Design the v10 training config (joint_epoch=8, epochs_2nd=20), VM deployment plan, evaluation strategy, and asset packaging plan.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:48:35Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:56:20Z",
       "log_file": "logs/steps/007_planning/",
-      "current_owner": "step-executor/planning",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:48:35Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:48:35Z"
+      "expected_completion_at": "2026-09-15T11:48:35Z",
+      "actual_duration_seconds": 465
     },
     {
       "step": 8,
