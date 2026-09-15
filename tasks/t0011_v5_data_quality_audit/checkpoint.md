@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T10:36:00Z"
-completed_steps: 1
-next_step_number: 2
-next_step_id: "check-deps"
+updated_at: "2026-09-15T10:36:40Z"
+completed_steps: 2
+next_step_number: 3
+next_step_id: "init-folders"
 ---
 # Task Objective
 
@@ -21,6 +21,11 @@ safeguards work.
 Branch `task/t0011_v5_data_quality_audit` created. Initial folder structure initialized in
 `tasks/t0011_v5_data_quality_audit/`. Step 1 is a mechanical setup step with no research output.
 
+### Step 2 — check-deps
+
+Dependency `t0009_stage2_training_failure_forensics` verified as completed. Output written to
+`logs/steps/002_check-deps/deps_report.json`. No errors or warnings.
+
 * * *
 
 ## Cross-Step Decisions
@@ -29,5 +34,6 @@ Branch `task/t0011_v5_data_quality_audit` created. Initial folder structure init
 
 ## Next Step Notes
 
-Step 1 completed successfully. The task branch and folder are ready. Proceed to step 2 (check-deps)
-per step_tracker.json. Dependency is `t0009_stage2_training_failure_forensics`.
+Step 2 (check-deps) passed with zero errors. The sole dependency
+`t0009_stage2_training_failure_forensics` is completed and satisfied. Proceed to step 3
+(init-folders) to create the task folder structure and populate the aggregator cache.
