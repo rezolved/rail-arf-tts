@@ -5,12 +5,12 @@
   "name": "Kokoro Stage 2: safeguarded training with joint_epoch=8",
   "short_description": "First controlled Stage 2 run implementing the two t0009 root-cause fixes: DP-aware checkpoint loader and joint_epoch=8. Uses the t0009 safeguard library (JSONL logger, health gates, per-epoch checkpoints). Evaluates each epoch checkpoint with the t0008 harness. One variable changed from v6c.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [
     "t0008_tts_eval_harness_baselines",
     "t0009_stage2_training_failure_forensics"
   ],
-  "start_time": null,
+  "start_time": "2026-09-15T10:33:37Z",
   "end_time": null,
   "expected_assets": {
     "model": 1
