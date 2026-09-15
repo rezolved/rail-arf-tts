@@ -131,10 +131,14 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Explore alternative quality thresholds, multi-pass filtering strategies, and potential edge cases in the v5 corpus.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-15T12:24:22Z",
       "completed_at": null,
-      "log_file": "logs/steps/011_creative-thinking/"
+      "log_file": "logs/steps/011_creative-thinking/",
+      "current_owner": "step-executor/creative-thinking",
+      "last_heartbeat_at": "2026-09-15T12:24:22Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-15T13:24:22Z"
     },
     {
       "step": 12,

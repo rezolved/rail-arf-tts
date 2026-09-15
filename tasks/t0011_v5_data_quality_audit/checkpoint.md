@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T12:22:00Z"
-completed_steps: 11
-next_step_number: 11
-next_step_id: "creative-thinking"
+updated_at: "2026-09-15T12:30:00Z"
+completed_steps: 12
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -77,6 +77,12 @@ results_summary.md. Key threshold adjustment: PEAK_DBFS_MAX changed from -1.0 to
 
 Skipped: no remote machines provisioned.
 
+### Step 11 — creative-thinking
+
+Five alternative strategies explored for the peak-normalization and short-clip findings. Key
+recommendation: LUFS-normalize the full 1557-clip corpus to −14 LUFS before Stage 2 training instead
+of flagging 224 peak-normalized clips. Output at `results/creative_thinking.md`.
+
 ### Step 13 — compare-literature
 
 Skipped: data audit produces no quantitative results comparable to published baselines.
@@ -94,5 +100,8 @@ Skipped: data audit produces no quantitative results comparable to published bas
 
 ## Next Step Notes
 
-Implementation complete. Proceed to step 11 (creative-thinking), then step 12 (results writing),
-then steps 14 and 15 (suggestions and reporting). All required output files are in place.
+Proceed to step 12 (results). All result files already exist from the implementation step:
+metrics.json, costs.json, remote_machines_used.json, results_detailed.md, results_summary.md. Step
+12 should verify these files are complete and consistent, run the results verificator if one exists,
+and commit. The creative_thinking.md produced in step 11 is now committed and does not need to be
+regenerated. Downstream steps 14 (suggestions) and 15 (reporting) follow.
