@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T12:45:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-15T12:33:41Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -94,6 +94,14 @@ type). Both `verify_task_metrics` and `verify_task_results` pass with zero error
 
 Skipped: data audit produces no quantitative results comparable to published baselines.
 
+### Step 14 — suggestions
+
+Three follow-up suggestions generated and written to `results/suggestions.json`. Key suggestions:
+LUFS-normalize all 1557 clips to -14 LUFS and use them for Stage 2 (S-0011-01, high), run
+full-corpus Stage 2 on the 1311-clip clean manifest after t0010 validates safeguards (S-0011-02,
+high), replace peak_dbfs threshold with clipped-fraction filter for a more principled audit
+(S-0011-03, medium). Verificator passed zero errors.
+
 * * *
 
 ## Cross-Step Decisions
@@ -107,9 +115,9 @@ Skipped: data audit produces no quantitative results comparable to published bas
 
 ## Next Step Notes
 
-Step 14 (suggestions): spawn the `/generate-suggestions` skill subagent to produce
-`results/suggestions.json`. The audit findings (1311 clean clips, 224 peak-normalized clips, 25
-short clips, 1 silence clip, 0 OOV/LUFS flags, the LUFS-normalize alternative from
-creative_thinking) are all committed and available for the suggestions agent. After suggestions,
-step 15 (reporting) runs all verificators, captures session transcripts, and marks `task.json` as
-completed.
+Step 15 (reporting): run all verificators (`verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`), capture session transcripts via `capture_task_sessions`, update `task.json` status
+to `completed` with `end_time`, then write `step_log.md` and commit. No asset verificators apply
+(expected_assets is `{}`). No remote machines to verify. The creative_thinking.md file should be
+included in the reporting verificator pass.

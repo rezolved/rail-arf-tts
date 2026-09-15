@@ -168,10 +168,14 @@
       "step": 14,
       "name": "suggestions",
       "description": "Generate follow-up task suggestions based on audit findings.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-15T12:31:52Z",
       "completed_at": null,
-      "log_file": "logs/steps/014_suggestions/"
+      "log_file": "logs/steps/014_suggestions/",
+      "current_owner": "step-executor/suggestions",
+      "last_heartbeat_at": "2026-09-15T12:31:52Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-15T13:31:52Z"
     },
     {
       "step": 15,

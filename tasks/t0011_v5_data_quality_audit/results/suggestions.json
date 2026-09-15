@@ -1,0 +1,35 @@
+{
+  "spec_version": "1",
+  "suggestions": [
+    {
+      "id": "S-0011-01",
+      "title": "LUFS-normalize full v5 corpus to -14 LUFS and train Stage 2 on all 1557 clips",
+      "description": "The audit showed 224 clips are excluded only because ElevenLabs peak-normalizes its output to 0 dBFS — not because of true clipping. Creative thinking confirmed these clips are usable. LUFS-normalizing all 1557 clips to -14 LUFS (EBU R128) recovers these clips and gives the full corpus consistent loudness (current mean is already -14.69 LUFS, std 2.34). Write a preprocessing script that normalizes into data/v5_normalized/, produces a new manifest, and use that manifest for the full-corpus Stage 2 run after t0010 validates the safeguards. Expected clean corpus: 1556 clips (99.9%). Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0011_v5_data_quality_audit",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0011-02",
+      "title": "Run full-corpus Stage 2 on the 1311-clip clean manifest after t0010 validates safeguards",
+      "description": "t0011 produced train_list_v5_clean.txt with 1311 audited clips (84.2% of v5 corpus, zero DVC-download errors). The next step is a full-corpus Stage 2 run using the t0009 safeguard library and joint_epoch configuration proven by t0010. This directly tests whether more speaker data closes the GE2E cosine gap identified in t0008 (speaker_sim 0.601 vs 0.83 target). Depends on t0010 completing successfully. Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0011_v5_data_quality_audit",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0011-03",
+      "title": "Replace peak_dbfs threshold with clipped-fraction filter in the v5 audit pipeline",
+      "description": "The -0.1 dBFS peak threshold flags 224 clips that are ElevenLabs deliberate peak-normalized output, not hard-clipped audio. A clipped-fraction filter (fraction of samples within 1 LSB of full scale, threshold > 0.1%) distinguishes genuine saturation from intentional normalization. Modify audit_audio.py to compute clipped_fraction and use it as the primary clipping flag. Expected result: 0-10 truly clipped clips flagged, clean manifest grows to ~1532 clips (98.4%). Recommended task types: data-analysis.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0011_v5_data_quality_audit",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}
