@@ -1,0 +1,27 @@
+{
+  "library_count": 2,
+  "libraries": [
+    {
+      "library_id": "tts_eval_harness",
+      "name": "TTS Evaluation Harness",
+      "version": "0.1.0",
+      "categories": [
+        "evaluation",
+        "tts",
+        "benchmark"
+      ],
+      "short_description": "Reusable evaluation harness for TTS systems measuring speaker similarity (GE2E cosine), TTFB, RTF, WER, and duration ratio across multiple prompt sets.",
+      "created_by_task": "t0008_tts_eval_harness_baselines",
+      "date_created": "2026-09-14"
+    },
+    {
+      "library_id": "t0009_training_safeguards",
+      "name": "Kokoro Stage 2 Training Safeguards",
+      "version": "0.1.0",
+      "categories": [],
+      "short_description": "JSONL step logger, per-epoch checkpoint manager, health gates, and run config capture for Kokoro StyleTTS2 Stage 2 training.",
+      "created_by_task": "t0009_stage2_training_failure_forensics",
+      "date_created": "2026-09-14"
+    }
+  ]
+}
