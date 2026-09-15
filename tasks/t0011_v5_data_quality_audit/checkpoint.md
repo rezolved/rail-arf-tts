@@ -26,19 +26,19 @@ Branch `task/t0011_v5_data_quality_audit` created. Initial folder structure init
 Dependency `t0009_stage2_training_failure_forensics` verified as completed. Output written to
 `logs/steps/002_check-deps/deps_report.json`. No errors or warnings.
 
-### Step 5 — research-internet (skipped)
+### Step 5 — research-internet
 
 Skipped: all audit work is local; no new external sources needed.
 
-### Step 8 — setup-machines (skipped)
+### Step 8 — setup-machines
 
 Skipped: CPU-only data audit, no GPU required.
 
-### Step 10 — teardown (skipped)
+### Step 10 — teardown
 
 Skipped: no remote machines provisioned.
 
-### Step 13 — compare-literature (skipped)
+### Step 13 — compare-literature
 
 Skipped: data audit produces no quantitative results comparable to published baselines.
 
