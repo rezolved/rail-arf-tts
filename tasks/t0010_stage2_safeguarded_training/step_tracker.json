@@ -20,14 +20,15 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0008_tts_eval_harness_baselines and t0009_stage2_training_failure_forensics are completed.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:35:58Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:37:49Z",
       "log_file": "logs/steps/002_check-deps/",
-      "current_owner": "step-executor/check-deps",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:35:58Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:35:58Z"
+      "expected_completion_at": "2026-09-15T11:35:58Z",
+      "actual_duration_seconds": 111
     },
     {
       "step": 3,
