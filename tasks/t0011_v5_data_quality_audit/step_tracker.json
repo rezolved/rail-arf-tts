@@ -34,14 +34,15 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create task folder structure with all required directories and .gitkeep files.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-15T10:38:46Z",
-      "completed_at": null,
+      "completed_at": "2026-09-15T10:39:45Z",
       "log_file": "logs/steps/003_init-folders/",
-      "current_owner": "step-executor/init-folders",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-15T10:38:46Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-15T11:38:46Z"
+      "expected_completion_at": "2026-09-15T11:38:46Z",
+      "actual_duration_seconds": 59
     },
     {
       "step": 4,
