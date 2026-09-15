@@ -1,8 +1,8 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-15T10:36:20Z"
-completed_steps: 2
+updated_at: "2026-09-15T10:37:00Z"
+completed_steps: 5
 next_step_number: 3
 next_step_id: "init-folders"
 ---
@@ -26,6 +26,19 @@ Step 1 is a mechanical setup step with no research output.
 
 Both dependencies verified as completed: `t0008_tts_eval_harness_baselines` and
 `t0009_stage2_training_failure_forensics`. Output: `logs/steps/002_check-deps/deps_report.json`.
+
+### Step 4 — research-papers (skipped)
+
+Skipped: no new literature needed; approach is fully specified from t0009 forensics findings.
+
+### Step 5 — research-internet (skipped)
+
+Skipped: all required knowledge comes from prior tasks t0008 and t0009; no external research needed.
+
+### Step 11 — creative-thinking (skipped)
+
+Skipped: single-variable controlled experiment; approach is fully defined by t0009 root-cause
+findings.
 
 * * *
 
