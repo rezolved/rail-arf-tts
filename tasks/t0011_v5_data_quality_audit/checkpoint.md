@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0011_v5_data_quality_audit"
-updated_at: "2026-09-15T11:10:00Z"
-completed_steps: 10
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-15T12:22:00Z"
+completed_steps: 11
+next_step_number: 11
+next_step_id: "creative-thinking"
 ---
 # Task Objective
 
@@ -42,18 +42,6 @@ standards, pyloudnorm, silence detection thresholds, and TTS corpus curation pra
 
 Skipped: all audit work is local; no new external sources needed.
 
-### Step 8 — setup-machines
-
-Skipped: CPU-only data audit, no GPU required.
-
-### Step 10 — teardown
-
-Skipped: no remote machines provisioned.
-
-### Step 13 — compare-literature
-
-Skipped: data audit produces no quantitative results comparable to published baselines.
-
 ### Step 6 — research-code
 
 Reviewed 9 completed tasks; found 2 libraries (`tts_eval_harness`, `t0009_training_safeguards`);
@@ -71,21 +59,40 @@ histograms (REQ-6), and distribution stats (REQ-7). Five scripts specified in `c
 `constants.py`, `audit_audio.py`, `audit_transcripts.py`, `build_manifest.py`, `plot_histograms.py`.
 Budget: $0. Remote machines: none.
 
+### Step 8 — setup-machines
+
+Skipped: CPU-only data audit, no GPU required.
+
+### Step 9 — implementation
+
+All audit scripts written and run successfully. 1557 train + 96 val WAVs downloaded via az CLI (DVC
+pull failed due to credential chaining). Per-clip stats JSONL: 1557 records, 0 errors. OOV audit: 0
+clips with oov_fraction > 0.20. Flagging: 246 clips removed (clipping: 224, duration_low: 25,
+silence: 1). Clean manifest: 1311 clips (84.2%). All 4 histogram PNGs generated. Results files
+written: metrics.json, costs.json, remote_machines_used.json, results_detailed.md,
+results_summary.md. Key threshold adjustment: PEAK_DBFS_MAX changed from -1.0 to -0.1 dBFS
+(ElevenLabs corpus is peak-normalized, not hard-clipped).
+
+### Step 10 — teardown
+
+Skipped: no remote machines provisioned.
+
+### Step 13 — compare-literature
+
+Skipped: data audit produces no quantitative results comparable to published baselines.
+
 * * *
 
 ## Cross-Step Decisions
 
-* Budget confirmed $0 — CPU-only local compute; DVC pull from existing Azure Blob storage.
-* val_96 (`data/v4/val/val_list.txt`) must never appear in `train_list_v5_clean.txt` — verified in
-  the plan's verification criteria.
+- Budget confirmed $0 — CPU-only local compute; DVC pull from existing Azure Blob storage.
+- val_96 (`data/v4/val/val_list.txt`) must never appear in `train_list_v5_clean.txt` — verified: 0
+  leakage found.
+- PEAK_DBFS_MAX adjusted to -0.1 dBFS (from -1.0) to avoid flagging peak-normalized TTS output.
 
 * * *
 
 ## Next Step Notes
 
-Planning complete; `plan/plan.md` verified with zero errors. Step 8 (setup-machines) is skipped.
-Proceed to step 9 (implementation): follow the 9-step plan in `plan/plan.md` in milestone order.
-Start with Milestone A (DVC pull + clip count verification), then Milestone B (write `paths.py`,
-`constants.py`, `audit_audio.py` and run it), then Milestones C–G. All scripts go in
-`tasks/t0011_v5_data_quality_audit/code/`. Run ruff, ruff format, and mypy before committing. Every
-CLI invocation must use `run_with_logs.py`.
+Implementation complete. Proceed to step 11 (creative-thinking), then step 12 (results writing),
+then steps 14 and 15 (suggestions and reporting). All required output files are in place.
