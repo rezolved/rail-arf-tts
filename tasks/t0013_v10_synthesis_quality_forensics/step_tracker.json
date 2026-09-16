@@ -69,14 +69,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0010's code, config (config_david_v10.yml), checkpoint layout, and the kokoro-format packaging step to understand how the raw StyleTTS2 checkpoint and the packaged asset differ before building the inference harness.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T12:26:52Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T12:34:49Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T12:26:52Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T13:26:52Z"
+      "expected_completion_at": "2026-09-16T13:26:52Z",
+      "actual_duration_seconds": 477
     },
     {
       "step": 7,
