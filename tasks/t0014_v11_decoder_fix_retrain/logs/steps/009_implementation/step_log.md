@@ -1,3 +1,12 @@
+---
+spec_version: "3"
+task_id: "t0014_v11_decoder_fix_retrain"
+step_number: 9
+step_name: "implementation"
+status: "completed"
+started_at: "2026-09-16T16:59:32Z"
+completed_at: "2026-09-16T23:05:00Z"
+---
 # Step 9 — Implementation — Step Log
 
 This step ran across three sub-invocations spanning `pause_count: 0, 1, 2` before finishing.
