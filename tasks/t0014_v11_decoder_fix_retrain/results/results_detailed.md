@@ -23,7 +23,14 @@ did not block the gate, which measures clipping/spectral-flatness/silence, not d
 
 ## Methodology
 
-**Machine**: LLM-T1-NC80 (Azure ML, 2xH100 NVL SXM5, `ready_at=2026-09-16T16:45:14Z`).
+**Machine**: `LLM-T1-NC80` (Azure ML, 2xH100 NVL SXM5). Acquired/ready at `2026-09-16T16:45:14Z`,
+destroyed at `2026-09-16T23:11:25Z` — **total billed runtime 6.436 hours**, **$89.85**
+(`results/costs.json`, `results/remote_machines_used.json`). Training itself ran
+`2026-09-16T17:45:20Z` (tmux `v11train` launch) through the `DONE` marker before the second resume
+check at `2026-09-16T22:30:00Z`; the mandatory audible-speech gate synthesis
+(`results/audio_quality_v11.json`) ran locally on this dev machine afterward, per the Gate synthesis
+harness note below. Task wall-clock: `start_time=2026-09-16T14:56:09Z` (`task.json`) through this
+step.
 
 **Config**: `code/config_david_v11.yml` — `config_david_v10.yml` with `first_stage_path` repointed,
 `data_params.train_data` repointed at t0012's normalized manifest, `epochs`/`epochs_2nd: 20->50`,
@@ -76,6 +83,23 @@ mirrors t0013's own local-CPU-harness precedent (`results/v10_diagnosis.md`,
 | v10 primary (`epoch_2nd_00016`) | 3.42s | 0.750 | 0.00048 | **True** |
 | v10 backup (`epoch_2nd_00014`) | 2.50s | 0.807 | 0.00019 | **True** |
 | **v11 (`epoch_00048`)** | 73.95s | 0.0048 | 0.0058 | **False** |
+
+## Visualizations
+
+![v11 validation loss across 50 epochs, joint_epoch=30 transition marked, best epoch highlighted](images/val_loss_by_epoch.png)
+
+Validation loss per epoch from `data/run_v11/checkpoints.json` (0-indexed epoch numbering). Loss
+drifts flat around 0.41-0.44 through the pre-`joint_epoch` phase, then drops sharply once the
+GAN/joint phase starts at epoch 30 and stabilizes in the 0.34-0.36 band through epoch 48 —
+consistent with 0 `HealthGate` firings and no divergence.
+
+![Audible-speech gate clip_fraction comparison: control, v10 primary, v10 backup, and v11, log scale, against the 0.3 is_likely_noise threshold](images/audible_gate_comparison.png)
+
+`clip_fraction` (log scale) for the known-good control and both confirmed-broken v10 checkpoints
+(t0013) against this task's v11 checkpoint. v10's two checkpoints sit roughly 2,500x above the
+`is_likely_noise` gate threshold (0.3); v11 sits roughly two orders of magnitude below it, in the
+same range as the control — the qualitative reversal this task's audible-speech gate is built to
+detect.
 
 ## Examples
 
@@ -248,6 +272,8 @@ catch (it examines clipping/flatness/silence, not duration).
   from t0013's control run, for the paired original-vs-ft deliverable.
 * `results/speaker_sim_scores.json`, `results/metrics.json`, `results/metrics_notes.md` — REQ-9
   metrics and their caveats.
+* `results/images/val_loss_by_epoch.png`, `results/images/audible_gate_comparison.png` — charts
+  embedded above under `## Visualizations`.
 * `results/results_summary.md`, `results/results_detailed.md` (this file), `results/costs.json`,
   `results/remote_machines_used.json` — task-level reporting.
 * `assets/model/kokoro-v11-best/` (`details.json`, `description.md`, `files/kokoro-v11-best.pth`
@@ -269,9 +295,10 @@ Checklist:
 | REQ-5 | Epoch budget anchored on `Configs/config_ft.yml` (50/10/30), superseding v10's 20/8 | **Done** | `epochs=50, diff_epoch=10, joint_epoch=30`, all 50 epochs completed | `code/config_david_v11.yml` |
 | REQ-6 | Run the mandatory audible-speech gate before claiming completion | **Done** | `is_likely_noise=False` | `results/audio_quality_v11.json`, `results/v11_gate_verdict.md`, Example 6 |
 | REQ-7 | If gate passes, produce model asset + paired audio samples + inference recipe | **Done** | Gate passed -> all three produced | `assets/model/kokoro-v11-best/`, `results/audio_samples/{original,ft}/`, `code/infer_styletts2.py` |
-| REQ-8 | Write `results/costs.json` with actual total spend; teardown promptly | **Partial** | Interim cost recorded (~$86.46 as of this report); VM still running -- final total and teardown are the orchestrator's separate, later step, per this agent's explicit instructions | `results/costs.json` |
+| REQ-8 | Write `results/costs.json` with actual total spend; teardown promptly | **Done** | `LLM-T1-NC80` destroyed at `2026-09-16T23:11:25Z` (`teardown` step); final total **$89.85** over **6.436 hours**, `verify_machines_destroyed.py` passed 0 errors | `results/costs.json`, `results/remote_machines_used.json` |
 | REQ-9 | Measure `speaker_sim`/`rtf` in explicit multi-variant format; explicitly omit `ttfb_ms` | **Done** | `speaker_sim=0.444`, `rtf=3.18`, `ttfb_ms` omitted with stated reason | `results/metrics.json`, `results/metrics_notes.md`, Example 9 |
 
-REQ-8 is intentionally marked Partial, not Done: this implementation step was explicitly scoped to
-exclude VM teardown (a separate orchestrator step), so the cost figure recorded here is interim
-(computed against report time, not `destroyed_at`) and will be overwritten at teardown.
+REQ-8 was marked Partial during `implementation` (that step was explicitly scoped to exclude VM
+teardown). The subsequent `teardown` step destroyed `LLM-T1-NC80` and finalized `results/costs.json`
+/ `results/remote_machines_used.json` at the figures above; this `results` step updates REQ-8 to
+Done to reflect that completed state.

@@ -1,0 +1,8 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/tasks/t0014_v11_decoder_fix_retrain/logs/steps/012_results
+
+[31m[1mERRORS:[0m
+[31m  SV-E002 error: Required file missing: step_log.md[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+

@@ -160,10 +160,14 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md, results_detailed.md, and metrics.json, reporting the gate outcome (pass or fail) honestly.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T23:24:02Z",
       "completed_at": null,
-      "log_file": "logs/steps/012_results/"
+      "log_file": "logs/steps/012_results/",
+      "current_owner": "step-executor/results",
+      "last_heartbeat_at": "2026-09-16T23:24:02Z",
+      "heartbeat_interval_seconds": 600,
+      "expected_completion_at": "2026-09-17T00:04:02Z"
     },
     {
       "step": 13,

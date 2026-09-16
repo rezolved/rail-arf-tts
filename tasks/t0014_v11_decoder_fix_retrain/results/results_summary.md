@@ -111,6 +111,7 @@ Rezolve's own licensed David voice data, and never ships a LibriTTS speaker iden
 
 ## Cost
 
-VM (`LLM-T1-NC80`) is still running as of this report -- teardown is a separate step the
-orchestrator runs next, not part of this implementation step. See `results/costs.json` for the
-partial/interim cost note; the final total will be recorded at teardown.
+`LLM-T1-NC80` was torn down at the `teardown` step (destroyed at 2026-09-16T23:11:25Z). **Final
+total: $89.85** over **6.436 hours** billed (`results/costs.json`,
+`results/remote_machines_used.json`) -- this supersedes the ~$86.46 interim figure quoted during
+`implementation`.
