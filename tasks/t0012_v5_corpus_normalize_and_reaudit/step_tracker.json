@@ -19,10 +19,14 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0011_v5_data_quality_audit is completed before starting.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T06:35:14Z",
       "completed_at": null,
-      "log_file": "logs/steps/002_check-deps/"
+      "log_file": "logs/steps/002_check-deps/",
+      "current_owner": "step-executor/check-deps",
+      "last_heartbeat_at": "2026-09-16T06:35:14Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-16T07:35:14Z"
     },
     {
       "step": 3,
