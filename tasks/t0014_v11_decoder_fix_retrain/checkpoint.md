@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T23:40:00Z"
-completed_steps: 12
-next_step_number: 13
-next_step_id: "compare-literature"
+updated_at: "2026-09-16T23:41:30Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -81,6 +81,17 @@ now `Done`, $89.85/6.436h), added `## Methodology` runtime/timestamps, and added
 `audible_gate_comparison.png`). `verify_task_results`/`verify_task_metrics`/`verify_step` all
 PASSED, 0 errors/0 warnings.
 
+### Step 13 — compare-literature
+
+Wrote `results/compare_literature.md`: v11's Stage 2 epoch schedule (50/10/30) exactly matches
+StyleTTS2's official `config_ft.yml` fine-tune recipe, while its decoder-adversarial step volume
+(~3,820 steps) is orders of magnitude below HiFi-GAN's/iSTFTNet's from-scratch/fine-tune budgets —
+explained by fine-tuning an already-converged checkpoint. A `### Prior Task Comparison` table shows
+v11's `speaker_sim` (0.444) beats both confirmed-broken v10 checkpoints (0.311-0.351, +0.093/+0.133)
+but trails the unrelated-speaker control (0.482, -0.037) and the project's 0.85 target — confirming
+the audible-speech gate, not `speaker_sim`, is the load-bearing pass/fail signal.
+`verify_compare_literature.py` PASSED, 0 errors/0 warnings.
+
 * * *
 
 ## Cross-Step Decisions
@@ -127,20 +138,16 @@ PASSED, 0 errors/0 warnings.
 
 ## Next Step Notes
 
-Step 12 (`results`) is now **`completed`**. `results/results_summary.md` and `results_detailed.md`
-are final: REQ-8 is now `Done` (final $89.85/6.436h, matching `results/costs.json` and
-`results/remote_machines_used.json`, which needed no edits), and `results/images/` now has two
-embedded charts (`val_loss_by_epoch.png`, `audible_gate_comparison.png`). `verify_task_results`,
-`verify_task_metrics`, and `verify_step` all PASSED with 0 errors/0 warnings. Step 13
-(`compare-literature`) runs next: this task type (`tts-finetuning-eval`) produces quantitative
-results (`speaker_sim=0.444`, `rtf=3.18` in `results/metrics.json`) comparable to published work, so
-this step should not be skipped — compare v11's `speaker_sim` against the project's 0.85 GE2E target
-and prior tasks' numbers (v10's confirmed-broken 0.311-0.351, per `results/results_detailed.md`'s
-Metrics Tables), and consider HiFi-GAN's own ablation literature (already cited in `plan/plan.md`'s
-Risks table, e.g. the 1.82 MOS cost of removing MPD) as a comparison point for the disclosed
-duration-predictor anomaly. Also worth carrying forward to `suggestions`:
-`results/v11_gate_verdict.md` flags a non-blocking anomaly (73.95s synthesis duration for a 10-word
-sentence, vs. 2.5-4.9s for the control/v10 — a likely duration-predictor calibration issue); it did
-not block this task's gate criterion but is worth surfacing as a follow-up-task suggestion.
-`task.json`'s `expected_assets: {"model": 1}` remains satisfied by the already-verified
-`kokoro-v11-best` asset (step 9); no further edits to `assets/` are needed by any later step.
+Step 13 (`compare-literature`) is now **`completed`**. `results/compare_literature.md` has all 5
+mandatory sections plus a `### Prior Task Comparison` subsection, a 6-row comparison table (exact
+epoch-schedule match to StyleTTS2's `config_ft.yml`; large, explicitly-flagged-non-comparable deltas
+on decoder-adversarial step volume vs. HiFi-GAN/iSTFTNet from-scratch/fine-tune budgets) and a 3-row
+prior-task table (v11 `speaker_sim=0.444` vs. t0013's v10 0.311-0.351 and control 0.482).
+`verify_compare_literature.py` PASSED, 0 errors/0 warnings. Step 14 (`suggestions`) runs next: carry
+forward `results/v11_gate_verdict.md`'s disclosed non-blocking anomaly (73.95s synthesis duration
+for a 10-word sentence vs. 2.5-4.9s for the control/v10 — a likely duration-predictor calibration
+issue, also noted in `results/compare_literature.md`'s Limitations as having no literature
+comparison point) as a follow-up-task suggestion, and consider the 0.444-vs-0.85 `speaker_sim` gap
+(`compare_literature.md`'s Summary/Analysis) as a second candidate suggestion. `task.json`'s
+`expected_assets: {"model": 1}` remains satisfied by the already-verified `kokoro-v11-best` asset
+(step 9); no further edits to `assets/` are needed by any later step.

@@ -176,10 +176,14 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Compare speaker_sim/ttfb/rtf results against the ElevenLabs David baseline and published vocoder-convergence literature, consistent with t0010's precedent.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T23:27:54Z",
       "completed_at": null,
-      "log_file": "logs/steps/013_compare-literature/"
+      "log_file": "logs/steps/013_compare-literature/",
+      "current_owner": "step-executor/compare-literature",
+      "last_heartbeat_at": "2026-09-16T23:27:54Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T00:27:54Z"
     },
     {
       "step": 14,
