@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
-updated_at: "2026-09-16T07:40:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-16T07:45:00Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -174,15 +174,26 @@ PASSED with 0 errors/0 warnings, confirmed independently by the step-executor vi
 
 * * *
 
+### Step 15 — reporting
+
+Ran the full reporting-step verificator sweep via `run_with_logs.py`: `verify_task_file` (PASSED, 1
+expected warning — empty `expected_assets`), `verify_task_dependencies`, `verify_suggestions`,
+`verify_task_metrics`, `verify_task_results`, and `verify_research_code` (all PASSED, 0
+errors/warnings). `verify_task_folder` initially failed with FD-E016 on a leftover gitignored `ctx/`
+aggregator-cache directory (populated in step 3 for downstream subagents, no longer needed at the
+final step); removed it and re-ran to PASSED (2 expected warnings: empty `logs/searches/` since
+research-internet was skipped, and no asset subdirectories since `expected_assets` is empty).
+`verify_logs` PASSED (3 expected LG-W004 warnings on pre-existing non-zero-exit command logs from
+earlier steps' rejection gates / DVC-hang workaround, already documented above).
+`verify_compare_literature` and `verify_machines_destroyed` were not run — `compare-literature` and
+`setup-machines`/`teardown` were all skipped for this task, so nothing to verify; `corrections/` is
+empty, so `verify_corrections` was not applicable either. Ran `capture_task_sessions` (0 transcripts
+found in this environment; wrote `logs/sessions/capture_report.json`). Set `task.json`
+`status: "completed"` and `end_time: "2026-09-16T07:45:00Z"` (`start_time` untouched).
+
 ## Next Step Notes
 
-Step 14 (`suggestions`) is complete: `results/suggestions.json` has 4 entries (S-0012-01 through
-S-0012-04) and `verify_suggestions` PASSED with 0 errors/0 warnings. Proceed to step 15
-(`reporting`): run the full verificator sweep (`verify_task_file`, `verify_task_dependencies`,
-`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
-`verify_logs`, plus the `data/v5_normalized` dataset asset verificator and
-`verify_machines_destroyed` — no remote machines were used, so that one should report a clean
-no-op), capture session transcripts via `capture_task_sessions`, set `task.json`
-`status: "completed"` and `end_time`, then finalize `checkpoint.md` with
-`next_step_number`/`next_step_id` set to `null`. This is the final step before the coordinator's
-Phase 7 PR/merge.
+None — this was the final task step. All 15 applicable steps (1-3, 6, 7, 9, 11, 12, 14, 15; steps 4,
+5, 8, 10, 13 skipped with documented rationale) are complete. `task.json` is `status: "completed"`.
+Ready for the coordinator's Phase 7 (PR creation, `verify_pr_premerge`, merge) and Phase 8 (final
+`verify_task_complete`).
