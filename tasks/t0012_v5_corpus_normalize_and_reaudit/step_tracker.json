@@ -33,14 +33,15 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create task folder structure, step_tracker.json, logs/.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T06:37:34Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T06:38:20Z",
       "log_file": "logs/steps/003_init-folders/",
-      "current_owner": "step-executor/init-folders",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T06:37:34Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T07:37:34Z"
+      "expected_completion_at": "2026-09-16T07:37:34Z",
+      "actual_duration_seconds": 46
     },
     {
       "step": 4,
