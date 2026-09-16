@@ -138,6 +138,19 @@ correction) under `## Analysis`, and includes a 10-example `## Examples` section
 `data-analysis` has `requires_result_examples: true`) with actual `per_clip_stats_v2.jsonl` JSON
 records. `verify_task_metrics` and `verify_task_results` both PASSED with 0 errors/0 warnings.
 
+### Step 14 — suggestions
+
+The `/generate-suggestions` subagent (spawned per Critical Rule 9) wrote `results/suggestions.json`
+with 4 new suggestions: S-0012-01 (duration-aware floor to recover the 25 `duration_low`-excluded
+filler clips), S-0012-02 (fix/document the recurring `dvc pull`/`push` hang, independently hit by
+both t0011 and t0012), S-0012-03 (extract the twice-copy-pasted audit/LUFS-normalize pipeline into a
+registered library), S-0012-04 (empirically verify LUFS normalization doesn't reduce GE2E speaker
+similarity before the expensive full-corpus Stage 2 run). Deduplicated against
+`aggregate_suggestions --uncovered` (10 active) and `aggregate_tasks` — no overlaps; S-0011-02 (the
+full-corpus Stage 2 run itself) was already covered so it was not re-proposed. `verify_suggestions`
+PASSED with 0 errors/0 warnings, confirmed independently by the step-executor via
+`run_with_logs.py`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -158,19 +171,6 @@ records. `verify_task_metrics` and `verify_task_results` both PASSED with 0 erro
   ("got it", "sure thing", "of course"), not truncated audio. `DURATION_MIN_S` was kept unchanged
   from t0011 per this task's scope; a future task could revisit a duration-aware (transcript-length
   -scaled) floor to recover them — see `results/creative_thinking.md` §3.
-
-### Step 14 — suggestions
-
-The `/generate-suggestions` subagent (spawned per Critical Rule 9) wrote `results/suggestions.json`
-with 4 new suggestions: S-0012-01 (duration-aware floor to recover the 25 `duration_low`-excluded
-filler clips), S-0012-02 (fix/document the recurring `dvc pull`/`push` hang, independently hit by
-both t0011 and t0012), S-0012-03 (extract the twice-copy-pasted audit/LUFS-normalize pipeline into a
-registered library), S-0012-04 (empirically verify LUFS normalization doesn't reduce GE2E speaker
-similarity before the expensive full-corpus Stage 2 run). Deduplicated against
-`aggregate_suggestions --uncovered` (10 active) and `aggregate_tasks` — no overlaps; S-0011-02 (the
-full-corpus Stage 2 run itself) was already covered so it was not re-proposed. `verify_suggestions`
-PASSED with 0 errors/0 warnings, confirmed independently by the step-executor via
-`run_with_logs.py`.
 
 * * *
 
