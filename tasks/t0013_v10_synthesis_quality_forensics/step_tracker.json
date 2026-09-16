@@ -133,14 +133,15 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Consider alternative diagnostic angles beyond the scripted checklist (e.g. other failure classes the missing/unexpected-key and weight-norm checks might miss) before finalizing the root cause.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T13:35:58Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T13:43:15Z",
       "log_file": "logs/steps/011_creative-thinking/",
-      "current_owner": "step-executor/creative-thinking",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T13:35:58Z",
       "heartbeat_interval_seconds": 600,
-      "expected_completion_at": "2026-09-16T14:05:58Z"
+      "expected_completion_at": "2026-09-16T14:05:58Z",
+      "actual_duration_seconds": 437
     },
     {
       "step": 12,
