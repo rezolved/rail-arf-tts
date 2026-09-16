@@ -103,14 +103,15 @@
       "step": 8,
       "name": "setup-machines",
       "description": "Provision LLM-T1-NC80 (2xH100) and deploy the idle watchdog before any long-running step, per task's disk-monitoring lesson from t0010's stuck teardown.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T16:24:48Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T16:52:33Z",
       "log_file": "logs/steps/008_setup-machines/",
-      "current_owner": "setup-remote-machine/setup-machines",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T16:49:57Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-16T17:54:48Z"
+      "expected_completion_at": "2026-09-16T17:54:48Z",
+      "actual_duration_seconds": 1665
     },
     {
       "step": 9,
