@@ -69,6 +69,10 @@ step-executor). Key finding: this task directly implements t0011's follow-up sug
 (LUFS-normalize to -14 LUFS), for which t0011 already left worked-out thresholds and a code
 skeleton.
 
+Since steps 4 and 5 were skipped, research-code was the only research stage to run. Per the
+`execute-task` skill's "Summarize research" step, a subagent then compressed `research_code.md` into
+`research/research_summary.md` (101 lines, ~6.98 KB) for downstream planning/implementation agents.
+
 * * *
 
 ## Cross-Step Decisions
@@ -81,7 +85,9 @@ Step 6 (`research-code`) is complete; `research/research_code.md` documents that
 worked out the corrected `clipped_fraction` metric (threshold > 0.1%, S-0011-03) and a LUFS
 normalization code skeleton targeting -14.0 LUFS (S-0011-01), plus the reusable pieces of
 `audit_audio.py`, `build_manifest.py`, and `plot_histograms.py` to copy into this task's `code/`
-directory (no cross-task library import applies here). Proceed to step 7 (`planning`): synthesize
-`research/research_code.md` into `plan/plan.md`, covering the corrected clipping metric, the LUFS
-normalization pass over all 1557 v5 clips, a post-normalization re-check pass, and the
-clean-manifest output required by step 9 (`implementation`).
+directory (no cross-task library import applies here). `research/research_summary.md` has also been
+produced, compressing that research for downstream agents. Proceed to step 7 (`planning`):
+synthesize `research/research_summary.md` (or `research/research_code.md` for full detail) into
+`plan/plan.md`, covering the corrected clipping metric, the LUFS normalization pass over all 1557 v5
+clips, a post-normalization re-check pass, and the clean-manifest output required by step 9
+(`implementation`).

@@ -41,3 +41,15 @@ planning the corrected clipping metric and LUFS-normalization pipeline. The suba
 No issues encountered. The research confirms this task largely implements two already-validated
 follow-up suggestions from t0011 (S-0011-01 LUFS normalization, S-0011-03 corrected
 `clipped_fraction` clipping metric), so planning and implementation have a concrete starting point.
+
+## Addendum — Research Summary
+
+Steps 4 (research-papers) and 5 (research-internet) were skipped; step 6 (research-code) was the
+only research stage to run. Per the `execute-task` skill's Phase 2 "Summarize research" subsection,
+spawned a dedicated subagent to execute the `/research-summarize` skill and compress
+`research/research_code.md` into `research/research_summary.md` for downstream planning/
+implementation agents. The first attempt ran in the wrong checkout (the main repo instead of this
+task's worktree) and was discarded; a second attempt, explicitly pointed at the worktree path,
+produced `tasks/t0012_v5_corpus_normalize_and_reaudit/research/research_summary.md` (101 lines,
+~6.98 KB, within the 200-line/8KB cap), grounded in `research_code.md`'s findings on the
+`clipped_fraction` metric, -14 LUFS normalization target, and t0011 code-reuse plan.
