@@ -1,0 +1,35 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0010-01",
+      "title": "Run v10 checkpoint harness eval locally to obtain speaker_sim, TTFB, and RTF",
+      "description": "v10 training produced two DVC-tracked checkpoints (epoch_2nd_00014.pth at val_loss 0.818, epoch_2nd_00016.pth at val_loss 0.853) but speaker_sim, ttfb_ms, and rtf are null across all 18 metrics.json variants because the VM root disk was 100% full at teardown. Run eval_all_checkpoints.py locally on the two downloaded checkpoints using the t0008 tts_eval_harness to compute speaker_sim (GE2E cosine vs ElevenLabs David centroid), TTFB, and RTF. Fill in the null metrics.json variants and produce the actual speaker_sim curve. This directly unblocks answering whether v10 surpasses the v3_bundle baseline (0.631) and approaches the 0.85 project target. Recommended task types: tts-benchmark-run.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0010_stage2_safeguarded_training",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0010-02",
+      "title": "Fix idle watchdog TERMINATE_CMD reliability and add disk-fill guard to prevent cost overruns",
+      "description": "The v10 run cost $272.78 vs $45 planned (+506%) because the idle watchdog ran but az ml compute stop failed silently, leaving the VM idle for 19 hours overnight. Fix: replace the az CLI stop command with a Python Azure ML SDK ComputeTarget.stop() call, add retry with exponential backoff, and surface failures via a logged alert rather than silently continuing. Additionally add a disk-usage guard: if root disk usage exceeds 90%, write a warning to the JSONL log and trigger TERMINATE_CMD before the disk fills completely, avoiding both the disk-full training crash and the silent overnight idle. Deploy the updated watchdog as part of arf/scripts/utils/idle_watchdog.sh before any future GPU run. Recommended task types: write-library.",
+      "kind": "technique",
+      "priority": "high",
+      "source_task": "t0010_stage2_safeguarded_training",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0010-03",
+      "title": "Extend v10 Stage 2 training from epoch 17 to epoch 20 using persistent-share checkpoint storage",
+      "description": "v10 training reached epoch 17 with val_loss still descending (best 0.797 at epoch 16) before ephemeral /mnt disk filled. Three of the planned 20 epochs are missing. After S-0010-01 confirms the epoch 15/16 checkpoints have not yet reached speaker_sim 0.85, resume training from epoch_2nd_00016.pth with all checkpoint writes redirected to /mnt/cache/persist (the persistent Azure Files share, which was provisioned but unused during v10) rather than ephemeral /mnt. Run with epochs: 3 and the fixed watchdog from S-0010-02. Evaluate all new checkpoints with the t0008 harness. If speaker_sim is already 0.85 after S-0010-01, this task is not needed. Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0010_stage2_safeguarded_training",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}

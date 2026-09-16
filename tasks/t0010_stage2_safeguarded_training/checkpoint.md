@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-16T07:35:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-16T07:36:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -101,6 +101,14 @@ baselines. Key finding: val_loss improved −6% (0.849 → 0.797) and 0 health g
 t0009 fixes worked; speaker_sim comparison deferred pending harness eval. Verificator PASSED, 0
 errors, 0 warnings.
 
+### Step 14 — suggestions
+
+Generated 3 suggestions in `results/suggestions.json` (IDs S-0010-01 to S-0010-03): (1) run deferred
+v10 harness eval locally to obtain null speaker\_sim/TTFB/RTF metrics (high priority); (2) fix
+watchdog TERMINATE\_CMD to use Python Azure ML SDK with retry plus disk-fill guard at 90% (high
+priority); (3) extend v10 training to epoch 20 using persistent share for checkpoints, contingent on
+speaker\_sim still below 0.85 (medium priority). Verificator PASSED, 0 errors.
+
 * * *
 
 ## Cross-Step Decisions
@@ -124,14 +132,10 @@ errors, 0 warnings.
 
 ## Next Step Notes
 
-Step 13 (compare-literature) completed. Step 14 is `suggestions`. The suggestions agent should
-review the training results and compare_literature.md to generate follow-up task suggestions. Key
-areas: (1) run deferred harness eval locally to obtain speaker_sim/TTFB/RTF for v10 checkpoints; (2)
-investigate why the watchdog did not stop the VM to prevent the cost overrun ($272.78 vs $45
-planned); (3) explore whether continued training beyond epoch 17 (truncated by disk fill, not
-divergence) would further improve val_loss and speaker_sim. See
-`intervention/eval_deferred_disk_full.md` for the eval resolution path.
-
-**Harness eval remains null**: `speaker_sim`, `ttfb_ms`, `rtf` were not obtained. A follow-up task
-should run `eval_all_checkpoints.py` locally once a Kokoro + torch environment is available. See
-`intervention/eval_deferred_disk_full.md`.
+Step 14 (suggestions) completed. Step 15 is `reporting`. The reporting agent should run all
+verificators (`verify_task_file`, `verify_task_dependencies`, `verify_suggestions`,
+`verify_task_metrics`, `verify_task_results`, `verify_task_folder`, `verify_logs`,
+`verify_model_asset`, `verify_machines_destroyed`), capture session transcripts, set `task.json`
+`status` to "completed" with `end_time`, then commit and run poststep. The model asset
+`kokoro-v10-best` at `assets/model/kokoro-v10-best/` is DVC-tracked and was verified clean in step
+9\. The three suggestions in `results/suggestions.json` (S-0010-01 to S-0010-03) are ready.
