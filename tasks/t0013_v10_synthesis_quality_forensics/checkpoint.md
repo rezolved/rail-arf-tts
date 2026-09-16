@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T12:22:29Z"
-completed_steps: 1
-next_step_number: 2
-next_step_id: "check-deps"
+updated_at: "2026-09-16T12:23:20Z"
+completed_steps: 2
+next_step_number: 3
+next_step_id: "init-folders"
 ---
 # Task Objective
 
@@ -21,6 +21,14 @@ Branch `task/t0013_v10_synthesis_quality_forensics` created. Initial folder stru
 `tasks/t0013_v10_synthesis_quality_forensics/`. Step 1 is a mechanical setup step with no research
 output.
 
+### Step 2 — check-deps
+
+Ran `verify_task_dependencies.py`, which passed with no errors or warnings; the aggregator confirms
+`t0010_stage2_safeguarded_training` (the task that produced the kokoro-v10-best checkpoints under
+investigation) has `status: "completed"`. Result recorded in
+`logs/steps/002_check-deps/deps_report.json`. No caveats — the checkpoint under investigation is
+confirmed available for step 6 (`research-code`) and step 9 (`implementation`).
+
 * * *
 
 ## Cross-Step Decisions
@@ -29,5 +37,7 @@ output.
 
 ## Next Step Notes
 
-Step 1 completed successfully. The task branch and folder are ready. Proceed to step 2 per
-step_tracker.json.
+Step 2 completed successfully; the single dependency `t0010_stage2_safeguarded_training` is
+satisfied. Proceed to step 3, `init-folders`, per `step_tracker.json`: create the mandatory task
+folder structure via `init_task_folders`, then populate the aggregator cache under
+`tasks/$TASK_ID/ctx/` before any research/planning work begins.
