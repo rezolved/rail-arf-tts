@@ -156,17 +156,22 @@ the methodology above:
    This is the actual deliverable that was missing project-wide before this task — t0010's harness
    eval never ran, and even if it had, it only measures `speaker_sim`/`ttfb_ms`/`rtf`, not "does
    this even produce a voice."
-2. **Audio samples**, saved as real files (not just numbers) under `results/audio_samples/`: at
-   minimum, the control-checkpoint output from step 2, and the v10 output(s) from step 3 (both
-   `epoch_2nd_00016.pth` and `epoch_2nd_00014.pth` if step 3 runs both) — whatever the outcome, so
-   the user or a future task can listen to the actual evidence, not just read a verdict.
+2. **Audio samples the user can A/B listen to**, saved as real files (not just numbers) under
+   `results/audio_samples/{original,ft}/`: for every text synthesized, both the **original**
+   reference clip (the real human/ElevenLabs recording of that same text — already sourced this
+   session from `tasks/t0008_tts_eval_harness_baselines/data/11labs_david/`, e.g.
+   `pulling_that_up_03.wav`) and the corresponding **FT** output from each checkpoint tested
+   (control, v10 primary, v10 backup) — paired so the user can play original vs. FT back to back
+   for the same phrase, not just read a verdict.
 
 Concretely:
 
 - `code/` — the instrumented inference harness (kikiri-tts clone + submodules under `code/`,
   gitignored; the instrumented script itself committed) — deliverable 1.
-- `results/audio_samples/` — every wav generated during steps 2-3 (control checkpoint, v10
-  primary, v10 backup) — deliverable 2.
+- `results/audio_samples/original/` and `results/audio_samples/ft/` — matching original vs.
+  synthesized pairs for every text used in steps 2-3 (control checkpoint, v10 primary, v10
+  backup), named so pairs are obvious (e.g. `pulling_that_up_03.wav` in both folders) —
+  deliverable 2.
 - `results/control_test.md` — control-checkpoint result (pass/fail, with audio duration/RMS/peak
   stats as an objective substitute for "I listened and it sounded like X").
 - `results/v10_diagnosis.md` — findings from step 3: is it the loader, is it training, which
