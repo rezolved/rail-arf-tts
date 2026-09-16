@@ -1,0 +1,6 @@
+outs:
+- md5: 4f548e11ecdc351778230d655358df95.dir
+  size: 253874432
+  nfiles: 1531
+  hash: md5
+  path: v5_normalized

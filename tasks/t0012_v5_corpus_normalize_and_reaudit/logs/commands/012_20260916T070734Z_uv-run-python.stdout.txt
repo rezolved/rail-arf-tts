@@ -1,0 +1,6 @@
+=== audit_normalize.py: corrected audit + LUFS normalization for v5 train ===
+  v5 train: 1557 clips in manifest
+  --limit 20: processing first 20 clips
+  Processed 20 clips: 0 errors, 20 normalized
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/data/per_clip_stats_v2.jsonl
+Done.

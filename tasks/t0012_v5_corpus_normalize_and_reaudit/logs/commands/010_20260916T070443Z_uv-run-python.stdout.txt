@@ -1,0 +1,20 @@
+=== audit_normalize.py: corrected audit + LUFS normalization for v5 train ===
+  v5 train: 1557 clips in manifest
+  Progress: 100/1557 clips processed
+  Progress: 200/1557 clips processed
+  Progress: 300/1557 clips processed
+  Progress: 400/1557 clips processed
+  Progress: 500/1557 clips processed
+  Progress: 600/1557 clips processed
+  Progress: 700/1557 clips processed
+  Progress: 800/1557 clips processed
+  Progress: 900/1557 clips processed
+  Progress: 1000/1557 clips processed
+  Progress: 1100/1557 clips processed
+  Progress: 1200/1557 clips processed
+  Progress: 1300/1557 clips processed
+  Progress: 1400/1557 clips processed
+  Progress: 1500/1557 clips processed
+  Processed 1557 clips: 0 errors, 1531 normalized
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/data/per_clip_stats_v2.jsonl
+Done.

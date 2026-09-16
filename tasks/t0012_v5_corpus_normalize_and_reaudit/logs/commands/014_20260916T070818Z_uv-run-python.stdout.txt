@@ -1,0 +1,28 @@
+=== build_manifest_v2.py: corrected manifest + reconciliation ===
+  Loaded 1557 clip records from JSONL
+
+  Flag counts (after):
+    channels                        : 0
+    clipping                        : 0
+    clipping_after_normalization    : 0
+    duration_high                   : 0
+    duration_low                    : 25
+    error                           : 0
+    lufs_high                       : 0
+    lufs_low                        : 0
+    samplerate                      : 0
+    silence                         : 1
+    silence_after_normalization     : 0
+
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/data/flagged_clips_v2.txt (26 flagged clips)
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/data/train_list_v5_normalized_clean.txt (1531 clean clips)
+  Consistency check: 26 flagged + 1531 clean = 1557 (expected 1557)
+  Clean-manifest size: 1531/1557 (98.3%), vs t0011 baseline 1311/1557 (84.2%)
+  Leak check: 0 val_96 paths found in clean manifest (expected 0)
+
+  Reclassification of original 224 peak-flagged clips: 220 now clean, 0 still clipped
+
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/data/flag_counts_v2.json
+  Wrote: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/data/analysis_v2.json
+
+Done.

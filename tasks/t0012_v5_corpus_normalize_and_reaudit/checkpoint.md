@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
-updated_at: "2026-09-16T07:00:00Z"
-completed_steps: 10
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-16T07:30:00Z"
+completed_steps: 11
+next_step_number: 11
+next_step_id: "creative-thinking"
 ---
 # Task Objective
 
@@ -89,19 +89,52 @@ repo checkout on branch `main` instead of the task worktree, leaving an untracke
 there; the step-executor relocated it into the worktree and removed the stray copy before committing
 — no main-repo tracked files were touched, so no follow-up cleanup on `main` is needed.
 
+### Step 9 — implementation
+
+The `/implementation` subagent implemented all 19 `REQ-*` items:
+`code/{paths,constants, audit_normalize,build_manifest_v2,plot_histograms_v2}.py`,
+`data/per_clip_stats_v2.jsonl` (1557 records), `data/flagged_clips_v2.txt` (26 flagged),
+`data/train_list_v5_normalized_clean.txt` (1531 clean, 98.3% — vs t0011's 1311/1557 baseline),
+`data/flag_counts_v2.json`, `data/analysis_v2.json`, `data/v5_normalized.dvc`, and 3 histograms in
+`results/images/`. Genuine pre-existing clipping: 0 clips (of the 224 originally peak-flagged, 220
+reclassified clean, 4 remain excluded only for being &lt;1.5s short). 0 val_96 leaks confirmed
+independently by the step-executor.
+
+Two notable findings, both self-caught and fixed within the step (not carried forward as open
+issues): (1) the plan's own gain formula, copied verbatim from t0011's pseudocode, caused 408 new
+clipping cases at full-corpus scale — caught by the plan's own pre-registered `>1311` rejection gate
+and fixed with a `PEAK_CEILING_DBFS = -1.0` true-peak limiter; (2) `dvc pull`/`dvc push` hang
+indefinitely in this environment (step-executor independently reproduced the hang) — worked around
+with a direct Azure Blob SDK upload/download that replicates DVC's content-addressable layout, byte-
+verified against the (separately-completing) local `dvc add` hash. `data/v5_normalized/` itself is
+gitignored (`data/.gitignore`); only the `.dvc` pointer is committed. `ruff`/`mypy` clean; zero diff
+against `tasks/t0011_v5_data_quality_audit/`; zero diff outside the task folder.
+
+**Downstream flag**: the DVC hang is an environment/tooling issue, not specific to this task — a
+future infrastructure task should investigate `arf/scripts/utils` DVC config or formally document
+the Azure-SDK fallback.
+
 * * *
 
 ## Cross-Step Decisions
+
+* DVC `pull`/`push` hang in this environment; use direct Azure Blob SDK (`AzureCliCredential`)
+  replicating DVC's content-addressable `.dir` layout as the verified fallback until a framework fix
+  lands. Verify byte-for-byte against `dvc add`'s locally-computed manifest before trusting the
+  upload.
+* Loudness normalization to a fixed LUFS target must cap true peak (this task uses -1 dBFS via
+  `PEAK_CEILING_DBFS`) — an unbounded gain formula reintroduces clipping at corpus scale even though
+  it looked correct on a small `--limit 20` sample.
 
 * * *
 
 ## Next Step Notes
 
-Step 7 (`planning`) is complete; `plan/plan.md` is the implementation subagent's sole source of
-truth (self-contained per the plan spec) and defines the code to write in `code/`
-(`audit_normalize.py` or equivalently named scripts per the plan's Step by Step), the
-`clipped_fraction` metric, the -14 LUFS normalization pass, the post-normalization re-check, and the
-final `data/train_list_v5_normalized_clean.txt` manifest. Proceed to step 9 (`implementation`):
-spawn the `/implementation` subagent per Critical Rule 9, explicitly telling it to work inside the
-task worktree (`cd` to the worktree path first) since the planning step's subagent skipped that and
-had to be corrected. Step 8 (`setup-machines`) is already marked skipped — this task is CPU-only.
+Step 9 (`implementation`) is complete and fully verified — all deliverables exist, all REQ items
+done, no open issues. Step 10 (`teardown`) is already marked `skipped` in `step_tracker.json` (no
+remote machines were used). Proceed to step 11 (`creative-thinking`): explore the plan's Key
+Questions using `data/analysis_v2.json` and `data/flag_counts_v2.json` as the primary data sources —
+genuine-clipping count (0), new-clipping-from-normalization count (0, after the peak-ceiling fix),
+manifest size vs baselines (1531/1557 vs 1311/1557 and the two suggestions' individual ~1532/~1556
+estimates), and the duration/silence-flag interaction cross-tab already computed in
+`analysis_v2.json` for Key Question 4.

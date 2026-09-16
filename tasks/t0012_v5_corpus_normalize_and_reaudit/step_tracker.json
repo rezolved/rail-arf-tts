@@ -102,10 +102,14 @@
       "step": 9,
       "name": "implementation",
       "description": "Implement clipped_fraction metric, LUFS-normalize the v5 corpus, re-check normalized audio, and write the clean manifest and comparison outputs.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T06:56:56Z",
       "completed_at": null,
-      "log_file": "logs/steps/009_implementation/"
+      "log_file": "logs/steps/009_implementation/",
+      "current_owner": "step-executor/implementation",
+      "last_heartbeat_at": "2026-09-16T07:21:06Z",
+      "heartbeat_interval_seconds": 600,
+      "expected_completion_at": "2026-09-16T07:36:56Z"
     },
     {
       "step": 10,
