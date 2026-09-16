@@ -145,14 +145,15 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md, results_detailed.md, metrics.json with per-epoch speaker_sim curve, best checkpoint analysis, and health gate report.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T07:20:09Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T07:24:56Z",
       "log_file": "logs/steps/012_results/",
-      "current_owner": "step-executor/results",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T07:20:09Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T08:20:09Z"
+      "expected_completion_at": "2026-09-16T08:20:09Z",
+      "actual_duration_seconds": 287
     },
     {
       "step": 13,
