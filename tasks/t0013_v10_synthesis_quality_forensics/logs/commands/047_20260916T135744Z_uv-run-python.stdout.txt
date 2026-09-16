@@ -1,0 +1,16 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 011_20260916T125102Z_dvc-pull-tasks-t0010-stage2-safeguarded-.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 019_20260916T130849Z_tasks-t0013-v10-synthesis-quality-forens.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 020_20260916T131103Z_tasks-t0013-v10-synthesis-quality-forens.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 021_20260916T131217Z_tasks-t0013-v10-synthesis-quality-forens.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 027_20260916T132118Z_dvc-push-tasks-t0013-v10-synthesis-quali.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 029_20260916T132225Z_tasks-t0013-v10-synthesis-quality-forens.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 045_20260916T135726Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 9 warning(s)
+
