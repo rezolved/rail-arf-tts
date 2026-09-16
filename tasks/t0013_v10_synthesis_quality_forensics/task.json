@@ -5,11 +5,11 @@
   "name": "v10 checkpoint synthesis quality forensics",
   "short_description": "Determine whether kokoro-v10-best produces noise instead of speech due to a bug in an ad hoc inference reproduction, or a real checkpoint defect, and act accordingly.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [
     "t0010_stage2_safeguarded_training"
   ],
-  "start_time": null,
+  "start_time": "2026-09-16T12:19:30Z",
   "end_time": null,
   "expected_assets": {},
   "task_types": [
