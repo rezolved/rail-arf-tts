@@ -5,14 +5,15 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0012_v5_corpus_normalize_and_reaudit branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T06:31:44Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T06:34:23Z",
       "log_file": "logs/steps/001_create-branch/",
-      "current_owner": "step-executor/create-branch",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T06:31:44Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T07:31:44Z"
+      "expected_completion_at": "2026-09-16T07:31:44Z",
+      "actual_duration_seconds": 159
     },
     {
       "step": 2,
