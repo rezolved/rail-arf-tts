@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
-updated_at: "2026-09-16T07:34:46Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-16T07:40:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -159,23 +159,30 @@ records. `verify_task_metrics` and `verify_task_results` both PASSED with 0 erro
   from t0011 per this task's scope; a future task could revisit a duration-aware (transcript-length
   -scaled) floor to recover them — see `results/creative_thinking.md` §3.
 
+### Step 14 — suggestions
+
+The `/generate-suggestions` subagent (spawned per Critical Rule 9) wrote `results/suggestions.json`
+with 4 new suggestions: S-0012-01 (duration-aware floor to recover the 25 `duration_low`-excluded
+filler clips), S-0012-02 (fix/document the recurring `dvc pull`/`push` hang, independently hit by
+both t0011 and t0012), S-0012-03 (extract the twice-copy-pasted audit/LUFS-normalize pipeline into a
+registered library), S-0012-04 (empirically verify LUFS normalization doesn't reduce GE2E speaker
+similarity before the expensive full-corpus Stage 2 run). Deduplicated against
+`aggregate_suggestions --uncovered` (10 active) and `aggregate_tasks` — no overlaps; S-0011-02 (the
+full-corpus Stage 2 run itself) was already covered so it was not re-proposed. `verify_suggestions`
+PASSED with 0 errors/0 warnings, confirmed independently by the step-executor via
+`run_with_logs.py`.
+
 * * *
 
 ## Next Step Notes
 
-Step 12 (`results`) is complete:
-`results/{results_summary.md,results_detailed.md,metrics.json, costs.json,remote_machines_used.json}`
-are all written and both verificators (`verify_task_metrics`, `verify_task_results`) PASSED with 0
-errors/0 warnings. Step 13 (`compare-literature`) was already skipped earlier (not in
-`data-analysis`'s `optional_steps`). Proceed to step 14 (`suggestions`): spawn the
-`/generate-suggestions` subagent to formulate follow-up suggestions from
-`results/results_detailed.md` and `results/creative_thinking.md`. Good candidates already surfaced
-by this task: (1) the full-corpus Stage 2 training run consuming
-`data/train_list_v5_normalized_clean.txt` (tracked separately as S-0011-02, check
-`aggregate_suggestions` for whether it already exists before proposing a duplicate); (2) revisiting
-a duration-aware (transcript-length-scaled) `DURATION_MIN_S` floor to recover some of the 25
-`duration_low`-excluded short filler phrases (`results/creative_thinking.md` §3); (3) the DVC
-`pull`/`push` hang in this environment, which is an infrastructure issue outside this task's scope
-(`results/creative_thinking.md` mentions it was also independently hit by a concurrent t0010
-worktree). After suggestions, step 15 (`reporting`) runs the full verificator sweep, session
-capture, and marks `task.json` `status: "completed"`.
+Step 14 (`suggestions`) is complete: `results/suggestions.json` has 4 entries (S-0012-01 through
+S-0012-04) and `verify_suggestions` PASSED with 0 errors/0 warnings. Proceed to step 15
+(`reporting`): run the full verificator sweep (`verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`, plus the `data/v5_normalized` dataset asset verificator and
+`verify_machines_destroyed` — no remote machines were used, so that one should report a clean
+no-op), capture session transcripts via `capture_task_sessions`, set `task.json`
+`status: "completed"` and `end_time`, then finalize `checkpoint.md` with
+`next_step_number`/`next_step_id` set to `null`. This is the final step before the coordinator's
+Phase 7 PR/merge.

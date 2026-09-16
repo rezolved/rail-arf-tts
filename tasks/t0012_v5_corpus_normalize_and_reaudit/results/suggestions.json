@@ -1,0 +1,49 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0012-01",
+      "title": "Recover the 25 duration-excluded filler clips with a duration-aware floor",
+      "description": "t0012 kept t0011's fixed 1.5s duration_low floor unchanged (out of this task's scope), so 25 short, single-phrase fillers (e.g. \"sure thing\" 0.65s, \"got it\" 0.74s) remain excluded from the clean manifest even though they are legitimate voice-commerce filler utterances, not truncated audio, and are exactly the category of prompt this project needs to synthesize. t0011's creative-thinking Strategy C proposed a duration-aware floor scaled to transcript length (duration_s > k * phoneme_len) instead of one fixed cutoff, which would recover most of these 25 clips without reopening the truncation-artifact risk the fixed floor exists to guard against. Recommended task types: data-analysis.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0012_v5_corpus_normalize_and_reaudit",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    },
+    {
+      "id": "S-0012-02",
+      "title": "Fix or formally document the dvc pull/push hang blocking this environment's DVC workflow",
+      "description": "Both t0011 and t0012 independently hit dvc pull/push hanging indefinitely in this environment (dvc status timed out after 60s), forcing ad hoc workarounds each time: t0011 used az storage blob download, t0012 used direct Azure Blob SDK calls replicating DVC's content-addressable .dir layout, verified byte-for-byte against a locally-completed dvc add. This is a recurring ~10-60 minute tax on every DVC-heavy task and a correctness risk if a future task trusts an unverified workaround instead of re-deriving the byte-level check. Investigate the root cause (Azure credential chaining, DVC remote config) and either fix it or formally wrap the verified Azure SDK fallback as the documented supported path for this project. Recommended task types: infrastructure-setup.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0012_v5_corpus_normalize_and_reaudit",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    },
+    {
+      "id": "S-0012-03",
+      "title": "Extract the repeated audio-audit + LUFS-normalize pipeline into a registered library",
+      "description": "t0011 and t0012 each independently authored near-identical audio-stats/flagging/histogram code (compute_clip_stats, _get_flag_reasons, plot_histogram) that t0012 copy-pasted and adapted from t0011 per the repo's no-cross-task-import-without-a-library rule. A future data-quality task (e.g. auditing a later corpus revision, or re-normalizing after further changes) would repeat the same copy-paste and risk threshold drift between copies. Promote the audit/normalize/flag/plot functions into a registered project library, the same pattern already used for tts_eval_harness and t0009_training_safeguards, so future corpus-audit tasks import a single source of truth instead of re-copying. Recommended task types: write-library.",
+      "kind": "library",
+      "priority": "low",
+      "source_task": "t0012_v5_corpus_normalize_and_reaudit",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    },
+    {
+      "id": "S-0012-04",
+      "title": "Verify LUFS normalization doesn't reduce GE2E speaker similarity before the full-corpus Stage 2 run",
+      "description": "t0012's creative-thinking analysis argues GE2E cosine similarity should be amplitude-invariant (per t0011's own risk analysis), so the -14 LUFS normalization and its residual post-normalization loudness variance (std 1.58, one-directional/ceiling-capped per clip) should not hurt speaker_sim, but this has never been empirically checked. Before spending GPU budget on the expensive full-corpus Stage 2 run that will consume data/train_list_v5_normalized_clean.txt (tracked as S-0011-02), use t0008's tts_eval_harness to compute GE2E cosine similarity between a sample of the new normalized clips and their pre-normalization originals against the ElevenLabs reference set, as a cheap CPU-only gate confirming normalization hasn't already measurably shifted speaker identity. Recommended task types: tts-benchmark-run.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0012_v5_corpus_normalize_and_reaudit",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    }
+  ]
+}

@@ -162,10 +162,14 @@
       "step": 14,
       "name": "suggestions",
       "description": "Formulate follow-up suggestions, e.g. the full-corpus Stage 2 run (S-0011-02) that consumes this task's clean manifest.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T07:36:21Z",
       "completed_at": null,
-      "log_file": "logs/steps/014_suggestions/"
+      "log_file": "logs/steps/014_suggestions/",
+      "current_owner": "step-executor/suggestions",
+      "last_heartbeat_at": "2026-09-16T07:36:21Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-16T08:36:21Z"
     },
     {
       "step": 15,
