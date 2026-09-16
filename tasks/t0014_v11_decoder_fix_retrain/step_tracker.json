@@ -117,11 +117,11 @@
       "step": 9,
       "name": "implementation",
       "description": "Fix ignore_modules, verify decoder init, train on the t0012 1531-clip corpus, run the audible-speech gate, and produce deliverables only if the gate passes.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T22:33:22Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T23:08:15Z",
       "log_file": "logs/steps/009_implementation/",
-      "current_owner": "step-executor/implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T22:33:22Z",
       "heartbeat_interval_seconds": 900,
       "expected_completion_at": "2026-09-16T23:30:00Z",
@@ -130,7 +130,8 @@
       "resume_after": "2026-09-16T22:30:00Z",
       "watchdog_active": true,
       "liveness_probe": "ssh LLM-T1-NC80 tmux has-session -t v11train",
-      "pause_count": 2
+      "pause_count": 2,
+      "actual_duration_seconds": 2093
     },
     {
       "step": 10,
