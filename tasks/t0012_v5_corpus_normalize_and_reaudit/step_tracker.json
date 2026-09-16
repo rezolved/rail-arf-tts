@@ -79,14 +79,15 @@
       "step": 7,
       "name": "planning",
       "description": "Design the corrected clipping metric, LUFS normalization pipeline, post-normalization re-check, and manifest/comparison outputs.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T06:46:32Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T06:56:09Z",
       "log_file": "logs/steps/007_planning/",
-      "current_owner": "step-executor/planning",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T06:46:32Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T07:46:32Z"
+      "expected_completion_at": "2026-09-16T07:46:32Z",
+      "actual_duration_seconds": 577
     },
     {
       "step": 8,
