@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
 updated_at: "2026-09-16T12:23:20Z"
-completed_steps: 2
+completed_steps: 7
 next_step_number: 3
 next_step_id: "init-folders"
 ---
@@ -28,6 +28,33 @@ Ran `verify_task_dependencies.py`, which passed with no errors or warnings; the 
 investigation) has `status: "completed"`. Result recorded in
 `logs/steps/002_check-deps/deps_report.json`. No caveats — the checkpoint under investigation is
 confirmed available for step 6 (`research-code`) and step 9 (`implementation`).
+
+### Step 4 — research-papers (skipped)
+
+Skipped: this is an empirical debugging/forensics task (checkpoint loading, weight inspection, audio
+inference), not a literature question. No published-paper evidence bears on the root cause.
+
+### Step 5 — research-internet (skipped)
+
+Skipped: `task_description.md` already specifies the exact reproduction recipe (torch pin, StyleTTS2
+demo notebook, dependency list) discovered in the prior ad hoc session, so no new external research
+is needed to execute it.
+
+### Step 8 — setup-machines (skipped)
+
+Skipped: `task_description.md` specifies a CPU-only venv reproduction (torch==2.5.1 CPU, espeak-ng,
+local StyleTTS2 inference) with no GPU training or large-scale inference involved.
+
+### Step 10 — teardown (skipped)
+
+Skipped: no remote machine was provisioned (`setup-machines` not included), so there is nothing to
+tear down.
+
+### Step 13 — compare-literature (skipped)
+
+Skipped: this task produces internal forensic evidence (key-load diagnostics, weight-norm
+comparisons, audio checks) about one project's own checkpoints, not quantitative results comparable
+to a published baseline.
 
 * * *
 
