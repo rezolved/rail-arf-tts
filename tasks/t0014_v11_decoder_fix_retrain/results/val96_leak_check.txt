@@ -1,0 +1,4 @@
+train clips: 1531
+val_96 clips: 96
+overlap (leaked clips): 0
+RESULT: 0 val_96 leaks into the v11 train manifest.

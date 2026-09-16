@@ -117,10 +117,20 @@
       "step": 9,
       "name": "implementation",
       "description": "Fix ignore_modules, verify decoder init, train on the t0012 1531-clip corpus, run the audible-speech gate, and produce deliverables only if the gate passes.",
-      "status": "pending",
-      "started_at": null,
+      "status": "paused_waiting",
+      "started_at": "2026-09-16T16:59:32Z",
       "completed_at": null,
-      "log_file": "logs/steps/009_implementation/"
+      "log_file": "logs/steps/009_implementation/",
+      "current_owner": null,
+      "last_heartbeat_at": "2026-09-16T16:59:32Z",
+      "heartbeat_interval_seconds": 900,
+      "expected_completion_at": "2026-09-17T00:59:32Z",
+      "resume_sentinel": "SSH to LLM-T1-NC80: tail -50 /home/azureuser/v11_train.log for the latest 'Epoch [N/50], Step [S/191]' line and check for a trailing 'DONE' marker (process exited). Cross-check ~/kokoro-finetune/logs/v11/metrics.jsonl (tail -5, look for val_loss records \u2014 one per completed epoch) and ~/kokoro-finetune/logs/v11/v11/checkpoints.json (jq '.checkpoints[-1]' for the latest epoch/val_loss/sha256). grep -c 'gate_fired' ~/kokoro-finetune/logs/v11/metrics.jsonl for HealthGate firings (expect 0). If DONE marker present and 50 epochs completed with no gate firing: proceed to Milestone C (audible-speech gate). If tmux session v11train still alive and epoch count climbing: pause again with a new resume-after. If tmux session dead but no DONE marker and epoch count stalled: treat as job_dead \u2014 collect the log tail, do not pause again, write intervention/. Also re-check df -h / on LLM-T1-NC80 (expect ~87%, unchanged) per the plan's proactive disk-monitoring requirement.",
+      "paused_at": "2026-09-16T17:46:29Z",
+      "resume_after": "2026-09-16T19:45:00Z",
+      "watchdog_active": true,
+      "liveness_probe": "ssh LLM-T1-NC80 tmux has-session -t v11train",
+      "pause_count": 1
     },
     {
       "step": 10,

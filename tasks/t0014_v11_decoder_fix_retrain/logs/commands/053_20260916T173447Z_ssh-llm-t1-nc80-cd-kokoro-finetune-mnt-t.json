@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "command": "ssh LLM-T1-NC80 cd ~/kokoro-finetune && /mnt/tmp/t0014_venv/venv/bin/python -c \"\nimport sys; sys.path.insert(0, '.')\nimport torch\ntorch._original_load = torch.load\ntorch.load = lambda *a, **k: torch._original_load(*a, **{**k, 'weights_only': False})\nimport warnings; warnings.simplefilter('ignore')\nfrom tasks.t0009_stage2_training_failure_forensics.code.checkpoint_manager import CheckpointManager\nfrom tasks.t0009_stage2_training_failure_forensics.code.health_gates import HealthGate\nfrom tasks.t0009_stage2_training_failure_forensics.code.jsonl_logger import StepLogger\nfrom tasks.t0009_stage2_training_failure_forensics.code.run_config import capture_run_config\nfrom kokoro_symbols import TextCleaner\nfrom kokoro_tb_utils import extract_voicepack, prepare_test_tokens, run_kokoro_inference\nfrom losses import *\nfrom meldataset import build_dataloader\nfrom models import *\nfrom Modules.diffusion.sampler import ADPM2Sampler, DiffusionSampler, KarrasSchedule\nfrom Modules.slmadv import SLMAdversarialLoss\nfrom optimizers import build_optimizer\nfrom utils import *\nfrom Utils.ASR.models import ASRCNN\nfrom Utils.JDC.model import JDCNet\nfrom Utils.PLBERT.util import load_plbert\nimport click\nprint('ALL_IMPORTS_OK', torch.__version__, torch.cuda.is_available())\n\"",
+  "exit_code": 0,
+  "duration_seconds": 8.319,
+  "started_at": "2026-09-16T17:34:47Z",
+  "completed_at": "2026-09-16T17:34:55Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain",
+  "stdout_file": "053_20260916T173447Z_ssh-llm-t1-nc80-cd-kokoro-finetune-mnt-t.stdout.txt",
+  "stderr_file": "053_20260916T173447Z_ssh-llm-t1-nc80-cd-kokoro-finetune-mnt-t.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

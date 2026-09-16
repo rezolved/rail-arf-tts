@@ -1,8 +1,8 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T16:52:00Z"
-completed_steps: 9
+updated_at: "2026-09-16T17:55:00Z"
+completed_steps: 8
 next_step_number: 9
 next_step_id: "implementation"
 ---
@@ -168,21 +168,66 @@ steps.
   billing idle. Future long-running steps on this task (especially `implementation`'s multi-hour
   training run) must use the sanctioned `paused_waiting` + `ScheduleWakeup` mechanism, never an
   agent-described background watcher, when a wait needs to outlive the current turn.
+* **Step 9 (`implementation`) is `paused_waiting`, not complete.** Milestone A (REQ-1, REQ-2, REQ-3,
+  REQ-5) finished and is verified: `code/config_david_v11.yml` repoints `first_stage_path` at
+  `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` with `epochs=50`/`diff_epoch=10`/
+  `joint_epoch=30`; the mandatory pre-flight `inspect_checkpoint.py` run **passed**
+  (`results/checkpoint_forensics_v11.md`: decoder classifies `hifigan`, all 14 modules finite, 0
+  missing) before any GPU spend; `results/val96_leak_check.txt` confirms 0 overlap between the
+  1,531-clip `data/train_list_v11_normalized.txt` and `val_96`. **A second real bug was found and
+  fixed mid-flight, beyond what the plan anticipated**: the LibriTTS checkpoint's state dict uses
+  the classic `torch.nn.utils.{weight_norm,spectral_norm}` key naming, but this fork's `models.py`
+  builds the newer `parametrizations.*` naming, so the first training launch silently partial-loaded
+  (`decoder 438/678`, `style_encoder 16/67`, `predictor 90/122` params) despite the architecture
+  pre-flight passing — the pre-flight only checks decoder *shape classification*, not key-name-level
+  load compatibility. Fixed by porting t0013's already-existing
+  `_rename_legacy_parametrization_keys()` (from `infer_styletts2.py`) into
+  `code/train_second_v11.py`'s `load_checkpoint()`; relaunched training now shows every module
+  loading 100%. **Environment deviation, documented and safe**: building the training venv on
+  `/mnt/cache/persist` (the CIFS-backed Azure Files mount) stalled indefinitely writing PyTorch's
+  ~14k files, so the venv was built instead at `/mnt/tmp/t0014_venv/venv` (local ext4, 177GB free,
+  fully regenerable) — this is **not** the root disk and does not touch the plan's Lesson-10
+  persistence requirement, because all actual data (corpus, the 771MB LibriTTS checkpoint, and every
+  training checkpoint/log) correctly lives under `/mnt/cache/persist/`. **Disk-space near-miss found
+  and mitigated before any training spend**: root disk (`/dev/root`) was at 98%/3GB free when step 9
+  started (t0010's exact stuck-teardown failure mode recurring, caused by ~68GB of unrelated
+  leftover data from other tasks/projects sharing this VM pool, none of it touched) — reclaimed to
+  87%/16GB free via `docker system prune -a --volumes -f` (9.8GB), `apt-get clean`/`autoremove`,
+  `journalctl --vacuum-time=2d`, and disabled-snap-revision removal; independently re-verified
+  stable at 87% after training launch. Training is confirmed healthy (independently re-verified, not
+  just taken on the subagent's word): `tmux has-session -t v11train` on `LLM-T1-NC80` returns alive,
+  log shows loss trending down with no NaNs (epoch 1, step 150/191 at last check), both H100s at
+  ~73GB/96GB VRAM, idle watchdog PID confirmed still running. Step 9 was paused via
+  `heartbeat.pause_step` (`resume_after: 2026-09-16T19:45:00Z`, `watchdog_active: true`,
+  `liveness_probe: "ssh LLM-T1-NC80 tmux has-session -t v11train"`, `pause_count: 1`) rather than
+  ridden out synchronously, because the full 50-epoch/30-joint-epoch run is estimated at ~3 hours of
+  active GPU compute. Milestones B (remaining epochs), C (the mandatory audible-speech gate —
+  REQ-6/REQ-7, the task's actual pass/fail criterion), and D (conditional `model` asset + DVC) are
+  still open.
 
 * * *
 
 ## Next Step Notes
 
-`LLM-T1-NC80` (2xH100 NVL) is provisioned and `ready`: SSH/GPU/CUDA verified (CUDA 12.2), idle
-watchdog active with a confirmed PID (3600s timeout), `/mnt/cache/persist` verified resolving to the
-live Azure Files CIFS mount (Lesson 10), and `loginctl` linger confirmed enabled for `azureuser`
-(Lesson 11). `machine_log.json` is at `logs/steps/008_setup-machines/machine_log.json`,
-`verify_step` passes 0 errors/0 warnings. Proceed to step 9 (`implementation`) per
-`step_tracker.json`: fix `ignore_modules` per plan Milestone A, re-create the `kokoro-finetune` env
-on the VM (its prior symlink to `/mnt/tmp/kikiri-tts/StyleTTS2` was found wiped — build fresh, do
-not assume it exists), run the mandatory pre-flight `classify_decoder()` tensor check on the
-LibriTTS checkpoint **before any GPU training spend**, then train on t0012's 1,531-clip corpus with
-the 50/10/30 epoch schedule, polling `df -h /` every 15-20 min per the plan's disk-usage risk
-mitigation (t0010's stuck-teardown precedent), and finally gate completion on
-`audio_quality_check.py`'s `check_audio_quality()` per REQ-6/REQ-7 — document a gate failure
-honestly rather than fabricating a `model` asset.
+Step 9 (`implementation`) is **`paused_waiting`**, not pending — this is a *resume*, not a fresh
+start. `step_tracker.json`'s step 9 entry has the full `resume_sentinel` (what to check: `tmux`
+session, `v11_train.log` tail, `metrics.jsonl`/`checkpoints.json` on the VM, gate-fired count,
+`df -h /`), `resume_after: 2026-09-16T19:45:00Z`, `watchdog_active: true`, and
+`liveness_probe: "ssh LLM-T1-NC80 tmux has-session -t v11train"`. On resume: run
+`uv run python -m arf.scripts.utils.resume_check t0014_v11_decoder_fix_retrain 9` first and follow
+its three-branch decision (sentinel present / job_alive / job_dead) per
+`arf/skills/implementation/SKILL.md`'s Critical Rule 9 — do not blindly re-pause. If training
+finished cleanly (50 epochs, 0 unexplained `HealthGate` firings), proceed to plan.md's Milestone C
+(the mandatory audible-speech gate, `audio_quality_check.py`'s `check_audio_quality()` —
+REQ-6/REQ-7, the task's sole pass/fail criterion) and Milestone D (conditional `model` asset + DVC,
+only if the gate passes). If still training, pause again with a new `resume_after`. If the job died,
+do not pause again — collect the VM-side log, transition appropriately, and write an `intervention/`
+file. `code/config_david_v11.yml`, `code/train_second_v11.py` (includes a v11-only
+`_rename_legacy_parametrization_keys()` fix beyond the plan's original scope — see Cross-Step
+Decisions), and the Milestone C code (`audio_quality_check.py`, `infer_styletts2.py`,
+`score_speaker_sim.py`, `inspect_checkpoint.py`, `paths.py`) already exist in `code/` and do not
+need to be recreated. The training venv lives at `/mnt/tmp/t0014_venv/venv` on the VM (ext4 local
+disk, not root, not persist — see Cross-Step Decisions for why) with `~/kokoro-finetune` symlinked
+to `/mnt/cache/persist/t0014_v11_decoder_fix_retrain/kokoro-finetune`. Keep polling `df -h /` every
+15-20 min while driving Milestone B/C — it was independently re-verified stable at 87%/16GB free at
+pause time, but that is not a permanent fix (t0010's stuck-teardown precedent).

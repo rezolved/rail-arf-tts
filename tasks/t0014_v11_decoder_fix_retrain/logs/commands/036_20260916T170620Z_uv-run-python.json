@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "command": "uv run python /tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/5417a6ab-d63e-4b14-9b97-49215da3d02c/scratchpad/dvc_dl/download.py /tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/5417a6ab-d63e-4b14-9b97-49215da3d02c/scratchpad/dvc_dl/v5_normalized.dir.json /tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/5417a6ab-d63e-4b14-9b97-49215da3d02c/scratchpad/dvc_dl/v5_normalized",
+  "exit_code": 0,
+  "duration_seconds": 21.726,
+  "started_at": "2026-09-16T17:06:20Z",
+  "completed_at": "2026-09-16T17:06:42Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain",
+  "stdout_file": "036_20260916T170620Z_uv-run-python.stdout.txt",
+  "stderr_file": "036_20260916T170620Z_uv-run-python.stderr.txt",
+  "stdout_lines": 8,
+  "stderr_lines": 0,
+  "truncated": false
+}
