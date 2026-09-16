@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T15:29:51Z"
+updated_at: "2026-09-16T15:52:00Z"
 completed_steps: 6
-next_step_number: 6
-next_step_id: "research-code"
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -61,6 +61,22 @@ Resolved Key Question 1: `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` is
 Multi-Resolution Discriminator Is All You Need", arXiv:2103.05236); its `/add-paper` subagent was
 spawned and runs in parallel with subsequent steps.
 
+### Step 6 — research-code
+
+Reviewed `t0009`'s safeguard library, `t0010`'s `train_second_v10.py`, and `t0013`'s
+`inspect_checkpoint.py`/`audio_quality_check.py`/`infer_styletts2.py`, writing
+`research/research_code.md` (6 tasks cited of 13 reviewed, both project libraries assessed;
+`verify_research_code.py` passed 0 errors/0 warnings). Pinpointed the bug to
+`tasks/t0010_stage2_safeguarded_training/code/train_second_v10.py:253-259`'s `ignore_modules` list
+omitting `"decoder"`. Confirmed t0010's `eval_all_checkpoints.py` (routes through Kokoro
+`KModel`/`KPipeline`, which cannot load a `hifigan`-decoder checkpoint) and t0013's
+`v10_diagnosis.md` (framed the fix as random-init retrain) both bake in the now-superseded
+random-init assumption; also found `t0013`'s `infer_styletts2.py` already validated
+`yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` as a known-good control, corroborating step 5's
+repoint recommendation. Also ran the mandatory `research-summarize` step, producing
+`research/research_summary.md` for planning/implementation to consume instead of the full research
+files.
+
 ### Step 11 — creative-thinking
 
 Skipped: task scope is a well-defined diagnostic fix (decoder-init bug) plus corpus-expansion
@@ -91,17 +107,28 @@ steps.
   `research_papers.md`'s VCTK/LibriTTS from-scratch numbers, and should supersede v10's 20/8 budget
   in planning — for the from-scratch fallback, `research_internet.md` also found 400-1,000 Stage-1
   epochs on ~150 files as order-of-magnitude confirmation the old budget was short.
+* **Prior code confirmed to still carry the superseded random-init assumption.** `t0010`'s
+  `eval_all_checkpoints.py` and `t0013`'s `v10_diagnosis.md` both assume the fix is "add
+  `\"decoder\"` to `ignore_modules`" (random init); planning must not copy that framing forward
+  as-is. `t0010`'s `train_second_v10.py` (with the `t0009` safeguards already wired in) and
+  `t0013`'s
+  `inspect_checkpoint.py`/`audio_quality_check.py`/`infer_styletts2.py`/`random_decoder_probe.py`
+  are otherwise directly reusable (copy into task; only `tts_eval_harness`'s scoring functions, not
+  its Kokoro-based synthesis adapters, are usable pre-v11).
 
 * * *
 
 ## Next Step Notes
 
-Step 5 (`research-internet`) completed — `research/research_internet.md` resolves Key Question 1:
-use `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` (hifigan-shaped, field-matches
-`config_david_v10.yml`) instead of random-init decoder training. Proceed to step 6 (`research-code`)
-per step_tracker.json: review t0009's safeguard library, t0010's `train_second_v10.py`/`joint_epoch`
-fix/DP-aware loader, and t0013's `inspect_checkpoint.py`/
-`audio_quality_check.py`/`infer_styletts2.py` for reuse — and check whether any of those scripts
-already assume the old random-init/`ignore_modules` fix path, since that assumption is now
-superseded. One `/add-paper` subagent (arXiv:2103.05236) is still running in the background; confirm
-its completion before `compare-literature` or `reporting`.
+All three research steps are complete. `research/research_summary.md` (~8 KB) now compresses
+`research_papers.md`/`research_internet.md`/`research_code.md` and should be the first file the
+`planning` subagent reads. Proceed to step 7 (`planning`) per `step_tracker.json`: design the
+decoder-init fix (repoint `first_stage_path` at `yl4579/StyleTTS2-LibriTTS`'s
+`epochs_2nd_00020.pth`, per steps 5-6, not the random-init `ignore_modules` fallback), the corpus
+swap to t0012's 1,531-clip set, the retrain epoch budget (anchor on `Configs/config_ft.yml`'s
+50/10/30 schedule per step 5, not v10's 20/8), and the mandatory audible-speech gate. Reuse
+`t0010`'s `train_second_v10.py` (copy into task, already wired to `t0009`'s safeguards) and
+`t0013`'s `inspect_checkpoint.py` / `audio_quality_check.py` / `infer_styletts2.py` /
+`random_decoder_probe.py` (all copy into task) per `research/research_code.md`'s Reusable Code and
+Assets section. The `add-paper` subagent for arXiv:2103.05236 (GAN Vocoder / MRD) from step 5 has
+already completed and was committed (`11e1d85`) — no outstanding background work remains.
