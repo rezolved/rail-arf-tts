@@ -190,14 +190,15 @@
       "step": 14,
       "name": "suggestions",
       "description": "Formulate follow-up suggestions based on the gate outcome.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T23:31:57Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T23:36:39Z",
       "log_file": "logs/steps/014_suggestions/",
-      "current_owner": "step-executor/suggestions",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T23:31:57Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T00:31:57Z"
+      "expected_completion_at": "2026-09-17T00:31:57Z",
+      "actual_duration_seconds": 282
     },
     {
       "step": 15,
