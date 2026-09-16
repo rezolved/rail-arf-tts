@@ -61,14 +61,15 @@
       "step": 5,
       "name": "research-internet",
       "description": "Search for a hifigan-shaped pretrained StyleTTS2 first-stage checkpoint (original authors, semidark/StyleTTS2, or elsewhere), per Key Question 1 \u2014 must happen before committing to the random-init decoder path.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T15:18:04Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T15:30:54Z",
       "log_file": "logs/steps/005_research-internet/",
-      "current_owner": "step-executor/research-internet",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T15:18:04Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-16T15:58:04Z"
+      "expected_completion_at": "2026-09-16T15:58:04Z",
+      "actual_duration_seconds": 770
     },
     {
       "step": 6,
