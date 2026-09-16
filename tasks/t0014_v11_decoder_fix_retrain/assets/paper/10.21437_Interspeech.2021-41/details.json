@@ -1,0 +1,61 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.21437_Interspeech.2021-41",
+  "doi": "10.21437/Interspeech.2021-41",
+  "title": "GAN Vocoder: Multi-Resolution Discriminator Is All You Need",
+  "url": "https://www.isca-archive.org/interspeech_2021/you21b_interspeech.html",
+  "pdf_url": "https://www.isca-archive.org/interspeech_2021/you21b_interspeech.pdf",
+  "date_published": "2021-08-30",
+  "year": 2021,
+  "authors": [
+    {
+      "name": "Jaeseong You",
+      "country": "KR",
+      "institution": "MoneyBrain Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Dalhyun Kim",
+      "country": "KR",
+      "institution": "MoneyBrain Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Gyuhyeon Nam",
+      "country": "KR",
+      "institution": "MoneyBrain Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Geumbyeol Hwang",
+      "country": "KR",
+      "institution": "MoneyBrain Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Gyeongsu Chae",
+      "country": "KR",
+      "institution": "MoneyBrain Inc.",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "MoneyBrain Inc.",
+      "country": "KR"
+    }
+  ],
+  "journal": "Interspeech 2021",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "Several of the latest GAN-based vocoders show remarkable achievements, outperforming autoregressive and flow-based competitors in both qualitative and quantitative measures while synthesizing orders of magnitude faster. In this work, we hypothesize that the common factor underlying their success is the multi-resolution discriminating framework, not the minute details in architecture, loss function, or training strategy. We experimentally test the hypothesis by evaluating six different generators paired with one shared multi-resolution discriminating framework. For all evaluative measures with respect to text-to-speech syntheses and for all perceptual metrics, their performances are not distinguishable from one another, which supports our hypothesis.",
+  "citation_key": "You2021",
+  "summary_path": "summary.md",
+  "files": [
+    "files/you_2021_gan-vocoder-multi-resolution-discriminator.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0014_v11_decoder_fix_retrain",
+  "date_added": "2026-09-16"
+}
