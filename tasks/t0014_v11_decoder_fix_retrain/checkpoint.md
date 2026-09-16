@@ -102,6 +102,17 @@ val_96 + 1358-clip benchmark (high), porting You2021's discriminator-warmup/feat
 rules into the t0009 safeguard library (medium), and a from-scratch decoder run to drop the LibriTTS
 pretrained-weight dependency (low). `verify_suggestions.py` PASSED, 0 errors/0 warnings.
 
+### Step 15 — reporting
+
+Ran all remaining verificators (`verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`, `meta.asset_types.model.verificator kokoro-v11-best`, `verify_machines_destroyed`,
+`verify_compare_literature`, `verify_research_papers`, `verify_research_internet`) — all PASSED, 0
+errors. Removed a leftover gitignored `ctx/` aggregator-cache directory that tripped
+`verify_task_folder`'s `FD-E016`. Ran `capture_task_sessions` (0 transcripts matched out of 360
+candidates — recorded, non-blocking). Set `task.json` `status: "completed"`,
+`end_time: "2026-09-16T23:39:04Z"`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -143,17 +154,6 @@ pretrained-weight dependency (low). `verify_suggestions.py` PASSED, 0 errors/0 w
 * **`LLM-T1-NC80` fully torn down at teardown (step 10).** Final measured cost is $89.85 over 6.436
   hours (`created_at` 16:45:14Z → `destroyed_at` 23:11:25Z) — the authoritative total for
   `results/costs.json` and any budget-reporting step downstream.
-
-### Step 15 — reporting
-
-Ran all remaining verificators (`verify_task_file`, `verify_task_dependencies`,
-`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
-`verify_logs`, `meta.asset_types.model.verificator kokoro-v11-best`, `verify_machines_destroyed`,
-`verify_compare_literature`, `verify_research_papers`, `verify_research_internet`) — all PASSED, 0
-errors (a handful of pre-existing non-blocking warnings only). Removed a leftover gitignored `ctx/`
-aggregator-cache directory that tripped `verify_task_folder`'s `FD-E016`. Ran
-`capture_task_sessions` (0 transcripts matched out of 360 candidates — recorded, non-blocking). Set
-`task.json` `status: "completed"`, `end_time: "2026-09-16T23:39:04Z"`.
 
 * * *
 
