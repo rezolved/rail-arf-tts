@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
 updated_at: "2026-09-16T06:35:35Z"
-completed_steps: 2
+completed_steps: 7
 next_step_number: 3
 next_step_id: "init-folders"
 ---
@@ -26,6 +26,29 @@ output.
 Verified dependency `t0011_v5_data_quality_audit` has `status: completed` in its `task.json`, so the
 dependency check passed with 0 errors and 0 warnings. Result recorded in
 `logs/steps/002_check-deps/deps_report.json`. No caveats for downstream steps.
+
+### Step 4 — research-papers
+
+Skipped: LUFS normalization (EBU R128) is a standard, well-documented technique; no literature
+validation is needed beyond t0011's prior research and its own creative-thinking findings.
+
+### Step 5 — research-internet
+
+Skipped: not in data-analysis `optional_steps`; task operates entirely on local audio data and prior
+task code, no new external information needed.
+
+### Step 8 — setup-machines
+
+Skipped: task is CPU-only (pyloudnorm + soundfile on 1557 clips), no remote compute needed.
+
+### Step 10 — teardown
+
+Skipped: `setup-machines` was skipped, so there are no remote machines to tear down.
+
+### Step 13 — compare-literature
+
+Skipped: not in data-analysis `optional_steps`; this task's outputs (clean-manifest size, flag
+counts) are not comparable to published baselines.
 
 * * *
 
