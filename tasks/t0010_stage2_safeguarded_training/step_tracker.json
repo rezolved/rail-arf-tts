@@ -108,14 +108,15 @@
       "step": 9,
       "name": "implementation",
       "description": "Run train_second_safeguarded.py with config_david_v10.yml, evaluate per-epoch checkpoints with tts_eval_harness, collect JSONL metrics and checkpoint manifests.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T06:26:31Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T06:56:11Z",
       "log_file": "logs/steps/009_implementation/",
-      "current_owner": "step-executor/implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T06:48:40Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-16T12:00:00Z"
+      "expected_completion_at": "2026-09-16T12:00:00Z",
+      "actual_duration_seconds": 1780
     },
     {
       "step": 10,
