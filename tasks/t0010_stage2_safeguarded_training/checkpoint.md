@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-16T07:45:00Z"
-completed_steps: 12
-next_step_number: 13
-next_step_id: "compare-literature"
+updated_at: "2026-09-16T07:35:00Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -94,6 +94,13 @@ epochs. Generated `results/images/speaker_sim_curve.png` placeholder using val_l
 (speaker_sim eval deferred). `verify_task_metrics.py` and `verify_task_results.py` both passed with
 0 errors. REQ-6 and REQ-7 marked Partial (eval framework exists, metrics null).
 
+### Step 13 — compare-literature
+
+Produced `results/compare_literature.md` comparing v10 against the v6c prior run and the t0008
+baselines. Key finding: val_loss improved −6% (0.849 → 0.797) and 0 health gate events confirm the
+t0009 fixes worked; speaker_sim comparison deferred pending harness eval. Verificator PASSED, 0
+errors, 0 warnings.
+
 * * *
 
 ## Cross-Step Decisions
@@ -117,12 +124,13 @@ epochs. Generated `results/images/speaker_sim_curve.png` placeholder using val_l
 
 ## Next Step Notes
 
-Step 12 (results) completed. Step 13 is `compare-literature`. The compare-literature agent should
-read the project's paper corpus and compare v10's best val_loss (0.797) and training stability (0
-health gate events) against published StyleTTS2 Stage 2 fine-tuning results where available. Note
-that speaker_sim, TTFB, and RTF are null — comparison against those published metrics is not
-possible until the follow-up harness eval task runs. The agent should also note the v6c comparison
-(val_loss 0.849 → 0.797, −6%), and the cost overrun ($272.78 vs $45 planned).
+Step 13 (compare-literature) completed. Step 14 is `suggestions`. The suggestions agent should
+review the training results and compare_literature.md to generate follow-up task suggestions. Key
+areas: (1) run deferred harness eval locally to obtain speaker_sim/TTFB/RTF for v10 checkpoints; (2)
+investigate why the watchdog did not stop the VM to prevent the cost overrun ($272.78 vs $45
+planned); (3) explore whether continued training beyond epoch 17 (truncated by disk fill, not
+divergence) would further improve val_loss and speaker_sim. See
+`intervention/eval_deferred_disk_full.md` for the eval resolution path.
 
 **Harness eval remains null**: `speaker_sim`, `ttfb_ms`, `rtf` were not obtained. A follow-up task
 should run `eval_all_checkpoints.py` locally once a Kokoro + torch environment is available. See
