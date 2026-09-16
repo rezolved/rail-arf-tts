@@ -146,8 +146,27 @@ this go unnoticed through all of t0010's verificators.
 
 ## Expected Outputs
 
+Two things the user explicitly asked this task to produce, spelled out so they don't get lost in
+the methodology above:
+
+1. **A reusable inference recipe** — not just an ad hoc script that ran once in a throwaway `/tmp`
+   directory, but a committed, documented, instrumented script under `code/` (see step 1) that
+   anyone can re-run against any StyleTTS2 `hifigan`-decoder checkpoint from this project to get
+   real audio out, with missing/unexpected key counts logged so a bad load is loud, not silent.
+   This is the actual deliverable that was missing project-wide before this task — t0010's harness
+   eval never ran, and even if it had, it only measures `speaker_sim`/`ttfb_ms`/`rtf`, not "does
+   this even produce a voice."
+2. **Audio samples**, saved as real files (not just numbers) under `results/audio_samples/`: at
+   minimum, the control-checkpoint output from step 2, and the v10 output(s) from step 3 (both
+   `epoch_2nd_00016.pth` and `epoch_2nd_00014.pth` if step 3 runs both) — whatever the outcome, so
+   the user or a future task can listen to the actual evidence, not just read a verdict.
+
+Concretely:
+
 - `code/` — the instrumented inference harness (kikiri-tts clone + submodules under `code/`,
-  gitignored; the instrumented script itself committed).
+  gitignored; the instrumented script itself committed) — deliverable 1.
+- `results/audio_samples/` — every wav generated during steps 2-3 (control checkpoint, v10
+  primary, v10 backup) — deliverable 2.
 - `results/control_test.md` — control-checkpoint result (pass/fail, with audio duration/RMS/peak
   stats as an objective substitute for "I listened and it sounded like X").
 - `results/v10_diagnosis.md` — findings from step 3: is it the loader, is it training, which
