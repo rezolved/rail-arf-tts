@@ -1,0 +1,6 @@
+{
+  "status": "deferred",
+  "reason": "harness eval deferred — ephemeral disk full, run manually",
+  "intervention_file": "intervention/eval_deferred_disk_full.md",
+  "evaluated_at": null
+}

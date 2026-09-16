@@ -1,0 +1,66 @@
+{
+  "spec_version": "2",
+  "model_id": "kokoro-v10-best",
+  "name": "Kokoro-82M Stage 2 v10 Best Checkpoint",
+  "version": "1.0.0",
+  "short_description": "Kokoro-82M StyleTTS2 Stage 2 fine-tune with joint_epoch=8 and DP-safe loader, trained on 1557 Rezolve filler clips. Primary checkpoint from epoch 17 (val_loss 0.853), selected per user instruction as the latest completed epoch.",
+  "description_path": "description.md",
+  "framework": "pytorch",
+  "base_model": "kokoro-82m",
+  "base_model_source": "t0008_tts_eval_harness_baselines",
+  "architecture": "StyleTTS2 Stage 2 fine-tune of Kokoro-82M (82M params) with joint_epoch=8, DP-safe checkpoint loader (module.-prefix stripped at load), per-epoch CheckpointManager with SHA-256 manifest, and JSONL health gates. Packaged as 5-module state dict: bert, bert_encoder, predictor, text_encoder, decoder.",
+  "training_task_id": "t0010_stage2_safeguarded_training",
+  "training_dataset_ids": [],
+  "hyperparameters": {
+    "joint_epoch": 8,
+    "diff_epoch": 6,
+    "epochs": 20,
+    "epochs_completed": 17,
+    "lr": 1e-4,
+    "ft_lr": 1e-4,
+    "bert_lr": 1e-6,
+    "lambda_gen": 1.0,
+    "lambda_slm": 0.0,
+    "lambda_dur": 1.0,
+    "lambda_ce": 20.0,
+    "lambda_F0": 1.0,
+    "lambda_norm": 1.0,
+    "lambda_mel": 5.0,
+    "batch_size": 8,
+    "multispeaker": true,
+    "train_LM": false,
+    "first_stage_path": "first_stage_v3.pth",
+    "load_only_params": true
+  },
+  "training_metrics": {
+    "best_val_loss": 0.797,
+    "best_val_loss_epoch": 16,
+    "primary_checkpoint_val_loss": 0.853,
+    "primary_checkpoint_epoch": 17,
+    "val_loss_epoch_9_gan_kickin": 1.079,
+    "val_loss_epoch_1_8_pre_gan_avg": 2.07,
+    "health_gate_events": 0,
+    "parameter_count_assertion": "passed",
+    "speaker_sim": null,
+    "ttfb_ms": null,
+    "rtf": null,
+    "eval_status": "deferred_disk_full"
+  },
+  "files": [
+    {
+      "path": "files/kokoro-v10-best.pth",
+      "description": "5-module extracted state dict (bert, bert_encoder, predictor, text_encoder, decoder). DVC-tracked. Extracted from epoch_2nd_00016.pth (epoch 17, val_loss 0.853).",
+      "format": "pth"
+    },
+    {
+      "path": "files/config_david_v10.yml",
+      "description": "Training configuration used for v10 run (joint_epoch=8, epochs=20).",
+      "format": "yml"
+    }
+  ],
+  "categories": [
+    "tts"
+  ],
+  "created_by_task": "t0010_stage2_safeguarded_training",
+  "date_created": "2026-09-16"
+}

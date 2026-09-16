@@ -1,0 +1,31 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/logs
+
+[31m[1mERRORS:[0m
+[31m  LG-E005 error: Step log step_log.md missing frontmatter field: 'spec_version'[0m
+[31m  LG-E005 error: Step log step_log.md missing frontmatter field: 'step_number'[0m
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 010_20260915T105745Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 012_20260915T112401Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 013_20260915T112633Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 015_20260915T113904Z_ssh-o-connecttimeout-20.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 024_20260915T120255Z_ssh-o-connecttimeout-30.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 027_20260915T125456Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 028_20260915T125535Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 032_20260916T062250Z_python-m-arf-scripts-utils-prestep.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 033_20260916T064056Z_python-tasks-t0010-stage2-safeguarded-tr.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 034_20260916T064100Z_python-tasks-t0010-stage2-safeguarded-tr.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 037_20260916T070927Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 039_20260916T071029Z_az-ml-compute.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 041_20260916T071103Z_az-ml-compute.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 042_20260916T071120Z_az-ml-compute.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 048_20260916T071258Z_az-ml-compute.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 054_20260916T071606Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 055_20260916T071611Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 069_20260916T073706Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[31m[1mFAILED[0m — 2 error(s), 20 warning(s)
+

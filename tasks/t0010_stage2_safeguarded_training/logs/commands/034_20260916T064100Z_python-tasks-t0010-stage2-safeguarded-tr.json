@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0010_stage2_safeguarded_training",
+  "command": "python tasks/t0010_stage2_safeguarded_training/code/aggregate_results.py --jsonl tasks/t0010_stage2_safeguarded_training/data/run_v10/metrics.jsonl --eval-dir tasks/t0010_stage2_safeguarded_training/data/run_v10/eval_results --output-dir tasks/t0010_stage2_safeguarded_training/results",
+  "exit_code": 1,
+  "duration_seconds": 0.117,
+  "started_at": "2026-09-16T06:41:00Z",
+  "completed_at": "2026-09-16T06:41:00Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training",
+  "stdout_file": "034_20260916T064100Z_python-tasks-t0010-stage2-safeguarded-tr.stdout.txt",
+  "stderr_file": "034_20260916T064100Z_python-tasks-t0010-stage2-safeguarded-tr.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 9,
+  "truncated": false
+}

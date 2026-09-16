@@ -1,0 +1,1 @@
+acquire failed: Command '['az', 'ml', 'compute', 'show', '--name', 'LLM-T1-NC80', '--workspace-name', 'brainpowa-northeurope', '--resource-group', 'rezolve-AI', '-o', 'json']' timed out after 60.0 seconds

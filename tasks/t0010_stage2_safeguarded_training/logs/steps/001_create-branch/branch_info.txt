@@ -1,0 +1,5 @@
+branch: task/t0010_stage2_safeguarded_training
+base_branch: main
+base_commit: 7e75081af042ca86a369005640f99b6014b6b999
+worktree_path: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training
+created_at: 2026-09-15T10:33:47Z

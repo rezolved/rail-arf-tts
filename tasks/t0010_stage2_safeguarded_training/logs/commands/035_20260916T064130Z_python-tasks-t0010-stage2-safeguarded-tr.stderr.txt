@@ -1,0 +1,8 @@
+2026-09-16 06:41:30,422 INFO Loaded 41 training steps, 0 eval epochs
+2026-09-16 06:41:30,422 INFO Built 17 epoch rows
+2026-09-16 06:41:30,422 ERROR VALIDATION GATE: No speaker_sim values found in eval data. Charts will be empty or missing. Investigate eval_summary.json.
+2026-09-16 06:41:30,423 INFO Wrote per-epoch CSV → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/data/run_v10/per_epoch_summary.csv (17 rows)
+2026-09-16 06:41:34,054 WARNING No speaker_sim data — skipping curve chart
+2026-09-16 06:41:35,037 INFO Wrote loss timeline → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/results/images/loss_timeline.png
+2026-09-16 06:41:35,038 INFO Wrote metrics.json → /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/results/metrics.json (17 variants, incl. best)
+2026-09-16 06:41:35,038 INFO Aggregation complete.

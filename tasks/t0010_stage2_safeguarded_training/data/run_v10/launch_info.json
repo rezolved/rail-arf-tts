@@ -1,0 +1,13 @@
+{
+  "run_id": "v10",
+  "config_file": "configs/config_david_v10.yml",
+  "hostname": "LLM-T1-NC80",
+  "started_at": "2026-09-15T15:18:01Z",
+  "stopped_at": "2026-09-15T16:00:55Z",
+  "stop_reason": "disk_full_after_epoch_17_ephemeral_mnt",
+  "epochs_completed": 17,
+  "best_val_loss": 0.797,
+  "best_val_loss_epoch_jsonl": 16,
+  "primary_checkpoint": "epoch_2nd_00016.pth",
+  "primary_checkpoint_val_loss": 0.853
+}

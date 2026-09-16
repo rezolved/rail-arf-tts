@@ -1,0 +1,33 @@
+
+**************************************************************************************************************
+* WARNING:                                                                                                   *
+* Extension "azure-cli-ml" cannot be used along with extension "ml". This may result in unexpected behaviour.*
+* Please remove azure-cli-ml extension by running  "az extension remove -n azure-cli-ml                      *
+**************************************************************************************************************
+                
+Class DeploymentTemplateOperations: This is an experimental class, and may change at any time. Please see https://aka.ms/azuremlexperimental for more information.
+ERROR: {
+  "error": {
+    "code": "UserError",
+    "severity": null,
+    "message": "StopCompute is not allowed when ComputeInstance disk is full.",
+    "messageFormat": null,
+    "messageParameters": null,
+    "referenceCode": null,
+    "detailsUri": null,
+    "target": null,
+    "details": [],
+    "innerError": null,
+    "debugInfo": null,
+    "additionalInfo": null
+  },
+  "correlation": {
+    "operation": "84d9ab03a0f06f39d8265a16e1740709",
+    "request": "2157dddfb66ac686"
+  },
+  "environment": "northeurope",
+  "location": "northeurope",
+  "time": "2026-09-16T07:11:31.4825503+00:00",
+  "componentName": "machinelearningcompute",
+  "statusCode": 400
+}

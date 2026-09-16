@@ -1,0 +1,25 @@
+{
+  "error": {
+    "code": "UserError",
+    "severity": null,
+    "message": "StopCompute is not allowed when ComputeInstance disk is full.",
+    "messageFormat": null,
+    "messageParameters": null,
+    "referenceCode": null,
+    "detailsUri": null,
+    "target": null,
+    "details": [],
+    "innerError": null,
+    "debugInfo": null,
+    "additionalInfo": null
+  },
+  "correlation": {
+    "operation": "98298a956dd01b01473aaeac66c6d47f",
+    "request": "47664adc2797d4d9"
+  },
+  "environment": "northeurope",
+  "location": "northeurope",
+  "time": "2026-09-16T07:12:35.2860217+00:00",
+  "componentName": "machinelearningcompute",
+  "statusCode": 400
+}

@@ -1,0 +1,6 @@
+POSTSTEP WARNING: Skipped step 'research-papers' (step 4) is missing 004_research-papers/step_log.md — create it before the reporting step
+POSTSTEP WARNING: Skipped step 'research-internet' (step 5) is missing 005_research-internet/step_log.md — create it before the reporting step
+POSTSTEP: Step verification passed
+POSTSTEP: Checkpoint verification passed
+POSTSTEP: Step 'setup-machines' is now completed (completed_at: 2026-09-15T12:55:48Z)
+POSTSTEP: Committed step_tracker.json update

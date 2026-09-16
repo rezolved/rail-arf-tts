@@ -1,0 +1,7 @@
+{
+  "total_cost_usd": 272.78,
+  "breakdown": {
+    "azure-ml-2xh100": 272.78
+  },
+  "note": "VM ran 19.54 hours at $13.96/hr. Harness eval deferred (root disk full, no working torch env on VM); eval metrics remain null. Cost verified via azure_ml_vm teardown activity-log method."
+}

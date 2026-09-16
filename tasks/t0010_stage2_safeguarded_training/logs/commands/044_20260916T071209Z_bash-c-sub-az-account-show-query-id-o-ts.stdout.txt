@@ -1,0 +1,20 @@
+* Using HTTP2, server supports multiplexing
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+> POST /subscriptions/caa7bcdb-c3e1-4687-a73b-7b621b7e4b23/resourceGroups/rezolve-AI/providers/Microsoft.MachineLearningServices/workspaces/brainpowa-northeurope/computes/LLM-T1-NC80/stop?api-version=2023-04-01 HTTP/2
+< HTTP/2 400 
+< cache-control: no-cache
+< pragma: no-cache
+< content-length: 653
+< content-type: application/json; charset=utf-8
+< expires: -1
+< x-ms-operation-identifier: tenantId=49e55eb4-ecc2-4f12-8494-9c8c5c38be7f,objectId=b2681fd3-6878-4d7a-9c07-f1e3fcf986cf/centralus/e470b95c-4a68-444a-90df-9f90a39cf3fe
+< request-context: appId=cid-v1:6a27ce65-5555-41a3-85f7-b7a1ce31fd6b
+< x-ms-response-type: error
+< strict-transport-security: max-age=31536000; includeSubDomains
+< x-content-type-options: nosniff
+< azureml-served-by-cluster: vienna-northeurope-02
+< x-request-time: 0.202
+< x-ms-ratelimit-remaining-subscription-writes: 199
+< x-ms-ratelimit-remaining-subscription-global-writes: 2999
+< x-ms-request-id: 91b71039-db5c-4f2d-8f6b-d0e7b2818682

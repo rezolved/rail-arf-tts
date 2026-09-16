@@ -1,0 +1,3 @@
+POSTSTEP WARNING: Skipped step 'research-papers' (step 4) is missing 004_research-papers/step_log.md — create it before the reporting step
+POSTSTEP WARNING: Skipped step 'research-internet' (step 5) is missing 005_research-internet/step_log.md — create it before the reporting step
+POSTSTEP: Step verification passed

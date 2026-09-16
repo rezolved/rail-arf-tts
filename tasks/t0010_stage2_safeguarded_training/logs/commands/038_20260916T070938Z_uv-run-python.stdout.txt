@@ -1,0 +1,30 @@
+{
+  "task_id": "t0010_stage2_safeguarded_training",
+  "vm_name": "LLM-T1-NC80",
+  "deallocated": false,
+  "other_locks_present": false,
+  "destroyed_at": "2026-09-16T07:10:15.610705Z",
+  "duration_hours": 19.5398918625,
+  "total_cost_usd": 272.7768904005,
+  "cost_attribution": {
+    "billing_started_at": "2026-09-15T11:37:52Z",
+    "billing_anchor": "acquired_at_fallback",
+    "billing_ended_at": "2026-09-16T07:10:15.610705Z",
+    "method": "activity_log",
+    "status": "verified",
+    "segments": [
+      {
+        "started_at": "2026-09-15T11:37:52Z",
+        "ended_at": "2026-09-16T07:10:15.610705Z",
+        "hours": 19.5398918625,
+        "source": "activity_log"
+      }
+    ],
+    "billable_hours": 19.5398918625,
+    "wall_clock_span_hours": 19.5398918625,
+    "stopped_hours": 0.0,
+    "hourly_cost_usd": 13.96,
+    "total_cost_usd": 272.7768904005,
+    "notes": "Reconstructed 1 billable segment(s) from the provider activity log; the provider's final state agrees with what the provisioner observed at teardown."
+  }
+}
