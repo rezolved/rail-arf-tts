@@ -2,6 +2,7 @@ import re
 from pathlib import Path
 from typing import Any
 
+from arf.scripts.verificators.common.dvc_utils import is_present_locally_or_on_dvc_remote
 from arf.scripts.verificators.common.json_utils import (
     check_required_fields,
     load_json_file,
@@ -317,11 +318,14 @@ def _check_files_exist(
         if not isinstance(path_value, str):
             continue
         full_path: Path = asset_dir / path_value
-        if not full_path.exists():
+        if not is_present_locally_or_on_dvc_remote(tracked_path=full_path):
             diagnostics.append(
                 Diagnostic(
                     code=MA_E008,
-                    message=f"Listed file does not exist: '{path_value}'",
+                    message=(
+                        f"Listed file does not exist locally and is not confirmed pushed to "
+                        f"the DVC remote: '{path_value}'"
+                    ),
                     file_path=file_path,
                 ),
             )
