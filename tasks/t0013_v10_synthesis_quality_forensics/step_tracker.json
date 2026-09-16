@@ -108,14 +108,15 @@
       "step": 9,
       "name": "implementation",
       "description": "Build the CPU kikiri-tts/StyleTTS2 venv, write the instrumented inference recipe, run the control checkpoint test, then diagnose epoch_2nd_00016.pth and epoch_2nd_00014.pth; save all audio and instrumentation logs.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T12:49:53Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T13:32:21Z",
       "log_file": "logs/steps/009_implementation/",
-      "current_owner": "step-executor/implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T13:22:24Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-16T15:49:53Z"
+      "expected_completion_at": "2026-09-16T15:49:53Z",
+      "actual_duration_seconds": 2548
     },
     {
       "step": 10,
