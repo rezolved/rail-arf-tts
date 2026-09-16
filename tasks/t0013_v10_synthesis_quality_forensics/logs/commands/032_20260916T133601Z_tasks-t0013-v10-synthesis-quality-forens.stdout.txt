@@ -1,0 +1,92 @@
+{
+  "description": "v10 primary checkpoint (epoch_2nd_00016.pth) with decoder module left at build_model()'s fresh random init -- every other module (diffusion, predictor_encoder, predictor, style_encoder, bert, text_encoder, ...) loaded normally from the real trained checkpoint.",
+  "decoder_confirmed_untouched_by_checkpoint": true,
+  "load_report": [
+    {
+      "module": "bert",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "bert_encoder",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "predictor",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "decoder",
+      "action": "SKIPPED (left at random init)"
+    },
+    {
+      "module": "text_encoder",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "predictor_encoder",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "style_encoder",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "diffusion",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "text_aligner",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "pitch_extractor",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "mpd",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "msd",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    },
+    {
+      "module": "wd",
+      "action": "loaded",
+      "missing": 0,
+      "unexpected": 0
+    }
+  ],
+  "wall_time_seconds": 17.526220996995107,
+  "audio_quality": {
+    "rms": 0.5974076119144697,
+    "peak": 0.999786376953125,
+    "silence_fraction": 0.0,
+    "spectral_flatness": 0.24122372269630432,
+    "clip_fraction": 0.004055188962207559,
+    "is_likely_noise": false
+  }
+}
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/audio_samples/probe_random_decoder.wav and /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/random_decoder_probe.json

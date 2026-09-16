@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T13:35:00Z"
-completed_steps: 11
-next_step_number: 11
-next_step_id: "creative-thinking"
+updated_at: "2026-09-16T13:55:00Z"
+completed_steps: 12
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -112,6 +112,18 @@ is reserved for the orchestrator's `suggestions` step per the implementation ski
 list — the subagent documented the follow-up in `results/v10_diagnosis.md`'s Recommendation section
 instead; step 14 (`suggestions`) must pick this up.
 
+### Step 11 — creative-thinking
+
+Ran a new falsification probe (`code/random_decoder_probe.py`) isolating `decoder` as the only
+module differing from the real v10 primary checkpoint (everything else loaded normally); pure
+random-init decoder gave `clip_fraction=0.004` (not clipped), unlike the real checkpoints'
+0.750-0.807. This rules out `diffusion`/`predictor_encoder` as independent causes of the clipping
+and refines the failure mechanism (worse than random, not merely undertrained). Full write-up:
+`results/creative_thinking.md`; probe outputs: `results/random_decoder_probe.json`,
+`results/audio_samples/probe_random_decoder.wav`. Caveat: probe used a different 3-clip reference
+selection than `v10_diagnosis.md`, so its numbers are corroborating, not directly merged into that
+table.
+
 * * *
 
 ## Cross-Step Decisions
@@ -138,20 +150,37 @@ instead; step 14 (`suggestions`) must pick this up.
   (`code/audio_quality_check.py` as a required pre-completion gate for future training tasks) is
   documented in `results/v10_diagnosis.md` and must be carried into `results/suggestions.json` at
   step 14.
+* **Verdict mechanism refined, not overturned, by step 11 (`creative-thinking`).** A new
+  falsification probe (`code/random_decoder_probe.py`, `results/random_decoder_probe.json`,
+  `results/creative_thinking.md`) loaded v10 primary's real checkpoint into every module except
+  `decoder` (left at pure `build_model()` random init, verified untouched). Result:
+  `clip_fraction=0.004`, `is_likely_noise=False` — **not** the 75-81% clipping signature of the real
+  v10 checkpoints, and qualitatively close to the control instead. Two consequences for the
+  `results` step: (1) this rules out `diffusion`/`predictor_encoder` as independently sufficient
+  causes of the clipping (decoder's specific state is necessary for it), strengthening the existing
+  root-cause attribution; (2) it shows the real v10 decoder's partial architecture-mismatched load
+  is an actively **worse** initialization than plain random — not merely "near-randomly-initialized"
+  as `results/v10_diagnosis.md` currently phrases it. The `results` step-executor should consider
+  tightening that phrasing (and optionally citing the probe as corroborating evidence) when writing
+  `results_summary.md`/`results_detailed.md`, but should NOT treat this as changing the verdict's
+  bottom line (real training defect, not a reproduction bug) or the Recommendation section — both
+  stand, and are further supported. Full detail and a methodology caveat (probe used a different
+  3-clip reference selection than `v10_diagnosis.md`) are in `results/creative_thinking.md`.
 
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) completed; all Milestones A-F executed, verificator-equivalent checks
-(ruff, mypy, flowmark) clean, `code/kikiri-tts/` and `.venv-styletts2/` correctly gitignored, audio
-DVC-pushed. `results/v10_diagnosis.md` states the "real defect from the start" verdict explicitly
-(grep-confirmed). Step 10 (`teardown`) already `skipped`. Proceed to step 11, `creative-thinking`:
-consider alternative diagnostic angles the scripted checklist might miss (e.g., whether the
-`diffusion` style sampler or `predictor_encoder` — both excluded from Stage 1 loading by design, not
-by the `decoder` bug — could independently contribute to the clipped-audio symptom, or whether the
-harness's phonemizer/sampler defaults themselves could partially mask a milder underlying defect)
-before the `results` step finalizes the write-up. Then step 12 (`results`) writes
-`results_summary.md`/`results_detailed.md` from `results/v10_diagnosis.md` and
-`results/control_test.md`; step 13 (`compare-literature`) is already `skipped`; step 14
-(`suggestions`) must add the eval-harness pre-completion regression-check follow-up noted above.
+Step 11 (`creative-thinking`) completed. Stress-tested the verdict from the two angles named in the
+prior Next Step Notes plus a third: ran a new probe isolating `decoder` as the only module differing
+from the real v10 checkpoint, which showed pure-random-decoder audio does NOT clip
+(`clip_fraction=0.004` vs. v10's 0.750-0.807) — ruling out `diffusion`/`predictor_encoder` as
+independent causes and refining the failure mechanism to "actively bad partial-mismatch
+initialization, worse than random" rather than "near-random." Harness defaults (phonemizer,
+`diffusion_steps`, `embedding_scale`) were confirmed identical across every run in this task, ruling
+out a masking explanation. See `results/creative_thinking.md` for full detail and the Cross-Step
+Decisions entry above for what the `results` step-executor should pick up. Proceed to step 12,
+`results`: write `results_summary.md`/`results_detailed.md` from `results/v10_diagnosis.md`,
+`results/control_test.md`, and `results/creative_thinking.md`, per `task_results_specification.md`.
+Step 13 (`compare-literature`) is already `skipped`; step 14 (`suggestions`) must add the
+eval-harness pre-completion regression-check follow-up noted above.
