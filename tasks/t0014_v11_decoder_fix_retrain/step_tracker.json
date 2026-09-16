@@ -75,14 +75,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0009 safeguard library, t0010 train_second_v10.py/joint_epoch fix/DP-aware loader, and t0013 inspect_checkpoint.py/audio_quality_check.py/infer_styletts2.py for reuse.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T15:35:40Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T16:12:12Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T15:35:40Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T16:35:40Z"
+      "expected_completion_at": "2026-09-16T16:35:40Z",
+      "actual_duration_seconds": 2192
     },
     {
       "step": 7,
