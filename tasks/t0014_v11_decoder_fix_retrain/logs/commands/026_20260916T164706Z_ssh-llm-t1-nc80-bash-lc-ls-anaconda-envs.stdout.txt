@@ -1,0 +1,6 @@
+azureml_py38
+---
+/home/azureuser/kokoro-finetune
+---
+/anaconda/condabin/conda
+/anaconda/bin/conda

@@ -1,0 +1,10 @@
+{
+  "last_operation": {
+    "operation_name": "Start",
+    "operation_status": "Succeeded",
+    "operation_time": "2026-09-16T16:37:18.556Z",
+    "operation_trigger": "User"
+  },
+  "name": "LLM-T1-NC80",
+  "state": "Running"
+}

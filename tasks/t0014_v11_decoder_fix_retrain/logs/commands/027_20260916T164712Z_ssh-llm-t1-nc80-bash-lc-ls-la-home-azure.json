@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "command": "ssh LLM-T1-NC80 bash -lc 'ls -la /home/azureuser/kokoro-finetune | head -30; echo ---venvs---; find /home/azureuser -maxdepth 3 -iname \"*venv*\" -o -iname \"environment.yml\" 2>/dev/null | head -20'",
+  "exit_code": 0,
+  "duration_seconds": 0.949,
+  "started_at": "2026-09-16T16:47:12Z",
+  "completed_at": "2026-09-16T16:47:13Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain",
+  "stdout_file": "027_20260916T164712Z_ssh-llm-t1-nc80-bash-lc-ls-la-home-azure.stdout.txt",
+  "stderr_file": "027_20260916T164712Z_ssh-llm-t1-nc80-bash-lc-ls-la-home-azure.stderr.txt",
+  "stdout_lines": 12,
+  "stderr_lines": 0,
+  "truncated": false
+}

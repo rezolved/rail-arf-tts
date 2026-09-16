@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T16:25:00Z"
-completed_steps: 8
-next_step_number: 8
-next_step_id: "setup-machines"
+updated_at: "2026-09-16T16:52:00Z"
+completed_steps: 9
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -94,6 +94,23 @@ ambiguity. The audible-speech gate is `audio_quality_check.py`'s `check_audio_qu
 wall-clock, scaled 6.12x for corpus size and epoch count), explicitly flagged as exceeding the $100
 per-task default, with a pre-registered $300 hard-stop escalation threshold.
 
+### Step 8 — setup-machines
+
+Provisioned `LLM-T1-NC80` (2xH100 NVL, Azure ML) via a `/setup-remote-machine` subagent. First
+`acquire` hit `pool_busy` because the VM was mid an in-flight `az ml compute stop` raced by the
+attempt (not a stale lock); the subagent's first hand-off claimed an untracked "background poller"
+was watching for it — the exact fire-and-forget pattern Lesson 8 forbids — so it was resumed and
+corrected to block synchronously instead. The retry succeeded (`ready_at: 2026-09-16T16:45:14Z`).
+GPU/CUDA verified (2x H100 NVL, CUDA 12.2), idle watchdog installed and confirmed active with a live
+PID (`watchdog_active: true`, 3600s idle timeout), `/mnt/cache/persist` verified as a real symlink
+to the live Azure Files CIFS mount (Lesson 10), and `loginctl` linger confirmed enabled for
+`azureuser` (Lesson 11) — all independently re-verified from raw command-log stdout, not just the
+subagent's summary. `machine_log.json` at `logs/steps/008_setup-machines/machine_log.json`;
+`verify_step` passes 0 errors/0 warnings. The project's `kokoro-finetune` env symlink was found
+wiped (ephemeral `/mnt/tmp`, same Lesson 10 class of failure on the code checkout) — a generic conda
+env satisfied the mandatory smoke test instead; re-establishing `kokoro-finetune` is deferred to
+`implementation`.
+
 ### Step 11 — creative-thinking
 
 Skipped: task scope is a well-defined diagnostic fix (decoder-init bug) plus corpus-expansion
@@ -139,19 +156,33 @@ steps.
   the plan's schedule, not the task description's literal text. Cost estimate (~$84-150) is expected
   to exceed the $100 per-task default like t0010 did; this is pre-authorized in the plan with a $300
   hard-stop escalation threshold, and project budget headroom (99.9% left) is not a constraint.
+* **`LLM-T1-NC80` is live and billing.** Acquired and `ready` since 2026-09-16T16:45:14Z, watchdog
+  active (3600s idle timeout, confirmed PID), `/mnt/cache/persist` verified as a real Azure Files
+  mount. `implementation` must write all checkpoints under `/mnt/cache/persist/`, never bare `/mnt`.
+  The `kokoro-finetune` conda/code environment on the VM needs to be re-created from scratch — its
+  prior symlink target on ephemeral `/mnt/tmp` was wiped by an earlier VM stop, so
+  `implementation`'s Milestone A/B setup cannot assume it still exists.
+* **A subagent fire-and-forget near-miss occurred during setup-machines** (Lesson 8 pattern:
+  claiming an untracked "background poller" instead of blocking synchronously or registering a
+  `ScheduleWakeup`). Caught and corrected within the same step via `SendMessage` before any VM was
+  billing idle. Future long-running steps on this task (especially `implementation`'s multi-hour
+  training run) must use the sanctioned `paused_waiting` + `ScheduleWakeup` mechanism, never an
+  agent-described background watcher, when a wait needs to outlive the current turn.
 
 * * *
 
 ## Next Step Notes
 
-Planning is complete: `plan/plan.md` fully specifies the decoder-init fix (repoint
-`first_stage_path` at `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` in a new
-`config_david_v11.yml`, gated by a mandatory pre-flight `classify_decoder()` tensor check before any
-GPU spend), the corpus swap to t0012's 1,531-clip normalized set, the `50/10/30` epoch budget, and
-the mandatory audible-speech gate (`audio_quality_check.py`'s `check_audio_quality()`). Proceed to
-step 8 (`setup-machines`) per `step_tracker.json`: provision `LLM-T1-NC80` (2xH100) per the plan's
-Remote Machines section, deploy the idle watchdog before any long-running step (Lesson 8), verify
-the `/mnt/cache/persist` symlink resolves to the real Azure Files mount before any checkpoint write
-(Lesson 10), and enable `loginctl enable-linger` for any `tmux`-launched long job (Lesson 11). Watch
-disk usage proactively this time — t0010's own failure (root disk filled up, no working torch env,
-eval deferred with null metrics) is the cautionary precedent the plan explicitly guards against.
+`LLM-T1-NC80` (2xH100 NVL) is provisioned and `ready`: SSH/GPU/CUDA verified (CUDA 12.2), idle
+watchdog active with a confirmed PID (3600s timeout), `/mnt/cache/persist` verified resolving to the
+live Azure Files CIFS mount (Lesson 10), and `loginctl` linger confirmed enabled for `azureuser`
+(Lesson 11). `machine_log.json` is at `logs/steps/008_setup-machines/machine_log.json`,
+`verify_step` passes 0 errors/0 warnings. Proceed to step 9 (`implementation`) per
+`step_tracker.json`: fix `ignore_modules` per plan Milestone A, re-create the `kokoro-finetune` env
+on the VM (its prior symlink to `/mnt/tmp/kikiri-tts/StyleTTS2` was found wiped — build fresh, do
+not assume it exists), run the mandatory pre-flight `classify_decoder()` tensor check on the
+LibriTTS checkpoint **before any GPU training spend**, then train on t0012's 1,531-clip corpus with
+the 50/10/30 epoch schedule, polling `df -h /` every 15-20 min per the plan's disk-usage risk
+mitigation (t0010's stuck-teardown precedent), and finally gate completion on
+`audio_quality_check.py`'s `check_audio_quality()` per REQ-6/REQ-7 — document a gate failure
+honestly rather than fabricating a `model` asset.

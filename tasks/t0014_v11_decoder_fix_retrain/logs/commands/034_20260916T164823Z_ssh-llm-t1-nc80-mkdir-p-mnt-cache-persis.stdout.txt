@@ -1,0 +1,6 @@
+total 0
+drwxrwxrwx 2 root root 0 Sep 16 16:48 .
+drwxrwxrwx 2 root root 0 May 12 14:25 ..
+drwxrwxrwx 2 root root 0 Sep 16 16:48 checkpoints
+-rwxrwxrwx 1 root root 0 Sep 16 16:48 heartbeat.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/checkpoints

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "command": "ssh LLM-T1-NC80 loginctl show-user azureuser | grep -i Linger",
+  "exit_code": 0,
+  "duration_seconds": 0.616,
+  "started_at": "2026-09-16T16:46:54Z",
+  "completed_at": "2026-09-16T16:46:54Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain",
+  "stdout_file": "023_20260916T164654Z_ssh-llm-t1-nc80-loginctl-show-user-azure.stdout.txt",
+  "stderr_file": "023_20260916T164654Z_ssh-llm-t1-nc80-loginctl-show-user-azure.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

@@ -1,0 +1,4 @@
+bash: line 1: nvcc: command not found
+cuda
+cuda-12
+cuda-12.2

@@ -1,0 +1,1 @@
+5578 bash -c pgrep -af idle_watchdog.sh || echo NOT_RUNNING

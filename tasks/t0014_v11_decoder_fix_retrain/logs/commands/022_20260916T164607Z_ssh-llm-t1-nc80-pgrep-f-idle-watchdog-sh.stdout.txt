@@ -1,0 +1,7 @@
+5638
+5741
+---boot log---
+2026-09-16T16:45:58Z arf-idle-watchdog: starting: threshold=3600s poll=60s idle_util<=5% grace=600s
+---ps env---
+    PID CMD                         ELAPSED
+   5638 bash /opt/arf/idle_watchdog       9
