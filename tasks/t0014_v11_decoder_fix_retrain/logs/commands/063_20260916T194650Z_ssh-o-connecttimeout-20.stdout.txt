@@ -1,0 +1,26 @@
+=== tmux ===
+ALIVE
+=== tail log for DONE ===
+Epoch [27/50], Step [30/191], Loss: 0.24893, Disc Loss: 0.00000, Dur Loss: 0.58597, CE Loss: 0.02701, Norm Loss: 0.42919, F0 Loss: 1.30060, LM Loss: 1.02424, Gen Loss: 0.00000, Sty Loss: 0.05343, Diff Loss: 0.41624, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [27/50], Step [40/191], Loss: 0.23693, Disc Loss: 0.00000, Dur Loss: 0.52892, CE Loss: 0.02756, Norm Loss: 0.39830, F0 Loss: 1.33994, LM Loss: 0.93849, Gen Loss: 0.00000, Sty Loss: 0.05418, Diff Loss: 0.34200, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [27/50], Step [50/191], Loss: 0.22840, Disc Loss: 0.00000, Dur Loss: 0.55044, CE Loss: 0.02561, Norm Loss: 0.32689, F0 Loss: 1.23823, LM Loss: 0.95093, Gen Loss: 0.00000, Sty Loss: 0.05405, Diff Loss: 0.27956, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [27/50], Step [60/191], Loss: 0.24671, Disc Loss: 0.00000, Dur Loss: 0.60966, CE Loss: 0.02868, Norm Loss: 0.46316, F0 Loss: 1.53223, LM Loss: 1.03799, Gen Loss: 0.00000, Sty Loss: 0.04922, Diff Loss: 0.49004, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+Epoch [27/50], Step [70/191], Loss: 0.23047, Disc Loss: 0.00000, Dur Loss: 0.50897, CE Loss: 0.02508, Norm Loss: 0.27180, F0 Loss: 1.35293, LM Loss: 0.82336, Gen Loss: 0.00000, Sty Loss: 0.05059, Diff Loss: 0.39705, DiscLM Loss: 0.00000, GenLM Loss: 0.00000
+=== metrics.jsonl tail ===
+{"run_id": "v11", "epoch": 27, "step": 30, "loss_total": 0.24892687648534775, "disc_loss": 0.0, "dur_loss": 0.5859713554382324, "ce_loss": 0.027009256184101105, "mel_loss": 0.42919063568115234, "f0_loss": 1.3006044626235962, "val_loss": null, "acoustic_norm": null, "grad_norm_msd": null, "grad_norm_mpd": null, "grad_norm_decoder": null, "grad_norm_style_encoder": null, "skip_count": null, "lr": null, "timestamp_utc": "2026-09-16T19:45:51.154749+00:00"}
+{"run_id": "v11", "epoch": 27, "step": 40, "loss_total": 0.2369280591607094, "disc_loss": 0.0, "dur_loss": 0.528923749923706, "ce_loss": 0.02755548059940338, "mel_loss": 0.39830073714256287, "f0_loss": 1.3399378061294556, "val_loss": null, "acoustic_norm": null, "grad_norm_msd": null, "grad_norm_mpd": null, "grad_norm_decoder": null, "grad_norm_style_encoder": null, "skip_count": null, "lr": null, "timestamp_utc": "2026-09-16T19:46:04.473321+00:00"}
+{"run_id": "v11", "epoch": 27, "step": 50, "loss_total": 0.22840476930141448, "disc_loss": 0.0, "dur_loss": 0.5504412055015564, "ce_loss": 0.025607813149690628, "mel_loss": 0.32689276337623596, "f0_loss": 1.2382335662841797, "val_loss": null, "acoustic_norm": null, "grad_norm_msd": null, "grad_norm_mpd": null, "grad_norm_decoder": null, "grad_norm_style_encoder": null, "skip_count": null, "lr": null, "timestamp_utc": "2026-09-16T19:46:18.006607+00:00"}
+{"run_id": "v11", "epoch": 27, "step": 60, "loss_total": 0.24670904576778413, "disc_loss": 0.0, "dur_loss": 0.6096606254577637, "ce_loss": 0.028676671907305717, "mel_loss": 0.4631630778312683, "f0_loss": 1.5322307348251343, "val_loss": null, "acoustic_norm": null, "grad_norm_msd": null, "grad_norm_mpd": null, "grad_norm_decoder": null, "grad_norm_style_encoder": null, "skip_count": null, "lr": null, "timestamp_utc": "2026-09-16T19:46:31.967263+00:00"}
+{"run_id": "v11", "epoch": 27, "step": 70, "loss_total": 0.23047115802764892, "disc_loss": 0.0, "dur_loss": 0.5089721083641052, "ce_loss": 0.025083785876631737, "mel_loss": 0.27180206775665283, "f0_loss": 1.352929711341858, "val_loss": null, "acoustic_norm": null, "grad_norm_msd": null, "grad_norm_mpd": null, "grad_norm_decoder": null, "grad_norm_style_encoder": null, "skip_count": null, "lr": null, "timestamp_utc": "2026-09-16T19:46:45.468014+00:00"}
+=== gate_fired count ===
+0
+=== checkpoints.json last ===
+=== df -h / ===
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       119G  103G   16G  87% /
+=== date ===
+Wed Sep 16 19:46:51 UTC 2026
+=== nvidia-smi util ===
+utilization.gpu [%], memory.used [MiB], memory.total [MiB]
+18 %, 74101 MiB, 95830 MiB
+11 %, 72217 MiB, 95830 MiB

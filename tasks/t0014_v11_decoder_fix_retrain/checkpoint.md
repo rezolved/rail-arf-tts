@@ -1,7 +1,7 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T17:55:00Z"
+updated_at: "2026-09-16T19:49:00Z"
 completed_steps: 8
 next_step_number: 9
 next_step_id: "implementation"
@@ -204,18 +204,33 @@ steps.
   active GPU compute. Milestones B (remaining epochs), C (the mandatory audible-speech gate —
   REQ-6/REQ-7, the task's actual pass/fail criterion), and D (conditional `model` asset + DVC) are
   still open.
+* **First resume check (2026-09-16T19:47Z): still training, re-paused (`pause_count: 2`).** Ran
+  `resume_check` (`decision: job_alive`) then independently re-verified over SSH: epoch 27/50, step
+  70/191, tmux `v11train` alive, `grep -c gate_fired metrics.jsonl` returned 0, `df -h /` stable at
+  87%/16GB free (unchanged from pause time), both H100s at 11-18% util / ~73-74GB VRAM, loss curves
+  flat with no NaNs. `checkpoints.json`'s last entry (epoch 24) has `flagged_healthy: true`.
+  Observed pace epochs 1-26: ~4.6 min/epoch (training started 2026-09-16T17:45:20Z);
+  `joint_epoch: 30` is 3 epochs away and may slow the remaining ~23 epochs (discriminator losses are
+  still 0.0, confirming joint phase has not started yet). Re-paused with
+  `resume_after: 2026-09-16T22:30:00Z` (~2h45m buffer over the naive linear-pace estimate of ~1h50m,
+  to absorb joint-phase slowdown) and an updated `resume_sentinel` recording this checkpoint's
+  readings. `jq` is not installed on the VM — use `python3 -c "import json; ..."` against
+  `checkpoints.json` instead on future checks.
 
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) is **`paused_waiting`**, not pending — this is a *resume*, not a fresh
-start. `step_tracker.json`'s step 9 entry has the full `resume_sentinel` (what to check: `tmux`
-session, `v11_train.log` tail, `metrics.jsonl`/`checkpoints.json` on the VM, gate-fired count,
-`df -h /`), `resume_after: 2026-09-16T19:45:00Z`, `watchdog_active: true`, and
-`liveness_probe: "ssh LLM-T1-NC80 tmux has-session -t v11train"`. On resume: run
-`uv run python -m arf.scripts.utils.resume_check t0014_v11_decoder_fix_retrain 9` first and follow
-its three-branch decision (sentinel present / job_alive / job_dead) per
+Step 9 (`implementation`) is **`paused_waiting`** (`pause_count: 2`), not pending — this is a
+*resume*, not a fresh start. As of the 2026-09-16T19:47Z check: epoch 27/50, step 70/191, tmux
+`v11train` alive, 0 `gate_fired`, `df -h /` stable at 87%/16GB free, loss trending flat with no
+NaNs, `joint_epoch: 30` not yet reached. `step_tracker.json`'s step 9 entry has the full
+`resume_sentinel` (what to check: `tmux` session, `v11_train.log` tail,
+`metrics.jsonl`/`checkpoints.json` on the VM — use `python3 -c "import json; ..."`, not `jq`, which
+is not installed on the VM — gate-fired count, `df -h /`), `resume_after: 2026-09-16T22:30:00Z`,
+`watchdog_active: true`, and `liveness_probe: "ssh LLM-T1-NC80 tmux has-session -t v11train"`. On
+resume: run `uv run python -m arf.scripts.utils.resume_check t0014_v11_decoder_fix_retrain 9` first
+and follow its three-branch decision (sentinel present / job_alive / job_dead) per
 `arf/skills/implementation/SKILL.md`'s Critical Rule 9 — do not blindly re-pause. If training
 finished cleanly (50 epochs, 0 unexplained `HealthGate` firings), proceed to plan.md's Milestone C
 (the mandatory audible-speech gate, `audio_quality_check.py`'s `check_audio_quality()` —

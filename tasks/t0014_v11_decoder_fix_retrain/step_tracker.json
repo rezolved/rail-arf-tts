@@ -125,12 +125,12 @@
       "last_heartbeat_at": "2026-09-16T16:59:32Z",
       "heartbeat_interval_seconds": 900,
       "expected_completion_at": "2026-09-17T00:59:32Z",
-      "resume_sentinel": "SSH to LLM-T1-NC80: tail -50 /home/azureuser/v11_train.log for the latest 'Epoch [N/50], Step [S/191]' line and check for a trailing 'DONE' marker (process exited). Cross-check ~/kokoro-finetune/logs/v11/metrics.jsonl (tail -5, look for val_loss records \u2014 one per completed epoch) and ~/kokoro-finetune/logs/v11/v11/checkpoints.json (jq '.checkpoints[-1]' for the latest epoch/val_loss/sha256). grep -c 'gate_fired' ~/kokoro-finetune/logs/v11/metrics.jsonl for HealthGate firings (expect 0). If DONE marker present and 50 epochs completed with no gate firing: proceed to Milestone C (audible-speech gate). If tmux session v11train still alive and epoch count climbing: pause again with a new resume-after. If tmux session dead but no DONE marker and epoch count stalled: treat as job_dead \u2014 collect the log tail, do not pause again, write intervention/. Also re-check df -h / on LLM-T1-NC80 (expect ~87%, unchanged) per the plan's proactive disk-monitoring requirement.",
-      "paused_at": "2026-09-16T17:46:29Z",
-      "resume_after": "2026-09-16T19:45:00Z",
+      "resume_sentinel": "SSH to LLM-T1-NC80: tail -50 /home/azureuser/v11_train.log for the latest 'Epoch [N/50], Step [S/191]' line and a trailing DONE marker. Cross-check ~/kokoro-finetune/logs/v11/metrics.jsonl (tail -5, val_loss per completed epoch) and checkpoints.json (python3 -c json.load(...)['checkpoints'][-1] -- no jq on this VM) for latest epoch/val_loss/sha256. grep -c gate_fired metrics.jsonl (expect 0). At last check (2026-09-16T19:47Z): epoch 27/50 step 70/191, tmux v11train alive, 0 gate_fired, df -h / at 87% (unchanged), GPU util 11-18% both H100s ~73-74GB/96GB VRAM, loss trending flat/stable no NaNs. Training started 17:45:20Z; ~4.6 min/epoch observed epochs 1-26; joint_epoch phase starts at epoch 30 and may run slower (discriminator losses currently 0.0, not yet active). If DONE marker present and 50 epochs completed with 0 gate firings: proceed to Milestone C (audible-speech gate). If tmux alive and epoch count climbing: pause again with new resume-after. If tmux dead with no DONE marker and epoch stalled: job_dead, do not pause again, collect log tail, write intervention/.",
+      "paused_at": "2026-09-16T19:48:45Z",
+      "resume_after": "2026-09-16T22:30:00Z",
       "watchdog_active": true,
       "liveness_probe": "ssh LLM-T1-NC80 tmux has-session -t v11train",
-      "pause_count": 1
+      "pause_count": 2
     },
     {
       "step": 10,
