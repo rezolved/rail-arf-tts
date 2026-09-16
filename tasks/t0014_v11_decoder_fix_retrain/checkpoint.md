@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
 updated_at: "2026-09-16T14:59:30Z"
-completed_steps: 2
+completed_steps: 3
 next_step_number: 3
 next_step_id: "init-folders"
 ---
@@ -27,6 +27,13 @@ trail) — PASSED with no errors or warnings. All three declared dependencies
 (`t0010_stage2_safeguarded_training`, `t0012_v5_corpus_normalize_and_reaudit`,
 `t0013_v10_synthesis_quality_forensics`) are `completed`. Wrote
 `logs/steps/002_check-deps/deps_report.json`.
+
+### Step 11 — creative-thinking
+
+Skipped: task scope is a well-defined diagnostic fix (decoder-init bug) plus corpus-expansion
+retrain with an explicit audible-speech gate; the Key Questions that call for alternative approaches
+(pretrained-checkpoint search, epoch-count sizing) are already covered by the research and planning
+steps.
 
 * * *
 
