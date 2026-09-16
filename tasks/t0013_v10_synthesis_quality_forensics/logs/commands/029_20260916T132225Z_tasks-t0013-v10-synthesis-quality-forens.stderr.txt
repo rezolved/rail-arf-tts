@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/code/score_speaker_sim.py", line 116, in <module>
+    main()
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/code/score_speaker_sim.py", line 92, in main
+    from resemblyzer import VoiceEncoder  # type: ignore[import-untyped]
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2/lib/python3.10/site-packages/resemblyzer/__init__.py", line 3, in <module>
+    from resemblyzer.audio import preprocess_wav, wav_to_mel_spectrogram, trim_long_silences, \
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2/lib/python3.10/site-packages/resemblyzer/audio.py", line 6, in <module>
+    import webrtcvad
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2/lib/python3.10/site-packages/webrtcvad.py", line 1, in <module>
+    import pkg_resources
+ModuleNotFoundError: No module named 'pkg_resources'

@@ -1,0 +1,4 @@
+A       tasks/t0008_tts_eval_harness_baselines/data/11labs_david/
+A       tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00014.pth
+A       tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00016.pth
+1366 files added

@@ -1,0 +1,7 @@
+Using Python 3.10.11 environment at: tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2
+Resolved 1 package in 115ms
+Downloading setuptools (1.0MiB)
+ Downloaded setuptools
+Prepared 1 package in 140ms
+Installed 1 package in 44ms
+ + setuptools==80.10.2

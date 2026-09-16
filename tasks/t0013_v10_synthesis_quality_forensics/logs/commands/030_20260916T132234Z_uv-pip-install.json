@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0013_v10_synthesis_quality_forensics",
+  "command": "uv pip install --python tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2/bin/python setuptools<81",
+  "exit_code": 0,
+  "duration_seconds": 0.338,
+  "started_at": "2026-09-16T13:22:34Z",
+  "completed_at": "2026-09-16T13:22:34Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics",
+  "stdout_file": "030_20260916T132234Z_uv-pip-install.stdout.txt",
+  "stderr_file": "030_20260916T132234Z_uv-pip-install.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 7,
+  "truncated": false
+}

@@ -1,0 +1,7 @@
+Loaded the voice encoder model on cpu in 0.05 seconds.
+VoiceEncoder on cpu
+Centroid built from up to 679 clips of /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0008_tts_eval_harness_baselines/data/11labs_david
+/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/audio_samples/control_epochs_2nd_00020.wav: speaker_sim=0.48155468702316284 error=None
+/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/audio_samples/v10_epoch16_primary.wav: speaker_sim=0.3506302833557129 error=None
+/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/audio_samples/v10_epoch14_backup.wav: speaker_sim=0.3108280301094055 error=None
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/speaker_sim_scores.json

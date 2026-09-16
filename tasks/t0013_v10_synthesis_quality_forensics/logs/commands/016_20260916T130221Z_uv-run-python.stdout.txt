@@ -1,0 +1,48 @@
+Inspecting epoch_2nd_00016 (v10 primary): /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00016.pth
+  decoder classification: hifigan
+  bert: 6,292,480 params, finite=OK, weight_norm=186.53
+  bert_encoder: 393,728 params, finite=OK, weight_norm=13.09
+  decoder: 54,289,492 params, finite=OK, weight_norm=213.29
+  diffusion: 50,653,952 params, finite=OK, weight_norm=899.23
+  mpd: 41,105,770 params, finite=OK, weight_norm=95.44
+  msd: 280,902 params, finite=OK, weight_norm=18.06
+  pitch_extractor: 5,251,148 params, finite=OK, weight_norm=86263.86
+  predictor: 16,194,612 params, finite=OK, weight_norm=142.03
+  predictor_encoder: 13,880,813 params, finite=OK, weight_norm=41.89
+  style_encoder: 13,880,813 params, finite=OK, weight_norm=41.84
+  text_aligner: 7,868,452 params, finite=OK, weight_norm=825.32
+  text_encoder: 5,606,400 params, finite=OK, weight_norm=310.78
+  wd: 1,173,634 params, finite=OK, weight_norm=21.68
+Inspecting epoch_2nd_00014 (v10 backup): /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00014.pth
+  decoder classification: hifigan
+  bert: 6,292,480 params, finite=OK, weight_norm=186.53
+  bert_encoder: 393,728 params, finite=OK, weight_norm=13.09
+  decoder: 54,289,492 params, finite=OK, weight_norm=213.22
+  diffusion: 50,653,952 params, finite=OK, weight_norm=899.23
+  mpd: 41,105,770 params, finite=OK, weight_norm=95.42
+  msd: 280,902 params, finite=OK, weight_norm=18.05
+  pitch_extractor: 5,251,148 params, finite=OK, weight_norm=86098.12
+  predictor: 16,194,612 params, finite=OK, weight_norm=141.99
+  predictor_encoder: 13,880,813 params, finite=OK, weight_norm=41.84
+  style_encoder: 13,880,813 params, finite=OK, weight_norm=41.76
+  text_aligner: 7,868,452 params, finite=OK, weight_norm=825.32
+  text_encoder: 5,606,400 params, finite=OK, weight_norm=310.78
+  wd: 1,173,634 params, finite=OK, weight_norm=21.68
+Inspecting first_stage_v3 (control, istftnet-trained): /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/stage1/first_stage.pth
+  decoder classification: istftnet
+  bert: 6,292,480 params, finite=OK, weight_norm=186.53
+  bert_encoder: 393,728 params, finite=OK, weight_norm=13.09
+  decoder: 53,276,190 params, finite=OK, weight_norm=196.98
+  diffusion: 43,836,160 params, finite=OK, weight_norm=900.61
+  mpd: 41,105,770 params, finite=OK, weight_norm=95.75
+  msd: 280,902 params, finite=OK, weight_norm=18.05
+  pitch_extractor: 5,251,148 params, finite=OK, weight_norm=84856.28
+  predictor: 16,194,612 params, finite=OK, weight_norm=141.67
+  predictor_encoder: 13,880,813 params, finite=OK, weight_norm=41.42
+  style_encoder: 13,880,813 params, finite=OK, weight_norm=41.54
+  text_aligner: 7,868,452 params, finite=OK, weight_norm=825.32
+  text_encoder: 5,606,400 params, finite=OK, weight_norm=310.78
+  wd: 1,173,634 params, finite=OK, weight_norm=21.70
+
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/checkpoint_forensics_raw.json
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/checkpoint_forensics.md

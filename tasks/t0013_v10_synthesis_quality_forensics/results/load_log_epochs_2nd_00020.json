@@ -1,0 +1,252 @@
+{
+  "checkpoint": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/code/kikiri-tts/StyleTTS2/Models/LibriTTS/epochs_2nd_00020.pth",
+  "modules": [
+    {
+      "module": "bert",
+      "is_core": true,
+      "num_model_params": 25,
+      "num_ckpt_params": 25,
+      "primary": {
+        "matched": 0,
+        "missing": 25,
+        "unexpected": 25
+      },
+      "fallback": {
+        "matched": 25,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "bert_encoder",
+      "is_core": true,
+      "num_model_params": 2,
+      "num_ckpt_params": 2,
+      "primary": {
+        "matched": 0,
+        "missing": 2,
+        "unexpected": 2
+      },
+      "fallback": {
+        "matched": 2,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "predictor",
+      "is_core": true,
+      "num_model_params": 122,
+      "num_ckpt_params": 122,
+      "primary": {
+        "matched": 0,
+        "missing": 122,
+        "unexpected": 122
+      },
+      "fallback": {
+        "matched": 122,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "decoder",
+      "is_core": true,
+      "num_model_params": 678,
+      "num_ckpt_params": 678,
+      "primary": {
+        "matched": 0,
+        "missing": 678,
+        "unexpected": 678
+      },
+      "fallback": {
+        "matched": 678,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "text_encoder",
+      "is_core": true,
+      "num_model_params": 24,
+      "num_ckpt_params": 24,
+      "primary": {
+        "matched": 0,
+        "missing": 24,
+        "unexpected": 24
+      },
+      "fallback": {
+        "matched": 24,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "predictor_encoder",
+      "is_core": true,
+      "num_model_params": 67,
+      "num_ckpt_params": 67,
+      "primary": {
+        "matched": 0,
+        "missing": 67,
+        "unexpected": 67
+      },
+      "fallback": {
+        "matched": 67,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "style_encoder",
+      "is_core": true,
+      "num_model_params": 67,
+      "num_ckpt_params": 67,
+      "primary": {
+        "matched": 0,
+        "missing": 67,
+        "unexpected": 67
+      },
+      "fallback": {
+        "matched": 67,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "diffusion",
+      "is_core": true,
+      "num_model_params": 96,
+      "num_ckpt_params": 96,
+      "primary": {
+        "matched": 0,
+        "missing": 96,
+        "unexpected": 96
+      },
+      "fallback": {
+        "matched": 96,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "text_aligner",
+      "is_core": false,
+      "num_model_params": 143,
+      "num_ckpt_params": 143,
+      "primary": {
+        "matched": 0,
+        "missing": 143,
+        "unexpected": 143
+      },
+      "fallback": {
+        "matched": 143,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "pitch_extractor",
+      "is_core": false,
+      "num_model_params": 77,
+      "num_ckpt_params": 77,
+      "primary": {
+        "matched": 0,
+        "missing": 77,
+        "unexpected": 77
+      },
+      "fallback": {
+        "matched": 77,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "mpd",
+      "is_core": false,
+      "num_model_params": 90,
+      "num_ckpt_params": 90,
+      "primary": {
+        "matched": 30,
+        "missing": 60,
+        "unexpected": 60
+      },
+      "fallback": {
+        "matched": 90,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "msd",
+      "is_core": false,
+      "num_model_params": 54,
+      "num_ckpt_params": 54,
+      "primary": {
+        "matched": 18,
+        "missing": 36,
+        "unexpected": 36
+      },
+      "fallback": {
+        "matched": 54,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    },
+    {
+      "module": "wd",
+      "is_core": false,
+      "num_model_params": 15,
+      "num_ckpt_params": 15,
+      "primary": {
+        "matched": 5,
+        "missing": 10,
+        "unexpected": 10
+      },
+      "fallback": {
+        "matched": 15,
+        "missing": 0,
+        "unexpected": 0
+      },
+      "used_fallback": true,
+      "final_missing": 0,
+      "final_unexpected": 0
+    }
+  ]
+}

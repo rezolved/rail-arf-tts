@@ -1,0 +1,45 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0013-01",
+      "title": "Retrain v10 with decoder correctly excluded from the Stage 1 checkpoint load",
+      "description": "t0013 confirmed via a control-validated inference harness that kokoro-v10-best's HiFi-GAN decoder never worked: train_second_v10.py:load_checkpoint()'s ignore_modules list (lines 244-260) omits 'decoder', so first_stage_v3.pth's ISTFTNet-shaped weights partially overwrote the HiFi-GAN generator -- an initialization actively worse than random (clip_fraction 0.750-0.807 vs. 0.004 for a pure-random decoder, results/creative_thinking.md). Retrain t0010 (or a corrected variant task) from a fixed train_second_v10.py that either adds 'decoder' to ignore_modules (leaving it explicitly at random init, not silently partial-loaded) or sources a HiFi-GAN-shaped pretrained first-stage checkpoint so Stage 2 is genuine fine-tuning. This supersedes S-0010-03's premise of resuming from epoch_2nd_00016.pth, which this task showed never produced audible speech at any epoch. Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0013_v10_synthesis_quality_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0013-02",
+      "title": "Require a synthesis noise/clipping smoke gate before any Stage 2 training task can complete",
+      "description": "Significant process/framework gap, not a routine follow-up: kokoro-v10-best shipped through every one of t0010's verificators with a completely non-functional vocoder (75-81% clipped, DC-saturated audio) because val_loss was the only success signal checked -- nobody ran synthesis and listened, and speaker_sim would not have caught it either (confirmed-garbage audio still scored 0.31-0.35 GE2E cosine, not a near-zero outlier, per results/v10_diagnosis.md's Metrics note). Require every Stage 2 training task to run a text-to-audio smoke check using code/audio_quality_check.py's is_likely_noise heuristic (clip_fraction + spectral_flatness) and pass it before the task can be marked status 'completed' -- wire this into the tts-finetuning-eval task type's verification criteria or a dedicated verificator, not left as deferrable eval-harness work the way t0010 deferred it. Recommended task types: infrastructure-setup.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0013_v10_synthesis_quality_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0013-03",
+      "title": "Add a preflight decoder-architecture consistency check before Stage 2 training starts",
+      "description": "The v10 defect (a HiFi-GAN decoder initialized from an ISTFTNet-shaped checkpoint) was detectable in seconds from raw tensor keys alone -- net['decoder'] key names and generator.alphas.* presence -- before any training epoch ran; code/inspect_checkpoint.py did exactly this in t0013. Extend the t0009_training_safeguards library (or train_second_*.py's load_checkpoint()) with a startup assertion comparing the first_stage checkpoint's decoder key signature against config_david_*.yml's model_params.decoder.type, raising before training begins on a mismatch instead of silently partial-loading and only discovering the defect 17 epochs and a separate forensics task later. Recommended task types: write-library.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0013_v10_synthesis_quality_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0013-04",
+      "title": "Promote code/audio_quality_check.py into a registered library for reuse across TTS tasks",
+      "description": "t0013's noise/clipping heuristic (spectral_flatness + clip_fraction + silence_fraction -> is_likely_noise) currently lives only in this task's code/ folder -- the same copy-paste-across-tasks pattern S-0012-03 already flagged for the audio-audit pipeline. Register it as a project library (same pattern as tts_eval_harness and t0009_training_safeguards) so future finetuning, eval-harness, and completion-gate tasks (including S-0013-02's gate) import one source of truth for the noise thresholds instead of re-deriving them each time. Recommended task types: write-library.",
+      "kind": "library",
+      "priority": "low",
+      "source_task": "t0013_v10_synthesis_quality_forensics",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+ERROR: failed to transfer '727d62209946dddb7556bda7625fa370' - This request is not authorized to perform this operation using this permission.
+RequestId:0487cfa7-c01e-0061-6dde-45c527000000
+Time:2026-09-16T13:21:29.9533410Z
+ErrorCode:AuthorizationPermissionMismatch
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthorizationPermissionMismatch</Code><Message>This request is not authorized to perform this operation using this permission.
+RequestId:0487cfa7-c01e-0061-6dde-45c527000000
+Time:2026-09-16T13:21:29.9533410Z</Message></Error>
+ERROR: failed to transfer '64c9ed25d5352d71818aff10e804a0b2' - This request is not authorized to perform this operation using this permission.
+RequestId:b8a3fa30-201e-0034-72de-45d5ac000000
+Time:2026-09-16T13:21:30.5607255Z
+ErrorCode:AuthorizationPermissionMismatch
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthorizationPermissionMismatch</Code><Message>This request is not authorized to perform this operation using this permission.
+RequestId:b8a3fa30-201e-0034-72de-45d5ac000000
+Time:2026-09-16T13:21:30.5607255Z</Message></Error>
+ERROR: failed to transfer '6d5d49fb0a5c3c7a7cf042f33f4eb6d8' - This request is not authorized to perform this operation using this permission.
+RequestId:0487d0e8-c01e-0061-11de-45c527000000
+Time:2026-09-16T13:21:30.2755139Z
+ErrorCode:AuthorizationPermissionMismatch
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthorizationPermissionMismatch</Code><Message>This request is not authorized to perform this operation using this permission.
+RequestId:0487d0e8-c01e-0061-11de-45c527000000
+Time:2026-09-16T13:21:30.2755139Z</Message></Error>
+ERROR: failed to transfer 'a9f60c99603187ac8ba35e6be9a208a3' - This request is not authorized to perform this operation using this permission.
+RequestId:e0b295d1-c01e-004e-18de-45c8ec000000
+Time:2026-09-16T13:21:30.5716615Z
+ErrorCode:AuthorizationPermissionMismatch
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthorizationPermissionMismatch</Code><Message>This request is not authorized to perform this operation using this permission.
+RequestId:e0b295d1-c01e-004e-18de-45c8ec000000
+Time:2026-09-16T13:21:30.5716615Z</Message></Error>
+ERROR: failed to transfer '33230601781ce2ea037ac21065b6f03e' - This request is not authorized to perform this operation using this permission.
+RequestId:10002b16-101e-005d-2fde-45ece0000000
+Time:2026-09-16T13:21:30.5622971Z
+ErrorCode:AuthorizationPermissionMismatch
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthorizationPermissionMismatch</Code><Message>This request is not authorized to perform this operation using this permission.
+RequestId:10002b16-101e-005d-2fde-45ece0000000
+Time:2026-09-16T13:21:30.5622971Z</Message></Error>
+ERROR: failed to transfer 'da9f1b93208cb088df74b63923a7580d' - This request is not authorized to perform this operation using this permission.
+RequestId:d2ce484d-601e-000a-64de-4542d3000000
+Time:2026-09-16T13:21:30.5766234Z
+ErrorCode:AuthorizationPermissionMismatch
+Content: <?xml version="1.0" encoding="utf-8"?><Error><Code>AuthorizationPermissionMismatch</Code><Message>This request is not authorized to perform this operation using this permission.
+RequestId:d2ce484d-601e-000a-64de-4542d3000000
+Time:2026-09-16T13:21:30.5766234Z</Message></Error>
+ERROR: failed to push data to the cloud - 7 files failed to upload
