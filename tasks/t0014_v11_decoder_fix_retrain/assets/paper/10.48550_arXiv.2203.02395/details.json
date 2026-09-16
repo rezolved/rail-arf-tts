@@ -1,0 +1,55 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2203.02395",
+  "doi": "10.48550/arXiv.2203.02395",
+  "title": "iSTFTNet: Fast and Lightweight Mel-Spectrogram Vocoder Incorporating Inverse Short-Time Fourier Transform",
+  "url": "https://arxiv.org/abs/2203.02395",
+  "pdf_url": "https://arxiv.org/pdf/2203.02395v1",
+  "date_published": "2022-03-04",
+  "year": 2022,
+  "authors": [
+    {
+      "name": "Takuhiro Kaneko",
+      "country": "JP",
+      "institution": "NTT Communication Science Laboratories, NTT Corporation",
+      "orcid": null
+    },
+    {
+      "name": "Kou Tanaka",
+      "country": "JP",
+      "institution": "NTT Communication Science Laboratories, NTT Corporation",
+      "orcid": null
+    },
+    {
+      "name": "Hirokazu Kameoka",
+      "country": "JP",
+      "institution": "NTT Communication Science Laboratories, NTT Corporation",
+      "orcid": null
+    },
+    {
+      "name": "Shogo Seki",
+      "country": "JP",
+      "institution": "NTT Communication Science Laboratories, NTT Corporation",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "NTT Communication Science Laboratories, NTT Corporation",
+      "country": "JP"
+    }
+  ],
+  "journal": "ICASSP 2022",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "In recent text-to-speech synthesis and voice conversion systems, a mel-spectrogram is commonly applied as an intermediate representation, and the necessity for a mel-spectrogram vocoder is increasing. A mel-spectrogram vocoder must solve three inverse problems: recovery of the original-scale magnitude spectrogram, phase reconstruction, and frequency-to-time conversion. A typical convolutional mel-spectrogram vocoder solves these problems jointly and implicitly using a convolutional neural network, including temporal upsampling layers, when directly calculating a raw waveform. Such an approach allows skipping redundant processes during waveform synthesis (e.g., the direct reconstruction of high-dimensional original-scale spectrograms). By contrast, the approach solves all problems in a black box and cannot effectively employ the time-frequency structures existing in a mel-spectrogram. We thus propose iSTFTNet, which replaces some output-side layers of the mel-spectrogram vocoder with the inverse short-time Fourier transform (iSTFT) after sufficiently reducing the frequency dimension using upsampling layers, reducing the computational cost from black-box modeling and avoiding redundant estimations of high-dimensional spectrograms. During our experiments, we applied our ideas to three HiFi-GAN variants and made the models faster and more lightweight with a reasonable speech quality. Audio samples are available at https://www.kecl.ntt.co.jp/people/kaneko.takuhiro/projects/istftnet/.",
+  "citation_key": "Kaneko2022",
+  "summary_path": "summary.md",
+  "files": [
+    "files/kaneko_2022_istftnet.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0014_v11_decoder_fix_retrain",
+  "date_added": "2026-09-16"
+}
