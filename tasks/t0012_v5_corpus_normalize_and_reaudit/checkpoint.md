@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
-updated_at: "2026-09-16T07:30:00Z"
-completed_steps: 11
-next_step_number: 11
-next_step_id: "creative-thinking"
+updated_at: "2026-09-16T07:45:00Z"
+completed_steps: 12
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -114,6 +114,19 @@ against `tasks/t0011_v5_data_quality_audit/`; zero diff outside the task folder.
 future infrastructure task should investigate `arf/scripts/utils` DVC config or formally document
 the Azure-SDK fallback.
 
+### Step 11 — creative-thinking
+
+Wrote `results/creative_thinking.md`, going beyond the plan's four pre-registered Key Questions
+(already answered numerically) with a direct query over `data/per_clip_stats_v2.jsonl`. Headline
+finding: the -1 dBFS peak ceiling that fixed the implementation step's 408-new-clipping bug also
+makes "-14 LUFS normalization" effectively one-directional for this corpus — 850/852 clips (99.8%)
+that needed an upward loudness boost remain short of target because their source peak is already
+pinned near 0 dBFS (post-LUFS std only drops from 2.34 to 1.58, not to ~0). Also flagged that the 25
+remaining `duration_low` exclusions are disproportionately short, high-frequency voice-commerce
+filler phrases ("got it", "sure thing", "of course") rather than truncated audio — a representation
+risk worth naming for whoever trains on this manifest, though out of this task's scope to fix. No
+REQ answer changes as a result.
+
 * * *
 
 ## Cross-Step Decisions
@@ -125,16 +138,28 @@ the Azure-SDK fallback.
 * Loudness normalization to a fixed LUFS target must cap true peak (this task uses -1 dBFS via
   `PEAK_CEILING_DBFS`) — an unbounded gain formula reintroduces clipping at corpus scale even though
   it looked correct on a small `--limit 20` sample.
+* The peak ceiling that prevents new clipping also caps upward loudness correction: 850/852 clips
+  (99.8%) that needed a boost to reach -14 LUFS remain below target (post-LUFS std 1.58, down from
+  2.34 pre, not ~0). Stage 2 training should treat this residual loudness variance as a known,
+  quantified factor if training curves show unexplained instability — see
+  `results/creative_thinking.md` §1.
+* The 25 `duration_low`-excluded clips are disproportionately short, high-frequency filler phrases
+  ("got it", "sure thing", "of course"), not truncated audio. `DURATION_MIN_S` was kept unchanged
+  from t0011 per this task's scope; a future task could revisit a duration-aware (transcript-length
+  -scaled) floor to recover them — see `results/creative_thinking.md` §3.
 
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) is complete and fully verified — all deliverables exist, all REQ items
-done, no open issues. Step 10 (`teardown`) is already marked `skipped` in `step_tracker.json` (no
-remote machines were used). Proceed to step 11 (`creative-thinking`): explore the plan's Key
-Questions using `data/analysis_v2.json` and `data/flag_counts_v2.json` as the primary data sources —
-genuine-clipping count (0), new-clipping-from-normalization count (0, after the peak-ceiling fix),
-manifest size vs baselines (1531/1557 vs 1311/1557 and the two suggestions' individual ~1532/~1556
-estimates), and the duration/silence-flag interaction cross-tab already computed in
-`analysis_v2.json` for Key Question 4.
+Step 11 (`creative-thinking`) is complete: `results/creative_thinking.md` covers the four
+pre-registered Key Questions plus two out-of-the-box findings (the one-directional LUFS
+normalization effect, and the filler-phrase composition of the excluded 26). Proceed to step 12
+(`results`): write `results/results_summary.md`, `results/results_detailed.md`, and
+`results/metrics.json` per `task_results_specification.md`. Primary data sources are
+`data/analysis_v2.json` and `data/flag_counts_v2.json` for the REQ-4/REQ-11/REQ-12/REQ-14/REQ-15/
+REQ-16 numbers, the 3 histograms already in `results/images/` for REQ-13, and
+`results/creative_thinking.md` for the "Analysis"/discussion narrative. No registered project metric
+(`rtf`, `speaker_sim`, `ttfb_ms`) applies to this corpus-normalization task — `metrics.json` should
+be empty/omitted per the plan's "Metrics and cost note," not fabricated. Total cost is $0 (CPU-only,
+no paid APIs).

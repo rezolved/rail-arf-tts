@@ -125,10 +125,14 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Explore the Key Questions: genuine clipping count, new clipping introduced by the gain change, manifest size vs baselines, and interaction with short-duration/silence flags.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T07:27:09Z",
       "completed_at": null,
-      "log_file": "logs/steps/011_creative-thinking/"
+      "log_file": "logs/steps/011_creative-thinking/",
+      "current_owner": "step-executor/creative-thinking",
+      "last_heartbeat_at": "2026-09-16T07:27:09Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-16T08:27:09Z"
     },
     {
       "step": 12,
