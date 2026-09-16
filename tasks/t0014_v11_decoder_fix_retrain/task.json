@@ -5,13 +5,13 @@
   "name": "Kokoro Stage 2 v11: decoder-init fix, full normalized corpus retrain",
   "short_description": "Fix the ignore_modules bug that left v10's HiFi-GAN decoder worse than random, retrain on t0012's 1531-clip normalized corpus, and gate completion on an actual audible-speech check.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [
     "t0010_stage2_safeguarded_training",
     "t0012_v5_corpus_normalize_and_reaudit",
     "t0013_v10_synthesis_quality_forensics"
   ],
-  "start_time": null,
+  "start_time": "2026-09-16T14:56:09Z",
   "end_time": null,
   "expected_assets": {
     "model": 1
