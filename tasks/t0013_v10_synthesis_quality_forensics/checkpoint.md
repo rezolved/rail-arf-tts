@@ -137,6 +137,19 @@ implementation (despite the earlier caveat assuming they existed) and created th
 `## Examples` (mandatory for `code-reproduction` task types) has 12 instances, all copied verbatim
 from existing result files.
 
+### Step 14 — suggestions
+
+Spawned a dedicated `/generate-suggestions` subagent, instructed to carry forward both the retrain
+follow-up and the eval-harness pre-completion regression-check follow-up from
+`results/v10_diagnosis.md`'s Recommendation section. It wrote `results/suggestions.json` with four
+suggestions: S-0013-01 (retrain t0010/a corrected variant with `ignore_modules` fixed for the
+decoder handoff, high priority), S-0013-02 (mandatory synthesis noise/clipping smoke gate via
+`code/audio_quality_check.py` before any Stage 2 training task can claim `completed`, explicitly
+framed as a significant process/framework gap, high priority), S-0013-03 (preflight
+decoder-architecture consistency check, medium priority), and S-0013-04 (promote
+`audio_quality_check.py` to a registered library, low priority). `verify_suggestions` passed with 0
+errors/0 warnings. No caveats.
+
 * * *
 
 ## Cross-Step Decisions
@@ -185,19 +198,6 @@ from existing result files.
   created both as zero-cost/no-machines records (`{"total_cost_usd": 0, "breakdown": {}}` and `[]`).
   Future step-executors should verify a prior step's "all deliverables written" claim against the
   filesystem directly rather than trusting the checkpoint summary alone.
-
-### Step 14 — suggestions
-
-Spawned a dedicated `/generate-suggestions` subagent, instructed to carry forward both the retrain
-follow-up and the eval-harness pre-completion regression-check follow-up from
-`results/v10_diagnosis.md`'s Recommendation section. It wrote `results/suggestions.json` with four
-suggestions: S-0013-01 (retrain t0010/a corrected variant with `ignore_modules` fixed for the
-decoder handoff, high priority), S-0013-02 (mandatory synthesis noise/clipping smoke gate via
-`code/audio_quality_check.py` before any Stage 2 training task can claim `completed`, explicitly
-framed as a significant process/framework gap, high priority), S-0013-03 (preflight
-decoder-architecture consistency check, medium priority), and S-0013-04 (promote
-`audio_quality_check.py` to a registered library, low priority). `verify_suggestions` passed with 0
-errors/0 warnings. No caveats.
 
 * * *
 
