@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T15:52:00Z"
+updated_at: "2026-09-16T16:25:00Z"
 completed_steps: 7
-next_step_number: 7
-next_step_id: "planning"
+next_step_number: 8
+next_step_id: "setup-machines"
 ---
 # Task Objective
 
@@ -77,6 +77,23 @@ repoint recommendation. Also ran the mandatory `research-summarize` step, produc
 `research/research_summary.md` for planning/implementation to consume instead of the full research
 files.
 
+### Step 7 — planning
+
+Spawned the `/planning` subagent with the budget summary from `ctx/costs.json` and the full step 1-6
+context. It wrote `plan/plan.md` (11 mandatory sections, `spec_version: "2"`, `status: "complete"`);
+`verify_plan.py` passed 0 errors, 0 warnings on first re-run. Chosen approach: repoint
+`first_stage_path` at `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` in a new
+`config_david_v11.yml` (leaving `ignore_modules` unchanged), gated by a mandatory pre-flight tensor
+check (`inspect_checkpoint.py`'s `classify_decoder()`) before any GPU spend, with random-init as a
+documented fallback requiring an `intervention/` file. Epoch budget set to
+`epochs: 50, diff_epoch: 10, joint_epoch: 30` (the `Configs/config_ft.yml` anchor), explicitly
+overriding `task_description.md`'s literal "joint_epoch=8 unchanged" text as a called-out, resolved
+ambiguity. The audible-speech gate is `audio_quality_check.py`'s `check_audio_quality()`
+(`clip_fraction`/`spectral_flatness` heuristic) as the sole pre-registered pass/fail signal, not
+`val_loss` or `speaker_sim`. Cost estimate: ~$84-150 (itemized from t0010's measured per-epoch
+wall-clock, scaled 6.12x for corpus size and epoch count), explicitly flagged as exceeding the $100
+per-task default, with a pre-registered $300 hard-stop escalation threshold.
+
 ### Step 11 — creative-thinking
 
 Skipped: task scope is a well-defined diagnostic fix (decoder-init bug) plus corpus-expansion
@@ -115,20 +132,26 @@ steps.
   `inspect_checkpoint.py`/`audio_quality_check.py`/`infer_styletts2.py`/`random_decoder_probe.py`
   are otherwise directly reusable (copy into task; only `tts_eval_harness`'s scoring functions, not
   its Kokoro-based synthesis adapters, are usable pre-v11).
+* **Plan finalized and verified.** `plan/plan.md` is `status: "complete"`, `verify_plan.py` passes 0
+  errors/0 warnings. The plan supersedes `task_description.md`'s literal `joint_epoch=8 unchanged`
+  instruction with `epochs: 50, diff_epoch: 10, joint_epoch: 30`, documented explicitly as a
+  resolved ambiguity per the plan spec's Task Requirement Checklist rules — implementation must use
+  the plan's schedule, not the task description's literal text. Cost estimate (~$84-150) is expected
+  to exceed the $100 per-task default like t0010 did; this is pre-authorized in the plan with a $300
+  hard-stop escalation threshold, and project budget headroom (99.9% left) is not a constraint.
 
 * * *
 
 ## Next Step Notes
 
-All three research steps are complete. `research/research_summary.md` (~8 KB) now compresses
-`research_papers.md`/`research_internet.md`/`research_code.md` and should be the first file the
-`planning` subagent reads. Proceed to step 7 (`planning`) per `step_tracker.json`: design the
-decoder-init fix (repoint `first_stage_path` at `yl4579/StyleTTS2-LibriTTS`'s
-`epochs_2nd_00020.pth`, per steps 5-6, not the random-init `ignore_modules` fallback), the corpus
-swap to t0012's 1,531-clip set, the retrain epoch budget (anchor on `Configs/config_ft.yml`'s
-50/10/30 schedule per step 5, not v10's 20/8), and the mandatory audible-speech gate. Reuse
-`t0010`'s `train_second_v10.py` (copy into task, already wired to `t0009`'s safeguards) and
-`t0013`'s `inspect_checkpoint.py` / `audio_quality_check.py` / `infer_styletts2.py` /
-`random_decoder_probe.py` (all copy into task) per `research/research_code.md`'s Reusable Code and
-Assets section. The `add-paper` subagent for arXiv:2103.05236 (GAN Vocoder / MRD) from step 5 has
-already completed and was committed (`11e1d85`) — no outstanding background work remains.
+Planning is complete: `plan/plan.md` fully specifies the decoder-init fix (repoint
+`first_stage_path` at `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` in a new
+`config_david_v11.yml`, gated by a mandatory pre-flight `classify_decoder()` tensor check before any
+GPU spend), the corpus swap to t0012's 1,531-clip normalized set, the `50/10/30` epoch budget, and
+the mandatory audible-speech gate (`audio_quality_check.py`'s `check_audio_quality()`). Proceed to
+step 8 (`setup-machines`) per `step_tracker.json`: provision `LLM-T1-NC80` (2xH100) per the plan's
+Remote Machines section, deploy the idle watchdog before any long-running step (Lesson 8), verify
+the `/mnt/cache/persist` symlink resolves to the real Azure Files mount before any checkpoint write
+(Lesson 10), and enable `loginctl enable-linger` for any `tmux`-launched long job (Lesson 11). Watch
+disk usage proactively this time — t0010's own failure (root disk filled up, no working torch env,
+eval deferred with null metrics) is the cautionary precedent the plan explicitly guards against.
