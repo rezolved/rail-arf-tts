@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
 updated_at: "2026-09-16T23:05:00Z"
-completed_steps: 9
+completed_steps: 10
 next_step_number: 10
 next_step_id: "teardown"
 ---
@@ -118,6 +118,15 @@ retrain with an explicit audible-speech gate; the Key Questions that call for al
 (pretrained-checkpoint search, epoch-count sizing) are already covered by the research and planning
 steps.
 
+### Step 9 — implementation
+
+Resumed from `paused_waiting`; `resume_check`'s `job_dead` was independently confirmed over SSH as a
+false-negative (training actually finished cleanly: `DONE` marker, 50/50 epochs, 0 gate firings).
+Milestone C's mandatory audible-speech gate **passed** (`is_likely_noise=False`, `clip_fraction`
+0.0048 vs. v10's confirmed-broken 0.750-0.807) against `epoch_00048.pth`, so Milestone D's
+`kokoro-v11-best` model asset was created and independently verified (0 errors). See
+`results/v11_gate_verdict.md` for full evidence; `LLM-T1-NC80` is left running for `teardown`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -216,46 +225,6 @@ steps.
   to absorb joint-phase slowdown) and an updated `resume_sentinel` recording this checkpoint's
   readings. `jq` is not installed on the VM — use `python3 -c "import json; ..."` against
   `checkpoints.json` instead on future checks.
-
-### Step 9 — implementation (resumed and completed)
-
-Resumed `paused_waiting` (`pause_count: 2`). `resume_check` returned `job_dead` (exit 3) — a known
-false-negative: the crude `tmux has-session` probe closes naturally when a job exits cleanly, and is
-indistinguishable from a crash by that probe alone. Independently re-verified over SSH (not just
-trusting the coordinator's earlier read) before proceeding: `v11_train.log` ends with a trailing
-`DONE` marker after "Epochs: 50", `metrics.jsonl` has 620 records through epoch 50 (final
-`val_loss=0.3505`), `grep -c gate_fired` returns `0`, `df -h /` stable at 87%/16G free, and the last
-actual saved checkpoint on disk is `epoch_00048.pth` (2,086,802,736 bytes, `val_loss=0.3468841`,
-`flagged_healthy: true` — only even epochs are saved by the checkpoint manager, so no separate
-epoch-49/50 file exists). This matched the resume_sentinel's own anticipated "DONE marker + 50
-epochs + 0 gate firings, proceed to Milestone C" branch exactly, so training was correctly treated
-as a genuine completion, not a dead job, and a fresh `/implementation` subagent was spawned to run
-Milestone C/D. **Milestone C's mandatory audible-speech gate PASSED**:
-`code/audio_quality_check.py`'s `check_audio_quality()` on `epoch_00048.pth`'s synthesis returned
-`is_likely_noise=False` (`clip_fraction=0.0048`, `spectral_flatness=0.0058`) — two orders of
-magnitude below both confirmed-broken v10 checkpoints (`clip_fraction=0.750-0.807`) and comparable
-to the known-good LibriTTS control, with all 13 StyleTTS2 modules loading 0 missing/0 unexpected
-keys. Full evidence in `results/v11_gate_verdict.md` and `results/audio_quality_v11.json`. Because
-the gate passed, Milestone C steps 10-11 (paired original sample reuse from t0013,
-`speaker_sim=0.444`, `rtf=3.18`, `ttfb_ms` explicitly omitted) and Milestone D (the
-`assets/model/kokoro-v11-best/` model asset, DVC-tracked weights + config, 6 files pushed to the
-`azureblob` DVC remote) all completed.
-`uv run python -m meta.asset_types.model.verificator kokoro-v11-best --task-id t0014_v11_decoder_fix_retrain`
-— independently re-run, not just taken on the subagent's word — passed 0 errors, 2 warnings
-(`MA-W005` empty `meta/categories/`, `MA-W014` empty `training_dataset_ids`, both pre-existing
-project-wide gaps matching `kokoro-v10-best`'s own warning profile). `verify_task_metrics` and
-`verify_task_results` independently re-run: both 0 errors/0 warnings. One honestly-disclosed
-anomaly, non-blocking per the plan's pre-registered pass/fail criterion: v11's synthesis output is
-73.95s for a 10-word sentence (vs. 2.5-4.9s for the control/v10 on the same text) — a likely
-duration-predictor calibration issue, distinct from the decoder defect this task fixes, documented
-in `results/v11_gate_verdict.md` and flagged as a follow-up candidate. Plan deviations (all
-documented in `results/results_summary.md`): the plan's literal
-`arf.scripts.verificators.verify_model_asset` module path does not exist in this repo (pre-existing
-doc gap, also present in `kokoro-v10-best`'s own log) — the real path is
-`meta.asset_types.model.verificator`; a local-only, gitignored DVC auth workaround
-(`exclude_managed_identity_credential`) was needed for `dvc push` to succeed from this compute
-instance; `results/costs.json`/`results/remote_machines_used.json` are explicitly marked interim
-since `LLM-T1-NC80` is still running (teardown is step 10, not run here).
 
 * * *
 
