@@ -1,0 +1,17 @@
+{
+  "variants": [
+    {
+      "variant_id": "v11-best",
+      "label": "kokoro-v11-best (decoder-init fix + 1531-clip corpus)",
+      "dimensions": {
+        "checkpoint": "epoch_00048.pth",
+        "decoder_type": "hifigan",
+        "role": "fixed_retrain"
+      },
+      "metrics": {
+        "rtf": 3.1811602714837277,
+        "speaker_sim": 0.44419100880622864
+      }
+    }
+  ]
+}

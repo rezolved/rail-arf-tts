@@ -1,0 +1,16 @@
+{
+  "wav": "results/audio_samples/ft/v11_best.wav",
+  "checkpoint": "epoch_00048.pth (val_loss 0.3468841314315796, flagged_healthy=true)",
+  "harness": "code/infer_styletts2.py, run through t0013_v10_synthesis_quality_forensics's .venv-styletts2 (torch==2.5.1 CPU), styletts2-dir reused from t0013's kikiri-tts checkout",
+  "reference_audio": "3-clip concatenation of lining_up_suggestions_17.wav + lining_up_suggestions_10.wav + putting_them_head_to_head_15.wav (11labs_david), 0.2s silence gaps, 5.48s total -- identical to t0013's v10_diagnosis.md reference",
+  "text": "This is a test of the Style T T S two inference harness.",
+  "rms": 0.37645598582299616,
+  "peak": 1.0,
+  "silence_fraction": 0.0,
+  "spectral_flatness": 0.005822444800287485,
+  "clip_fraction": 0.004777010846598113,
+  "is_likely_noise": false,
+  "duration_seconds": 73.94791666666667,
+  "wall_time_seconds": 235.24017465898942,
+  "rtf": 3.1811602714837277
+}

@@ -1,0 +1,69 @@
+{
+  "spec_version": "2",
+  "model_id": "kokoro-v11-best",
+  "name": "Kokoro-82M Stage 2 v11 Best Checkpoint (decoder-init fix)",
+  "version": "1.0.0",
+  "short_description": "Kokoro-82M StyleTTS2 Stage 2 fine-tune with the decoder-init bug fixed (first_stage_path repointed at a genuine HiFi-GAN-shaped pretrained checkpoint), trained 50 epochs on t0012's 1,531-clip LUFS-normalized corpus, and gate-verified to produce real audible speech.",
+  "description_path": "description.md",
+  "framework": "pytorch",
+  "base_model": "kokoro-82m",
+  "base_model_source": "t0008_tts_eval_harness_baselines",
+  "architecture": "StyleTTS2 Stage 2 fine-tune of Kokoro-82M (82M params). Decoder initialized from yl4579/StyleTTS2-LibriTTS's epochs_2nd_00020.pth (a genuinely HiFi-GAN-shaped checkpoint, resblock_kernel_sizes=[3,7,11], upsample_initial_channel=512, upsample_rates=[10,5,3,2]) instead of v10's mismatched istftnet-shaped first_stage_v3.pth. Packaged as the same 5-module state dict convention as kokoro-v10-best: bert, bert_encoder, predictor, text_encoder, decoder.",
+  "training_task_id": "t0014_v11_decoder_fix_retrain",
+  "training_dataset_ids": [],
+  "hyperparameters": {
+    "joint_epoch": 30,
+    "diff_epoch": 10,
+    "epochs": 50,
+    "epochs_completed": 50,
+    "epochs_2nd": 50,
+    "lr": 1e-4,
+    "ft_lr": 1e-4,
+    "bert_lr": 1e-6,
+    "lambda_gen": 1.0,
+    "lambda_slm": 0.0,
+    "lambda_dur": 1.0,
+    "lambda_ce": 20.0,
+    "lambda_F0": 1.0,
+    "lambda_norm": 1.0,
+    "lambda_mel": 5.0,
+    "batch_size": 8,
+    "multispeaker": true,
+    "train_LM": false,
+    "first_stage_path": "epochs_2nd_00020.pth (yl4579/StyleTTS2-LibriTTS) -- genuinely HiFi-GAN-shaped, unlike v10's mismatched first_stage_v3.pth",
+    "load_only_params": true,
+    "train_data": "t0012's 1,531-clip LUFS-normalized corpus (train_list_v5_normalized_clean.txt)",
+    "val_data": "unchanged val_96 (data/val_list.txt), confirmed 0 overlap with train_data"
+  },
+  "training_metrics": {
+    "best_val_loss": 0.3394244909286499,
+    "best_val_loss_epoch": 38,
+    "primary_checkpoint_val_loss": 0.3468841314315796,
+    "primary_checkpoint_epoch": 48,
+    "health_gate_events": 0,
+    "audible_speech_gate": "pass",
+    "audible_speech_gate_clip_fraction": 0.004777010846598113,
+    "audible_speech_gate_spectral_flatness": 0.005822444800287485,
+    "speaker_sim": 0.44419100880622864,
+    "rtf": 3.1811602714837277,
+    "ttfb_ms": null,
+    "eval_status": "complete"
+  },
+  "files": [
+    {
+      "path": "files/kokoro-v11-best.pth",
+      "description": "5-module extracted state dict (bert, bert_encoder, predictor, text_encoder, decoder), 331 MB. Extracted via tasks.t0008_tts_eval_harness_baselines.code.extract_decoder.extract() from epoch_00048.pth (epoch 48/50, val_loss 0.3469, flagged_healthy=true). DVC-tracked.",
+      "format": "pth"
+    },
+    {
+      "path": "files/config_david_v11.yml",
+      "description": "Training configuration used for v11 run (joint_epoch=30, diff_epoch=10, epochs=50).",
+      "format": "yml"
+    }
+  ],
+  "categories": [
+    "tts"
+  ],
+  "created_by_task": "t0014_v11_decoder_fix_retrain",
+  "date_created": "2026-09-16"
+}

@@ -1,0 +1,9 @@
+ERROR: failed to connect to azure (ml-dvc-datasets/datasets/rail-arf-tts/files/md5) - DefaultAzureCredential failed to retrieve a token from the included credentials.
+Attempted credentials:
+	EnvironmentCredential: EnvironmentCredential authentication unavailable. Environment variables are not fully configured.
+Visit https://aka.ms/azsdk/python/identity/environmentcredential/troubleshoot to troubleshoot this issue.
+	WorkloadIdentityCredential: WorkloadIdentityCredential authentication unavailable. The workload options are not fully configured. See the troubleshooting guide for more information: https://aka.ms/azsdk/python/identity/workloadidentitycredential/troubleshoot. Missing required arguments: 'tenant_id', 'client_id', 'token_file_path'.
+	ManagedIdentityCredential: Unexpected response "{'error': 'SSO failure, to mitigated it please try to click Jupyter/JupyterLab.'}"
+Content: {"error":"SSO failure, to mitigated it please try to click Jupyter/JupyterLab."}
+To mitigate this issue, please refer to the troubleshooting guidelines here at https://aka.ms/azsdk/python/identity/defaultazurecredential/troubleshoot.
+ERROR: failed to pull data from the cloud - 1373 files failed to download

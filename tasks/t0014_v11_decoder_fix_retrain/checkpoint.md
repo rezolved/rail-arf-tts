@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T19:49:00Z"
-completed_steps: 8
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-16T23:05:00Z"
+completed_steps: 9
+next_step_number: 10
+next_step_id: "teardown"
 ---
 # Task Objective
 
@@ -217,32 +217,66 @@ steps.
   readings. `jq` is not installed on the VM — use `python3 -c "import json; ..."` against
   `checkpoints.json` instead on future checks.
 
+### Step 9 — implementation (resumed and completed)
+
+Resumed `paused_waiting` (`pause_count: 2`). `resume_check` returned `job_dead` (exit 3) — a known
+false-negative: the crude `tmux has-session` probe closes naturally when a job exits cleanly, and is
+indistinguishable from a crash by that probe alone. Independently re-verified over SSH (not just
+trusting the coordinator's earlier read) before proceeding: `v11_train.log` ends with a trailing
+`DONE` marker after "Epochs: 50", `metrics.jsonl` has 620 records through epoch 50 (final
+`val_loss=0.3505`), `grep -c gate_fired` returns `0`, `df -h /` stable at 87%/16G free, and the last
+actual saved checkpoint on disk is `epoch_00048.pth` (2,086,802,736 bytes, `val_loss=0.3468841`,
+`flagged_healthy: true` — only even epochs are saved by the checkpoint manager, so no separate
+epoch-49/50 file exists). This matched the resume_sentinel's own anticipated "DONE marker + 50
+epochs + 0 gate firings, proceed to Milestone C" branch exactly, so training was correctly treated
+as a genuine completion, not a dead job, and a fresh `/implementation` subagent was spawned to run
+Milestone C/D. **Milestone C's mandatory audible-speech gate PASSED**:
+`code/audio_quality_check.py`'s `check_audio_quality()` on `epoch_00048.pth`'s synthesis returned
+`is_likely_noise=False` (`clip_fraction=0.0048`, `spectral_flatness=0.0058`) — two orders of
+magnitude below both confirmed-broken v10 checkpoints (`clip_fraction=0.750-0.807`) and comparable
+to the known-good LibriTTS control, with all 13 StyleTTS2 modules loading 0 missing/0 unexpected
+keys. Full evidence in `results/v11_gate_verdict.md` and `results/audio_quality_v11.json`. Because
+the gate passed, Milestone C steps 10-11 (paired original sample reuse from t0013,
+`speaker_sim=0.444`, `rtf=3.18`, `ttfb_ms` explicitly omitted) and Milestone D (the
+`assets/model/kokoro-v11-best/` model asset, DVC-tracked weights + config, 6 files pushed to the
+`azureblob` DVC remote) all completed.
+`uv run python -m meta.asset_types.model.verificator kokoro-v11-best --task-id t0014_v11_decoder_fix_retrain`
+— independently re-run, not just taken on the subagent's word — passed 0 errors, 2 warnings
+(`MA-W005` empty `meta/categories/`, `MA-W014` empty `training_dataset_ids`, both pre-existing
+project-wide gaps matching `kokoro-v10-best`'s own warning profile). `verify_task_metrics` and
+`verify_task_results` independently re-run: both 0 errors/0 warnings. One honestly-disclosed
+anomaly, non-blocking per the plan's pre-registered pass/fail criterion: v11's synthesis output is
+73.95s for a 10-word sentence (vs. 2.5-4.9s for the control/v10 on the same text) — a likely
+duration-predictor calibration issue, distinct from the decoder defect this task fixes, documented
+in `results/v11_gate_verdict.md` and flagged as a follow-up candidate. Plan deviations (all
+documented in `results/results_summary.md`): the plan's literal
+`arf.scripts.verificators.verify_model_asset` module path does not exist in this repo (pre-existing
+doc gap, also present in `kokoro-v10-best`'s own log) — the real path is
+`meta.asset_types.model.verificator`; a local-only, gitignored DVC auth workaround
+(`exclude_managed_identity_credential`) was needed for `dvc push` to succeed from this compute
+instance; `results/costs.json`/`results/remote_machines_used.json` are explicitly marked interim
+since `LLM-T1-NC80` is still running (teardown is step 10, not run here).
+
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) is **`paused_waiting`** (`pause_count: 2`), not pending — this is a
-*resume*, not a fresh start. As of the 2026-09-16T19:47Z check: epoch 27/50, step 70/191, tmux
-`v11train` alive, 0 `gate_fired`, `df -h /` stable at 87%/16GB free, loss trending flat with no
-NaNs, `joint_epoch: 30` not yet reached. `step_tracker.json`'s step 9 entry has the full
-`resume_sentinel` (what to check: `tmux` session, `v11_train.log` tail,
-`metrics.jsonl`/`checkpoints.json` on the VM — use `python3 -c "import json; ..."`, not `jq`, which
-is not installed on the VM — gate-fired count, `df -h /`), `resume_after: 2026-09-16T22:30:00Z`,
-`watchdog_active: true`, and `liveness_probe: "ssh LLM-T1-NC80 tmux has-session -t v11train"`. On
-resume: run `uv run python -m arf.scripts.utils.resume_check t0014_v11_decoder_fix_retrain 9` first
-and follow its three-branch decision (sentinel present / job_alive / job_dead) per
-`arf/skills/implementation/SKILL.md`'s Critical Rule 9 — do not blindly re-pause. If training
-finished cleanly (50 epochs, 0 unexplained `HealthGate` firings), proceed to plan.md's Milestone C
-(the mandatory audible-speech gate, `audio_quality_check.py`'s `check_audio_quality()` —
-REQ-6/REQ-7, the task's sole pass/fail criterion) and Milestone D (conditional `model` asset + DVC,
-only if the gate passes). If still training, pause again with a new `resume_after`. If the job died,
-do not pause again — collect the VM-side log, transition appropriately, and write an `intervention/`
-file. `code/config_david_v11.yml`, `code/train_second_v11.py` (includes a v11-only
-`_rename_legacy_parametrization_keys()` fix beyond the plan's original scope — see Cross-Step
-Decisions), and the Milestone C code (`audio_quality_check.py`, `infer_styletts2.py`,
-`score_speaker_sim.py`, `inspect_checkpoint.py`, `paths.py`) already exist in `code/` and do not
-need to be recreated. The training venv lives at `/mnt/tmp/t0014_venv/venv` on the VM (ext4 local
-disk, not root, not persist — see Cross-Step Decisions for why) with `~/kokoro-finetune` symlinked
-to `/mnt/cache/persist/t0014_v11_decoder_fix_retrain/kokoro-finetune`. Keep polling `df -h /` every
-15-20 min while driving Milestone B/C — it was independently re-verified stable at 87%/16GB free at
-pause time, but that is not a permanent fix (t0010's stuck-teardown precedent).
+Step 9 (`implementation`) is now **`completed`**. Training finished all 50 epochs cleanly (`DONE`
+marker, 0 `HealthGate` firings), and the mandatory audible-speech gate **passed**
+(`is_likely_noise=False`, `clip_fraction=0.0048`, `spectral_flatness=0.0058` — see
+`results/v11_gate_verdict.md`). The `kokoro-v11-best` model asset was created and independently
+verified (`meta.asset_types.model.verificator`, 0 errors). `task.json`'s
+`expected_assets: {"model": 1}` is satisfied.
+
+**`LLM-T1-NC80` is still live and billing** — it was deliberately left untouched by this step (per
+instructions, teardown is out of scope for `implementation`). Step 10 (`teardown`) must run next:
+destroy the remote machine, finalize `results/costs.json` and `results/remote_machines_used.json`
+(currently interim, ~6.19h/$86.46 as of the implementation subagent's last check — recompute the
+actual final total at teardown time), and confirm via `verify_machines_destroyed.py` before this
+task can be marked complete. Also worth noting for `teardown` or a later step:
+`results/v11_gate_verdict.md` flags a non-blocking anomaly (73.95s synthesis duration for a 10-word
+sentence, vs. 2.5-4.9s for the control/v10 — a likely duration-predictor calibration issue) as a
+candidate for the `suggestions` step's follow-up-task generation; it did not block this task's gate
+criterion but is worth surfacing downstream. `code/config_david_v11.yml`,
+`code/train_second_v11.py`, and all Milestone C code already exist in `code/` and do not need to be
+recreated by any later step.

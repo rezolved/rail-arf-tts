@@ -1,0 +1,12 @@
+[
+  {
+    "provider": "azure_ml",
+    "machine_id": "LLM-T1-NC80",
+    "gpu": "2xH100",
+    "gpu_count": 2,
+    "ram_gb": 880,
+    "duration_hours": 6.19,
+    "cost_usd": 86.46,
+    "note": "INTERIM, NOT FINAL -- LLM-T1-NC80 is still running as of this implementation step (teardown is a separate, later step this agent was explicitly instructed not to perform). ready_at=2026-09-16T16:45:14Z; duration_hours/cost_usd computed against the report time (2026-09-16T22:56:50Z), not against destroyed_at. The orchestrator's teardown step must overwrite this entry with the final duration/cost once LLM-T1-NC80 is actually stopped."
+  }
+]
