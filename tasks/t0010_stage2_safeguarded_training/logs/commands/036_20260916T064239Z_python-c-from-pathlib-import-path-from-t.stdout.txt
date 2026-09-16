@@ -1,0 +1,9 @@
+epoch_2nd_00016.pth: val_loss=0.8526596426963806, epoch=16
+Saved → tasks/t0010_stage2_safeguarded_training/assets/model/kokoro-v10-best/files/kokoro-v10-best.pth
+  bert: 25 params
+  bert_encoder: 2 params
+  predictor: 122 params
+  text_encoder: 24 params
+  decoder: 678 params
+Module param counts: {'bert': 25, 'bert_encoder': 2, 'predictor': 122, 'text_encoder': 24, 'decoder': 678}
+Done: tasks/t0010_stage2_safeguarded_training/assets/model/kokoro-v10-best/files/kokoro-v10-best.pth

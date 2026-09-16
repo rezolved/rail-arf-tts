@@ -1,0 +1,22 @@
+{
+  "run_id": "v10",
+  "generated_at": "2026-09-16T06:27:00Z",
+  "checkpoints": [
+    {
+      "filename": "epoch_2nd_00016.pth",
+      "epoch_0indexed": 16,
+      "jsonl_epoch": 17,
+      "val_loss": 0.853,
+      "persistent_path": "/mnt/cache/persist/t0010/checkpoints/epoch_2nd_00016.pth"
+    },
+    {
+      "filename": "epoch_2nd_00014.pth",
+      "epoch_0indexed": 14,
+      "jsonl_epoch": 15,
+      "val_loss": 0.818,
+      "persistent_path": "/mnt/cache/persist/t0010/checkpoints/epoch_2nd_00014.pth"
+    }
+  ],
+  "primary_checkpoint": "epoch_2nd_00016.pth",
+  "selection_reason": "user-specified; latest completed epoch (epoch 17); val_loss 0.853"
+}

@@ -1,0 +1,259 @@
+{
+  "variants": [
+    {
+      "variant_id": "epoch-01",
+      "label": "Epoch 1",
+      "dimensions": {
+        "epoch": 1,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-02",
+      "label": "Epoch 2",
+      "dimensions": {
+        "epoch": 2,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-03",
+      "label": "Epoch 3",
+      "dimensions": {
+        "epoch": 3,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-04",
+      "label": "Epoch 4",
+      "dimensions": {
+        "epoch": 4,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-05",
+      "label": "Epoch 5",
+      "dimensions": {
+        "epoch": 5,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-06",
+      "label": "Epoch 6",
+      "dimensions": {
+        "epoch": 6,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-07",
+      "label": "Epoch 7",
+      "dimensions": {
+        "epoch": 7,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-08",
+      "label": "Epoch 8",
+      "dimensions": {
+        "epoch": 8,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-09",
+      "label": "Epoch 9",
+      "dimensions": {
+        "epoch": 9,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-10",
+      "label": "Epoch 10",
+      "dimensions": {
+        "epoch": 10,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-11",
+      "label": "Epoch 11",
+      "dimensions": {
+        "epoch": 11,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-12",
+      "label": "Epoch 12",
+      "dimensions": {
+        "epoch": 12,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-13",
+      "label": "Epoch 13",
+      "dimensions": {
+        "epoch": 13,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-14",
+      "label": "Epoch 14",
+      "dimensions": {
+        "epoch": 14,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-15",
+      "label": "Epoch 15",
+      "dimensions": {
+        "epoch": 15,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-16",
+      "label": "Epoch 16",
+      "dimensions": {
+        "epoch": 16,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "epoch-17",
+      "label": "Epoch 17",
+      "dimensions": {
+        "epoch": 17,
+        "model": "kokoro-v10",
+        "run": "v10"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "best",
+      "label": "Best (epoch 17, user-selected)",
+      "dimensions": {
+        "epoch": 17,
+        "model": "kokoro-v10",
+        "run": "v10",
+        "selection": "user_specified_latest_epoch",
+        "checkpoint": "epoch_2nd_00016.pth",
+        "val_loss": 0.853
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    }
+  ]
+}

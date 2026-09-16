@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/code/aggregate_results.py", line 473, in <module>
+    main()
+    ~~~~^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/code/aggregate_results.py", line 442, in main
+    training_steps = load_training_steps(jsonl_path)
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/code/aggregate_results.py", line 97, in load_training_steps
+    epoch = int(str(rec.get("epoch", 0)))
+ValueError: invalid literal for int() with base 10: 'None'

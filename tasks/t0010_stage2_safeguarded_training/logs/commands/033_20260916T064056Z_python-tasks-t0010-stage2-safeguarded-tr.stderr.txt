@@ -1,0 +1,3 @@
+usage: aggregate_results.py [-h] --jsonl JSONL --eval-dir EVAL_DIR
+                            --output-dir OUTPUT_DIR [--csv-out CSV_OUT]
+aggregate_results.py: error: unrecognized arguments: --task-root tasks/t0010_stage2_safeguarded_training

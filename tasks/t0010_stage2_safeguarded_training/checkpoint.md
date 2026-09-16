@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-15T15:54:43Z"
-completed_steps: 8
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-16T07:15:00Z"
+completed_steps: 9
+next_step_number: 10
+next_step_id: "teardown"
 ---
 # Task Objective
 
@@ -70,13 +70,14 @@ training data staged: 1557 train wavs, 96 val wavs, `first_stage_v3.pth` (1.7 GB
 `config_david_v10.yml` (joint_epoch=8, epochs=20), safeguard modules. `az ml compute show` API timed
 out; acquire done manually via ARM REST. **Caution**: ephemeral disk lost on VM stop.
 
-### Step 9 — implementation (paused_waiting)
+### Step 9 — implementation
 
-Training launched on LLM-T1-NC80 as PID 82356 in tmux session `train_v10`. At pause time: epoch
-5/20, val_loss 2.066 (improving from 2.097 baseline). Step paused with watchdog-protected VM and
-liveness probe `ssh LLM-T1-NC80 pgrep -f train_second_v10`. Resume after 2026-09-15T18:50:00Z. On
-resume: run `resume_check`, download `logs/v10/`, run batch eval and aggregation, package model
-asset.
+Training completed 17 epochs on LLM-T1-NC80 with zero health gate events (val_loss 0.797 at epoch
+16). Harness eval deferred due to VM ephemeral disk at 100% — documented in
+`intervention/eval_deferred_disk_full.md`. Key outputs: `data/run_v10/metrics.jsonl`,
+`data/run_v10/checkpoint_manifest.json`, `results/metrics.json` (18 variants, null eval metrics),
+`results/images/loss_timeline.png`, and model asset `kokoro-v10-best` (5-module extraction, 317 MB,
+DVC-tracked). Model verificator: 0 errors.
 
 * * *
 
@@ -89,36 +90,26 @@ asset.
 * **Safeguard library components are import-not-copy**: `StepLogger`, `CheckpointManager`,
   `HealthGate`, `capture_run_config` are all registered under `t0009_training_safeguards` — import
   directly.
-* **Training PID 82356** in tmux `train_v10` on LLM-T1-NC80; val_loss improving (2.066 at epoch 5).
-* **Paused sentinel**: `~/kokoro-finetune/logs/v10/checkpoint_manifest.json` (written when training
-  completes).
-* **Resemblyzer venv**: must be built on VM before batch eval
-  (`python -m venv ~/resemblyzer-venv && pip install resemblyzer webrtcvad`).
+* **Harness eval deferred**: VM ephemeral disk at 100% after epoch 17. `speaker_sim`, `ttfb_ms`,
+  `rtf` are null. Resolution path in `intervention/eval_deferred_disk_full.md`.
+* **Primary checkpoint**: `epoch_2nd_00016.pth` (epoch 17, val_loss 0.853) per user instruction.
+  Backup: `epoch_2nd_00014.pth` (epoch 15, val_loss 0.818). Both DVC-tracked.
+* **Model asset**: `kokoro-v10-best` at `assets/model/kokoro-v10-best/`, verificator 0 errors.
+* **aggregate_results.py bug fix**: two fixes applied — skip null-epoch sentinel in JSONL; fall back
+  `dur_loss_step1` → `dur_loss` field name.
 
 * * *
 
 ## Next Step Notes
 
-Step 9 (implementation) is `paused_waiting`. Training is running on LLM-T1-NC80 (PID 82356, tmux
-session `train_v10`, epoch 5/20, val_loss 2.066). The resume agent must:
+Step 9 (implementation) completed. Step 10 is `teardown`. The teardown agent must:
 
-1. Run `uv run python -m arf.scripts.utils.resume_check t0010_stage2_safeguarded_training 9` and act
-   on the result: `sentinel present` → proceed, `job_alive` → re-pause, `job_dead` → write
-   intervention file and fail.
+1. Stop LLM-T1-NC80 via
+   `az ml compute stop --name LLM-T1-NC80 --workspace-name brainpowa-northeurope --resource-group rezolve-AI`.
+2. Verify VM is stopped (status `Stopped` or `Deallocated`).
+3. Write `results/remote_machines_used.json` (LLM-T1-NC80 H100, training duration).
+4. Write `results/costs.json` with estimated GPU cost (~$43 for ~2.5h at $17.50/hr).
+5. Update `machine_log.json` `destroyed_at` timestamp.
 
-2. On sentinel present:
-   `rsync -av LLM-T1-NC80:~/kokoro-finetune/logs/v10/ tasks/t0010_stage2_safeguarded_training/data/run_v10/`
-   to download checkpoints + JSONL.
-
-3. Build resemblyzer venv on VM:
-   `python -m venv ~/resemblyzer-venv && pip install resemblyzer webrtcvad`. Then run
-   `eval_all_checkpoints.py` on VM.
-
-4. Download `data/run_v10/eval_results/` locally. Run `aggregate_results.py` locally.
-
-5. Package model asset: `assets/model/kokoro-v10-best/` with DVC-tracked best checkpoint `.pth`.
-
-6. Run `verify_model_asset --task-id t0010_stage2_safeguarded_training` — fix all errors.
-
-**Critical**: ephemeral disk — download ALL outputs before teardown. `~/kokoro-finetune` is lost on
-VM stop.
+**Harness eval still deferred**: before or after teardown, a follow-up task should free VM disk and
+run `eval_all_checkpoints.py`. See `intervention/eval_deferred_disk_full.md`.

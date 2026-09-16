@@ -94,11 +94,13 @@ def load_training_steps(jsonl_path: Path) -> list[TrainingStep]:
             except json.JSONDecodeError:
                 continue
 
+            if rec.get("epoch") is None:
+                continue  # sentinel / null record
             epoch = int(str(rec.get("epoch", 0)))
             step = int(str(rec.get("step", 0)))
 
             val_loss_val = rec.get("val_loss")
-            dur_loss_val = rec.get("dur_loss_step1")
+            dur_loss_val = rec.get("dur_loss_step1") or rec.get("dur_loss")
             acoustic_val = rec.get("acoustic_norm")
             gate_fired = bool(rec.get("health_gate_fired", False))
             gate_name_raw = rec.get("health_gate_name")
