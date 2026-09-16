@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T14:59:30Z"
-completed_steps: 3
-next_step_number: 3
-next_step_id: "init-folders"
+updated_at: "2026-09-16T15:02:00Z"
+completed_steps: 4
+next_step_number: 4
+next_step_id: "research-papers"
 ---
 # Task Objective
 
@@ -28,6 +28,15 @@ trail) — PASSED with no errors or warnings. All three declared dependencies
 `t0013_v10_synthesis_quality_forensics`) are `completed`. Wrote
 `logs/steps/002_check-deps/deps_report.json`.
 
+### Step 3 — init-folders
+
+Ran `init_task_folders` (wrapped in `run_with_logs`), creating the mandatory directory structure
+(`plan/`, `research/`, `results/`, `results/images/`, `corrections/`, `intervention/`, `code/`,
+`logs/commands/`, `logs/searches/`, `logs/sessions/`, `logs/steps/`, `assets/model/`) plus
+`__init__.py` and `code/__init__.py`. Wrote `logs/steps/003_init-folders/folders_created.txt`.
+Populated the local aggregator cache at `tasks/t0014_v11_decoder_fix_retrain/ctx/` (task_types,
+costs, tasks, metrics, suggestions) — gitignored, not committed.
+
 ### Step 11 — creative-thinking
 
 Skipped: task scope is a well-defined diagnostic fix (decoder-init bug) plus corpus-expansion
@@ -43,5 +52,6 @@ steps.
 
 ## Next Step Notes
 
-Step 2 completed successfully — all dependencies satisfied. Proceed to step 3 (`init-folders`) per
-step_tracker.json.
+Step 3 completed successfully — folder structure and aggregator cache are ready. Proceed to step 4
+(`research-papers`) per step_tracker.json: review corpus papers (StyleTTS2, HiFi-GAN) for
+vocoder-from-scratch convergence epoch counts.
