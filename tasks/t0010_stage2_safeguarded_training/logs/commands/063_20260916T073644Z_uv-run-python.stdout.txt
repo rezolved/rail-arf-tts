@@ -1,0 +1,5 @@
+Skipped step 004_research-papers -> logs/steps/004_research-papers/
+Skipped step 005_research-internet -> logs/steps/005_research-internet/
+Skipped step 011_creative-thinking -> logs/steps/011_creative-thinking/
+
+3 step(s) skipped.

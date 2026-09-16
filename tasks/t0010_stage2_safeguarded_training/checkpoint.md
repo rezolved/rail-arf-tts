@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-16T07:36:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-16T07:50:00Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -109,6 +109,13 @@ watchdog TERMINATE\_CMD to use Python Azure ML SDK with retry plus disk-fill gua
 priority); (3) extend v10 training to epoch 20 using persistent share for checkpoints, contingent on
 speaker\_sim still below 0.85 (medium priority). Verificator PASSED, 0 errors.
 
+### Step 15 — reporting
+
+All verificators passed with 0 errors. Fixed step 8 step\_log.md frontmatter (missing `spec_version`
+and `step_number`). Created skip\_step logs for steps 4, 5, and 11. Removed orphaned `ctx/`
+directory. Session capture ran and produced `logs/sessions/capture_report.json` (0 transcripts
+found). `task.json` status set to "completed" with `end_time: 2026-09-16T07:50:00Z`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -132,10 +139,6 @@ speaker\_sim still below 0.85 (medium priority). Verificator PASSED, 0 errors.
 
 ## Next Step Notes
 
-Step 14 (suggestions) completed. Step 15 is `reporting`. The reporting agent should run all
-verificators (`verify_task_file`, `verify_task_dependencies`, `verify_suggestions`,
-`verify_task_metrics`, `verify_task_results`, `verify_task_folder`, `verify_logs`,
-`verify_model_asset`, `verify_machines_destroyed`), capture session transcripts, set `task.json`
-`status` to "completed" with `end_time`, then commit and run poststep. The model asset
-`kokoro-v10-best` at `assets/model/kokoro-v10-best/` is DVC-tracked and was verified clean in step
-9\. The three suggestions in `results/suggestions.json` (S-0010-01 to S-0010-03) are ready.
+Task t0010\_stage2\_safeguarded\_training is fully completed. All 15 steps are done (steps 4, 5, and
+11 skipped). All verificators passed with 0 errors. Model asset `kokoro-v10-best` is DVC-tracked at
+`assets/model/kokoro-v10-best/`. The PR can now be created and merged to main.

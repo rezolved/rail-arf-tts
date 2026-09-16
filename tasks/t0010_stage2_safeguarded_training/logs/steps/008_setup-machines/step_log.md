@@ -1,10 +1,11 @@
 ---
-step: 8
-step_name: setup-machines
-task_id: t0010_stage2_safeguarded_training
+spec_version: "3"
+task_id: "t0010_stage2_safeguarded_training"
+step_number: 8
+step_name: "setup-machines"
+status: "completed"
 started_at: "2026-09-15T10:56:58Z"
 completed_at: "2026-09-15T12:15:00Z"
-status: completed
 ---
 # Step 8 — setup-machines
 
