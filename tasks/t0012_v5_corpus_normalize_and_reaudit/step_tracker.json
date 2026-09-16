@@ -65,14 +65,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0011's per_clip_stats.jsonl, audit_audio.py, and thresholds as the starting point for the corrected audit and normalization code.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T06:39:01Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T06:42:37Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T06:39:01Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T07:39:01Z"
+      "expected_completion_at": "2026-09-16T07:39:01Z",
+      "actual_duration_seconds": 216
     },
     {
       "step": 7,
