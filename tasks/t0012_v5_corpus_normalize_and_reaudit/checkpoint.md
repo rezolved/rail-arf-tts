@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
-updated_at: "2026-09-16T06:42:01Z"
-completed_steps: 9
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-16T07:00:00Z"
+completed_steps: 10
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -73,6 +73,22 @@ Since steps 4 and 5 were skipped, research-code was the only research stage to r
 `execute-task` skill's "Summarize research" step, a subagent then compressed `research_code.md` into
 `research/research_summary.md` (101 lines, ~6.98 KB) for downstream planning/implementation agents.
 
+### Step 7 — planning
+
+The `/planning` subagent wrote `plan/plan.md` (spec_version "2", status "complete"), synthesizing
+`research/research_summary.md` and t0011's `results/creative_thinking.md` /
+`results/suggestions.json` into 19 `REQ-*` requirement items, an approach that copies/adapts t0011's
+`audit_audio.py`, `build_manifest.py`, and `plot_histograms.py`, adds a new `clipped_fraction`
+metric (bit-depth read via `soundfile.info().subtype`, defaulting to 16-bit for unrecognized
+subtypes) and a single decode-normalize-recheck pass (no second disk read), validation gates
+(`--limit 20` before the full 1557-clip run, baseline "0 reclassified = STOP"), and pre-registered
+rejection criteria (DVC-pull completeness, clean-count must exceed t0011's 1311/1557 baseline, zero
+val_96 leakage). `verify_plan` passed with 0 errors/0 warnings, confirmed independently by the
+step-executor via `run_with_logs.py`. Caveat for downstream: the subagent initially ran in the main
+repo checkout on branch `main` instead of the task worktree, leaving an untracked `plan/plan.md`
+there; the step-executor relocated it into the worktree and removed the stray copy before committing
+— no main-repo tracked files were touched, so no follow-up cleanup on `main` is needed.
+
 * * *
 
 ## Cross-Step Decisions
@@ -81,13 +97,11 @@ Since steps 4 and 5 were skipped, research-code was the only research stage to r
 
 ## Next Step Notes
 
-Step 6 (`research-code`) is complete; `research/research_code.md` documents that t0011 already
-worked out the corrected `clipped_fraction` metric (threshold > 0.1%, S-0011-03) and a LUFS
-normalization code skeleton targeting -14.0 LUFS (S-0011-01), plus the reusable pieces of
-`audit_audio.py`, `build_manifest.py`, and `plot_histograms.py` to copy into this task's `code/`
-directory (no cross-task library import applies here). `research/research_summary.md` has also been
-produced, compressing that research for downstream agents. Proceed to step 7 (`planning`):
-synthesize `research/research_summary.md` (or `research/research_code.md` for full detail) into
-`plan/plan.md`, covering the corrected clipping metric, the LUFS normalization pass over all 1557 v5
-clips, a post-normalization re-check pass, and the clean-manifest output required by step 9
-(`implementation`).
+Step 7 (`planning`) is complete; `plan/plan.md` is the implementation subagent's sole source of
+truth (self-contained per the plan spec) and defines the code to write in `code/`
+(`audit_normalize.py` or equivalently named scripts per the plan's Step by Step), the
+`clipped_fraction` metric, the -14 LUFS normalization pass, the post-normalization re-check, and the
+final `data/train_list_v5_normalized_clean.txt` manifest. Proceed to step 9 (`implementation`):
+spawn the `/implementation` subagent per Critical Rule 9, explicitly telling it to work inside the
+task worktree (`cd` to the worktree path first) since the planning step's subagent skipped that and
+had to be corrected. Step 8 (`setup-machines`) is already marked skipped — this task is CPU-only.
