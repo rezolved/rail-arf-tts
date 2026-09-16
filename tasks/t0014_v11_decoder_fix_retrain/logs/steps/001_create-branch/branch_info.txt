@@ -1,0 +1,8 @@
+branch: task/t0014_v11_decoder_fix_retrain
+base_branch: main
+base_commit: eac5d0a6e9b350814ff754366f3f94e6cf219957
+worktree_path: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain
+created_at: 2026-09-16T14:56:20Z
+
+dependency_check: t0010_stage2_safeguarded_training=completed, t0012_v5_corpus_normalize_and_reaudit=completed, t0013_v10_synthesis_quality_forensics=completed (all satisfied via aggregate_tasks)
+budget_gate: skipped — task_types=["tts-finetuning-eval"] has has_external_costs=false per aggregate_task_types; per project_budget_specification.md the gate applies only when at least one listed task type has has_external_costs=true.
