@@ -159,14 +159,15 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Compare achieved speaker_sim against published StyleTTS2 and ElevenLabs baselines from the paper corpus.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T07:25:26Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T07:30:54Z",
       "log_file": "logs/steps/013_compare-literature/",
-      "current_owner": "step-executor/compare-literature",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T07:25:26Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T08:25:26Z"
+      "expected_completion_at": "2026-09-16T08:25:26Z",
+      "actual_duration_seconds": 328
     },
     {
       "step": 14,
