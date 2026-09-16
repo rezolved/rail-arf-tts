@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T13:49:25Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-16T13:56:30Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -186,19 +186,28 @@ from existing result files.
   Future step-executors should verify a prior step's "all deliverables written" claim against the
   filesystem directly rather than trusting the checkpoint summary alone.
 
+### Step 14 — suggestions
+
+Spawned a dedicated `/generate-suggestions` subagent, instructed to carry forward both the retrain
+follow-up and the eval-harness pre-completion regression-check follow-up from
+`results/v10_diagnosis.md`'s Recommendation section. It wrote `results/suggestions.json` with four
+suggestions: S-0013-01 (retrain t0010/a corrected variant with `ignore_modules` fixed for the
+decoder handoff, high priority), S-0013-02 (mandatory synthesis noise/clipping smoke gate via
+`code/audio_quality_check.py` before any Stage 2 training task can claim `completed`, explicitly
+framed as a significant process/framework gap, high priority), S-0013-03 (preflight
+decoder-architecture consistency check, medium priority), and S-0013-04 (promote
+`audio_quality_check.py` to a registered library, low priority). `verify_suggestions` passed with 0
+errors/0 warnings. No caveats.
+
 * * *
 
 ## Next Step Notes
 
-Step 12 (`results`) completed. `results/results_summary.md` and `results/results_detailed.md`
-(`spec_version: "2"`) are written and both pass `verify_task_results.py` and
-`verify_task_metrics.py` with 0 errors/0 warnings. Their `## Task Requirement Coverage` and
-`## Examples` sections (12 concrete instances) answer all 6 Key Questions and all 13 `REQ-*` items
-from `plan/plan.md`. `results/v10_diagnosis.md`'s weight-norm paragraph was tightened to cite step
-11's probe explicitly, per the prior Cross-Step Decision — verdict and Recommendation unchanged.
-Step 13 (`compare-literature`) is already `skipped`. Proceed to step 14, `suggestions`: spawn the
-`/generate-suggestions` skill subagent and ensure it carries forward the eval-harness pre-completion
-regression-check follow-up documented in `results/v10_diagnosis.md`'s Recommendation section (a
-synthesis smoke check using `code/audio_quality_check.py`'s noise/clipping heuristic should run and
-pass before a Stage 2 training task can claim `completed`). After `suggestions`, step 15
-(`reporting`) is the final step.
+Step 14 (`suggestions`) completed. `results/suggestions.json` contains 4 suggestions (S-0013-01
+through S-0013-04) and passes `verify_suggestions` with 0 errors/0 warnings; the process-gap
+follow-up (S-0013-02) is explicitly flagged as significant framework feedback, not a routine
+suggestion. Step 15 (`reporting`) is the final step: run all relevant verificators (including
+`verify_suggestions`, `verify_task_results`, `verify_task_metrics`, `verify_task_folder`,
+`verify_logs`, `verify_task_file`, `verify_task_dependencies`), capture session transcripts via
+`capture_task_sessions`, set `task.json` `status` to `"completed"` with `end_time`, do the final
+`checkpoint.md` update (`next_step_number`/`next_step_id` to `null`), commit, and run poststep.
