@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:21:10Z",
+  "source": "Web Search",
+  "query": "yl4579 StyleTTS2 LibriTTS config.yml decoder type hifigan istftnet",
+  "results_count": 9,
+  "results": [
+    {
+      "title": "Models/LibriTTS/config.yml - yl4579/StyleTTS2-LibriTTS at main",
+      "url": "https://huggingface.co/yl4579/StyleTTS2-LibriTTS/blob/main/Models/LibriTTS/config.yml",
+      "snippet": "decoder: type: hifigan; upsample_rates: [10, 5, 3, 2]; upsample_initial_channel: 512; resblock_kernel_sizes: [3, 7, 11]; first_stage_path: first_stage.pth; multispeaker: true.",
+      "relevance_note": "Direct confirmation the official LibriTTS checkpoint's decoder config is hifigan-shaped and matches config_david_v10.yml's decoder block field-for-field (same resblock_kernel_sizes, upsample_initial_channel, upsample_rates product=300)."
+    },
+    {
+      "title": "StyleTTS2/Configs/config.yml at main - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/blob/main/Configs/config.yml",
+      "snippet": "Base training config, LJSpeech target, decoder type istftnet.",
+      "relevance_note": "Confirms LJSpeech's own base config uses istftnet, consistent with first_stage_v3.pth being istftnet-shaped per t0013's diagnosis."
+    },
+    {
+      "title": "yl4579/StyleTTS2-LibriTTS at main/Models/LibriTTS",
+      "url": "https://huggingface.co/yl4579/StyleTTS2-LibriTTS/tree/main/Models/LibriTTS",
+      "snippet": "File listing for the LibriTTS checkpoint directory.",
+      "relevance_note": "Used to confirm epochs_2nd_00020.pth is the checkpoint filename referenced by config_ft.yml's pretrained_model field."
+    }
+  ],
+  "error": null
+}

@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:22:20Z",
+  "source": "Web Search",
+  "query": "StyleTTS2 fine-tune small single speaker dataset \"how many epochs\" second stage github issue",
+  "results_count": 9,
+  "results": [
+    {
+      "title": "Notes on Finetuning - yl4579/StyleTTS2 Discussion #81",
+      "url": "https://github.com/yl4579/StyleTTS2/discussions/81",
+      "snippet": "VRAM/batch-size guidance and joint_epoch counting-from-zero clarification; defers to config_ft.yml defaults for smaller datasets.",
+      "relevance_note": "Deep-read in fetch; source of the joint_epoch semantics finding."
+    },
+    {
+      "title": "Fine tuning guide - yl4579/StyleTTS2 Discussion #128",
+      "url": "https://github.com/yl4579/StyleTTS2/discussions/128",
+      "snippet": "Wall-clock training time examples on A6000 vs T4 GPUs for 30-60 minute datasets.",
+      "relevance_note": "Deep-read; practical GPU/runtime color, no epoch-count prescription found."
+    },
+    {
+      "title": "Examples of a good fine-tune? - yl4579/StyleTTS2 Discussion #65",
+      "url": "https://github.com/yl4579/StyleTTS2/discussions/65",
+      "snippet": "Community examples: 'Aurora' 50 epochs / joint after 10 / 8h single voice; 'Chaos' 50 epochs / joint after 10 / 10h audio; default config_ft.yml finetunes ~1k samples (1h LJSpeech) for 50 epochs.",
+      "relevance_note": "Directly answers Key Question 2 at a corpus scale close to this project's 1,531 clips -- non-peer-reviewed but from the paper's own author's repo discussions."
+    }
+  ],
+  "error": null
+}

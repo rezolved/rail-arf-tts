@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:20:34Z",
+  "source": "Web Search",
+  "query": "yl4579 StyleTTS2 github pretrained models release",
+  "results_count": 9,
+  "results": [
+    {
+      "title": "About the pretrained model on LibriTTS - Issue #20 - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/issues/20",
+      "snippet": "Discussion thread about the LibriTTS pretrained release.",
+      "relevance_note": "Confirms the LibriTTS pretrained checkpoint is an official, author-provided release (not a community reconstruction)."
+    },
+    {
+      "title": "StyleTTS2/README.md at main - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/blob/main/README.md",
+      "snippet": "README section on pretrained models and usage agreement (inform listeners of synthetic origin, voice consent).",
+      "relevance_note": "Source for the licensing/usage-terms finding in Key Findings; cross-checked in query 011."
+    },
+    {
+      "title": "GitHub - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2",
+      "snippet": "Utils/ASR has a pretrained text aligner trained on LibriTTS/JVS/AiShell; Utils/JDC has a pretrained pitch extractor trained on LibriTTS.",
+      "relevance_note": "Confirms other auxiliary pretrained submodules exist beyond the decoder, useful background for planning but not the primary target."
+    }
+  ],
+  "error": null
+}

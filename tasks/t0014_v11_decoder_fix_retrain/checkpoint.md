@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T15:16:11Z"
-completed_steps: 5
-next_step_number: 5
-next_step_id: "research-internet"
+updated_at: "2026-09-16T15:29:51Z"
+completed_steps: 6
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -51,6 +51,16 @@ so the gap is reported as order-of-magnitude, not a precise epoch count (see Gap
 `research/research_papers.md`). `verify_research_papers.py` passed with 0 errors, 1 warning
 (`RP-W003`, pre-existing project-wide absence of `meta/categories/`, documented in the file).
 
+### Step 5 — research-internet
+
+Resolved Key Question 1: `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` is a genuinely
+`hifigan`-shaped pretrained checkpoint that field-matches `config_david_v10.yml`'s decoder block
+(`resblock_kernel_sizes: [3,7,11]`, `upsample_initial_channel: 512`, `upsample_rates: [10,5,3,2]`,
+`multispeaker: true`). Findings on file at `research/research_internet.md`
+(`verify_research_internet.py` passed, 0 errors/warnings). One new paper discovered ("GAN Vocoder:
+Multi-Resolution Discriminator Is All You Need", arXiv:2103.05236); its `/add-paper` subagent was
+spawned and runs in parallel with subsequent steps.
+
 ### Step 11 — creative-thinking
 
 Skipped: task scope is a well-defined diagnostic fix (decoder-init bug) plus corpus-expansion
@@ -66,13 +76,32 @@ steps.
   iSTFTNet) were added under this task's `assets/paper/` to ground Key Question 2 and 3 findings.
   `categories_consulted` is `[]` project-wide — not a fixable gap within this task's scope (Key Rule
   0).
+* **Decoder-init fix direction changed by internet research.** Step 5 found that upstream
+  `train_second.py`'s own default `ignore_modules` also omits `"decoder"` — t0013's bug is better
+  framed as an architecture-mismatch assumption violation (istftnet-shaped `first_stage_v3.pth` vs.
+  a hifigan-shaped config) than a missing-exclusion bug. The recommended fix is now to repoint
+  `first_stage_path` at `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` (a real hifigan-shaped
+  checkpoint), not to add `"decoder"` to `ignore_modules` and accept random init. Planning must
+  resolve licensing use-terms disclosure (MIT code license; pretrained weights carry separate
+  consent/disclosure terms per `research_internet.md`) and treat random-init retraining only as a
+  fallback if this checkpoint path fails.
+* **Epoch-count anchor updated.** If fine-tuning from the LibriTTS checkpoint, the official
+  `Configs/config_ft.yml` recipe (50 epochs, `diff_epoch: 10`, `joint_epoch: 30`, ~1k-sample scale,
+  corroborated by two independent community fine-tunes) is a closer corpus-scale anchor than
+  `research_papers.md`'s VCTK/LibriTTS from-scratch numbers, and should supersede v10's 20/8 budget
+  in planning — for the from-scratch fallback, `research_internet.md` also found 400-1,000 Stage-1
+  epochs on ~150 files as order-of-magnitude confirmation the old budget was short.
 
 * * *
 
 ## Next Step Notes
 
-Step 4 (`research-papers`) completed — findings on file at `research/research_papers.md` show the
-20-epoch/8-joint-epoch v10/v11 budget is likely undersized versus published HiFi-GAN-family
-from-scratch schedules (order-of-magnitude gap, no exact match at this corpus scale). Proceed to
-step 5 (`research-internet`) per step_tracker.json: search for a hifigan-shaped pretrained StyleTTS2
-first-stage checkpoint (Key Question 1) before committing to the random-init decoder path.
+Step 5 (`research-internet`) completed — `research/research_internet.md` resolves Key Question 1:
+use `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` (hifigan-shaped, field-matches
+`config_david_v10.yml`) instead of random-init decoder training. Proceed to step 6 (`research-code`)
+per step_tracker.json: review t0009's safeguard library, t0010's `train_second_v10.py`/`joint_epoch`
+fix/DP-aware loader, and t0013's `inspect_checkpoint.py`/
+`audio_quality_check.py`/`infer_styletts2.py` for reuse — and check whether any of those scripts
+already assume the old random-init/`ignore_modules` fix path, since that assumption is now
+superseded. One `/add-paper` subagent (arXiv:2103.05236) is still running in the background; confirm
+its completion before `compare-literature` or `reporting`.

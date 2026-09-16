@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:23:45Z",
+  "source": "Web Search",
+  "query": "GAN vocoder training health diagnostics discriminator generator loss ratio gradient norm best practices",
+  "results_count": 9,
+  "results": [
+    {
+      "title": "GAN Vocoder: Multi-Resolution Discriminator Is All You Need",
+      "url": "https://arxiv.org/html/2103.05236v2",
+      "snippet": "Discriminator-only warmup for first 10k steps; feature-matching loss capped and GAN loss paused if feature-matching exceeds 99% of total loss.",
+      "relevance_note": "Concrete GAN-training-health thresholds directly usable for this project's t0009 safeguard library gap identified in research_papers.md."
+    },
+    {
+      "title": "GAN - Ways to improve GAN performance (Medium, Jonathan Hui)",
+      "url": "https://medium.com/data-science/gan-ways-to-improve-gan-performance-acf37f9f59b",
+      "snippet": "General GAN stability tricks: LS-GAN loss, spectral normalization, discriminator/generator update ratios.",
+      "relevance_note": "Non-peer-reviewed blog post; general GAN practices, not vocoder-specific."
+    },
+    {
+      "title": "Wasserstein GAN and Waveform Loss-based Acoustic Model Training for Multi-speaker TTS Using a WaveNet Vocoder",
+      "url": "https://arxiv.org/pdf/1807.11679",
+      "snippet": "WGAN-GP 5:1 discriminator:generator update ratio.",
+      "relevance_note": "Peer-reviewed but WaveNet/WGAN-GP-specific, not HiFi-GAN's LSGAN formulation -- only partially transferable."
+    }
+  ],
+  "error": null
+}

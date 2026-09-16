@@ -1,0 +1,42 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:18:30Z",
+  "source": "Web Search",
+  "query": "StyleTTS2 pretrained first_stage checkpoint hifigan decoder download",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "GitHub - yl4579/StyleTTS2: StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models",
+      "url": "https://github.com/yl4579/StyleTTS2",
+      "snippet": "Official repository. Pretrained StyleTTS 2 on LJSpeech (24kHz) at huggingface.co/yl4579/StyleTTS2-LJSpeech; pretrained on LibriTTS at huggingface.co/yl4579/StyleTTS2-LibriTTS.",
+      "relevance_note": "Primary candidate source for Key Question 1 pretrained checkpoints."
+    },
+    {
+      "title": "yl4579/StyleTTS2-LJSpeech (Hugging Face, tree/main)",
+      "url": "https://huggingface.co/yl4579/StyleTTS2-LJSpeech/tree/main",
+      "snippet": "Pretrained StyleTTS2 on LJSpeech, checkpoint epoch_2nd_00100.pth.",
+      "relevance_note": "LJSpeech checkpoint uses iSTFTNet decoder per StyleTTS2 paper, so not directly usable for a hifigan-shaped target."
+    },
+    {
+      "title": "yl4579/StyleTTS2-LibriTTS (Hugging Face, tree/main)",
+      "url": "https://huggingface.co/yl4579/StyleTTS2-LibriTTS/tree/main",
+      "snippet": "Pretrained StyleTTS2 on LibriTTS, checkpoint epochs_2nd_00020.pth.",
+      "relevance_note": "LibriTTS checkpoint uses HifiGAN decoder per StyleTTS2 paper Section 4.1 -- candidate for Key Question 1, verified in query 005."
+    },
+    {
+      "title": "FileNotFoundError : first_stage.pth - Issue #346 - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/issues/346",
+      "snippet": "User error report about missing first_stage.pth when following the repo's own instructions.",
+      "relevance_note": "Confirms first_stage_path is a standard, commonly-referenced config field in upstream StyleTTS2."
+    },
+    {
+      "title": "patriotyk/styletts2_ukrainian_multispeaker_hifigan - Discussion",
+      "url": "https://huggingface.co/patriotyk/styletts2_ukrainian_multispeaker_hifigan/discussions/1",
+      "snippet": "Community fine-tune explicitly named as using a hifigan decoder.",
+      "relevance_note": "Evidence the community routinely produces hifigan-shaped StyleTTS2 checkpoints via fine-tuning, not just the two yl4579 releases."
+    }
+  ],
+  "error": null
+}

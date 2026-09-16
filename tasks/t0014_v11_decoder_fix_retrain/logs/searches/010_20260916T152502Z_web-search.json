@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:25:02Z",
+  "source": "Web Search",
+  "query": "yl4579 StyleTTS2 license usage terms commercial LibriTTS pretrained model",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "StyleTTS2/LICENSE at main - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/blob/main/LICENSE",
+      "snippet": "MIT license for the code.",
+      "relevance_note": "Confirms code license is MIT (permissive)."
+    },
+    {
+      "title": "Possibly misleading license info - Issue #37 - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/issues/37",
+      "snippet": "Discussion clarifying that pretrained weights carry additional disclosure/consent terms beyond the MIT code license.",
+      "relevance_note": "Source for the finding that pretrained weights (not just code) carry synthetic-origin-disclosure and voice-consent restrictions -- relevant since this project would use the LibriTTS decoder weights as an initialization, not to synthesize LibriTTS speaker voices, which likely satisfies the terms but should be confirmed in planning."
+    },
+    {
+      "title": "GitHub - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2",
+      "snippet": "README states: 'Before using these pre-trained models, you agree to inform the listeners that the speech samples are synthesized by the pre-trained models, unless you have the permission to use the voice you synthesize.'",
+      "relevance_note": "Primary source text for the usage-terms finding."
+    }
+  ],
+  "error": null
+}

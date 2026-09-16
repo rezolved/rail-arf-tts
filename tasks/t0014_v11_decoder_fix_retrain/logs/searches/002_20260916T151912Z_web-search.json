@@ -1,0 +1,36 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:19:12Z",
+  "source": "Web Search",
+  "query": "semidark/StyleTTS2 github pretrained checkpoint",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "GitHub - semidark/kikiri-tts (formerly kokoro-deutsch): fine-tuning Kokoro-82M on a new language",
+      "url": "https://github.com/semidark/kokoro-deutsch",
+      "snippet": "Complete documented training recipe for fine-tuning Kokoro-82M, including a patched StyleTTS2 submodule with fixes required for stable Stage 2 training.",
+      "relevance_note": "This is the repo the task description meant by 'semidark/StyleTTS2' -- it is a patched StyleTTS2 submodule inside kikiri-tts, not an independent repo with its own pretrained checkpoint."
+    },
+    {
+      "title": "semidark/StyleTTS2 | DeepWiki",
+      "url": "https://deepwiki.com/semidark/StyleTTS2",
+      "snippet": "Documentation of the patched submodule's fixes vs upstream yl4579/StyleTTS2.",
+      "relevance_note": "Deep-read in query/fetch 009 for specifics of what is patched."
+    },
+    {
+      "title": "Milestone: Fully Functional Training Workflow Complete - semidark/kikiri-tts Discussion #8",
+      "url": "https://github.com/semidark/kikiri-tts/discussions/8",
+      "snippet": "Progress discussion on the training workflow.",
+      "relevance_note": "Background on the recipe's maturity; not deep-read due to time budget."
+    },
+    {
+      "title": "GitHub - dangtr0408/StyleTTS2-lite",
+      "url": "https://github.com/dangtr0408/StyleTTS2-lite",
+      "snippet": "A lightweight, efficient variation of the StyleTTS 2 text-to-speech model.",
+      "relevance_note": "Alternative lightweight fork, not investigated further -- out of scope for the hifigan-checkpoint question."
+    }
+  ],
+  "error": null
+}

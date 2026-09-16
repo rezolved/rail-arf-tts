@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:24:18Z",
+  "source": "Web Search",
+  "query": "HiFi-GAN vocoder fine-tune small dataset single speaker epochs convergence \"few hundred\" OR \"1000 samples\"",
+  "results_count": 9,
+  "results": [
+    {
+      "title": "Minimum hours of data required for fine-tuning for a single unseen speaker - Issue #54 - jik876/hifi-gan",
+      "url": "https://github.com/jik876/hifi-gan/issues/54",
+      "snippet": "Question about minimum data (5-10 hours proposed) for fine-tuning to a new speaker; opened 2021-01-28.",
+      "relevance_note": "Deep-read via fetch: thread received no maintainer/community answer, so this remains an open question in the official HiFi-GAN repo too -- corroborates the Gaps and Limitations finding that no source gives a precise small-corpus epoch/data figure."
+    },
+    {
+      "title": "Diffusion-Based Mel-Spectrogram Enhancement for Personalized Speech Synthesis with Found Data",
+      "url": "https://arxiv.org/pdf/2305.10891",
+      "snippet": "Personalized/small-data TTS vocoder adaptation study.",
+      "relevance_note": "Peer-reviewed but focused on mel-enhancement preprocessing, not decoder epoch budgets; not deep-read."
+    },
+    {
+      "title": "NVIDIA Hifigan Vocoder (en-US) - Mastering-Python-HF (Hugging Face)",
+      "url": "https://huggingface.co/Mastering-Python-HF/nvidia_tts_en_hifitts_hifigan_ft_fastpitch",
+      "snippet": "NVIDIA NeMo HiFi-GAN checkpoint fine-tuned on HiFiTTS with FastPitch.",
+      "relevance_note": "Another pretrained HiFi-GAN family checkpoint source, architecturally independent of StyleTTS2's model_params schema so not directly loadable into config_david_v10.yml without conversion; noted as a fallback option only."
+    }
+  ],
+  "error": null
+}
