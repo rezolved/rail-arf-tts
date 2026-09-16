@@ -1,0 +1,14 @@
+{
+  "code": "UserError",
+  "severity": null,
+  "message": "StopCompute is not allowed when ComputeInstance disk is full.",
+  "messageFormat": null,
+  "messageParameters": null,
+  "referenceCode": null,
+  "detailsUri": null,
+  "target": null,
+  "details": [],
+  "innerError": null,
+  "debugInfo": null,
+  "additionalInfo": null
+}

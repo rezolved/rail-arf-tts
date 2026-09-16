@@ -58,6 +58,21 @@ python tasks/t0010_stage2_safeguarded_training/code/eval_all_checkpoints.py \
 
 Alternatively run eval locally once the local Kokoro environment is set up.
 
+## Teardown Attempt (2026-09-16)
+
+Eval was re-attempted during teardown after context indicated 24GB freed on `/mnt` (ephemeral disk).
+Actual VM state at teardown time:
+
+- Root disk `/dev/root` still at 100% full (119G used / 119G total)
+- Python torch import failed with `ncclCommResume` undefined symbol in default env
+- No working Python environment with torch was found on root or `/mnt`
+- Resemblyzer venv at `~/resemblyzer-venv` was not present (only in miniconda3/envs/stt which lacks
+  torch)
+
+Cleared `~/.cache/whisper` (2.9 GB) to allow Azure ML stop (API blocked stop when disk 100% full).
+VM stopped at 2026-09-16T07:10:15Z. Eval metrics remain null.
+
 ## Status
 
-harness eval deferred — ephemeral disk full, run manually
+harness eval not completed — root disk full, no torch environment available; VM stopped
+2026-09-16T07:10:15Z

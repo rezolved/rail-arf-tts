@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0010_stage2_safeguarded_training",
+  "command": "bash -c SUB=$(az account show --query id -o tsv) && TOKEN=$(az account get-access-token --query accessToken -o tsv) && RESP=$(curl -s 'https://management.azure.com/subscriptions/'$SUB'/resourceGroups/rezolve-AI/providers/Microsoft.MachineLearningServices/workspaces/brainpowa-northeurope/computes/LLM-T1-NC80?api-version=2023-04-01' -H 'Authorization: Bearer '$TOKEN) && echo $RESP | python3 -c 'import sys,json; d=json.load(sys.stdin); p=d.get(\"properties\",{}); print(json.dumps({\"state\":p.get(\"state\"),\"provisioningState\":p.get(\"provisioningState\")}))'",
+  "exit_code": 0,
+  "duration_seconds": 3.096,
+  "started_at": "2026-09-16T07:13:46Z",
+  "completed_at": "2026-09-16T07:13:49Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training",
+  "stdout_file": "052_20260916T071346Z_bash-c-sub-az-account-show-query-id-o-ts.stdout.txt",
+  "stderr_file": "052_20260916T071346Z_bash-c-sub-az-account-show-query-id-o-ts.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

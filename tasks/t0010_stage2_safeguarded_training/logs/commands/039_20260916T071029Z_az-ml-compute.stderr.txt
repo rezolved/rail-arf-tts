@@ -1,0 +1,9 @@
+
+**************************************************************************************************************
+* WARNING:                                                                                                   *
+* Extension "azure-cli-ml" cannot be used along with extension "ml". This may result in unexpected behaviour.*
+* Please remove azure-cli-ml extension by running  "az extension remove -n azure-cli-ml                      *
+**************************************************************************************************************
+                
+ERROR: argument --query: invalid jmespath_type value: 'provisioningState,state'
+To learn more about --query, please visit: 'https://learn.microsoft.com/cli/azure/query-azure-cli'

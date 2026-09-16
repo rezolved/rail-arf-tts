@@ -1,0 +1,2 @@
+HTTP: 409
+{"Error":"There is an existing operation of type stopoperation being processed for this compute","Code":"stopoperationInProgress"}

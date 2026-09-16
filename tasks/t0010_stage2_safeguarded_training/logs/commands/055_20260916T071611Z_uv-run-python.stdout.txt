@@ -1,0 +1,16 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/results/remote_machines_used.json
+
+[31m[1mERRORS:[0m
+[31m  RM-E004 error: Machine LLM-T1-NC80 missing required field 'offer_id'[0m
+[31m  RM-E004 error: Machine LLM-T1-NC80 missing required field 'search_criteria'[0m
+[31m  RM-E004 error: Machine LLM-T1-NC80 missing required field 'image'[0m
+
+[33m[1mWARNINGS:[0m
+[33m  RM-W001 warning: Cannot verify destruction of LLM-T1-NC80 — Azure ML API unreachable[0m
+[33m  RM-W003 warning: Machine LLM-T1-NC80 ran for 19.5h (>12.0h)[0m
+[33m  RM-W005 warning: Machine LLM-T1-NC80 failed_attempts[0] missing: offer_id[0m
+[33m  RM-W002 warning: Actual GPU cost $272.78 exceeds plan estimate $100.00 by >50%[0m
+
+[31m[1mFAILED[0m — 3 error(s), 4 warning(s)
+

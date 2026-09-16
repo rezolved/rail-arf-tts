@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-16T07:15:00Z"
-completed_steps: 10
-next_step_number: 10
-next_step_id: "teardown"
+updated_at: "2026-09-16T07:20:00Z"
+completed_steps: 11
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -79,6 +79,14 @@ Training completed 17 epochs on LLM-T1-NC80 with zero health gate events (val_lo
 `results/images/loss_timeline.png`, and model asset `kokoro-v10-best` (5-module extraction, 317 MB,
 DVC-tracked). Model verificator: 0 errors.
 
+### Step 10 — teardown
+
+LLM-T1-NC80 stopped at 2026-09-16T07:10:15Z after 19.54 h ($272.78). Harness eval re-attempted but
+blocked by root disk at 100% full and no working torch env on VM (ncclCommResume error in default
+Python, no conda/venv with torch). Azure ML refused stop with full disk — cleared `~/.cache/whisper`
+(2.9 GB) to unblock. Key outputs: `results/costs.json`, `results/remote_machines_used.json`,
+`machine_log.json` updated, `verify_machines_destroyed` 0 errors.
+
 * * *
 
 ## Cross-Step Decisions
@@ -102,14 +110,19 @@ DVC-tracked). Model verificator: 0 errors.
 
 ## Next Step Notes
 
-Step 9 (implementation) completed. Step 10 is `teardown`. The teardown agent must:
+Step 10 (teardown) completed. Step 12 is `results`. The results agent must:
 
-1. Stop LLM-T1-NC80 via
-   `az ml compute stop --name LLM-T1-NC80 --workspace-name brainpowa-northeurope --resource-group rezolve-AI`.
-2. Verify VM is stopped (status `Stopped` or `Deallocated`).
-3. Write `results/remote_machines_used.json` (LLM-T1-NC80 H100, training duration).
-4. Write `results/costs.json` with estimated GPU cost (~$43 for ~2.5h at $17.50/hr).
-5. Update `machine_log.json` `destroyed_at` timestamp.
+1. Write `results/results_summary.md` and `results/results_detailed.md` covering all 17 training
+   epochs; note that `speaker_sim`, `ttfb_ms`, and `rtf` are all null (harness eval was not
+   completed due to VM root disk full and no torch env).
+2. `results/metrics.json` already written (18 variants, null eval metrics) — do NOT overwrite with
+   additional nulls; it is correct as-is.
+3. `results/costs.json` and `results/remote_machines_used.json` already written by teardown — do not
+   re-write.
+4. In `## Task Requirement Coverage`, mark REQ-6 and REQ-7 as `Partial` (eval framework exists,
+   metrics not obtained).
+5. Note that `creative-thinking` (step 11) was skipped per `step_tracker.json`.
 
-**Harness eval still deferred**: before or after teardown, a follow-up task should free VM disk and
-run `eval_all_checkpoints.py`. See `intervention/eval_deferred_disk_full.md`.
+**Harness eval remains null**: `speaker_sim`, `ttfb_ms`, `rtf` were not obtained. A follow-up task
+should run `eval_all_checkpoints.py` locally once a Kokoro + torch environment is available. See
+`intervention/eval_deferred_disk_full.md`.

@@ -122,10 +122,14 @@
       "step": 10,
       "name": "teardown",
       "description": "Stop LLM-T1-NC80, download all results, update costs.json and remote_machines_used.json.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T06:57:58Z",
       "completed_at": null,
-      "log_file": "logs/steps/010_teardown/"
+      "log_file": "logs/steps/010_teardown/",
+      "current_owner": "step-executor/teardown",
+      "last_heartbeat_at": "2026-09-16T06:57:58Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-16T07:57:58Z"
     },
     {
       "step": 11,
