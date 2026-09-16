@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T12:35:00Z"
-completed_steps: 9
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-16T12:48:00Z"
+completed_steps: 10
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -75,6 +75,21 @@ then spawned `/research-summarize` to produce `research/research_summary.md`. Ce
 checkpoint loader does not exclude `decoder` when loading the ISTFTNet-shaped `first_stage_v3.pth`,
 making a silent architecture mismatch the leading noise-output hypothesis.
 
+### Step 7 — planning
+
+Spawned a dedicated subagent to execute `/planning`, which wrote `plan/plan.md` (verificator:
+PASSED, no errors/warnings) sequencing a cheap, venv-free checkpoint-tensor falsifier (direct
+`net["decoder"]` key-name / NaN-Inf / weight-norm inspection against a known-good `istftnet`
+control) strictly before the full instrumented StyleTTS2-native inference harness build. Traced
+`first_stage_v3.pth` to a concrete DVC-tracked path
+(`tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/stage1/first_stage.pth`) and located a
+reusable speaker-sim scoring pattern
+(`tasks/t0008_tts_eval_harness_baselines/code/score_speaker_sim.py`) and the 11labs David reference
+corpus. Caveat: `ctx/task_types.json` shows `has_external_costs: true` for this task's types
+(`tts-benchmark-run`, `code-reproduction`), not `false` — did not block planning since the budget
+gate only fires at `create-branch`, but implementation should be aware the type declares external
+costs even though this task's actual compute is CPU-only local work with $0 real cost.
+
 * * *
 
 ## Cross-Step Decisions
@@ -84,23 +99,22 @@ making a silent architecture mismatch the leading noise-output hypothesis.
   `first_stage_v3.pth`, silently partially loaded by `train_second_v10.py:load_checkpoint()`'s
   zero-match-only failure guard. Later steps (planning, implementation) should test this first via a
   cheap checkpoint-tensor check before building the full inference harness.
+* `plan/plan.md` (step 7) sequences work into milestones: Milestone A (venv/checkpoint pull setup),
+  Milestone B (cheap checkpoint-tensor falsifier — run first, before any inference code), a hard
+  control-validation gate, then Milestones C-E (instrumented StyleTTS2-native harness, control test,
+  v10 diagnosis). Implementation must follow this order and must not skip Milestone B.
 
 * * *
 
 ## Next Step Notes
 
-Step 6 (`research-code`) completed; `research/research_code.md` (12 tasks reviewed, 7 cited, 2
-libraries) and `research/research_summary.md` are in place. Central new finding:
-`config_david_v10.yml` is the only Stage 2 config in the project with
-`model_params.decoder.type: hifigan` — every other config uses `istftnet` — and
-`train_second_v10.py:load_checkpoint()` does not exclude `decoder` from the modules loaded from the
-ISTFTNet-shaped `first_stage_v3.pth`, with a loader guard that only raises on zero matched keys (not
-partial mismatch). This makes a silent decoder-architecture mismatch (HiFi-GAN built fresh, then
-only partially overwritten by ISTFTNet-shaped Stage 1 weights, leaving the vocoder proper
-effectively randomly initialized after only 17 epochs) the leading hypothesis for v10 producing
-noise. Proceed to step 7, `planning`: design the instrumented-harness build (per-module
-missing/unexpected key logging, StyleTTS2-native `models.py` path — not `kokoro.KModel`), the cheap
-checkpoint-tensor falsifier (check `net["decoder"]` key names for `ups.*`/`resblocks.*` HiFi-GAN
-naming plus NaN/Inf and weight-norm per module) recommended to run before any inference code, the
-control test against a known-good checkpoint, and the v10 diagnosis write-up. Read
-`research/research_summary.md` for the full top-10 findings list before planning.
+Step 7 (`planning`) completed; `plan/plan.md` is in place with all 11 mandatory sections plus a
+`## Rejection Criteria` section, verificator PASSED with no errors or warnings. Step 8
+(`setup-machines`) is already marked `skipped` in `step_tracker.json` (CPU-only local task). Proceed
+to step 9, `implementation`: follow `plan/plan.md`'s Step by Step section exactly, starting with
+Milestone A (build the CPU StyleTTS2/kokoro-finetune venv per the task description's pinned
+dependency recipe, `dvc pull` the checkpoints and `first_stage_v3.pth` control file) then Milestone
+B (the cheap checkpoint-tensor falsifier) before writing any inference code. Read `plan/plan.md` in
+full — it is self-contained and names every script, file path, and expected output. If Milestone B
+alone resolves the root-cause question, the plan's Rejection Criteria section describes when to skip
+straight to the diagnosis write-up rather than building the full harness.
