@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
 updated_at: "2026-09-16T07:15:00Z"
-completed_steps: 9
+completed_steps: 10
 next_step_number: 10
 next_step_id: "teardown"
 ---
