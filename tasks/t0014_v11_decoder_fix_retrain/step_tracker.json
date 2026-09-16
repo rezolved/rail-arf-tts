@@ -153,8 +153,10 @@
       "description": "Skipped: task scope is a well-defined diagnostic fix (decoder-init bug) plus corpus-expansion retrain with an explicit audible-speech gate; the Key Questions that call for alternative approaches (pretrained-checkpoint search, epoch-count sizing) are already covered by the research and planning steps.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/011_creative-thinking/"
+      "completed_at": "2026-09-16T23:27:23Z",
+      "log_file": "logs/steps/011_creative-thinking/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 12,
