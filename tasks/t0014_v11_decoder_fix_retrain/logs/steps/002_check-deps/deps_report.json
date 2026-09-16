@@ -1,0 +1,12 @@
+{
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "checked_at": "2026-09-16T14:59:30Z",
+  "result": "passed",
+  "dependencies": [
+    {"task_id": "t0010_stage2_safeguarded_training", "status": "completed", "satisfied": true},
+    {"task_id": "t0012_v5_corpus_normalize_and_reaudit", "status": "completed", "satisfied": true},
+    {"task_id": "t0013_v10_synthesis_quality_forensics", "status": "completed", "satisfied": true}
+  ],
+  "errors": 0,
+  "warnings": 0
+}
