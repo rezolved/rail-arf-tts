@@ -1,3 +1,6 @@
+# ponytail: touched to force GitHub Actions to register this workflow — it shipped in the
+# repo's initial commit (via API/template import, not a real `git push`) and GitHub never
+# indexed it as a result. Any push touching this file re-triggers discovery.
 name: CI
 
 on:

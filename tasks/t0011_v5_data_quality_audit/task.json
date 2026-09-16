@@ -5,12 +5,12 @@
   "name": "v5 training data audio quality audit and clean manifest",
   "short_description": "Audit all 1557 v5 training clips for clipping, silence, LUFS, duration outliers, and OOV tokens. Produce a cleaned train manifest for use in the full-corpus Stage 2 run after t0010 confirms the safeguards work.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "completed",
   "dependencies": [
     "t0009_stage2_training_failure_forensics"
   ],
-  "start_time": null,
-  "end_time": null,
+  "start_time": "2026-09-15T10:34:30Z",
+  "end_time": "2026-09-15T12:40:00Z",
   "expected_assets": {},
   "task_types": [
     "data-analysis"
