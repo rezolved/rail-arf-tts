@@ -47,14 +47,15 @@
       "step": 4,
       "name": "research-papers",
       "description": "Review existing corpus papers (StyleTTS2, HiFi-GAN) for typical vocoder-from-scratch convergence epoch counts, per Key Question 2.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T15:02:15Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T15:17:17Z",
       "log_file": "logs/steps/004_research-papers/",
-      "current_owner": "step-executor/research-papers",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T15:02:15Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T16:02:15Z"
+      "expected_completion_at": "2026-09-16T16:02:15Z",
+      "actual_duration_seconds": 902
     },
     {
       "step": 5,
