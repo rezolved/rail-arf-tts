@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
 updated_at: "2026-09-16T16:25:00Z"
-completed_steps: 7
+completed_steps: 8
 next_step_number: 8
 next_step_id: "setup-machines"
 ---
