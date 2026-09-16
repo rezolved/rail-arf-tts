@@ -1,0 +1,45 @@
+{
+  "spec_version": "1",
+  "suggestions": [
+    {
+      "id": "S-0014-01",
+      "title": "Diagnose and fix kokoro-v11-best's 73.95s duration-predictor calibration anomaly",
+      "description": "t0014's gate-passing synthesis produced 73.95s of audio for a 10-word sentence, 15-30x longer than the control (4.92s) and both v10 checkpoints (2.50-3.42s) on the same or comparable inputs, despite is_likely_noise=False (clip_fraction=0.0048, formant-consistent spectral content). This is disclosed but unresolved and has no literature comparison point. Reproduce across a batch of prompts of varying length (not the single fixed sentence t0014 used) to characterize scope, test whether it is specific to the 5.48s multi-clip-concatenated reference style vector v11_gate_verdict.md flags as a lead (vs. t0013's single-clip reference), and inspect predictor.duration_proj output scale against loss_params.lambda_dur=1.0 on the larger 1531-clip corpus vs v10's 250-clip corpus. This checkpoint is not usable for latency-sensitive filler synthesis until resolved. Recommended task types: experiment-run, tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0014_v11_decoder_fix_retrain",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0014-02",
+      "title": "Run kokoro-v11-best on the full val_96 + 1358-clip filler-corpus primary benchmark via a StyleTTS2-native batch harness",
+      "description": "t0014 only scored one ad hoc, duration-anomalous clip: speaker_sim=0.444, no ttfb_ms, rtf from a single unbatched CPU run. That score is lower than the unrelated-speaker LibriTTS control's 0.482 against the same David reference, which is not itself disqualifying (different speaker, different content) but does mean v11's real speaker-identity transfer is unverified at scale. t0008's existing tts_eval_harness cannot be reused as-is because Kokoro's KModel/KPipeline cannot load a hifigan-decoder checkpoint (confirmed by t0014's own findings) -- it must be adapted to synthesize via the StyleTTS2-native path (code/infer_styletts2.py) instead. Adapt the batch harness accordingly and run it across the full val_96 set and the 1358-clip 11labs_david filler corpus to get project-comparable speaker_sim, ttfb_ms, and rtf numbers before any go/no-go viability call, per project/description.md's Success Criteria. Recommended task types: tts-benchmark-run.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0014_v11_decoder_fix_retrain",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0014-03",
+      "title": "Add discriminator-warmup and feature-matching-loss-pause rules from You2021 to the t0009 safeguard library",
+      "description": "t0014's own research (research/research_internet.md, [GAN-Vocoder-MRD-2021]) found a documented, implementable discriminator-only warmup (first 10k steps) and a feature-matching-loss-pause rule (pause GAN-loss updates once feature-matching loss exceeds 99% of total loss) as early-instability diagnostics for GAN vocoder training, flagged for t0009's safeguard library but never implemented since v11's gate passed without needing them. Add both rules to t0009_stage2_training_failure_forensics's HealthGate/safeguard library so future Stage 2 retrains (e.g. after S-0014-01's duration-predictor fix, or a from-scratch decoder attempt) get earlier instability detection than a full-training-then-audible-gate check provides. Distinct from S-0009-05 (param-count assertion + gradient norm logging) and S-0013-03 (decoder-architecture preflight check), which cover different safeguard gaps. Recommended task types: write-library.",
+      "kind": "library",
+      "priority": "medium",
+      "source_task": "t0014_v11_decoder_fix_retrain",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0014-04",
+      "title": "Train a fully in-house HiFi-GAN decoder from random init to remove the LibriTTS pretrained-weight dependency",
+      "description": "kokoro-v11-best's decoder is initialized from yl4579/StyleTTS2-LibriTTS's epochs_2nd_00020.pth, which per that repo's README requires disclosing pretrained-weight use and restricts voice-cloning to consented speakers (disclosed in t0014's results_summary.md). This project's own research documents a random-init fallback budget (400-1,000 epochs; StyleTTS2's own VCTK/LibriTTS from-scratch configs run 50-90 epochs) that t0014 deliberately skipped since the pretrained-checkpoint path passed the audible-speech gate. If Rezolve's production plans require a checkpoint with no external pretrained-weight lineage, run this as a dedicated experiment at the literature-anchored epoch budget, gated on the same is_likely_noise check t0014 established. Low priority: the current disclosure already covers this project's stated internal-use case. Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "low",
+      "source_task": "t0014_v11_decoder_fix_retrain",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}

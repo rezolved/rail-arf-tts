@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T23:41:30Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-16T23:45:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -92,6 +92,16 @@ but trails the unrelated-speaker control (0.482, -0.037) and the project's 0.85 
 the audible-speech gate, not `speaker_sim`, is the load-bearing pass/fail signal.
 `verify_compare_literature.py` PASSED, 0 errors/0 warnings.
 
+### Step 14 — suggestions
+
+A subagent ran `/generate-suggestions`, cross-checking candidates against all 20 open project
+suggestions and all 14 tasks via the aggregators before writing `results/suggestions.json` (4
+entries, `S-0014-01`..`S-0014-04`): the duration-predictor calibration anomaly (high), adapting the
+batch eval harness to the StyleTTS2-native inference path and scoring `kokoro-v11-best` on the real
+val_96 + 1358-clip benchmark (high), porting You2021's discriminator-warmup/feature-matching-pause
+rules into the t0009 safeguard library (medium), and a from-scratch decoder run to drop the LibriTTS
+pretrained-weight dependency (low). `verify_suggestions.py` PASSED, 0 errors/0 warnings.
+
 * * *
 
 ## Cross-Step Decisions
@@ -138,16 +148,16 @@ the audible-speech gate, not `speaker_sim`, is the load-bearing pass/fail signal
 
 ## Next Step Notes
 
-Step 13 (`compare-literature`) is now **`completed`**. `results/compare_literature.md` has all 5
-mandatory sections plus a `### Prior Task Comparison` subsection, a 6-row comparison table (exact
-epoch-schedule match to StyleTTS2's `config_ft.yml`; large, explicitly-flagged-non-comparable deltas
-on decoder-adversarial step volume vs. HiFi-GAN/iSTFTNet from-scratch/fine-tune budgets) and a 3-row
-prior-task table (v11 `speaker_sim=0.444` vs. t0013's v10 0.311-0.351 and control 0.482).
-`verify_compare_literature.py` PASSED, 0 errors/0 warnings. Step 14 (`suggestions`) runs next: carry
-forward `results/v11_gate_verdict.md`'s disclosed non-blocking anomaly (73.95s synthesis duration
-for a 10-word sentence vs. 2.5-4.9s for the control/v10 — a likely duration-predictor calibration
-issue, also noted in `results/compare_literature.md`'s Limitations as having no literature
-comparison point) as a follow-up-task suggestion, and consider the 0.444-vs-0.85 `speaker_sim` gap
-(`compare_literature.md`'s Summary/Analysis) as a second candidate suggestion. `task.json`'s
-`expected_assets: {"model": 1}` remains satisfied by the already-verified `kokoro-v11-best` asset
-(step 9); no further edits to `assets/` are needed by any later step.
+Step 14 (`suggestions`) is now **`completed`**. `results/suggestions.json` has 4 entries
+(`S-0014-01`..`S-0014-04`) covering the duration-predictor anomaly, real-benchmark scoring via a
+StyleTTS2-native harness, safeguard-library additions, and an optional from-scratch decoder run;
+duplicate-checked against all 20 prior open suggestions and all 14 tasks. `verify_suggestions.py`
+PASSED, 0 errors/0 warnings. Step 15 (`reporting`) runs next — the final step: run all remaining
+verificators (`verify_task_file`, `verify_task_dependencies`, `verify_suggestions`,
+`verify_task_metrics`, `verify_task_results`, `verify_task_folder`, `verify_logs`,
+`verify_model_asset --task-id t0014_v11_decoder_fix_retrain`, `verify_machines_destroyed`,
+`verify_compare_literature`), capture session transcripts via `capture_task_sessions`, set
+`task.json` `status: "completed"` and `end_time` (leave `start_time` untouched), do the final
+`checkpoint.md` update (`next_step_number`/`next_step_id: null`), commit, and run poststep.
+`task.json`'s `expected_assets: {"model": 1}` remains satisfied by the already-verified
+`kokoro-v11-best` asset (step 9); no further edits to `assets/` are needed.
