@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
-updated_at: "2026-09-16T06:35:35Z"
-completed_steps: 7
-next_step_number: 3
-next_step_id: "init-folders"
+updated_at: "2026-09-16T06:37:34Z"
+completed_steps: 8
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -26,6 +26,14 @@ output.
 Verified dependency `t0011_v5_data_quality_audit` has `status: completed` in its `task.json`, so the
 dependency check passed with 0 errors and 0 warnings. Result recorded in
 `logs/steps/002_check-deps/deps_report.json`. No caveats for downstream steps.
+
+### Step 3 — init-folders
+
+Created the mandatory task folder structure (`plan/`, `research/`, `results/`, `code/`,
+`corrections/`, `intervention/`, `assets/`, `logs/{commands,searches,sessions,steps}/`) via
+`init_task_folders`, recorded in `logs/steps/003_init-folders/folders_created.txt`. Populated the
+gitignored `ctx/` aggregator cache (`task_types.json`, `costs.json`, `tasks.json`, `metrics.json`,
+`suggestions.json`) for downstream subagents to reuse.
 
 ### Step 4 — research-papers
 
@@ -58,6 +66,8 @@ counts) are not comparable to published baselines.
 
 ## Next Step Notes
 
-Step 2 completed successfully; the only declared dependency (`t0011_v5_data_quality_audit`) is
-satisfied. Proceed to step 3 (`init-folders`) per `step_tracker.json`: create the mandatory task
-folder structure via `init_task_folders` and populate the aggregator cache under `ctx/`.
+Step 3 completed successfully; task folder structure and the `ctx/` aggregator cache are in place.
+Steps 4 and 5 are already marked skipped in `step_tracker.json`. Proceed to step 6
+(`research-code`): review t0011's `per_clip_stats.jsonl`, `audit_audio.py`, and its clipping
+thresholds as the starting point for the corrected audit and LUFS-normalization code. Use the cached
+`ctx/tasks.json` and `ctx/task_types.json` instead of re-running aggregators.
