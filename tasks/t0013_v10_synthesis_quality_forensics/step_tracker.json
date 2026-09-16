@@ -5,14 +5,15 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0013_v10_synthesis_quality_forensics branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-16T12:19:43Z",
-      "completed_at": null,
+      "completed_at": "2026-09-16T12:22:13Z",
       "log_file": "logs/steps/001_create-branch/",
-      "current_owner": "step-executor/create-branch",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-16T12:19:43Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-16T13:19:43Z"
+      "expected_completion_at": "2026-09-16T13:19:43Z",
+      "actual_duration_seconds": 150
     },
     {
       "step": 2,
