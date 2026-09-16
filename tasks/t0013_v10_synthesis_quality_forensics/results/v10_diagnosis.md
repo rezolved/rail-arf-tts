@@ -66,11 +66,19 @@ tensor level) is corroborated, not contradicted, by the audio evidence:
 * No NaN/Inf anywhere in either v10 checkpoint (`results/checkpoint_forensics_raw.json` -- all 13
   modules `finite=True`). The decoder's weight-norm is close between epoch 14 (213.22) and epoch 16
   (213.29), and both are close to the control's (196.98) -- **the weights are not diverging or
-  blowing up**, they are simply not-yet-trained-to-produce-valid-audio. This is consistent with a
-  HiFi-GAN vocoder that started near a bad (partially-mismatched) initialization and made limited
-  progress in 17 epochs (8 pre-GAN + 9 post-GAN, per `research/research_summary.md` point 1), rather
-  than a catastrophic mid-training blowup (which would show as NaN/Inf or a weight-norm spike --
-  neither is observed).
+  blowing up**. **Refined by step 11's falsification probe** (`results/creative_thinking.md`,
+  `code/random_decoder_probe.py`): this is not merely a HiFi-GAN vocoder that started near a random
+  initialization and made limited progress in 17 epochs. Loading v10 primary's real checkpoint into
+  every module except `decoder` -- left at pure `build_model()` random init -- gives
+  `clip_fraction=0.004` (`is_likely_noise=False`), close to the control, while the real,
+  partially-mismatched-loaded decoder gives `clip_fraction=0.750-0.807`. A purely random decoder
+  therefore does **not** reproduce the failure; the actual initialization is a "Frankenstein" mix of
+  freshly-random layers and layers overwritten with weights trained for a structurally different
+  (ISTFTNet) architecture, which is an actively **worse** starting point than plain random init, not
+  an equivalent one. This is consistent with a catastrophic-blowup-free, numerically-stable-but-
+  semantically-wrong initialization (weight-norm alone would not distinguish the two, which is why
+  the probe was necessary), rather than a mid-training blowup (which would show as NaN/Inf or a
+  weight-norm spike -- neither is observed).
 
 ## Training-log cross-reference (Key Question 5, re-verified directly, not just cited from research)
 

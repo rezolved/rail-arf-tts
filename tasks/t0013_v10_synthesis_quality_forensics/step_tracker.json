@@ -147,10 +147,14 @@
       "step": 12,
       "name": "results",
       "description": "Write control_test.md, v10_diagnosis.md, results_summary.md, results_detailed.md, and metrics.json with the root cause and recommendation.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T13:45:22Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/012_results/",
+      "current_owner": "step-executor/results",
+      "last_heartbeat_at": "2026-09-16T13:45:22Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-16T14:45:22Z"
     },
     {
       "step": 13,

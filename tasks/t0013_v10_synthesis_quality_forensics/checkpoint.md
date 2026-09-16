@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T13:55:00Z"
-completed_steps: 12
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-16T13:49:25Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -124,6 +124,19 @@ and refines the failure mechanism (worse than random, not merely undertrained). 
 selection than `v10_diagnosis.md`, so its numbers are corroborating, not directly merged into that
 table.
 
+### Step 12 — results
+
+Wrote `results/results_summary.md` and `results/results_detailed.md` (`spec_version: "2"`),
+synthesizing `v10_diagnosis.md`, `control_test.md`, and `creative_thinking.md`; both pass
+`verify_task_results.py` and `verify_task_metrics.py` with 0 errors/0 warnings. Discovered
+`results/costs.json` and `results/remote_machines_used.json` were never written during
+implementation (despite the earlier caveat assuming they existed) and created them
+(`{"total_cost_usd": 0, "breakdown": {}}` and `[]`). Tightened one paragraph in
+`results/v10_diagnosis.md` per the prior Cross-Step Decision, citing the step-11 probe's
+`clip_fraction=0.004` finding explicitly, without changing the verdict or Recommendation.
+`## Examples` (mandatory for `code-reproduction` task types) has 12 instances, all copied verbatim
+from existing result files.
+
 * * *
 
 ## Cross-Step Decisions
@@ -166,21 +179,26 @@ table.
   bottom line (real training defect, not a reproduction bug) or the Recommendation section — both
   stand, and are further supported. Full detail and a methodology caveat (probe used a different
   3-clip reference selection than `v10_diagnosis.md`) are in `results/creative_thinking.md`.
+* **`results/costs.json` and `results/remote_machines_used.json` were not actually written during
+  `implementation`** (step 9's checkpoint entry implied all deliverables were complete alongside
+  `results/metrics.json`, but only `metrics.json` existed on disk). The `results` step (step 12)
+  created both as zero-cost/no-machines records (`{"total_cost_usd": 0, "breakdown": {}}` and `[]`).
+  Future step-executors should verify a prior step's "all deliverables written" claim against the
+  filesystem directly rather than trusting the checkpoint summary alone.
 
 * * *
 
 ## Next Step Notes
 
-Step 11 (`creative-thinking`) completed. Stress-tested the verdict from the two angles named in the
-prior Next Step Notes plus a third: ran a new probe isolating `decoder` as the only module differing
-from the real v10 checkpoint, which showed pure-random-decoder audio does NOT clip
-(`clip_fraction=0.004` vs. v10's 0.750-0.807) — ruling out `diffusion`/`predictor_encoder` as
-independent causes and refining the failure mechanism to "actively bad partial-mismatch
-initialization, worse than random" rather than "near-random." Harness defaults (phonemizer,
-`diffusion_steps`, `embedding_scale`) were confirmed identical across every run in this task, ruling
-out a masking explanation. See `results/creative_thinking.md` for full detail and the Cross-Step
-Decisions entry above for what the `results` step-executor should pick up. Proceed to step 12,
-`results`: write `results_summary.md`/`results_detailed.md` from `results/v10_diagnosis.md`,
-`results/control_test.md`, and `results/creative_thinking.md`, per `task_results_specification.md`.
-Step 13 (`compare-literature`) is already `skipped`; step 14 (`suggestions`) must add the
-eval-harness pre-completion regression-check follow-up noted above.
+Step 12 (`results`) completed. `results/results_summary.md` and `results/results_detailed.md`
+(`spec_version: "2"`) are written and both pass `verify_task_results.py` and
+`verify_task_metrics.py` with 0 errors/0 warnings. Their `## Task Requirement Coverage` and
+`## Examples` sections (12 concrete instances) answer all 6 Key Questions and all 13 `REQ-*` items
+from `plan/plan.md`. `results/v10_diagnosis.md`'s weight-norm paragraph was tightened to cite step
+11's probe explicitly, per the prior Cross-Step Decision — verdict and Recommendation unchanged.
+Step 13 (`compare-literature`) is already `skipped`. Proceed to step 14, `suggestions`: spawn the
+`/generate-suggestions` skill subagent and ensure it carries forward the eval-harness pre-completion
+regression-check follow-up documented in `results/v10_diagnosis.md`'s Recommendation section (a
+synthesis smoke check using `code/audio_quality_check.py`'s noise/clipping heuristic should run and
+pass before a Stage 2 training task can claim `completed`). After `suggestions`, step 15
+(`reporting`) is the final step.
