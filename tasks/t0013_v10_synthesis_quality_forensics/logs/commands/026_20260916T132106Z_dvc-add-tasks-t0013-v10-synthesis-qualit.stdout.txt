@@ -1,0 +1,8 @@
+
+To track the changes with git, run:
+
+	git add tasks/t0013_v10_synthesis_quality_forensics/results/audio_samples.dvc tasks/t0013_v10_synthesis_quality_forensics/results/.gitignore
+
+To enable auto staging, run:
+
+	dvc config core.autostage true

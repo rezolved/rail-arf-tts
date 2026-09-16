@@ -1,0 +1,4 @@
+Using CPython 3.10.11 interpreter at: /anaconda/envs/azureml_py38/bin/python3.10
+warning: The requested interpreter resolved to Python 3.10.11, which is incompatible with the project's Python requirement: `>=3.12` (from `project.requires-python`)
+Creating virtual environment at: tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2
+Activate with: source tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2/bin/activate

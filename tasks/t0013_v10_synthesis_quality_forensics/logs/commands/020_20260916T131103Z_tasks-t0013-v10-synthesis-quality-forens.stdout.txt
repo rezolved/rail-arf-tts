@@ -1,0 +1,6 @@
+bert: primary(matched=0,missing=25,unexpected=25) fallback(matched=25,missing=0,unexpected=0) used_fallback=True [OK]
+bert_encoder: primary(matched=0,missing=2,unexpected=2) fallback(matched=2,missing=0,unexpected=0) used_fallback=True [OK]
+predictor: primary(matched=0,missing=122,unexpected=122) fallback(matched=122,missing=0,unexpected=0) used_fallback=True [OK]
+decoder: primary(matched=0,missing=678,unexpected=678) fallback(matched=678,missing=0,unexpected=0) used_fallback=True [OK]
+text_encoder: primary(matched=0,missing=24,unexpected=24) fallback(matched=24,missing=0,unexpected=0) used_fallback=True [OK]
+predictor_encoder: primary(matched=0,missing=67,unexpected=67) fallback(matched=16,missing=51,unexpected=51) used_fallback=True [MISMATCH]

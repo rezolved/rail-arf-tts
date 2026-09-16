@@ -1,0 +1,2 @@
+Submodule path 'StyleTTS2': checked out 'b1956da84bf4a6ccc88f2440078024f1c4bfec7d'
+Submodule path 'kokoro': checked out 'b96fef95e6a746495f92443fac7c688f90fc57fc'

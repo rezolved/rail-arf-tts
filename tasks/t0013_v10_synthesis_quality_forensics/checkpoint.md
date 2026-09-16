@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T12:48:00Z"
-completed_steps: 10
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-16T13:35:00Z"
+completed_steps: 11
+next_step_number: 11
+next_step_id: "creative-thinking"
 ---
 # Task Objective
 
@@ -90,6 +90,28 @@ corpus. Caveat: `ctx/task_types.json` shows `has_external_costs: true` for this 
 gate only fires at `create-branch`, but implementation should be aware the type declares external
 costs even though this task's actual compute is CPU-only local work with $0 real cost.
 
+### Step 9 — implementation
+
+Spawned a dedicated subagent to execute `/implementation`, which followed `plan/plan.md`'s
+milestones in order: `dvc pull` + `kikiri-tts` clone (Milestone A), the cheap tensor-level falsifier
+`code/inspect_checkpoint.py` run **before** any inference code (Milestone B) — confirmed the v10
+`decoder` module is HiFi-GAN-shaped while `first_stage_v3.pth` is ISTFTNet-shaped, all tensors
+finite; the isolated CPU `torch==2.5.1` venv and instrumented harness `code/infer_styletts2.py`
+(Milestone C); the control-validation gate against the base pretrained StyleTTS2 LibriTTS checkpoint
+(Milestone D), which caught and fixed a real harness bug (`weight_norm`/`spectral_norm`
+parametrization key-naming drift) before trusting v10 output, then passed; and the v10
+primary/backup diagnosis (Milestone E). **Verdict** (`results/v10_diagnosis.md`): **real defect from
+the start** — `train_second_v10.py`'s `ignore_modules` list omits `decoder`, so the HiFi-GAN vocoder
+was left effectively randomly initialized entering training; both `epoch_2nd_00016.pth` and
+`epoch_2nd_00014.pth` produce clipped/saturated garbage (75-81% samples pinned at +-1.0), not a
+reproduction bug. `results/audio_samples/` DVC-tracked and pushed (7 files); `code/kikiri-tts/` and
+`.venv-styletts2/` correctly gitignored, not committed; `results/metrics.json` has all three
+variants' `rtf`/`speaker_sim`, `ttfb_ms` explicitly omitted with reasoning. Caveat: the plan's step
+16 mentions naming the regression check as a follow-up in `results/suggestions.json`, but that file
+is reserved for the orchestrator's `suggestions` step per the implementation skill's forbidden-file
+list — the subagent documented the follow-up in `results/v10_diagnosis.md`'s Recommendation section
+instead; step 14 (`suggestions`) must pick this up.
+
 * * *
 
 ## Cross-Step Decisions
@@ -103,18 +125,33 @@ costs even though this task's actual compute is CPU-only local work with $0 real
   Milestone B (cheap checkpoint-tensor falsifier — run first, before any inference code), a hard
   control-validation gate, then Milestones C-E (instrumented StyleTTS2-native harness, control test,
   v10 diagnosis). Implementation must follow this order and must not skip Milestone B.
+* **Root cause confirmed** (step 9): `kokoro-v10-best` never produced working audio, at any epoch —
+  a real training defect from the start caused by `train_second_v10.py`'s `ignore_modules` list
+  omitting `decoder`, silently leaving the HiFi-GAN vocoder near-randomly-initialized. Both
+  `epoch_2nd_00016.pth` (primary) and `epoch_2nd_00014.pth` (backup) fail identically. Recommended
+  action (per `results/v10_diagnosis.md`): fix `train_second_v10.py`'s `ignore_modules` and retrain,
+  or discard `kokoro-v10-best`; do not promote it as a production replacement candidate. Downstream
+  steps (`results`, `suggestions`, `reporting`) must reflect this verdict and must not repeat the
+  earlier informal "sounds like noise" framing as if unresolved — it is now resolved with evidence.
+* `results/suggestions.json` was deliberately **not** written during `implementation` (reserved for
+  the orchestrator's `suggestions` step). The eval-harness regression-check follow-up
+  (`code/audio_quality_check.py` as a required pre-completion gate for future training tasks) is
+  documented in `results/v10_diagnosis.md` and must be carried into `results/suggestions.json` at
+  step 14.
 
 * * *
 
 ## Next Step Notes
 
-Step 7 (`planning`) completed; `plan/plan.md` is in place with all 11 mandatory sections plus a
-`## Rejection Criteria` section, verificator PASSED with no errors or warnings. Step 8
-(`setup-machines`) is already marked `skipped` in `step_tracker.json` (CPU-only local task). Proceed
-to step 9, `implementation`: follow `plan/plan.md`'s Step by Step section exactly, starting with
-Milestone A (build the CPU StyleTTS2/kokoro-finetune venv per the task description's pinned
-dependency recipe, `dvc pull` the checkpoints and `first_stage_v3.pth` control file) then Milestone
-B (the cheap checkpoint-tensor falsifier) before writing any inference code. Read `plan/plan.md` in
-full — it is self-contained and names every script, file path, and expected output. If Milestone B
-alone resolves the root-cause question, the plan's Rejection Criteria section describes when to skip
-straight to the diagnosis write-up rather than building the full harness.
+Step 9 (`implementation`) completed; all Milestones A-F executed, verificator-equivalent checks
+(ruff, mypy, flowmark) clean, `code/kikiri-tts/` and `.venv-styletts2/` correctly gitignored, audio
+DVC-pushed. `results/v10_diagnosis.md` states the "real defect from the start" verdict explicitly
+(grep-confirmed). Step 10 (`teardown`) already `skipped`. Proceed to step 11, `creative-thinking`:
+consider alternative diagnostic angles the scripted checklist might miss (e.g., whether the
+`diffusion` style sampler or `predictor_encoder` — both excluded from Stage 1 loading by design, not
+by the `decoder` bug — could independently contribute to the clipped-audio symptom, or whether the
+harness's phonemizer/sampler defaults themselves could partially mask a milder underlying defect)
+before the `results` step finalizes the write-up. Then step 12 (`results`) writes
+`results_summary.md`/`results_detailed.md` from `results/v10_diagnosis.md` and
+`results/control_test.md`; step 13 (`compare-literature`) is already `skipped`; step 14
+(`suggestions`) must add the eval-harness pre-completion regression-check follow-up noted above.

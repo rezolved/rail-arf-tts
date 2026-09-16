@@ -1,0 +1,15 @@
+bert: primary(matched=0,missing=25,unexpected=25) fallback(matched=25,missing=0,unexpected=0) used_fallback=True [OK]
+bert_encoder: primary(matched=0,missing=2,unexpected=2) fallback(matched=2,missing=0,unexpected=0) used_fallback=True [OK]
+predictor: primary(matched=0,missing=122,unexpected=122) fallback(matched=122,missing=0,unexpected=0) used_fallback=True [OK]
+decoder: primary(matched=0,missing=678,unexpected=678) fallback(matched=678,missing=0,unexpected=0) used_fallback=True [OK]
+text_encoder: primary(matched=0,missing=24,unexpected=24) fallback(matched=24,missing=0,unexpected=0) used_fallback=True [OK]
+predictor_encoder: primary(matched=0,missing=67,unexpected=67) fallback(matched=67,missing=0,unexpected=0) used_fallback=True [OK]
+style_encoder: primary(matched=0,missing=67,unexpected=67) fallback(matched=67,missing=0,unexpected=0) used_fallback=True [OK]
+diffusion: primary(matched=0,missing=96,unexpected=96) fallback(matched=96,missing=0,unexpected=0) used_fallback=True [OK]
+text_aligner: primary(matched=0,missing=143,unexpected=143) fallback(matched=143,missing=0,unexpected=0) used_fallback=True [OK]
+pitch_extractor: primary(matched=0,missing=77,unexpected=77) fallback(matched=77,missing=0,unexpected=0) used_fallback=True [OK]
+mpd: primary(matched=30,missing=60,unexpected=60) fallback(matched=90,missing=0,unexpected=0) used_fallback=True [OK]
+msd: primary(matched=18,missing=36,unexpected=36) fallback(matched=54,missing=0,unexpected=0) used_fallback=True [OK]
+wd: primary(matched=5,missing=10,unexpected=10) fallback(matched=15,missing=0,unexpected=0) used_fallback=True [OK]
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/load_log_epochs_2nd_00020.json
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/audio_samples/control_epochs_2nd_00020.wav (4.92s audio, synth wall time 22.33s, rtf=4.536100560509557)

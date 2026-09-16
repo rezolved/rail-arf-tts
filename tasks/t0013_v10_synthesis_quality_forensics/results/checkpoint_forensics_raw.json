@@ -1,0 +1,308 @@
+[
+  {
+    "checkpoint": "epoch_2nd_00016 (v10 primary)",
+    "modules": [
+      {
+        "module": "bert",
+        "num_params": 6292480,
+        "finite": true,
+        "weight_norm": 186.5263513586749,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "bert_encoder",
+        "num_params": 393728,
+        "finite": true,
+        "weight_norm": 13.089037195772413,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "decoder",
+        "num_params": 54289492,
+        "finite": true,
+        "weight_norm": 213.291986119901,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "diffusion",
+        "num_params": 50653952,
+        "finite": true,
+        "weight_norm": 899.2297533240948,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "mpd",
+        "num_params": 41105770,
+        "finite": true,
+        "weight_norm": 95.43540197843866,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "msd",
+        "num_params": 280902,
+        "finite": true,
+        "weight_norm": 18.058044782643048,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "pitch_extractor",
+        "num_params": 5251148,
+        "finite": true,
+        "weight_norm": 86263.85800391798,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "predictor",
+        "num_params": 16194612,
+        "finite": true,
+        "weight_norm": 142.0331192789235,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "predictor_encoder",
+        "num_params": 13880813,
+        "finite": true,
+        "weight_norm": 41.89301769798641,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "style_encoder",
+        "num_params": 13880813,
+        "finite": true,
+        "weight_norm": 41.8430234147653,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "text_aligner",
+        "num_params": 7868452,
+        "finite": true,
+        "weight_norm": 825.3248973043337,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "text_encoder",
+        "num_params": 5606400,
+        "finite": true,
+        "weight_norm": 310.7808866159331,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "wd",
+        "num_params": 1173634,
+        "finite": true,
+        "weight_norm": 21.682018325030903,
+        "nonfinite_keys": []
+      }
+    ],
+    "decoder_verdict": {
+      "has_hifigan_marker": true,
+      "num_ups_stages": 4,
+      "classification": "hifigan"
+    },
+    "missing_core_modules": []
+  },
+  {
+    "checkpoint": "epoch_2nd_00014 (v10 backup)",
+    "modules": [
+      {
+        "module": "bert",
+        "num_params": 6292480,
+        "finite": true,
+        "weight_norm": 186.5263513586749,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "bert_encoder",
+        "num_params": 393728,
+        "finite": true,
+        "weight_norm": 13.089037195772413,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "decoder",
+        "num_params": 54289492,
+        "finite": true,
+        "weight_norm": 213.22221297345592,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "diffusion",
+        "num_params": 50653952,
+        "finite": true,
+        "weight_norm": 899.2322042533294,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "mpd",
+        "num_params": 41105770,
+        "finite": true,
+        "weight_norm": 95.4225104003991,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "msd",
+        "num_params": 280902,
+        "finite": true,
+        "weight_norm": 18.048558361192576,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "pitch_extractor",
+        "num_params": 5251148,
+        "finite": true,
+        "weight_norm": 86098.11597977336,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "predictor",
+        "num_params": 16194612,
+        "finite": true,
+        "weight_norm": 141.99248215364818,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "predictor_encoder",
+        "num_params": 13880813,
+        "finite": true,
+        "weight_norm": 41.841547206444325,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "style_encoder",
+        "num_params": 13880813,
+        "finite": true,
+        "weight_norm": 41.763526806983904,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "text_aligner",
+        "num_params": 7868452,
+        "finite": true,
+        "weight_norm": 825.3248973043337,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "text_encoder",
+        "num_params": 5606400,
+        "finite": true,
+        "weight_norm": 310.7808866159331,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "wd",
+        "num_params": 1173634,
+        "finite": true,
+        "weight_norm": 21.682018325030903,
+        "nonfinite_keys": []
+      }
+    ],
+    "decoder_verdict": {
+      "has_hifigan_marker": true,
+      "num_ups_stages": 4,
+      "classification": "hifigan"
+    },
+    "missing_core_modules": []
+  },
+  {
+    "checkpoint": "first_stage_v3 (control, istftnet-trained)",
+    "modules": [
+      {
+        "module": "bert",
+        "num_params": 6292480,
+        "finite": true,
+        "weight_norm": 186.5263513586749,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "bert_encoder",
+        "num_params": 393728,
+        "finite": true,
+        "weight_norm": 13.089037195772413,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "decoder",
+        "num_params": 53276190,
+        "finite": true,
+        "weight_norm": 196.9789152687716,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "diffusion",
+        "num_params": 43836160,
+        "finite": true,
+        "weight_norm": 900.6126664494356,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "mpd",
+        "num_params": 41105770,
+        "finite": true,
+        "weight_norm": 95.75147796305933,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "msd",
+        "num_params": 280902,
+        "finite": true,
+        "weight_norm": 18.04775208808559,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "pitch_extractor",
+        "num_params": 5251148,
+        "finite": true,
+        "weight_norm": 84856.28486990127,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "predictor",
+        "num_params": 16194612,
+        "finite": true,
+        "weight_norm": 141.67339312715512,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "predictor_encoder",
+        "num_params": 13880813,
+        "finite": true,
+        "weight_norm": 41.42367350254718,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "style_encoder",
+        "num_params": 13880813,
+        "finite": true,
+        "weight_norm": 41.54210884984099,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "text_aligner",
+        "num_params": 7868452,
+        "finite": true,
+        "weight_norm": 825.3248973043337,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "text_encoder",
+        "num_params": 5606400,
+        "finite": true,
+        "weight_norm": 310.7808866159331,
+        "nonfinite_keys": []
+      },
+      {
+        "module": "wd",
+        "num_params": 1173634,
+        "finite": true,
+        "weight_norm": 21.701935284568812,
+        "nonfinite_keys": []
+      }
+    ],
+    "decoder_verdict": {
+      "has_hifigan_marker": false,
+      "num_ups_stages": 2,
+      "classification": "istftnet"
+    },
+    "missing_core_modules": []
+  }
+]

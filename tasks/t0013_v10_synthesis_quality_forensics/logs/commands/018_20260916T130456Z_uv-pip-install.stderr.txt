@@ -1,0 +1,9 @@
+Using Python 3.10.11 environment at: tasks/t0013_v10_synthesis_quality_forensics/code/.venv-styletts2
+   Updating https://github.com/resemble-ai/monotonic_align.git (HEAD)
+    Updated https://github.com/resemble-ai/monotonic_align.git (c6e5e6cb19882164027eb6e35118e841eed9298e)
+Resolved 2 packages in 12.82s
+   Building monotonic-align @ git+https://github.com/resemble-ai/monotonic_align.git@c6e5e6cb19882164027eb6e35118e841eed9298e
+      Built monotonic-align @ git+https://github.com/resemble-ai/monotonic_align.git@c6e5e6cb19882164027eb6e35118e841eed9298e
+Prepared 1 package in 27.59s
+Installed 1 package in 1ms
+ + monotonic-align==1.2 (from git+https://github.com/resemble-ai/monotonic_align.git@c6e5e6cb19882164027eb6e35118e841eed9298e)

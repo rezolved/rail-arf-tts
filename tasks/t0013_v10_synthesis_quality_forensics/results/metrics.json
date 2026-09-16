@@ -1,0 +1,43 @@
+{
+  "variants": [
+    {
+      "variant_id": "control-epochs-2nd-00020",
+      "label": "Control: official pretrained StyleTTS2 LibriTTS checkpoint",
+      "dimensions": {
+        "checkpoint": "epochs_2nd_00020.pth",
+        "decoder_type": "hifigan",
+        "role": "control"
+      },
+      "metrics": {
+        "rtf": 4.536100560509557,
+        "speaker_sim": 0.48155468702316284
+      }
+    },
+    {
+      "variant_id": "v10-epoch16-primary",
+      "label": "kokoro-v10-best primary checkpoint (epoch 17, val_loss 0.797)",
+      "dimensions": {
+        "checkpoint": "epoch_2nd_00016.pth",
+        "decoder_type": "hifigan",
+        "role": "under_investigation"
+      },
+      "metrics": {
+        "rtf": 5.262690890033129,
+        "speaker_sim": 0.3506302833557129
+      }
+    },
+    {
+      "variant_id": "v10-epoch14-backup",
+      "label": "kokoro-v10-best backup checkpoint (epoch 15, val_loss 0.818)",
+      "dimensions": {
+        "checkpoint": "epoch_2nd_00014.pth",
+        "decoder_type": "hifigan",
+        "role": "under_investigation"
+      },
+      "metrics": {
+        "rtf": 5.485033271459472,
+        "speaker_sim": 0.3108280301094055
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0013_v10_synthesis_quality_forensics",
+  "command": "dvc pull tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00016.pth.dvc tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00014.pth.dvc tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/stage1/first_stage.pth.dvc tasks/t0008_tts_eval_harness_baselines/data/11labs_david.dvc",
+  "exit_code": 1,
+  "duration_seconds": 93.577,
+  "started_at": "2026-09-16T12:51:02Z",
+  "completed_at": "2026-09-16T12:52:35Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics",
+  "stdout_file": "011_20260916T125102Z_dvc-pull-tasks-t0010-stage2-safeguarded-.stdout.txt",
+  "stderr_file": "011_20260916T125102Z_dvc-pull-tasks-t0010-stage2-safeguarded-.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 9,
+  "truncated": false
+}

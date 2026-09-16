@@ -1,0 +1,3 @@
+bert: primary(matched=0,missing=25,unexpected=25) fallback(matched=25,missing=0,unexpected=0) used_fallback=True [OK]
+bert_encoder: primary(matched=0,missing=2,unexpected=2) fallback(matched=2,missing=0,unexpected=0) used_fallback=True [OK]
+predictor: primary(matched=0,missing=122,unexpected=122) fallback(matched=90,missing=32,unexpected=32) used_fallback=True [MISMATCH]
