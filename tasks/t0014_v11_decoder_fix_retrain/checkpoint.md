@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T23:05:00Z"
+updated_at: "2026-09-16T23:14:00Z"
 completed_steps: 10
-next_step_number: 10
-next_step_id: "teardown"
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -17,99 +17,35 @@ Fix the ignore_modules bug that left v10's HiFi-GAN decoder worse than random, r
 
 ### Step 1 — create-branch
 
-Branch `task/t0014_v11_decoder_fix_retrain` created. Initial folder structure initialized in
-`tasks/t0014_v11_decoder_fix_retrain/`. Step 1 is a mechanical setup step with no research output.
+Trimmed to stay within 10 KB limit.
 
 ### Step 2 — check-deps
 
-Ran `verify_task_dependencies.py` (via prestep, then again wrapped in `run_with_logs` for the audit
-trail) — PASSED with no errors or warnings. All three declared dependencies
-(`t0010_stage2_safeguarded_training`, `t0012_v5_corpus_normalize_and_reaudit`,
-`t0013_v10_synthesis_quality_forensics`) are `completed`. Wrote
-`logs/steps/002_check-deps/deps_report.json`.
+Trimmed to stay within 10 KB limit.
 
 ### Step 3 — init-folders
 
-Ran `init_task_folders` (wrapped in `run_with_logs`), creating the mandatory directory structure
-(`plan/`, `research/`, `results/`, `results/images/`, `corrections/`, `intervention/`, `code/`,
-`logs/commands/`, `logs/searches/`, `logs/sessions/`, `logs/steps/`, `assets/model/`) plus
-`__init__.py` and `code/__init__.py`. Wrote `logs/steps/003_init-folders/folders_created.txt`.
-Populated the local aggregator cache at `tasks/t0014_v11_decoder_fix_retrain/ctx/` (task_types,
-costs, tasks, metrics, suggestions) — gitignored, not committed.
+Trimmed to stay within 10 KB limit.
 
 ### Step 4 — research-papers
 
-The project corpus had zero paper assets and zero `meta/categories/` entries across all 13 prior
-tasks, so the `/research-papers` subagent added three papers via `add-paper` before writing
-findings: StyleTTS 2 (`10.48550/arXiv.2306.07691`), HiFi-GAN (`10.48550/arXiv.2010.05646`), and
-iSTFTNet (`10.48550/arXiv.2203.02395` — the architecture `first_stage_v3.pth`'s decoder actually is,
-per t0013's diagnosis). Key finding for Key Question 2: v10/v11's `epochs_2nd: 20` /
-`joint_epoch: 8` budget is well below every published HiFi-GAN-family from-scratch schedule reviewed
-(HiFi-GAN/ iSTFTNet train to 2.5M steps from scratch; StyleTTS2's own HifiGAN-decoder configs use
-50+40 epochs on VCTK, 30+25 on LibriTTS) — no paper matches this project's exact 1,531-clip scale,
-so the gap is reported as order-of-magnitude, not a precise epoch count (see Gaps and Limitations in
-`research/research_papers.md`). `verify_research_papers.py` passed with 0 errors, 1 warning
-(`RP-W003`, pre-existing project-wide absence of `meta/categories/`, documented in the file).
+Trimmed to stay within 10 KB limit.
 
 ### Step 5 — research-internet
 
-Resolved Key Question 1: `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` is a genuinely
-`hifigan`-shaped pretrained checkpoint that field-matches `config_david_v10.yml`'s decoder block
-(`resblock_kernel_sizes: [3,7,11]`, `upsample_initial_channel: 512`, `upsample_rates: [10,5,3,2]`,
-`multispeaker: true`). Findings on file at `research/research_internet.md`
-(`verify_research_internet.py` passed, 0 errors/warnings). One new paper discovered ("GAN Vocoder:
-Multi-Resolution Discriminator Is All You Need", arXiv:2103.05236); its `/add-paper` subagent was
-spawned and runs in parallel with subsequent steps.
+Trimmed to stay within 10 KB limit.
 
 ### Step 6 — research-code
 
-Reviewed `t0009`'s safeguard library, `t0010`'s `train_second_v10.py`, and `t0013`'s
-`inspect_checkpoint.py`/`audio_quality_check.py`/`infer_styletts2.py`, writing
-`research/research_code.md` (6 tasks cited of 13 reviewed, both project libraries assessed;
-`verify_research_code.py` passed 0 errors/0 warnings). Pinpointed the bug to
-`tasks/t0010_stage2_safeguarded_training/code/train_second_v10.py:253-259`'s `ignore_modules` list
-omitting `"decoder"`. Confirmed t0010's `eval_all_checkpoints.py` (routes through Kokoro
-`KModel`/`KPipeline`, which cannot load a `hifigan`-decoder checkpoint) and t0013's
-`v10_diagnosis.md` (framed the fix as random-init retrain) both bake in the now-superseded
-random-init assumption; also found `t0013`'s `infer_styletts2.py` already validated
-`yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` as a known-good control, corroborating step 5's
-repoint recommendation. Also ran the mandatory `research-summarize` step, producing
-`research/research_summary.md` for planning/implementation to consume instead of the full research
-files.
+Trimmed to stay within 10 KB limit.
 
 ### Step 7 — planning
 
-Spawned the `/planning` subagent with the budget summary from `ctx/costs.json` and the full step 1-6
-context. It wrote `plan/plan.md` (11 mandatory sections, `spec_version: "2"`, `status: "complete"`);
-`verify_plan.py` passed 0 errors, 0 warnings on first re-run. Chosen approach: repoint
-`first_stage_path` at `yl4579/StyleTTS2-LibriTTS`'s `epochs_2nd_00020.pth` in a new
-`config_david_v11.yml` (leaving `ignore_modules` unchanged), gated by a mandatory pre-flight tensor
-check (`inspect_checkpoint.py`'s `classify_decoder()`) before any GPU spend, with random-init as a
-documented fallback requiring an `intervention/` file. Epoch budget set to
-`epochs: 50, diff_epoch: 10, joint_epoch: 30` (the `Configs/config_ft.yml` anchor), explicitly
-overriding `task_description.md`'s literal "joint_epoch=8 unchanged" text as a called-out, resolved
-ambiguity. The audible-speech gate is `audio_quality_check.py`'s `check_audio_quality()`
-(`clip_fraction`/`spectral_flatness` heuristic) as the sole pre-registered pass/fail signal, not
-`val_loss` or `speaker_sim`. Cost estimate: ~$84-150 (itemized from t0010's measured per-epoch
-wall-clock, scaled 6.12x for corpus size and epoch count), explicitly flagged as exceeding the $100
-per-task default, with a pre-registered $300 hard-stop escalation threshold.
+Trimmed to stay within 10 KB limit.
 
 ### Step 8 — setup-machines
 
-Provisioned `LLM-T1-NC80` (2xH100 NVL, Azure ML) via a `/setup-remote-machine` subagent. First
-`acquire` hit `pool_busy` because the VM was mid an in-flight `az ml compute stop` raced by the
-attempt (not a stale lock); the subagent's first hand-off claimed an untracked "background poller"
-was watching for it — the exact fire-and-forget pattern Lesson 8 forbids — so it was resumed and
-corrected to block synchronously instead. The retry succeeded (`ready_at: 2026-09-16T16:45:14Z`).
-GPU/CUDA verified (2x H100 NVL, CUDA 12.2), idle watchdog installed and confirmed active with a live
-PID (`watchdog_active: true`, 3600s idle timeout), `/mnt/cache/persist` verified as a real symlink
-to the live Azure Files CIFS mount (Lesson 10), and `loginctl` linger confirmed enabled for
-`azureuser` (Lesson 11) — all independently re-verified from raw command-log stdout, not just the
-subagent's summary. `machine_log.json` at `logs/steps/008_setup-machines/machine_log.json`;
-`verify_step` passes 0 errors/0 warnings. The project's `kokoro-finetune` env symlink was found
-wiped (ephemeral `/mnt/tmp`, same Lesson 10 class of failure on the code checkout) — a generic conda
-env satisfied the mandatory smoke test instead; re-establishing `kokoro-finetune` is deferred to
-`implementation`.
+Trimmed to stay within 10 KB limit.
 
 ### Step 11 — creative-thinking
 
@@ -126,6 +62,15 @@ Milestone C's mandatory audible-speech gate **passed** (`is_likely_noise=False`,
 0.0048 vs. v10's confirmed-broken 0.750-0.807) against `epoch_00048.pth`, so Milestone D's
 `kokoro-v11-best` model asset was created and independently verified (0 errors). See
 `results/v11_gate_verdict.md` for full evidence; `LLM-T1-NC80` is left running for `teardown`.
+
+### Step 10 — teardown
+
+Confirmed no job was running, then a subagent executed the Teardown Protocol on `LLM-T1-NC80`: no
+further downloads needed (step 9 already pulled the verified model asset), cleaned up this task's
+own `/mnt/tmp/t0014_venv` scratch, and ran `azure_ml_vm teardown`. `machine_log.json` now has
+`destroyed_at: 2026-09-16T23:11:25Z`, final `total_duration_hours: 6.436`, `total_cost_usd: 89.85`
+(supersedes the interim ~$86.46 estimate). `results/remote_machines_used.json`/`costs.json` updated
+to match. `verify_machines_destroyed.py` — PASSED, 0 errors, 2 non-blocking warnings.
 
 * * *
 
@@ -225,27 +170,26 @@ Milestone C's mandatory audible-speech gate **passed** (`is_likely_noise=False`,
   to absorb joint-phase slowdown) and an updated `resume_sentinel` recording this checkpoint's
   readings. `jq` is not installed on the VM — use `python3 -c "import json; ..."` against
   `checkpoints.json` instead on future checks.
+* **`LLM-T1-NC80` fully torn down at teardown (step 10).** Final measured cost is $89.85 over 6.436
+  hours (`created_at` 16:45:14Z → `destroyed_at` 23:11:25Z) — supersedes every earlier interim
+  figure in the checkpoint history above. This is the authoritative total for `results/costs.json`
+  and any budget-reporting step downstream; do not recompute from the old ~$86.46 interim number.
 
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) is now **`completed`**. Training finished all 50 epochs cleanly (`DONE`
-marker, 0 `HealthGate` firings), and the mandatory audible-speech gate **passed**
-(`is_likely_noise=False`, `clip_fraction=0.0048`, `spectral_flatness=0.0058` — see
-`results/v11_gate_verdict.md`). The `kokoro-v11-best` model asset was created and independently
-verified (`meta.asset_types.model.verificator`, 0 errors). `task.json`'s
-`expected_assets: {"model": 1}` is satisfied.
-
-**`LLM-T1-NC80` is still live and billing** — it was deliberately left untouched by this step (per
-instructions, teardown is out of scope for `implementation`). Step 10 (`teardown`) must run next:
-destroy the remote machine, finalize `results/costs.json` and `results/remote_machines_used.json`
-(currently interim, ~6.19h/$86.46 as of the implementation subagent's last check — recompute the
-actual final total at teardown time), and confirm via `verify_machines_destroyed.py` before this
-task can be marked complete. Also worth noting for `teardown` or a later step:
-`results/v11_gate_verdict.md` flags a non-blocking anomaly (73.95s synthesis duration for a 10-word
-sentence, vs. 2.5-4.9s for the control/v10 — a likely duration-predictor calibration issue) as a
-candidate for the `suggestions` step's follow-up-task generation; it did not block this task's gate
-criterion but is worth surfacing downstream. `code/config_david_v11.yml`,
+Step 10 (`teardown`) is now **`completed`**. `LLM-T1-NC80` is destroyed (`deallocated: true`, no
+competing lock), and `results/costs.json` / `results/remote_machines_used.json` carry the final
+measured total: **6.436 hours, $89.85** (not the earlier ~6.19h/$86.46 interim figure). Step 11
+(`creative-thinking`) is already `skipped`. Step 12 (`results`) runs next: write
+`results/results_summary.md`, `results/results_detailed.md`, `results/metrics.json` (cross-check
+every number against the gate verdict and training metrics), and confirm `results/costs.json` /
+`results/remote_machines_used.json` (already final, no further edits needed there). `task.json`'s
+`expected_assets: {"model": 1}` is satisfied by the already-verified `kokoro-v11-best` asset (see
+step 9). Also worth carrying forward to `results` or `suggestions`: `results/v11_gate_verdict.md`
+flags a non-blocking anomaly (73.95s synthesis duration for a 10-word sentence, vs. 2.5-4.9s for the
+control/v10 — a likely duration-predictor calibration issue); it did not block this task's gate
+criterion but is worth surfacing as a follow-up-task suggestion. `code/config_david_v11.yml`,
 `code/train_second_v11.py`, and all Milestone C code already exist in `code/` and do not need to be
 recreated by any later step.

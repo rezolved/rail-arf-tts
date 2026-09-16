@@ -1,7 +1,7 @@
 [
   {
     "spec_version": "10",
-    "provider": "azure-ml",
+    "provider": "azure_ml",
     "instance_id": "LLM-T1-NC80",
     "vm_name": "LLM-T1-NC80",
     "offer_id": 0,
@@ -35,9 +35,9 @@
     "cuda_version": "12.2",
     "created_at": "2026-09-16T16:45:14.004092Z",
     "ready_at": "2026-09-16T16:45:14.004092Z",
-    "destroyed_at": null,
-    "total_duration_hours": null,
-    "total_cost_usd": null,
+    "destroyed_at": "2026-09-16T23:11:25.308664Z",
+    "total_duration_hours": 6.436473492222222,
+    "total_cost_usd": 89.85316995142223,
     "hourly_cost_usd": 13.96,
     "started_vm": true,
     "billing_started_at": "2026-09-16T16:37:03.759470Z",

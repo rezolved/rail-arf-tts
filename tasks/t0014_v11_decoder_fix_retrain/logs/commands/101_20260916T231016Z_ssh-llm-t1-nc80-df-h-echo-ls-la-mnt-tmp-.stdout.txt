@@ -1,0 +1,56 @@
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       119G  103G   16G  87% /
+---
+total 212
+drwxrwxrwt 51 root      root      12288 Sep 16 23:10 .
+drwxr-xr-x  7 root      root       4096 Sep 16 16:39 ..
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-build-tracker-5mu8otey
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-ephem-wheel-cache-5iy2__ps
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-install-9hb_cubl
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-0z8_2m4p
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-1bg13tkx
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-25hv0qgl
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-4qg5y4rm
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-51p9lz8u
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-5pce39o7
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-78jkrkyp
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-9g5ec6fe
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-9jyn2pk4
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-ad58w0mt
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-bqwzbipe
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-dqdj_7q_
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-fv69455p
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-fwqv6a83
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-geg8bzvp
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-kj1ogc34
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-njn1y8q5
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-p_2p2a3p
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-rs569tp3
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-u_ic2j64
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-wnpelvzs
+drwx------  2 azureuser azureuser  4096 Sep 16 17:16 pip-unpack-xgie80vt
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-z261tt2x
+drwx------  2 azureuser azureuser  4096 Sep 16 17:17 pip-unpack-zp5akwm8
+drwx------  2 azureuser azureuser  4096 Sep 16 17:41 pymp-0m_rt7h6
+drwx------  2 azureuser azureuser  4096 Sep 16 17:41 pymp-eguop4v5
+drwx------  3 root      root       4096 Sep 16 16:39 systemd-private-d1bde200cd934d25bb571ecba9715ede-earlyoom.service-G1G7oY
+drwxrwxr-x  3 azureuser azureuser  4096 Sep 16 17:33 t0014_venv
+drwx------  3 azureuser azureuser  4096 Sep 16 22:57 tmp00io6e3_
+drwx------  3 azureuser azureuser  4096 Sep 16 22:51 tmp5u76i2s8
+drwx------  3 azureuser azureuser  4096 Sep 16 22:56 tmp64c5cr2f
+drwx------  3 azureuser azureuser  4096 Sep 16 17:40 tmp7803fc50
+drwx------  3 azureuser azureuser  4096 Sep 16 23:10 tmp8ovn_1wd
+drwx------  3 azureuser azureuser  4096 Sep 16 23:07 tmpajrm2e4m
+drwx------  3 azureuser azureuser  4096 Sep 16 23:00 tmpb0c2tnmv
+drwx------  3 azureuser azureuser  4096 Sep 16 22:59 tmpctcwacq_
+drwx------  3 azureuser azureuser  4096 Sep 16 23:02 tmpdmh49sx5
+drwx------  3 azureuser azureuser  4096 Sep 16 22:54 tmpjg19z5rd
+drwx------  3 azureuser azureuser  4096 Sep 16 23:01 tmpo_7vv8ku
+drwx------  3 azureuser azureuser  4096 Sep 16 23:06 tmpuei9pj15
+drwx------  3 azureuser azureuser  4096 Sep 16 23:04 tmpvxq4xckl
+drwx------  3 azureuser azureuser  4096 Sep 16 23:05 tmpwx9wewhc
+drwx------  3 azureuser azureuser  4096 Sep 16 22:53 tmpyvbi8mgi
+drwx------  3 azureuser azureuser  4096 Sep 16 22:55 tmpz367t56w
+drwx------  3 azureuser azureuser  4096 Sep 16 23:08 tmpzz8ldz97
+drwx------  2 azureuser azureuser  4096 Sep 16 17:42 tmux-1000
+5.8G	/mnt/tmp/t0014_venv

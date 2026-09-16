@@ -1,7 +1,6 @@
 {
-  "total_cost_usd": 86.46,
+  "total_cost_usd": 89.85,
   "breakdown": {
-    "azure-ml-2xh100": 86.46
-  },
-  "note": "INTERIM, NOT FINAL -- LLM-T1-NC80 is still running as of this implementation step (teardown is a separate, later step this agent was explicitly instructed not to perform). ready_at=2026-09-16T16:45:14Z; elapsed billed time as of this report (2026-09-16T22:56:50Z) is ~6.19 hours at $13.96/hr = $86.46, in line with plan.md's ~5.85h/$81.66 planned estimate and well under the $300 hard-stop. The final total_cost_usd (through actual teardown) must be recorded by the orchestrator's teardown step, which will overwrite this file."
+    "azure-ml-2xh100": 89.85
+  }
 }
