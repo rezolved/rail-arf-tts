@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T12:26:00Z"
-completed_steps: 8
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-16T12:35:00Z"
+completed_steps: 9
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -65,16 +65,42 @@ Created the mandatory task folder structure (`plan/`, `research/`, `results/`, `
 `tasks/t0013_v10_synthesis_quality_forensics/ctx/` (task_types, costs, tasks, metrics, suggestions)
 for reuse by downstream subagents; `ctx/` is gitignored and not committed. No caveats.
 
+### Step 6 — research-code
+
+Reviewed 12 completed tasks (deep-diving into t0001, t0002, t0005, t0006, t0008, t0009, t0010) and 2
+registered libraries, wrote `research/research_code.md` (verificator: PASSED, no errors/warnings),
+then spawned `/research-summarize` to produce `research/research_summary.md`. Central new finding:
+`config_david_v10.yml` is the project's only Stage 2 config with
+`model_params.decoder.type: hifigan` (all others use `istftnet`), and `train_second_v10.py`'s
+checkpoint loader does not exclude `decoder` when loading the ISTFTNet-shaped `first_stage_v3.pth`,
+making a silent architecture mismatch the leading noise-output hypothesis.
+
 * * *
 
 ## Cross-Step Decisions
+
+* Leading root-cause hypothesis for v10 noise (from `research-code`, step 6):
+  `config_david_v10.yml`'s `decoder.type: hifigan` vs. Stage 1's ISTFTNet-shaped weights in
+  `first_stage_v3.pth`, silently partially loaded by `train_second_v10.py:load_checkpoint()`'s
+  zero-match-only failure guard. Later steps (planning, implementation) should test this first via a
+  cheap checkpoint-tensor check before building the full inference harness.
 
 * * *
 
 ## Next Step Notes
 
-Step 3 completed successfully; the task folder skeleton and local aggregator cache are in place.
-Proceed to step 6, `research-code` (steps 4 and 5 are already skipped per `step_tracker.json`):
-review `t0010_stage2_safeguarded_training`'s code, `config_david_v10.yml`, checkpoint layout, and
-the kokoro-format packaging step to understand how the raw StyleTTS2 checkpoint and the packaged
-asset differ before building the instrumented inference harness in later steps.
+Step 6 (`research-code`) completed; `research/research_code.md` (12 tasks reviewed, 7 cited, 2
+libraries) and `research/research_summary.md` are in place. Central new finding:
+`config_david_v10.yml` is the only Stage 2 config in the project with
+`model_params.decoder.type: hifigan` — every other config uses `istftnet` — and
+`train_second_v10.py:load_checkpoint()` does not exclude `decoder` from the modules loaded from the
+ISTFTNet-shaped `first_stage_v3.pth`, with a loader guard that only raises on zero matched keys (not
+partial mismatch). This makes a silent decoder-architecture mismatch (HiFi-GAN built fresh, then
+only partially overwritten by ISTFTNet-shaped Stage 1 weights, leaving the vocoder proper
+effectively randomly initialized after only 17 epochs) the leading hypothesis for v10 producing
+noise. Proceed to step 7, `planning`: design the instrumented-harness build (per-module
+missing/unexpected key logging, StyleTTS2-native `models.py` path — not `kokoro.KModel`), the cheap
+checkpoint-tensor falsifier (check `net["decoder"]` key names for `ups.*`/`resblocks.*` HiFi-GAN
+naming plus NaN/Inf and weight-norm per module) recommended to run before any inference code, the
+control test against a known-good checkpoint, and the v10 diagnosis write-up. Read
+`research/research_summary.md` for the full top-10 findings list before planning.
