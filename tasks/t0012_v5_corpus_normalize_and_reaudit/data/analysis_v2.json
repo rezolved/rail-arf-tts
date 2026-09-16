@@ -1,0 +1,124 @@
+{
+  "flag_counts_before_t0011": {
+    "total_clips": 1557,
+    "flagged_total": 246,
+    "flagged_by_category": {
+      "channels": 0,
+      "clipping": 224,
+      "duration_high": 0,
+      "duration_low": 25,
+      "error": 0,
+      "lufs_high": 0,
+      "lufs_low": 0,
+      "oov": 0,
+      "samplerate": 0,
+      "silence": 1
+    },
+    "clean_manifest_clips": 1311
+  },
+  "flag_counts_after_v2": {
+    "total_clips": 1557,
+    "flagged_total": 26,
+    "flagged_by_category": {
+      "channels": 0,
+      "clipping": 0,
+      "clipping_after_normalization": 0,
+      "duration_high": 0,
+      "duration_low": 25,
+      "error": 0,
+      "lufs_high": 0,
+      "lufs_low": 0,
+      "samplerate": 0,
+      "silence": 1,
+      "silence_after_normalization": 0
+    },
+    "clean_manifest_clips": 1531,
+    "reclassified_from_224": {
+      "now_clean": 220,
+      "still_clipped": 0
+    }
+  },
+  "distribution_stats": {
+    "pre_peak_dbfs": {
+      "count": 1557,
+      "mean": -0.5543,
+      "std": 0.7251,
+      "min": -8.8317,
+      "p5": -1.6032,
+      "p50": -0.3915,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    },
+    "post_peak_dbfs": {
+      "count": 1531,
+      "mean": -1.2835,
+      "std": 0.5745,
+      "min": -5.7162,
+      "p5": -2.5461,
+      "p50": -1.0,
+      "p95": -1.0,
+      "p99": -1.0,
+      "max": -1.0
+    },
+    "pre_lufs": {
+      "count": 1557,
+      "mean": -14.6903,
+      "std": 2.3417,
+      "min": -26.185,
+      "p5": -18.9015,
+      "p50": -14.2722,
+      "p95": -11.6873,
+      "p99": -10.6216,
+      "max": -8.5524
+    },
+    "post_lufs": {
+      "count": 1531,
+      "mean": -15.4374,
+      "std": 1.5843,
+      "min": -21.5842,
+      "p5": -18.4406,
+      "p50": -14.8924,
+      "p95": -14.0,
+      "p99": -14.0,
+      "max": -14.0
+    },
+    "pre_clipped_fraction": {
+      "count": 1557,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "p5": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0001
+    },
+    "post_clipped_fraction": {
+      "count": 1531,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "p5": 0.0,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    }
+  },
+  "key_question_4_cross_tab": {
+    "duration_low": {
+      "original_count": 25,
+      "still_duration_low": 25,
+      "now_clean": 0,
+      "other_flag": 0
+    },
+    "silence": {
+      "original_count": 1,
+      "still_silence": 1,
+      "now_clean": 0,
+      "other_flag": 0
+    },
+    "note": "Gain is a uniform per-sample scalar: duration_s is unaffected by construction. silence_fraction uses a relative dB threshold (librosa.effects.split, top_db=60), so it is expected to be gain-invariant; the cross-tab above confirms this numerically."
+  }
+}

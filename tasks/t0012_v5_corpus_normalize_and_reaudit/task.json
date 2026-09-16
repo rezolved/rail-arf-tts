@@ -5,12 +5,12 @@
   "name": "v5 corpus LUFS normalization and clipped-fraction re-audit",
   "short_description": "Fix the clipping heuristic that over-flags peak-normalized clips, LUFS-normalize the full v5 corpus to -14 LUFS, and produce a near-full-corpus clean train manifest.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0011_v5_data_quality_audit"
   ],
   "start_time": "2026-09-16T06:31:38Z",
-  "end_time": null,
+  "end_time": "2026-09-16T07:45:00Z",
   "expected_assets": {},
   "task_types": [
     "data-analysis"

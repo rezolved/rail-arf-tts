@@ -1,0 +1,22 @@
+{
+  "total_clips": 1557,
+  "flagged_total": 26,
+  "flagged_by_category": {
+    "channels": 0,
+    "clipping": 0,
+    "clipping_after_normalization": 0,
+    "duration_high": 0,
+    "duration_low": 25,
+    "error": 0,
+    "lufs_high": 0,
+    "lufs_low": 0,
+    "samplerate": 0,
+    "silence": 1,
+    "silence_after_normalization": 0
+  },
+  "clean_manifest_clips": 1531,
+  "reclassified_from_224": {
+    "now_clean": 220,
+    "still_clipped": 0
+  }
+}

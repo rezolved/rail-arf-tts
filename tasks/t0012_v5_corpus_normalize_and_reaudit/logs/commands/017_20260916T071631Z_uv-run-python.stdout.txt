@@ -1,0 +1,18 @@
+Manifest entries: 1531
+Total blobs to ensure present: 1532
+  100/1532 done, 0 errors
+  200/1532 done, 0 errors
+  300/1532 done, 0 errors
+  400/1532 done, 0 errors
+  500/1532 done, 0 errors
+  600/1532 done, 0 errors
+  700/1532 done, 0 errors
+  800/1532 done, 0 errors
+  900/1532 done, 0 errors
+  1000/1532 done, 0 errors
+  1100/1532 done, 0 errors
+  1200/1532 done, 0 errors
+  1300/1532 done, 0 errors
+  1400/1532 done, 0 errors
+  1500/1532 done, 0 errors
+Done: 1532/1532, 0 errors

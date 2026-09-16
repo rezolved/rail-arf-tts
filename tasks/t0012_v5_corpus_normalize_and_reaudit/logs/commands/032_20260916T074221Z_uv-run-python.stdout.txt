@@ -1,0 +1,10 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 007_20260916T070205Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 011_20260916T070540Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 028_20260916T074152Z_uv-run-python.json has non-zero exit code: 1[0m
+
+[33m[1mPASSED[0m — 0 error(s), 3 warning(s)
+

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0012_v5_corpus_normalize_and_reaudit",
+  "command": "uv run python -m arf.scripts.verificators.verify_task_dependencies t0012_v5_corpus_normalize_and_reaudit",
+  "exit_code": 0,
+  "duration_seconds": 0.179,
+  "started_at": "2026-09-16T07:41:37Z",
+  "completed_at": "2026-09-16T07:41:38Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit",
+  "stdout_file": "023_20260916T074137Z_uv-run-python.stdout.txt",
+  "stderr_file": "023_20260916T074137Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

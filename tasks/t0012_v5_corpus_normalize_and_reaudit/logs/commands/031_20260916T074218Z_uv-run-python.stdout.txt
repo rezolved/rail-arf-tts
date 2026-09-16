@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/logs/sessions.
+Wrote capture report to /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/logs/sessions/capture_report.json.

@@ -1,0 +1,8 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/tasks/t0012_v5_corpus_normalize_and_reaudit/results
+
+[33m[1mWARNINGS:[0m
+[33m  TR-W014 warning: ## Examples section has 9 examples (bullets, code blocks, numbered items), minimum is 10[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+

@@ -1,0 +1,20 @@
+/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/data/v4/train/wavs: 1557 files in manifest, 1557 pending so far
+/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0012_v5_corpus_normalize_and_reaudit/data/v4/val/wavs: 96 files in manifest, 1653 pending so far
+Total to download: 1653
+  100/1653 done, 0 errors
+  200/1653 done, 0 errors
+  300/1653 done, 0 errors
+  400/1653 done, 0 errors
+  500/1653 done, 0 errors
+  600/1653 done, 0 errors
+  700/1653 done, 0 errors
+  800/1653 done, 0 errors
+  900/1653 done, 0 errors
+  1000/1653 done, 0 errors
+  1100/1653 done, 0 errors
+  1200/1653 done, 0 errors
+  1300/1653 done, 0 errors
+  1400/1653 done, 0 errors
+  1500/1653 done, 0 errors
+  1600/1653 done, 0 errors
+Done: 1653/1653, 0 errors
