@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0014_v11_decoder_fix_retrain"
-updated_at: "2026-09-16T23:45:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-16T23:39:04Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -144,20 +144,23 @@ pretrained-weight dependency (low). `verify_suggestions.py` PASSED, 0 errors/0 w
   hours (`created_at` 16:45:14Z → `destroyed_at` 23:11:25Z) — the authoritative total for
   `results/costs.json` and any budget-reporting step downstream.
 
+### Step 15 — reporting
+
+Ran all remaining verificators (`verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`, `meta.asset_types.model.verificator kokoro-v11-best`, `verify_machines_destroyed`,
+`verify_compare_literature`, `verify_research_papers`, `verify_research_internet`) — all PASSED, 0
+errors (a handful of pre-existing non-blocking warnings only). Removed a leftover gitignored `ctx/`
+aggregator-cache directory that tripped `verify_task_folder`'s `FD-E016`. Ran
+`capture_task_sessions` (0 transcripts matched out of 360 candidates — recorded, non-blocking). Set
+`task.json` `status: "completed"`, `end_time: "2026-09-16T23:39:04Z"`.
+
 * * *
 
 ## Next Step Notes
 
-Step 14 (`suggestions`) is now **`completed`**. `results/suggestions.json` has 4 entries
-(`S-0014-01`..`S-0014-04`) covering the duration-predictor anomaly, real-benchmark scoring via a
-StyleTTS2-native harness, safeguard-library additions, and an optional from-scratch decoder run;
-duplicate-checked against all 20 prior open suggestions and all 14 tasks. `verify_suggestions.py`
-PASSED, 0 errors/0 warnings. Step 15 (`reporting`) runs next — the final step: run all remaining
-verificators (`verify_task_file`, `verify_task_dependencies`, `verify_suggestions`,
-`verify_task_metrics`, `verify_task_results`, `verify_task_folder`, `verify_logs`,
-`verify_model_asset --task-id t0014_v11_decoder_fix_retrain`, `verify_machines_destroyed`,
-`verify_compare_literature`), capture session transcripts via `capture_task_sessions`, set
-`task.json` `status: "completed"` and `end_time` (leave `start_time` untouched), do the final
-`checkpoint.md` update (`next_step_number`/`next_step_id: null`), commit, and run poststep.
-`task.json`'s `expected_assets: {"model": 1}` remains satisfied by the already-verified
-`kokoro-v11-best` asset (step 9); no further edits to `assets/` are needed.
+Task complete. All 15 steps in `step_tracker.json` are `completed` or `skipped`. `task.json` has
+`status: "completed"` with `start_time`/`end_time` both set. The `kokoro-v11-best` model asset
+(satisfying `expected_assets: {"model": 1}`) is verified with 0 errors. Next: the coordinator
+proceeds to Phase 7 (PR and merge), Phase 8 (final verification via `verify_task_complete.py`), and
+Phase 9 (overview sync on `main`) — none of which are step-executor scope.

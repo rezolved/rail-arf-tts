@@ -1,0 +1,8 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/tasks/t0014_v11_decoder_fix_retrain
+
+[31m[1mERRORS:[0m
+[31m  FD-E016 error: Unexpected directory in task folder root: 'ctx/' (only assets, code, corrections, data, intervention, logs, plan, research, results allowed)[0m
+
+[31m[1mFAILED[0m — 1 error(s), 0 warning(s)
+
