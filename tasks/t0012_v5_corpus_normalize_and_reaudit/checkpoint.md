@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0012_v5_corpus_normalize_and_reaudit"
-updated_at: "2026-09-16T07:45:00Z"
-completed_steps: 12
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-16T07:34:46Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -127,6 +127,17 @@ filler phrases ("got it", "sure thing", "of course") rather than truncated audio
 risk worth naming for whoever trains on this manifest, though out of this task's scope to fix. No
 REQ answer changes as a result.
 
+### Step 12 — results
+
+Wrote all five mandatory `results/` files. Headline numbers: clean manifest **1531/1557 (98.3%)** vs
+t0011's 1311/1557 (84.2%) baseline; 220/224 originally clipping-flagged clips reclassified clean, 0
+genuinely clipped, 0 new clipping from the gain change; `metrics.json = {}` (no registered project
+metric applies). `results_detailed.md` documents the plan-assumption contradiction from
+creative-thinking (normalization is one-directional/ceiling-capped at corpus scale, not a two-sided
+correction) under `## Analysis`, and includes a 10-example `## Examples` section (required because
+`data-analysis` has `requires_result_examples: true`) with actual `per_clip_stats_v2.jsonl` JSON
+records. `verify_task_metrics` and `verify_task_results` both PASSED with 0 errors/0 warnings.
+
 * * *
 
 ## Cross-Step Decisions
@@ -152,14 +163,19 @@ REQ answer changes as a result.
 
 ## Next Step Notes
 
-Step 11 (`creative-thinking`) is complete: `results/creative_thinking.md` covers the four
-pre-registered Key Questions plus two out-of-the-box findings (the one-directional LUFS
-normalization effect, and the filler-phrase composition of the excluded 26). Proceed to step 12
-(`results`): write `results/results_summary.md`, `results/results_detailed.md`, and
-`results/metrics.json` per `task_results_specification.md`. Primary data sources are
-`data/analysis_v2.json` and `data/flag_counts_v2.json` for the REQ-4/REQ-11/REQ-12/REQ-14/REQ-15/
-REQ-16 numbers, the 3 histograms already in `results/images/` for REQ-13, and
-`results/creative_thinking.md` for the "Analysis"/discussion narrative. No registered project metric
-(`rtf`, `speaker_sim`, `ttfb_ms`) applies to this corpus-normalization task — `metrics.json` should
-be empty/omitted per the plan's "Metrics and cost note," not fabricated. Total cost is $0 (CPU-only,
-no paid APIs).
+Step 12 (`results`) is complete:
+`results/{results_summary.md,results_detailed.md,metrics.json, costs.json,remote_machines_used.json}`
+are all written and both verificators (`verify_task_metrics`, `verify_task_results`) PASSED with 0
+errors/0 warnings. Step 13 (`compare-literature`) was already skipped earlier (not in
+`data-analysis`'s `optional_steps`). Proceed to step 14 (`suggestions`): spawn the
+`/generate-suggestions` subagent to formulate follow-up suggestions from
+`results/results_detailed.md` and `results/creative_thinking.md`. Good candidates already surfaced
+by this task: (1) the full-corpus Stage 2 training run consuming
+`data/train_list_v5_normalized_clean.txt` (tracked separately as S-0011-02, check
+`aggregate_suggestions` for whether it already exists before proposing a duplicate); (2) revisiting
+a duration-aware (transcript-length-scaled) `DURATION_MIN_S` floor to recover some of the 25
+`duration_low`-excluded short filler phrases (`results/creative_thinking.md` §3); (3) the DVC
+`pull`/`push` hang in this environment, which is an infrastructure issue outside this task's scope
+(`results/creative_thinking.md` mentions it was also independently hit by a concurrent t0010
+worktree). After suggestions, step 15 (`reporting`) runs the full verificator sweep, session
+capture, and marks `task.json` `status: "completed"`.
