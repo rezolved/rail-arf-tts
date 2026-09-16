@@ -1,0 +1,1 @@
+Saved: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0010_stage2_safeguarded_training/tasks/t0010_stage2_safeguarded_training/results/images/speaker_sim_curve.png

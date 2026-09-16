@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0010_stage2_safeguarded_training"
-updated_at: "2026-09-16T07:20:00Z"
-completed_steps: 11
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-16T07:45:00Z"
+completed_steps: 12
+next_step_number: 13
+next_step_id: "compare-literature"
 ---
 # Task Objective
 
@@ -87,6 +87,13 @@ Python, no conda/venv with torch). Azure ML refused stop with full disk — clea
 (2.9 GB) to unblock. Key outputs: `results/costs.json`, `results/remote_machines_used.json`,
 `machine_log.json` updated, `verify_machines_destroyed` 0 errors.
 
+### Step 12 — results
+
+Wrote `results/results_summary.md` and `results/results_detailed.md` covering all 17 training
+epochs. Generated `results/images/speaker_sim_curve.png` placeholder using val_loss as proxy
+(speaker_sim eval deferred). `verify_task_metrics.py` and `verify_task_results.py` both passed with
+0 errors. REQ-6 and REQ-7 marked Partial (eval framework exists, metrics null).
+
 * * *
 
 ## Cross-Step Decisions
@@ -110,18 +117,12 @@ Python, no conda/venv with torch). Azure ML refused stop with full disk — clea
 
 ## Next Step Notes
 
-Step 10 (teardown) completed. Step 12 is `results`. The results agent must:
-
-1. Write `results/results_summary.md` and `results/results_detailed.md` covering all 17 training
-   epochs; note that `speaker_sim`, `ttfb_ms`, and `rtf` are all null (harness eval was not
-   completed due to VM root disk full and no torch env).
-2. `results/metrics.json` already written (18 variants, null eval metrics) — do NOT overwrite with
-   additional nulls; it is correct as-is.
-3. `results/costs.json` and `results/remote_machines_used.json` already written by teardown — do not
-   re-write.
-4. In `## Task Requirement Coverage`, mark REQ-6 and REQ-7 as `Partial` (eval framework exists,
-   metrics not obtained).
-5. Note that `creative-thinking` (step 11) was skipped per `step_tracker.json`.
+Step 12 (results) completed. Step 13 is `compare-literature`. The compare-literature agent should
+read the project's paper corpus and compare v10's best val_loss (0.797) and training stability (0
+health gate events) against published StyleTTS2 Stage 2 fine-tuning results where available. Note
+that speaker_sim, TTFB, and RTF are null — comparison against those published metrics is not
+possible until the follow-up harness eval task runs. The agent should also note the v6c comparison
+(val_loss 0.849 → 0.797, −6%), and the cost overrun ($272.78 vs $45 planned).
 
 **Harness eval remains null**: `speaker_sim`, `ttfb_ms`, `rtf` were not obtained. A follow-up task
 should run `eval_all_checkpoints.py` locally once a Kokoro + torch environment is available. See
