@@ -50,8 +50,10 @@
       "description": "Skipped: no new literature needed; approach is fully specified from t0009 forensics findings.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/004_research-papers/"
+      "completed_at": "2026-09-16T07:36:45Z",
+      "log_file": "logs/steps/004_research-papers/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 5,
@@ -59,8 +61,10 @@
       "description": "Skipped: all required knowledge comes from prior tasks t0008 and t0009; no external research needed.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/005_research-internet/"
+      "completed_at": "2026-09-16T07:36:45Z",
+      "log_file": "logs/steps/005_research-internet/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 6,
@@ -138,8 +142,10 @@
       "description": "Skipped: single-variable controlled experiment; approach is fully defined by t0009 root-cause findings.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/011_creative-thinking/"
+      "completed_at": "2026-09-16T07:36:45Z",
+      "log_file": "logs/steps/011_creative-thinking/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 12,
@@ -187,10 +193,14 @@
       "step": 15,
       "name": "reporting",
       "description": "Run all verificators, capture session transcripts, finalize task.json status.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-16T07:36:39Z",
       "completed_at": null,
-      "log_file": "logs/steps/015_reporting/"
+      "log_file": "logs/steps/015_reporting/",
+      "current_owner": "step-executor/reporting",
+      "last_heartbeat_at": "2026-09-16T07:36:39Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-16T08:36:39Z"
     }
   ]
 }
