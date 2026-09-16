@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0013_v10_synthesis_quality_forensics"
-updated_at: "2026-09-16T12:23:20Z"
-completed_steps: 7
-next_step_number: 3
-next_step_id: "init-folders"
+updated_at: "2026-09-16T12:26:00Z"
+completed_steps: 8
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -56,6 +56,15 @@ Skipped: this task produces internal forensic evidence (key-load diagnostics, we
 comparisons, audio checks) about one project's own checkpoints, not quantitative results comparable
 to a published baseline.
 
+### Step 3 — init-folders
+
+Created the mandatory task folder structure (`plan/`, `research/`, `results/`, `results/images/`,
+`corrections/`, `intervention/`, `code/`, `logs/commands/`, `logs/searches/`, `logs/sessions/`,
+`logs/steps/`, `assets/`) via `init_task_folders`, logged to
+`logs/steps/003_init-folders/folders_created.txt`. Populated the local aggregator cache under
+`tasks/t0013_v10_synthesis_quality_forensics/ctx/` (task_types, costs, tasks, metrics, suggestions)
+for reuse by downstream subagents; `ctx/` is gitignored and not committed. No caveats.
+
 * * *
 
 ## Cross-Step Decisions
@@ -64,7 +73,8 @@ to a published baseline.
 
 ## Next Step Notes
 
-Step 2 completed successfully; the single dependency `t0010_stage2_safeguarded_training` is
-satisfied. Proceed to step 3, `init-folders`, per `step_tracker.json`: create the mandatory task
-folder structure via `init_task_folders`, then populate the aggregator cache under
-`tasks/$TASK_ID/ctx/` before any research/planning work begins.
+Step 3 completed successfully; the task folder skeleton and local aggregator cache are in place.
+Proceed to step 6, `research-code` (steps 4 and 5 are already skipped per `step_tracker.json`):
+review `t0010_stage2_safeguarded_training`'s code, `config_david_v10.yml`, checkpoint layout, and
+the kokoro-format packaging step to understand how the raw StyleTTS2 checkpoint and the packaged
+asset differ before building the instrumented inference harness in later steps.
