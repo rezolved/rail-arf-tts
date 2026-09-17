@@ -33,14 +33,15 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create task folder structure and initial files.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T13:50:41Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T13:51:25Z",
       "log_file": "logs/steps/003_init-folders/",
-      "current_owner": "step-executor/init-folders",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T13:50:41Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T14:50:41Z"
+      "expected_completion_at": "2026-09-17T14:50:41Z",
+      "actual_duration_seconds": 44
     },
     {
       "step": 4,
