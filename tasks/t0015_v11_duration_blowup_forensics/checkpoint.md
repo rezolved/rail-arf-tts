@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T10:52:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-17T10:56:00Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -178,6 +178,29 @@ cheap cross-checkpoint module-swap ablation that should precede it; `S-0015-06` 
 adopting the hardened gate as the project's mandatory pre-completion check, superseding S-0013-02.
 `verify_suggestions` passes, 0 errors/0 warnings.
 
+### Step 15 — reporting
+
+Filled a pre-existing logs gap first: steps 4, 5, 8, 10, and 13 had been marked `skipped` directly
+in `step_tracker.json` by the `create-branch` step-executor without going through `skip_step.py`, so
+their `logs/steps/<NNN>_<step-id>/step_log.md` files did not exist. Re-ran `skip_step.py` with the
+same five reasons already recorded in `step_tracker.json` (idempotent: it only writes a log when one
+is missing, and each step was already `status: "skipped"`), producing all five `step_log.md` files
+and updating only their `completed_at` timestamps. Ran all applicable verificators
+(`verify_task_file`, `verify_task_dependencies`, `verify_suggestions`, `verify_task_metrics`,
+`verify_task_results`, `verify_task_folder`, `verify_logs`); `verify_research_papers`/
+`verify_research_internet`/`verify_compare_literature`/`verify_machines_destroyed`/
+`verify_corrections` were correctly omitted (those steps were skipped, no remote machine was used,
+`corrections/` is empty). `verify_task_folder` initially failed with `FD-E016` on a leftover
+`tasks/t0015_v11_duration_blowup_forensics/ctx/` aggregator-cache directory (gitignored,
+session-local per the `init-folders` step instructions, and absent from every other completed task
+in the repo at reporting time) — removed it, which is not an `arf/` change and not a task
+deliverable, and the verificator passed clean afterward. All verificators now pass with 0 errors
+(only expected benign warnings: no expected assets, no internet research, no session transcripts
+found in this environment). Ran `capture_task_sessions`; it found 0 matching transcripts in this
+environment and wrote `logs/sessions/capture_report.json` recording the scan, per spec. Set
+`task.json`'s `status` to `"completed"` and `end_time` to `"2026-09-17T10:56:00Z"` (`start_time`
+left untouched).
+
 * * *
 
 ## Cross-Step Decisions
@@ -218,11 +241,10 @@ adopting the hardened gate as the project's mandatory pre-completion check, supe
 
 ## Next Step Notes
 
-Step 14 (`suggestions`) is complete. The next and final pending step is step 15 (`reporting`). It
-should run all relevant verificators (`verify_task_file`, `verify_task_dependencies`,
-`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
-`verify_logs`; no asset-type or remote-machine verificators apply since `expected_assets` is `{}`
-and no remote machine was used), capture session transcripts via `capture_task_sessions`, set
-`task.json`'s `status` to `"completed"` and `end_time`, finalize `checkpoint.md` with
-`next_step_number`/`next_step_id` set to `null`, write the step log, commit, and run poststep. After
-that the coordinator handles Phase 7-9 (PR, merge, overview sync) inline.
+Step 15 (`reporting`) is complete — this was the final step. All 15 steps in `step_tracker.json` are
+now `completed` or `skipped` (with proper step logs for every one, including the five skipped steps'
+logs backfilled this step), `task.json.status` is `"completed"`, and all reporting-stage
+verificators pass with 0 errors. There is no next step for a task-branch step-executor to pick up.
+The coordinator now owns Phase 7 (PR creation and merge), Phase 8 (final verification on `main`),
+and Phase 9 (overview sync) — all executed inline by the coordinator, not by a spawned
+step-executor.

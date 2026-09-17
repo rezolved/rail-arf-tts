@@ -49,7 +49,7 @@
       "description": "Not included: this is an empirical debugging/forensics task (duration-predictor calibration, alignment-matrix plumbing, inference-parameter sweep) about this project's own checkpoints and code. No published-paper evidence bears on the specific root cause; StyleTTS2 background is already in the project corpus from prior dependency tasks.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": "2026-09-17T07:51:55Z",
+      "completed_at": "2026-09-17T10:52:48Z",
       "log_file": "logs/steps/004_research-papers/",
       "current_owner": null,
       "actual_duration_seconds": null
@@ -60,7 +60,7 @@
       "description": "Not included: task_description.md already specifies the exact reproduction recipe, the parameters to sweep, and even names the ASR library (faster-whisper) already vendored as a dependency in t0008's environment. No new external research is needed to execute the diagnostic and gate-hardening work.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": "2026-09-17T07:51:55Z",
+      "completed_at": "2026-09-17T10:52:48Z",
       "log_file": "logs/steps/005_research-internet/",
       "current_owner": null,
       "actual_duration_seconds": null
@@ -99,7 +99,7 @@
       "description": "Not included: task_description.md states no GPU is required for the diagnostic, localization, and inference-parameter-sweep work; escalation to GPU-based predictor/predictor_encoder retraining is explicitly scoped out as a follow-up task, not attempted here.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": "2026-09-17T07:51:55Z",
+      "completed_at": "2026-09-17T10:52:48Z",
       "log_file": "logs/steps/008_setup-machines/",
       "current_owner": null,
       "actual_duration_seconds": null
@@ -124,7 +124,7 @@
       "description": "Not included: no remote machine was provisioned (setup-machines not included), so there is nothing to tear down.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": "2026-09-17T07:51:55Z",
+      "completed_at": "2026-09-17T10:52:48Z",
       "log_file": "logs/steps/010_teardown/",
       "current_owner": null,
       "actual_duration_seconds": null
@@ -163,7 +163,7 @@
       "description": "Not included: this task produces internal forensic evidence (pred_dur/frame-count instrumentation, inference-parameter sweep results, gate regression checks) about this project's own checkpoint and code, not quantitative results comparable to a published baseline.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": "2026-09-17T07:51:55Z",
+      "completed_at": "2026-09-17T10:52:48Z",
       "log_file": "logs/steps/013_compare-literature/",
       "current_owner": null,
       "actual_duration_seconds": null
@@ -186,12 +186,15 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verification pass, session capture, and reporting.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T10:52:42Z",
       "completed_at": null,
       "log_file": "logs/steps/015_reporting/",
-      "current_owner": null,
-      "actual_duration_seconds": null
+      "current_owner": "step-executor/reporting",
+      "actual_duration_seconds": null,
+      "last_heartbeat_at": "2026-09-17T10:52:42Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T11:52:42Z"
     }
   ],
   "spec_version": "7"
