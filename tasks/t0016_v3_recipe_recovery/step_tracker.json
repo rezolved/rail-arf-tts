@@ -19,14 +19,15 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0006_kokoro_v5_stage2_subset and t0009_stage2_training_failure_forensics are completed.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T13:49:00Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T13:50:57Z",
       "log_file": "logs/steps/002_check-deps/",
-      "current_owner": "step-executor/check-deps",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T13:49:00Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T14:49:00Z"
+      "expected_completion_at": "2026-09-17T14:49:00Z",
+      "actual_duration_seconds": 117
     },
     {
       "step": 3,
