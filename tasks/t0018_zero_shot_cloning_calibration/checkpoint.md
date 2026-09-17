@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T14:49:01Z"
-completed_steps: 7
-next_step_number: 8
-next_step_id: "setup-machines"
+updated_at: "2026-09-17T17:26:00Z"
+completed_steps: 8
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -86,10 +86,46 @@ planning subagent initially wrote its output to the main repo instead of the tas
 (spawn-prompt omission); the step-executor recovered the file into the worktree and cleaned the
 stray main-repo files before verifying — no content was lost.
 
+### Step 8 — setup-machines
+
+Acquired `LLM-T1-NC80` (2xH100 NVL) on the third attempt (first two hit pool contention from a
+concurrent `t0016` session; see `intervention/pool_busy_llm-t1-nc80.md`); armed the idle watchdog
+(PID confirmed) before any download, then installed isolated venvs for F5-TTS, CosyVoice 2, and
+Chatterbox under `/mnt/cache/persist/t0018_zero_shot_cloning_calibration/venvs/`, fixing two
+install-time issues (CosyVoice2's `openai-whisper` needing `--no-build-isolation`; F5-TTS's default
+resolver picking a torch/CUDA build too new for the VM's driver, repinned to `torch==2.5.1+cu121`).
+All three venvs confirm `torch.cuda.is_available()` and `device_count()==2`. `machine_log.json`
+written with `watchdog_active: true`. Caveat: environment prep took ~2h wall clock (well over the
+plan's 0.5h line) due to uncached large wheel downloads — watch cumulative GPU spend closely in
+`implementation`.
+
 * * *
 
 ## Cross-Step Decisions
 
+* **Pool-contention saga (setup-machines, resolved on the 3rd attempt)**: `LLM-T1-NC80` is the only
+  entry in `project/azure_vm.json`, and a concurrent session on `task/t0016_v3_recipe_recovery` was
+  independently starting/stopping this same VM. Attempts 1-2 both failed with `ssh_connect` timeouts
+  (documented in `intervention/pool_busy_llm-t1-nc80.md`) because the VM was stopped/contended when
+  `acquire` tried it. Attempt 3 succeeded because the VM happened to be free (mid-`Start`, likely
+  triggered by the peer session or a tail end of attempt 2) at the moment this step-executor polled
+  — no code change was needed, just re-polling with `--vm-name LLM-T1-NC80` pinned. Future
+  step-executors on this task (or `t0016`) should expect this contention to recur since both tasks
+  share the one-VM pool; check `az ml compute show ... --query last_operation` before assuming a
+  fresh `pool_busy` intervention file means the VM is still busy right now.
+* **F5-TTS's default `pip install f5-tts` is not driver-safe on this pool VM**: it resolves an
+  unconstrained torch (2.14.0+cu130) that requires a newer NVIDIA driver than `LLM-T1-NC80` ships
+  (535.274.02 / CUDA 12.2), silently leaving `torch.cuda.is_available()` false. Fixed by repinning
+  `torch==2.5.1`/`torchaudio==2.5.1` from the `cu121` wheel index inside `.venv-f5tts` (also
+  satisfies `bitsandbytes>=2.4` and `torch-einops-utils>=2.5`). CosyVoice2 and Chatterbox's own
+  resolved torch versions (2.3.1+cu121, 2.6.0+cu124 respectively) were already driver-compatible.
+  Any later re-install of these venvs (e.g. after a VM swap) must re-check
+  `torch.cuda.is_available()` before trusting the smoke gate, not just that `pip install` exited 0.
+* `~/.cache/huggingface` and `/mnt/pip_cache` are broken symlinks to an unprovisioned ephemeral
+  mount on this shared pool VM (pre-existing, not caused by this task). Model-weight downloads in
+  `implementation` must set
+  `HF_HOME=/mnt/cache/persist/t0018_zero_shot_cloning_calibration/hf-cache` explicitly rather than
+  relying on the default cache location.
 * The paper corpus has zero coverage of F5-TTS, CosyVoice 2, or Chatterbox specifically —
   `research-internet` (step 5) independently sourced install/inference/checkpoint details for all
   three since there is no corpus paper to fall back on.
@@ -152,15 +188,22 @@ stray main-repo files before verifying — no content was lost.
 
 ## Next Step Notes
 
-Proceed to step 8 (`setup-machines`) per `step_tracker.json`. `plan/plan.md` is complete and
-verified (0 errors/0 warnings); read it in full before provisioning — it names `LLM-T1-NC80` (H100),
-gives the exact watchdog `TERMINATE_CMD`, and requires the idle watchdog PID to be confirmed before
-the first model download (Lesson 8). Plan Step 1 lists the exact `dvc pull` targets needed first
-(`11labs_david.dvc`, `synth_audio.dvc`, and the v3 decoder/voicepack `.dvc` files under
-`t0006_kokoro_v5_stage2_subset`). Budget: base estimate ≈$42-45 GPU wall-clock against the
-user-authorized $70 hard cap — monitor cumulative spend at each milestone boundary per the plan's
-Risks & Fallbacks table. When spawning the `setup-machines` subagent (and every subsequent
-skill-invocation subagent for this task), explicitly state the worktree path
+Proceed to step 9 (`implementation`) per `step_tracker.json`. The VM (`LLM-T1-NC80`, locked by this
+task) is up with the watchdog armed (PID 5935, 60 min idle threshold) and three ready venvs at
+`/mnt/cache/persist/t0018_zero_shot_cloning_calibration/venvs/{.venv-f5tts,.venv-chatterbox,.venv-cosyvoice2}`
+(each confirmed `torch.cuda.is_available()` and `device_count()==2`; use these venvs' own
+interpreters directly per plan's isolated-venv convention — do not `pip install` into the main `uv`
+project). `data/references/` (Milestone 0, plan Step 3) still needs to be built before Milestone 1's
+smoke gates. Use `HF_HOME=/mnt/cache/persist/t0018_zero_shot_cloning_calibration/hf-cache` for model
+weight downloads — the VM's default `~/.cache/huggingface` symlink is broken (points at an
+unprovisioned ephemeral mount); download weights to `/mnt/cache/persist/pretrained/<system>/` per
+plan Step 4. Budget: base estimate ≈$42-45 GPU wall-clock against the user-authorized $70 hard cap,
+but setup-machines alone burned ~$26-28 of that (environment prep ran ~2h instead of the planned
+0.5h) — watch cumulative spend closely at each milestone boundary and be ready to trim scope (e.g.
+prioritize whichever systems installed cleanly) if the full 3-system x 2-condition x 196-prompt plan
+threatens the cap. When spawning the `implementation` subagent, explicitly state the worktree path
 (`/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration`)
 and branch (`task/t0018_zero_shot_cloning_calibration`) in the spawn prompt — step 7 showed a fresh
-subagent otherwise defaults to the main repo checkout.
+subagent otherwise defaults to the main repo checkout. Per plan's Risks table, run `teardown`
+immediately after GPU-bound work (through plan Step 8) completes, before the CPU-only
+scoring/reporting steps, rather than leaving the VM up for the whole task.
