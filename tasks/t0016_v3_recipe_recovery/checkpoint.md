@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T13:52:30Z"
-completed_steps: 7
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-17T13:59:30Z"
+completed_steps: 8
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -47,6 +47,19 @@ Skipped, per `step_tracker.json`: `task_description.md`'s evidence sources are e
 home dir, DVC artifacts, prior task checkpoints/code); no external internet research is required or
 listed as an evidence source.
 
+### Step 6 — research-code
+
+Wrote `research/research_code.md` (13 tasks cited, 2 libraries documented; verificator PASSED, 0
+errors/0 warnings). Confirmed the four tasks named in `task_description.md` are directly reusable:
+`t0006`'s `code/config_david_v6c_stage2.yml` is the reconstruction template; `t0015`'s
+`code/predictor_tensor_forensics.py` and `code/audio_quality_check.py` are the checkpoint-diff and
+audio-gate scripts to copy into this task's `code/`; `t0002`'s `extract_decoder_generic.py` confirms
+the packaging recipe; `t0009`'s `checkpoint_manager.py`/`health_gates.py`/`confound_table.md` supply
+the forensics conventions and the open confound ledger. Caveat for downstream: found a genuine
+three-way `multispeaker` contradiction across `best/config.json` (true), `t0009`'s confound table
+(true, assumed), and `t0006`'s `config_david_v6c_stage2.yml` (false, inline-commented) — none
+carries a SHA-256, so only checkpoint-shape forensics in the implementation step can resolve it.
+
 ### Step 11 — creative-thinking
 
 Skipped, per `step_tracker.json`: `task_description.md` fully specifies the evidence sources,
@@ -66,9 +79,12 @@ it does not produce results comparable to published external baselines.
 
 ## Next Step Notes
 
-Folder structure and aggregator context cache are ready. `tasks/t0016_v3_recipe_recovery/ctx/` holds
-cached `task_types.json`, `costs.json`, `tasks.json`, `metrics.json`, and `suggestions.json` — read
-these instead of re-running aggregators. Proceed to step 6, `research-code`: review
-`t0006_kokoro_v5_stage2_subset`, `t0009_stage2_training_failure_forensics`, `t0015`, and `t0002`
-code/results (checkpoint forensics scripts, audio quality gate, packaging recipe) per
-`step_tracker.json`'s description, and write `research/research_code.md`.
+`research/research_code.md` is complete and verified (13 tasks cited, 2 libraries documented, 0
+errors/0 warnings). Proceed to step 7, `planning`: design the bounded VM inspection (90-minute / $21
+cap on `LLM-T1-NC80`), checkpoint/sample forensics, config reconstruction, audio packaging, and
+answer-asset plan under the task's $30 total budget. Reuse
+`t0015/code/predictor_tensor_forensics.py` and `t0015/code/audio_quality_check.py` (copy into this
+task's `code/`), `t0006`'s `config_david_v6c_stage2.yml` as the reconstruction template, and
+`t0002`'s packaging pointer. The plan must explicitly schedule resolution of the `multispeaker`
+true/false contradiction via checkpoint-shape forensics (module presence/shape check), not source
+preference.
