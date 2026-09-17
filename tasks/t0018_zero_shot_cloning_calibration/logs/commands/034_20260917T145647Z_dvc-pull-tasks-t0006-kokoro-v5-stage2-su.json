@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "command": "dvc pull tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_decoder_kokoro.pth.dvc tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_voicepack.pt.dvc tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_voicepack_ft_enc.pt.dvc",
+  "exit_code": 0,
+  "duration_seconds": 15.513,
+  "started_at": "2026-09-17T14:56:47Z",
+  "completed_at": "2026-09-17T14:57:03Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration",
+  "stdout_file": "034_20260917T145647Z_dvc-pull-tasks-t0006-kokoro-v5-stage2-su.stdout.txt",
+  "stderr_file": "034_20260917T145647Z_dvc-pull-tasks-t0006-kokoro-v5-stage2-su.stderr.txt",
+  "stdout_lines": 10,
+  "stderr_lines": 0,
+  "truncated": false
+}
