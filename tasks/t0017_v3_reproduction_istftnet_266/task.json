@@ -1,0 +1,25 @@
+{
+  "spec_version": 4,
+  "task_id": "t0017_v3_reproduction_istftnet_266",
+  "task_index": 17,
+  "name": "Reproduce v3 inside ARF: ISTFTNet Stage 2 on 266 clips, nothing changed",
+  "short_description": "Re-run the recovered v3 recipe unchanged (ISTFTNet, 266 clips, v3 Stage 1) with per-epoch gates and harness scoring, to establish the project's first reproducible known-good baseline.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [
+    "t0002_kokoro_v4_voicepack_decoder_package",
+    "t0008_tts_eval_harness_baselines",
+    "t0015_v11_duration_blowup_forensics",
+    "t0016_v3_recipe_recovery"
+  ],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "model": 1
+  },
+  "task_types": [
+    "tts-finetuning-eval",
+    "experiment-run"
+  ],
+  "source_suggestion": null
+}
