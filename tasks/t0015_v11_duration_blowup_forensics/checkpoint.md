@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T08:10:00Z"
-completed_steps: 9
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-17T08:20:00Z"
+completed_steps: 10
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -81,6 +81,23 @@ prompt sets from t0008, all labeled "copy into task" (no library registration). 
 only research step executed, also ran `/research-summarize` to produce
 `research/research_summary.md` for downstream subagents.
 
+### Step 7 — planning
+
+Wrote `plan/plan.md` (11 mandatory sections plus an added `## Rejection Criteria` section);
+verificator passed with 0 errors and 0 warnings on the first attempt. The plan defines 14 numbered,
+milestone-grouped steps (env setup, instrument `synthesize()` for `pred_dur`/frame-count logging, a
+10-text varied characterization sweep, localization analysis, tensor-level forensics, an
+alpha/beta/diffusion_steps/embedding_scale parameter sweep with pre-registered pass criteria, a
+conditional cheap-fix-or-documented-negative-result branch, gate hardening with two new signals
+(duration-sanity, silence-gap), an ASR round-trip evaluation via faster-whisper, a three-way
+v10/v11/corrected regression check, `results/metrics.json` in explicit multi-variant format, and the
+canonical `results/duration_blowup_diagnosis.md`), with 3 steps marked `[CRITICAL]`. Cost estimate
+is $0.00 (CPU-only, no paid APIs, no GPU); estimated implementation time ~3.5-5.5 hours. The plan
+corrects a `task_description.md` assumption during research: the ElevenLabs David reference corpus
+actually lives at `tasks/t0008_tts_eval_harness_baselines/data/11labs_david`, not a top-level
+`data/11labs_david`, and notes that DVC-tracked checkpoint/reference data has not yet been pulled in
+this worktree — `dvc pull` is an explicit early step.
+
 * * *
 
 ## Cross-Step Decisions
@@ -91,14 +108,30 @@ only research step executed, also ran `/research-summarize` to produce
   reference), which should steer the planning step's localization approach toward `pred_dur`/frame
   ratio instrumentation rather than a plumbing/freeze-bug search.
 
+* No GPU is used anywhere in the plan: all 14 implementation steps run CPU-only. Estimated cost is
+  $0.00. Any escalation to targeted `predictor`/`predictor_encoder` fine-tuning is explicitly
+  deferred to a follow-up task, per `task_description.md`'s scope and the `setup-machines` skip
+  rationale from step 8.
+
+* The ElevenLabs David reference corpus path used throughout downstream steps is
+  `tasks/t0008_tts_eval_harness_baselines/data/11labs_david` (confirmed during planning research),
+  not the top-level `data/11labs_david` implied by `CLAUDE.md`'s benchmark description —
+  implementation must use the t0008 path and run `dvc pull` early since the checkpoint and reference
+  audio are DVC-tracked and not yet present in this worktree.
+
 * * *
 
 ## Next Step Notes
 
-Step 6 (`research-code`) completed: `research/research_code.md` and `research/research_summary.md`
-are ready, verificator passed. Proceed to step 7 (`planning`). The plan should center the
-localization step on `pred_dur`/`pred_aln_trg` instrumentation (exact insertion point identified in
-`infer_styletts2.py`'s `synthesize()`, t0014 code, lines 282-371) and should treat the stalled
-`dur_loss` (0.53-0.62 plateau vs. t0009's 0.034 reference) as the primary root-cause lead, not a
-frozen-module bug. Reuse the diagnostic scripts and varied-text prompt sets cataloged in
-`research/research_code.md`'s Reusable Code and Assets section (all "copy into task").
+Step 7 (`planning`) completed: `plan/plan.md` is ready and the plan verificator passed with 0 errors
+and 0 warnings. Step 8 (`setup-machines`) is already marked `skipped` in `step_tracker.json`, so the
+next pending step is step 9 (`implementation`). The implementation subagent should follow
+`plan/plan.md`'s 14 numbered steps in order, starting with environment setup and `dvc pull`, then
+instrumenting `infer_styletts2.py`'s `synthesize()` for `pred_dur`/`pred_aln_trg`/frame-count
+logging per the exact insertion point from `research/research_code.md` (t0014 lines 282-371). Steps
+1 (CPU inference environment build), 4 (`pred_dur`/frame-count instrumentation), 12 (three-way gate
+regression), and 14 (`duration_blowup_diagnosis.md`) are marked `[CRITICAL]` in the plan — if any of
+those become blocked, the implementation agent must write an intervention file rather than silently
+substitute a different approach. The plan's Step by Step ends at `results/metrics.json` and
+`results/duration_blowup_diagnosis.md`; results_summary.md/results_detailed.md/suggestions/
+compare-literature remain orchestrator-owned steps, not part of implementation.

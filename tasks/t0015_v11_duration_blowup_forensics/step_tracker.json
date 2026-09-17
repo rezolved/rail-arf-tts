@@ -83,12 +83,15 @@
       "step": 7,
       "name": "planning",
       "description": "Design the sequenced forensics plan: reproduce/characterize across varied texts, localize the bug via pred_dur/frame-count logging, sweep inference parameters, conditionally apply the cheap fix or document a negative result, then harden and regression-test audio_quality_check.py.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T08:08:20Z",
       "completed_at": null,
       "log_file": "logs/steps/007_planning/",
-      "current_owner": null,
-      "actual_duration_seconds": null
+      "current_owner": "step-executor/planning",
+      "actual_duration_seconds": null,
+      "last_heartbeat_at": "2026-09-17T08:08:20Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T09:08:20Z"
     },
     {
       "step": 8,
