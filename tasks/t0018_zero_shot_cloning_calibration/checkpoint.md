@@ -221,7 +221,7 @@ suggestion); and F5-TTS's CC-BY-NC-4.0 licensing-risk flag was conditional on a 
 production-path suggestion considering F5-TTS, which none of the 8 entries do (S-0018-01 frames the
 F5-TTS retry as closing a missing measurement/research-ceiling gap, not a production proposal).
 
-### Step 15 — reporting (FINAL)
+### Step 15 — reporting
 
 Ran every verificator required for the `reporting` step: `verify_task_file.py`,
 `verify_task_dependencies.py`, `verify_suggestions.py`, `verify_task_metrics.py`,
