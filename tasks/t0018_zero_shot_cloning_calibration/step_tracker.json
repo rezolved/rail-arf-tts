@@ -75,14 +75,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review the t0008 harness code, t0014 reference-concat approach, and t0015 audio quality gate for reuse.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T14:19:02Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T14:36:11Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T14:19:02Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T15:19:02Z"
+      "expected_completion_at": "2026-09-17T15:19:02Z",
+      "actual_duration_seconds": 1029
     },
     {
       "step": 7,
