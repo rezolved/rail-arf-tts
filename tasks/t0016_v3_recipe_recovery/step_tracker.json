@@ -111,14 +111,15 @@
       "step": 9,
       "name": "implementation",
       "description": "Run the bounded VM inventory, checkpoint/sample forensics, config reconstruction, audio packaging, and write the v3-recipe answer asset.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T14:40:45Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T15:54:25Z",
       "log_file": "logs/steps/009_implementation/",
-      "current_owner": "step-executor/implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T14:40:45Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-17T16:10:45Z"
+      "expected_completion_at": "2026-09-17T16:10:45Z",
+      "actual_duration_seconds": 4420
     },
     {
       "step": 10,
