@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "command": "uv run ruff check --fix .",
+  "exit_code": 0,
+  "duration_seconds": 0.363,
+  "started_at": "2026-09-16T23:00:25Z",
+  "completed_at": "2026-09-16T23:00:25Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain",
+  "stdout_file": "093_20260916T230025Z_uv-run-ruff.stdout.txt",
+  "stderr_file": "093_20260916T230025Z_uv-run-ruff.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

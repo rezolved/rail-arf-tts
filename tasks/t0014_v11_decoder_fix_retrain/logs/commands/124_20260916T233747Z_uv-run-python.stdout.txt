@@ -1,0 +1,38 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/tasks/t0014_v11_decoder_fix_retrain/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 005_20260916T151545Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 006_20260916T151545Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 007_20260916T151546Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 013_20260916T162545Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 016_20260916T164530Z_ssh-llm-t1-nc80-nvcc-version.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 017_20260916T164535Z_ssh-llm-t1-nc80-nvidia-smi-query-gpu-nam.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 025_20260916T164700Z_ssh-llm-t1-nc80-bash-lc-python-c-import-.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 026_20260916T164706Z_ssh-llm-t1-nc80-bash-lc-ls-anaconda-envs.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 028_20260916T164721Z_ssh-llm-t1-nc80-bash-lc-ls-la-mnt-tmp-ki.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 029_20260916T164733Z_ssh-llm-t1-nc80-bash-lc-source-anaconda-.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 030_20260916T164739Z_ssh-llm-t1-nc80-ls-anaconda-envs-azureml.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 038_20260916T171309Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 041_20260916T171635Z_ssh-llm-t1-nc80-mnt-cache-persist-t0014-.json has non-zero exit code: 255[0m
+[33m  LG-W004 warning: Command log 045_20260916T173149Z_ssh-llm-t1-nc80-cd-kokoro-finetune-mnt-t.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 048_20260916T173219Z_ssh-llm-t1-nc80-cd-kokoro-finetune-mnt-t.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 050_20260916T173253Z_ssh-llm-t1-nc80-mnt-tmp-t0014-venv-venv-.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 054_20260916T173504Z_ssh-llm-t1-nc80-tmux-new-session-d-s-v11.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 066_20260916T223602Z_uv-run-dvc.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 080_20260916T225516Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 083_20260916T225710Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 084_20260916T225914Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 091_20260916T225954Z_uv-run-mypy.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 092_20260916T225959Z_uv-run-mypy.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 103_20260916T231028Z_ssh-llm-t1-nc80-df-h-echo-ls-mnt-tmp-t00.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 105_20260916T231204Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 106_20260916T231207Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 107_20260916T231229Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 111_20260916T232418Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 122_20260916T233732Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 31 warning(s)
+

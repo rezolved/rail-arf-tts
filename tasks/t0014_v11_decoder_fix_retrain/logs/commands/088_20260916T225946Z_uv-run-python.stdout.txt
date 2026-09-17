@@ -1,0 +1,9 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/tasks/t0014_v11_decoder_fix_retrain/assets/model/kokoro-v11-best
+
+[33m[1mWARNINGS:[0m
+[33m  MA-W005 warning: Category 'tts' does not exist in meta/categories/[0m
+[33m  MA-W014 warning: training_dataset_ids is empty[0m
+
+[33m[1mPASSED[0m — 0 error(s), 2 warning(s)
+

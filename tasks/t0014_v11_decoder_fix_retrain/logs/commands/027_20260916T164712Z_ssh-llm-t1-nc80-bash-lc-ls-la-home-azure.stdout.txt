@@ -1,0 +1,12 @@
+lrwxrwxrwx 1 azureuser azureuser 29 Sep 15 11:58 /home/azureuser/kokoro-finetune -> /mnt/tmp/kikiri-tts/StyleTTS2
+---venvs---
+/home/azureuser/STT/brainpowa-realtime-api/.venv
+/home/azureuser/t0027-dvc-tools/dvc-venv
+/home/azureuser/t0027-dvc-tools/dvc-venv/pyvenv.cfg
+/home/azureuser/brainpowa-realtime-api/.venv
+/home/azureuser/brainpowa-realtime-api/.venv/pyvenv.cfg
+/home/azureuser/brainpowa-venv
+/home/azureuser/rail-arf-stt-worktree-broken/.venv
+/home/azureuser/rail-arf-stt-worktree-broken/.venv/pyvenv.cfg
+/home/azureuser/TTS/setup_venv.sh
+/home/azureuser/TTS/.venvs

@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:25:47Z",
+  "source": "Web Search",
+  "query": "StyleTTS2 \"load_only_params\" ignore_modules decoder github issue partial checkpoint load",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "StyleTTS2/train_second.py at main - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/blob/main/train_second.py",
+      "snippet": "load_checkpoint(..., load_only_params=True, ignore_modules=['bert', 'bert_encoder', 'predictor', 'predictor_encoder', 'msd', 'mpd', 'wd', 'diffusion']) -- decoder is absent from ignore_modules in the upstream script too.",
+      "relevance_note": "Critical finding: upstream's own default ignore_modules list also omits 'decoder', deep-read and confirmed in fetch. This means the project's bug is not a deviation from upstream's ignore_modules design -- upstream assumes first_stage_path's decoder architecture always matches config's decoder.type, an assumption t0013's first_stage_v3.pth/config_david_v10.yml mismatch violated."
+    },
+    {
+      "title": "Strange Loss Behavior During Stage Two Training - Not Decreasing after Diff Epoch - Issue #223 - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/issues/223",
+      "snippet": "User-reported stage-2 loss plateau issue.",
+      "relevance_note": "Not deep-read; noted as a related community-reported stage-2 training pathology, potentially useful for future diagnostic work but outside this step's scope."
+    },
+    {
+      "title": "mismatch in the number of channels - Issue #137 - yl4579/StyleTTS2",
+      "url": "https://github.com/yl4579/StyleTTS2/issues/137",
+      "snippet": "Channel-shape mismatch error report.",
+      "relevance_note": "Not deep-read; another data point that architecture/shape mismatches between checkpoint and config are a recurring class of user-reported issue in this codebase, corroborating that t0013's diagnosis fits a known failure pattern."
+    }
+  ],
+  "error": null
+}

@@ -1,0 +1,49 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2010.05646",
+  "doi": "10.48550/arXiv.2010.05646",
+  "title": "HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis",
+  "url": "https://arxiv.org/abs/2010.05646",
+  "pdf_url": "https://arxiv.org/pdf/2010.05646v2",
+  "date_published": "2020-10-12",
+  "year": 2020,
+  "authors": [
+    {
+      "name": "Jungil Kong",
+      "country": "KR",
+      "institution": "Kakao Enterprise",
+      "orcid": null
+    },
+    {
+      "name": "Jaehyeon Kim",
+      "country": "KR",
+      "institution": "Kakao Enterprise",
+      "orcid": null
+    },
+    {
+      "name": "Jaekyoung Bae",
+      "country": "KR",
+      "institution": "Kakao Enterprise",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Kakao Enterprise",
+      "country": "KR"
+    }
+  ],
+  "journal": "NeurIPS 2020",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "Several recent work on speech synthesis have employed generative adversarial networks (GANs) to produce raw waveforms. Although such methods improve the sampling efficiency and memory usage, their sample quality has not yet reached that of autoregressive and flow-based generative models. In this work, we propose HiFi-GAN, which achieves both efficient and high-fidelity speech synthesis. As speech audio consists of sinusoidal signals with various periods, we demonstrate that modeling periodic patterns of an audio is crucial for enhancing sample quality. A subjective human evaluation (mean opinion score, MOS) of a single speaker dataset indicates that our proposed method demonstrates similarity to human quality while generating 22.05 kHz high-fidelity audio 167.9 times faster than real-time on a single V100 GPU. We further show the generality of HiFi-GAN to the mel-spectrogram inversion of unseen speakers and end-to-end speech synthesis. Finally, a small footprint version of HiFi-GAN generates samples 13.4 times faster than real-time on CPU with comparable quality to an autoregressive counterpart.",
+  "citation_key": "Kong2020",
+  "summary_path": "summary.md",
+  "files": [
+    "files/kong_2020_hifigan.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0014_v11_decoder_fix_retrain",
+  "date_added": "2026-09-16"
+}

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.device_count())
+    ^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'torch'
+---stt env---
+2.5.1+cu121 True 2

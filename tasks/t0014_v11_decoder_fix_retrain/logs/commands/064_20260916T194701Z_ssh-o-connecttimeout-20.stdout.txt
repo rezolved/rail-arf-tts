@@ -1,0 +1,16 @@
+=== first metrics line ===
+{"run_id": "v11", "epoch": 1, "step": 10, "loss_total": 0.3462737023830414, "disc_loss": 0.0, "dur_loss": 0.8526153564453125, "ce_loss": 0.06114201992750168, "mel_loss": 1.1043223142623901, "f0_loss": 3.2326886653900146, "val_loss": null, "acoustic_norm": null, "grad_norm_msd": null, "grad_norm_mpd": null, "grad_norm_decoder": null, "grad_norm_style_encoder": null, "skip_count": null, "lr": null, "timestamp_utc": "2026-09-16T17:45:20.527206+00:00"}
+=== val_loss lines (epoch checkpoints) ===
+=== checkpoints.json ===
+{'epoch': 24, 'step': 4775, 'val_loss': 0.41168779134750366, 'sha256': '4e201edd6075a5879d44cf5ed1b7504893337b125ad68168c2fe70642cbd03bf', 'path': 'logs/v11/v11/epoch_00024.pth', 'is_pre_joint_epoch': True, 'flagged_healthy': True}
+=== ls checkpoints dir ===
+-rwxrwxrwx 1 root root 1007237553 Sep 16 18:24 epoch_00008.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 18:33 epoch_00010.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 18:42 epoch_00012.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 18:52 epoch_00014.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 19:02 epoch_00016.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 19:11 epoch_00018.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 19:21 epoch_00020.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 19:30 epoch_00022.pth
+-rwxrwxrwx 1 root root 1209894561 Sep 16 19:40 epoch_00024.pth
+-rwxrwxrwx 1 root root        177 Sep 16 17:36 launch_info.json

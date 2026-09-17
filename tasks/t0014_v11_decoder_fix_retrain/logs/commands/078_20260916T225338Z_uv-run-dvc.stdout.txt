@@ -1,0 +1,8 @@
+
+To track the changes with git, run:
+
+	git add tasks/t0014_v11_decoder_fix_retrain/results/audio_samples.dvc tasks/t0014_v11_decoder_fix_retrain/data/run_v11/epoch_00048.pth.dvc tasks/t0014_v11_decoder_fix_retrain/assets/model/kokoro-v11-best/files/.gitignore tasks/t0014_v11_decoder_fix_retrain/results/.gitignore tasks/t0014_v11_decoder_fix_retrain/assets/model/kokoro-v11-best/files/kokoro-v11-best.pth.dvc tasks/t0014_v11_decoder_fix_retrain/data/run_v11/.gitignore
+
+To enable auto staging, run:
+
+	dvc config core.autostage true

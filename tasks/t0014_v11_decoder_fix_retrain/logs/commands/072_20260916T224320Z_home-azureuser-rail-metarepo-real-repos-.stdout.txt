@@ -1,0 +1,1 @@
+Wrote tasks/t0014_v11_decoder_fix_retrain/results/audio_samples/_gate_reference_concat.wav (3.15s) from ['absolutely_00.wav', 'absolutely_01.wav', 'absolutely_02.wav']

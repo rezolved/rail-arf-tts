@@ -1,0 +1,8 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/tasks/t0014_v11_decoder_fix_retrain/research/research_papers.md
+
+[33m[1mWARNINGS:[0m
+[33m  RP-W003 warning: Category 'none (project has no categories defined in `meta/categories/`)' does not exist in /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/meta/categories[0m
+
+[33m[1mPASSED[0m — 0 error(s), 1 warning(s)
+

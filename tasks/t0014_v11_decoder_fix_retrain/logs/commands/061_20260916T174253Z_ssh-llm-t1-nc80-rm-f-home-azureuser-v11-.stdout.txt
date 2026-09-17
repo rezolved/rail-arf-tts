@@ -1,0 +1,52 @@
+v11train: 1 windows (created Wed Sep 16 17:42:53 2026)
+---
+Could not load German G2P for TensorBoard inference: No module named 'misaki'
+TensorBoard inference: no test sentences available
+Extracting Stage 1 baseline voicepack for TensorBoard...
+  acoustic_norm=2.4747  prosodic_norm=2.4747
+[run_config] Launch info written to: logs/v11/v11_20260916T174257Z
+Loading the first stage model at /mnt/cache/persist/pretrained/StyleTTS2-LibriTTS/Models/LibriTTS/epochs_2nd_00020.pth ...
+bert loaded: 25/25 params
+bert_encoder loaded: 2/2 params
+predictor loaded: 122/122 params
+decoder loaded: 678/678 params
+text_encoder loaded: 24/24 params
+style_encoder loaded: 67/67 params
+text_aligner loaded: 143/143 params
+pitch_extractor loaded: 77/77 params
+BERT AdamW (
+Parameter Group 0
+    amsgrad: False
+    base_momentum: 0.85
+    betas: (0.9, 0.99)
+    capturable: False
+    differentiable: False
+    eps: 1e-09
+    foreach: None
+    fused: None
+    initial_lr: 1e-06
+    lr: 1e-06
+    max_lr: 2e-06
+    max_momentum: 0.95
+    maximize: False
+    min_lr: 0
+    weight_decay: 0.01
+)
+decoder AdamW (
+Parameter Group 0
+    amsgrad: False
+    base_momentum: 0.85
+    betas: (0.0, 0.99)
+    capturable: False
+    differentiable: False
+    eps: 1e-09
+    foreach: None
+    fused: None
+    initial_lr: 0.0001
+    lr: 0.0001
+    max_lr: 0.0002
+    max_momentum: 0.95
+    maximize: False
+    min_lr: 0
+    weight_decay: 0.0001
+)

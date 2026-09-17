@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "command": "ssh -o ConnectTimeout=20 LLM-T1-NC80 echo '=== first metrics line ==='; head -1 ~/kokoro-finetune/logs/v11/metrics.jsonl; echo '=== val_loss lines (epoch checkpoints) ==='; grep -o '\"epoch\": [0-9]*, \"step\": 191.*val_loss\": [0-9.]*' ~/kokoro-finetune/logs/v11/metrics.jsonl | tail -6; echo '=== checkpoints.json ==='; python3 -c \"import json; d=json.load(open('/home/azureuser/kokoro-finetune/logs/v11/v11/checkpoints.json')); print(d['checkpoints'][-1])\" 2>&1; echo '=== ls checkpoints dir ==='; ls -la /mnt/cache/persist/t0014_v11_decoder_fix_retrain/kokoro-finetune/logs/v11/v11/ 2>&1 | tail -10",
+  "exit_code": 0,
+  "duration_seconds": 2.13,
+  "started_at": "2026-09-16T19:47:01Z",
+  "completed_at": "2026-09-16T19:47:03Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain",
+  "stdout_file": "064_20260916T194701Z_ssh-o-connecttimeout-20.stdout.txt",
+  "stderr_file": "064_20260916T194701Z_ssh-o-connecttimeout-20.stderr.txt",
+  "stdout_lines": 16,
+  "stderr_lines": 0,
+  "truncated": false
+}

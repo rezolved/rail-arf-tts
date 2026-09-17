@@ -1,0 +1,2 @@
+ls: cannot access '/anaconda/envs/azureml_py38/bin/python*': No such file or directory
+bash: line 1: /anaconda/envs/azureml_py38/bin/python: No such file or directory

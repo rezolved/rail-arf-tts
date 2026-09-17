@@ -1,0 +1,61 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2306.07691",
+  "doi": "10.48550/arXiv.2306.07691",
+  "title": "StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models",
+  "url": "https://arxiv.org/abs/2306.07691",
+  "pdf_url": "https://arxiv.org/pdf/2306.07691v2",
+  "date_published": "2023-06-13",
+  "year": 2023,
+  "authors": [
+    {
+      "name": "Yinghao Aaron Li",
+      "country": "US",
+      "institution": "Columbia University",
+      "orcid": null
+    },
+    {
+      "name": "Cong Han",
+      "country": "US",
+      "institution": "Columbia University",
+      "orcid": null
+    },
+    {
+      "name": "Vinay S. Raghavan",
+      "country": "US",
+      "institution": "Columbia University",
+      "orcid": null
+    },
+    {
+      "name": "Gavin Mischler",
+      "country": "US",
+      "institution": "Columbia University",
+      "orcid": null
+    },
+    {
+      "name": "Nima Mesgarani",
+      "country": "US",
+      "institution": "Columbia University",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Columbia University",
+      "country": "US"
+    }
+  ],
+  "journal": "NeurIPS 2023",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "In this paper, we present StyleTTS 2, a text-to-speech (TTS) model that leverages style diffusion and adversarial training with large speech language models (SLMs) to achieve human-level TTS synthesis. StyleTTS 2 differs from its predecessor by modeling styles as a latent random variable through diffusion models to generate the most suitable style for the text without requiring reference speech, achieving efficient latent diffusion while benefiting from the diverse speech synthesis offered by diffusion models. Furthermore, we employ large pre-trained SLMs, such as WavLM, as discriminators with our novel differentiable duration modeling for end-to-end training, resulting in improved speech naturalness. StyleTTS 2 surpasses human recordings on the single-speaker LJSpeech dataset and matches it on the multispeaker VCTK dataset as judged by native English speakers. Moreover, when trained on the LibriTTS dataset, our model outperforms previous publicly available models for zero-shot speaker adaptation. This work achieves the first human-level TTS on both single and multispeaker datasets, showcasing the potential of style diffusion and adversarial training with large SLMs. The audio demos and source code are available at https://styletts2.github.io/.",
+  "citation_key": "Li2023",
+  "summary_path": "summary.md",
+  "files": [
+    "files/li_2023_styletts2.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0014_v11_decoder_fix_retrain",
+  "date_added": "2026-09-16"
+}

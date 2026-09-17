@@ -1,0 +1,232 @@
+{
+  "spec_version": "1",
+  "run_id": "v11",
+  "joint_epoch": 30,
+  "checkpoints": [
+    {
+      "epoch": 0,
+      "step": 191,
+      "val_loss": 0.4390002489089966,
+      "sha256": "f6d6cc6f1db573d41c5e3db9ae3d9462c2f63ece548ba40cad0953a5d5accdda",
+      "path": "logs/v11/v11/epoch_00000.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 2,
+      "step": 573,
+      "val_loss": 0.42959123849868774,
+      "sha256": "602925616fb65df8846673795364bb2a0b273c9fef2f7636b43e39af0ad8bd5c",
+      "path": "logs/v11/v11/epoch_00002.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 4,
+      "step": 955,
+      "val_loss": 0.42370182275772095,
+      "sha256": "6e1783e911bfb6dd0a874a1da5787c4ec07ac9f8633b7b01e92072ece0974a03",
+      "path": "logs/v11/v11/epoch_00004.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 6,
+      "step": 1337,
+      "val_loss": 0.4237883687019348,
+      "sha256": "eaf46d3df0f4e1c9ea57322d37d99b4ed993e0fdabc1d3f19910ed949f7d5bb7",
+      "path": "logs/v11/v11/epoch_00006.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 8,
+      "step": 1719,
+      "val_loss": 0.4226408004760742,
+      "sha256": "02e4ecedcddddfbe94b6d1fd2289ee52793e73fdbee0a7aa8ddac8a060462293",
+      "path": "logs/v11/v11/epoch_00008.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 10,
+      "step": 2101,
+      "val_loss": 0.41794344782829285,
+      "sha256": "895aadd91ae15596fc56bdf8efc8ea0b7a0274abad37a5c11f4e7505c3580921",
+      "path": "logs/v11/v11/epoch_00010.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 12,
+      "step": 2483,
+      "val_loss": 0.42359042167663574,
+      "sha256": "509829a5eb08cdbc4cf4de80db7866f142d186db05c7be629a301f42e0a00819",
+      "path": "logs/v11/v11/epoch_00012.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 14,
+      "step": 2865,
+      "val_loss": 0.4279136061668396,
+      "sha256": "1668de2aa1f0d66fbbc1368647692fc2681aac4ea55fc8bc1313ada6fdd6f189",
+      "path": "logs/v11/v11/epoch_00014.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 16,
+      "step": 3247,
+      "val_loss": 0.4194968640804291,
+      "sha256": "f862e58d5bcbb5a32295487f65293e7671bdc8dd6ffa79bc1ca702e810ecb027",
+      "path": "logs/v11/v11/epoch_00016.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 18,
+      "step": 3629,
+      "val_loss": 0.41707855463027954,
+      "sha256": "12455fad48b4820f29de90ffaf98d26a4debd20b237b8937e772d90223df57dc",
+      "path": "logs/v11/v11/epoch_00018.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 20,
+      "step": 4011,
+      "val_loss": 0.4111880660057068,
+      "sha256": "1bee30d3e7e608e95d41c8f39ebb70979731a2fcfdca4d77d68ee0a4b906e592",
+      "path": "logs/v11/v11/epoch_00020.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 22,
+      "step": 4393,
+      "val_loss": 0.41515594720840454,
+      "sha256": "96221edd85439c1839d527735274303530b367265dde77c4dbbf66c49468206c",
+      "path": "logs/v11/v11/epoch_00022.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 24,
+      "step": 4775,
+      "val_loss": 0.41168779134750366,
+      "sha256": "4e201edd6075a5879d44cf5ed1b7504893337b125ad68168c2fe70642cbd03bf",
+      "path": "logs/v11/v11/epoch_00024.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 26,
+      "step": 5157,
+      "val_loss": 0.41132980585098267,
+      "sha256": "31daa14d84bebb97c55432686c2588bbf7c03205cd19ec4cc750a7735e803cf8",
+      "path": "logs/v11/v11/epoch_00026.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 28,
+      "step": 5539,
+      "val_loss": 0.4088892340660095,
+      "sha256": "d3ca7e93a194cd419477cf924c8bb16a266ca7feb7e093935cdf6d007a9d9fd3",
+      "path": "logs/v11/v11/epoch_00028.pth",
+      "is_pre_joint_epoch": true,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 30,
+      "step": 5730,
+      "val_loss": 0.3669678568840027,
+      "sha256": "eac4ca0e9ad654ba904ef0a14fc46c06c889f6d8d40beb4c4049b25f51654ac1",
+      "path": "logs/v11/v11/epoch_00030.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 32,
+      "step": 5730,
+      "val_loss": 0.35170310735702515,
+      "sha256": "72750301a2d82a581defd7bd4464d576708f159ff5e9945fe57bf465619903e7",
+      "path": "logs/v11/v11/epoch_00032.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 34,
+      "step": 5730,
+      "val_loss": 0.3510386347770691,
+      "sha256": "a68a4952ba8e3a3e5ee6fdb578f4fb30103153a7e251a08c3f7f7ce1ba11678a",
+      "path": "logs/v11/v11/epoch_00034.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 36,
+      "step": 5730,
+      "val_loss": 0.3523597717285156,
+      "sha256": "05d551eb4f7c18782330dd01435fdc2b70c7e5158851a292eeba9ef5e9ccbf31",
+      "path": "logs/v11/v11/epoch_00036.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 38,
+      "step": 5730,
+      "val_loss": 0.3394244909286499,
+      "sha256": "949de8ce85ffac35ca90d3871a571af83cd8e10039a6606cb02fc4be1be3667a",
+      "path": "logs/v11/v11/epoch_00038.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 40,
+      "step": 5730,
+      "val_loss": 0.3553140163421631,
+      "sha256": "8f70a7ed6582d61ce22058364bba085339620321c06fe4e07131e21198058b74",
+      "path": "logs/v11/v11/epoch_00040.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 42,
+      "step": 5730,
+      "val_loss": 0.3595842123031616,
+      "sha256": "ee7813b6207154cfd9a2d61445c56bf0ad838eb1b47e15157a1993f1c6340533",
+      "path": "logs/v11/v11/epoch_00042.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 44,
+      "step": 5730,
+      "val_loss": 0.35714006423950195,
+      "sha256": "de8aeb52fa5beaabd83be67d98002ac1462a9786de64b918d5703985ad6460db",
+      "path": "logs/v11/v11/epoch_00044.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 46,
+      "step": 5730,
+      "val_loss": 0.357319712638855,
+      "sha256": "4bf555abcf539616bffdfcf85be408afe23256224aff0f330d67d86b7c7b2330",
+      "path": "logs/v11/v11/epoch_00046.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    },
+    {
+      "epoch": 48,
+      "step": 5730,
+      "val_loss": 0.3468841314315796,
+      "sha256": "1fb329b57d73b172c9988a5450d9176e27a0113c32de629442abfaceee423c4e",
+      "path": "logs/v11/v11/epoch_00048.pth",
+      "is_pre_joint_epoch": false,
+      "flagged_healthy": true
+    }
+  ]
+}

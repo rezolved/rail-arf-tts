@@ -1,0 +1,5 @@
+outs:
+- md5: de396005ba820486cb584e615ec3325b
+  size: 331370277
+  hash: md5
+  path: kokoro-v11-best.pth

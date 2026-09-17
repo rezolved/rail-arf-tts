@@ -1,0 +1,8 @@
+lrwxrwxrwx 1 azureuser azureuser 64 Sep 16 16:45 /mnt/cache/persist -> /mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+---readlink---
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+---df---
+Filesystem                                                                                  Size  Used Avail Use% Mounted on
+//brainpowstorage51fdd32f4.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6  100T  1.8T   99T   2% /mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+---mount---
+//brainpowstorage51fdd32f4.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6 on /mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code type cifs (rw,relatime,vers=3.1.1,cache=strict,upcall_target=app,username=brainpowstorage51fdd32f4,uid=0,noforceuid,gid=0,noforcegid,addr=57.150.220.99,file_mode=0777,dir_mode=0777,soft,persistenthandles,nounix,serverino,mapposix,mfsymlinks,fsc,nostrictsync,noperm,rsize=1048576,wsize=1048576,bsize=1048576,retrans=1,echo_interval=60,actimeo=5,closetimeo=1)

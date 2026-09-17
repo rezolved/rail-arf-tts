@@ -1,0 +1,13 @@
+{
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "vm_name": "LLM-T1-NC80",
+  "ssh_host_alias": "LLM-T1-NC80",
+  "hourly_cost_usd": 13.96,
+  "acquired_at": "2026-09-16T16:45:14.004092Z",
+  "started_vm": true,
+  "billing_started_at": "2026-09-16T16:37:03.759470Z",
+  "billing_anchor": "az_start_issued",
+  "search_started_at": "2026-09-16T16:36:51.850542Z",
+  "total_provisioning_seconds": 502.1535475139972,
+  "failed_attempts": []
+}

@@ -1,0 +1,6 @@
+outs:
+- md5: f63e092a4a3c7cab9db3388ae8eecc2f
+  size: 2086802736
+  isexec: true
+  hash: md5
+  path: epoch_00048.pth

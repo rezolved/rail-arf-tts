@@ -1,0 +1,36 @@
+{
+  "spec_version": "1",
+  "task_id": "t0014_v11_decoder_fix_retrain",
+  "step_number": 5,
+  "timestamp": "2026-09-16T15:19:55Z",
+  "source": "Web Search",
+  "query": "StyleTTS2 Hugging Face pretrained model LJSpeech LibriTTS checkpoint download",
+  "results_count": 10,
+  "results": [
+    {
+      "title": "ibrazebra/lj-speech-finetuned-styletts2 (Hugging Face)",
+      "url": "https://huggingface.co/ibrazebra/lj-speech-finetuned-styletts2",
+      "snippet": "Fine-tuned starting from a multispeaker StyleTTS2 model pretrained on LibriTTS for 20 epochs.",
+      "relevance_note": "Independent confirmation that the LibriTTS checkpoint (hifigan decoder) is a standard fine-tuning starting point in the community."
+    },
+    {
+      "title": "yl4579/StyleTTS2-LibriTTS (Hugging Face)",
+      "url": "https://huggingface.co/yl4579/StyleTTS2-LibriTTS/tree/main",
+      "snippet": "Checkpoint file epochs_2nd_00020.pth plus config.yml.",
+      "relevance_note": "Same checkpoint identified in query 001; this query confirms exact filename and that config.yml ships alongside it."
+    },
+    {
+      "title": "StyleTTS2 | Guides | Clore.ai",
+      "url": "https://docs.clore.ai/guides/audio-and-voice/styletss2",
+      "snippet": "Third-party hosting guide for running StyleTTS2 checkpoints.",
+      "relevance_note": "Not deep-read; peripheral hosting/deployment guide, not a new checkpoint source."
+    },
+    {
+      "title": "styletts2-fork (PyPI)",
+      "url": "https://pypi.org/project/styletts2-fork/",
+      "snippet": "Pip-installable package wrapping StyleTTS2 inference.",
+      "relevance_note": "Packaging convenience, not a new pretrained-checkpoint source."
+    }
+  ],
+  "error": null
+}

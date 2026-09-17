@@ -1,0 +1,9 @@
+epoch_00048.pth: val_loss=0.3468841314315796, epoch=48
+Saved → tasks/t0014_v11_decoder_fix_retrain/assets/model/kokoro-v11-best/files/kokoro-v11-best.pth
+  bert: 25 params
+  bert_encoder: 2 params
+  predictor: 122 params
+  text_encoder: 24 params
+  decoder: 678 params
+Validation OK: kokoro-v11-best.pth keys = ['bert', 'bert_encoder', 'decoder', 'predictor', 'text_encoder']
+{'bert': 25, 'bert_encoder': 2, 'predictor': 122, 'text_encoder': 24, 'decoder': 678}

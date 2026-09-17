@@ -1,0 +1,19 @@
+Inspecting epochs_2nd_00020 (v11 new first_stage_path target): /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0013_v10_synthesis_quality_forensics/tasks/t0013_v10_synthesis_quality_forensics/code/kikiri-tts/StyleTTS2/Models/LibriTTS/epochs_2nd_00020.pth
+  decoder classification: hifigan
+  bert: 6,292,480 params, finite=OK, weight_norm=178.44
+  bert_encoder: 393,728 params, finite=OK, weight_norm=37.62
+  decoder: 54,289,492 params, finite=OK, weight_norm=832.04
+  diffusion: 50,653,952 params, finite=OK, weight_norm=896.41
+  mpd: 41,105,770 params, finite=OK, weight_norm=254.84
+  msd: 280,902 params, finite=OK, weight_norm=31.79
+  mwd: 1,173,634 params, finite=OK, weight_norm=21.69
+  pitch_extractor: 5,251,148 params, finite=OK, weight_norm=3271270.65
+  predictor: 16,194,612 params, finite=OK, weight_norm=313.93
+  predictor_encoder: 13,880,813 params, finite=OK, weight_norm=459.02
+  style_encoder: 13,880,813 params, finite=OK, weight_norm=399.48
+  text_aligner: 7,868,452 params, finite=OK, weight_norm=892.36
+  text_encoder: 5,606,400 params, finite=OK, weight_norm=401.44
+  wd: 1,173,634 params, finite=OK, weight_norm=23.11
+
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/tasks/t0014_v11_decoder_fix_retrain/results/checkpoint_forensics_v11_raw.json
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0014_v11_decoder_fix_retrain/tasks/t0014_v11_decoder_fix_retrain/results/checkpoint_forensics_v11.md

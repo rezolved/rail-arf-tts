@@ -1,0 +1,19 @@
+total 12
+drwxrwsr-x+  3 azureuser azureuser 4096 Jun 24 11:32 .
+drwxrwsr-x+ 18 azureuser azureuser 4096 Jan  5  2026 ..
+-rw-rw-r--   1 azureuser azureuser    0 Jan  5  2026 .conda_envs_dir_test
+drwxrwxrwx+  2 azureuser azureuser 4096 Jun 24 10:30 azureml_py38
+---
+total 8
+drwxrwxrwx+ 2 azureuser azureuser 4096 Jun 24 10:30 .
+drwxrwsr-x+ 3 azureuser azureuser 4096 Jun 24 11:32 ..
+---which conda---
+
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     /anaconda
+                         /home/azureuser/miniconda3
+                         /home/azureuser/miniconda3/envs/stt
+
