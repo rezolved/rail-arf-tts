@@ -1,0 +1,168 @@
+tasks/t0004_kokoro_v5_stage1_train/results/checkpoints/epoch_1st_00007.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0004_kokoro_v5_stage1_train/results/checkpoints/epoch_1st_00007.pth
+tasks/t0004_kokoro_v5_stage1_train/results/checkpoints/epoch_1st_00003.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0004_kokoro_v5_stage1_train/results/checkpoints/epoch_1st_00003.pth
+tasks/t0010_stage2_safeguarded_training/assets/model/kokoro-v10-best/files/kokoro-v10-best.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0010_stage2_safeguarded_training/assets/model/kokoro-v10-best/files/kokoro-v10-best.pth
+tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00014.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00014.pth
+tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00016.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0010_stage2_safeguarded_training/data/run_v10/epoch_2nd_00016.pth
+tasks/t0001_kokoro_v4_stage2_finetune/results/audio_check_epoch3.dvc:
+	changed outs:
+		not in cache:       tasks/t0001_kokoro_v4_stage2_finetune/results/audio_check_epoch3
+tasks/t0001_kokoro_v4_stage2_finetune/results/audio_check.dvc:
+	changed outs:
+		not in cache:       tasks/t0001_kokoro_v4_stage2_finetune/results/audio_check
+tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/epoch_2nd_00005.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/epoch_2nd_00005.pth
+tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/epoch_2nd_00004.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/epoch_2nd_00004.pth
+tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/first_stage.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/first_stage.pth
+tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/epoch_2nd_00002.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0001_kokoro_v4_stage2_finetune/results/checkpoints/epoch_2nd_00002.pth
+tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00002.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00002.pth
+tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00003.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0005_kokoro_v5_stage2_train/results/checkpoints/epoch_2nd_00003.pth
+tasks/t0012_v5_corpus_normalize_and_reaudit/data/v5_normalized.dvc:
+	changed outs:
+		deleted:            tasks/t0012_v5_corpus_normalize_and_reaudit/data/v5_normalized
+tasks/t0014_v11_decoder_fix_retrain/assets/model/kokoro-v11-best/files/kokoro-v11-best.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0014_v11_decoder_fix_retrain/assets/model/kokoro-v11-best/files/kokoro-v11-best.pth
+tasks/t0008_tts_eval_harness_baselines/data/synth_audio.dvc:
+	changed outs:
+		deleted:            tasks/t0008_tts_eval_harness_baselines/data/synth_audio
+tasks/t0008_tts_eval_harness_baselines/data/packaged/t0006_v6d_epoch6.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0008_tts_eval_harness_baselines/data/packaged/t0006_v6d_epoch6.pth
+tasks/t0008_tts_eval_harness_baselines/data/packaged/t0005_run06_epoch3.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0008_tts_eval_harness_baselines/data/packaged/t0005_run06_epoch3.pth
+tasks/t0006_kokoro_v5_stage2_subset/results/audio_v6c_ep5.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/results/audio_v6c_ep5
+tasks/t0006_kokoro_v5_stage2_subset/results/audio_v6d_ep6.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/results/audio_v6d_ep6
+tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0006_kokoro_v5_stage2_subset/results/checkpoints/v6d/epoch_2nd_00006.pth
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/stage1/first_stage.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/stage1/first_stage.pth
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_decoder_kokoro.pth.dvc:
+	changed outs:
+		deleted:            tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_decoder_kokoro.pth
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_voicepack_ft_enc.pt.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_voicepack_ft_enc.pt
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_voicepack.pt.dvc:
+	changed outs:
+		deleted:            tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/david_v3_best_voicepack.pt
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase4.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase4.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase5.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase5.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase3.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase3.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase1.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase1.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase3.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase3.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase3.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase3.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase3.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase3.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase4.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase4.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase2.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase2.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase2.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase2.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase5.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase5.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase2.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase2.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase4.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase4.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase1.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase1.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase1.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch3_phrase1.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/v3.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/v3
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase5.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase5.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase2.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch1_phrase2.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase1.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase1.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase5.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch2_phrase5.wav
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/v3b.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/v3b
+tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase4.wav.dvc:
+	changed outs:
+		not in cache:       tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/audio/epoch0_phrase4.wav
+tasks/t0002_kokoro_v4_voicepack_decoder_package/results/audio_samples_epoch3.dvc:
+	changed outs:
+		not in cache:       tasks/t0002_kokoro_v4_voicepack_decoder_package/results/audio_samples_epoch3
+tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_voicepack.pt.dvc:
+	changed outs:
+		not in cache:       tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_voicepack.pt
+tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_decoder.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_decoder.pth
+tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_decoder_stage1.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_decoder_stage1.pth
+tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_decoder_epoch3.pth.dvc:
+	changed outs:
+		not in cache:       tasks/t0002_kokoro_v4_voicepack_decoder_package/results/david_v4_decoder_epoch3.pth
+tasks/t0002_kokoro_v4_voicepack_decoder_package/results/audio_samples_stage1.dvc:
+	changed outs:
+		not in cache:       tasks/t0002_kokoro_v4_voicepack_decoder_package/results/audio_samples_stage1
+tasks/t0002_kokoro_v4_voicepack_decoder_package/results/audio_samples.dvc:
+	changed outs:
+		not in cache:       tasks/t0002_kokoro_v4_voicepack_decoder_package/results/audio_samples
+data/v4/train/wavs.dvc:
+	changed outs:
+		not in cache:       data/v4/train/wavs
+data/v4/val/wavs.dvc:
+	changed outs:
+		deleted:            data/v4/val/wavs
