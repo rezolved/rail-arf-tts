@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T07:52:46Z"
-completed_steps: 1
-next_step_number: 2
-next_step_id: "check-deps"
+updated_at: "2026-09-17T07:53:46Z"
+completed_steps: 2
+next_step_number: 3
+next_step_id: "init-folders"
 ---
 # Task Objective
 
@@ -21,6 +21,13 @@ Branch `task/t0015_v11_duration_blowup_forensics` created. Initial folder struct
 `tasks/t0015_v11_duration_blowup_forensics/`. Step 1 is a mechanical setup step with no research
 output.
 
+### Step 2 — check-deps
+
+Ran `verify_task_dependencies.py` (via prestep and again via `run_with_logs`) against both
+dependencies: `t0013_v10_synthesis_quality_forensics` and `t0014_v11_decoder_fix_retrain`. Both have
+`status: "completed"` in their `task.json`, so the check passed with 0 errors and 0 warnings. Result
+recorded in `logs/steps/002_check-deps/deps_report.json`.
+
 * * *
 
 ## Cross-Step Decisions
@@ -29,5 +36,6 @@ output.
 
 ## Next Step Notes
 
-Step 1 completed successfully. The task branch and folder are ready. Proceed to step 2
-(`check-deps`) per `step_tracker.json`.
+Step 2 (`check-deps`) completed: both dependency tasks are confirmed completed and satisfied.
+Proceed to step 3 (`init-folders`) per `step_tracker.json` — create the mandatory task folder
+structure via `init_task_folders` and populate the aggregator cache under `tasks/$TASK_ID/ctx/`.

@@ -19,12 +19,15 @@
       "step": 2,
       "name": "check-deps",
       "description": "Verify t0013_v10_synthesis_quality_forensics and t0014_v11_decoder_fix_retrain are completed and produced audio_quality_check.py, infer_styletts2.py, and kokoro-v11-best.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T07:53:28Z",
       "completed_at": null,
       "log_file": "logs/steps/002_check-deps/",
-      "current_owner": null,
-      "actual_duration_seconds": null
+      "current_owner": "step-executor/check-deps",
+      "actual_duration_seconds": null,
+      "last_heartbeat_at": "2026-09-17T07:53:28Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T08:53:28Z"
     },
     {
       "step": 3,
