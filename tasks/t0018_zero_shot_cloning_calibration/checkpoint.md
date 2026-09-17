@@ -2,9 +2,9 @@
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
 updated_at: "2026-09-17T20:05:00Z"
-completed_steps: 12
-next_step_number: 13
-next_step_id: "compare-literature"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -167,6 +167,30 @@ contradictions between the plan's assumptions and actual results (most notably: 
 systems produced data, and `ref_single` could not be built as a literal single ~10s clip since no
 such clip exists in the corpus).
 
+### Step 13 — compare-literature
+
+Wrote `results/compare_literature.md` comparing this task's measured `speaker_sim`/WER numbers
+against the closest published values for the same three named systems: F5-TTS
+([Chen2024, Table 1/2], SIM-o, WavLM-large), CosyVoice2 ([Du2024, Table 5/6], SS, ERes2Net), and
+Chatterbox ([Seo2026, Table 1], SIM-o/WER, WavLM-ECAPA-TDNN — Chatterbox-Flash's own re-benchmark of
+the base open-weight Chatterbox checkpoint this task uses). Every one of the 8 comparison-table rows
+carries an explicit `**METRIC MISMATCH**` flag in its Notes column (GE2E-cosine `resemblyzer` vs.
+WavLM/ERes2Net-based embeddings, different corpora/speakers/text) and the file's `## Summary`,
+`## Analysis`, and `## Limitations` all restate that no numeric delta should be read as a validated
+quality ranking — order-of-magnitude/qualitative comparison only, consistent with the constraint
+repeated across steps 4-12. `verify_compare_literature.py` passed 0 errors/0 warnings (both the
+producing subagent's own check and this step-executor's independent `run_with_logs`-wrapped re-run).
+Two notable findings surfaced: (1) a `### Prior Task Comparison` subsection confirms this task's
+re-measured `elevenlabs_david` baseline (0.8325/0.7923) matches t0008's cited 0.832/0.792 numbers,
+and separately flags that CosyVoice2's `ref_single` result (0.8628 val96) contradicts the implicit
+prior assumption that the 0.85 success criterion was structurally unreachable under this project's
+own GE2E-cosine scoring; (2) Chatterbox's measured WER (41.01%) is far higher than [Seo2026]'s
+published 1.99% for the identical checkpoint, honestly reported as a genuine negative finding but
+attributed to ASR-scorer size (`faster-whisper base.en` vs. Whisper-large-v3/HuBERT-large) and this
+task's ASR-adversarial filler text (brand names, alphanumeric session IDs), not audio quality —
+cross-checked against the per-clip brand-name WER breakdown in `results/results_detailed.md` showing
+no elevated WER specifically on brand-name text.
+
 * * *
 
 ## Cross-Step Decisions
@@ -256,38 +280,35 @@ such clip exists in the corpus).
 
 ## Next Step Notes
 
-Proceed to step 13 (`compare-literature`) per `step_tracker.json` (this task's steps do include
-`compare-literature`, unlike some other tasks that skip it — confirm against
-`tasks/t0018_zero_shot_cloning_calibration/step_tracker.json` rather than assuming). `LLM-T1-NC80`
-remains fully torn down (no live-machine concerns remain for any of the rest of this task's steps:
-`compare-literature`, `suggestions`, `reporting`). Final total GPU spend is unchanged and final:
-**$58.25 of the $70 hard cap** (~$11.75 unused headroom), recorded in `machine_log.json`,
-`results/remote_machines_used.json`, and `results/costs.json`.
+Proceed to step 14 (`suggestions`) per `step_tracker.json`. `LLM-T1-NC80` remains fully torn down
+(no live-machine concerns remain for the rest of this task's steps: `suggestions`, `reporting`).
+Final total GPU spend is unchanged and final: **$58.25 of the $70 hard cap** (~$11.75 unused
+headroom), recorded in `machine_log.json`, `results/remote_machines_used.json`, and
+`results/costs.json`.
 
-`results/results_summary.md` and `results/results_detailed.md` are now written and both
-`verify_task_metrics.py`/`verify_task_results.py` pass with 0 errors/0 warnings. The
-`compare-literature` step-executor should compare this task's measured `speaker_sim` numbers
-(CosyVoice2 `ref_single`: 0.863 val96/0.842 fillers; Chatterbox: 0.796-0.811 across conditions)
-against the F5-TTS/CosyVoice2 papers already in the corpus (`Chen2024-F5TTS`, `Du2024-CosyVoice2`,
-landed in steps 5-6) — but must NOT merge their published SIM-o/SS/MOS numbers directly with this
-project's GE2E-cosine `speaker_sim`, since they use different embedding backbones (this rule is
-already established in `research/research_papers.md` and repeated in `results/results_detailed.md`'s
-Limitations and the answer asset).
-
-Three named systems were attempted: Chatterbox (both conditions succeeded fully), CosyVoice2
-(`ref_single` succeeded, `ref_concat` hard-failed on a genuine 30s system limit), and F5-TTS (null —
-indefinite hang in model loading, three attempts, see `intervention/f5_tts_smoke_gate_failed.md`).
-`kokoro_v3_bundle` was not re-measured this session (same hang signature) and falls back to t0008's
-stored `speaker_sim` numbers. All of this is carried in `results/tables.json`'s `notes` array,
-`results/results_detailed.md`, and the answer asset (`assets/answer/zero-shot-speaker-sim-ceiling/`,
-verificator `PASSED`).
+`results/compare_literature.md` is now written (step 13) and `verify_compare_literature.py` passes
+with 0 errors/0 warnings. It compares this task's measured `speaker_sim`/WER numbers against
+[Chen2024, Table 1/2] (F5-TTS SIM-o), [Du2024, Table 5/6] (CosyVoice2 SS), and [Seo2026, Table 1]
+(base Chatterbox SIM-o/WER), with an explicit `**METRIC MISMATCH**` flag on every one of its 8
+comparison rows — GE2E-cosine `resemblyzer` vs. WavLM/ERes2Net/WavLM-ECAPA-TDNN embeddings are never
+presented as an apples-to-apples ranking, only order-of-magnitude/qualitative context. Two findings
+from that file should feed `suggestions.json` (step 14): (1) a `### Prior Task Comparison`
+subsection confirms this task's re-measured `elevenlabs_david` baseline matches t0008's cited
+numbers, and flags that CosyVoice2's `ref_single` result (0.8628 val96) contradicts the implicit
+prior assumption that the 0.85 success criterion was structurally unreachable under GE2E-cosine
+scoring — reinforcing `results_detailed.md` Key Question 6's recommendation to restate the success
+criterion; (2) Chatterbox's measured WER (41.01%) vs. [Seo2026]'s published 1.99% is a genuine gap
+attributed to ASR-scorer size and this task's ASR-adversarial filler text, not audio quality — worth
+flagging as a possible follow-up (re-score with a larger ASR model) rather than a Chatterbox quality
+concern.
 
 Step 11's five hedges (F5-TTS attribution uncertainty, provisional success-criterion restatement,
 CosyVoice2/Chatterbox-only licensing viability, the CosyVoice2 `ref_concat` 0.57s-miss framing, and
 the GE2E "cleaner-voice"-artifact caveat — see `logs/steps/011_creative-thinking/step_log.md` for
-full detail) are now carried into `results/results_detailed.md`'s `## Limitations`.
-`suggestions.json` (step 14) should still turn step 11's "Recommendations Carried Forward" list into
-concrete suggestion entries, including the `py-spy`/lock-file-first diagnostic protocol for future
-indefinite-hang cases, the per-system (not one-shared-clip) reference-duration design for future
-multi-system TTS benchmark tasks, and a possible low-cost CosyVoice2 `ref_concat` re-run with a <30s
-clip.
+full detail) are carried into `results/results_detailed.md`'s `## Limitations` and echoed in
+`results/compare_literature.md`. `suggestions.json` (step 14) should still turn step 11's
+"Recommendations Carried Forward" list into concrete suggestion entries, including the
+`py-spy`/lock-file-first diagnostic protocol for future indefinite-hang cases, the per-system (not
+one-shared-clip) reference-duration design for future multi-system TTS benchmark tasks, a possible
+low-cost CosyVoice2 `ref_concat` re-run with a <30s clip, and a possible Chatterbox WER re-score
+with a larger ASR model to disambiguate from the [Seo2026] published number.
