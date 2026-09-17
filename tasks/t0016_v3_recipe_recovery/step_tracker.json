@@ -150,14 +150,15 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md, results_detailed.md, metrics.json, v3_checkpoint_forensics.md, and the module weight-delta chart.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T16:10:07Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T16:17:28Z",
       "log_file": "logs/steps/012_results/",
-      "current_owner": "step-executor/results",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T16:10:07Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T17:10:07Z"
+      "expected_completion_at": "2026-09-17T17:10:07Z",
+      "actual_duration_seconds": 441
     },
     {
       "step": 13,
