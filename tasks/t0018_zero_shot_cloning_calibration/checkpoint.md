@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T14:35:00Z"
-completed_steps: 6
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-17T14:49:01Z"
+completed_steps: 7
+next_step_number: 8
+next_step_id: "setup-machines"
 ---
 # Task Objective
 
@@ -75,6 +75,17 @@ After all research steps completed, a `/research-summarize` subagent wrote
 `research/research_summary.md` for downstream planning/implementation subagents to read instead of
 the full research files.
 
+### Step 7 — planning
+
+Wrote `plan/plan.md` (spec_version 2, all 11 mandatory sections, 18 `REQ-*` items) covering the
+3-system × 2-condition zero-shot cloning benchmark plus the two paired baselines; `verify_plan`
+passed 0 errors/0 warnings. Cost estimate ≈$42-45 GPU wall-clock against the $70 hard cap, with a
+dedicated Step 4 F5-TTS `ref_concat` smoke-gate check (confirmed the standard F5-TTS pipeline
+auto-crops reference audio to ~15 s by default) run before the full 196-prompt job. Caveat: the
+planning subagent initially wrote its output to the main repo instead of the task worktree
+(spawn-prompt omission); the step-executor recovered the file into the worktree and cleaned the
+stray main-repo files before verifying — no content was lost.
+
 * * *
 
 ## Cross-Step Decisions
@@ -117,18 +128,39 @@ the full research files.
   verificator module path (`arf.scripts.verificators.verify_paper_asset`) does not exist in this
   repo; the real module is `meta.asset_types.paper.verificator`. This is a framework documentation
   bug (out of scope for this task per CLAUDE.md Rule 0) — worth a future `self-improvement` pass.
+* **F5-TTS `ref_concat` risk — resolved as a planned smoke-gate check, not a blocker**: confirmed
+  during planning (step 7) that F5-TTS's standard pipeline (`preprocess_ref_audio_text`) auto-crops
+  reference audio over ~15 s by default. The plan's Step 4 requires a dedicated F5-TTS ×
+  `ref_concat` synthesis check before the full 196-prompt run, recording whether the effective
+  reference consumed was ~30 s or ~15 s; this is a documented caveat on that one variant, not
+  grounds for nulling it, unless synthesis fails outright even after a manual 15 s-trim retry.
+* **`results/metrics.json` unregistered-key ambiguity — resolved**: the task text's
+  `efficiency_inference_time_per_item_seconds`/`efficiency_inference_cost_per_item_usd` keys are not
+  registered in `meta/metrics/` (only `rtf`, `speaker_sim`, `ttfb_ms` are). The plan routes these
+  two fields (plus WER, duration ratio, gate-failure count) into `results/tables.json` instead,
+  following t0008's own `REGISTERED_METRIC_KEYS` convention, and flags that `suggestions.json`
+  (orchestrator step) should recommend registering the two efficiency metrics via `/add-metric` for
+  future tasks.
+* **Planning-subagent worktree miss (process note for future spawns)**: the step 7 planning subagent
+  was spawned without an explicit worktree `cd` instruction and defaulted to the main repo checkout
+  on `main`, writing `plan/plan.md` and regenerated `ctx/` files there. The step-executor caught
+  this via `git status`/`git branch` before trusting the subagent's report, copied the plan into the
+  worktree, and deleted the stray main-repo files. Future step-executors in this task should include
+  the explicit worktree path in subagent spawn prompts to avoid repeating this.
 
 * * *
 
 ## Next Step Notes
 
-Proceed to step 7 (`planning`) per `step_tracker.json`. All research is complete and all paper
-additions are fully resolved (see Cross-Step Decisions) — no outstanding `/add-paper` dispatch work
-remains for any later step. The planning subagent should read `research/research_summary.md` first
-(compact digest of all three research files) rather than re-reading the full `research_papers.md`,
-`research_internet.md`, and `research_code.md`. Carry forward into the plan: the F5-TTS CC-BY-NC-4.0
-license-risk flag for Key Question 6, per-capability TTFB reporting (only CosyVoice 2 has genuine
-chunked streaming), the `ref_concat` (~30 s) duration-vs-truncation validation needed before the
-full run, the `tts_eval_harness` adapter contract (`SynthResult`) each new system must match, and
-reuse of t0015's hardened `audio_quality_check.py` plus an adapted version of t0014's
-`build_reference_concat.py` (per `research/research_code.md`'s Reusable Code and Assets section).
+Proceed to step 8 (`setup-machines`) per `step_tracker.json`. `plan/plan.md` is complete and
+verified (0 errors/0 warnings); read it in full before provisioning — it names `LLM-T1-NC80` (H100),
+gives the exact watchdog `TERMINATE_CMD`, and requires the idle watchdog PID to be confirmed before
+the first model download (Lesson 8). Plan Step 1 lists the exact `dvc pull` targets needed first
+(`11labs_david.dvc`, `synth_audio.dvc`, and the v3 decoder/voicepack `.dvc` files under
+`t0006_kokoro_v5_stage2_subset`). Budget: base estimate ≈$42-45 GPU wall-clock against the
+user-authorized $70 hard cap — monitor cumulative spend at each milestone boundary per the plan's
+Risks & Fallbacks table. When spawning the `setup-machines` subagent (and every subsequent
+skill-invocation subagent for this task), explicitly state the worktree path
+(`/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration`)
+and branch (`task/t0018_zero_shot_cloning_calibration`) in the spawn prompt — step 7 showed a fresh
+subagent otherwise defaults to the main repo checkout.
