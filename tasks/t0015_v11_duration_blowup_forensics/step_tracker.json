@@ -1,0 +1,173 @@
+{
+  "task_id": "t0015_v11_duration_blowup_forensics",
+  "steps": [
+    {
+      "step": 1,
+      "name": "create-branch",
+      "description": "Create task/t0015_v11_duration_blowup_forensics branch from main.",
+      "status": "in_progress",
+      "started_at": "2026-09-17T07:50:50Z",
+      "completed_at": null,
+      "log_file": "logs/steps/001_create-branch/",
+      "current_owner": "step-executor/create-branch",
+      "last_heartbeat_at": "2026-09-17T07:50:50Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T08:50:50Z"
+    },
+    {
+      "step": 2,
+      "name": "check-deps",
+      "description": "Verify t0013_v10_synthesis_quality_forensics and t0014_v11_decoder_fix_retrain are completed and produced audio_quality_check.py, infer_styletts2.py, and kokoro-v11-best.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/002_check-deps/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 3,
+      "name": "init-folders",
+      "description": "Create task folder structure and initial files.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/003_init-folders/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 4,
+      "name": "research-papers",
+      "description": "Not included: this is an empirical debugging/forensics task (duration-predictor calibration, alignment-matrix plumbing, inference-parameter sweep) about this project's own checkpoints and code. No published-paper evidence bears on the specific root cause; StyleTTS2 background is already in the project corpus from prior dependency tasks.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": "2026-09-17T07:51:55Z",
+      "log_file": "logs/steps/004_research-papers/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 5,
+      "name": "research-internet",
+      "description": "Not included: task_description.md already specifies the exact reproduction recipe, the parameters to sweep, and even names the ASR library (faster-whisper) already vendored as a dependency in t0008's environment. No new external research is needed to execute the diagnostic and gate-hardening work.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": "2026-09-17T07:51:55Z",
+      "log_file": "logs/steps/005_research-internet/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 6,
+      "name": "research-code",
+      "description": "Review t0013's infer_styletts2.py and audio_quality_check.py and t0014's training config/logs (ignore_modules, Stage 2 epoch logs) to understand the reusable inference recipe and whether predictor/predictor_encoder received gradient updates during t0014's finetune.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/006_research-code/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 7,
+      "name": "planning",
+      "description": "Design the sequenced forensics plan: reproduce/characterize across varied texts, localize the bug via pred_dur/frame-count logging, sweep inference parameters, conditionally apply the cheap fix or document a negative result, then harden and regression-test audio_quality_check.py.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/007_planning/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 8,
+      "name": "setup-machines",
+      "description": "Not included: task_description.md states no GPU is required for the diagnostic, localization, and inference-parameter-sweep work; escalation to GPU-based predictor/predictor_encoder retraining is explicitly scoped out as a follow-up task, not attempted here.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": "2026-09-17T07:51:55Z",
+      "log_file": "logs/steps/008_setup-machines/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 9,
+      "name": "implementation",
+      "description": "Run the varied-text characterization sweep with pred_dur/frame-count instrumentation, localize the blowup, sweep alpha/beta/diffusion_steps/embedding_scale, apply the cheap fix (or document why it failed), and extend audio_quality_check.py with duration-sanity and silence-gap signals plus a three-way v10/v11/corrected regression check.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/009_implementation/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 10,
+      "name": "teardown",
+      "description": "Not included: no remote machine was provisioned (setup-machines not included), so there is nothing to tear down.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": "2026-09-17T07:51:55Z",
+      "log_file": "logs/steps/010_teardown/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 11,
+      "name": "creative-thinking",
+      "description": "Consider alternative diagnostic angles and gate-hardening options beyond the scripted checklist -- e.g. other failure classes an ASR-round-trip check would catch that duration-sanity/silence-gap signals would not, and whether the blowup could be text-length dependent in a non-obvious way.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/011_creative-thinking/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 12,
+      "name": "results",
+      "description": "Write duration_blowup_diagnosis.md, results_summary.md, results_detailed.md, and metrics.json documenting the root cause, whether it is universal or text-dependent, and whether the cheap inference-parameter fix worked.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/012_results/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 13,
+      "name": "compare-literature",
+      "description": "Not included: this task produces internal forensic evidence (pred_dur/frame-count instrumentation, inference-parameter sweep results, gate regression checks) about this project's own checkpoint and code, not quantitative results comparable to a published baseline.",
+      "status": "skipped",
+      "started_at": null,
+      "completed_at": "2026-09-17T07:51:55Z",
+      "log_file": "logs/steps/013_compare-literature/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 14,
+      "name": "suggestions",
+      "description": "Formulate follow-up suggestions, in particular proposing the hardened gate as the project's standard pre-completion check and, if the cheap fix fails, filing the targeted predictor/predictor_encoder fine-tuning recommendation as a new follow-up task.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/014_suggestions/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    },
+    {
+      "step": 15,
+      "name": "reporting",
+      "description": "Final verification pass, session capture, and reporting.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": "logs/steps/015_reporting/",
+      "current_owner": null,
+      "actual_duration_seconds": null
+    }
+  ],
+  "spec_version": "7"
+}
