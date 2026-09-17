@@ -154,6 +154,27 @@ See `logs/steps/010_teardown/step_log.md` for full detail.
 
 * * *
 
+### Step 12 — results
+
+Wrote `results/results_summary.md` and `results/results_detailed.md` (`spec_version: "2"`) directly
+from the implementation step's already-produced outputs — no new forensics were run. Covered all 17
+`REQ-*` items from `plan/plan.md`'s Task Requirement Checklist in the final
+`## Task Requirement Coverage` section (12 `Done`, 3 `Partial` — REQ-6, REQ-8, REQ-14 — 2 `Not done`
+— REQ-4, REQ-10, genuinely unrecoverable evidence, not a shortfall of effort), embedded and
+described `results/images/v3_module_weight_delta.png`, wrote a 12-item `## Examples` section with
+real fenced code/YAML/diff/JSON blocks (mandatory per
+`meta/task_types/data-analysis/description.json`'s `requires_result_examples: true`), and documented
+two plan-assumption contradictions under `## Analysis`: t0009's confound table is independently
+wrong about `t0006_run03_v6c`'s own `lambda_gen` (claims `1.0`, actual committed value `0.2`), and
+the VM's home directory being *present but from the wrong era* (t0014's later clone) is a distinct,
+arguably worse failure mode than the plan's anticipated "directory gone" risk. `verify_task_metrics`
+and `verify_task_results` both PASSED (0 errors/0 warnings) before and after `flowmark`.
+`results/metrics.json`, `results/costs.json`, and `results/remote_machines_used.json` were verified
+against `checkpoint.md`'s authoritative figures and left unmodified (all already correct). No caveat
+for downstream — all cited facts trace to files already committed by `implementation`/`teardown`.
+
+* * *
+
 ## Cross-Step Decisions
 
 * Planning (step 7) fixed the VM inspection budget at a hard 90-minute wall-clock cap with an
@@ -182,27 +203,6 @@ See `logs/steps/010_teardown/step_log.md` for full detail.
   `Running` state at verification time; this is `t0018_zero_shot_cloning_calibration` legitimately
   re-acquiring the shared pool VM afterward, not a teardown failure — downstream steps should not
   re-open this.
-
-* * *
-
-### Step 12 — results
-
-Wrote `results/results_summary.md` and `results/results_detailed.md` (`spec_version: "2"`) directly
-from the implementation step's already-produced outputs — no new forensics were run. Covered all 17
-`REQ-*` items from `plan/plan.md`'s Task Requirement Checklist in the final
-`## Task Requirement Coverage` section (12 `Done`, 3 `Partial` — REQ-6, REQ-8, REQ-14 — 2 `Not done`
-— REQ-4, REQ-10, genuinely unrecoverable evidence, not a shortfall of effort), embedded and
-described `results/images/v3_module_weight_delta.png`, wrote a 12-item `## Examples` section with
-real fenced code/YAML/diff/JSON blocks (mandatory per
-`meta/task_types/data-analysis/description.json`'s `requires_result_examples: true`), and documented
-two plan-assumption contradictions under `## Analysis`: t0009's confound table is independently
-wrong about `t0006_run03_v6c`'s own `lambda_gen` (claims `1.0`, actual committed value `0.2`), and
-the VM's home directory being *present but from the wrong era* (t0014's later clone) is a distinct,
-arguably worse failure mode than the plan's anticipated "directory gone" risk. `verify_task_metrics`
-and `verify_task_results` both PASSED (0 errors/0 warnings) before and after `flowmark`.
-`results/metrics.json`, `results/costs.json`, and `results/remote_machines_used.json` were verified
-against `checkpoint.md`'s authoritative figures and left unmodified (all already correct). No caveat
-for downstream — all cited facts trace to files already committed by `implementation`/`teardown`.
 
 ## Next Step Notes
 
