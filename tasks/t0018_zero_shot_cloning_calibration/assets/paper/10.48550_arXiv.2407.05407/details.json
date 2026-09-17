@@ -1,0 +1,40 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2407.05407",
+  "doi": "10.48550/arXiv.2407.05407",
+  "title": "CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens",
+  "url": "https://arxiv.org/abs/2407.05407",
+  "pdf_url": "https://arxiv.org/pdf/2407.05407",
+  "date_published": "2024-07-07",
+  "year": 2024,
+  "authors": [
+    { "name": "Zhihao Du", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Qian Chen", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Shiliang Zhang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Kai Hu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Heng Lu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Yexin Yang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Hangrui Hu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Siqi Zheng", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Yue Gu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Ziyang Ma", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Zhifu Gao", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Zhijie Yan", "country": "CN", "institution": "Alibaba Group", "orcid": null }
+  ],
+  "institutions": [
+    { "name": "Alibaba Group", "country": "CN" }
+  ],
+  "journal": "preprint",
+  "venue_type": "preprint",
+  "categories": [],
+  "abstract": "Recent years have witnessed a trend that large language model (LLM) based text-to-speech (TTS) emerges into the mainstream due to their high naturalness and zero-shot capacity. In this paradigm, speech signals are discretized into token sequences, which are modeled by an LLM with text as prompts and reconstructed by a token-based vocoder to waveforms. Obviously, speech tokens play a critical role in LLM-based TTS models. Current speech tokens are learned in an unsupervised manner, which lacks explicit semantic information and alignment to the text. In this paper, we propose to represent speech with supervised semantic tokens, which are derived from a multilingual speech recognition model by inserting vector quantization into the encoder. Based on the tokens, we further propose a Codec-based synthesizer for Voice generation, CosyVoice1, which consists of an LLM for text-to-token generation and a conditional flow matching model for token-to-speech synthesis. Experimental results show that supervised semantic tokens significantly outperform existing unsupervised tokens in terms of content consistency and speaker similarity for zero-shot voice cloning. Moreover, we find that utilizing large-scale data further improves the synthesis performance, indicating the scalable capacity of CosyVoice. To the best of our knowledge, this is the first attempt to involve supervised speech tokens into TTS models.",
+  "citation_key": "Du2024a",
+  "summary_path": "summary.md",
+  "files": [
+    "files/du_2024_cosyvoice-scalable-multilingual-zero-shot-tts.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_added": "2026-09-17"
+}
