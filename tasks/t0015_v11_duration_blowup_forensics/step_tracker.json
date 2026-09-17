@@ -147,12 +147,15 @@
       "step": 12,
       "name": "results",
       "description": "Write duration_blowup_diagnosis.md, results_summary.md, results_detailed.md, and metrics.json documenting the root cause, whether it is universal or text-dependent, and whether the cheap inference-parameter fix worked.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T10:41:03Z",
       "completed_at": null,
       "log_file": "logs/steps/012_results/",
-      "current_owner": null,
-      "actual_duration_seconds": null
+      "current_owner": "step-executor/results",
+      "actual_duration_seconds": null,
+      "last_heartbeat_at": "2026-09-17T10:41:03Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T11:41:03Z"
     },
     {
       "step": 13,

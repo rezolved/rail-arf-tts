@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T10:55:00Z"
-completed_steps: 12
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-17T11:20:00Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -153,6 +153,18 @@ silence-gap checks catch disjoint failure classes (content-correctness vs. struc
 so a future third gate layer should pair ASR-round-trip with a symmetric (both-sided) duration
 check, not treat either as a superset of the other.
 
+### Step 12 — results
+
+Wrote `results/results_summary.md` and `results/results_detailed.md` (`spec_version: "2"`, 11
+concrete `## Examples` instances drawn from `duration_characterization.json`/`param_sweep.json`, and
+a final `## Task Requirement Coverage` section covering all 11 `REQ-*` items). Filled in the two
+results files step 9 correctly left for this step: `results/costs.json` (`$0.00`, CPU-only) and
+`results/remote_machines_used.json` (`[]`). Generated `results/images/duration_ratio_by_text.png`
+and `results/images/param_sweep_duration_ratio.png` from already-produced JSON data (none existed
+before this step). `## Analysis` documents the plan's contradicted assumption explicitly: the
+inference-parameter sweep was framed as the cheapest fix to try, but 0/13 combinations came close to
+passing. `verify_task_metrics` and `verify_task_results` both pass with 0 errors/0 warnings.
+
 * * *
 
 ## Cross-Step Decisions
@@ -193,15 +205,16 @@ check, not treat either as a superset of the other.
 
 ## Next Step Notes
 
-Step 9 (`implementation`) and step 11 (`creative-thinking`) are both complete; step 10 (`teardown`)
-remains `skipped` (no remote machine was ever provisioned). The next pending step is step 12
-(`results`). It should draw on `results/duration_blowup_diagnosis.md`'s Recommendation section
-(targeted `predictor`/`predictor_encoder` fine-tuning as a GPU follow-up task) and must accurately
-report REQ-6 as `n/a` (not `done` or `blocked`) since the pre-registered Rejection Criteria
-correctly ruled out every parameter-sweep combination as a partial pass. It should also fold in step
-11's five findings where relevant — in particular, the Finding-1 swap-ablation and Finding-2
-training-target-frame-rate check are concrete, low-cost recommended first actions for the follow-up
-GPU task (sharper than "just retrain `predictor`/`predictor_encoder`"), and Finding-4 (asymmetric
-`duration_sanity_pass`) is a real residual gap in this task's own gate hardening that the `results`/
-`suggestions` steps should disclose rather than omit, consistent with this task's "confirm with
-evidence, document negative results with the same rigor as positive ones" mandate.
+Step 12 (`results`) is complete; step 13 (`compare-literature`) is `skipped`. The next pending step
+is step 14 (`suggestions`). It should propose the gate-hardening changes
+(`code/audio_quality_check.py`'s `duration_sanity_pass`/`longest_nonsilent_run_s`) for adoption as
+the project's standard pre-completion check for all future TTS training tasks (per `plan/plan.md`'s
+Expected Outputs, extending S-0013-02), and should file a follow-up-task suggestion for targeted
+`predictor`/`predictor_encoder` GPU fine-tuning, drawing on `results/duration_blowup_diagnosis.md`'s
+Recommendation section plus step 11's Finding 1 (cheap forward-pass module-swap ablation as a first,
+no-GPU action before committing training budget) and Finding 2 (10-minute check of David's
+forced-alignment/duration-target frame rate). It should also surface step 11's Finding 4 (the
+hardened gate's `duration_sanity_pass` is upper-bound-only; a symmetric lower-bound check is a cheap
+follow-up) and Finding 5 (ASR-round-trip and duration/silence-gap checks are complementary, not
+redundant — a future third gate layer should pair them) as concrete suggestion items, not just
+narrative color.
