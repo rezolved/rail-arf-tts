@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T20:05:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-17T20:10:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -191,6 +191,36 @@ task's ASR-adversarial filler text (brand names, alphanumeric session IDs), not 
 cross-checked against the per-clip brand-name WER breakdown in `results/results_detailed.md` showing
 no elevated WER specifically on brand-name text.
 
+### Step 14 — suggestions
+
+Spawned a dedicated `/generate-suggestions` subagent (explicit worktree/branch instruction), which
+did its own review of `results/`, `checkpoint.md`, prior step logs (including step 11's
+creative-thinking critique), and its own duplicate-check via `aggregate_suggestions --uncovered` (29
+existing entries, none overlapping) and `aggregate_tasks` (18 tasks, none covering these angles),
+then wrote `results/suggestions.json` with 7 entries covering: an F5-TTS retry with
+`py-spy`/HF-lock-file hang diagnostics (S-0018-01, high); a trimmed-under-30s CosyVoice2
+`ref_concat` re-run (S-0018-02, medium); a human-listening check on the CosyVoice2 "cleaner-voice"
+GE2E artifact hypothesis (S-0018-03, medium); a Chatterbox WER re-score with a larger ASR model
+(S-0018-04, medium, cites `Seo2026`); evaluating CosyVoice2 output as Kokoro Stage 2 training
+augmentation (S-0018-05, medium); registering the two efficiency metrics via `/add-metric`
+(S-0018-06, low); and a brainstorm on whether to restate the `speaker_sim >= 0.85` success criterion
+(S-0018-07, high). This step-executor cross-checked the 7 entries against the coordinator's explicit
+follow-up list and found one gap — creative-thinking recommendation (d), a general per-system (not
+one-shared-clip) reference-duration *design guideline for future multi-system TTS benchmark tasks*,
+was not captured as its own entry (`S-0018-02` only covers redoing this task's own CosyVoice2 cell).
+Sent the subagent a follow-up prompt (not pre-written wording) asking it to re-analyze and add an
+entry if it judged the gap genuine and non-duplicate after its own re-check; the subagent confirmed
+the gap, re-checked the aggregators again, and added `S-0018-08` ("Design future multi-system TTS
+benchmarks with per-system safe reference durations", `evaluation`, medium). Final file has 8
+entries; `verify_suggestions.py` passed 0 errors/0 warnings both when the subagent ran it and when
+this step-executor independently re-ran it via `run_with_logs`. The two remaining follow-up items
+from the coordinator's list were confirmed out of scope rather than missing: the `add-paper`
+`SKILL.md` verificator-path documentation bug is framework work per CLAUDE.md Rule 0 (already logged
+in Cross-Step Decisions below as a future `self-improvement` candidate, not a task-level
+suggestion); and F5-TTS's CC-BY-NC-4.0 licensing-risk flag was conditional on a future
+production-path suggestion considering F5-TTS, which none of the 8 entries do (S-0018-01 frames the
+F5-TTS retry as closing a missing measurement/research-ceiling gap, not a production proposal).
+
 * * *
 
 ## Cross-Step Decisions
@@ -280,35 +310,31 @@ no elevated WER specifically on brand-name text.
 
 ## Next Step Notes
 
-Proceed to step 14 (`suggestions`) per `step_tracker.json`. `LLM-T1-NC80` remains fully torn down
-(no live-machine concerns remain for the rest of this task's steps: `suggestions`, `reporting`).
-Final total GPU spend is unchanged and final: **$58.25 of the $70 hard cap** (~$11.75 unused
-headroom), recorded in `machine_log.json`, `results/remote_machines_used.json`, and
-`results/costs.json`.
+Proceed to step 15 (`reporting`), the final step, per `step_tracker.json`. `LLM-T1-NC80` remains
+fully torn down (no live-machine concerns remain). Final total GPU spend is unchanged and final:
+**$58.25 of the $70 hard cap** (~$11.75 unused headroom), recorded in `machine_log.json`,
+`results/remote_machines_used.json`, and `results/costs.json`.
 
-`results/compare_literature.md` is now written (step 13) and `verify_compare_literature.py` passes
-with 0 errors/0 warnings. It compares this task's measured `speaker_sim`/WER numbers against
-[Chen2024, Table 1/2] (F5-TTS SIM-o), [Du2024, Table 5/6] (CosyVoice2 SS), and [Seo2026, Table 1]
-(base Chatterbox SIM-o/WER), with an explicit `**METRIC MISMATCH**` flag on every one of its 8
-comparison rows — GE2E-cosine `resemblyzer` vs. WavLM/ERes2Net/WavLM-ECAPA-TDNN embeddings are never
-presented as an apples-to-apples ranking, only order-of-magnitude/qualitative context. Two findings
-from that file should feed `suggestions.json` (step 14): (1) a `### Prior Task Comparison`
-subsection confirms this task's re-measured `elevenlabs_david` baseline matches t0008's cited
-numbers, and flags that CosyVoice2's `ref_single` result (0.8628 val96) contradicts the implicit
-prior assumption that the 0.85 success criterion was structurally unreachable under GE2E-cosine
-scoring — reinforcing `results_detailed.md` Key Question 6's recommendation to restate the success
-criterion; (2) Chatterbox's measured WER (41.01%) vs. [Seo2026]'s published 1.99% is a genuine gap
-attributed to ASR-scorer size and this task's ASR-adversarial filler text, not audio quality — worth
-flagging as a possible follow-up (re-score with a larger ASR model) rather than a Chatterbox quality
-concern.
+`results/suggestions.json` is now written (step 14) with 8 entries (`S-0018-01` through `S-0018-08`)
+and `verify_suggestions.py` passes with 0 errors/0 warnings (verified independently by both the
+producing subagent and this step-executor). It covers: an F5-TTS retry with `py-spy`/HF-lock-file
+hang diagnostics; a trimmed-under-30s CosyVoice2 `ref_concat` re-run; a human-listening check on the
+CosyVoice2 "cleaner-voice" GE2E artifact hypothesis; a Chatterbox WER re-score with a larger ASR
+model (cites `Seo2026`); evaluating CosyVoice2 output as Kokoro Stage 2 training augmentation;
+registering the two ad hoc efficiency metrics via `/add-metric`; a brainstorm on restating the
+`speaker_sim >= 0.85` success criterion; and a general per-system (not one-shared-clip)
+reference-duration design guideline for future multi-system TTS benchmark tasks. All of step 11's
+"Recommendations Carried Forward" and the coordinator's explicit follow-up list are now reflected as
+concrete suggestion entries, except two items confirmed genuinely out of scope for
+`suggestions.json`: the `add-paper` `SKILL.md` verificator-path documentation bug (framework work
+per CLAUDE.md Rule 0, already logged above as a future `self-improvement` candidate) and the F5-TTS
+CC-BY-NC-4.0 licensing-risk flag (its trigger condition — a future suggestion proposing F5-TTS for
+production — never occurred, since `S-0018-01` frames the F5-TTS retry as a
+missing-measurement/research-ceiling gap, not a production proposal).
 
-Step 11's five hedges (F5-TTS attribution uncertainty, provisional success-criterion restatement,
-CosyVoice2/Chatterbox-only licensing viability, the CosyVoice2 `ref_concat` 0.57s-miss framing, and
-the GE2E "cleaner-voice"-artifact caveat — see `logs/steps/011_creative-thinking/step_log.md` for
-full detail) are carried into `results/results_detailed.md`'s `## Limitations` and echoed in
-`results/compare_literature.md`. `suggestions.json` (step 14) should still turn step 11's
-"Recommendations Carried Forward" list into concrete suggestion entries, including the
-`py-spy`/lock-file-first diagnostic protocol for future indefinite-hang cases, the per-system (not
-one-shared-clip) reference-duration design for future multi-system TTS benchmark tasks, a possible
-low-cost CosyVoice2 `ref_concat` re-run with a <30s clip, and a possible Chatterbox WER re-score
-with a larger ASR model to disambiguate from the [Seo2026] published number.
+`reporting` (step 15) should run all remaining verificators (`verify_task_file.py`,
+`verify_task_dependencies.py`, `verify_suggestions.py`, `verify_task_metrics.py`,
+`verify_task_results.py`, `verify_task_folder.py`, `verify_logs.py`, and asset verificators for the
+answer asset and all 11 corpus paper assets touched by this task), capture task sessions, and
+finalize the task per `arf/skills/execute-task/SKILL.md` Phase 6. No open data/GPU/budget concerns
+remain going into it.
