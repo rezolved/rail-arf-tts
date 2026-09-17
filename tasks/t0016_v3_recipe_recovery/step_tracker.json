@@ -65,14 +65,15 @@
       "step": 6,
       "name": "research-code",
       "description": "Review t0006, t0009, t0015, and t0002 code/results (checkpoint forensics scripts, audio quality gate, packaging recipe) that this task explicitly reuses and cross-checks against.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T13:53:36Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T14:00:21Z",
       "log_file": "logs/steps/006_research-code/",
-      "current_owner": "step-executor/research-code",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T13:53:36Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T14:53:36Z"
+      "expected_completion_at": "2026-09-17T14:53:36Z",
+      "actual_duration_seconds": 405
     },
     {
       "step": 7,
