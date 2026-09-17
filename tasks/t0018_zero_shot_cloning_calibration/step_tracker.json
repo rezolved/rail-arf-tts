@@ -173,14 +173,15 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Compare reachable speaker_sim/TTFB envelope against published F5-TTS/CosyVoice2/Chatterbox benchmark numbers.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T19:52:42Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T20:00:13Z",
       "log_file": "logs/steps/013_compare-literature/",
-      "current_owner": "step-executor/compare-literature",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T19:52:42Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T20:52:42Z"
+      "expected_completion_at": "2026-09-17T20:52:42Z",
+      "actual_duration_seconds": 451
     },
     {
       "step": 14,
