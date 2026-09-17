@@ -125,14 +125,15 @@
       "step": 10,
       "name": "teardown",
       "description": "Stop LLM-T1-NC80 within the 90-minute cap and record final machine/cost usage.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T15:57:29Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T16:07:26Z",
       "log_file": "logs/steps/010_teardown/",
-      "current_owner": "step-executor/teardown",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T15:57:29Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T16:57:29Z"
+      "expected_completion_at": "2026-09-17T16:57:29Z",
+      "actual_duration_seconds": 597
     },
     {
       "step": 11,
