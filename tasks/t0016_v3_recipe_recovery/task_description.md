@@ -123,7 +123,27 @@ Write `data/config_david_v3_reconstructed.yml` in the same schema as
 `# confirmed: <source>` / `# inferred: <reasoning>` / `# unknown: default from v6c`. Diff it against
 v6c and against t0009's "recommended next run" table; list every disagreement.
 
-### 4. Answer asset
+### 4. Audio for human listening (mandatory)
+
+The human owner listens to every result; a reconstruction the owner cannot hear is incomplete.
+Produce, DVC-track (`dvc add`, `dvc push` before the PR), and index:
+
+* `results/audio_samples/v3_shipped/` — the shipped v3 bundle
+  (`best/david_v3_best_decoder_kokoro.pth` + `best/david_v3_best_voicepack.pt`, loaded through
+  `kokoro.KModel` exactly as t0002 and t0008 did, CPU is fine) synthesizing the three fixed gate
+  texts (`lining_up_suggestions_17`, `lining_up_suggestions_10`, `putting_them_head_to_head_15`),
+  the five v3 sample phrases, and five val96 prompts chosen with seed 42. This is the "what good
+  sounds like" reference every later task compares against.
+* `results/audio_samples/v3_per_epoch/` — the recovered `epoch{0..3}_phrase{1..5}.wav` and whatever
+  `v3/`, `v3b/` samples exist, copied (not re-synthesized) so they sit next to the shipped bundle's
+  output.
+* `results/audio_samples/elevenlabs_reference/` — the matching original ElevenLabs David clips for
+  the same texts where they exist in `data/11labs_david/`, so A/B listening is one folder away.
+* `results/listening_guide.md` — one table: text, ElevenLabs original, v3 shipped, per-epoch
+  samples, gate verdict per file, and a one-line note on what to listen for. Filenames must be
+  clickable relative links.
+
+### 5. Answer asset
 
 One answer asset, `v3-recipe`, with the canonical recipe (short answer: the config in five
 sentences; full answer: the evidence table, the confirmed/inferred/unknown ledger, the environment
@@ -136,6 +156,8 @@ pins, the packaging recipe pointer to t0002, and what a reproduction must hold f
 * `data/v3_train_list_266.txt` — recovered list, or `data/v3_train_list_UNRECOVERED.md` explaining
   what was tried.
 * `data/vm_inventory/` — copied text artifacts plus `inventory.json` (path, size, mtime, sha256).
+* `results/audio_samples/{v3_shipped,v3_per_epoch,elevenlabs_reference}/` (DVC) and
+  `results/listening_guide.md` — see Scope section 4.
 * `results/v3_checkpoint_forensics.md` — table: module, param count, changed-vs-Stage-1 (yes/no,
   relative weight-norm delta), DP prefix present; table: per-epoch sample, `is_likely_noise`,
   `duration_sanity_pass`, `longest_nonsilent_run_s`.

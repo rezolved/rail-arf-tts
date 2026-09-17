@@ -97,6 +97,30 @@ each system and prompt set, as explicit metrics variants. Also report
 `efficiency_training_time_seconds`, `efficiency_inference_time_per_item_seconds`, and
 `efficiency_inference_cost_per_item_usd` (machine hourly price × wall-clock / items).
 
+## Audio for human listening (mandatory)
+
+The human owner listens to every checkpoint's output; automated gates have missed two failure modes
+already (t0013, t0015). Nothing in this task is "done" until the audio below is DVC-tracked
+(`dvc add`, `dvc push` before the PR) and indexed:
+
+* `results/audio_samples/v3_repro/epoch_NN/` — for **every** epoch, including epochs that fail the
+  gate and the epoch that stopped training: the three fixed gate texts, the five v3 sample phrases,
+  and five val96 prompts (seed 42), synthesized through the Kokoro-API bundle of that epoch. Failed
+  epochs are kept on purpose so the owner can hear what the failure sounds like and whether the
+  gate's verdict matches their ear.
+* `results/audio_samples/v3_shipped/` — the same thirteen texts through the shipped v3 bundle, same
+  session, same code path (reuse t0016's if identical; re-synthesize otherwise).
+* `results/audio_samples/base_v3_voicepack/` — the same thirteen texts through base Kokoro + v3
+  voicepack, so the owner can hear what Stage 2 adds.
+* `results/audio_samples/elevenlabs_reference/` — the original ElevenLabs clips for those texts
+  where they exist.
+* `results/audio_samples/harness/<system>/` — all 196 harness clips per system, as t0008 did with
+  `synth_audio.dvc`.
+* `results/listening_guide.md` — table per text: ElevenLabs, shipped v3, base + voicepack, then one
+  column per epoch of the repro, each cell a clickable relative link plus the gate verdict and the
+  per-clip `speaker_sim`. Mark the selected best epoch. Add a short "what to listen for" line per
+  text (duration, breaks between phrases, hiss, timbre match).
+
 ## Pre-registered success criteria
 
 Reproduction **succeeds** if all hold for `kokoro_v3_repro_best`:
@@ -131,8 +155,8 @@ null (Lesson 3).
 * `assets/model/kokoro-v3-repro-best/` — Kokoro-API bundle (five-module `.pth` + voicepack, DVC),
   the exact config used, `launch_info.json`, environment pins.
 * `data/run_v3_repro/` — `metrics.jsonl`, per-epoch gate verdicts `epoch_gates.json`, config copy.
-* `results/audio_samples/{v3_repro,v3_shipped}/` — the eight texts per epoch for the repro, the same
-  texts for the shipped bundle (DVC).
+* `results/audio_samples/{v3_repro/epoch_NN,v3_shipped,base_v3_voicepack,elevenlabs_reference,harness}/`
+  (DVC) and `results/listening_guide.md` — see "Audio for human listening".
 * `results/per_clip_metrics.json`, `results/metrics.json` (variants: three systems × two prompt
   sets), `results/costs.json`, `results/remote_machines_used.json`.
 * Charts in `results/images/`, embedded in `results_detailed.md`:

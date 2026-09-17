@@ -70,6 +70,24 @@ that is stated in the table caption and the unfiltered mean is shown alongside.
 Rejection: any system with `successful_prompts / total_prompts < 0.8` on a prompt set has null
 metrics for that set (Lesson 3).
 
+## Audio for human listening (mandatory)
+
+The point of this task is for the owner to hear what each system does with David's voice, not only
+to read a number. DVC-track (`dvc add`, `dvc push` before the PR) and index:
+
+* `results/audio_samples/harness/<system>_<condition>/` — all 196 synthesized clips for every
+  variant, as t0008 did with `synth_audio.dvc`. Nothing is discarded, including gate-failing clips.
+* `results/audio_samples/comparison_set/` — a fixed side-by-side set: the three gate texts plus
+  seven val96 prompts (seed 42, the same ten texts for every system), with the ElevenLabs original
+  and the v3 bundle output for each, named `<text_id>__<system>_<condition>.wav` so one folder sorts
+  by text.
+* `results/audio_samples/references/` — the exact `ref_single` and `ref_concat` clips fed to the
+  cloning models.
+* `results/listening_guide.md` — one row per comparison text, one column per system/condition plus
+  ElevenLabs and v3, each cell a clickable relative link with the per-clip `speaker_sim`, WER, and
+  gate verdict; a "what to listen for" line per row (timbre match, accent drift, brand-name
+  pronunciation, artifacts).
+
 ## Key Questions
 
 1. What is the highest fillers and val96 `speaker_sim` any zero-shot system reaches on David, and
@@ -94,8 +112,8 @@ metrics for that set (Lesson 3).
   `speaker_sim`, `ttfb_ms`, `rtf`, plus WER, duration ratio, gate-failure count, and
   `efficiency_inference_time_per_item_seconds`, `efficiency_inference_cost_per_item_usd` (machine
   hourly price × wall-clock / clips).
-* `results/audio_samples/<system>_<condition>/` — the three fixed gate texts per variant plus five
-  random val96 clips (seed 42), DVC-tracked, so a human can listen.
+* `results/audio_samples/{harness,comparison_set,references}/` (DVC) and
+  `results/listening_guide.md` — see "Audio for human listening".
 * Charts in `results/images/`, embedded in `results_detailed.md`: `speaker_sim_by_system.png`
   (grouped bars, fillers vs val96, with horizontal lines at the ElevenLabs ceiling and the v3 score;
   Q1, Q2), `ttfb_vs_speaker_sim.png` (scatter, one point per variant, x: TTFB p50 ms with a vertical
