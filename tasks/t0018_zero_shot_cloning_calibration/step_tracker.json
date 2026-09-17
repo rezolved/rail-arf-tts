@@ -187,14 +187,15 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write suggestions.json, including a proposed restated success criterion and a possible production-integration follow-up task.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T20:01:22Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T20:08:46Z",
       "log_file": "logs/steps/014_suggestions/",
-      "current_owner": "step-executor/suggestions",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T20:01:22Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T21:01:22Z"
+      "expected_completion_at": "2026-09-17T21:01:22Z",
+      "actual_duration_seconds": 444
     },
     {
       "step": 15,
