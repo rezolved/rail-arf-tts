@@ -130,6 +130,29 @@ repo modification, no intervention file needed. 55 MB of new audio samples were 
 items are `done` except REQ-6, which is correctly `n/a` (the REQ-7 negative-result path was taken
 instead, per the pre-registered Rejection Criteria — no partial fix was reported as a pass).
 
+### Step 11 — creative-thinking
+
+Wrote `logs/steps/011_creative-thinking/step_log.md` (verificator: 0 errors, 0 warnings; no results/
+code/plan files touched, read-only analysis step). Five grounded findings for the `results`/
+`suggestions` steps to draw on: (1) a concrete, cheap, forward-pass-only cross-checkpoint
+module-swap ablation (v11's `predictor` + control's `predictor_encoder`) that would directly test,
+not just infer, the `predictor_encoder` deepcopy-init hypothesis before any GPU retrain is funded;
+(2) the `dur_loss` plateau ratio (0.53-0.62 / 0.034 ≈ 15.6x-18.2x) is suspiciously close to the
+observed audio-blowup ratio (8.6x-17.9x) — worth a 10-minute check of David's forced-alignment/
+duration-target frame-rate pipeline before assuming the fix is purely `predictor_encoder`
+re-initialization; (3) cross-referencing the smoke test (`smoke_test.timing.json`, identical
+inference params to `param_sweep.json`'s `baseline_default`) against the 10 characterization records
+shows `duration_ratio` may track phoneme density (`tokens_per_word`) rather than word count — the
+two lowest-density texts (smoke test 4.25, char idx7 6.9) gave the two lowest ratios (5.26, 8.61) —
+a covariate the original word-count-bucket analysis in `results/duration_blowup_diagnosis.md`
+Section 2 did not test, and directly relevant to voice-commerce filler text containing digits/SKUs/
+brand names; (4) the hardened gate's `duration_sanity_pass` is upper-bound-only — an
+under-synthesis/truncation regression (a different failure class than anything found in this task)
+would currently pass both the old and hardened gate undetected; (5) ASR-round-trip and duration/
+silence-gap checks catch disjoint failure classes (content-correctness vs. structural-plausibility),
+so a future third gate layer should pair ASR-round-trip with a symmetric (both-sided) duration
+check, not treat either as a superset of the other.
+
 * * *
 
 ## Cross-Step Decisions
@@ -165,29 +188,6 @@ instead, per the pre-registered Rejection Criteria — no partial fix was report
   `v11_best.wav` while leaving the original `is_likely_noise` signal and the v10 known-broken
   fixture's verdict unchanged — this is the blind-spot closure the task exists to prove, and
   downstream steps can cite `results/gate_regression.json` directly rather than re-deriving it.
-
-### Step 11 — creative-thinking
-
-Wrote `logs/steps/011_creative-thinking/step_log.md` (verificator: 0 errors, 0 warnings; no results/
-code/plan files touched, read-only analysis step). Five grounded findings for the `results`/
-`suggestions` steps to draw on: (1) a concrete, cheap, forward-pass-only cross-checkpoint
-module-swap ablation (v11's `predictor` + control's `predictor_encoder`) that would directly test,
-not just infer, the `predictor_encoder` deepcopy-init hypothesis before any GPU retrain is funded;
-(2) the `dur_loss` plateau ratio (0.53-0.62 / 0.034 ≈ 15.6x-18.2x) is suspiciously close to the
-observed audio-blowup ratio (8.6x-17.9x) — worth a 10-minute check of David's forced-alignment/
-duration-target frame-rate pipeline before assuming the fix is purely `predictor_encoder`
-re-initialization; (3) cross-referencing the smoke test (`smoke_test.timing.json`, identical
-inference params to `param_sweep.json`'s `baseline_default`) against the 10 characterization records
-shows `duration_ratio` may track phoneme density (`tokens_per_word`) rather than word count — the
-two lowest-density texts (smoke test 4.25, char idx7 6.9) gave the two lowest ratios (5.26, 8.61) —
-a covariate the original word-count-bucket analysis in `results/duration_blowup_diagnosis.md`
-Section 2 did not test, and directly relevant to voice-commerce filler text containing digits/SKUs/
-brand names; (4) the hardened gate's `duration_sanity_pass` is upper-bound-only — an
-under-synthesis/truncation regression (a different failure class than anything found in this task)
-would currently pass both the old and hardened gate undetected; (5) ASR-round-trip and duration/
-silence-gap checks catch disjoint failure classes (content-correctness vs. structural-plausibility),
-so a future third gate layer should pair ASR-round-trip with a symmetric (both-sided) duration
-check, not treat either as a superset of the other.
 
 * * *
 
