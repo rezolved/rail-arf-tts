@@ -5,14 +5,15 @@
       "step": 1,
       "name": "create-branch",
       "description": "Create task/t0016_v3_recipe_recovery branch from main.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T13:46:32Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T13:47:49Z",
       "log_file": "logs/steps/001_create-branch/",
-      "current_owner": "step-executor/create-branch",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T13:46:32Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T14:46:32Z"
+      "expected_completion_at": "2026-09-17T14:46:32Z",
+      "actual_duration_seconds": 77
     },
     {
       "step": 2,
