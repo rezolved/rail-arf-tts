@@ -189,14 +189,15 @@
       "step": 15,
       "name": "reporting",
       "description": "Final reporting, session capture, and verification pass.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T16:24:48Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T16:28:29Z",
       "log_file": "logs/steps/015_reporting/",
-      "current_owner": "step-executor/reporting",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T16:24:48Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T17:24:48Z"
+      "expected_completion_at": "2026-09-17T17:24:48Z",
+      "actual_duration_seconds": 221
     }
   ],
   "spec_version": "7"
