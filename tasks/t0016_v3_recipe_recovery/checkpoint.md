@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T13:59:30Z"
-completed_steps: 8
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-17T14:20:00Z"
+completed_steps: 9
+next_step_number: 8
+next_step_id: "setup-machines"
 ---
 # Task Objective
 
@@ -71,20 +71,37 @@ called for.
 Skipped, per `step_tracker.json`: this task reconstructs an internal training recipe from artifacts;
 it does not produce results comparable to published external baselines.
 
+### Step 7 — planning
+
+Wrote `plan/plan.md` (17 `REQ-*` items, 6 milestones, 20 numbered steps; verificator PASSED, 0
+errors/0 warnings). The plan schedules: bounded VM inspection with a hard 90-minute wall-clock timer
+and unconditional teardown step regardless of progress; checkpoint forensics generalizing `t0015`'s
+`predictor_tensor_forensics.py` to all five v3 bundle modules to compute weight-norm deltas and
+resolve the `multispeaker` three-way contradiction via module presence/shape (not source
+preference); per-epoch sample gating with `t0015`'s `audio_quality_check.py`; the annotated
+`data/config_david_v3_reconstructed.yml` with confirmed/inferred/unknown provenance on every line;
+the mandatory human-listenable audio set (`v3_shipped`, `v3_per_epoch`, `elevenlabs_reference`,
+`listening_guide.md`); the `v3_module_weight_delta.png` chart; and the `v3-recipe` answer asset.
+Cost itemized at ~$21 VM + $0 local/API against the task's $30 cap. Caveat for downstream: while
+planning, a live `dvc pull` against the v3 reference checkpoint failed with a transient Azure
+`DefaultAzureCredential` auth error (cross-checked against `t0015`'s command logs as a known,
+retry-resolvable failure) — the plan's Step 1 and Step 13 both build in bounded retry-with-backoff
+for `dvc pull`/`dvc push` rather than treating one failure as a hard blocker.
+
 * * *
 
 ## Cross-Step Decisions
+
+* Planning (step 7) fixed the VM inspection budget at a hard 90-minute wall-clock cap with an
+  unconditional teardown step (Step 7 of the plan) — this overrides "keep investigating" instincts
+  if the cap is hit before all VM evidence sources are covered.
 
 * * *
 
 ## Next Step Notes
 
-`research/research_code.md` is complete and verified (13 tasks cited, 2 libraries documented, 0
-errors/0 warnings). Proceed to step 7, `planning`: design the bounded VM inspection (90-minute / $21
-cap on `LLM-T1-NC80`), checkpoint/sample forensics, config reconstruction, audio packaging, and
-answer-asset plan under the task's $30 total budget. Reuse
-`t0015/code/predictor_tensor_forensics.py` and `t0015/code/audio_quality_check.py` (copy into this
-task's `code/`), `t0006`'s `config_david_v6c_stage2.yml` as the reconstruction template, and
-`t0002`'s packaging pointer. The plan must explicitly schedule resolution of the `multispeaker`
-true/false contradiction via checkpoint-shape forensics (module presence/shape check), not source
-preference.
+`plan/plan.md` is complete and verified (0 errors/0 warnings). Proceed to step 8, `setup-machines`:
+provision `LLM-T1-NC80` via `/setup-remote-machine` for the read-only, 90-minute-capped VM inventory
+described in `plan/plan.md` Milestone 1 (Steps 1-7). Remember the task's hard caps: $30 total, $21 /
+90 minutes of VM time. `dvc pull` may need a retry if it hits the transient `DefaultAzureCredential`
+auth failure documented above.

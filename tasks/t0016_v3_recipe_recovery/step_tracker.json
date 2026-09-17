@@ -79,10 +79,14 @@
       "step": 7,
       "name": "planning",
       "description": "Design the bounded VM inspection, checkpoint/sample forensics, config reconstruction, audio packaging, and answer-asset plan with cost estimate under the $30 / 90-VM-minute cap.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T14:01:38Z",
       "completed_at": null,
-      "log_file": "logs/steps/007_planning/"
+      "log_file": "logs/steps/007_planning/",
+      "current_owner": "step-executor/planning",
+      "last_heartbeat_at": "2026-09-17T14:01:38Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T15:01:38Z"
     },
     {
       "step": 8,
