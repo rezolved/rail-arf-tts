@@ -1,0 +1,10 @@
+{
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "checked_at": "2026-09-17T13:49:21Z",
+  "result": "passed",
+  "dependencies": [
+    {"task_id": "t0008_tts_eval_harness_baselines", "status": "completed", "satisfied": true}
+  ],
+  "errors": 0,
+  "warnings": 0
+}
