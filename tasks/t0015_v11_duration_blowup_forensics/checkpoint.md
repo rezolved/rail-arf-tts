@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T07:56:30Z"
-completed_steps: 8
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-17T08:10:00Z"
+completed_steps: 9
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -66,18 +66,39 @@ tear down.
 Skipped: this task produces internal forensic evidence about this project's own checkpoint and code,
 not quantitative results comparable to a published baseline.
 
+### Step 6 — research-code
+
+Wrote `research/research_code.md` (verificator: 0 errors, 0 warnings) documenting the reusable
+inference/diagnostic code and hard evidence on the predictor-gradient question. Key finding: t0014's
+`train_second_v11.py` shows `predictor`/`predictor_encoder` DID receive unconditional
+`optimizer.step()` calls for all 50 epochs (lines 733-734), refuting the "rode along frozen"
+hypothesis — but `data/run_v11/metrics.jsonl` shows `dur_loss` plateaued at 0.53-0.62 the entire run
+versus t0009's reference run converging to 0.034, pointing instead at a predictor-calibration
+failure. Also identified the exact instrumentation point in `infer_styletts2.py`'s `synthesize()`
+(t0014, lines 282-371) for logging `pred_dur`/`pred_aln_trg`, plus reusable diagnostic scripts
+(`inspect_checkpoint.py`, `random_decoder_probe.py`, `build_reference_concat.py`) and varied-text
+prompt sets from t0008, all labeled "copy into task" (no library registration). Since this was the
+only research step executed, also ran `/research-summarize` to produce
+`research/research_summary.md` for downstream subagents.
+
 * * *
 
 ## Cross-Step Decisions
+
+* The v11 duration blowup is NOT caused by frozen predictor/predictor_encoder modules during t0014's
+  finetune — gradients were applied every epoch. The leading hypothesis going into planning is a
+  duration-predictor calibration failure evidenced by the stalled `dur_loss` (0.53-0.62 vs. a 0.034
+  reference), which should steer the planning step's localization approach toward `pred_dur`/frame
+  ratio instrumentation rather than a plumbing/freeze-bug search.
 
 * * *
 
 ## Next Step Notes
 
-Step 3 (`init-folders`) completed: task folder structure and aggregator cache are ready. Steps 4-5
-(research-papers, research-internet) and step 8 (setup-machines) plus step 10 (teardown) and step 13
-(compare-literature) are already marked skipped in `step_tracker.json`. Proceed to step 6
-(`research-code`) — review t0013's `infer_styletts2.py` and `audio_quality_check.py` and t0014's
-training config/logs (`ignore_modules`, Stage 2 epoch logs) to understand the reusable inference
-recipe and whether `predictor`/`predictor_encoder` received gradient updates during t0014's
-finetune.
+Step 6 (`research-code`) completed: `research/research_code.md` and `research/research_summary.md`
+are ready, verificator passed. Proceed to step 7 (`planning`). The plan should center the
+localization step on `pred_dur`/`pred_aln_trg` instrumentation (exact insertion point identified in
+`infer_styletts2.py`'s `synthesize()`, t0014 code, lines 282-371) and should treat the stalled
+`dur_loss` (0.53-0.62 plateau vs. t0009's 0.034 reference) as the primary root-cause lead, not a
+frozen-module bug. Reuse the diagnostic scripts and varied-text prompt sets cataloged in
+`research/research_code.md`'s Reusable Code and Assets section (all "copy into task").
