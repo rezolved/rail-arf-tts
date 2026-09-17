@@ -103,14 +103,15 @@
       "step": 8,
       "name": "setup-machines",
       "description": "Provision LLM-T1-NC80 (H100), install model dependencies, arm the idle watchdog before the first model download.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T14:50:54Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T17:25:02Z",
       "log_file": "logs/steps/008_setup-machines/",
-      "current_owner": "step-executor/setup-machines",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T17:17:31Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-17T16:20:54Z"
+      "expected_completion_at": "2026-09-17T16:20:54Z",
+      "actual_duration_seconds": 9248
     },
     {
       "step": 9,
