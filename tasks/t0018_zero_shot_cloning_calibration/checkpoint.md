@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T19:26:00Z"
-completed_steps: 9
-next_step_number: 10
-next_step_id: "teardown"
+updated_at: "2026-09-17T19:34:20Z"
+completed_steps: 10
+next_step_number: 11
+next_step_id: "creative-thinking"
 ---
 # Task Objective
 
@@ -118,6 +118,22 @@ caught and the step-executor then fixed with a self-terminating background heart
 remainder of the wait — future long GPU-bound steps should set this up proactively rather than
 reactively.
 
+### Step 10 — teardown
+
+Confirmed no live job remained on `LLM-T1-NC80` after implementation (SSH `tmux has-session` →
+`DONE`), then ran the `/setup-remote-machine` Teardown Protocol via a dedicated subagent:
+`azure_ml_vm teardown` released the task's lock and deallocated the VM (`deallocated: true`,
+`other_locks_present: false`), updating `machine_log.json` with
+`destroyed_at: "2026-09-17T19:31:35Z"`, `total_duration_hours: 4.173`, `total_cost_usd: 58.25`.
+Wrote `results/remote_machines_used.json` and `results/costs.json` (both new — the `results` step
+had not yet run) with the final `$58.25` line item. `verify_machines_destroyed` passed 0 errors/3
+expected warnings (legacy `spec_version`, sandboxed-API-unreachable, no `checkpoint_path` on a
+non-training job). Independently re-verified via a direct `az ml compute show --name LLM-T1-NC80`
+call from this session (not just trusting the subagent): `state: "Stopped"`, last operation `Stop`
+succeeded at `2026-09-17T19:31:32Z` — matches `machine_log.json` to within 3 seconds. Total task GPU
+spend is final at **$58.25** of the $70 hard cap (~$11.75 unused headroom); no further GPU work will
+occur in this task.
+
 * * *
 
 ## Cross-Step Decisions
@@ -207,25 +223,23 @@ reactively.
 
 ## Next Step Notes
 
-Proceed to step 10 (`teardown`) per `step_tracker.json`. All GPU-bound work is complete — no further
-synthesis, scoring, or model loading is needed on `LLM-T1-NC80`. Total GPU spend so far (shared
-billing anchor `2026-09-17T15:21:13Z` across setup-machines + implementation) is **~$56.15 of the
-$70 hard cap**, leaving **~$13.85** headroom; teardown should complete quickly (stop/deallocate
-only) and stay well within that. Run the `/setup-remote-machine` Teardown Protocol: confirm no
-`in_progress` step remains, call
-`azure_ml_vm.teardown(task_id="t0018_zero_shot_cloning_calibration", deallocate=True)`, verify
-`az ml compute show --name LLM-T1-NC80 ... --query provisioningState` reports stopped, and update
-`machine_log.json` / `results/remote_machines_used.json` / `results/costs.json` per the skill (note
-`results/costs.json` is the orchestrator's `results` step's file — teardown should feed it accurate
-final numbers, not write it directly, per the per-step spec table). Three named systems were
-attempted: Chatterbox (both conditions succeeded fully), CosyVoice2 (`ref_single` succeeded,
-`ref_concat` hard-failed on a genuine 30s system limit), and F5-TTS (null — indefinite hang in model
-loading, three attempts, see `intervention/f5_tts_smoke_gate_failed.md`). `kokoro_v3_bundle` was not
-re-measured this session (same hang signature) and falls back to t0008's stored `speaker_sim`
-numbers. All of this is carried in `results/tables.json`'s `notes` array and the answer asset
-(`assets/answer/zero-shot-speaker-sim-ceiling/`, verificator `PASSED`) — the `results` step (step
-12\) should read `results/tables.json` and `intervention/*.md` directly rather than re-deriving
-conclusions, and `suggestions.json` should consider recommending a follow-up investigation into the
-`LLM-T1-NC80` pool's intermittent model-load hangs (implicated in both the F5-TTS and
-`kokoro_v3_bundle` failures) before relying on this VM pool for future multi-model TTS benchmark
-tasks.
+Proceed to step 11 (`creative-thinking`) per `step_tracker.json`. `LLM-T1-NC80` is fully torn down
+and confirmed `Stopped` (both via the teardown subagent's `verify_machines_destroyed` pass and this
+step-executor's independent `az ml compute show` call) — no further GPU work or spend will occur in
+this task. Final total GPU spend: **$58.25 of the $70 hard cap** (~$11.75 unused headroom), recorded
+in `machine_log.json`, `results/remote_machines_used.json`, and `results/costs.json`. No
+live-machine concerns remain for the rest of the task's steps (`creative-thinking`, `results`,
+`suggestions`, `reporting`).
+
+Three named systems were attempted: Chatterbox (both conditions succeeded fully), CosyVoice2
+(`ref_single` succeeded, `ref_concat` hard-failed on a genuine 30s system limit), and F5-TTS (null —
+indefinite hang in model loading, three attempts, see `intervention/f5_tts_smoke_gate_failed.md`).
+`kokoro_v3_bundle` was not re-measured this session (same hang signature) and falls back to t0008's
+stored `speaker_sim` numbers. All of this is carried in `results/tables.json`'s `notes` array and
+the answer asset (`assets/answer/zero-shot-speaker-sim-ceiling/`, verificator `PASSED`) — the
+`results` step (step 12) should read `results/tables.json` and `intervention/*.md` directly rather
+than re-deriving conclusions, and merge the teardown-authored `results/costs.json`/
+`results/remote_machines_used.json` into its own writeup rather than overwriting them wholesale.
+`suggestions.json` should consider recommending a follow-up investigation into the `LLM-T1-NC80`
+pool's intermittent model-load hangs (implicated in both the F5-TTS and `kokoro_v3_bundle` failures)
+before relying on this VM pool for future multi-model TTS benchmark tasks.

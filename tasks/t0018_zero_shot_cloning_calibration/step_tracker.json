@@ -131,10 +131,14 @@
       "step": 10,
       "name": "teardown",
       "description": "Deallocate LLM-T1-NC80 and confirm no idle billing after synthesis completes.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T19:29:36Z",
       "completed_at": null,
-      "log_file": "logs/steps/010_teardown/"
+      "log_file": "logs/steps/010_teardown/",
+      "current_owner": "step-executor/teardown",
+      "last_heartbeat_at": "2026-09-17T19:29:36Z",
+      "heartbeat_interval_seconds": 300,
+      "expected_completion_at": "2026-09-17T19:59:36Z"
     },
     {
       "step": 11,
