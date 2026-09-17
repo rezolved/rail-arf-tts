@@ -1,0 +1,44 @@
+[
+  {
+    "timestamp_utc": "2026-09-17T18:02:51.608220+00:00",
+    "elapsed_hours_since_billing_anchor": 2.6941,
+    "estimated_cost_usd": 37.61,
+    "milestone": "reference audio + elevenlabs baseline done; model downloads in progress",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-17T18:20:12.521274+00:00",
+    "elapsed_hours_since_billing_anchor": 2.9832,
+    "estimated_cost_usd": 41.65,
+    "milestone": "F5-TTS null (REQ-7 timeout); chatterbox smoke PASS; cosyvoice2 bug fixed, full runs launched for both",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-17T18:34:11.285258+00:00",
+    "elapsed_hours_since_billing_anchor": 3.2162,
+    "estimated_cost_usd": 44.9,
+    "milestone": "chatterbox FULL DONE both conditions (392/392, 100% success); cosyvoice2 ref_single in progress; kokoro_v3_bundle full run launched",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-17T18:39:37.114339+00:00",
+    "elapsed_hours_since_billing_anchor": 3.3067,
+    "estimated_cost_usd": 46.16,
+    "milestone": "GPU-bound synthesis phase COMPLETE: chatterbox both conditions 100pct success; cosyvoice2 ref_single 100pct success, ref_concat 0pct (hard 30s limit exceeded by clip, REQ-6 null); f5_tts null (REQ-7 hang); kokoro_v3_bundle not re-measured (hang), using t0008 stored numbers. Moving to CPU-only scoring/reporting.",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-17T19:21:09.464783+00:00",
+    "elapsed_hours_since_billing_anchor": 3.999,
+    "estimated_cost_usd": 55.83,
+    "milestone": "Implementation complete: all Steps 1-18 done. DVC push confirmed in sync. Returning control to step-executor (teardown is a separate orchestrator step, not run by this implementation step).",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-17T19:22:32.701298+00:00",
+    "elapsed_hours_since_billing_anchor": 4.0221,
+    "estimated_cost_usd": 56.15,
+    "milestone": "FINAL: implementation subagent returning control now. Total spend ~$56.12 of $70 hard cap. Teardown (Step 19) is out of scope for this step per instructions.",
+    "note": ""
+  }
+]

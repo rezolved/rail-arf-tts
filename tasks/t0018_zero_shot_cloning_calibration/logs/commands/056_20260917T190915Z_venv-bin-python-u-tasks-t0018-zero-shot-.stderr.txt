@@ -1,0 +1,3 @@
+2026-09-17 19:09:15,812 INFO __main__ Loaded 980 records
+2026-09-17 19:09:30,273 INFO __main__ Updated per_clip_metrics.json with hardened_gate_pass
+2026-09-17 19:09:30,274 INFO __main__ Saved gate_failures.json -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/gate_failures.json (8 variants)

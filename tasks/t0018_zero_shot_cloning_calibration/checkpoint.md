@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T17:26:00Z"
-completed_steps: 8
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-17T19:26:00Z"
+completed_steps: 9
+next_step_number: 10
+next_step_id: "teardown"
 ---
 # Task Objective
 
@@ -99,6 +99,25 @@ written with `watchdog_active: true`. Caveat: environment prep took ~2h wall clo
 plan's 0.5h line) due to uncached large wheel downloads — watch cumulative GPU spend closely in
 `implementation`.
 
+### Step 9 — implementation
+
+Executed plan Steps 1-18 via a dedicated `/implementation` subagent. Chatterbox completed both
+reference conditions at 100% success (392/392 clips); CosyVoice2 completed `ref_single` at 100%
+success but `ref_concat` hard-failed at 0/196 (CosyVoice2 rejects reference audio over 30s, and this
+task's `ref_concat` clip is 30.57s — a genuine system limit, not a bug); F5-TTS was null for all
+variants and `kokoro_v3_bundle` was not re-measured, both due to an identical indefinite-hang
+failure signature during model loading on this VM session (documented in
+`intervention/f5_tts_smoke_gate_failed.md` and `intervention/kokoro_v3_bundle_not_remeasured.md`).
+Total GPU spend (shared billing anchor with setup-machines) reached ~$56.15 of the $70 hard cap —
+under the cap, no scope was cut for budget reasons. Key output: `results/metrics.json`,
+`results/tables.json`, `results/per_clip_metrics.json` (980 rows), 4 required charts, the DVC-pushed
+audio sets, and the answer asset `assets/answer/zero-shot-speaker-sim-ceiling/` (verificator
+`PASSED`). Caveat: the step-executor's own turn ended once mid-run without an active
+heartbeat-refresh mechanism, tripping a (false-alarm) `ST-E007` liveness alert that the coordinator
+caught and the step-executor then fixed with a self-terminating background heartbeat loop for the
+remainder of the wait — future long GPU-bound steps should set this up proactively rather than
+reactively.
+
 * * *
 
 ## Cross-Step Decisions
@@ -188,22 +207,25 @@ plan's 0.5h line) due to uncached large wheel downloads — watch cumulative GPU
 
 ## Next Step Notes
 
-Proceed to step 9 (`implementation`) per `step_tracker.json`. The VM (`LLM-T1-NC80`, locked by this
-task) is up with the watchdog armed (PID 5935, 60 min idle threshold) and three ready venvs at
-`/mnt/cache/persist/t0018_zero_shot_cloning_calibration/venvs/{.venv-f5tts,.venv-chatterbox,.venv-cosyvoice2}`
-(each confirmed `torch.cuda.is_available()` and `device_count()==2`; use these venvs' own
-interpreters directly per plan's isolated-venv convention — do not `pip install` into the main `uv`
-project). `data/references/` (Milestone 0, plan Step 3) still needs to be built before Milestone 1's
-smoke gates. Use `HF_HOME=/mnt/cache/persist/t0018_zero_shot_cloning_calibration/hf-cache` for model
-weight downloads — the VM's default `~/.cache/huggingface` symlink is broken (points at an
-unprovisioned ephemeral mount); download weights to `/mnt/cache/persist/pretrained/<system>/` per
-plan Step 4. Budget: base estimate ≈$42-45 GPU wall-clock against the user-authorized $70 hard cap,
-but setup-machines alone burned ~$26-28 of that (environment prep ran ~2h instead of the planned
-0.5h) — watch cumulative spend closely at each milestone boundary and be ready to trim scope (e.g.
-prioritize whichever systems installed cleanly) if the full 3-system x 2-condition x 196-prompt plan
-threatens the cap. When spawning the `implementation` subagent, explicitly state the worktree path
-(`/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration`)
-and branch (`task/t0018_zero_shot_cloning_calibration`) in the spawn prompt — step 7 showed a fresh
-subagent otherwise defaults to the main repo checkout. Per plan's Risks table, run `teardown`
-immediately after GPU-bound work (through plan Step 8) completes, before the CPU-only
-scoring/reporting steps, rather than leaving the VM up for the whole task.
+Proceed to step 10 (`teardown`) per `step_tracker.json`. All GPU-bound work is complete — no further
+synthesis, scoring, or model loading is needed on `LLM-T1-NC80`. Total GPU spend so far (shared
+billing anchor `2026-09-17T15:21:13Z` across setup-machines + implementation) is **~$56.15 of the
+$70 hard cap**, leaving **~$13.85** headroom; teardown should complete quickly (stop/deallocate
+only) and stay well within that. Run the `/setup-remote-machine` Teardown Protocol: confirm no
+`in_progress` step remains, call
+`azure_ml_vm.teardown(task_id="t0018_zero_shot_cloning_calibration", deallocate=True)`, verify
+`az ml compute show --name LLM-T1-NC80 ... --query provisioningState` reports stopped, and update
+`machine_log.json` / `results/remote_machines_used.json` / `results/costs.json` per the skill (note
+`results/costs.json` is the orchestrator's `results` step's file — teardown should feed it accurate
+final numbers, not write it directly, per the per-step spec table). Three named systems were
+attempted: Chatterbox (both conditions succeeded fully), CosyVoice2 (`ref_single` succeeded,
+`ref_concat` hard-failed on a genuine 30s system limit), and F5-TTS (null — indefinite hang in model
+loading, three attempts, see `intervention/f5_tts_smoke_gate_failed.md`). `kokoro_v3_bundle` was not
+re-measured this session (same hang signature) and falls back to t0008's stored `speaker_sim`
+numbers. All of this is carried in `results/tables.json`'s `notes` array and the answer asset
+(`assets/answer/zero-shot-speaker-sim-ceiling/`, verificator `PASSED`) — the `results` step (step
+12\) should read `results/tables.json` and `intervention/*.md` directly rather than re-deriving
+conclusions, and `suggestions.json` should consider recommending a follow-up investigation into the
+`LLM-T1-NC80` pool's intermittent model-load hangs (implicated in both the F5-TTS and
+`kokoro_v3_bundle` failures) before relying on this VM pool for future multi-model TTS benchmark
+tasks.

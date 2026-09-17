@@ -117,10 +117,14 @@
       "step": 9,
       "name": "implementation",
       "description": "Run smoke gate, warmup, and measured synthesis for F5-TTS, CosyVoice 2, and Chatterbox (ref_single/ref_concat) plus the ElevenLabs and v3 baselines through the t0008 harness; collect per-clip metrics and audio samples.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T17:27:59Z",
       "completed_at": null,
-      "log_file": "logs/steps/009_implementation/"
+      "log_file": "logs/steps/009_implementation/",
+      "current_owner": "step-executor/implementation",
+      "last_heartbeat_at": "2026-09-17T19:25:27Z",
+      "heartbeat_interval_seconds": 300,
+      "expected_completion_at": "2026-09-17T21:27:59Z"
     },
     {
       "step": 10,

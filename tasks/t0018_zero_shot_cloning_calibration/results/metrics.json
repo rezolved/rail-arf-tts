@@ -1,0 +1,168 @@
+{
+  "variants": [
+    {
+      "variant_id": "cosyvoice2_ref_single_val96",
+      "label": "cosyvoice2 / ref_single / val96",
+      "dimensions": {
+        "system": "cosyvoice2",
+        "condition": "ref_single",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.8627852474649748,
+        "ttfb_ms": 2859.2522075005036,
+        "rtf": 0.4787696104731494
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_ref_single_fillers",
+      "label": "cosyvoice2 / ref_single / fillers",
+      "dimensions": {
+        "system": "cosyvoice2",
+        "condition": "ref_single",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.8420862078666687,
+        "ttfb_ms": 1617.0282700004464,
+        "rtf": 0.40503611136700973
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_ref_concat_val96",
+      "label": "cosyvoice2 / ref_concat / val96",
+      "dimensions": {
+        "system": "cosyvoice2",
+        "condition": "ref_concat",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_ref_concat_fillers",
+      "label": "cosyvoice2 / ref_concat / fillers",
+      "dimensions": {
+        "system": "cosyvoice2",
+        "condition": "ref_concat",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": null,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "chatterbox_ref_single_val96",
+      "label": "chatterbox / ref_single / val96",
+      "dimensions": {
+        "system": "chatterbox",
+        "condition": "ref_single",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.8073432354987422,
+        "ttfb_ms": 1438.52208250064,
+        "rtf": 0.5693994036832541
+      }
+    },
+    {
+      "variant_id": "chatterbox_ref_single_fillers",
+      "label": "chatterbox / ref_single / fillers",
+      "dimensions": {
+        "system": "chatterbox",
+        "condition": "ref_single",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.8112275004386902,
+        "ttfb_ms": 1344.3423864991928,
+        "rtf": 0.9343521286593259
+      }
+    },
+    {
+      "variant_id": "chatterbox_ref_concat_val96",
+      "label": "chatterbox / ref_concat / val96",
+      "dimensions": {
+        "system": "chatterbox",
+        "condition": "ref_concat",
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.809679239988327,
+        "ttfb_ms": 1823.2675334993473,
+        "rtf": 0.6344801112662339
+      }
+    },
+    {
+      "variant_id": "chatterbox_ref_concat_fillers",
+      "label": "chatterbox / ref_concat / fillers",
+      "dimensions": {
+        "system": "chatterbox",
+        "condition": "ref_concat",
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.79637620680862,
+        "ttfb_ms": 1480.3725715000837,
+        "rtf": 0.9035350522067789
+      }
+    },
+    {
+      "variant_id": "elevenlabs_david_val96",
+      "label": "elevenlabs_david / val96",
+      "dimensions": {
+        "system": "elevenlabs_david",
+        "condition": null,
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.7923378584285578,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "elevenlabs_david_fillers",
+      "label": "elevenlabs_david / fillers",
+      "dimensions": {
+        "system": "elevenlabs_david",
+        "condition": null,
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.8324875295162201,
+        "ttfb_ms": null,
+        "rtf": null
+      }
+    },
+    {
+      "variant_id": "kokoro_v3_bundle_fillers",
+      "label": "kokoro_v3_bundle / fillers (t0008 stored, not re-measured)",
+      "dimensions": {
+        "system": "kokoro_v3_bundle",
+        "condition": null,
+        "prompt_set": "fillers"
+      },
+      "metrics": {
+        "speaker_sim": 0.631
+      }
+    },
+    {
+      "variant_id": "kokoro_v3_bundle_val96",
+      "label": "kokoro_v3_bundle / val96 (t0008 stored, not re-measured)",
+      "dimensions": {
+        "system": "kokoro_v3_bundle",
+        "condition": null,
+        "prompt_set": "val96"
+      },
+      "metrics": {
+        "speaker_sim": 0.588
+      }
+    }
+  ]
+}

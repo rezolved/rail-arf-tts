@@ -1,0 +1,1 @@
+[2026-09-17T18:02:51.608220+00:00] elapsed=2.694h cost=$37.61 milestone='reference audio + elevenlabs baseline done; model downloads in progress'

@@ -1,0 +1,20 @@
+{
+  "spec_version": "2",
+  "answer_id": "zero-shot-speaker-sim-ceiling",
+  "question": "What speaker_sim and latency envelope is reachable on the David voice by zero-shot cloning, and what does that imply for the Kokoro fine-tuning line?",
+  "short_title": "Zero-shot cloning's speaker_sim/latency ceiling on David",
+  "short_answer_path": "short_answer.md",
+  "full_answer_path": "full_answer.md",
+  "categories": [],
+  "answer_methods": ["code-experiment", "internet"],
+  "source_paper_ids": [],
+  "source_urls": [
+    "https://github.com/SWivid/F5-TTS",
+    "https://huggingface.co/FunAudioLLM/CosyVoice2-0.5B",
+    "https://github.com/resemble-ai/chatterbox"
+  ],
+  "source_task_ids": ["t0008_tts_eval_harness_baselines"],
+  "confidence": "medium",
+  "created_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_created": "2026-09-17"
+}

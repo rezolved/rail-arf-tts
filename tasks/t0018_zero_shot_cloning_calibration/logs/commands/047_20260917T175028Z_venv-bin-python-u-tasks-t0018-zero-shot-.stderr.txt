@@ -1,0 +1,4 @@
+2026-09-17 17:52:32,312 INFO __main__ half-B centroid built from 685/685 clips
+2026-09-17 17:52:32,314 INFO __main__ Saved half-B centroid -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/data/references/half_b_centroid.npy
+2026-09-17 17:52:32,376 INFO __main__ Loaded 196 t0008 elevenlabs_david records
+2026-09-17 17:53:07,700 INFO __main__ Wrote 196 records (196 with speaker_sim) -> tasks/t0018_zero_shot_cloning_calibration/results/per_clip_metrics_elevenlabs_david.json

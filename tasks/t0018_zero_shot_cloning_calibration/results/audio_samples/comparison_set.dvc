@@ -1,0 +1,6 @@
+outs:
+- md5: 471214b5400113da28928987fb505f35.dir
+  size: 13459136
+  nfiles: 28
+  hash: md5
+  path: comparison_set

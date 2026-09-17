@@ -1,0 +1,19 @@
+{
+  "chatterbox": {
+    "system": "chatterbox",
+    "torch_version": "2.6.0+cu124",
+    "torch_cuda_version": "12.4",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA H100 NVL",
+    "package_version": "0.1.7",
+    "model_checkpoint": "ResembleAI/chatterbox"
+  },
+  "cosyvoice2": {
+    "system": "cosyvoice2",
+    "torch_version": "2.3.1+cu121",
+    "torch_cuda_version": "12.1",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA H100 NVL",
+    "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+  }
+}
