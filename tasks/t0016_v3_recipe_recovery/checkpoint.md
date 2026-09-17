@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T16:04:32Z"
-completed_steps: 12
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-17T16:45:00Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -143,11 +143,11 @@ earlier call omitted the billing-anchor flags and recorded a bogus `$0.00`/`0h`;
 recomputed the real figures from Azure's own activity log against the correct billing window
 (`14:34:28.703377Z` → `14:47:56.755481Z`) and wrote `total_duration_hours = 0.2245` (~13.47 min),
 `total_cost_usd = $3.13` into `logs/steps/008_setup-machines/machine_log.json` (also correcting
-`provider` from `"azure-ml"` to the spec-enum `"azure_ml"`), plus new `results/remote_machines_used.json`
-and `results/costs.json`. A `az ml compute show` check found the VM `Running` again at verification
-time — this is `t0018_zero_shot_cloning_calibration`
-legitimately re-acquiring the shared pool VM afterward (confirmed via its live lock file and the
-Azure activity-log timeline), not a failed teardown; no action was taken against it.
+`provider` from `"azure-ml"` to the spec-enum `"azure_ml"`), plus new
+`results/remote_machines_used.json` and `results/costs.json`. A `az ml compute show` check found the
+VM `Running` again at verification time — this is `t0018_zero_shot_cloning_calibration` legitimately
+re-acquiring the shared pool VM afterward (confirmed via its live lock file and the Azure
+activity-log timeline), not a failed teardown; no action was taken against it.
 `verify_machines_destroyed` passed with 0 errors, 2 non-blocking warnings (legacy `spec_version`,
 API-unreachable-from-sandbox), independently confirmed by both the subagent and this step-executor.
 See `logs/steps/010_teardown/step_log.md` for full detail.
@@ -176,56 +176,43 @@ See `logs/steps/010_teardown/step_log.md` for full detail.
   `--billing-started-at`/`--billing-anchor` flags, so its self-reported `$0.00`/`0h` in
   `logs/commands/026_*` is wrong and must not be trusted by any downstream step reading that log —
   the authoritative figures are `total_duration_hours = 0.22445891777777777` and
-  `total_cost_usd = 3.133446492177778`, now recorded in `logs/steps/008_setup-machines/machine_log.json`
-  and `results/costs.json`/`results/remote_machines_used.json`. Step 10 also found `LLM-T1-NC80` back
-  in `Running` state at verification time; this is `t0018_zero_shot_cloning_calibration` legitimately
+  `total_cost_usd = 3.133446492177778`, now recorded in
+  `logs/steps/008_setup-machines/machine_log.json` and
+  `results/costs.json`/`results/remote_machines_used.json`. Step 10 also found `LLM-T1-NC80` back in
+  `Running` state at verification time; this is `t0018_zero_shot_cloning_calibration` legitimately
   re-acquiring the shared pool VM afterward, not a teardown failure — downstream steps should not
   re-open this.
 
 * * *
 
+### Step 12 — results
+
+Wrote `results/results_summary.md` and `results/results_detailed.md` (`spec_version: "2"`) directly
+from the implementation step's already-produced outputs — no new forensics were run. Covered all 17
+`REQ-*` items from `plan/plan.md`'s Task Requirement Checklist in the final
+`## Task Requirement Coverage` section (12 `Done`, 3 `Partial` — REQ-6, REQ-8, REQ-14 — 2 `Not done`
+— REQ-4, REQ-10, genuinely unrecoverable evidence, not a shortfall of effort), embedded and
+described `results/images/v3_module_weight_delta.png`, wrote a 12-item `## Examples` section with
+real fenced code/YAML/diff/JSON blocks (mandatory per
+`meta/task_types/data-analysis/description.json`'s `requires_result_examples: true`), and documented
+two plan-assumption contradictions under `## Analysis`: t0009's confound table is independently
+wrong about `t0006_run03_v6c`'s own `lambda_gen` (claims `1.0`, actual committed value `0.2`), and
+the VM's home directory being *present but from the wrong era* (t0014's later clone) is a distinct,
+arguably worse failure mode than the plan's anticipated "directory gone" risk. `verify_task_metrics`
+and `verify_task_results` both PASSED (0 errors/0 warnings) before and after `flowmark`.
+`results/metrics.json`, `results/costs.json`, and `results/remote_machines_used.json` were verified
+against `checkpoint.md`'s authoritative figures and left unmodified (all already correct). No caveat
+for downstream — all cited facts trace to files already committed by `implementation`/`teardown`.
+
 ## Next Step Notes
 
-Step 10 (`teardown`) is complete. Final, verified VM cost:
-**`total_duration_hours = 0.22445891777777777` (~13.47 min), `total_cost_usd = 3.133446492177778`**
-(~$3.13 of the $21 VM sub-cap, $30 total task cap) — recorded in `results/costs.json`
-(`breakdown.azure-ml-2xh100`) and `results/remote_machines_used.json`. `verify_machines_destroyed`
-passes with 0 errors (2 non-blocking warnings). The `results` step (step 12) should read these two
-files as the authoritative machine-cost source — do not re-derive cost from `logs/commands/026_*`
-(step 9's own teardown call), whose self-reported `$0.00`/`0h` was a flag-omission bug now
-corrected. No further VM work is needed; `LLM-T1-NC80` being `Running` again belongs to
-`t0018_zero_shot_cloning_calibration`, unrelated to this task.
-
-Key findings from implementation, for the `results`/`suggestions`/`reporting` steps downstream:
-`~/kokoro-finetune` on the VM turned out to be a symlink to t0014's own later StyleTTS2 clone, not a
-preserved v3-era environment — no `first_stage_v3.pth`, no v3 launch config, and no 266-clip list
-survived anywhere on the VM or `/mnt/cache/persist` (REQ-4 unrecoverable, documented in
-`data/v3_train_list_UNRECOVERED.md`; REQ-10 byte-identity also unconfirmed). The VM's `models.py`
-DID survive and was the tie-breaker for the `multispeaker` contradiction: checkpoint-shape forensics
-on `net["diffusion"]` plus `models.py:808`'s `build_model()` branch landed on a verdict of
-**`inferred false`** (not `confirmed` — the external diffusion-package class shapes were not fully
-recovered), independently corroborating v6c's uncited inline claim over `best/config.json` and
-t0009's confound table. All five bundle modules (including the decoder) show substantial weight-norm
-shifts Stage 1 → best, ruling out "decoder frozen" as the explanation for v3's speaker_sim gain. A
-secondary finding worth flagging to `suggestions`: cross-checking t0009's confound table against
-v6c's actual committed file caught a factual error in the confound table (`lambda_gen` claimed
-`1.0`, actual v6c value is `0.2`) — the confound table's other "assumed" values should be treated
-with corresponding skepticism. The `v3` audio variant's epoch 6-8 samples are all
-`is_likely_noise=True` while the parallel `v3b` variant (same epochs) is clean, explaining why t0002
-cites `v3b/ep9_p5.wav` specifically. This task's own local re-synthesis of the shipped v3 bundle
-scored `speaker_sim=0.566`, outside the ±0.02 tolerance against t0008's recorded `0.631`/`0.588` —
-investigated and attributed to a documented reference-centroid-building deviation (t0008's own
-`MIN_CLIP_DURATION_S=1.6` pre-filter now rejects nearly the entire current `11labs_david` corpus),
-not treated as a bundle-quality regression; flagged as weak evidence either way in
-`results/v3_checkpoint_forensics.md`.
-
-All expected assets exist and pass verification: the `v3-recipe` answer asset
-(`assets/answer/v3-recipe/`) passes `meta.asset_types.answer.verificator` with 0 errors/0 warnings,
-confidence `"low"` (honestly reflects REQ-4/REQ-6/REQ-8/REQ-10 landing short of "confirmed"/"high").
-REQ-1, REQ-2, REQ-3, REQ-5, REQ-7, REQ-9, REQ-11, REQ-12, REQ-13, REQ-16, REQ-17 are `done`; REQ-6
-and REQ-8 are `partial` (verdict reached but not at the `confirmed` bar); REQ-4 and REQ-10 are
-`blocked` (evidence genuinely does not exist, documented rather than fabricated) — all per the
-task's own Rejection Criteria, which pre-registers an all-`inferred`/`unknown` reconstruction as a
-valid outcome. `code/`, `data/`, and `results/` all pass `ruff check`, `ruff format`, and `mypy`
-with 0 issues. `results/audio_samples/` is DVC-tracked and pushed (`dvc status` clean, no pending
-push). Proceed to step 12, `results`.
+Step 12 (`results`) is complete. `results/results_summary.md` and `results/results_detailed.md`
+exist, pass `verify_task_results` and `verify_task_metrics` with 0 errors/0 warnings, and their
+`## Task Requirement Coverage` section is the authoritative REQ-by-REQ status (12 Done / 3 Partial /
+2 Not done). The `suggestions` step (step 14) should read `data/v3_train_list_UNRECOVERED.md`'s
+"Suggested next step" section (a seed-42 stratified 266-clip resample, disjoint from
+`data/v4/val_list.txt`, as REQ-4's fallback) and `results/v3_checkpoint_forensics.md`'s
+"Multispeaker Resolution" section (a two-arm `multispeaker` ablation, since REQ-6 landed at
+`inferred false`, not `confirmed`) as the two mandatory suggestion seeds per `plan/plan.md`'s
+REQ-14. Do not re-derive metrics, costs, or forensics findings — all authoritative values are
+already in `results/{metrics.json,costs.json,remote_machines_used.json,v3_checkpoint_forensics.md}`.
