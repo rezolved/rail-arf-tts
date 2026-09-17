@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T14:12:04Z"
-completed_steps: 5
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-17T14:35:00Z"
+completed_steps: 6
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -64,6 +64,17 @@ step: `Chen2024-F5TTS` (`10.48550_arXiv.2410.06885`), `Du2024-CosyVoice2`
 queued, not yet dispatched: `Du2024-CosyVoice1`, `Casanova2022-YourTTS`, `Zhang2025-ECAPA` (low
 priority), `ChatterboxFlash2026` (low priority).
 
+### Step 6 — research-code
+
+Reviewed the `tts_eval_harness` library (t0008) plus t0013/t0014/t0015's audible-speech gate lineage
+and `build_reference_concat.py`, and t0010's GPU cost-overrun precedent; wrote
+`research/research_code.md` (5 tasks cited, `status: "complete"`, verificator passed 0
+errors/warnings). In the same step, dispatched and confirmed all 4 remaining queued `/add-paper`
+subagents from step 5 — the paper corpus now holds all 7 discovered papers (11 total, up from 4).
+After all research steps completed, a `/research-summarize` subagent wrote
+`research/research_summary.md` for downstream planning/implementation subagents to read instead of
+the full research files.
+
 * * *
 
 ## Cross-Step Decisions
@@ -81,27 +92,43 @@ priority), `ChatterboxFlash2026` (low priority).
   different metrics (WavLM-based or MOS/preference-%) than this project's GE2E-cosine `speaker_sim`
   and must never be merged/compared directly — extends the same rule already established for CMOS-S
   in `research_papers.md`.
-* **Paper-addition tracking (for `compare-literature`/`reporting` to check)**: 3 of 7 discovered
-  papers landed in the corpus and are committed in this step — `Chen2024-F5TTS`
-  (`10.48550_arXiv.2410.06885`), `Du2024-CosyVoice2` (`10.48550_arXiv.2412.10117`), `Wan2018-GE2E`
-  (`10.1109_ICASSP.2018.8462665`) — confirmed via `aggregate_papers` (now 7 total papers in the
-  corpus, up from 4). 4 papers remain queued and undispatched: `Du2024-CosyVoice1`,
-  `Casanova2022-YourTTS`, `Zhang2025-ECAPA` (low priority), `ChatterboxFlash2026` (low priority). A
-  later step (ideally before `compare-literature`) must dispatch the remaining 4 and verify all 7
-  discovered papers landed in the corpus before `reporting` finalizes.
+* **Paper-addition tracking — RESOLVED in step 6**: all 7 papers discovered in
+  `research/research_internet.md` are now landed in the corpus (11 papers total, up from 4 before
+  this task started); no papers remain queued. Confirmed via
+  `aggregate_papers --format json --detail short`. Final DOI/commit map:
+  * `Chen2024-F5TTS` — `10.48550_arXiv.2410.06885` (landed step 5)
+  * `Du2024-CosyVoice2` — `10.48550_arXiv.2412.10117` (landed step 5)
+  * `Wan2018-GE2E` — `10.1109_ICASSP.2018.8462665` (landed step 5)
+  * `Du2024-CosyVoice1` — `10.48550_arXiv.2407.05407` (landed step 6, commit `0268535`)
+  * `Casanova2022-YourTTS` — `10.48550_arXiv.2112.02418` (landed step 6, commit `a305347`)
+  * `Zhang2025-ECAPA` (dispatch label) — actually **`Kunesova2025`**, "An Exploration of ECAPA-TDNN
+    and x-vector Speaker Representations in Zero-shot Multi-speaker TTS" (Kunešová, Hanzlíček,
+    Matoušek, TSD 2025) — `10.48550_arXiv.2506.20190` (landed step 6, commit `4bb35d8`). The
+    research-internet snippet's authorship guess was wrong; the `/add-paper` subagent re-verified
+    against the actual PDF and corrected the citation key.
+  * `ChatterboxFlash2026` (dispatch label) — actually "Chatterbox-Flash: Prior-Calibrated Block
+    Diffusion for Streaming Zero-Shot TTS" (Seo, Park, Nam, 2026) — `10.48550_arXiv.2605.30748`
+    (landed step 6, commit `a5f7160`). Same situation: snippet authorship was wrong, re-verified and
+    corrected on download.
+  * No paper addition failed; the inline-fallback path in the paper-addition protocol was not
+    needed. `compare-literature` and `reporting` can treat paper coverage as complete — no further
+    dispatch action required.
+* Two independent `/add-paper` subagents flagged that `arf/skills/add-paper/SKILL.md`'s documented
+  verificator module path (`arf.scripts.verificators.verify_paper_asset`) does not exist in this
+  repo; the real module is `meta.asset_types.paper.verificator`. This is a framework documentation
+  bug (out of scope for this task per CLAUDE.md Rule 0) — worth a future `self-improvement` pass.
 
 * * *
 
 ## Next Step Notes
 
-Proceed to step 6 (`research-code`): review the t0008 harness code, t0014 reference-concat approach,
-and t0015 audio quality gate for reuse, per `step_tracker.json`. The first batch of 3 `/add-paper`
-subagents already completed and landed in the corpus (see Cross-Step Decisions). Before
-`compare-literature` (step 13) or `reporting` (step 15), a step-executor must: (1) dispatch the 4
-still-queued `/add-paper` subagents (`Du2024-CosyVoice1`, `Casanova2022-YourTTS`, `Zhang2025-ECAPA`,
-`ChatterboxFlash2026`), (2) confirm via `aggregate_papers` that all 7 discovered papers from
-`research/research_internet.md` landed in the corpus, and (3) if any subagent failed, attempt the
-paper addition inline per the `execute-task` paper-addition protocol.
-`research/research_internet.md` and `research/research_papers.md` should both be read before
-`planning` (step 7) — key recommendations from internet research (license risk flag, TTFB
-reporting-per-capability, ref_concat duration validation) should carry into the plan.
+Proceed to step 7 (`planning`) per `step_tracker.json`. All research is complete and all paper
+additions are fully resolved (see Cross-Step Decisions) — no outstanding `/add-paper` dispatch work
+remains for any later step. The planning subagent should read `research/research_summary.md` first
+(compact digest of all three research files) rather than re-reading the full `research_papers.md`,
+`research_internet.md`, and `research_code.md`. Carry forward into the plan: the F5-TTS CC-BY-NC-4.0
+license-risk flag for Key Question 6, per-capability TTFB reporting (only CosyVoice 2 has genuine
+chunked streaming), the `ref_concat` (~30 s) duration-vs-truncation validation needed before the
+full run, the `tts_eval_harness` adapter contract (`SynthResult`) each new system must match, and
+reuse of t0015's hardened `audio_quality_check.py` plus an adapted version of t0014's
+`build_reference_concat.py` (per `research/research_code.md`'s Reusable Code and Assets section).
