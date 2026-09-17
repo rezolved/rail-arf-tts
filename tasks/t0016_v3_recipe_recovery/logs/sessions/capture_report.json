@@ -1,0 +1,23 @@
+{
+  "spec_version": "1",
+  "task_id": "t0016_v3_recipe_recovery",
+  "captured_at": "2026-09-17T16:26:50Z",
+  "checked_roots": [
+    {
+      "source_kind": "codex",
+      "root_path": "/home/azureuser/.codex/sessions",
+      "exists": false,
+      "candidate_file_count": 0,
+      "matched_file_count": 0
+    },
+    {
+      "source_kind": "claude_code",
+      "root_path": "/home/azureuser/.claude/projects",
+      "exists": true,
+      "candidate_file_count": 361,
+      "matched_file_count": 0
+    }
+  ],
+  "copied_sessions": [],
+  "errors": []
+}

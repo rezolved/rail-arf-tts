@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T16:55:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-17T16:27:09Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -188,6 +188,19 @@ preserved environment" failure mode (`S-0016-05`). `verify_suggestions` PASSED, 
 No caveat for downstream — all five suggestions are `status: "active"` and independently
 verificator-clean.
 
+### Step 15 — reporting
+
+Ran the full reporting verification pass with no new forensics/results/suggestions work.
+`verify_task_folder` initially failed on `FD-E016` (stray gitignored `ctx/` aggregator-cache
+directory left over from step 3); removed the untracked `ctx/` dir and it passed clean. All other
+verificators (`verify_task_file`, `verify_task_dependencies`, `verify_suggestions`,
+`verify_task_metrics`, `verify_task_results`, `verify_logs`, the `v3-recipe` answer asset
+verificator, `verify_machines_destroyed`) passed with 0 errors, only pre-existing/documented
+warnings. `capture_task_sessions` ran and found 0 matching transcripts (recorded in
+`logs/sessions/capture_report.json`), clearing `verify_logs`'s `LG-W007`/`LG-W008`. `task.json` set
+to `status: "completed"`, `end_time: "2026-09-17T16:27:09Z"`. No caveat for downstream — this is the
+final step-executor step.
+
 * * *
 
 ## Cross-Step Decisions
@@ -221,13 +234,14 @@ verificator-clean.
 
 ## Next Step Notes
 
-Step 14 (`suggestions`) is complete. `results/suggestions.json` exists (`spec_version: "2"`, 5
-suggestions, IDs `S-0016-01`..`S-0016-05`) and passes `verify_suggestions` with 0 errors/0 warnings.
-The `reporting` step (step 15) is the final step: read `task_results_specification.md` and
-`logs_specification.md` per the Per-Step Spec Table, run final reporting/session capture per
-`arf/skills/execute-task/SKILL.md`'s Phases for the `reporting` step, and produce
-`logs/sessions/capture_report.json` plus this step's `step_log.md`. Do not re-derive metrics, costs,
-forensics findings, or suggestions — all authoritative values are already in
-`results/{metrics.json,costs.json,remote_machines_used.json,v3_checkpoint_forensics.md,suggestions.json}`.
-This is the last step before the coordinator's own PR/merge phases (Phases 7-9), so the
-step-executor should confirm all prior steps' commits are present and clean before finishing.
+Step 15 (`reporting`) is complete — this was the last step-executor step. All steps 1-15 are
+`completed` or `skipped` in `step_tracker.json`; `task.json` now has `status: "completed"` and
+`end_time: "2026-09-17T16:27:09Z"`. Every reporting-phase verificator passed with 0 errors
+(`verify_task_file`, `verify_task_dependencies`, `verify_suggestions`, `verify_task_metrics`,
+`verify_task_results`, `verify_task_folder`, `verify_logs`, the `v3-recipe` answer asset
+verificator, `verify_machines_destroyed`); remaining warnings are all pre-existing and individually
+documented in earlier Step History entries. `logs/sessions/capture_report.json` exists (0 matched
+transcripts — expected, no local Claude Code/Codex session on this machine matched this task's
+worktree `cwd`). The coordinator should now proceed directly to Phase 7 (push branch, create PR),
+Phase 8 (`verify_task_complete` after merge), and Phase 9 (overview sync on `main`) — no further
+step-executor work is needed for this task.

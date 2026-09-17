@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0016_v3_recipe_recovery",
+  "command": "uv run python -m arf.scripts.verificators.verify_task_file t0016_v3_recipe_recovery",
+  "exit_code": 0,
+  "duration_seconds": 0.242,
+  "started_at": "2026-09-17T16:24:53Z",
+  "completed_at": "2026-09-17T16:24:53Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery",
+  "stdout_file": "056_20260917T162453Z_uv-run-python.stdout.txt",
+  "stderr_file": "056_20260917T162453Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

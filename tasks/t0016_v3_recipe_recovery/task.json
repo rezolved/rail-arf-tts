@@ -5,13 +5,13 @@
   "name": "Recover the v3 training recipe from artifacts (author unavailable)",
   "short_description": "Reconstruct the exact Kokoro v3 Stage 2 recipe (config, data list, patches, epochs, environment) from VM files, DVC artifacts and checkpoint forensics, without access to the original author.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0006_kokoro_v5_stage2_subset",
     "t0009_stage2_training_failure_forensics"
   ],
   "start_time": "2026-09-17T13:46:18Z",
-  "end_time": null,
+  "end_time": "2026-09-17T16:27:09Z",
   "expected_assets": {
     "answer": 1
   },
