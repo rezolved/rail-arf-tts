@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T19:55:00Z"
-completed_steps: 11
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-17T20:05:00Z"
+completed_steps: 12
+next_step_number: 13
+next_step_id: "compare-literature"
 ---
 # Task Objective
 
@@ -152,6 +152,21 @@ self-consistency ceiling is worth reading as a possible GE2E-embedding/"cleaner 
 only as a clean win, pending a human-listening check. No committed data/tables were changed; this is
 a critique layer for steps 12-15 to draw on.
 
+### Step 12 — results
+
+Wrote `results/results_summary.md` and `results/results_detailed.md` (`spec_version: "2"`, 12
+concrete examples, `## Task Requirement Coverage` covering all 18 `REQ-*` items) on top of the
+results data step 9/10 already produced — no data was recomputed. Every quoted number was
+cross-checked against `results/metrics.json`/`results/tables.json` exactly; `verify_task_metrics.py`
+and `verify_task_results.py` both PASSED with 0 errors/0 warnings. Step 11's five hedges (F5-TTS
+attribution uncertainty, provisional success-criterion restatement, CosyVoice2/Chatterbox-only
+licensing viability, the CosyVoice2 `ref_concat` 0.57s-miss framing, and the GE2E
+"cleaner-voice"-artifact caveat) were carried into `## Limitations` verbatim in spirit, not
+presented as more certain than step 11 showed them to be. `## Analysis` documents four
+contradictions between the plan's assumptions and actual results (most notably: only 2 of 3 named
+systems produced data, and `ref_single` could not be built as a literal single ~10s clip since no
+such clip exists in the corpus).
+
 * * *
 
 ## Cross-Step Decisions
@@ -241,35 +256,38 @@ a critique layer for steps 12-15 to draw on.
 
 ## Next Step Notes
 
-Proceed to step 12 (`results`) per `step_tracker.json`. `LLM-T1-NC80` remains fully torn down (no
-live-machine concerns remain for any of the rest of this task's steps: `results`, `suggestions`,
-`reporting`). Final total GPU spend is unchanged and final: **$58.25 of the $70 hard cap** (~$11.75
-unused headroom), recorded in `machine_log.json`, `results/remote_machines_used.json`, and
-`results/costs.json`.
+Proceed to step 13 (`compare-literature`) per `step_tracker.json` (this task's steps do include
+`compare-literature`, unlike some other tasks that skip it — confirm against
+`tasks/t0018_zero_shot_cloning_calibration/step_tracker.json` rather than assuming). `LLM-T1-NC80`
+remains fully torn down (no live-machine concerns remain for any of the rest of this task's steps:
+`compare-literature`, `suggestions`, `reporting`). Final total GPU spend is unchanged and final:
+**$58.25 of the $70 hard cap** (~$11.75 unused headroom), recorded in `machine_log.json`,
+`results/remote_machines_used.json`, and `results/costs.json`.
+
+`results/results_summary.md` and `results/results_detailed.md` are now written and both
+`verify_task_metrics.py`/`verify_task_results.py` pass with 0 errors/0 warnings. The
+`compare-literature` step-executor should compare this task's measured `speaker_sim` numbers
+(CosyVoice2 `ref_single`: 0.863 val96/0.842 fillers; Chatterbox: 0.796-0.811 across conditions)
+against the F5-TTS/CosyVoice2 papers already in the corpus (`Chen2024-F5TTS`, `Du2024-CosyVoice2`,
+landed in steps 5-6) — but must NOT merge their published SIM-o/SS/MOS numbers directly with this
+project's GE2E-cosine `speaker_sim`, since they use different embedding backbones (this rule is
+already established in `research/research_papers.md` and repeated in `results/results_detailed.md`'s
+Limitations and the answer asset).
 
 Three named systems were attempted: Chatterbox (both conditions succeeded fully), CosyVoice2
 (`ref_single` succeeded, `ref_concat` hard-failed on a genuine 30s system limit), and F5-TTS (null —
 indefinite hang in model loading, three attempts, see `intervention/f5_tts_smoke_gate_failed.md`).
 `kokoro_v3_bundle` was not re-measured this session (same hang signature) and falls back to t0008's
-stored `speaker_sim` numbers. All of this is carried in `results/tables.json`'s `notes` array and
-the answer asset (`assets/answer/zero-shot-speaker-sim-ceiling/`, verificator `PASSED`).
+stored `speaker_sim` numbers. All of this is carried in `results/tables.json`'s `notes` array,
+`results/results_detailed.md`, and the answer asset (`assets/answer/zero-shot-speaker-sim-ceiling/`,
+verificator `PASSED`).
 
-Step 11 (`creative-thinking`, `logs/steps/011_creative-thinking/step_log.md`) added a critique layer
-on top of that data — it changed no committed results, but the `results` step-executor should read
-it alongside `results/tables.json` and `intervention/*.md`, and should carry its hedges into
-`results_detailed.md`'s `## Limitations` rather than presenting the answer asset's claims as more
-certain than step 11 shows them to be. Specifically: (a) the F5-TTS/`kokoro_v3_bundle` hang's "VM
-pool" attribution is plausible but not fully diagnosed — a GPU-context-contention confound in one
-attempt and an unchecked stale-HF-lock-file hypothesis remain open, so state the cause as "most
-likely session/VM-level, not conclusively isolated" rather than settled; (b) any success-criterion
-restatement text should be marked provisional (rests on one system/condition/session, F5-TTS
-untested); (c) CosyVoice2/Chatterbox, not F5-TTS, are the only licensing-viable production
-candidates (F5-TTS is CC-BY-NC-4.0) even in a future retry; (d) CosyVoice2's `ref_concat` null was a
-0.57s miss against a hard limit in its own source, not an inherent inability to use long references
-— a targeted low-cost re-run with a <30s clip is the recommended follow-up, not a closed question;
-(e) CosyVoice2 beating the ElevenLabs self-consistency ceiling should carry a one-line caveat that
-this could reflect a GE2E-embedding "cleaner/averaged voice" artifact rather than only superior
-identity fidelity. `suggestions.json` (step 13) should turn step 11's "Recommendations Carried
-Forward" list into concrete suggestion entries, including the `py-spy`/lock-file-first diagnostic
-protocol for future indefinite-hang cases and the per-system (not one-shared-clip)
-reference-duration design for future multi-system TTS benchmark tasks.
+Step 11's five hedges (F5-TTS attribution uncertainty, provisional success-criterion restatement,
+CosyVoice2/Chatterbox-only licensing viability, the CosyVoice2 `ref_concat` 0.57s-miss framing, and
+the GE2E "cleaner-voice"-artifact caveat — see `logs/steps/011_creative-thinking/step_log.md` for
+full detail) are now carried into `results/results_detailed.md`'s `## Limitations`.
+`suggestions.json` (step 14) should still turn step 11's "Recommendations Carried Forward" list into
+concrete suggestion entries, including the `py-spy`/lock-file-first diagnostic protocol for future
+indefinite-hang cases, the per-system (not one-shared-clip) reference-duration design for future
+multi-system TTS benchmark tasks, and a possible low-cost CosyVoice2 `ref_concat` re-run with a <30s
+clip.

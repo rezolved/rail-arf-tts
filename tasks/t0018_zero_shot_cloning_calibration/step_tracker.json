@@ -159,10 +159,14 @@
       "step": 12,
       "name": "results",
       "description": "Write results_summary.md, results_detailed.md, metrics.json, charts, and the listening guide.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T19:42:20Z",
       "completed_at": null,
-      "log_file": "logs/steps/012_results/"
+      "log_file": "logs/steps/012_results/",
+      "current_owner": "step-executor/results",
+      "last_heartbeat_at": "2026-09-17T19:42:20Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T20:42:20Z"
     },
     {
       "step": 13,
