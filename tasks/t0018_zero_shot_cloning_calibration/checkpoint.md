@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T19:34:20Z"
-completed_steps: 10
-next_step_number: 11
-next_step_id: "creative-thinking"
+updated_at: "2026-09-17T19:55:00Z"
+completed_steps: 11
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -134,6 +134,24 @@ succeeded at `2026-09-17T19:31:32Z` — matches `machine_log.json` to within 3 s
 spend is final at **$58.25** of the $70 hard cap (~$11.75 unused headroom); no further GPU work will
 occur in this task.
 
+### Step 11 — creative-thinking
+
+Wrote a five-part critique in `logs/steps/011_creative-thinking/step_log.md` (no dedicated asset for
+this step): (1) the F5-TTS/`kokoro_v3_bundle` hang diagnosis left two cheap, concrete alternative
+explanations unchecked (a GPU-context-contention confound in attempt 3, an untested
+stale-HF-lock-file hypothesis) even though the aggregate two-codebases-same-signature pattern is
+still decent evidence for a session-level cause; (2) the proposed success-criterion restatement
+rests on one system/one condition/one session and should be flagged provisional pending an eventual
+F5-TTS measurement; (3) a production path via zero-shot cloning realistically narrows to
+CosyVoice2/Chatterbox given F5-TTS's CC-BY-NC-4.0 license, and CosyVoice2's output could instead
+feed Kokoro Stage 2 as training augmentation rather than being framed only as a direct-replacement
+candidate; (4) CosyVoice2's `ref_concat` null was a 0.57s miss against a greppable hard limit in its
+own source that a per-system (not one-shared-clip) reference-duration design would likely have
+avoided; (5) a previously unstated methodological flag — CosyVoice2 exceeding the ElevenLabs
+self-consistency ceiling is worth reading as a possible GE2E-embedding/"cleaner voice" artifact, not
+only as a clean win, pending a human-listening check. No committed data/tables were changed; this is
+a critique layer for steps 12-15 to draw on.
+
 * * *
 
 ## Cross-Step Decisions
@@ -223,23 +241,35 @@ occur in this task.
 
 ## Next Step Notes
 
-Proceed to step 11 (`creative-thinking`) per `step_tracker.json`. `LLM-T1-NC80` is fully torn down
-and confirmed `Stopped` (both via the teardown subagent's `verify_machines_destroyed` pass and this
-step-executor's independent `az ml compute show` call) — no further GPU work or spend will occur in
-this task. Final total GPU spend: **$58.25 of the $70 hard cap** (~$11.75 unused headroom), recorded
-in `machine_log.json`, `results/remote_machines_used.json`, and `results/costs.json`. No
-live-machine concerns remain for the rest of the task's steps (`creative-thinking`, `results`,
-`suggestions`, `reporting`).
+Proceed to step 12 (`results`) per `step_tracker.json`. `LLM-T1-NC80` remains fully torn down (no
+live-machine concerns remain for any of the rest of this task's steps: `results`, `suggestions`,
+`reporting`). Final total GPU spend is unchanged and final: **$58.25 of the $70 hard cap** (~$11.75
+unused headroom), recorded in `machine_log.json`, `results/remote_machines_used.json`, and
+`results/costs.json`.
 
 Three named systems were attempted: Chatterbox (both conditions succeeded fully), CosyVoice2
 (`ref_single` succeeded, `ref_concat` hard-failed on a genuine 30s system limit), and F5-TTS (null —
 indefinite hang in model loading, three attempts, see `intervention/f5_tts_smoke_gate_failed.md`).
 `kokoro_v3_bundle` was not re-measured this session (same hang signature) and falls back to t0008's
 stored `speaker_sim` numbers. All of this is carried in `results/tables.json`'s `notes` array and
-the answer asset (`assets/answer/zero-shot-speaker-sim-ceiling/`, verificator `PASSED`) — the
-`results` step (step 12) should read `results/tables.json` and `intervention/*.md` directly rather
-than re-deriving conclusions, and merge the teardown-authored `results/costs.json`/
-`results/remote_machines_used.json` into its own writeup rather than overwriting them wholesale.
-`suggestions.json` should consider recommending a follow-up investigation into the `LLM-T1-NC80`
-pool's intermittent model-load hangs (implicated in both the F5-TTS and `kokoro_v3_bundle` failures)
-before relying on this VM pool for future multi-model TTS benchmark tasks.
+the answer asset (`assets/answer/zero-shot-speaker-sim-ceiling/`, verificator `PASSED`).
+
+Step 11 (`creative-thinking`, `logs/steps/011_creative-thinking/step_log.md`) added a critique layer
+on top of that data — it changed no committed results, but the `results` step-executor should read
+it alongside `results/tables.json` and `intervention/*.md`, and should carry its hedges into
+`results_detailed.md`'s `## Limitations` rather than presenting the answer asset's claims as more
+certain than step 11 shows them to be. Specifically: (a) the F5-TTS/`kokoro_v3_bundle` hang's "VM
+pool" attribution is plausible but not fully diagnosed — a GPU-context-contention confound in one
+attempt and an unchecked stale-HF-lock-file hypothesis remain open, so state the cause as "most
+likely session/VM-level, not conclusively isolated" rather than settled; (b) any success-criterion
+restatement text should be marked provisional (rests on one system/condition/session, F5-TTS
+untested); (c) CosyVoice2/Chatterbox, not F5-TTS, are the only licensing-viable production
+candidates (F5-TTS is CC-BY-NC-4.0) even in a future retry; (d) CosyVoice2's `ref_concat` null was a
+0.57s miss against a hard limit in its own source, not an inherent inability to use long references
+— a targeted low-cost re-run with a <30s clip is the recommended follow-up, not a closed question;
+(e) CosyVoice2 beating the ElevenLabs self-consistency ceiling should carry a one-line caveat that
+this could reflect a GE2E-embedding "cleaner/averaged voice" artifact rather than only superior
+identity fidelity. `suggestions.json` (step 13) should turn step 11's "Recommendations Carried
+Forward" list into concrete suggestion entries, including the `py-spy`/lock-file-first diagnostic
+protocol for future indefinite-hang cases and the per-system (not one-shared-clip)
+reference-duration design for future multi-system TTS benchmark tasks.
