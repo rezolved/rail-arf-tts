@@ -2,7 +2,7 @@
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
 updated_at: "2026-09-17T13:49:16Z"
-completed_steps: 2
+completed_steps: 6
 next_step_number: 3
 next_step_id: "init-folders"
 ---
@@ -27,6 +27,28 @@ both declared dependencies, `t0006_kokoro_v5_stage2_subset` and
 `t0009_stage2_training_failure_forensics`, have `status: "completed"` in their `task.json`, and the
 verificator reported PASSED with 0 errors and 0 warnings. Result recorded in
 `logs/steps/002_check-deps/deps_report.json`. No caveats.
+
+### Step 4 — research-papers
+
+Skipped, per `step_tracker.json`: this task is checkpoint/VM forensics, not literature-driven — no
+papers in the corpus bear on Kokoro/StyleTTS2 recipe recovery from local artifacts.
+
+### Step 5 — research-internet
+
+Skipped, per `step_tracker.json`: `task_description.md`'s evidence sources are entirely internal (VM
+home dir, DVC artifacts, prior task checkpoints/code); no external internet research is required or
+listed as an evidence source.
+
+### Step 11 — creative-thinking
+
+Skipped, per `step_tracker.json`: `task_description.md` fully specifies the evidence sources,
+priority order, and reconstruction methodology; no exploratory alternative-approach analysis is
+called for.
+
+### Step 13 — compare-literature
+
+Skipped, per `step_tracker.json`: this task reconstructs an internal training recipe from artifacts;
+it does not produce results comparable to published external baselines.
 
 * * *
 
