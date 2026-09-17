@@ -33,10 +33,14 @@
       "step": 3,
       "name": "init-folders",
       "description": "Create task folder structure, step_tracker.json, logs/ and populate the aggregator context cache.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T13:51:43Z",
       "completed_at": null,
-      "log_file": "logs/steps/003_init-folders/"
+      "log_file": "logs/steps/003_init-folders/",
+      "current_owner": "step-executor/init-folders",
+      "last_heartbeat_at": "2026-09-17T13:51:43Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T14:51:43Z"
     },
     {
       "step": 4,

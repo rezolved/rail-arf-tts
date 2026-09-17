@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T13:49:16Z"
-completed_steps: 6
-next_step_number: 3
-next_step_id: "init-folders"
+updated_at: "2026-09-17T13:52:30Z"
+completed_steps: 7
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -27,6 +27,14 @@ both declared dependencies, `t0006_kokoro_v5_stage2_subset` and
 `t0009_stage2_training_failure_forensics`, have `status: "completed"` in their `task.json`, and the
 verificator reported PASSED with 0 errors and 0 warnings. Result recorded in
 `logs/steps/002_check-deps/deps_report.json`. No caveats.
+
+### Step 3 — init-folders
+
+Created the mandatory task folder structure via `init_task_folders` (12 directories with `.gitkeep`,
+plus `__init__.py` and `code/__init__.py`), recorded in
+`logs/steps/003_init-folders/folders_created.txt`. Populated the local, gitignored aggregator
+context cache at `tasks/t0016_v3_recipe_recovery/ctx/` (task_types, costs, tasks, metrics,
+suggestions) for reuse by downstream step-executors. No caveats.
 
 ### Step 4 — research-papers
 
@@ -58,6 +66,9 @@ it does not produce results comparable to published external baselines.
 
 ## Next Step Notes
 
-Both dependencies (t0006, t0009) are confirmed completed — no blockers for this task. Proceed to
-step 3, `init-folders`: create the mandatory task folder structure via `init_task_folders`, then
-populate the aggregator context cache (`tasks/t0016_v3_recipe_recovery/ctx/`) before committing.
+Folder structure and aggregator context cache are ready. `tasks/t0016_v3_recipe_recovery/ctx/` holds
+cached `task_types.json`, `costs.json`, `tasks.json`, `metrics.json`, and `suggestions.json` — read
+these instead of re-running aggregators. Proceed to step 6, `research-code`: review
+`t0006_kokoro_v5_stage2_subset`, `t0009_stage2_training_failure_forensics`, `t0015`, and `t0002`
+code/results (checkpoint forensics scripts, audio quality gate, packaging recipe) per
+`step_tracker.json`'s description, and write `research/research_code.md`.
