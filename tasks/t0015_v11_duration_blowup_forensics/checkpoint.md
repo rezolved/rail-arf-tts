@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T11:20:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-17T10:52:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -201,20 +201,31 @@ passing. `verify_task_metrics` and `verify_task_results` both pass with 0 errors
   fixture's verdict unchanged — this is the blind-spot closure the task exists to prove, and
   downstream steps can cite `results/gate_regression.json` directly rather than re-deriving it.
 
+### Step 14 — suggestions
+
+Spawned a dedicated `/generate-suggestions` subagent (per Critical Rule 9), passing the task ID plus
+the root-cause diagnosis and step 11's five findings as raw context, without restricting the skill's
+own process (Critical Rule 10). The subagent independently reviewed
+`results/duration_blowup_diagnosis.md`, `results/asr_roundtrip_evaluation.md`, and the
+creative-thinking step log, then deduplicated against 23 existing open suggestions and 15 existing
+tasks before writing `results/suggestions.json` (7 suggestions, `S-0015-01`-`S-0015-07`):
+`S-0015-01`/`S-0015-02` (high) cover the targeted `predictor`/`predictor_encoder` Stage 2 fine-tune
+and the cheap cross-checkpoint module-swap ablation that should precede it; `S-0015-03`/`S-0015-04`
+(medium) cover the forced-alignment frame-rate audit and a phoneme-density characterization;
+`S-0015-05`/`S-0015-07` (medium) cover the symmetric lower-bound duration check and wiring
+ASR-round-trip as an optional third gate layer; `S-0015-06` (high) proposes adopting the hardened
+gate as the project's mandatory pre-completion check, explicitly superseding S-0013-02. Re-ran
+`verify_suggestions` independently via `run_with_logs`: PASSED, 0 errors, 0 warnings.
+
 * * *
 
 ## Next Step Notes
 
-Step 12 (`results`) is complete; step 13 (`compare-literature`) is `skipped`. The next pending step
-is step 14 (`suggestions`). It should propose the gate-hardening changes
-(`code/audio_quality_check.py`'s `duration_sanity_pass`/`longest_nonsilent_run_s`) for adoption as
-the project's standard pre-completion check for all future TTS training tasks (per `plan/plan.md`'s
-Expected Outputs, extending S-0013-02), and should file a follow-up-task suggestion for targeted
-`predictor`/`predictor_encoder` GPU fine-tuning, drawing on `results/duration_blowup_diagnosis.md`'s
-Recommendation section plus step 11's Finding 1 (cheap forward-pass module-swap ablation as a first,
-no-GPU action before committing training budget) and Finding 2 (10-minute check of David's
-forced-alignment/duration-target frame rate). It should also surface step 11's Finding 4 (the
-hardened gate's `duration_sanity_pass` is upper-bound-only; a symmetric lower-bound check is a cheap
-follow-up) and Finding 5 (ASR-round-trip and duration/silence-gap checks are complementary, not
-redundant — a future third gate layer should pair them) as concrete suggestion items, not just
-narrative color.
+Step 14 (`suggestions`) is complete. The next and final pending step is step 15 (`reporting`). It
+should run all relevant verificators (`verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`; no asset-type or remote-machine verificators apply since `expected_assets` is `{}`
+and no remote machine was used), capture session transcripts via `capture_task_sessions`, set
+`task.json`'s `status` to `"completed"` and `end_time`, finalize `checkpoint.md` with
+`next_step_number`/`next_step_id` set to `null`, write the step log, commit, and run poststep. After
+that the coordinator handles Phase 7-9 (PR, merge, overview sync) inline.
