@@ -1,0 +1,25 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 014_20260917T142254Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 016_20260917T142321Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 021_20260917T142422Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 023_20260917T142517Z_uv-run-flowmark.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 031_20260917T145235Z_dvc-pull-tasks-t0008-tts-eval-harness-ba.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 035_20260917T145707Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 036_20260917T150613Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 037_20260917T150813Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 037_20260917T150850Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 042_20260917T174102Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 043_20260917T174110Z_venv-bin-python-u-tasks-t0018-zero-shot-.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 044_20260917T174120Z_venv-bin-python-u-tasks-t0018-zero-shot-.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 045_20260917T174357Z_venv-bin-python-u-tasks-t0018-zero-shot-.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 073_20260917T193208Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 078_20260917T195005Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 093_20260917T201032Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 18 warning(s)
+

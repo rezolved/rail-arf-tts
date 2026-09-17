@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T20:10:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-17T20:12:34Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -221,6 +221,27 @@ suggestion); and F5-TTS's CC-BY-NC-4.0 licensing-risk flag was conditional on a 
 production-path suggestion considering F5-TTS, which none of the 8 entries do (S-0018-01 frames the
 F5-TTS retry as closing a missing measurement/research-ceiling gap, not a production proposal).
 
+### Step 15 — reporting (FINAL)
+
+Ran every verificator required for the `reporting` step: `verify_task_file.py`,
+`verify_task_dependencies.py`, `verify_suggestions.py`, `verify_task_metrics.py`,
+`verify_task_results.py`, `verify_task_folder.py`, `verify_logs.py`, the answer-asset verificator
+for `zero-shot-speaker-sim-ceiling`, the paper-asset verificator for all 7 papers this task added,
+`verify_research_papers.py`, `verify_research_internet.py`, `verify_compare_literature.py`, and
+`verify_machines_destroyed.py` — all PASSED with 0 errors; remaining warnings all match
+previously-documented expected warnings from steps 4 and 10, or are benign non-zero-exit-code
+command-log noise from already-explained historical failures. One structural issue was found and
+fixed: `verify_task_folder.py`'s `FD-E016` fired on a leftover gitignored `ctx/` local
+aggregator-cache directory (created in step 3, never committed) that is not on the verificator's
+allowed-root-directories list; removed it (safe — regenerable, not a task output) and re-verified
+clean. Also reconfirmed the known `add-paper` `SKILL.md` documentation bug (wrong verificator module
+path) first flagged in step 6/14, and worked around it using the real module
+(`meta.asset_types.paper.verificator`) plus the DOI-slug asset-ID mapping already recorded in this
+file's Cross-Step Decisions. Captured session transcripts via `capture_task_sessions` — 0 found
+(expected/acceptable per the reporting-step instructions; `logs/sessions/capture_report.json`
+written). Updated `task.json` (`status: "completed"`, `end_time: "2026-09-17T20:12:34Z"`,
+`start_time` unchanged). This is the final step of the task; no further ARF steps remain.
+
 * * *
 
 ## Cross-Step Decisions
@@ -310,10 +331,12 @@ F5-TTS retry as closing a missing measurement/research-ceiling gap, not a produc
 
 ## Next Step Notes
 
-Proceed to step 15 (`reporting`), the final step, per `step_tracker.json`. `LLM-T1-NC80` remains
-fully torn down (no live-machine concerns remain). Final total GPU spend is unchanged and final:
-**$58.25 of the $70 hard cap** (~$11.75 unused headroom), recorded in `machine_log.json`,
-`results/remote_machines_used.json`, and `results/costs.json`.
+All 15 steps are complete (`step_tracker.json`: `reporting` is the final step). `task.json` is
+`status: "completed"` with `end_time: "2026-09-17T20:12:34Z"`. No further ARF steps remain for this
+task; only the coordinator's Phase 7-9 (PR/merge, final verification, overview sync) is outstanding.
+`LLM-T1-NC80` remains fully torn down (no live-machine concerns remain). Final total GPU spend is
+unchanged and final: **$58.25 of the $70 hard cap** (~$11.75 unused headroom), recorded in
+`machine_log.json`, `results/remote_machines_used.json`, and `results/costs.json`.
 
 `results/suggestions.json` is now written (step 14) with 8 entries (`S-0018-01` through `S-0018-08`)
 and `verify_suggestions.py` passes with 0 errors/0 warnings (verified independently by both the
@@ -332,9 +355,11 @@ CC-BY-NC-4.0 licensing-risk flag (its trigger condition — a future suggestion 
 production — never occurred, since `S-0018-01` frames the F5-TTS retry as a
 missing-measurement/research-ceiling gap, not a production proposal).
 
-`reporting` (step 15) should run all remaining verificators (`verify_task_file.py`,
+`reporting` (step 15) ran all required verificators (`verify_task_file.py`,
 `verify_task_dependencies.py`, `verify_suggestions.py`, `verify_task_metrics.py`,
-`verify_task_results.py`, `verify_task_folder.py`, `verify_logs.py`, and asset verificators for the
-answer asset and all 11 corpus paper assets touched by this task), capture task sessions, and
-finalize the task per `arf/skills/execute-task/SKILL.md` Phase 6. No open data/GPU/budget concerns
-remain going into it.
+`verify_task_results.py`, `verify_task_folder.py`, `verify_logs.py`, the answer-asset verificator,
+the paper-asset verificator for all 7 papers this task added, `verify_research_papers.py`,
+`verify_research_internet.py`, `verify_compare_literature.py`, and `verify_machines_destroyed.py`),
+all PASSED with 0 errors, captured task sessions (0 transcripts found, expected), and finalized
+`task.json`/`checkpoint.md` per `arf/skills/execute-task/SKILL.md` Phase 6. No open data/GPU/budget
+concerns remain. The task is ready for the coordinator's PR/merge phase.

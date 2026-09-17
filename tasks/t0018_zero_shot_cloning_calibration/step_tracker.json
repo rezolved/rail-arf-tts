@@ -201,10 +201,14 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verification pass, session capture, and PR creation.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T20:10:10Z",
       "completed_at": null,
-      "log_file": "logs/steps/015_reporting/"
+      "log_file": "logs/steps/015_reporting/",
+      "current_owner": "step-executor/reporting",
+      "last_heartbeat_at": "2026-09-17T20:10:10Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T21:10:10Z"
     }
   ],
   "spec_version": "7"

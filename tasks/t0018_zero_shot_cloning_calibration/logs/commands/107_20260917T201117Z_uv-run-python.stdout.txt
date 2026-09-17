@@ -1,0 +1,10 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/assets/paper/Wan2018-GE2E
+
+[31m[1mERRORS:[0m
+[31m  PA-E003 error: files/ directory does not exist: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/assets/paper/Wan2018-GE2E/files[0m
+[31m  PA-E001 error: details.json does not exist: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/assets/paper/Wan2018-GE2E/details.json[0m
+[31m  PA-E002 error: summary.md does not exist: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/assets/paper/Wan2018-GE2E/summary.md[0m
+
+[31m[1mFAILED[0m — 3 error(s), 0 warning(s)
+

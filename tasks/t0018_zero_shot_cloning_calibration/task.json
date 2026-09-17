@@ -5,12 +5,12 @@
   "name": "Zero-shot voice-cloning calibration: reachable speaker_sim for David",
   "short_description": "Benchmark three open zero-shot voice-cloning TTS models (F5-TTS, CosyVoice 2, Chatterbox) on David reference audio with the t0008 harness to calibrate the reachable speaker_sim/TTFB envelope.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0008_tts_eval_harness_baselines"
   ],
   "start_time": "2026-09-17T13:47:31Z",
-  "end_time": null,
+  "end_time": "2026-09-17T20:12:34Z",
   "expected_assets": {
     "answer": 1
   },
