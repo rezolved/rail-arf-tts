@@ -1,0 +1,21 @@
+{
+  "spec_version": 4,
+  "task_id": "t0015_v11_duration_blowup_forensics",
+  "task_index": 15,
+  "name": "v11 duration-blowup forensics and audible-speech gate hardening",
+  "short_description": "Root-cause why kokoro-v11-best's synthesis runs 15-20x too long and sounds like a droning babble to a human, despite passing the clipping/flatness noise gate, then close that gate's blind spot.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [
+    "t0013_v10_synthesis_quality_forensics",
+    "t0014_v11_decoder_fix_retrain"
+  ],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {},
+  "task_types": [
+    "tts-benchmark-run",
+    "code-reproduction"
+  ],
+  "source_suggestion": "S-0014-01"
+}
