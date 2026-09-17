@@ -201,14 +201,15 @@
       "step": 15,
       "name": "reporting",
       "description": "Final verification pass, session capture, and PR creation.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T20:10:10Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T20:15:08Z",
       "log_file": "logs/steps/015_reporting/",
-      "current_owner": "step-executor/reporting",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T20:10:10Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T21:10:10Z"
+      "expected_completion_at": "2026-09-17T21:10:10Z",
+      "actual_duration_seconds": 298
     }
   ],
   "spec_version": "7"
