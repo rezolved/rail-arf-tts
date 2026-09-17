@@ -1,0 +1,18 @@
+bert: primary(matched=0,missing=25,unexpected=25) fallback(matched=25,missing=0,unexpected=0) used_fallback=True [OK]
+bert_encoder: primary(matched=0,missing=2,unexpected=2) fallback(matched=2,missing=0,unexpected=0) used_fallback=True [OK]
+predictor: primary(matched=0,missing=122,unexpected=122) fallback(matched=122,missing=0,unexpected=0) used_fallback=True [OK]
+decoder: primary(matched=0,missing=678,unexpected=678) fallback(matched=678,missing=0,unexpected=0) used_fallback=True [OK]
+text_encoder: primary(matched=0,missing=24,unexpected=24) fallback(matched=24,missing=0,unexpected=0) used_fallback=True [OK]
+predictor_encoder: primary(matched=0,missing=67,unexpected=67) fallback(matched=67,missing=0,unexpected=0) used_fallback=True [OK]
+style_encoder: primary(matched=0,missing=67,unexpected=67) fallback(matched=67,missing=0,unexpected=0) used_fallback=True [OK]
+diffusion: primary(matched=0,missing=96,unexpected=96) fallback(matched=96,missing=0,unexpected=0) used_fallback=True [OK]
+text_aligner: primary(matched=0,missing=143,unexpected=143) fallback(matched=143,missing=0,unexpected=0) used_fallback=True [OK]
+pitch_extractor: primary(matched=0,missing=77,unexpected=77) fallback(matched=77,missing=0,unexpected=0) used_fallback=True [OK]
+mpd: primary(matched=90,missing=0,unexpected=0) fallback(matched=90,missing=0,unexpected=0) used_fallback=False [OK]
+msd: primary(matched=54,missing=0,unexpected=0) fallback(matched=54,missing=0,unexpected=0) used_fallback=False [OK]
+wd: primary(matched=15,missing=0,unexpected=0) fallback(matched=15,missing=0,unexpected=0) used_fallback=False [OK]
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/results/load_log_epoch_00048.json
+baseline_default: alpha=0.3 beta=0.7 steps=5 scale=1.0 -> duration_s=73.94791666666667 duration_ratio=8.532451923076923 noise=False longest_run_s=73.94 passed=False error=None
+grid_a0.1_b0.3: alpha=0.1 beta=0.3 steps=5 scale=1.0 -> duration_s=58.24791666666667 duration_ratio=6.720913461538462 noise=False longest_run_s=58.24 passed=False error=None
+grid_a0.1_b0.7: alpha=0.1 beta=0.7 steps=5 scale=1.0 -> duration_s=47.99791666666667 duration_ratio=5.5382211538461545 noise=False longest_run_s=47.98 passed=False error=None
+Validation-only run (first 2 grid combinations) complete -- stopping here.

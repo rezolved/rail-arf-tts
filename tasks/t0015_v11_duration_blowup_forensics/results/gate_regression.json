@@ -1,0 +1,47 @@
+[
+  {
+    "fixture": "v10",
+    "wav_path": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0013_v10_synthesis_quality_forensics/results/audio_samples/v10_epoch16_primary.wav",
+    "exists": true,
+    "rms": 0.9826024181846135,
+    "peak": 1.0,
+    "silence_fraction": 0.0,
+    "spectral_flatness": 0.0004819897294510156,
+    "clip_fraction": 0.7496165550821667,
+    "longest_nonsilent_run_s": 3.42,
+    "duration_sanity_pass": true,
+    "is_likely_noise": true,
+    "hardened_gate_pass": false,
+    "note": null
+  },
+  {
+    "fixture": "v11_as_shipped",
+    "wav_path": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0014_v11_decoder_fix_retrain/results/audio_samples/ft/v11_best.wav",
+    "exists": true,
+    "rms": 0.37645598582299616,
+    "peak": 1.0,
+    "silence_fraction": 0.0,
+    "spectral_flatness": 0.005822444800287485,
+    "clip_fraction": 0.004777010846598113,
+    "longest_nonsilent_run_s": 73.94,
+    "duration_sanity_pass": false,
+    "is_likely_noise": false,
+    "hardened_gate_pass": false,
+    "note": null
+  },
+  {
+    "fixture": "v11_corrected",
+    "wav_path": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/results/audio_samples/ft/v11_corrected.wav",
+    "exists": false,
+    "rms": null,
+    "peak": null,
+    "silence_fraction": null,
+    "spectral_flatness": null,
+    "clip_fraction": null,
+    "longest_nonsilent_run_s": null,
+    "duration_sanity_pass": null,
+    "is_likely_noise": null,
+    "hardened_gate_pass": null,
+    "note": "REQ-7 (no cheap fix) path was taken -- no corrected fixture exists to test"
+  }
+]

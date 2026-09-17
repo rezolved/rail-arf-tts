@@ -1,0 +1,35 @@
+bert: primary(matched=0,missing=25,unexpected=25) fallback(matched=25,missing=0,unexpected=0) used_fallback=True [OK]
+bert_encoder: primary(matched=0,missing=2,unexpected=2) fallback(matched=2,missing=0,unexpected=0) used_fallback=True [OK]
+predictor: primary(matched=0,missing=122,unexpected=122) fallback(matched=122,missing=0,unexpected=0) used_fallback=True [OK]
+decoder: primary(matched=0,missing=678,unexpected=678) fallback(matched=678,missing=0,unexpected=0) used_fallback=True [OK]
+text_encoder: primary(matched=0,missing=24,unexpected=24) fallback(matched=24,missing=0,unexpected=0) used_fallback=True [OK]
+predictor_encoder: primary(matched=0,missing=67,unexpected=67) fallback(matched=67,missing=0,unexpected=0) used_fallback=True [OK]
+style_encoder: primary(matched=0,missing=67,unexpected=67) fallback(matched=67,missing=0,unexpected=0) used_fallback=True [OK]
+diffusion: primary(matched=0,missing=96,unexpected=96) fallback(matched=96,missing=0,unexpected=0) used_fallback=True [OK]
+text_aligner: primary(matched=0,missing=143,unexpected=143) fallback(matched=143,missing=0,unexpected=0) used_fallback=True [OK]
+pitch_extractor: primary(matched=0,missing=77,unexpected=77) fallback(matched=77,missing=0,unexpected=0) used_fallback=True [OK]
+mpd: primary(matched=90,missing=0,unexpected=0) fallback(matched=90,missing=0,unexpected=0) used_fallback=False [OK]
+msd: primary(matched=54,missing=0,unexpected=0) fallback(matched=54,missing=0,unexpected=0) used_fallback=False [OK]
+wd: primary(matched=15,missing=0,unexpected=0) fallback(matched=15,missing=0,unexpected=0) used_fallback=False [OK]
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/results/load_log_epoch_00048.json
+[1/10] (short) 'pulling that up 03'
+  -> output_duration_s=26.27 pred_dur_sum=1051 input_token_count=29 is_likely_noise=False error=None (wall 112.2s)
+[2/10] (short) 'putting that together 21'
+  -> output_duration_s=22.92 pred_dur_sum=917 input_token_count=32 is_likely_noise=False error=None (wall 115.3s)
+[3/10] (short) 'let me think 04'
+  -> output_duration_s=21.00 pred_dur_sum=840 input_token_count=30 is_likely_noise=False error=None (wall 72.9s)
+[4/10] (short) 'cross-checking that 00'
+  -> output_duration_s=21.45 pred_dur_sum=858 input_token_count=33 is_likely_noise=False error=None (wall 77.9s)
+[5/10] (short) 'double-checking 12'
+  -> output_duration_s=10.75 pred_dur_sum=430 input_token_count=21 is_likely_noise=False error=None (wall 49.1s)
+[6/10] (long) 'exploring how agentic conversational ai can transform shoppi'
+  -> output_duration_s=36.57 pred_dur_sum=1463 input_token_count=74 is_likely_noise=False error=None (wall 211.5s)
+[7/10] (long) 'improving product discovery for retailerslet me look into th'
+  -> output_duration_s=64.20 pred_dur_sum=2568 input_token_count=77 is_likely_noise=False error=None (wall 235.2s)
+[8/10] (long) 'let me look into how rezolve transforms the shopping experie'
+  -> output_duration_s=34.42 pred_dur_sum=1377 input_token_count=69 is_likely_noise=False error=None (wall 113.1s)
+[9/10] (long) 'exploring how to transform end-to-end shopping experiences'
+  -> output_duration_s=49.92 pred_dur_sum=1997 input_token_count=66 is_likely_noise=False error=None (wall 305.2s)
+[10/10] (long) 'clarifying the difference between brain cortex and brain'
+  -> output_duration_s=54.47 pred_dur_sum=2179 input_token_count=62 is_likely_noise=False error=None (wall 342.0s)
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/results/duration_characterization.json (10 records)

@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T08:20:00Z"
-completed_steps: 10
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-17T10:35:00Z"
+completed_steps: 11
+next_step_number: 11
+next_step_id: "creative-thinking"
 ---
 # Task Objective
 
@@ -98,6 +98,38 @@ actually lives at `tasks/t0008_tts_eval_harness_baselines/data/11labs_david`, no
 `data/11labs_david`, and notes that DVC-tracked checkpoint/reference data has not yet been pulled in
 this worktree — `dvc pull` is an explicit early step.
 
+### Step 9 — implementation
+
+Executed all 14 `plan/plan.md` Step-by-Step items via a dedicated `/implementation` subagent; none
+were skipped or blocked, and no `intervention/` file was needed. Root-cause verdict
+(`results/duration_blowup_diagnosis.md`): a predictor-pathway calibration failure — NOT
+`duration_proj`'s own weights (only +0.7% weight-norm shift vs. the LibriTTS control,
+`results/predictor_tensor_forensics.md`), NOT `pred_aln_trg`/decoder plumbing (the observed "exactly
+2.00x" frame-to-output-duration ratio was confirmed, via source-reading `hifigan.py`/`istftnet.py`
+and an empirical control-checkpoint validation run, to be the decoder's normal
+architecture-intrinsic upsample, not a bug), and NOT `max_dur=50` ceiling saturation (only 0.44% of
+tokens near ceiling). Most likely culprit: `predictor_encoder`'s -12.7% weight-norm shift from being
+initialized as `copy.deepcopy(style_encoder)` rather than loaded from a duration-calibrated state.
+All 10/10 characterization texts blew up 8.6x-17.9x with no text-length correlation (universal, not
+text-dependent) — `results/duration_characterization.json`. The cheap inference-parameter fix does
+NOT work: 0/13 pre-registered `alpha`/`beta`/`embedding_scale`/`diffusion_steps` combinations passed
+(best `duration_ratio` 5.54x vs. the required ≤3.0x) — `results/param_sweep.json`; no
+`v11_corrected.wav` was fabricated, and `results/gate_regression.json`'s `v11_corrected` fixture is
+correctly recorded as `null`/skipped with an explanatory note. `code/audio_quality_check.py` was
+hardened with `duration_sanity_pass` and `longest_nonsilent_run_s` signals and proven, via the
+three-way regression, to flag `v11_best.wav` (`hardened_gate_pass=False`) while the original
+`is_likely_noise` signal stays unchanged and v10 still fails (`results/gate_regression.json`,
+matches the plan's own literal verification assertions exactly). `results/metrics.json` (explicit
+variant format) records `rtf`/`speaker_sim` for `v11-as-shipped` and `v10-primary`;
+`verify_task_metrics` passes. Ruff, mypy (task-code package form), and pytest
+(`code/test_audio_quality_check.py`) all pass clean. A mid-task `dvc pull` auth failure
+(`DefaultAzureCredential`'s `ManagedIdentityCredential` aborting the chain) was fixed with a local,
+gitignored `dvc remote modify --local azureblob exclude_managed_identity_credential true` — not a
+repo modification, no intervention file needed. 55 MB of new audio samples were `dvc add`ed and
+`dvc push`ed (27 files, `logs/commands/031_...json`/`032_...json`, both exit 0). All 11 `REQ-*`
+items are `done` except REQ-6, which is correctly `n/a` (the REQ-7 negative-result path was taken
+instead, per the pre-registered Rejection Criteria — no partial fix was reported as a pass).
+
 * * *
 
 ## Cross-Step Decisions
@@ -119,19 +151,33 @@ this worktree — `dvc pull` is an explicit early step.
   implementation must use the t0008 path and run `dvc pull` early since the checkpoint and reference
   audio are DVC-tracked and not yet present in this worktree.
 
+* Root cause is confirmed as a predictor-pathway calibration failure (most likely
+  `predictor_encoder`'s `copy.deepcopy(style_encoder)` init, not `duration_proj`'s own weights or a
+  plumbing bug), the blowup is universal across all 10 characterization texts, and the cheap
+  inference-parameter fix does not work (0/13 combinations passed). This means the task's
+  recommendation (Step 9's evidence, folded into `results/duration_blowup_diagnosis.md`'s
+  Recommendation section) is a follow-up task scoped to targeted `predictor`/`predictor_encoder`
+  fine-tuning — downstream `results`/`suggestions` steps should reflect this recommendation and must
+  not describe the gate-hardening work as also having "fixed" the underlying model.
+
+* `code/audio_quality_check.py`'s hardened two-signal gate (`duration_sanity_pass`,
+  `longest_nonsilent_run_s`) is proven via `results/gate_regression.json` to correctly flag
+  `v11_best.wav` while leaving the original `is_likely_noise` signal and the v10 known-broken
+  fixture's verdict unchanged — this is the blind-spot closure the task exists to prove, and
+  downstream steps can cite `results/gate_regression.json` directly rather than re-deriving it.
+
 * * *
 
 ## Next Step Notes
 
-Step 7 (`planning`) completed: `plan/plan.md` is ready and the plan verificator passed with 0 errors
-and 0 warnings. Step 8 (`setup-machines`) is already marked `skipped` in `step_tracker.json`, so the
-next pending step is step 9 (`implementation`). The implementation subagent should follow
-`plan/plan.md`'s 14 numbered steps in order, starting with environment setup and `dvc pull`, then
-instrumenting `infer_styletts2.py`'s `synthesize()` for `pred_dur`/`pred_aln_trg`/frame-count
-logging per the exact insertion point from `research/research_code.md` (t0014 lines 282-371). Steps
-1 (CPU inference environment build), 4 (`pred_dur`/frame-count instrumentation), 12 (three-way gate
-regression), and 14 (`duration_blowup_diagnosis.md`) are marked `[CRITICAL]` in the plan — if any of
-those become blocked, the implementation agent must write an intervention file rather than silently
-substitute a different approach. The plan's Step by Step ends at `results/metrics.json` and
-`results/duration_blowup_diagnosis.md`; results_summary.md/results_detailed.md/suggestions/
-compare-literature remain orchestrator-owned steps, not part of implementation.
+Step 9 (`implementation`) completed: all 14 plan steps executed with no blocked/skipped items and no
+intervention file. `results/duration_blowup_diagnosis.md`, `results/duration_characterization.json`,
+`results/param_sweep.json`, `results/predictor_tensor_forensics.md`,
+`results/asr_roundtrip_evaluation.md`, `results/gate_regression.json`, `results/metrics.json`, and
+`results/speaker_sim_scores.json` are all in place and pass their literal verification criteria from
+`plan/plan.md`. Step 10 (`teardown`) is already `skipped` (no remote machine was ever provisioned),
+so the next pending step is step 11 (`creative-thinking`). That step (and the subsequent `results`
+step) should draw on `results/duration_blowup_diagnosis.md`'s Recommendation section (targeted
+`predictor`/`predictor_encoder` fine-tuning as a GPU follow-up task) and must accurately report
+REQ-6 as `n/a` (not `done` or `blocked`) since the pre-registered Rejection Criteria correctly ruled
+out every parameter-sweep combination as a partial pass.

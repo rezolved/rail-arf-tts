@@ -1,0 +1,4 @@
+v10: exists=True is_likely_noise=True hardened_gate_pass=False longest_nonsilent_run_s=3.42 duration_sanity_pass=True note=None
+v11_as_shipped: exists=True is_likely_noise=True hardened_gate_pass=False longest_nonsilent_run_s=73.94 duration_sanity_pass=False note=None
+v11_corrected: exists=False is_likely_noise=None hardened_gate_pass=None longest_nonsilent_run_s=None duration_sanity_pass=None note=REQ-7 (no cheap fix) path was taken -- no corrected fixture exists to test
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/results/gate_regression.json

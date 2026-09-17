@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "let_me_look_into_how_rezolve_transforms_",
+    "text": "let me look into how rezolve transforms the shopping experie",
+    "output_duration_s": 34.422916666666666,
+    "expected_duration_s": 4.0,
+    "duration_ratio": 8.605729166666666,
+    "gated_out_by_duration_ratio": true,
+    "wer": null,
+    "transcription_wall_time_s": 8.78888396898401,
+    "error": null
+  },
+  {
+    "slug": "improving_product_discovery_for_retailer",
+    "text": "improving product discovery for retailerslet me look into th",
+    "output_duration_s": 64.19791666666667,
+    "expected_duration_s": 3.6,
+    "duration_ratio": 17.83275462962963,
+    "gated_out_by_duration_ratio": true,
+    "wer": null,
+    "transcription_wall_time_s": 2.6249824819969945,
+    "error": null
+  },
+  {
+    "slug": "cross_checking_that_00",
+    "text": "cross-checking that 00",
+    "output_duration_s": 21.447916666666668,
+    "expected_duration_s": 1.2,
+    "duration_ratio": 17.87326388888889,
+    "gated_out_by_duration_ratio": true,
+    "wer": null,
+    "transcription_wall_time_s": 3.44528347600135,
+    "error": null
+  }
+]
