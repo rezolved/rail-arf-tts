@@ -1,0 +1,30 @@
+{
+  "spec_version": "1",
+  "task_id": "t0015_v11_duration_blowup_forensics",
+  "step_number": 9,
+  "produced_at": "2026-09-17T09:22:40.927009Z",
+  "mode": "ghosted",
+  "engine_state": "alive",
+  "vm_present": false,
+  "last_observed_progress": {
+    "timestamp": "2026-09-17T09:16:04Z",
+    "source": "logs/commands/028_*.json mtime (most recent run_with_logs-wrapped command)"
+  },
+  "ssh_report": null,
+  "non_vm_report": {
+    "recent_log_path": "tasks/t0015_v11_duration_blowup_forensics/logs/commands/028_20260917T091604Z_tasks-t0015-v11-duration-blowup-forensic.stdout.txt",
+    "recent_log_mtime_utc": "2026-09-17T09:16:23Z",
+    "recent_log_tail": "not read in detail; presence and mtime were sufficient to establish liveness",
+    "relevant_processes": [
+      "pid 575343: claude --dangerously-skip-permissions (started 07:47, the tts_t0015 tmux session backing the /implementation subagent)",
+      "pid 598591-598596: uv run python -m arf.scripts.utils.run_with_logs -- .venv-styletts2/bin/python -m tasks.t0015_v11_duration_blowup_forensics.code.param_sweep_driver --validate-first-2 (started 09:11, 99% CPU, 13m13s CPU time consumed)"
+    ],
+    "local_tmux_sessions": [
+      "tts_t0015 (created Thu Sep 17 07:47:09 2026)",
+      "bench-glite, bench-glite-run2, bench-glite-run3, bench-rezolve-run2, bench-rezolve-run3, bench-rezolve1, rail1, tts_t0010, tts_t0012 (unrelated sessions from other tasks/work, pre-existing)"
+    ]
+  },
+  "likely_cause": "The implementation step-executor's nested /implementation subagent is genuinely alive and making progress (28 run_with_logs-wrapped commands executed through 09:16Z, most recently 6 minutes before this diagnostic; a param_sweep_driver.py inference process is actively consuming 99% CPU under it right now). Numerous code/ files and dvc-pulled data are already present. The step_tracker.json last_heartbeat_at field (08:18:53Z) was simply never refreshed by the step-executor despite the 300s cadence instruction in its prompt -- a heartbeat-discipline gap in the subagent's own execution, not an actual stall. This is CPU-only diagnostic/sweep work (per plan/plan.md), consistent with the plan's own 3.5-5.5 hour estimate; roughly 1 hour has elapsed.",
+  "recoverable": "yes",
+  "recommended_action": "resume_inline"
+}

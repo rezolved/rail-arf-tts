@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0015_v11_duration_blowup_forensics",
+  "command": "dvc pull tasks/t0008_tts_eval_harness_baselines/data/11labs_david",
+  "exit_code": 0,
+  "duration_seconds": 125.632,
+  "started_at": "2026-09-17T08:30:38Z",
+  "completed_at": "2026-09-17T08:32:44Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics",
+  "stdout_file": "013_20260917T083038Z_dvc-pull-tasks-t0008-tts-eval-harness-ba.stdout.txt",
+  "stderr_file": "013_20260917T083038Z_dvc-pull-tasks-t0008-tts-eval-harness-ba.stderr.txt",
+  "stdout_lines": 2,
+  "stderr_lines": 0,
+  "truncated": false
+}

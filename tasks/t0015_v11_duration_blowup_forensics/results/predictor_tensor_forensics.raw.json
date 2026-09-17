@@ -1,0 +1,60 @@
+{
+  "v11_modules": {
+    "predictor": {
+      "key": "v11.predictor",
+      "num_params": 16194612,
+      "finite": true,
+      "weight_norm": 318.2024904960512,
+      "mean_abs": 0.05925671059069631,
+      "max_abs": 3.038461685180664,
+      "nonfinite_keys": []
+    },
+    "predictor_encoder": {
+      "key": "v11.predictor_encoder",
+      "num_params": 13880813,
+      "finite": true,
+      "weight_norm": 400.6486679048687,
+      "mean_abs": 0.0798377874287079,
+      "max_abs": 2.698808193206787,
+      "nonfinite_keys": []
+    }
+  },
+  "control_modules": {
+    "predictor": {
+      "key": "control.predictor",
+      "num_params": 16194612,
+      "finite": true,
+      "weight_norm": 313.93053065270266,
+      "mean_abs": 0.05842778861084992,
+      "max_abs": 3.0228919982910156,
+      "nonfinite_keys": []
+    },
+    "predictor_encoder": {
+      "key": "control.predictor_encoder",
+      "num_params": 13880813,
+      "finite": true,
+      "weight_norm": 459.0196987419474,
+      "mean_abs": 0.09332561712745123,
+      "max_abs": 3.320112943649292,
+      "nonfinite_keys": []
+    }
+  },
+  "v11_duration_proj": {
+    "key": "v11.predictor.duration_proj",
+    "num_params": 25650,
+    "finite": true,
+    "weight_norm": 83.45313146272476,
+    "mean_abs": 0.3305537227533947,
+    "max_abs": 3.038461685180664,
+    "nonfinite_keys": []
+  },
+  "control_duration_proj": {
+    "key": "control.predictor.duration_proj",
+    "num_params": 25650,
+    "finite": true,
+    "weight_norm": 82.85930326560167,
+    "mean_abs": 0.3282306258441412,
+    "max_abs": 3.0228919982910156,
+    "nonfinite_keys": []
+  }
+}

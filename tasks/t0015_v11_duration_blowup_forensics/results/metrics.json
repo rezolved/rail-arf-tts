@@ -1,0 +1,29 @@
+{
+  "variants": [
+    {
+      "variant_id": "v11-as-shipped",
+      "label": "kokoro-v11-best, default inference params (diagnosed condition)",
+      "dimensions": {
+        "checkpoint": "epoch_00048.pth",
+        "params": "default",
+        "role": "diagnosed"
+      },
+      "metrics": {
+        "rtf": 3.1811602714837277,
+        "speaker_sim": 0.44419100880622864
+      }
+    },
+    {
+      "variant_id": "v10-primary",
+      "label": "v10 primary checkpoint (epoch_2nd_00016.pth), known-broken control",
+      "dimensions": {
+        "checkpoint": "epoch_2nd_00016.pth",
+        "role": "known_broken_control"
+      },
+      "metrics": {
+        "rtf": 5.262690890033129,
+        "speaker_sim": 0.3506302833557129
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+faster-whisper model size: base.en
+DURATION_RATIO gating: [0.5, 2.0]
+let_me_look_into_how_rezolve_transforms_: duration_ratio=8.605729166666666 gated_out=True wer=None wall_time_s=8.8 error=None
+improving_product_discovery_for_retailer: duration_ratio=17.83275462962963 gated_out=True wer=None wall_time_s=2.6 error=None
+cross_checking_that_00: duration_ratio=17.87326388888889 gated_out=True wer=None wall_time_s=3.4 error=None
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/results/asr_roundtrip_raw.json

@@ -1,0 +1,15 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 010_20260917T082107Z_dvc-pull-tasks-t0014-v11-decoder-fix-ret.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 011_20260917T082255Z_dvc-pull-tasks-t0014-v11-decoder-fix-ret.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 026_20260917T091527Z_tasks-t0015-v11-duration-blowup-forensic.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 027_20260917T091541Z_tasks-t0015-v11-duration-blowup-forensic.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 038_20260917T104444Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 047_20260917T105329Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 8 warning(s)
+

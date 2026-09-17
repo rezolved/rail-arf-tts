@@ -1,0 +1,4 @@
+Using Python 3.10.11 environment at: tasks/t0015_v11_duration_blowup_forensics/code/.venv-styletts2
+Resolved 2 packages in 662ms
+Installed 1 package in 16ms
+ + monotonic-align==1.2 (from git+https://github.com/resemble-ai/monotonic_align.git@c6e5e6cb19882164027eb6e35118e841eed9298e)

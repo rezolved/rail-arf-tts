@@ -1,0 +1,8 @@
+
+To track the changes with git, run:
+
+	git add tasks/t0015_v11_duration_blowup_forensics/results/.gitignore tasks/t0015_v11_duration_blowup_forensics/results/audio_samples.dvc
+
+To enable auto staging, run:
+
+	dvc config core.autostage true

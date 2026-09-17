@@ -1,0 +1,11 @@
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/results/localization_summary.json
+{
+  "num_records": 10,
+  "num_valid_records": 10,
+  "mean_fraction_tokens_near_ceiling": 0.0044137022397891966,
+  "any_oversegmentation_flagged": true,
+  "mean_frame_vs_output_duration_ratio": 1.9998419604195128,
+  "decoder_intrinsic_upsample_factor_expected": 2.0,
+  "any_plumbing_deviation_flagged": false,
+  "control_checkpoint_validation_ratio": "epochs_2nd_00020.pth (LibriTTS control) on the gate text: pred_dur_sum=186, output_duration_s=4.65 -> frame_vs_output_ratio=2.00, matching every v11 record -- see results/duration_blowup_diagnosis.md for the full validation run."
+}

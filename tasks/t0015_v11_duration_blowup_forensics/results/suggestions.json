@@ -1,0 +1,75 @@
+{
+  "spec_version": "1",
+  "suggestions": [
+    {
+      "id": "S-0015-01",
+      "title": "Targeted predictor/predictor_encoder-only Stage 2 fine-tune to fix v11's duration-calibration failure",
+      "description": "results/duration_blowup_diagnosis.md root-caused kokoro-v11-best's 8.6x-17.9x universal duration blowup to a predictor-pathway calibration failure -- most plausibly predictor_encoder's copy.deepcopy(style_encoder) initialization (-12.7% weight-norm shift from control) feeding an elevated pred_dur into a near-unshifted duration_proj (+0.7%). The cheap inference-parameter sweep failed (0/13 combinations passed). Re-run Stage 2 with only predictor/predictor_encoder unfrozen and every other module (including the now-confirmed-working decoder) frozen, monitoring dur_loss for convergence toward t0009's 0.034 reference (v11 plateaued at 0.53-0.62) as the pre-registered success gate, then re-verify with the hardened audible-speech gate from this task before declaring success. Recommended task types: tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0015_v11_duration_blowup_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0015-02",
+      "title": "Cheap cross-checkpoint module-swap ablation to isolate predictor_encoder before funding a GPU retrain",
+      "description": "This task's tensor forensics narrows but does not isolate whether predictor_encoder's mismatched deepcopy(style_encoder) init is the dominant contributor to v11's elevated pred_dur, versus the diffusion-sampled style vector or bert_encoder/text_encoder output. Build a hybrid state_dict (v11's predictor incl. duration_proj + the LibriTTS control checkpoint's predictor_encoder) via the same raw torch.load pattern as code/predictor_tensor_forensics.py, run the already-instrumented synthesize() forward-pass-only on the fixed gate text, and check whether pred_dur_sum drops back toward the control's healthy ~150-200 range. Costs one extra CPU inference call, no training, no GPU -- run this before S-0015-01 to sharpen or redirect its fine-tuning scope. Recommended task types: experiment-run.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0015_v11_duration_blowup_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0015-03",
+      "title": "Audit duration-target frame-rate pipeline before assuming predictor re-init alone fixes the blowup",
+      "description": "The dur_loss plateau ratio (0.53-0.62 / 0.034 reference is approx 15.6x-18.2x) is suspiciously close to the observed audio-blowup ratio (8.6x-17.9x). This is consistent with, but does not rule out, an alternative or complementary hypothesis: if the ground-truth per-token alignment durations used to compute dur_loss for David's corpus were extracted at a different frame-rate/hop-length than the t0009 reference run assumed, gradient descent could plateau at a target-scale error rather than a purely init-driven one -- re-initializing predictor_encoder alone would not fix that. Compare the hop-length/frame-rate assumed by whatever forced-alignment/duration-extraction script produced David's Stage 2 training targets against config_david_v11.yml's preprocess_params.spect_params before S-0015-01 spends GPU budget. Recommended task types: data-analysis.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0015_v11_duration_blowup_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0015-04",
+      "title": "Characterize duration blowup against phoneme density using voice-commerce text with digits and SKUs",
+      "description": "This task's word-count-only analysis found no length correlation, but a post-hoc check of tokens_per_word across the 10 characterization records plus the smoke test shows the two lowest-density texts (4.25, 6.9 tokens/word) produced the two lowest duration_ratio values (5.26, 8.61) while the highest-density text (11.0 tokens/word) produced the single highest ratio (17.87) -- not a clean monotonic trend, but a real pattern the word-count buckets did not surface. Run a follow-up characterization holding word count roughly fixed while deliberately varying phoneme density (e.g. \"buy it now\" vs. a SKU/brand-name-heavy equivalent), since Rezolve's voice-commerce filler synthesis will routinely include exactly this kind of dense content. Recommended task types: tts-benchmark-run.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0015_v11_duration_blowup_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0015-05",
+      "title": "Add a symmetric lower-bound duration check to catch under-synthesis/truncation regressions the hardened gate cannot see",
+      "description": "code/audio_quality_check.py's new duration_sanity_pass signal (added in this task) is upper-bound-only: actual_duration_s <= estimate_naive_duration_bound_s(text) * 3.0. A future regression in the opposite direction -- truncated or prematurely-cut-off synthesis, or a predictor miscalibrated toward too-short durations -- would pass duration_sanity_pass unconditionally and very plausibly also pass longest_nonsilent_run_s and the original is_likely_noise check, since a truncated clip is not clipped, not flat-spectrum, and not silent for a long run. Add a symmetric lower bound (e.g. actual_duration_s >= estimate_naive_duration_bound_s(text) * 0.3) using the same already-computed helper, closing this currently-unguarded gap before it ships undetected. Recommended task types: infrastructure-setup.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0015_v11_duration_blowup_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0015-06",
+      "title": "Adopt the hardened audible-speech gate as the mandatory pre-completion check for all TTS training tasks",
+      "description": "S-0013-02 required only the original 3-signal is_likely_noise check before a Stage 2 task can complete. This task's three-way regression (results/gate_regression.json) proves that check alone would still ship kokoro-v11-best's 73.9s droning-babble output (is_likely_noise=False) -- it takes the two new signals hardened here (duration_sanity_pass, longest_nonsilent_run_s <= 12.0) to catch it, without regressing on v10's already-caught failure. Update the tts-finetuning-eval task type's verification criteria (or a dedicated verificator) to require the hardened, five-signal hardened_gate_pass result, not just is_likely_noise, superseding S-0013-02's now-shown-insufficient standard. Recommended task types: infrastructure-setup.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0015_v11_duration_blowup_forensics",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0015-07",
+      "title": "Wire an ASR-round-trip intelligibility check as an optional third gate layer with a cached WhisperModel",
+      "description": "results/asr_roundtrip_evaluation.md found compute_wer's own reference-paired duration_ratio pre-gate ([0.5, 2.0]) skips every clip this task's blowup produces, and a fresh WhisperModel is constructed on every call (2.6-8.8s overhead each time) -- making it unusable as-is for v11's failure mode, but it remains the only tool that would catch a normal-duration clip that mispronounces a brand name, SKU, or price (a distinct, disjoint risk class from duration/silence-gap failures, per this task's creative-thinking analysis). Rework compute_wer to accept a pre-loaded, shared WhisperModel instance and a text-only duration-sanity pre-gate matching audio_quality_check.py's estimate_naive_duration_bound_s (instead of the reference-paired compute_duration_ratio), then wire it into audio_quality_check.py as a default-off optional layer alongside S-0015-05's symmetric duration check. Recommended task types: infrastructure-setup.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0015_v11_duration_blowup_forensics",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}

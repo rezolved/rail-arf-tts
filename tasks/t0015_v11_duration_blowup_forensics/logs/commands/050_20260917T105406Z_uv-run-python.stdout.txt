@@ -1,0 +1,2 @@
+Captured 0 session transcript(s) into /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/logs/sessions.
+Wrote capture report to /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0015_v11_duration_blowup_forensics/tasks/t0015_v11_duration_blowup_forensics/logs/sessions/capture_report.json.
