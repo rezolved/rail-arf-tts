@@ -61,10 +61,14 @@
       "step": 5,
       "name": "research-internet",
       "description": "Look up install/inference requirements, checkpoints, and streaming-output support for F5-TTS, CosyVoice 2, and Chatterbox.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T13:58:23Z",
       "completed_at": null,
-      "log_file": "logs/steps/005_research-internet/"
+      "log_file": "logs/steps/005_research-internet/",
+      "current_owner": "step-executor/research-internet",
+      "last_heartbeat_at": "2026-09-17T13:58:23Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T14:58:23Z"
     },
     {
       "step": 6,

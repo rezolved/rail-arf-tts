@@ -1,0 +1,47 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2412.10117",
+  "doi": "10.48550/arXiv.2412.10117",
+  "title": "CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models",
+  "url": "https://arxiv.org/abs/2412.10117",
+  "pdf_url": "https://arxiv.org/pdf/2412.10117",
+  "date_published": "2024-12-13",
+  "year": 2024,
+  "authors": [
+    { "name": "Zhihao Du", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Yuxuan Wang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Qian Chen", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Xian Shi", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Xiang Lv", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Tianyu Zhao", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Zhifu Gao", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Yexin Yang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Changfeng Gao", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Hui Wang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Fan Yu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Huadai Liu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Zhengyan Sheng", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Yue Gu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Chong Deng", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Wen Wang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Shiliang Zhang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Zhijie Yan", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Jingren Zhou", "country": "CN", "institution": "Alibaba Group", "orcid": null }
+  ],
+  "institutions": [
+    { "name": "Alibaba Group", "country": "CN" }
+  ],
+  "journal": "preprint",
+  "venue_type": "preprint",
+  "categories": [],
+  "abstract": "In our previous work, we introduced CosyVoice, a multilingual speech synthesis model based on supervised discrete speech tokens. By employing progressive semantic decoding with two popular generative models, language models (LMs) and Flow Matching, CosyVoice demonstrated high prosody naturalness, content consistency, and speaker similarity in speech in-context learning. Recently, significant progress has been made in multi-modal large language models (LLMs), where the response latency and real-time factor of speech synthesis play a crucial role in the interactive experience. Therefore, in this report, we present an improved streaming speech synthesis model, CosyVoice 2, which incorporates comprehensive and systematic optimizations. Specifically, we introduce finite-scalar quantization to improve the codebook utilization of speech tokens. For the text-speech LM, we streamline the model architecture to allow direct use of a pre-trained LLM as the backbone. In addition, we develop a chunk-aware causal flow matching model to support various synthesis scenarios, enabling both streaming and non-streaming synthesis within a single model. By training on a large-scale multilingual dataset, CosyVoice 2 achieves human-parity naturalness, minimal response latency, and virtually lossless synthesis quality in the streaming mode. We invite readers to listen to the demos at https://funaudiollm.github.io/cosyvoice2.",
+  "citation_key": "Du2024",
+  "summary_path": "summary.md",
+  "files": [
+    "files/du_2024_cosyvoice2-scalable-streaming-speech-synthesis.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_added": "2026-09-17"
+}
