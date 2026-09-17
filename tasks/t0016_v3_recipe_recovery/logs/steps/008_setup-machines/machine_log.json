@@ -1,7 +1,7 @@
 [
   {
     "spec_version": "10",
-    "provider": "azure-ml",
+    "provider": "azure_ml",
     "instance_id": "LLM-T1-NC80",
     "vm_name": "LLM-T1-NC80",
     "offer_id": 0,
@@ -41,21 +41,28 @@
     "ready_at": "2026-09-17T14:34:45.033597Z",
     "watchdog_active": true,
     "watchdog_idle_timeout_seconds": 3600,
-    "destroyed_at": null,
-    "total_duration_hours": null,
-    "total_cost_usd": null,
+    "destroyed_at": "2026-09-17T14:47:56.755481Z",
+    "total_duration_hours": 0.22445891777777777,
+    "total_cost_usd": 3.133446492177778,
     "hourly_cost_usd": 13.96,
     "started_vm": false,
     "billing_started_at": "2026-09-17T14:34:28.703377Z",
     "billing_anchor": "already_running",
-    "billing_ended_at": null,
-    "cost_attribution_method": null,
-    "cost_attribution_status": null,
-    "cost_attribution_notes": null,
-    "billable_segments": [],
-    "billable_hours": null,
-    "wall_clock_span_hours": null,
-    "stopped_hours": null,
+    "billing_ended_at": "2026-09-17T14:47:56.755481Z",
+    "cost_attribution_method": "activity_log",
+    "cost_attribution_status": "verified",
+    "cost_attribution_notes": "Reconstructed 1 billable segment(s) from the provider activity log; the provider's final state agrees with what the provisioner observed at teardown.",
+    "billable_segments": [
+      {
+        "started_at": "2026-09-17T14:34:28.703377Z",
+        "ended_at": "2026-09-17T14:47:56.755481Z",
+        "hours": 0.22445891777777777,
+        "source": "activity_log"
+      }
+    ],
+    "billable_hours": 0.22445891777777777,
+    "wall_clock_span_hours": 0.22445891777777777,
+    "stopped_hours": 0.0,
     "search_started_at": "2026-09-17T14:34:28.703324Z",
     "total_provisioning_seconds": 16.330258452013368,
     "failed_attempts": [

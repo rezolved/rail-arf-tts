@@ -1,0 +1,6 @@
+total 12
+drwxrwxr-x  2 azureuser azureuser 4096 Sep 17 15:26 .
+drwxr-x--- 46 azureuser azureuser 4096 Sep 17 15:31 ..
+-rw-rw-r--  1 azureuser azureuser   96 Sep 17 15:26 t0018_zero_shot_cloning_calibration.lock
+---
+{"task_id": "t0018_zero_shot_cloning_calibration", "acquired_at": "2026-09-17T15:26:48.826325Z"}

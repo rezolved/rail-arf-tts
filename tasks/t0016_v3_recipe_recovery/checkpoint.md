@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T15:45:00Z"
-completed_steps: 11
-next_step_number: 10
-next_step_id: "teardown"
+updated_at: "2026-09-17T16:04:32Z"
+completed_steps: 12
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -135,6 +135,25 @@ conclusions as resting on the checkpoint forensics and audio gate, not this spea
 
 * * *
 
+### Step 10 — teardown
+
+`LLM-T1-NC80` was already deallocated and this task's lock already cleared by step 9's own
+`azure_ml_vm teardown` call, so this step verified and reconciled rather than re-stopping. That
+earlier call omitted the billing-anchor flags and recorded a bogus `$0.00`/`0h`; this step
+recomputed the real figures from Azure's own activity log against the correct billing window
+(`14:34:28.703377Z` → `14:47:56.755481Z`) and wrote `total_duration_hours = 0.2245` (~13.47 min),
+`total_cost_usd = $3.13` into `logs/steps/008_setup-machines/machine_log.json` (also correcting
+`provider` from `"azure-ml"` to the spec-enum `"azure_ml"`), plus new `results/remote_machines_used.json`
+and `results/costs.json`. A `az ml compute show` check found the VM `Running` again at verification
+time — this is `t0018_zero_shot_cloning_calibration`
+legitimately re-acquiring the shared pool VM afterward (confirmed via its live lock file and the
+Azure activity-log timeline), not a failed teardown; no action was taken against it.
+`verify_machines_destroyed` passed with 0 errors, 2 non-blocking warnings (legacy `spec_version`,
+API-unreachable-from-sandbox), independently confirmed by both the subagent and this step-executor.
+See `logs/steps/010_teardown/step_log.md` for full detail.
+
+* * *
+
 ## Cross-Step Decisions
 
 * Planning (step 7) fixed the VM inspection budget at a hard 90-minute wall-clock cap with an
@@ -153,18 +172,29 @@ conclusions as resting on the checkpoint forensics and audio gate, not this spea
   `remote_machines_used.json` / cost reconciliation per `remote_machines_specification.md`), not to
   issue a fresh stop call.
 
+* Teardown (step 10) found that step 9's own `azure_ml_vm teardown` call had omitted the
+  `--billing-started-at`/`--billing-anchor` flags, so its self-reported `$0.00`/`0h` in
+  `logs/commands/026_*` is wrong and must not be trusted by any downstream step reading that log —
+  the authoritative figures are `total_duration_hours = 0.22445891777777777` and
+  `total_cost_usd = 3.133446492177778`, now recorded in `logs/steps/008_setup-machines/machine_log.json`
+  and `results/costs.json`/`results/remote_machines_used.json`. Step 10 also found `LLM-T1-NC80` back
+  in `Running` state at verification time; this is `t0018_zero_shot_cloning_calibration` legitimately
+  re-acquiring the shared pool VM afterward, not a teardown failure — downstream steps should not
+  re-open this.
+
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) is complete. **VM usage: 13.47 minutes of the 90-minute cap**
-(`vm_billing_started_at: 2026-09-17T14:34:28.703Z` →
-`vm_teardown_called_at: 2026-09-17T14:47:56.755Z`), roughly $3 of the $21 VM sub-cap — the VM is
-**already stopped/deallocated**, not left running. Step 10 (`teardown`) should verify this (e.g.
-`az ml compute show`/pool-lock state) rather than assume the VM is still up, and write its own step
-artifacts (`remote_machines_used.json`, cost reconciliation) against the already-completed teardown
-recorded in `tasks/t0016_v3_recipe_recovery/data/vm_inventory/inventory.json` and
-`logs/steps/008_setup-machines/machine_log.json`.
+Step 10 (`teardown`) is complete. Final, verified VM cost:
+**`total_duration_hours = 0.22445891777777777` (~13.47 min), `total_cost_usd = 3.133446492177778`**
+(~$3.13 of the $21 VM sub-cap, $30 total task cap) — recorded in `results/costs.json`
+(`breakdown.azure-ml-2xh100`) and `results/remote_machines_used.json`. `verify_machines_destroyed`
+passes with 0 errors (2 non-blocking warnings). The `results` step (step 12) should read these two
+files as the authoritative machine-cost source — do not re-derive cost from `logs/commands/026_*`
+(step 9's own teardown call), whose self-reported `$0.00`/`0h` was a flag-omission bug now
+corrected. No further VM work is needed; `LLM-T1-NC80` being `Running` again belongs to
+`t0018_zero_shot_cloning_calibration`, unrelated to this task.
 
 Key findings from implementation, for the `results`/`suggestions`/`reporting` steps downstream:
 `~/kokoro-finetune` on the VM turned out to be a symlink to t0014's own later StyleTTS2 clone, not a
@@ -198,4 +228,4 @@ and REQ-8 are `partial` (verdict reached but not at the `confirmed` bar); REQ-4 
 task's own Rejection Criteria, which pre-registers an all-`inferred`/`unknown` reconstruction as a
 valid outcome. `code/`, `data/`, and `results/` all pass `ruff check`, `ruff format`, and `mypy`
 with 0 issues. `results/audio_samples/` is DVC-tracked and pushed (`dvc status` clean, no pending
-push). Proceed to step 10, `teardown`.
+push). Proceed to step 12, `results`.
