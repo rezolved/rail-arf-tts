@@ -133,12 +133,15 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Consider alternative diagnostic angles and gate-hardening options beyond the scripted checklist -- e.g. other failure classes an ASR-round-trip check would catch that duration-sanity/silence-gap signals would not, and whether the blowup could be text-length dependent in a non-obvious way.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T10:33:40Z",
       "completed_at": null,
       "log_file": "logs/steps/011_creative-thinking/",
-      "current_owner": null,
-      "actual_duration_seconds": null
+      "current_owner": "step-executor/creative-thinking",
+      "actual_duration_seconds": null,
+      "last_heartbeat_at": "2026-09-17T10:33:40Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T11:33:40Z"
     },
     {
       "step": 12,

@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T10:35:00Z"
-completed_steps: 11
-next_step_number: 11
-next_step_id: "creative-thinking"
+updated_at: "2026-09-17T10:55:00Z"
+completed_steps: 12
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -166,18 +166,42 @@ instead, per the pre-registered Rejection Criteria — no partial fix was report
   fixture's verdict unchanged — this is the blind-spot closure the task exists to prove, and
   downstream steps can cite `results/gate_regression.json` directly rather than re-deriving it.
 
+### Step 11 — creative-thinking
+
+Wrote `logs/steps/011_creative-thinking/step_log.md` (verificator: 0 errors, 0 warnings; no results/
+code/plan files touched, read-only analysis step). Five grounded findings for the `results`/
+`suggestions` steps to draw on: (1) a concrete, cheap, forward-pass-only cross-checkpoint
+module-swap ablation (v11's `predictor` + control's `predictor_encoder`) that would directly test,
+not just infer, the `predictor_encoder` deepcopy-init hypothesis before any GPU retrain is funded;
+(2) the `dur_loss` plateau ratio (0.53-0.62 / 0.034 ≈ 15.6x-18.2x) is suspiciously close to the
+observed audio-blowup ratio (8.6x-17.9x) — worth a 10-minute check of David's forced-alignment/
+duration-target frame-rate pipeline before assuming the fix is purely `predictor_encoder`
+re-initialization; (3) cross-referencing the smoke test (`smoke_test.timing.json`, identical
+inference params to `param_sweep.json`'s `baseline_default`) against the 10 characterization records
+shows `duration_ratio` may track phoneme density (`tokens_per_word`) rather than word count — the
+two lowest-density texts (smoke test 4.25, char idx7 6.9) gave the two lowest ratios (5.26, 8.61) —
+a covariate the original word-count-bucket analysis in `results/duration_blowup_diagnosis.md`
+Section 2 did not test, and directly relevant to voice-commerce filler text containing digits/SKUs/
+brand names; (4) the hardened gate's `duration_sanity_pass` is upper-bound-only — an
+under-synthesis/truncation regression (a different failure class than anything found in this task)
+would currently pass both the old and hardened gate undetected; (5) ASR-round-trip and duration/
+silence-gap checks catch disjoint failure classes (content-correctness vs. structural-plausibility),
+so a future third gate layer should pair ASR-round-trip with a symmetric (both-sided) duration
+check, not treat either as a superset of the other.
+
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) completed: all 14 plan steps executed with no blocked/skipped items and no
-intervention file. `results/duration_blowup_diagnosis.md`, `results/duration_characterization.json`,
-`results/param_sweep.json`, `results/predictor_tensor_forensics.md`,
-`results/asr_roundtrip_evaluation.md`, `results/gate_regression.json`, `results/metrics.json`, and
-`results/speaker_sim_scores.json` are all in place and pass their literal verification criteria from
-`plan/plan.md`. Step 10 (`teardown`) is already `skipped` (no remote machine was ever provisioned),
-so the next pending step is step 11 (`creative-thinking`). That step (and the subsequent `results`
-step) should draw on `results/duration_blowup_diagnosis.md`'s Recommendation section (targeted
-`predictor`/`predictor_encoder` fine-tuning as a GPU follow-up task) and must accurately report
-REQ-6 as `n/a` (not `done` or `blocked`) since the pre-registered Rejection Criteria correctly ruled
-out every parameter-sweep combination as a partial pass.
+Step 9 (`implementation`) and step 11 (`creative-thinking`) are both complete; step 10 (`teardown`)
+remains `skipped` (no remote machine was ever provisioned). The next pending step is step 12
+(`results`). It should draw on `results/duration_blowup_diagnosis.md`'s Recommendation section
+(targeted `predictor`/`predictor_encoder` fine-tuning as a GPU follow-up task) and must accurately
+report REQ-6 as `n/a` (not `done` or `blocked`) since the pre-registered Rejection Criteria
+correctly ruled out every parameter-sweep combination as a partial pass. It should also fold in step
+11's five findings where relevant — in particular, the Finding-1 swap-ablation and Finding-2
+training-target-frame-rate check are concrete, low-cost recommended first actions for the follow-up
+GPU task (sharper than "just retrain `predictor`/`predictor_encoder`"), and Finding-4 (asymmetric
+`duration_sanity_pass`) is a real residual gap in this task's own gate hardening that the `results`/
+`suggestions` steps should disclose rather than omit, consistent with this task's "confirm with
+evidence, document negative results with the same rigor as positive ones" mandate.
