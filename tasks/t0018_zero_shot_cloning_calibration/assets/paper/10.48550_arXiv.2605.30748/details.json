@@ -1,0 +1,53 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2605.30748",
+  "doi": "10.48550/arXiv.2605.30748",
+  "title": "Chatterbox-Flash: Prior-Calibrated Block Diffusion for Streaming Zero-Shot TTS",
+  "url": "https://arxiv.org/abs/2605.30748",
+  "pdf_url": "https://arxiv.org/pdf/2605.30748v3",
+  "date_published": "2026-05-29",
+  "year": 2026,
+  "authors": [
+    {
+      "name": "Deokjin Seo",
+      "country": null,
+      "institution": "Resemble AI",
+      "orcid": null
+    },
+    {
+      "name": "Gangin Park",
+      "country": "KR",
+      "institution": "Seoul National University",
+      "orcid": null
+    },
+    {
+      "name": "Kihyun Nam",
+      "country": "KR",
+      "institution": "KAIST",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Seoul National University",
+      "country": "KR"
+    },
+    {
+      "name": "KAIST",
+      "country": "KR"
+    }
+  ],
+  "journal": "preprint",
+  "venue_type": "preprint",
+  "categories": [],
+  "abstract": "We present Chatterbox-Flash, a zero-shot text-to-speech model obtained by fine-tuning a pretrained autoregressive TTS decoder into a block-diffusion decoder, enabling parallel token generation within each block while retaining block-by-block streaming. We find that naively transferring mainstream block-diffusion decoding to discrete speech tokens degrades quality, as a long-tail token distribution biases parallel position selection toward a few high-frequency tokens. To mitigate this without architectural modification, we introduce two inference-time techniques: prior-calibrated scoring, which subtracts the block-level marginal token distribution, and an early-decoding schedule, which adaptively terminates iteration based on calibrated confidence. On standard zero-shot TTS benchmarks, Chatterbox-Flash attains high-fidelity synthesis comparable to strong autoregressive and non-autoregressive baselines, while supporting streaming inference with time-to-first-packet on par with streaming AR systems and substantially lower real-time factor. Code and audio samples are available at https://github.com/resemble-ai/chatterbox-flash.",
+  "citation_key": "Seo2026",
+  "summary_path": "summary.md",
+  "files": [
+    "files/seo_2026_chatterbox-flash-block-diffusion-streaming.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_added": "2026-09-17"
+}
