@@ -1,0 +1,83 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2112.02418",
+  "doi": "10.48550/arXiv.2112.02418",
+  "title": "YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion for everyone",
+  "url": "https://arxiv.org/abs/2112.02418",
+  "pdf_url": "https://arxiv.org/pdf/2112.02418",
+  "date_published": "2021-12-04",
+  "year": 2022,
+  "authors": [
+    {
+      "name": "Edresson Casanova",
+      "country": "BR",
+      "institution": "Instituto de Ciencias Matematicas e de Computacao, Universidade de Sao Paulo",
+      "orcid": "0000-0003-0160-7173"
+    },
+    {
+      "name": "Julian Weber",
+      "country": "FR",
+      "institution": "Sopra Banking Software",
+      "orcid": "0000-0002-8108-4423"
+    },
+    {
+      "name": "Christopher Shulby",
+      "country": "US",
+      "institution": "Defined.ai",
+      "orcid": "0000-0001-9637-9657"
+    },
+    {
+      "name": "Arnaldo Candido Junior",
+      "country": "BR",
+      "institution": "Federal University of Technology - Parana",
+      "orcid": null
+    },
+    {
+      "name": "Eren Golge",
+      "country": "DE",
+      "institution": "Coqui",
+      "orcid": null
+    },
+    {
+      "name": "Moacir Antonelli Ponti",
+      "country": "BR",
+      "institution": "Instituto de Ciencias Matematicas e de Computacao, Universidade de Sao Paulo",
+      "orcid": "0000-0003-2059-9463"
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Universidade de Sao Paulo",
+      "country": "BR"
+    },
+    {
+      "name": "Sopra Banking Software",
+      "country": "FR"
+    },
+    {
+      "name": "Defined.ai",
+      "country": "US"
+    },
+    {
+      "name": "Federal University of Technology - Parana",
+      "country": "BR"
+    },
+    {
+      "name": "Coqui",
+      "country": "DE"
+    }
+  ],
+  "journal": "Proceedings of the 39th International Conference on Machine Learning (ICML 2022), PMLR 162:2709-2720",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "YourTTS brings the power of a multilingual approach to the task of zero-shot multi-speaker TTS. Our method builds upon the VITS model and adds several novel modifications for zero-shot multi-speaker and multilingual training. We achieved state-of-the-art (SOTA) results in zero-shot multi-speaker TTS and results comparable to SOTA in zero-shot voice conversion on the VCTK dataset. Additionally, our approach achieves promising results in a target language with a single-speaker dataset, opening possibilities for zero-shot multi-speaker TTS and zero-shot voice conversion systems in low-resource languages. Finally, it is possible to fine-tune the YourTTS model with less than 1 minute of speech and achieve state-of-the-art results in voice similarity and with reasonable quality. This is important to allow synthesis for speakers with a very different voice or recording characteristics from those seen during training.",
+  "citation_key": "Casanova2022",
+  "summary_path": "summary.md",
+  "files": [
+    "files/casanova_2022_yourtts-zero-shot-multi-speaker-tts.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_added": "2026-09-17"
+}
