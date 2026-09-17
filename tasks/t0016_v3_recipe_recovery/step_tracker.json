@@ -49,8 +49,10 @@
       "description": "Skipped: this is checkpoint/VM forensics, not literature-driven; no papers in the corpus bear on Kokoro/StyleTTS2 recipe recovery from local artifacts.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/004_research-papers/"
+      "completed_at": "2026-09-17T14:19:43Z",
+      "log_file": "logs/steps/004_research-papers/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 5,
@@ -58,8 +60,10 @@
       "description": "Skipped: task_description.md's evidence sources are entirely internal (VM home dir, DVC artifacts, prior task checkpoints/code); no external internet research is required or listed as an evidence source.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/005_research-internet/"
+      "completed_at": "2026-09-17T14:19:43Z",
+      "log_file": "logs/steps/005_research-internet/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 6,
@@ -122,8 +126,10 @@
       "description": "Skipped: task_description.md fully specifies the evidence sources, priority order, and reconstruction methodology; no exploratory alternative-approach analysis is called for.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/011_creative-thinking/"
+      "completed_at": "2026-09-17T14:19:43Z",
+      "log_file": "logs/steps/011_creative-thinking/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 12,
@@ -140,8 +146,10 @@
       "description": "Skipped: this task reconstructs an internal training recipe from artifacts; it does not produce results comparable to published external baselines.",
       "status": "skipped",
       "started_at": null,
-      "completed_at": null,
-      "log_file": "logs/steps/013_compare-literature/"
+      "completed_at": "2026-09-17T14:19:43Z",
+      "log_file": "logs/steps/013_compare-literature/",
+      "current_owner": null,
+      "actual_duration_seconds": null
     },
     {
       "step": 14,
