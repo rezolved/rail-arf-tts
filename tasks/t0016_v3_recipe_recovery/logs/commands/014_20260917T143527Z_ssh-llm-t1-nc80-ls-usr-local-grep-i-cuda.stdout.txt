@@ -1,0 +1,5 @@
+cuda
+cuda-12
+cuda-12.2
+/usr/bin/python3
+Python 3.10.12

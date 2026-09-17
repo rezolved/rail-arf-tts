@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0016_v3_recipe_recovery",
+  "command": "ssh LLM-T1-NC80 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader",
+  "exit_code": 0,
+  "duration_seconds": 0.409,
+  "started_at": "2026-09-17T14:35:10Z",
+  "completed_at": "2026-09-17T14:35:11Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery",
+  "stdout_file": "011_20260917T143510Z_ssh-llm-t1-nc80-nvidia-smi-query-gpu-nam.stdout.txt",
+  "stderr_file": "011_20260917T143510Z_ssh-llm-t1-nc80-nvidia-smi-query-gpu-nam.stderr.txt",
+  "stdout_lines": 2,
+  "stderr_lines": 0,
+  "truncated": false
+}

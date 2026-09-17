@@ -97,10 +97,14 @@
       "step": 8,
       "name": "setup-machines",
       "description": "Start LLM-T1-NC80 (read-only inventory only) via /setup-remote-machine; required by task_description.md Scope section 1, even though setup-machines is not in the answer-question/data-analysis optional_steps union.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T14:21:22Z",
       "completed_at": null,
-      "log_file": "logs/steps/008_setup-machines/"
+      "log_file": "logs/steps/008_setup-machines/",
+      "current_owner": "setup-remote-machine/setup-machines",
+      "last_heartbeat_at": "2026-09-17T14:34:09Z",
+      "heartbeat_interval_seconds": 300,
+      "expected_completion_at": "2026-09-17T15:51:22Z"
     },
     {
       "step": 9,

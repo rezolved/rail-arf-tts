@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T14:20:00Z"
-completed_steps: 9
-next_step_number: 8
-next_step_id: "setup-machines"
+updated_at: "2026-09-17T14:39:00Z"
+completed_steps: 10
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -88,6 +88,20 @@ planning, a live `dvc pull` against the v3 reference checkpoint failed with a tr
 retry-resolvable failure) — the plan's Step 1 and Step 13 both build in bounded retry-with-backoff
 for `dvc pull`/`dvc push` rather than treating one failure as a hard blocker.
 
+### Step 8 — setup-machines
+
+Acquired `LLM-T1-NC80` (2xH100 NVL, the project's sole Azure ML pool entry) via
+`/setup-remote-machine` through Phase 5. GPU/CUDA verified (`2x NVIDIA H100 NVL`, CUDA 12.2), idle
+watchdog installed and confirmed alive (PID 6143, 3600s idle timeout), and environment
+sanity-checked (`~/kokoro-finetune/` present, `/mnt/cache/persist` resolves to the real Azure Files
+share, SSH lingering enabled). Result recorded in `logs/steps/008_setup-machines/machine_log.json`.
+Caveat for downstream: the first `acquire` attempt hit a one-time boot-timing race (VM's own Azure
+`Start` operation hadn't finished within the tool's 480s SSH-readiness window), burning ~9.5 minutes
+of the 90-minute VM cap and writing `intervention/pool_busy_llm-t1-nc80.md`; a retry succeeded in
+~16 seconds with no wasted cost. The VM is left **running** with the watchdog active and locked for
+this task — the `implementation` step must complete its read-only inventory and hand off to
+`teardown` within the remaining budget (~80 of the original 90 minutes left).
+
 * * *
 
 ## Cross-Step Decisions
@@ -100,8 +114,12 @@ for `dvc pull`/`dvc push` rather than treating one failure as a hard blocker.
 
 ## Next Step Notes
 
-`plan/plan.md` is complete and verified (0 errors/0 warnings). Proceed to step 8, `setup-machines`:
-provision `LLM-T1-NC80` via `/setup-remote-machine` for the read-only, 90-minute-capped VM inventory
-described in `plan/plan.md` Milestone 1 (Steps 1-7). Remember the task's hard caps: $30 total, $21 /
-90 minutes of VM time. `dvc pull` may need a retry if it hits the transient `DefaultAzureCredential`
-auth failure documented above.
+`LLM-T1-NC80` is acquired, verified, watchdog-protected, and running now. Proceed to step 9,
+`implementation`: execute `plan/plan.md` Milestone 1 Steps 4-7 (the read-only SSH inventory of
+`~/kokoro-finetune/` and `/mnt/cache/persist`, per `task_description.md`'s Evidence sources), then
+the checkpoint forensics, config reconstruction, audio packaging, and the `v3-recipe` answer asset.
+The VM has already burned ~9.5 minutes of its 90-minute cap on the resolved boot-timing race (see
+Step 8 above) — budget the remaining wall-clock time accordingly and do not exceed the $21 VM
+sub-cap. `dvc pull` may still need a retry if it hits the transient `DefaultAzureCredential` auth
+failure documented under Step 7. Tear the VM down via the `teardown` step immediately once the VM
+portion of Milestone 1 is done — do not hold it open through the CPU-only forensics work.
