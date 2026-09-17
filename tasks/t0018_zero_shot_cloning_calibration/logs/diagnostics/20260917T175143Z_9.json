@@ -1,0 +1,36 @@
+{
+  "spec_version": "1",
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "step_number": 9,
+  "produced_at": "2026-09-17T17:51:43Z",
+  "mode": "ghosted",
+  "engine_state": "alive",
+  "vm_present": true,
+  "last_observed_progress": {
+    "timestamp": "2026-09-17T17:50:45Z",
+    "source": "local process table: PID 763382 running code/score_elevenlabs_baseline.py at 99% CPU, started 17:50; corroborated by file mtimes as recent as 58s before produced_at (code/score_elevenlabs_baseline.py, data/references/manifest.json, data/references/ref_concat.wav, data/references/ref_single.wav, data/references/half_a_centroid.npy)"
+  },
+  "ssh_report": {
+    "ssh_reachable": true,
+    "tmux_sessions": [],
+    "gpu_utilization_percent": 0,
+    "gpu_memory_used_mb": 0,
+    "engine_health_ok": null,
+    "engine_completion_ok": null,
+    "recent_log_tail": null,
+    "note": "First probe attempt used the wrong SSH port (22); LLM-T1-NC80's actual SSH port is 50000 per ~/.ssh/config (Azure ML compute instances use a non-standard port). ssh_health_probe.probe() also does not catch subprocess.TimeoutExpired in its except clause (only ConnectionError/OSError/TimeoutError), so a bad-port timeout raises an uncaught traceback instead of returning ssh_reachable=False -- a framework bug worth a follow-up self-improvement pass, out of scope for this task. Re-probed manually on the correct port: SSH is reachable, GPU is idle (0% util, 0 MiB used on both H100s), no tmux session -- expected, because this task's implementation work runs as direct foreground SSH/local commands (not a persistent tmux-hosted inference engine), and the step is currently in a local/CPU-bound sub-stage (baseline scoring), not yet back on the GPU."
+  },
+  "non_vm_report": {
+    "recent_log_path": "tasks/t0018_zero_shot_cloning_calibration/logs/commands/046_20260917T174710Z_venv-bin-python-u-tasks-t0018-zero-shot-.stdout.txt",
+    "recent_log_mtime_utc": "2026-09-17T17:49:24Z",
+    "recent_log_tail": null,
+    "relevant_processes": [
+      "azureus+  763375       1  0 17:50 ?        00:00:00 .venv/bin/python -m arf.scripts.utils.run_with_logs --task-id t0018_zero_shot_cloning_calibration -- .venv/bin/python -u tasks/t0018_zero_shot_cloning_calibration/code/score_elevenlabs_baseline.py",
+      "azureus+  763382  763375 99 17:50 ?        00:01:38 .venv/bin/python -u tasks/t0018_zero_shot_cloning_calibration/code/score_elevenlabs_baseline.py"
+    ],
+    "local_tmux_sessions": []
+  },
+  "likely_cause": "Step 9's step_tracker.json heartbeat (last_heartbeat_at 17:27:59Z) went stale because the top-level step-executor delegated to a nested /implementation subagent and stopped refreshing the tracker's heartbeat field itself, not because work actually stopped. Direct evidence (fresh file mtimes under data/references/ and results/audio_samples/, plus a live 99%-CPU local process for code/score_elevenlabs_baseline.py started at 17:50) shows real progress through the plan's Milestone 0/1 stages as recently as ~1 minute before this diagnostic ran. The VM is reachable and GPU-idle only because the current sub-stage (local reference-audio build and ElevenLabs baseline scoring) does not yet touch the GPU -- this is expected per plan.md's Step by Step sequencing, not a hang.",
+  "recoverable": "yes",
+  "recommended_action": "resume_inline"
+}
