@@ -47,10 +47,14 @@
       "step": 4,
       "name": "research-papers",
       "description": "Review any corpus papers on F5-TTS, CosyVoice 2, Chatterbox, and GE2E speaker-similarity evaluation methodology.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T13:51:57Z",
       "completed_at": null,
-      "log_file": "logs/steps/004_research-papers/"
+      "log_file": "logs/steps/004_research-papers/",
+      "current_owner": "step-executor/research-papers",
+      "last_heartbeat_at": "2026-09-17T13:51:57Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T14:51:57Z"
     },
     {
       "step": 5,

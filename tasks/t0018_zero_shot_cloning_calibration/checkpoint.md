@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0018_zero_shot_cloning_calibration"
-updated_at: "2026-09-17T13:50:41Z"
-completed_steps: 3
-next_step_number: 4
-next_step_id: "research-papers"
+updated_at: "2026-09-17T13:58:30Z"
+completed_steps: 4
+next_step_number: 5
+next_step_id: "research-internet"
 ---
 # Task Objective
 
@@ -37,16 +37,32 @@ in `logs/steps/003_init-folders/folders_created.txt`. Populated the local aggreg
 `tasks/t0018_zero_shot_cloning_calibration/ctx/` (task_types, costs, tasks, metrics, suggestions) —
 gitignored and not committed.
 
+### Step 4 — research-papers
+
+Reviewed the full existing paper corpus (`aggregate_papers`) for material on F5-TTS, CosyVoice 2,
+Chatterbox, and GE2E speaker-similarity evaluation. The corpus currently holds only 4 papers, all
+added by an unrelated prior task (`t0014_v11_decoder_fix_retrain`): HiFi-GAN, iSTFTNet, a
+multi-generator vocoder study, and StyleTTS 2 — none cover the three target zero-shot cloning
+systems directly, though StyleTTS 2 underlies the Kokoro baseline this task re-scores. Wrote
+`research/research_papers.md` (`status: "complete"`, 4/4 papers cited) documenting this gap
+explicitly; verificator passed with 0 errors, 1 expected warning (`RP-W003`, project has no category
+taxonomy yet).
+
 * * *
 
 ## Cross-Step Decisions
+
+* The paper corpus has zero coverage of F5-TTS, CosyVoice 2, or Chatterbox specifically —
+  `research-internet` (step 5) must independently source install/inference/checkpoint details for
+  all three since there is no corpus paper to fall back on.
 
 * * *
 
 ## Next Step Notes
 
-Task folder structure and aggregator cache are in place. Proceed to step 4 (`research-papers`):
-review any corpus papers on F5-TTS, CosyVoice 2, Chatterbox, and GE2E speaker-similarity evaluation
-methodology, per `step_tracker.json`. The `ctx/` cache in the task folder holds pre-fetched
-aggregator output (task types, costs, tasks, metrics, suggestions) for reuse instead of re-running
-aggregators.
+Proceed to step 5 (`research-internet`): look up install/inference requirements, checkpoints, and
+streaming-output support for F5-TTS, CosyVoice 2, and Chatterbox per `step_tracker.json`. No corpus
+paper exists for any of the three systems, so this step carries more weight than usual — it is the
+primary source for how each system's zero-shot cloning API, checkpoint names, and TTFB/streaming
+behavior work. The `ctx/` cache in the task folder still holds pre-fetched aggregator output for
+reuse.
