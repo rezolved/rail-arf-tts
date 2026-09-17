@@ -175,10 +175,14 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write suggestions.json, including the mandated suggestions for an unrecoverable 266-clip list and a multispeaker ambiguity ablation.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-17T16:18:39Z",
       "completed_at": null,
-      "log_file": "logs/steps/014_suggestions/"
+      "log_file": "logs/steps/014_suggestions/",
+      "current_owner": "step-executor/suggestions",
+      "last_heartbeat_at": "2026-09-17T16:18:39Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-17T17:18:39Z"
     },
     {
       "step": 15,

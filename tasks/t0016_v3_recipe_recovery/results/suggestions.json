@@ -1,0 +1,60 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0016-01",
+      "title": "Recover or fallback-construct v3's 266-clip training list before t0017 runs",
+      "description": "t0017 (not_started, depends on t0016) assumes v3's exact 266-clip training list is available, but this task's VM inventory found ~/kokoro-finetune is t0014's later clone, not the v3-era environment -- the list is genuinely unrecoverable (data/v3_train_list_UNRECOVERED.md). Before t0017 runs, first spend a small amount of effort inspecting best/david_v3_voicepack_ft_enc.pt's provenance metadata for any trace of which utterances contributed to it; if that yields nothing new, build the documented fallback instead: a seed-42 stratified sample of 266 clips from the full 1364-clip ElevenLabs David corpus (or the David-voice portion of data/v4 or data/v5_normalized), explicitly disjoint from data/v4/val_list.txt's 96 held-out clips, labelled clearly as a substitute for v3's actual subset, not a reproduction of it. Recommended task types: data-analysis.",
+      "kind": "dataset",
+      "priority": "high",
+      "source_task": "t0016_v3_recipe_recovery",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    },
+    {
+      "id": "S-0016-02",
+      "title": "Settle v3's multispeaker flag from inferred to confirmed before any ablation training run",
+      "description": "This task's checkpoint-shape forensics resolved v3's long-standing multispeaker three-way contradiction only to 'inferred false': net[\"diffusion\"]'s single conditioning pathway is consistent with the Transformer1d branch, but the exact parameter-shape signature of StyleTransformer1d vs Transformer1d lives in an external pip package not recovered from the VM (results/v3_checkpoint_forensics.md's Multispeaker Resolution section). Before funding a GPU run, first do the near-zero-cost check: install or locate the diffusion package that models.py imports (re-exported via Modules/diffusion/diffusion.py) and directly compare both classes' constructor parameter shapes against net[\"diffusion\"]'s recovered tensor shapes. If still inconclusive, run a two-arm Stage 2 ablation (multispeaker: true vs false, all other fields held at this task's reconstructed values, same first_stage.pth) scored with the t0008 harness. Recommended task types: code-reproduction, tts-finetuning-eval.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0016_v3_recipe_recovery",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    },
+    {
+      "id": "S-0016-03",
+      "title": "Audit t0009's confound_table.md against every prior task's actual committed config files",
+      "description": "While diffing the v3 reconstruction against v6c, this task found that t0009's results/confound_table.md misstates a value for a run whose config is directly checkable: it lists t0006_run03_v6c's lambda_gen as 1.0, but v6c's actual committed config_david_v6c_stage2.yml states 0.2 (results/v3_checkpoint_forensics.md's Config Diff section). Since this error sits on a row the table treats as known rather than 'assumed', the table's other non-assumed entries for t0001/t0005/t0006's other runs may also be wrong. Cross-check every confound_table.md row against the actual committed config.yml of its source task, correct any further discrepancies found, and mark which values were verified against a real file versus only ever hand-transcribed. Recommended task types: data-analysis.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0016_v3_recipe_recovery",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    },
+    {
+      "id": "S-0016-04",
+      "title": "Fix t0008's build_centroid() MIN_CLIP_DURATION_S filter, which now rejects the whole 11labs_david corpus",
+      "description": "This task's speaker_sim cross-check found that calling t0008's own code/scoring.py build_centroid() unmodified on the current, freshly-dvc-pulled data/11labs_david/ corpus (1364 clips, mean duration ~1.04s) raises 'RuntimeError: No clips long enough to embed' under its MIN_CLIP_DURATION_S=1.6 filter -- every clip is rejected, so the harness can no longer reproduce its own recorded speaker_sim baseline (0.631/0.588) against today's corpus (results/v3_checkpoint_forensics.md's Metrics Cross-Check). This threatens reproducibility of the project's primary benchmark, not just this task's own cross-check. Determine whether the corpus's clip durations actually changed since t0008 ran (e.g. re-segmentation by a later normalize/audit task) or whether the filter was never binding in t0008's original environment, then either lower the threshold to match resemblyzer's actual embeddable range or document the corpus change. Recommended task types: data-analysis, infrastructure-setup.",
+      "kind": "technique",
+      "priority": "high",
+      "source_task": "t0016_v3_recipe_recovery",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    },
+    {
+      "id": "S-0016-05",
+      "title": "Stamp shared VM working directories with task-id and era to stop later clones masquerading as preserved ones",
+      "description": "This task discovered that LLM-T1-NC80's ~/kokoro-finetune, which looked like a live, plausibly v3-era checkout, was actually t0014's later StyleTTS2 clone -- a worse failure mode than 'directory gone' because it initially reads as valid before inspection (results/results_detailed.md's Analysis, 'Contradicted assumption #2'). Add a lightweight convention, such as a .task_provenance.json written at clone/checkout time recording task_id and timestamp, to any task step that creates or reuses a working directory on a shared VM, so a future VM-forensics task can check directory provenance in seconds instead of a full manual investigation like this one. Recommended task types: infrastructure-setup, write-library.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0016_v3_recipe_recovery",
+      "source_paper": null,
+      "categories": [],
+      "status": "active"
+    }
+  ]
+}

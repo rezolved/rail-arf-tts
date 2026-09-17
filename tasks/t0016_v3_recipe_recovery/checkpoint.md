@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T16:45:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-17T16:55:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -173,6 +173,21 @@ and `verify_task_results` both PASSED (0 errors/0 warnings) before and after `fl
 against `checkpoint.md`'s authoritative figures and left unmodified (all already correct). No caveat
 for downstream — all cited facts trace to files already committed by `implementation`/`teardown`.
 
+### Step 14 — suggestions
+
+A dedicated subagent ran `/generate-suggestions`, gathering all task context and deduplicating
+against 29 existing uncovered suggestions and 18 tasks, and wrote `results/suggestions.json` (5
+suggestions, IDs `S-0016-01`..`S-0016-05`). Covers both REQ-14 mandatory seeds — the seed-42
+stratified 266-clip fallback resample disjoint from `data/v4/val_list.txt` (`S-0016-01`) and the
+two-arm `multispeaker` ablation to move REQ-6 from `inferred false` to confirmed (`S-0016-02`) —
+plus the t0009 confound-table audit prompted by the `lambda_gen` discrepancy (`S-0016-03`), and two
+self-surfaced findings: a `build_centroid()` duration-filter regression that now rejects the whole
+`11labs_david` corpus in t0008's own harness (`S-0016-04`), and a VM working-directory
+provenance-stamping convention to prevent a repeat of this task's "later clone mistaken for
+preserved environment" failure mode (`S-0016-05`). `verify_suggestions` PASSED, 0 errors/0 warnings.
+No caveat for downstream — all five suggestions are `status: "active"` and independently
+verificator-clean.
+
 * * *
 
 ## Cross-Step Decisions
@@ -206,13 +221,13 @@ for downstream — all cited facts trace to files already committed by `implemen
 
 ## Next Step Notes
 
-Step 12 (`results`) is complete. `results/results_summary.md` and `results/results_detailed.md`
-exist, pass `verify_task_results` and `verify_task_metrics` with 0 errors/0 warnings, and their
-`## Task Requirement Coverage` section is the authoritative REQ-by-REQ status (12 Done / 3 Partial /
-2 Not done). The `suggestions` step (step 14) should read `data/v3_train_list_UNRECOVERED.md`'s
-"Suggested next step" section (a seed-42 stratified 266-clip resample, disjoint from
-`data/v4/val_list.txt`, as REQ-4's fallback) and `results/v3_checkpoint_forensics.md`'s
-"Multispeaker Resolution" section (a two-arm `multispeaker` ablation, since REQ-6 landed at
-`inferred false`, not `confirmed`) as the two mandatory suggestion seeds per `plan/plan.md`'s
-REQ-14. Do not re-derive metrics, costs, or forensics findings — all authoritative values are
-already in `results/{metrics.json,costs.json,remote_machines_used.json,v3_checkpoint_forensics.md}`.
+Step 14 (`suggestions`) is complete. `results/suggestions.json` exists (`spec_version: "2"`, 5
+suggestions, IDs `S-0016-01`..`S-0016-05`) and passes `verify_suggestions` with 0 errors/0 warnings.
+The `reporting` step (step 15) is the final step: read `task_results_specification.md` and
+`logs_specification.md` per the Per-Step Spec Table, run final reporting/session capture per
+`arf/skills/execute-task/SKILL.md`'s Phases for the `reporting` step, and produce
+`logs/sessions/capture_report.json` plus this step's `step_log.md`. Do not re-derive metrics, costs,
+forensics findings, or suggestions — all authoritative values are already in
+`results/{metrics.json,costs.json,remote_machines_used.json,v3_checkpoint_forensics.md,suggestions.json}`.
+This is the last step before the coordinator's own PR/merge phases (Phases 7-9), so the
+step-executor should confirm all prior steps' commits are present and clean before finishing.
