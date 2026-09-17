@@ -145,14 +145,15 @@
       "step": 11,
       "name": "creative-thinking",
       "description": "Consider alternative explanations for the speaker_sim gap and whether the success criterion should be restated.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-17T19:36:47Z",
-      "completed_at": null,
+      "completed_at": "2026-09-17T19:40:39Z",
       "log_file": "logs/steps/011_creative-thinking/",
-      "current_owner": "step-executor/creative-thinking",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-17T19:36:47Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-17T20:16:47Z"
+      "expected_completion_at": "2026-09-17T20:16:47Z",
+      "actual_duration_seconds": 232
     },
     {
       "step": 12,
