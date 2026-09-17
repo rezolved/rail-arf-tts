@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0015_v11_duration_blowup_forensics"
-updated_at: "2026-09-17T07:53:46Z"
-completed_steps: 7
-next_step_number: 3
-next_step_id: "init-folders"
+updated_at: "2026-09-17T07:56:30Z"
+completed_steps: 8
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -27,6 +27,16 @@ Ran `verify_task_dependencies.py` (via prestep and again via `run_with_logs`) ag
 dependencies: `t0013_v10_synthesis_quality_forensics` and `t0014_v11_decoder_fix_retrain`. Both have
 `status: "completed"` in their `task.json`, so the check passed with 0 errors and 0 warnings. Result
 recorded in `logs/steps/002_check-deps/deps_report.json`.
+
+### Step 3 — init-folders
+
+Ran `init_task_folders` to create the mandatory folder structure (`plan/`, `research/`, `results/`,
+`results/images/`, `corrections/`, `intervention/`, `code/`,
+`logs/commands|searches|sessions|steps/`, `assets/`), each with `.gitkeep`; `expected_assets` is
+`{}` so no asset-type subdirectory was added. Populated the aggregator cache at
+`tasks/t0015_v11_duration_blowup_forensics/ctx/` (task_types.json, costs.json, tasks.json,
+metrics.json, suggestions.json) for downstream subagents to reuse; `ctx/` is gitignored and not
+committed.
 
 ### Step 4 — research-papers
 
@@ -64,6 +74,10 @@ not quantitative results comparable to a published baseline.
 
 ## Next Step Notes
 
-Step 2 (`check-deps`) completed: both dependency tasks are confirmed completed and satisfied.
-Proceed to step 3 (`init-folders`) per `step_tracker.json` — create the mandatory task folder
-structure via `init_task_folders` and populate the aggregator cache under `tasks/$TASK_ID/ctx/`.
+Step 3 (`init-folders`) completed: task folder structure and aggregator cache are ready. Steps 4-5
+(research-papers, research-internet) and step 8 (setup-machines) plus step 10 (teardown) and step 13
+(compare-literature) are already marked skipped in `step_tracker.json`. Proceed to step 6
+(`research-code`) — review t0013's `infer_styletts2.py` and `audio_quality_check.py` and t0014's
+training config/logs (`ignore_modules`, Stage 2 epoch logs) to understand the reusable inference
+recipe and whether `predictor`/`predictor_encoder` received gradient updates during t0014's
+finetune.
