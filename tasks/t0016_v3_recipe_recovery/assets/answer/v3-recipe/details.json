@@ -1,0 +1,25 @@
+{
+  "spec_version": "2",
+  "answer_id": "v3-recipe",
+  "question": "What exactly did Kokoro v3's Stage 2 training recipe consist of, and which parts of that are confirmed versus inferred?",
+  "short_title": "The recovered v3 recipe",
+  "short_answer_path": "short_answer.md",
+  "full_answer_path": "full_answer.md",
+  "categories": [],
+  "answer_methods": [
+    "code-experiment"
+  ],
+  "source_paper_ids": [],
+  "source_urls": [],
+  "source_task_ids": [
+    "t0002_kokoro_v4_voicepack_decoder_package",
+    "t0006_kokoro_v5_stage2_subset",
+    "t0008_tts_eval_harness_baselines",
+    "t0009_stage2_training_failure_forensics",
+    "t0013_v10_synthesis_quality_forensics",
+    "t0015_v11_duration_blowup_forensics"
+  ],
+  "confidence": "low",
+  "created_by_task": "t0016_v3_recipe_recovery",
+  "date_created": "2026-09-17"
+}

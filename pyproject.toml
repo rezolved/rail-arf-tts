@@ -67,6 +67,9 @@ Company = "https://rezolve.com"
 [tool.uv]
 override-dependencies = [
     "cryptography>=46.0.7",
+    # setuptools>=81 dropped the bundled `pkg_resources` shim; webrtcvad (a resemblyzer
+    # dependency, speaker-sim extra) still hard-imports it. Pin below that removal.
+    "setuptools<81",
 ]
 
 [build-system]

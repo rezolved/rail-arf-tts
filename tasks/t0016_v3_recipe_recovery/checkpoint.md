@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0016_v3_recipe_recovery"
-updated_at: "2026-09-17T14:39:00Z"
-completed_steps: 10
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-17T15:45:00Z"
+completed_steps: 11
+next_step_number: 10
+next_step_id: "teardown"
 ---
 # Task Objective
 
@@ -102,6 +102,37 @@ of the 90-minute VM cap and writing `intervention/pool_busy_llm-t1-nc80.md`; a r
 this task — the `implementation` step must complete its read-only inventory and hand off to
 `teardown` within the remaining budget (~80 of the original 90 minutes left).
 
+### Step 9 — implementation
+
+Executed `plan/plan.md`'s full 20-step, 6-milestone Step by Step. **Milestone 1 (VM inventory):**
+completed the read-only SSH inventory of `~/kokoro-finetune`/`/mnt/cache/persist` in 13.47 minutes
+of VM wall time (well under the 90-minute cap) and called `azure_ml_vm teardown` itself immediately
+afterward rather than leaving the VM running for step 10 (see Cross-Step Decisions) —
+`~/bash_history` was found to contain unrelated other-project credentials on this shared VM pool and
+was deliberately redacted before committing, per CLAUDE.md's "never paste credentials" rule
+(`data/vm_inventory/raw_dump.txt` documents the redaction). Key negative finding:
+`~/kokoro-finetune` is t0014's own later StyleTTS2 clone, not a preserved v3-era environment — no
+`first_stage_v3.pth`, no v3 launch config, no 266-clip list survived (REQ-4, REQ-10 unresolved,
+honestly documented). VM's `models.py` did survive and served as the tie-breaker for `multispeaker`.
+**Milestones 2-6 (local CPU):** checkpoint-shape forensics across all 5 bundle modules plus
+`net["diffusion"]` resolved `multispeaker` to `inferred false` (all 5 modules show substantial
+weight-norm shifts, ruling out "decoder frozen"); scored 55 per-epoch/variant samples plus 8
+freshly-synthesized shipped-bundle samples with the audio-quality gate (`v3` epoch 6-8 all noise,
+`v3b` clean, explaining t0002's `v3b` citation); wrote the 93-field annotated
+`data/config_david_v3_reconstructed.yml`; generated `results/images/v3_module_weight_delta.png`;
+wrote and DVC-pushed the full mandatory human-listening set (`v3_shipped`, `v3_per_epoch`,
+`elevenlabs_reference`, `listening_guide.md`, all links verified resolving); wrote the `v3-recipe`
+answer asset (confidence `"low"`, verificator PASSED 0/0). Caveat for downstream: `dvc pull`/`push`
+hit the documented transient `DefaultAzureCredential` failure twice and was resolved by minting a
+short-lived Azure CLI user-delegation SAS token into the gitignored `.dvc/config.local` (not
+committed) rather than waiting out the ~9-minute transient window again; this local workaround is
+not portable and a future task hitting the same error should either retry-with-backoff (as
+originally planned) or repeat this SAS workaround, not assume `.dvc/config.local` persists across
+worktrees. Locally re-measured `speaker_sim=0.566` fell outside the ±0.02 tolerance against t0008's
+recorded numbers; investigated and attributed to a reference-corpus/pre-filter mismatch (documented
+in `results/v3_checkpoint_forensics.md`), not a bundle regression — treat this task's audio-quality
+conclusions as resting on the checkpoint forensics and audio gate, not this speaker_sim cross-check.
+
 * * *
 
 ## Cross-Step Decisions
@@ -110,16 +141,61 @@ this task — the `implementation` step must complete its read-only inventory an
   unconditional teardown step (Step 7 of the plan) — this overrides "keep investigating" instincts
   if the cap is hit before all VM evidence sources are covered.
 
+* Implementation (step 9) deviated from the canonical step-lifecycle assumption that the dedicated
+  `teardown` step (step 10) makes the `azure_ml_vm teardown` call: instead, the implementation
+  step-executor called `azure_ml_vm teardown t0016_v3_recipe_recovery` itself immediately after the
+  SSH inventory copy finished (`vm_teardown_called_at: 2026-09-17T14:47:56Z`,
+  `vm_teardown_by: "implementation step (this step), not a later teardown step"` recorded in
+  `data/vm_inventory/inventory.json`), per plan.md Milestone 1 Step 7's explicit instruction and the
+  orchestrator's own time-pressure guidance not to hold the VM open through the CPU-only forensics
+  work. Step 10 (`teardown`) should expect to find `LLM-T1-NC80` already deallocated and the task
+  lock already cleared — its job is to confirm/reconcile that state (and write
+  `remote_machines_used.json` / cost reconciliation per `remote_machines_specification.md`), not to
+  issue a fresh stop call.
+
 * * *
 
 ## Next Step Notes
 
-`LLM-T1-NC80` is acquired, verified, watchdog-protected, and running now. Proceed to step 9,
-`implementation`: execute `plan/plan.md` Milestone 1 Steps 4-7 (the read-only SSH inventory of
-`~/kokoro-finetune/` and `/mnt/cache/persist`, per `task_description.md`'s Evidence sources), then
-the checkpoint forensics, config reconstruction, audio packaging, and the `v3-recipe` answer asset.
-The VM has already burned ~9.5 minutes of its 90-minute cap on the resolved boot-timing race (see
-Step 8 above) — budget the remaining wall-clock time accordingly and do not exceed the $21 VM
-sub-cap. `dvc pull` may still need a retry if it hits the transient `DefaultAzureCredential` auth
-failure documented under Step 7. Tear the VM down via the `teardown` step immediately once the VM
-portion of Milestone 1 is done — do not hold it open through the CPU-only forensics work.
+Step 9 (`implementation`) is complete. **VM usage: 13.47 minutes of the 90-minute cap**
+(`vm_billing_started_at: 2026-09-17T14:34:28.703Z` →
+`vm_teardown_called_at: 2026-09-17T14:47:56.755Z`), roughly $3 of the $21 VM sub-cap — the VM is
+**already stopped/deallocated**, not left running. Step 10 (`teardown`) should verify this (e.g.
+`az ml compute show`/pool-lock state) rather than assume the VM is still up, and write its own step
+artifacts (`remote_machines_used.json`, cost reconciliation) against the already-completed teardown
+recorded in `tasks/t0016_v3_recipe_recovery/data/vm_inventory/inventory.json` and
+`logs/steps/008_setup-machines/machine_log.json`.
+
+Key findings from implementation, for the `results`/`suggestions`/`reporting` steps downstream:
+`~/kokoro-finetune` on the VM turned out to be a symlink to t0014's own later StyleTTS2 clone, not a
+preserved v3-era environment — no `first_stage_v3.pth`, no v3 launch config, and no 266-clip list
+survived anywhere on the VM or `/mnt/cache/persist` (REQ-4 unrecoverable, documented in
+`data/v3_train_list_UNRECOVERED.md`; REQ-10 byte-identity also unconfirmed). The VM's `models.py`
+DID survive and was the tie-breaker for the `multispeaker` contradiction: checkpoint-shape forensics
+on `net["diffusion"]` plus `models.py:808`'s `build_model()` branch landed on a verdict of
+**`inferred false`** (not `confirmed` — the external diffusion-package class shapes were not fully
+recovered), independently corroborating v6c's uncited inline claim over `best/config.json` and
+t0009's confound table. All five bundle modules (including the decoder) show substantial weight-norm
+shifts Stage 1 → best, ruling out "decoder frozen" as the explanation for v3's speaker_sim gain. A
+secondary finding worth flagging to `suggestions`: cross-checking t0009's confound table against
+v6c's actual committed file caught a factual error in the confound table (`lambda_gen` claimed
+`1.0`, actual v6c value is `0.2`) — the confound table's other "assumed" values should be treated
+with corresponding skepticism. The `v3` audio variant's epoch 6-8 samples are all
+`is_likely_noise=True` while the parallel `v3b` variant (same epochs) is clean, explaining why t0002
+cites `v3b/ep9_p5.wav` specifically. This task's own local re-synthesis of the shipped v3 bundle
+scored `speaker_sim=0.566`, outside the ±0.02 tolerance against t0008's recorded `0.631`/`0.588` —
+investigated and attributed to a documented reference-centroid-building deviation (t0008's own
+`MIN_CLIP_DURATION_S=1.6` pre-filter now rejects nearly the entire current `11labs_david` corpus),
+not treated as a bundle-quality regression; flagged as weak evidence either way in
+`results/v3_checkpoint_forensics.md`.
+
+All expected assets exist and pass verification: the `v3-recipe` answer asset
+(`assets/answer/v3-recipe/`) passes `meta.asset_types.answer.verificator` with 0 errors/0 warnings,
+confidence `"low"` (honestly reflects REQ-4/REQ-6/REQ-8/REQ-10 landing short of "confirmed"/"high").
+REQ-1, REQ-2, REQ-3, REQ-5, REQ-7, REQ-9, REQ-11, REQ-12, REQ-13, REQ-16, REQ-17 are `done`; REQ-6
+and REQ-8 are `partial` (verdict reached but not at the `confirmed` bar); REQ-4 and REQ-10 are
+`blocked` (evidence genuinely does not exist, documented rather than fabricated) — all per the
+task's own Rejection Criteria, which pre-registers an all-`inferred`/`unknown` reconstruction as a
+valid outcome. `code/`, `data/`, and `results/` all pass `ruff check`, `ruff format`, and `mypy`
+with 0 issues. `results/audio_samples/` is DVC-tracked and pushed (`dvc status` clean, no pending
+push). Proceed to step 10, `teardown`.

@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0008_tts_eval_harness_baselines/code/scoring.py", line 83, in build_centroid
+    from resemblyzer import VoiceEncoder, preprocess_wav
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/.venv/lib/python3.14/site-packages/resemblyzer/__init__.py", line 3, in <module>
+    from resemblyzer.audio import preprocess_wav, wav_to_mel_spectrogram, trim_long_silences, \
+        normalize_volume
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/.venv/lib/python3.14/site-packages/resemblyzer/audio.py", line 6, in <module>
+    import webrtcvad
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/.venv/lib/python3.14/site-packages/webrtcvad.py", line 1, in <module>
+    import pkg_resources
+ModuleNotFoundError: No module named 'pkg_resources'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/code/compute_metrics.py", line 113, in <module>
+    main()
+    ~~~~^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/code/compute_metrics.py", line 69, in main
+    centroid = build_centroid(ref_wavs)
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0008_tts_eval_harness_baselines/code/scoring.py", line 85, in build_centroid
+    raise ImportError(
+        "resemblyzer is not installed. Install with: pip install '.[speaker-sim]'"
+    ) from e
+ImportError: resemblyzer is not installed. Install with: pip install '.[speaker-sim]'
