@@ -165,6 +165,19 @@ before this step). `## Analysis` documents the plan's contradicted assumption ex
 inference-parameter sweep was framed as the cheapest fix to try, but 0/13 combinations came close to
 passing. `verify_task_metrics` and `verify_task_results` both pass with 0 errors/0 warnings.
 
+### Step 14 — suggestions
+
+Spawned a dedicated `/generate-suggestions` subagent (per Critical Rule 9), passing the task ID plus
+the root-cause diagnosis and step 11's five findings as raw context, without restricting the skill's
+own process (Critical Rule 10). The subagent independently reviewed
+`results/duration_blowup_diagnosis.md`, `results/asr_roundtrip_evaluation.md`, and the
+creative-thinking step log, then deduplicated against 23 existing open suggestions and 15 existing
+tasks before writing `results/suggestions.json` (7 suggestions, `S-0015-01`-`S-0015-07`):
+`S-0015-01`/`S-0015-02` (high) cover the targeted `predictor`/`predictor_encoder` fine-tune and the
+cheap cross-checkpoint module-swap ablation that should precede it; `S-0015-06` (high) proposes
+adopting the hardened gate as the project's mandatory pre-completion check, superseding S-0013-02.
+`verify_suggestions` passes, 0 errors/0 warnings.
+
 * * *
 
 ## Cross-Step Decisions
@@ -200,22 +213,6 @@ passing. `verify_task_metrics` and `verify_task_results` both pass with 0 errors
   `v11_best.wav` while leaving the original `is_likely_noise` signal and the v10 known-broken
   fixture's verdict unchanged — this is the blind-spot closure the task exists to prove, and
   downstream steps can cite `results/gate_regression.json` directly rather than re-deriving it.
-
-### Step 14 — suggestions
-
-Spawned a dedicated `/generate-suggestions` subagent (per Critical Rule 9), passing the task ID plus
-the root-cause diagnosis and step 11's five findings as raw context, without restricting the skill's
-own process (Critical Rule 10). The subagent independently reviewed
-`results/duration_blowup_diagnosis.md`, `results/asr_roundtrip_evaluation.md`, and the
-creative-thinking step log, then deduplicated against 23 existing open suggestions and 15 existing
-tasks before writing `results/suggestions.json` (7 suggestions, `S-0015-01`-`S-0015-07`):
-`S-0015-01`/`S-0015-02` (high) cover the targeted `predictor`/`predictor_encoder` Stage 2 fine-tune
-and the cheap cross-checkpoint module-swap ablation that should precede it; `S-0015-03`/`S-0015-04`
-(medium) cover the forced-alignment frame-rate audit and a phoneme-density characterization;
-`S-0015-05`/`S-0015-07` (medium) cover the symmetric lower-bound duration check and wiring
-ASR-round-trip as an optional third gate layer; `S-0015-06` (high) proposes adopting the hardened
-gate as the project's mandatory pre-completion check, explicitly superseding S-0013-02. Re-ran
-`verify_suggestions` independently via `run_with_logs`: PASSED, 0 errors, 0 warnings.
 
 * * *
 
