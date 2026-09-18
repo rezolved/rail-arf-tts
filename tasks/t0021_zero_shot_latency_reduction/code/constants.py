@@ -67,13 +67,21 @@ VM_HOURLY_COST_USD: Final[float] = 13.96
 VM_BILLING_ANCHOR_ISO: Final[str] = "2026-09-18T11:29:10.875712Z"
 BUDGET_HARD_CAP_USD: Final[float] = 100.0
 BUDGET_NEW_VARIANT_STOP_USD: Final[float] = 90.0
-# Confirmed non-billing gap: the idle watchdog stopped LLM-T1-NC80 after the mid-implementation
-# agent crash, and it was not billing from this stop until the successful re-acquire. Naive
-# (now - VM_BILLING_ANCHOR_ISO) wall-clock elapsed time overcounts cost by this amount unless
-# subtracted. Source: tasks/t0021_zero_shot_latency_reduction/intervention/
-# vm_idle_after_agent_crash_and_watchdog_fix.md ("13:53:29Z" stop -> "14:19:58Z" successful
-# re-acquire).
-VM_CONFIRMED_DOWNTIME_SECONDS: Final[float] = 1589.0
+# Confirmed non-billing gaps: the idle watchdog stopped LLM-T1-NC80 twice during this task, and it
+# was not billing during either gap. Naive (now - VM_BILLING_ANCHOR_ISO) wall-clock elapsed time
+# overcounts cost by this total amount unless subtracted.
+# Gap 1 (1589.0s): mid-implementation agent crash -> re-acquire. Source: tasks/
+# t0021_zero_shot_latency_reduction/intervention/vm_idle_after_agent_crash_and_watchdog_fix.md
+# ("13:53:29Z" stop -> "14:19:58Z" successful re-acquire).
+# Gap 2 (6064.65s): the ~35-45 minute CPU-only `merge_and_score.py` scoring run (no GPU activity)
+# exceeded the watchdog's IDLE_THRESHOLD_SECONDS=3600 (60 min), so it stopped the VM again at
+# "2026-09-18T17:47:10.756Z" (confirmed via `az rest` GET on the compute resource's
+# `lastOperation` field) -- correctly protecting against idle billing exactly as designed, not an
+# incident. Re-acquired at "2026-09-18T19:28:15.409970Z" (`billing_started_at` from
+# `azure_ml_vm.py acquire`'s own output) to re-run the 5 CosyVoice2 `ref_single` variants after
+# the `ref_single_transcript` truncation bug fix. Source: tasks/t0021_zero_shot_latency_reduction/
+# intervention/cosyvoice2_ref_single_prompt_text_truncated.md.
+VM_CONFIRMED_DOWNTIME_SECONDS: Final[float] = 1589.0 + 6064.65397
 
 # ── Warmup ─────────────────────────────────────────────────────────────────────
 N_WARMUP: Final[int] = 50

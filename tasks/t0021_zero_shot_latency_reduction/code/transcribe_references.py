@@ -33,11 +33,23 @@ from tasks.t0021_zero_shot_latency_reduction.code.paths import (
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 logger = logging.getLogger(__name__)
 
-WHISPER_MODEL_SIZE = "small.en"  # CPU-friendly; run before GPU is touched further (Milestone 1)
+WHISPER_MODEL_SIZE = "base.en"  # CPU-friendly; run before GPU is touched further (Milestone 1)
+# NOTE: found and fixed during this task's own implementation (Phase 1.5 post-hoc inspection,
+# triggered by a catastrophic WER=1.0 finding for every CosyVoice2 ref_single measurement).
+# `small.en` with `beam_size=5` silently truncated `ref_single`'s transcript to its FIRST sentence
+# only ("I'm not able to compare us with other companies.") even though the returned segment's own
+# timestamp span covered the full 15.08 s clip -- a Whisper decoding quirk (early stop mid-segment
+# on this specific `small.en` model/audio combination, not a VAD/silence-detection issue: the
+# timestamp span was correct, only the token generation stopped early). `base.en` (used with plain
+# defaults, no `beam_size` override) transcribes the full clip correctly across multiple segments.
+# A truncated `prompt_text` fed to CosyVoice2's zero-shot conditioning (which requires `prompt_text`
+# to match what is actually spoken in `prompt_wav`) caused every `ref_single` CosyVoice2 synthesis
+# this task ran to produce audio unrelated to the requested target text (confirmed by manually
+# re-transcribing several output clips: pure gibberish, e.g. "A wolf profferpate.").
 
 
 def _transcribe(model: object, wav_path: object) -> str:
-    segments, _info = model.transcribe(str(wav_path), language="en", beam_size=5)  # type: ignore[attr-defined]
+    segments, _info = model.transcribe(str(wav_path), language="en")  # type: ignore[attr-defined]
     text = " ".join(seg.text.strip() for seg in segments).strip()
     return text
 

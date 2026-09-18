@@ -54,5 +54,29 @@
     "budget_hard_cap_usd": 100.0,
     "milestone": "chatterbox precision_bf16_or_fp16 re-run succeeded 196/196; all 11 real variant cells + 2 closures complete",
     "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-18T19:27:33.309578+00:00",
+    "elapsed_hours_since_billing_anchor": 7.5315,
+    "estimated_cost_usd": 105.14,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "found+fixed ref_single prompt_text truncation bug (WER=1.0 for all cosyvoice2 ref_single); re-acquiring VM to redo 5 variants",
+    "note": "small.en+beam_size=5 truncated ref_single_transcript to first sentence only; switched to base.en; verified full transcript now captured"
+  },
+  {
+    "timestamp_utc": "2026-09-18T19:36:45.305701+00:00",
+    "elapsed_hours_since_billing_anchor": 6.0002,
+    "estimated_cost_usd": 83.76,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "VM re-acquired after watchdog idle-stop (correct, not incident); downtime accounting corrected",
+    "note": "downtime gap 2 (6064.65s) confirmed via az rest lastOperation + acquire billing_started_at; total confirmed downtime now 7653.65s"
+  },
+  {
+    "timestamp_utc": "2026-09-18T19:53:06.617342+00:00",
+    "elapsed_hours_since_billing_anchor": 6.2728,
+    "estimated_cost_usd": 87.57,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "cosyvoice2 baseline_new_ref ref_single re-run verified correct (spot-check WER now 0)",
+    "note": ""
   }
 ]

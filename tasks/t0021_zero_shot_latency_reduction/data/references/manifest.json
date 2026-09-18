@@ -77,7 +77,7 @@
     "mean_s": 4.326925347222223,
     "total_s": 415.38483333333335
   },
-  "ref_single_transcript": "I'm not able to compare us with other companies.",
-  "ref_concat_transcript": "checking supported language options. Exploring AI solutions tailored for small businesses. Exploring how agentic conversational AI can transform shopping experiences. Exploring how Resolve iBoost productivity. Exploring how to transform end-to-end shopping experiences. Exploring what discovery AI entails. Improving product discovery for retailers. Let me look into that. Let me check that specific date. Let me check where their headquarters are located.",
+  "ref_single_transcript": "I'm not able to compare us with other companies. Resolve AI to live as purpose-built AI for commerce, unifying discovery, conversation, and data intelligence to help shoppers find products, get personalized guidance, and complete purchases, all within a seamless, all-",
+  "ref_concat_transcript": "checking supported language options, exploring AI solutions tailored for small businesses, exploring how agentic conversational AI can transform shopping experiences, exploring how Resolve iBoost productivity, exploring how to transform end-to-end shopping experiences, exploring what discovery AI entails. Improving product discovery for retailers, let me look into that. Let me check that specific date. Let me check whether headquarters are located.",
   "transcript_source": "faster_whisper_small_en"
 }
