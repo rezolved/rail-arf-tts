@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T10:20:00Z"
-completed_steps: 3
-next_step_number: 4
-next_step_id: "research-papers"
+updated_at: "2026-09-18T10:30:00Z"
+completed_steps: 4
+next_step_number: 5
+next_step_id: "research-internet"
 ---
 # Task Objective
 
@@ -37,6 +37,22 @@ Ran `init_task_folders` to create the mandatory task folder structure (`plan/`, 
 (`task_types.json`, `costs.json`, `tasks.json`, `metrics.json`, `suggestions.json`) for downstream
 subagents to reuse instead of re-running aggregators; `ctx/` is gitignored and not committed.
 
+### Step 4 — research-papers
+
+Reviewed the project's 11-paper corpus (no `meta/categories/` entries exist yet, so triage was
+manual by topic) and wrote `research/research_papers.md` (10 papers cited). Key takeaway for
+downstream steps: [Du2024] (CosyVoice2) gives an additive latency model
+`L_TTS = M*d_lm + M*d_fm + M*d_voc` to use as the `results/latency_breakdown.json` schema; published
+vocoder speeds (150x-3700x real time, [Kong2020, Kaneko2022]) mean the LM/decoder stage is the most
+likely dominant TTFB term, so LM-serving acceleration (vLLM, TensorRT-LLM, fp16/bf16, torch.compile)
+should be prioritized over vocoder-stage work. [Seo2026] (Chatterbox-Flash) is the only paper with
+paired TTFP/RTF for a streaming zero-shot system (103-118 ms TTFP on H100) but required fine-tuning
+a new decoding objective — evidence the 300 ms gap is not purely architectural but may not be fully
+closeable by engineering-only (no-fine-tuning) levers. Caveat: no paper benchmarks vLLM/TensorRT-LLM
+for CosyVoice2's backbone or reports a measured per-stage ms breakdown on H100 — this task must
+establish those numbers empirically. Verificator passed (0 errors, 1 expected `RP-W003` warning from
+the empty categories registry).
+
 * * *
 
 ## Cross-Step Decisions
@@ -45,8 +61,10 @@ subagents to reuse instead of re-running aggregators; `ctx/` is gitignored and n
 
 ## Next Step Notes
 
-Step 3 created the folder skeleton and seeded `tasks/t0021_zero_shot_latency_reduction/ctx/` with
-`task_types.json`, `costs.json`, `tasks.json`, `metrics.json`, and `suggestions.json` — read these
-instead of re-running aggregators. Proceed to step 4 (`research-papers`): review corpus papers on
-TTS latency optimization (streaming decoding, TensorRT/vLLM inference acceleration, flow-matching
-vocoders) relevant to CosyVoice2 and Chatterbox, per the step description in `step_tracker.json`.
+Step 4 established the additive latency-model schema (`L_TTS = M*d_lm + M*d_fm + M*d_voc`, [Du2024])
+and the prioritization order (LM/decoder-stage acceleration first, vocoder last) that should carry
+into planning. Proceed to step 5 (`research-internet`): research CosyVoice2 and Chatterbox
+acceleration paths — `load_jit`/`load_trt`, the vLLM LLM backend, `torch.compile`, streaming APIs,
+and chunking strategies — per the step description in `step_tracker.json`. Read
+`research/research_papers.md` first; it flags that no reviewed paper covers vLLM/TensorRT-LLM
+benchmarks for CosyVoice2's Qwen2.5-0.5B backbone, so this is the gap research-internet must fill.
