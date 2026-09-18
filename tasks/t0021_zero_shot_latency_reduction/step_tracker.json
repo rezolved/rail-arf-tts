@@ -117,11 +117,11 @@
       "step": 9,
       "name": "implementation",
       "description": "Run per-stage latency profiling and acceleration variants for CosyVoice2 and Chatterbox, plus the S-0018-02 and F5-TTS closure cells.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-18T22:39:53Z",
-      "completed_at": null,
+      "completed_at": "2026-09-18T22:42:16Z",
       "log_file": "logs/steps/009_implementation/",
-      "current_owner": "step-executor/implementation",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-18T22:39:53Z",
       "heartbeat_interval_seconds": 600,
       "expected_completion_at": "2026-09-18T23:09:53Z",
@@ -130,7 +130,8 @@
       "resume_after": "2026-09-18T23:30:00Z",
       "watchdog_active": true,
       "liveness_probe": "kill -0 2215682 2>/dev/null",
-      "pause_count": 5
+      "pause_count": 5,
+      "actual_duration_seconds": 143
     },
     {
       "step": 10,
