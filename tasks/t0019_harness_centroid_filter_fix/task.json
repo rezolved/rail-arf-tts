@@ -5,13 +5,13 @@
   "name": "Fix the TTS harness: right David reference, ear-calibrated metrics, re-baseline",
   "short_description": "Rebuild tts_eval_harness around the production David (val_96 reference, pinned voice id), adopt an ear-calibrated speaker metric plus a MOS noise gate, fix prompts, re-score every system.",
   "long_description_file": "task_description.md",
-  "status": "not_started",
+  "status": "in_progress",
   "dependencies": [
     "t0008_tts_eval_harness_baselines",
     "t0016_v3_recipe_recovery",
     "t0018_zero_shot_cloning_calibration"
   ],
-  "start_time": null,
+  "start_time": "2026-09-18T11:11:50Z",
   "end_time": null,
   "expected_assets": {
     "library": 1,
