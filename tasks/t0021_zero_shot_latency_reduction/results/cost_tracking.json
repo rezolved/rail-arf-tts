@@ -78,5 +78,53 @@
     "budget_hard_cap_usd": 100.0,
     "milestone": "cosyvoice2 baseline_new_ref ref_single re-run verified correct (spot-check WER now 0)",
     "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-18T20:02:54.769392+00:00",
+    "elapsed_hours_since_billing_anchor": 6.4362,
+    "estimated_cost_usd": 89.85,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "cosyvoice2 ref_cache re-run done; fp16 running",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-18T20:12:42.236613+00:00",
+    "elapsed_hours_since_billing_anchor": 6.5994,
+    "estimated_cost_usd": 92.13,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "cosyvoice2 fp16 re-run in progress",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-18T20:17:36.042251+00:00",
+    "elapsed_hours_since_billing_anchor": 6.681,
+    "estimated_cost_usd": 93.27,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "cosyvoice2 fp16 re-run done; load_jit running",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-18T20:27:18.945376+00:00",
+    "elapsed_hours_since_billing_anchor": 6.8429,
+    "estimated_cost_usd": 95.53,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "cosyvoice2 load_jit re-run done; load_trt (final variant) running",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-18T20:37:01.644626+00:00",
+    "elapsed_hours_since_billing_anchor": 7.0048,
+    "estimated_cost_usd": 97.79,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "ALL cosyvoice2 ref_single variants re-run complete (5/5); pulling results, GPU work finished",
+    "note": ""
+  },
+  {
+    "timestamp_utc": "2026-09-18T20:39:59.242302+00:00",
+    "elapsed_hours_since_billing_anchor": 7.0541,
+    "estimated_cost_usd": 98.48,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "VM deallocated (teardown), GPU billing stopped",
+    "note": "All GPU work complete (12 original variant cells + 2 closures + 5-variant cosyvoice2 ref_single redo after prompt_text truncation fix). azure_ml_vm.py teardown confirmed deallocated=true, destroyed_at=2026-09-18T20:39:00.626630Z. Remaining implementation work (merge_and_score, run_gate_check, build_final_reports, build_comparison_set, build_listening_guide, answer asset) is CPU-only, no further GPU billing."
   }
 ]

@@ -5,7 +5,7 @@
   "condition": "ref_single",
   "n_clips": 196,
   "n_successful": 196,
-  "wall_clock_s": 274.43092545000036,
+  "wall_clock_s": 329.51059823900005,
   "n_warmup": 50,
   "n_warmup_ok": 50
 }
