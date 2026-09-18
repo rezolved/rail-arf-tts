@@ -1,0 +1,11 @@
+{
+  "variant_slug": "chatterbox_precision_bf16_or_fp16_ref_single",
+  "system": "chatterbox",
+  "acceleration_variant": "precision_bf16_or_fp16",
+  "condition": "ref_single",
+  "n_clips": 196,
+  "n_successful": 196,
+  "wall_clock_s": 271.35417856499953,
+  "n_warmup": 50,
+  "n_warmup_ok": 50
+}

@@ -1,0 +1,16 @@
+2026-09-18 12:36:01,792 INFO __main__ val_96 duration preflight: n=96 min=1.21s max=15.00s mean=4.33s total=415.38s
+2026-09-18 12:36:01,793 INFO __main__ ref_source_half: 48 clips, centroid_half: 48 clips (disjoint, seed=42)
+/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/.venv/lib/python3.14/site-packages/webrtcvad.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+2026-09-18 12:36:23,291 INFO tasks.t0008_tts_eval_harness_baselines.code.scoring Centroid built from 44 clips (skipped 4 too-short)
+2026-09-18 12:36:23,292 INFO __main__ val96 centroid built via t0008 library build_centroid() (48 clips)
+2026-09-18 12:36:23,293 INFO __main__ Saved corrected val96 centroid -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/data/references/val96_centroid.npy
+2026-09-18 12:36:23,293 INFO __main__ Copied t0018's half_a_centroid.npy (verbatim, read-only) -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/data/references/old_wrongvoice_centroid.npy
+2026-09-18 12:36:23,335 INFO __main__ ref_single: 1 clip(s), 15.00s -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/data/references/ref_single.wav
+2026-09-18 12:36:23,386 INFO __main__ ref_concat: 10 clips, 31.16s -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/data/references/ref_concat.wav
+2026-09-18 12:36:23,387 INFO __main__ Saved manifest -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/data/references/manifest.json
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/code/build_references_val96.py", line 304, in <module>
+    assert 8.0 <= m.ref_single_duration_s <= 12.0, f"ref_single duration out of range: {m.ref_single_duration_s}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ref_single duration out of range: 15.0

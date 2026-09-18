@@ -1,0 +1,11 @@
+{
+  "variant_slug": "chatterbox_ref_cache_ref_single",
+  "system": "chatterbox",
+  "acceleration_variant": "ref_cache",
+  "condition": "ref_single",
+  "n_clips": 196,
+  "n_successful": 196,
+  "wall_clock_s": 328.83305980900013,
+  "n_warmup": 50,
+  "n_warmup_ok": 50
+}

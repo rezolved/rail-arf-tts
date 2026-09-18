@@ -1,7 +1,7 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T12:15:18Z"
+updated_at: "2026-09-18T18:44:37Z"
 completed_steps: 8
 next_step_number: 9
 next_step_id: "implementation"
@@ -162,21 +162,46 @@ Binding requirements for every remaining t0021 step (planning, implementation, r
 
 ## Next Step Notes
 
-Step 8 completed: `LLM-T1-NC80` is provisioned and up (not yet destroyed), watchdog armed and
-confirmed (PID 6807, idle_timeout 3600s), both isolated venvs (`.venv-cosyvoice2`,
-`.venv-chatterbox`) verified intact, CosyVoice2 `load_jit`/`load_trt` export succeeded. The
-`.venv-cosyvoice2-vllm` install hit its 20-minute cutoff mid-unpack — the `vllm_backend` CosyVoice2
-variant is null per the plan's pre-registered fallback (see
-`intervention/cosyvoice2_vllm_install_ timeout.md`); this does not block any other variant. Proceed
-to step 9 (`implementation`): follow `plan/plan.md` step by step. Per the owner correction above,
-implementation step 1 must write the `intervention/` file documenting the wrong-ElevenLabs-voice
-correction, and step 2 must build the new `ref_single`/`ref_concat` references and the corrected
-speaker-similarity centroid from `data/v4/val/wavs` (both CPU-only) BEFORE touching the
-already-provisioned GPU further — the VM is already billing, so do not delay these CPU-only steps
-once implementation starts. Every acceleration variant must be re-run against the paired
-same-session t0018-setting baseline with the NEW references (Lesson 1). Caveat carried from step 8:
-do not trust a subagent's self-reported "I'll wait for the notification" for remote
-(non-harness-tracked) SSH jobs — if implementation launches long-running remote jobs, drive them to
-completion with real synchronous polling or transition the step to `paused_waiting` with
-`heartbeat.pause_step` and a concrete `resume_after`; never end a turn assuming an external monitor
-will notify anyone.
+Step 9 (`implementation`) is `paused_waiting` (pause_count=2, resume_after `2026-09-18T19:45:00Z`).
+GPU work is 100% done and the VM is torn down (`cost_tracking.json` final entry $68.77/4.93h at
+16:51Z); all remaining work is CPU-only on this local machine. The 11-variant sweep produced all
+`per_clip_metrics_<variant>.json` and `latency_breakdown_<variant>.json` files in `results/`. A
+local scoring job (`uv run -m tasks.t0021_zero_shot_latency_reduction.code.merge_and_score`, PID
+591111, started 2026-09-18T16:23:11Z) is merging all 2156 per-clip rows and computing dual-centroid
+speaker_sim + duration_ratio + WER (faster-whisper `base.en` int8 on CPU). As of this pause (18:44Z,
+elapsed 2:21) it is still alive and healthy (182% CPU across 2 hot compute threads, no crash) but
+`results/per_clip_metrics.json` has not appeared yet. This is the THIRD executor turn to encounter
+this same job still running — see the resume_sentinel recorded on the step tracker
+(`tasks/t0021_zero_shot_latency_reduction/step_tracker.json`, step 9) for the full check procedure.
+
+On resume: `ps -p 591111` and check `results/per_clip_metrics.json` is non-empty.
+
+* If present: merge_and_score succeeded. **Before trusting it**, verify the
+  `chatterbox_precision_bf16_or_fp16_ref_single` rows are not stale — that source file
+  (`results/per_clip_metrics_chatterbox_precision_bf16_or_fp16_ref_single.json`) was rewritten at
+  `16:47:42Z` (a bug-fix re-run; T3Cond dtype mismatch, see `results/cost_tracking.json` 16:32/16:51
+  entries) which is 24 minutes AFTER merge_and_score's glob+read at process start (16:23:11Z). If
+  the merged output shows null/suspicious `speaker_sim`/`wer` for that variant's 196 rows, re-run
+  `merge_and_score` (fast — no GPU, just re-reads the now-final JSON files and re-scores ~2156
+  clips) before proceeding. Once confirmed good, proceed to `plan/plan.md` Milestone 5:
+  `run_gate_check`, `report_zeroshot` charts, `build_comparison_set`, `build_listening_guide`, the
+  `answer` asset, and the implementation step's closing verificators.
+* If PID 591111 is gone and `per_clip_metrics.json` is still absent/empty: the job crashed. Read
+  `/tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/632781c0-3a57-4e0f-825f-dc71a72b011c/tasks/bbnr9u1zw.output`
+  for stderr — note this file legitimately reads EMPTY even for a healthy live job because it is fed
+  via a plain `tail -40` (no `-f`) that buffers everything until the upstream process hits EOF;
+  emptiness alone is not evidence of a hang. Diagnose and either fix-and-rerun or write an
+  `intervention/` file.
+* If PID 591111 is still alive and healthy: do NOT kill/restart it. Poll with real bounded sleeps
+  for up to ~15-20 minutes; if it finishes, proceed as above. If not, `pause_step` again with a new
+  concrete `resume_after` (this is pause_count=2 already — a third pause without a materially better
+  ETA basis would trip `ST-E010`; use elapsed time and thread CPU activity, not a guess).
+
+Caveat carried from step 8 (now doubly confirmed): never end a turn claiming "the background job
+will notify me" — there is no such mechanism for a bare shell PID. Either drive it to completion
+with real synchronous polling (bounded, e.g. via repeated `sleep`-loop Bash calls) or transition to
+`paused_waiting` via `heartbeat.pause_step` with a concrete `resume_after` and commit. Per the owner
+correction above (still binding), the `intervention/` file for the wrong-ElevenLabs-voice correction
+and the new `ref_single`/`ref_concat` references + corrected centroid must already exist from
+implementation steps 1-2 — confirm this on resume if starting fresh context, but do not redo it if
+already present.

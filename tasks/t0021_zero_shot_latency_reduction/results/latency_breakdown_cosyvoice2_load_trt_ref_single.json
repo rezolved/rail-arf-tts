@@ -1,0 +1,22 @@
+{
+  "ref_encoding_ms": {
+    "mean_ms": 0.17734206630848348,
+    "n": 196
+  },
+  "text_frontend_ms": {
+    "mean_ms": 1.2471250459625758,
+    "n": 196
+  },
+  "lm_prefill_decode_ms": {
+    "mean_ms": 702.0040896785925,
+    "n": 196
+  },
+  "flow_matching_vocoder_ms": {
+    "mean_ms": 143.65261420408498,
+    "n": 196
+  },
+  "total_ms": {
+    "mean_ms": 847.0834750713883,
+    "n": 196
+  }
+}

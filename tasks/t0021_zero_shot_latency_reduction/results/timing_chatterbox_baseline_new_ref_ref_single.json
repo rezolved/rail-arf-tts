@@ -1,0 +1,11 @@
+{
+  "variant_slug": "chatterbox_baseline_new_ref_ref_single",
+  "system": "chatterbox",
+  "acceleration_variant": "baseline_new_ref",
+  "condition": "ref_single",
+  "n_clips": 196,
+  "n_successful": 196,
+  "wall_clock_s": 295.15591127900007,
+  "n_warmup": 50,
+  "n_warmup_ok": 50
+}

@@ -1,0 +1,11 @@
+{
+  "variant_slug": "cosyvoice2_load_jit_ref_single",
+  "system": "cosyvoice2",
+  "acceleration_variant": "load_jit",
+  "condition": "ref_single",
+  "n_clips": 196,
+  "n_successful": 196,
+  "wall_clock_s": 274.43092545000036,
+  "n_warmup": 50,
+  "n_warmup_ok": 50
+}

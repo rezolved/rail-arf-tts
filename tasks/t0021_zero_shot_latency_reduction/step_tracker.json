@@ -117,10 +117,20 @@
       "step": 9,
       "name": "implementation",
       "description": "Run per-stage latency profiling and acceleration variants for CosyVoice2 and Chatterbox, plus the S-0018-02 and F5-TTS closure cells.",
-      "status": "pending",
-      "started_at": null,
+      "status": "paused_waiting",
+      "started_at": "2026-09-18T12:21:06Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/009_implementation/",
+      "current_owner": null,
+      "last_heartbeat_at": "2026-09-18T17:35:58Z",
+      "heartbeat_interval_seconds": 300,
+      "expected_completion_at": "2026-09-18T18:21:06Z",
+      "resume_sentinel": "Local CPU-bound scoring job (uv run -m tasks.t0021_zero_shot_latency_reduction.code.merge_and_score, started 2026-09-18T16:23:11Z, PID 591111 on this local machine, NOT the remote GPU VM -- GPU VM already fully torn down, all 11 variant + 2 closure GPU cells done, cost_tracking.json final entry 8.77/4.93h at 16:51Z) is still alive and healthy as of 2026-09-18T18:44:37Z (elapsed 2:21, 182% CPU across 2 hot CTranslate2/torch compute threads, no crash, no OOM) computing dual-centroid speaker_sim + duration_ratio + WER (faster-whisper base.en int8 CPU) over 2156 merged per-clip rows from the 11-variant sweep. results/per_clip_metrics.json still absent as of this pause. On resume: run `ps -p 591111` and check results/per_clip_metrics.json non-empty. If present: merge_and_score succeeded -- proceed to plan.md Milestone 5 (run_gate_check, report_zeroshot charts, build_comparison_set, build_listening_guide, answer asset, closing verificators). CAVEAT for whoever resumes: before trusting the merged output, verify the chatterbox_precision_bf16_or_fp16_ref_single rows are NOT stale -- that variant's per_clip_metrics_chatterbox_precision_bf16_or_fp16_ref_single.json file was rewritten at 16:47:42Z (a bug-fix re-run per cost_tracking.json 16:32/16:51 entries) which is 24 MINUTES AFTER merge_and_score's glob+read at process start (16:23:11Z); if merge_and_score's in-memory copy captured the earlier buggy/incomplete version instead of the 16:47:42Z corrected one, that variant's speaker_sim/wer will be wrong or null in the final output and merge_and_score must be re-run (fast: only reads existing JSON + rescoring ~2156 clips, no GPU needed) after confirming all 11 per_clip_metrics_*.json source files on disk are the final post-fix versions. If PID 591111 is gone AND per_clip_metrics.json is still absent/empty: job crashed -- read /tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/632781c0-3a57-4e0f-825f-dc71a72b011c/tasks/bbnr9u1zw.output for stderr (note: this file will read EMPTY even on a live/healthy job because it is fed via a plain 'tail -40' with no -f, which buffers everything until the upstream process hits EOF -- absence of output there is NOT evidence of a hang) and write an intervention file documenting the crash.",
+      "paused_at": "2026-09-18T18:45:43Z",
+      "resume_after": "2026-09-18T19:45:00Z",
+      "watchdog_active": true,
+      "liveness_probe": "ps -p 591111 > /dev/null 2>&1 || test -s tasks/t0021_zero_shot_latency_reduction/results/per_clip_metrics.json",
+      "pause_count": 2
     },
     {
       "step": 10,

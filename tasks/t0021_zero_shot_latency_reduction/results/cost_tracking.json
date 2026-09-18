@@ -1,0 +1,58 @@
+[
+  {
+    "timestamp_utc": "2026-09-18T13:04:22.328085+00:00",
+    "elapsed_hours_since_billing_anchor": 1.5865,
+    "estimated_cost_usd": 22.15,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "cosyvoice2 baseline_new_ref smoke gate PASSED",
+    "note": "1/1 successful, cold single-call StageTiming validated (fields sum to total)"
+  },
+  {
+    "timestamp_utc": "2026-09-18T14:29:48.972932+00:00",
+    "elapsed_hours_since_billing_anchor": 2.5692,
+    "estimated_cost_usd": 35.87,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "resume: implementation continuation after crash/watchdog fix",
+    "note": "downtime-corrected elapsed hours; resuming Milestone 3 variant sweep"
+  },
+  {
+    "timestamp_utc": "2026-09-18T15:23:54.324190+00:00",
+    "elapsed_hours_since_billing_anchor": 3.4707,
+    "estimated_cost_usd": 48.45,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "mid-sweep checkpoint",
+    "note": "cosyvoice2: baseline_new_ref,ref_cache done, fp16 running; chatterbox: baseline_new_ref,ref_cache,torch_compile done (precision_bf16_or_fp16 failed on real unsupported-dtype error, fixed and will be re-run), sentence_chunking running"
+  },
+  {
+    "timestamp_utc": "2026-09-18T15:45:51.548601+00:00",
+    "elapsed_hours_since_billing_anchor": 3.8366,
+    "estimated_cost_usd": 53.56,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "cosyvoice2 5/6 variants + chatterbox 6/6 variants done",
+    "note": "cosyvoice2: baseline_new_ref,ref_cache,fp16,load_jit done, load_trt running (vllm_backend null per intervention); chatterbox: all 6 variants done (streaming_api null - no native API at pinned 0.1.7; precision_bf16_or_fp16 fixed to T3-only bf16 after two real bugs found+fixed)"
+  },
+  {
+    "timestamp_utc": "2026-09-18T16:18:49.610283+00:00",
+    "elapsed_hours_since_billing_anchor": 4.386,
+    "estimated_cost_usd": 61.23,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "GPU sweep + closures complete; regen running",
+    "note": "cosyvoice2 5/6 sweep variants + ref_concat closure done; chatterbox 6/6 done; f5_tts null (confirmed hang, py-spy stack trace, intervention written); regenerating cosyvoice2 baseline_new_ref/ref_single latency_breakdown after filename-collision bug fix"
+  },
+  {
+    "timestamp_utc": "2026-09-18T16:32:46.324739+00:00",
+    "elapsed_hours_since_billing_anchor": 4.6185,
+    "estimated_cost_usd": 64.47,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "found+fixed chatterbox precision_bf16_or_fp16 0/196 bug during post-hoc inspection",
+    "note": "T3Cond conditioning tensors stayed fp32 after T3 weights cast to bf16, causing 196/196 dtype-mismatch failures despite exit=0; fixed via T3Cond.to(dtype=t3_param_dtype) at call time; re-running this one variant"
+  },
+  {
+    "timestamp_utc": "2026-09-18T16:51:13.646270+00:00",
+    "elapsed_hours_since_billing_anchor": 4.926,
+    "estimated_cost_usd": 68.77,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "chatterbox precision_bf16_or_fp16 re-run succeeded 196/196; all 11 real variant cells + 2 closures complete",
+    "note": ""
+  }
+]

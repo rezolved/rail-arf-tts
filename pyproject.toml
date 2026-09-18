@@ -56,6 +56,9 @@ dependencies = [
 speaker-sim = [
     "resemblyzer>=0.1.4",
 ]
+asr = [
+    "faster-whisper>=1.0",
+]
 
 [project.urls]
 Homepage = "https://github.com/rezolved/rail-arf-tts"

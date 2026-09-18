@@ -1,0 +1,11 @@
+{
+  "variant_slug": "chatterbox_sentence_chunking_ref_single",
+  "system": "chatterbox",
+  "acceleration_variant": "sentence_chunking",
+  "condition": "ref_single",
+  "n_clips": 196,
+  "n_successful": 196,
+  "wall_clock_s": 286.11491630599994,
+  "n_warmup": 50,
+  "n_warmup_ok": 50
+}
