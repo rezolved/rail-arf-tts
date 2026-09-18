@@ -1,0 +1,13 @@
+{
+  "task_id": "t0016_v3_recipe_recovery",
+  "vm_name": "LLM-T1-NC80",
+  "ssh_host_alias": "LLM-T1-NC80",
+  "hourly_cost_usd": 13.96,
+  "acquired_at": "2026-09-17T14:34:45.033597Z",
+  "started_vm": false,
+  "billing_started_at": "2026-09-17T14:34:28.703377Z",
+  "billing_anchor": "already_running",
+  "search_started_at": "2026-09-17T14:34:28.703324Z",
+  "total_provisioning_seconds": 16.330258452013368,
+  "failed_attempts": []
+}

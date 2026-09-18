@@ -1,0 +1,15 @@
+/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/.venv/lib/python3.14/site-packages/webrtcvad.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/code/compute_metrics.py", line 113, in <module>
+    main()
+    ~~~~^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/code/compute_metrics.py", line 69, in main
+    centroid = build_centroid(ref_wavs)
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0008_tts_eval_harness_baselines/code/scoring.py", line 109, in build_centroid
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: No clips long enough to embed (skipped=1364, min_duration=1.6s)

@@ -1,0 +1,19 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 007_20260917T142221Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 012_20260917T143511Z_ssh-llm-t1-nc80-nvcc-version-nvidia-smi-.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 015_20260917T143532Z_ssh-llm-t1-nc80-pgrep-af-idle-watchdog-s.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 027_20260917T144818Z_uv-run-dvc.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 028_20260917T145245Z_uv-run-dvc.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 029_20260917T145840Z_uv-run-dvc.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 035_20260917T152558Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 036_20260917T152708Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 040_20260917T153442Z_uv-run-dvc.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 061_20260917T162505Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 12 warning(s)
+

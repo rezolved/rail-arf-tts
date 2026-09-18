@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0016_v3_recipe_recovery",
+  "command": "ssh LLM-T1-NC80 pgrep -af idle_watchdog.sh",
+  "exit_code": 0,
+  "duration_seconds": 0.383,
+  "started_at": "2026-09-17T14:35:51Z",
+  "completed_at": "2026-09-17T14:35:51Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery",
+  "stdout_file": "017_20260917T143551Z_ssh-llm-t1-nc80-pgrep-af-idle-watchdog-s.stdout.txt",
+  "stderr_file": "017_20260917T143551Z_ssh-llm-t1-nc80-pgrep-af-idle-watchdog-s.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

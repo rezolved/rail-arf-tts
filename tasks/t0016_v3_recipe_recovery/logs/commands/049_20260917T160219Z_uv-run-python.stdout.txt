@@ -1,0 +1,49 @@
+=== power_events ===
+[
+  {
+    "kind": "stop",
+    "at": "2026-09-17T14:48:57.6893834Z"
+  },
+  {
+    "kind": "start",
+    "at": "2026-09-17T15:05:39.713196Z"
+  },
+  {
+    "kind": "stop",
+    "at": "2026-09-17T15:07:00.9260281Z"
+  },
+  {
+    "kind": "start",
+    "at": "2026-09-17T15:16:47.4087216Z"
+  },
+  {
+    "kind": "stop",
+    "at": "2026-09-17T15:18:13.8984004Z"
+  },
+  {
+    "kind": "start",
+    "at": "2026-09-17T15:26:32.8189882Z"
+  }
+]
+=== cost_attribution ===
+{
+  "billing_started_at": "2026-09-17T14:34:28.703377Z",
+  "billing_anchor": "already_running",
+  "billing_ended_at": "2026-09-17T14:47:56.755481Z",
+  "method": "activity_log",
+  "status": "verified",
+  "segments": [
+    {
+      "started_at": "2026-09-17T14:34:28.703377Z",
+      "ended_at": "2026-09-17T14:47:56.755481Z",
+      "hours": 0.22445891777777777,
+      "source": "activity_log"
+    }
+  ],
+  "billable_hours": 0.22445891777777777,
+  "wall_clock_span_hours": 0.22445891777777777,
+  "stopped_hours": 0.0,
+  "hourly_cost_usd": 13.96,
+  "total_cost_usd": 3.133446492177778,
+  "notes": "Reconstructed 1 billable segment(s) from the provider activity log; the provider's final state agrees with what the provisioner observed at teardown."
+}

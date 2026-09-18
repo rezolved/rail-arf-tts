@@ -1,0 +1,16 @@
+{
+  "environmentName": "AzureCloud",
+  "homeTenantId": "49e55eb4-ecc2-4f12-8494-9c8c5c38be7f",
+  "id": "caa7bcdb-c3e1-4687-a73b-7b621b7e4b23",
+  "isDefault": true,
+  "managedByTenants": [],
+  "name": "rezolve-primary-subscription",
+  "state": "Enabled",
+  "tenantDefaultDomain": "rezolve.com",
+  "tenantDisplayName": "Rezolve Ltd",
+  "tenantId": "49e55eb4-ecc2-4f12-8494-9c8c5c38be7f",
+  "user": {
+    "name": "VladimirGorovoy@rezolve.com",
+    "type": "user"
+  }
+}

@@ -1,0 +1,1245 @@
+
+=== SECTION: HOME_DIR_LS ===
+total 185
+drwxrwxrwx 2 root root     0 Sep 16 13:08 .
+drwxrwxrwx 2 root root     0 Sep 16 16:48 ..
+-rwxrwxrwx 1 root root    45 Sep 16 12:55 .gitignore
+drwxrwxrwx 2 root root     0 Sep 16 12:55 Colab
+drwxrwxrwx 2 root root     0 Sep 16 12:55 Configs
+drwxrwxrwx 2 root root     0 Sep 16 13:04 Demo
+-rwxrwxrwx 1 root root  1075 Sep 16 12:55 LICENSE
+drwxrwxrwx 2 root root     0 Sep 16 13:04 Models
+drwxrwxrwx 2 root root     0 Sep 16 13:08 Modules
+-rwxrwxrwx 1 root root  1872 Sep 16 12:55 README.md
+drwxrwxrwx 2 root root     0 Sep 16 13:08 Utils
+drwxrwxrwx 2 root root     0 Sep 16 17:31 __pycache__
+drwxrwxrwx 2 root root     0 Sep 16 12:55 data
+-rwxrwxrwx 1 root root  6937 Sep 16 12:55 kokoro_symbols.py
+-rwxrwxrwx 1 root root  8147 Sep 16 12:55 kokoro_tb_utils.py
+drwxrwxrwx 2 root root     0 Sep 16 17:07 logs
+-rwxrwxrwx 1 root root  9182 Sep 16 12:55 losses.py
+-rwxrwxrwx 1 root root  7843 Sep 16 12:55 meldataset.py
+-rwxrwxrwx 1 root root 27419 Sep 16 12:55 models.py
+-rwxrwxrwx 1 root root  2444 Sep 16 12:55 optimizers.py
+-rwxrwxrwx 1 root root   213 Sep 16 12:55 requirements.txt
+drwxrwxrwx 2 root root     0 Sep 16 17:11 tasks
+-rwxrwxrwx 1 root root   280 Sep 16 12:55 text_utils.py
+-rwxrwxrwx 1 root root 29982 Sep 16 12:55 train_finetune.py
+-rwxrwxrwx 1 root root 30189 Sep 16 12:55 train_finetune_accelerate.py
+-rwxrwxrwx 1 root root 21860 Sep 16 12:55 train_first.py
+-rwxrwxrwx 1 root root 36290 Sep 16 12:55 train_second.py
+-rwxrwxrwx 1 root root  2215 Sep 16 12:55 utils.py
+
+=== SECTION: HOME_DIR_TREE ===
+
+=== SECTION: LOGS_SEARCH ===
+/home/azureuser/kokoro-finetune/logs/v11/metrics.jsonl
+/home/azureuser/kokoro-finetune/logs/v11/train.log
+/home/azureuser/kokoro-finetune/logs/v11/v11/config.yml
+/home/azureuser/kokoro-finetune/logs/v11/v11_20260916T173941Z/config.yml
+/home/azureuser/kokoro-finetune/logs/v11/v11_20260916T174046Z/config.yml
+/home/azureuser/kokoro-finetune/logs/v11/v11_20260916T174257Z/config.yml
+
+=== SECTION: MODELS_V3_SEARCH ===
+
+=== SECTION: DATA_V3_266_SEARCH ===
+/home/azureuser/kokoro-finetune/data/v4/val/wavs/llm_sess_dc836b4f4b7b4934_resp_4c292662ddc44f2f.cancelled.wav
+/home/azureuser/kokoro-finetune/data/v5_normalized/looking_at_solutions_to_reduce_cart_abandonment_266ed3.wav
+
+=== SECTION: FIRST_STAGE_SEARCH ===
+
+=== SECTION: MODELS_PY_SEARCH ===
+
+=== SECTION: BASH_HISTORY ===
+ls
+df -h
+source ~/.bashrc
+df -h
+ls
+mkdir STT
+cd STT
+git clone https://github.com/rezaillm/brainpowa-realtime-api/tree/script-evals/scripts/evals/stt
+git clone https://github.com/rezaillm/brainpowa-realtime-api/
+cd brainpowa-realtime-api/
+cd scripts/
+cd evals/
+ls
+cd stt/
+ls
+uv sync --groups eval
+sudo snap install astral-uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source ~/.bashrc
+uv --version
+uv sync --groups eval
+cd ..
+uv sync --groups eval
+uv sync --group eval
+uv cache dir 
+uv cache size  
+uv cache size -h
+pip list
+uv pip list
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source $HOME/.cargo/env
+uv sync --groups eval
+uv sync --group eval
+./scripts/evals/stt/gen_test_matrix.sh
+sudo chown -R azureuser:azureuser   /mnt/hf_cache   /mnt/triton_cache   /mnt/vllm_cache   /mnt/uv_cache   /mnt/tmp
+./scripts/evals/stt/gen_test_matrix.sh
+cd STT/brainpowa-realtime-api/
+git status
+git checkout -b add/sttmodels
+uv sync --group eval --group eval-linux
+./scripts/evals/stt/run_eval_batch.sh --only parakeet,sensevoice-small
+ls
+echo "started pid=$!"; sleep 2; tail -5 /tmp/stt_eval_run.log
+df -h
+echo "pid=$!"
+echo "pid=$!"
+cd STT/
+cd brainpowa-realtime-api/
+git status
+git ..
+git add .
+git commit -m "staging commit-parakeet&sense"
+git config --global user.email MohanrajChandrasekar@rezolve.com
+git config --global user.name Mohanraj Chandrasekar
+git commit -m "staging commit-parakeet&sense"
+git status
+cd STT/brainpowa-realtime-api/
+python scripts/evals/stt/aggregate_stt_eval.py
+source .venv/bin/activate
+python scripts/evals/stt/aggregate_stt_eval.py
+python scripts/evals/stt/aggregate_stt_eval.py --langs en
+source .venv/bin/activate
+cd STT/brainpowa-realtime-api/
+source .venv/bin/activate
+python scripts/evals/stt/aggregate_stt_eval.py
+python scripts/evals/stt/aggregate_stt_eval.py --lang en
+df -h
+cd STT
+ls
+cd brainpowa-realtime-api/
+git status
+git add .
+git commit -m "comparison report"
+git status
+cd ..
+ls
+mkdir TTS
+cd TTS
+df -h
+cd TTS/
+ls
+./setup_venv.sh piper
+.venvs/piper/bin/python runners/run_piper.py
+df -h
+./setup_venv.sh melotts
+cd TTS/
+./setup_venv.sh melotts
+df -h
+cd ~/TTS
+./setup_venv.sh matcha
+./setup_venv.sh outetts
+cd TTS/
+./setup_venv.sh outetts
+ls
+/home/azureuser/TTS/.venvs/outetts/bin/python /home/azureuser/TTS/runners/run_outetts.py
+nvidia-smi
+top
+nvidia-smi
+tail -f /tmp/outetts.log
+cd ~/TTS
+./setup_venv.sh sesame
+df -h
+# 1. Nuke partial sesame venv (it failed to install).
+rm -rf /home/azureuser/TTS/.venvs/sesame
+# 2. Clear pip cache (recoverable).
+rm -rf /home/azureuser/.cache/pip
+# 3. Move existing venvs to /mnt, replace dir with symlink.
+mkdir -p /mnt/tts_venvs
+cd TTS/
+.venvs/sesame/bin/python runners/run_sesame.py
+mkdir -p /mnt/tts_venvs /mnt/pip_cache
+for v in matcha melotts outetts piper; do   if [ -d /home/azureuser/TTS/.venvs/$v ] && [ ! -L /home/azureuser/TTS/.venvs/$v ]; then     echo "moving $v ...";     mv /home/azureuser/TTS/.venvs/$v /mnt/tts_venvs/$v;     ln -s /mnt/tts_venvs/$v /home/azureuser/TTS/.venvs/$v;   fi; done
+ln -sfn /mnt/pip_cache /home/azureuser/.cache/pip
+df -h / /mnt | tail -3
+ls -la /home/azureuser/TTS/.venvs/
+cd TTS/
+.venvs/sesame/bin/python runners/run_sesame.py
+cd ~/TTS
+./setup_venv.sh styletts2
+cd ~/TTS
+./setup_venv.sh orpheus
+nvidia-smi
+curl -vs https://brainpowa-model-garden.dev.az.rezolve.com/v1/chat/completions -H "Content-Type: application/json" -H "X-API-Key: PcEOnv8QS-Ib-iHYLP-HHVy_ayi7PXrECDYESjnWx9w" --data-binary enrichment_description_request_sample.json
+curl -vs https://brainpowa-model-garden.dev.az.rezolve.com/v1/chat/completions -H "Content-Type: application/json" -H "X-API-Key: PcEOnv8QS-Ib-iHYLP-HHVy_ayi7PXrECDYESjnWx9w" --data-binary @enrichment_description_request_sample.json
+curl -vs https://brainpowa-model-garden.az.rezolve.com/v1/chat/completions -H "Content-Type: application/json" -H "X-API-Key: PcEOnv8QS-Ib-iHYLP-HHVy_ayi7PXrECDYESjnWx9w" --data-binary @enrichment_description_request_sample.json
+df -h
+ls
+cd ..
+ls
+cd MohanrajChandrasekar/
+ls
+conda env list
+conda env remove -n azureml_py310_sdkv2 -y
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+conda env remove -n azureml_py310_sdkv2 -y
+conda env remove -n azureml_py38 -y
+conda env remove -n azureml_py38_PT_TF -y
+df -h
+cd /mnt
+ls
+cd cache
+ls
+conda env list
+conda env remove -n jupyter_env -y
+conda env remove -n mount_env -y
+top
+ls
+cd aion
+wget -c -O aion-brainpowa-v4.tar.gz https://aion-rezolve-artifacts.s3.eu-north-1.amazonaws.com/models/aion-brainpowa-v4/aion-brainpowa-v4.tar.gz\?X-Amz-Algorithm\=AWS4-HMAC-SHA256\&X-Amz-Credential\=AKIA[REDACTED-SECRET-third-party-VM-user]%2F20260625%2Feu-north-1%2Fs3%2Faws4_request\&X-Amz-Date\=20260625T082721Z\&X-Amz-Expires\=259200\&X-Amz-SignedHeaders\=host\&X-Amz-Signature\=28c89edd3409cb743e75abc2c91b883b6d862195a6216cceccbc97d731658d41
+df -h
+cd /mnt
+ls
+cd ..
+ls
+cd MargaritaTiamanova/
+ls
+cd ..
+ls
+cd /mnt/
+ls
+cd ...
+/huggingface-cli login
+/home/azureuser/miniconda3/envs/stt/bin/huggingface-cli login
+echo "hf_[REDACTED-SECRET-third-party-VM-user]" > /mnt/cache/hf_token.txt
+exit
+nvidia-smi
+cd "/Users/margotiamanova/Desktop/REZOLVE AI/quepasa/realtime_api_client"
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+npm run dev
+cd "/Users/margotiamanova/Desktop/REZOLVE AI/quepasa/realtime_api_client"
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+npm run dev
+ssh -L 8000:localhost:8000 gpu-azure
+whoami
+ls
+ls -lah
+cd realtime-voice-benchmark/
+ls
+ls -lah
+python -c "import torch; print(torch.version.cuda, torch.__version__)"
+nvcc --version
+conda env --list
+conda env list
+conda activate stt
+python -c "import torch; print(torch.version.cuda, torch.__version__)"
+python -c "import ctypes; ctypes.CDLL('libcudnn.so.9')"
+ldconfig -p | grep libcudnn
+ls
+ls -lah
+cd realtime-voice-benchmark/
+ls
+ls -lah
+git statzs
+git status
+ls -lah
+exit
+cd /mnt/kikiri-tts/StyleTTS2 && source .venv/bin/activate && python train_second.py --config_path /tmp/config_david_v4b.yml 2>&1 | tee /tmp/stage2_correct.log
+cd /mnt/kikiri-tts/StyleTTS2 && source .venv/bin/activate && HF_HOME=~/.cache/huggingface python train_second.py --config_path /tmp/config_david_v4b.yml 2>&1 | tee /tmp/stage2_correct.log
+
+=== SECTION: PYTHON_HISTORY ===
+cat: /home/azureuser/.python_history: No such file or directory
+
+=== SECTION: GIT_CHECK ===
+IS_GIT_REPO: false
+
+=== SECTION: MNT_PERSIST_RESOLVE ===
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+
+=== SECTION: MNT_PERSIST_FIND ===
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/.amlignore
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/.amlignore.amltmp
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0009
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0009/dpo_v1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0009/sft_dpo_v1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0043
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0043/gemma4-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0043/gemma4-sft-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0043/gemma4-sft-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0043/qwen35-dpo-v1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0043/qwen35-rsft-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/adapters/t0043/qwen35-sft-dpo-v1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/brainpowa-env
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/brainpowa-env/hf-cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/brainpowa-env/venv
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/brainpowa-env/venv-new
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/embedding_ft_results
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/embedding_ft_results/qwen3-emb-4b-fashion-cached-mnrl-guided
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4/last.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4/lightning_logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4/parakeet-unified-finetuned-best.nemo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4/parakeet-unified-finetuned-epoch=04-val_wer=0.3776.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4/parakeet-unified-finetuned-epoch=06-val_wer=0.3776.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4/parakeet-unified-finetuned-epoch=41-val_wer=0.3706.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2/last.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2/lightning_logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2/parakeet-unified-finetuned-best.nemo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2/parakeet-unified-finetuned-epoch=00-val_wer=0.3566.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2/parakeet-unified-finetuned-epoch=01-val_wer=0.3497.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2/parakeet-unified-finetuned-epoch=11-val_wer=0.3566.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2-cont
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v4-stage2-cont/lightning_logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v5-retrain
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v5-retrain/last.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v5-retrain/lightning_logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v5-retrain/parakeet-unified-finetuned-best.nemo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v5-retrain/parakeet-unified-finetuned-epoch=33-val_wer=0.0556.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v5-retrain/parakeet-unified-finetuned-epoch=35-val_wer=0.0556.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/brainpowa-artifacts/parakeet-finetune-v5-retrain/parakeet-unified-finetuned-epoch=37-val_wer=0.0556.ckpt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/dev_subset_v3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/compose_qwen35-dpo-v1.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/compose_qwen35-rsft-v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/compose_qwen35-sft-dpo-v1_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dev_benchmark_subset.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/diff_qwen35-dpo-v1.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/diff_qwen35-rsft-v2.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/diff_qwen35-sft-dpo-v1.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/diff_run_qwen35-dpo-v1.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/diff_run_qwen35-dpo-v1_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/diff_run_qwen35-rsft-v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/diff_run_qwen35-sft-dpo-v1.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c270_dev.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c270_dev.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c270_dev_smoke.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c270_dev_smoke.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c540_dev.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c540_dev.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c540_dev_smoke.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/dpo_v2_c540_dev_smoke.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate2.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate2.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate2_run.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate3.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate3_run.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate4.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate4.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate4_run.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/gptoss_gate_run.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_correctness_dpo_v2.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_correctness_dpo_v2_c270_diag16.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_correctness_sft_dpo_v2.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_correctness_sft_v2.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_correctness_sft_v2_diag16.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_qwen35-dpo-v1.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_qwen35-rsft-v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_qwen35-sft-dpo-v1_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_venv_install.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_venv_install2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_venv_install3.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_venv_install4.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_venv_install5.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/merge_venv_install6.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-base-run1-on-benchmark-v3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-base-run1-on-benchmark-v3.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-base-run2-on-benchmark-v3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-base-run2-on-benchmark-v3.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-dpo-v2-on-benchmark-v3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-dpo-v2-on-benchmark-v3.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-sft-dpo-v2-on-benchmark-v3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-sft-dpo-v2-on-benchmark-v3.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-sft-v2-on-benchmark-v3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35-sft-v2-on-benchmark-v3.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_base_run1_gate20.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_base_run1_gate20.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_dpo_v2_gate20.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_dpo_v2_gate20.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_sft_dpo_v2_gate20.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_sft_dpo_v2_gate20.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_sft_v2_gate20.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/qwen35_sft_v2_gate20.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_dpo_v2_c270_dev.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_dpo_v2_c270_dev.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_dpo_v2_c540_dev.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_dpo_v2_c540_dev.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_v2_c135_dev.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_v2_c135_dev.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_v2_c270_dev.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/sft_v2_c270_dev.jsonl.generations.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/smoke_transformers_gen.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/vllm_server.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/vllm_server_8000.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/eval_logs/vllm_server_8001.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/.agent_harnesses.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/.check_for_update_done
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/.locks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/.locks/models--google--gemma-4-12B-it
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/.locks/models--nvidia--gpt-oss-120b-Eagle3-v3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/.locks/models--nvidia--Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/.locks/models--openai--gpt-oss-120b
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/CACHEDIR.TAG
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/.locks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/CACHEDIR.TAG
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/models--google--gemma-4-12B-it
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/models--google--gemma-4-26B-A4B-it
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/models--hexgrad--Kokoro-82M
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/models--nvidia--Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/models--Qwen--Qwen3.5-35B-A3B
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/models--Qwen--Qwen3.6-35B-A3B
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/hub/models--Systran--faster-whisper-base.en
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--google--gemma-4-12B-it
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--google--gemma-4-12B-it/blobs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--google--gemma-4-12B-it/refs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--google--gemma-4-12B-it/snapshots
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--gpt-oss-120b-Eagle3-v3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--gpt-oss-120b-Eagle3-v3/.no_exist
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--gpt-oss-120b-Eagle3-v3/blobs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--gpt-oss-120b-Eagle3-v3/refs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--gpt-oss-120b-Eagle3-v3/snapshots
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16/blobs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16/refs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--nvidia--Nemotron-3-Nano-Omni-30B-A3B-Reasoning-BF16/snapshots
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--openai--gpt-oss-120b
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--openai--gpt-oss-120b/.no_exist
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--openai--gpt-oss-120b/blobs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--openai--gpt-oss-120b/refs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/models--openai--gpt-oss-120b/snapshots
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/modules
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/modules/transformers_modules
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/modules/__init__.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/testfile
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/xet
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/xet/https___cas_serv-tGqkUaZf_CBPHQ6h
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/hf-cache/xet/logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0043
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0043/qwen35-dpo-v1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0043/qwen35-rsft-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0043/qwen35-sft-dpo-v1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0046
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0046/dpo_v2_c270
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0046/dpo_v2_c540
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0046/sft_dpo_v2_c270
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0046/sft_dpo_v2_c540
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0046/sft_v2_c135
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/merged/t0046/sft_v2_c270
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/pretrained
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/pretrained/StyleTTS2-LibriTTS
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/pretrained/StyleTTS2-LibriTTS/Models
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/dpo_v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/dpo_v2/adapter
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/dpo_v2/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/dpo_v2_result.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_dpo_v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_dpo_v2/adapter
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_dpo_v2/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_dpo_v2_result.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_v2/adapter
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_v2/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/runs/sft_v2_result.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/dpo_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_candidates_status.txt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_candidates_status_dpo_v2.txt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_candidates_status_sft_dpo_v2.txt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_correctness_dpo_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_correctness_dpo_v2_c270_diag16.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_correctness_sft_dpo_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_correctness_sft_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_correctness_sft_v2_diag16.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_dpo_v2_c270.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_dpo_v2_c540.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_sft_dpo_v2_c270.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_sft_dpo_v2_c540.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_sft_v2_c135.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/merge_sft_v2_c270.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/sft_dpo_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/run_logs/sft_v2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/batch_experiment.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/batch_experiment.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/pip_install.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo/.dvc
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo/arf
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo/batch_experiment.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo/meta
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo/pyproject.toml
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo/tasks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/repo/unsloth_compiled_cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/ccb_sft_full.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/ccb_sft_limit3.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/ccb_sft_limit3b.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_dpo_bfcl.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_dpo_targeted.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_dpo_targeted2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_sftdpo_bfcl.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_sftdpo_targeted.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_sft_bfcl.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_sft_targeted.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_sft_targeted2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/gen_sft_targeted3.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/predictions_raw
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/shim_sft.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/shim_sft2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/train_dpo_neu.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/train_dpo_neu2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/train_sftdpo.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/results/train_sftdpo2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/unsloth_compiled_cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/unsloth_compiled_cache/.locks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/unsloth_compiled_cache/.unsloth_gpt_oss_compiled_flavor
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/unsloth_compiled_cache/moe_utils.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/unsloth_compiled_cache/UnslothBCOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/unsloth_compiled_cache/UnslothCPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/unsloth_compiled_cache/__pycache__
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/verify_dpo_render_neu.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/verify_sftdpo_gen.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0009/verify_trainable_params.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010/checkpoints/epoch_2nd_00014.pth
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010/checkpoints/epoch_2nd_00016.pth
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010/logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010/logs/config_david_v10.yml
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010/logs/metrics.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0010/logs/train.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/heartbeat.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/hf_home
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/hf_home/.agent_harnesses.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/hf_home/.locks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/hf_home/hub
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/hf_home/models--microsoft--wavlm-base-plus
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/hf_home/version.txt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/hf_home/xet
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/.gitignore
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/Colab
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/Configs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/data
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/Demo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/kokoro_symbols.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/kokoro_tb_utils.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/LICENSE
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/logs
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/losses.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/meldataset.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/Models
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/models.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/Modules
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/optimizers.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/README.md
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/requirements.txt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/tasks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/text_utils.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/train_finetune.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/train_finetune_accelerate.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/train_first.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/train_second.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/Utils
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/utils.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/kokoro-finetune/__pycache__
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/pip-cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/pip-cache/http
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0014_v11_decoder_fix_retrain/pip-cache/http-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0027_wise_ft_interpolation_and_val_repair
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0027_wise_ft_interpolation_and_val_repair/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0027_wise_ft_interpolation_and_val_repair/checkpoints/wiseft_alpha_0.7.nemo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0027_wise_ft_interpolation_and_val_repair/data
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0027_wise_ft_interpolation_and_val_repair/data/clean_eval_v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_code
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_code/vllm_serve.sh
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/tasks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/tasks/t0029_fast_ft_serving_recipe
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/tasks/t0041_join_system_prompt_and_tools_into_datasets
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/tasks/t0043_rerun_ft_benchmark_v3_system_prompt
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/tasks/__init__.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/tasks/__pycache__
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/.locks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/moe_utils.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/UnslothCPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/UnslothGKDTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/UnslothKTOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/UnslothORPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/UnslothPPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/UnslothPRMTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/UnslothRewardTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0043_pkg/unsloth_compiled_cache/__pycache__
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/tasks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/tasks/t0029_fast_ft_serving_recipe
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/tasks/t0041_join_system_prompt_and_tools_into_datasets
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/tasks/t0044_ingest_gemma_naive_standard_batch_v4
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/tasks/t0046_ft_qwen35_v5_data_sft_dpo_sftdpo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/.locks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/moe_utils.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothBCOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothCPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothDPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothGKDTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothGRPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothKTOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothNashMDTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/UnslothOnlineDPOTrainer.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0046repo/unsloth_compiled_cache/__pycache__
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/dpo_smoke_20.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/dpo_smoke_test.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/dpo_smoke_test.py
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/dpo_trainer_smoke_test.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/gen_base_run1.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/gen_base_run2.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/gen_dpo.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/gen_sft.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/gen_sftdpo.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/lora_validate.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merged
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merged/merge_diff_dpo.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merged/merge_diff_sft.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merged/merge_diff_sft_dpo.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merged/qwen36-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merged/qwen36-sft-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merged/qwen36-sft-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/merge_all.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-dpo-v2/adapter
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-dpo-v2/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-dpo-v2/train.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-dpo-v2/train_result.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-dpo-v2/adapter
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-dpo-v2/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-dpo-v2/train.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-dpo-v2/train_result.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-v2/adapter
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-v2/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-v2/train.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/qwen36-sft-v2/train_result.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/serving_smoke_test.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/serving_smoke_test.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_dpo_out
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_dpo_out/adapter
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_dpo_out/checkpoints
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/chat_template.jinja
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/config.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/generation_config.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/merge_diff_smoke.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/model-00001-of-00002.safetensors
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/model-00002-of-00002.safetensors
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/model.safetensors.index.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/tokenizer.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/smoke_merged/tokenizer_config.json
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/vllm_base.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/vllm_dpo.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/vllm_sft.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053/vllm_sftdpo.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053repo
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053repo/tasks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053repo/tasks/t0053_ft_qwen36_v6_data_full_epoch
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053_data
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053_data/benchmark-v3.1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053_data/benchmark-v3.1/benchmark_v3_1.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053_data/dpo-combined-v6
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053_data/dpo-combined-v6/dpo_v6.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053_data/sft-combined-v6
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0053_data/sft-combined-v6/sft_v6.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_gen_neuv1.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/b2_queue.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/benchmark_v3.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/benchmark_v3_1.jsonl
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/debugtrace3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/debug_test
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/debug_test2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/group_a_neuv1.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen35-base-run1-on-benchmark-v3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen35-base-run2-on-benchmark-v3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen35-dpo-v2-on-benchmark-v3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen35-sft-dpo-v2-on-benchmark-v3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen36-base-on-benchmark-v3
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen36-dpo-v2-final-checkpoint-on-benchmark-v3-1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen36-dpo-v2-final-checkpoint_merge.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen36-sft-dpo-v2-final-checkpoint-on-benchmark-v3-1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen36-sft-dpo-v2-final-checkpoint_merge.log
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/data/qwen36-sft-v2-final-checkpoint-on-benchmark-v3-1
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/merged_final
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/merged_final/qwen36-dpo-v2-final-checkpoint
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/merged_final/qwen36-sft-dpo-v2-final-checkpoint
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/merged_final/qwen36-sft-v2-final-checkpoint
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/repo_min
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/repo_min/data
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/repo_min/tasks
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/repo_min/unsloth_compiled_cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/t0046_adapters
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/t0046_adapters/qwen35-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/t0055_staging/t0046_adapters/qwen35-sft-dpo-v2
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/DiogoCarvalho
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/MargaritaTiamanova
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/MohanrajChandrasekar
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/MohanrajChandrasekar/.cache
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/MohanrajChandrasekar/aion
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/MohanrajChandrasekar/claude-code
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/MohanrajChandrasekar/GTrain
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/MohanrajChandrasekar/test
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/PreethiRavichandran
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/RubanAgnesh
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/ShereefBankole
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code/Users/zoe.c
+
+=== SECTION: ENV_PYTHON_WHICH ===
+/usr/bin/python3
+
+=== SECTION: ENV_TORCH_VERSION ===
+timeout: failed to run command ‘python’: No such file or directory
+
+=== SECTION: ENV_KOKORO_VERSION ===
+timeout: failed to run command ‘python’: No such file or directory
+
+=== SECTION: ENV_ESPEAK_VERSION ===
+eSpeak NG text-to-speech: 1.50  Data at: /usr/lib/x86_64-linux-gnu/espeak-ng-data
+
+=== SECTION: ENV_MISAKI_VERSION ===
+WARNING: The directory '/mnt/pip_cache' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+Name: misaki
+Version: 0.9.4
+Summary: G2P engine for TTS
+Home-page: 
+Author: 
+Author-email: hexgrad <hello@hexgrad.com>
+License: Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           APPENDIX: How to apply the Apache License to your work.
+        
+              To apply the Apache License to your work, attach the following
+              boilerplate notice, with the fields enclosed by brackets "[]"
+              replaced with your own identifying information. (Don't include
+              the brackets!)  The text should be enclosed in the appropriate
+              comment syntax for the file format. We also recommend that a
+              file or class name and description of purpose be included on the
+              same "printed page" as the copyright notice for easier
+              identification within third-party archives.
+        
+           Copyright [yyyy] [name of copyright owner]
+        
+           Licensed under the Apache License, Version 2.0 (the "License");
+           you may not use this file except in compliance with the License.
+           You may obtain a copy of the License at
+        
+               http://www.apache.org/licenses/LICENSE-2.0
+        
+           Unless required by applicable law or agreed to in writing, software
+           distributed under the License is distributed on an "AS IS" BASIS,
+           WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+           See the License for the specific language governing permissions and
+           limitations under the License.
+Location: /home/azureuser/.local/lib/python3.10/site-packages
+Requires: addict, regex
+Required-by: 
+
+=== SECTION: ENV_PIP_FREEZE ===
+WARNING: The directory '/mnt/pip_cache' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+addict==2.4.0
+adlfs==2026.8.0
+aiohappyeyeballs==2.7.1
+aiohttp==3.14.3
+aiohttp-retry==2.9.1
+aiosignal==1.4.0
+amqp==5.3.1
+annotated-doc==0.0.5
+annotated-types==0.8.0
+antlr4-python3-runtime==4.9.3
+anyio==4.15.1
+appdirs==1.4.4
+argcomplete==3.7.2
+async-timeout==5.0.1
+asyncssh==2.24.0
+atpublic==7.0.0
+attrs==26.1.0
+Automat==20.2.0
+azure-core==1.41.0
+azure-identity==1.25.3
+azure-storage-blob==12.30.0
+Babel==2.8.0
+backcall==0.2.0
+bcrypt==3.2.0
+beautifulsoup4==4.10.0
+beniget==0.4.1
+billiard==4.2.4
+blinker==1.4
+blis==1.3.3
+Brotli==1.0.9
+catalogue==2.0.10
+celery==5.6.3
+certifi==2026.7.22
+cffi==2.1.1
+chardet==4.0.0
+charset-normalizer==3.5.1
+click==8.4.2
+click-didyoumean==0.3.1
+click-plugins==1.1.1.2
+click-repl==0.3.0
+cloud-init==25.2
+cloudpathlib==0.25.0
+cloudpickle==3.1.2
+colorama==0.4.4
+colorlog==6.12.0
+command-not-found==0.3
+confection==1.3.3
+configobj==5.0.9
+constantly==15.1.0
+contourpy==1.3.2
+cryptography==50.0.0
+csvw==4.1.0
+cuda-bindings==13.3.1
+cuda-pathfinder==1.8.1
+cuda-toolkit==13.0.3.0
+curated-tokenizers==0.0.10
+cycler==0.11.0
+cymem==2.0.13
+dbus-python==1.2.18
+decorator==4.4.2
+dictdiffer==0.10.0
+diskcache==5.6.3
+distro==1.7.0
+distro-info==1.1+ubuntu0.2
+dlinfo==2.0.0
+docopt==0.6.2
+dpath==2.2.0
+dulwich==1.2.12
+dvc==3.67.1
+dvc-azure==3.1.1
+dvc-data==3.18.3
+dvc-http==2.32.0
+dvc-objects==5.2.0
+dvc-render==1.0.2
+dvc-studio-client==0.23.0
+dvc-task==0.40.2
+einops==0.8.2
+entrypoints==0.4
+espeakng-loader==0.2.4
+exceptiongroup==1.3.1
+filelock==3.32.3
+flatten-dict==0.5.0
+flufl.lock==9.1.0
+fonttools==4.29.1
+frozenlist==1.8.0
+fs==2.4.12
+fsspec==2026.7.0
+funcy==2.0
+gast==0.5.2
+gitdb==4.0.12
+GitPython==3.1.59
+googleapis-common-protos==1.75.3
+grandalf==0.8
+greenlet==3.5.5
+grpcio==1.83.1
+gto==1.10.1
+h11==0.16.0
+hf-xet==1.6.0
+html5lib==1.1
+httpcore==1.0.9
+httplib2==0.20.2
+hydra-core==1.3.5
+hyperlink==21.0.0
+idna==3.3
+importlib-metadata==4.6.4
+incremental==21.3.0
+ipython==7.31.1
+isodate==0.7.2
+iterative-telemetry==0.0.10
+jedi==0.18.0
+jeepney==0.7.1
+Jinja2==3.0.3
+jmespath==1.1.0
+joblib==1.6.0
+jsonpatch==1.32
+jsonpointer==2.0
+jsonschema==3.2.0
+keyring==23.5.0
+kiwisolver==1.3.2
+knack==0.14.0
+kombu==5.6.2
+language-tags==1.3.1
+launchpadlib==1.10.16
+lazr.restfulclient==0.14.4
+lazr.uri==1.0.6
+lightning-utilities==0.15.3
+llfuse==1.3.8
+loguru==0.7.3
+lxml==4.8.0
+lz4==3.1.3+dfsg
+Mako==1.4.1
+markdown-it-py==4.2.0
+MarkupSafe==2.0.1
+matplotlib==3.5.1
+matplotlib-inline==0.1.3
+mdurl==0.1.2
+misaki==0.9.4
+more-itertools==8.10.0
+mpmath==1.3.0
+msal==1.37.0
+msal-extensions==1.3.1
+multidict==6.7.1
+murmurhash==1.0.15
+netifaces==0.11.0
+networkx==3.4.2
+num2words==0.5.14
+numpy==2.2.6
+nvidia-cublas==13.1.1.3
+nvidia-cublas-cu12==12.1.3.1
+nvidia-cuda-cupti==13.0.85
+nvidia-cuda-cupti-cu12==12.1.105
+nvidia-cuda-nvrtc==13.0.88
+nvidia-cuda-nvrtc-cu12==12.1.105
+nvidia-cuda-runtime==13.0.96
+nvidia-cuda-runtime-cu12==12.1.105
+nvidia-cudnn-cu12==9.1.0.70
+nvidia-cudnn-cu13==9.24.0.43
+nvidia-cufft==12.0.0.61
+nvidia-cufft-cu12==11.0.2.54
+nvidia-cufile==1.15.1.6
+nvidia-curand==10.4.0.35
+nvidia-curand-cu12==10.3.2.106
+nvidia-cusolver==12.0.4.66
+nvidia-cusolver-cu12==11.4.5.107
+nvidia-cusparse==12.6.3.3
+nvidia-cusparse-cu12==12.1.0.106
+nvidia-cusparselt-cu13==0.8.1
+nvidia-nccl-cu12==2.21.5
+nvidia-nccl-cu13==2.30.7
+nvidia-nvjitlink==13.3.33
+nvidia-nvjitlink-cu12==12.9.86
+nvidia-nvshmem-cu13==3.4.5
+nvidia-nvtx==13.0.85
+nvidia-nvtx-cu12==12.1.105
+oauthlib==3.2.0
+olefile==0.46
+omegaconf==2.3.1
+opentelemetry-api==1.44.0
+opentelemetry-exporter-otlp-proto-common==1.44.0
+opentelemetry-proto==1.44.0
+opentelemetry-sdk==1.44.0
+opentelemetry-semantic-conventions==0.65b0
+orjson==3.12.0
+packaging==26.3
+pandas==2.3.3
+parso==0.8.1
+pathspec==1.1.1
+pexpect==4.8.0
+phonemizer==3.4.0
+pickleshare==0.7.5
+Pillow==9.0.1
+platformdirs==4.11.3
+ply==3.11
+preshed==3.0.13
+primePy==1.3
+prompt_toolkit==3.0.53
+propcache==0.5.2
+protobuf==7.36.1
+psutil==7.2.2
+ptyprocess==0.7.0
+pyannote-core==6.0.1
+pyannoteai-sdk==0.4.0
+pyasn1==0.4.8
+pyasn1-modules==0.2.1
+pycparser==3.0
+pydantic==2.13.4
+pydantic-settings==2.15.0
+pydantic_core==2.46.4
+pydot==4.0.1
+pygit2==1.18.2
+Pygments==2.20.0
+PyGObject==3.42.1
+pygtrie==2.5.0
+PyHamcrest==2.0.2
+PyJWT==2.3.0
+pyOpenSSL==21.0.0
+pyparsing==3.3.2
+pyparted==3.11.7
+pyrsistent==0.18.1
+pyserial==3.5
+python-apt==2.4.0+ubuntu4.1
+python-dateutil==2.9.0.post0
+python-debian==0.1.43+ubuntu1.1
+python-dotenv==1.2.3
+python-magic==0.4.24
+pythran==0.10.0
+pytz==2022.1
+PyYAML==6.0.3
+rdflib==7.6.0
+regex==2026.9.3
+requests==2.34.2
+rfc3986==1.5.0
+rich==15.0.0
+ruamel.yaml==0.19.1
+safetensors==0.8.0
+scikit-learn==1.7.2
+scipy==1.15.3
+scmrepo==3.6.2
+screen-resolution-extra==0.0.0
+SecretStorage==3.3.1
+segments==2.4.0
+semver==3.0.4
+service-identity==18.1.0
+shellingham==1.5.4
+shortuuid==1.0.13
+shtab==1.11.0
+six==1.16.0
+smart_open==8.0.1
+smmap==5.0.3
+sortedcontainers==2.4.0
+sos==4.9.2
+soundfile==0.14.0
+soupsieve==2.3.1
+spacy-legacy==3.0.12
+spacy-loggers==1.0.5
+SQLAlchemy==2.0.52
+sqltrie==0.11.2
+srsly==2.5.3
+ssh-import-id==5.11
+sympy==1.13.1
+tabulate==0.10.0
+termcolor==3.3.0
+thinc==8.3.13
+threadpoolctl==3.6.0
+tomli==2.4.1
+tomlkit==0.15.1
+torch==2.14.0
+torchaudio==2.11.0
+torchcodec==0.16.0
+tqdm==4.70.0
+traitlets==5.1.1
+triton==3.1.0
+Twisted==22.1.0
+typer==0.27.2
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+tzdata==2026.3
+tzlocal==5.4.4
+ubuntu-pro-client==8001
+ufoLib2==0.13.1
+ufw==0.36.1
+unicodedata2==14.0.0
+uritemplate==4.2.0
+urllib3==2.7.0
+uv==0.12.10
+vine==5.1.0
+voluptuous==0.16.0
+wadllib==1.3.6
+WALinuxAgent==2.2.46
+wasabi==1.1.3
+wcwidth==0.2.5
+webencodings==0.5.1
+wrapt==2.4.0
+xkit==0.0.0
+yarl==1.24.5
+zc.lockfile==4.0
+zipp==1.0.0
+zope.interface==5.4.0
+
+=== SECTION: FIRST_STAGE_V3_SHA256 ===
+first_stage_v3.pth not found
+
+=== SECTION: DONE ===
+inventory script complete
