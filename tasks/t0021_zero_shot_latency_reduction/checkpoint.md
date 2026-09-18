@@ -162,12 +162,21 @@ Binding requirements for every remaining t0021 step (planning, implementation, r
 
 ## Next Step Notes
 
-Proceed to step 8 (`setup-machines`): provision `LLM-T1-NC80`, arm the idle watchdog and confirm its
-PID before any build (Lesson 8), then prepare the CosyVoice2/Chatterbox isolated venvs with
-TensorRT/vLLM builds per `plan/plan.md` step 4/6. Read `plan/plan.md` in full — it is self-contained
-and is now the authoritative source for implementation; do not re-derive anything from the research
-files. Remember: reference-clip and centroid construction (plan step 2) and the owner-correction
-intervention file (plan step 1) are CPU-only and must happen before GPU provisioning to avoid
-billing idle time. The still-unresolved research question — whether any acceleration lever shifts
-`speaker_sim` — is exactly what the paired-baseline variant sweep (plan steps 9/11) is designed to
-answer; treat it as a required measurement, not an assumption.
+Step 8 completed: `LLM-T1-NC80` is provisioned and up (not yet destroyed), watchdog armed and
+confirmed (PID 6807, idle_timeout 3600s), both isolated venvs (`.venv-cosyvoice2`,
+`.venv-chatterbox`) verified intact, CosyVoice2 `load_jit`/`load_trt` export succeeded. The
+`.venv-cosyvoice2-vllm` install hit its 20-minute cutoff mid-unpack — the `vllm_backend` CosyVoice2
+variant is null per the plan's pre-registered fallback (see
+`intervention/cosyvoice2_vllm_install_ timeout.md`); this does not block any other variant. Proceed
+to step 9 (`implementation`): follow `plan/plan.md` step by step. Per the owner correction above,
+implementation step 1 must write the `intervention/` file documenting the wrong-ElevenLabs-voice
+correction, and step 2 must build the new `ref_single`/`ref_concat` references and the corrected
+speaker-similarity centroid from `data/v4/val/wavs` (both CPU-only) BEFORE touching the
+already-provisioned GPU further — the VM is already billing, so do not delay these CPU-only steps
+once implementation starts. Every acceleration variant must be re-run against the paired
+same-session t0018-setting baseline with the NEW references (Lesson 1). Caveat carried from step 8:
+do not trust a subagent's self-reported "I'll wait for the notification" for remote
+(non-harness-tracked) SSH jobs — if implementation launches long-running remote jobs, drive them to
+completion with real synchronous polling or transition the step to `paused_waiting` with
+`heartbeat.pause_step` and a concrete `resume_after`; never end a turn assuming an external monitor
+will notify anyone.
