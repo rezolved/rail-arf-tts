@@ -1,0 +1,230 @@
+{
+  "chatterbox_baseline_new_ref_ref_single_val96": {
+    "failure_count": 1,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/chatterbox_baseline_new_ref_ref_single/val96/0049.wav"
+    ]
+  },
+  "chatterbox_baseline_new_ref_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "chatterbox_precision_bf16_or_fp16_ref_single_val96": {
+    "failure_count": 0,
+    "n_checked": 96,
+    "failing_audio_paths": []
+  },
+  "chatterbox_precision_bf16_or_fp16_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "chatterbox_ref_cache_ref_single_val96": {
+    "failure_count": 0,
+    "n_checked": 96,
+    "failing_audio_paths": []
+  },
+  "chatterbox_ref_cache_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "chatterbox_sentence_chunking_ref_single_val96": {
+    "failure_count": 0,
+    "n_checked": 96,
+    "failing_audio_paths": []
+  },
+  "chatterbox_sentence_chunking_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "chatterbox_torch_compile_ref_single_val96": {
+    "failure_count": 0,
+    "n_checked": 96,
+    "failing_audio_paths": []
+  },
+  "chatterbox_torch_compile_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "cosyvoice2_baseline_new_ref_ref_concat_val96": {
+    "failure_count": 1,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_concat/val96/0034.wav"
+    ]
+  },
+  "cosyvoice2_baseline_new_ref_ref_concat_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "cosyvoice2_baseline_new_ref_ref_single_val96": {
+    "failure_count": 22,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0032.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0033.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0034.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0035.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0036.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0037.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0038.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0039.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0040.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0043.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0044.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0046.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0047.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0048.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0049.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0050.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0051.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0052.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0053.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0058.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0059.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_baseline_new_ref_ref_single/val96/0060.wav"
+    ]
+  },
+  "cosyvoice2_baseline_new_ref_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "cosyvoice2_fp16_ref_single_val96": {
+    "failure_count": 21,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0032.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0033.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0034.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0035.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0036.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0037.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0038.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0039.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0040.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0046.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0047.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0048.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0049.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0050.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0051.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0052.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0053.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0054.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0055.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0059.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_fp16_ref_single/val96/0060.wav"
+    ]
+  },
+  "cosyvoice2_fp16_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "cosyvoice2_load_jit_ref_single_val96": {
+    "failure_count": 24,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0032.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0033.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0034.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0035.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0037.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0038.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0039.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0040.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0041.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0042.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0044.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0046.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0047.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0048.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0049.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0050.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0051.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0052.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0053.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0056.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0057.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0058.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0059.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_jit_ref_single/val96/0060.wav"
+    ]
+  },
+  "cosyvoice2_load_jit_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "cosyvoice2_load_trt_ref_single_val96": {
+    "failure_count": 23,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0032.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0033.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0034.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0035.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0036.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0037.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0038.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0039.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0040.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0042.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0043.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0044.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0046.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0047.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0048.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0049.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0050.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0051.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0052.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0053.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0058.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0059.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_load_trt_ref_single/val96/0060.wav"
+    ]
+  },
+  "cosyvoice2_load_trt_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "cosyvoice2_ref_cache_ref_single_val96": {
+    "failure_count": 19,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0032.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0033.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0034.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0035.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0036.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0037.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0038.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0039.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0040.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0044.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0046.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0047.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0048.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0050.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0051.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0052.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0053.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0059.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/results/audio_samples/harness/cosyvoice2_ref_cache_ref_single/val96/0060.wav"
+    ]
+  },
+  "cosyvoice2_ref_cache_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  }
+}

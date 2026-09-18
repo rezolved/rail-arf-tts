@@ -1,0 +1,29 @@
+{
+  "spec_version": "2",
+  "answer_id": "zero-shot-ttfb-floor",
+  "question": "What is the lowest reachable TTFB for CosyVoice2 and Chatterbox on our hardware without losing speaker_sim, and does either reach 300 ms?",
+  "short_title": "Lowest reachable zero-shot TTFB (CosyVoice2 vs Chatterbox)",
+  "short_answer_path": "short_answer.md",
+  "full_answer_path": "full_answer.md",
+  "categories": [],
+  "answer_methods": [
+    "code-experiment",
+    "papers",
+    "internet"
+  ],
+  "source_paper_ids": [
+    "10.48550_arXiv.2412.10117",
+    "10.48550_arXiv.2605.30748",
+    "10.1109_ICASSP.2018.8462665",
+    "10.48550_arXiv.2010.05646",
+    "10.48550_arXiv.2203.02395"
+  ],
+  "source_urls": [],
+  "source_task_ids": [
+    "t0018_zero_shot_cloning_calibration",
+    "t0021_zero_shot_latency_reduction"
+  ],
+  "confidence": "medium",
+  "created_by_task": "t0021_zero_shot_latency_reduction",
+  "date_created": "2026-09-18"
+}

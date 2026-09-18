@@ -1,0 +1,6 @@
+outs:
+- md5: 95b04950b6093d9cc59157eb1ab6e983.dir
+  size: 648656320
+  nfiles: 2156
+  hash: md5
+  path: harness

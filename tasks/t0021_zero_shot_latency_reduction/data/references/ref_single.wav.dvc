@@ -1,0 +1,5 @@
+outs:
+- md5: f9cbc73c9c343caebd36ac140dd0398b
+  size: 1440080
+  hash: md5
+  path: ref_single.wav

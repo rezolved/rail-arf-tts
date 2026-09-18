@@ -126,5 +126,21 @@
     "budget_hard_cap_usd": 100.0,
     "milestone": "VM deallocated (teardown), GPU billing stopped",
     "note": "All GPU work complete (12 original variant cells + 2 closures + 5-variant cosyvoice2 ref_single redo after prompt_text truncation fix). azure_ml_vm.py teardown confirmed deallocated=true, destroyed_at=2026-09-18T20:39:00.626630Z. Remaining implementation work (merge_and_score, run_gate_check, build_final_reports, build_comparison_set, build_listening_guide, answer asset) is CPU-only, no further GPU billing."
+  },
+  {
+    "timestamp_utc": "2026-09-18T22:33:48.630224+00:00",
+    "elapsed_hours_since_billing_anchor": 8.9511,
+    "estimated_cost_usd": 124.96,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "implementation complete: all scoring, reports, charts, comparison set, listening guide, answer asset, DVC tracking done",
+    "note": "KNOWN INACCURATE, see the next (final) entry -- track_cost.py's formula subtracts only the fixed VM_CONFIRMED_DOWNTIME_SECONDS constant and does not know the VM was torn down (deallocated) at 20:39:00Z and never restarted; every second after that is wrongly counted as billed here."
+  },
+  {
+    "timestamp_utc": "2026-09-18T22:35:00.000000+00:00",
+    "elapsed_hours_since_billing_anchor": null,
+    "estimated_cost_usd": 98.25,
+    "budget_hard_cap_usd": 100.0,
+    "milestone": "FINAL corrected total: sum of actual billed windows (VM running periods only), computed manually",
+    "note": "track_cost.py's single-constant downtime subtraction cannot represent 3 separate stop/start cycles; the true cost is the sum of each Running window's duration, not (wall-clock-since-anchor minus one constant). Windows (all confirmed via az rest lastOperation / acquire billing_started_at / teardown destroyed_at): (1) 2026-09-18T11:29:10.875712Z -> 13:53:29Z = 8658.12s ($33.58); (2) 2026-09-18T14:19:58Z -> 17:47:10.756Z = 12432.76s ($48.22); (3) 2026-09-18T19:28:15.409970Z -> 20:39:00.626630Z (teardown) = 4245.22s ($16.46). Total billed = 25336.10s = 7.0378h = $98.25 at $13.96/hr, within the $100.0 hard cap. No GPU billing occurred after 2026-09-18T20:39:00.626630Z (VM deallocated=true, confirmed) -- all work after that timestamp (merge_and_score, gate check, final reports, comparison set, listening guide, answer asset, DVC add) was CPU-only local work with zero GPU cost."
   }
 ]

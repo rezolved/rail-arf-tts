@@ -106,7 +106,10 @@ def main() -> None:
         for _, col_key in columns:
             if col_key == "val96_original":
                 fname = f"{text_id}__val96_original.wav"
-                cell_records = recs_for_text
+                # The val96 original is a ground-truth recording, not a synthesis output -- it
+                # has no corresponding per-clip speaker_sim/wer/gate record of its own (those
+                # fields describe SYNTHESIZED clips scored against it, not the clip itself).
+                cell_records = []
             elif col_key.startswith("new_ref_"):
                 system = col_key[len("new_ref_") :]
                 matches = sorted(

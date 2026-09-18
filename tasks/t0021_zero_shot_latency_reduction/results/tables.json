@@ -1,0 +1,1787 @@
+{
+  "rows": [
+    {
+      "variant_id": "cosyvoice2_baseline_new_ref_ref_single_val96",
+      "system": "cosyvoice2",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.8991127560536066,
+      "speaker_sim_std": 0.031176819688509886,
+      "ttfb_ms": 1598.6329690000503,
+      "ttfb_ms_p50": 1598.6329690000503,
+      "ttfb_ms_p95": 2276.577864249873,
+      "ttfb_ms_p99": 2309.1924026000697,
+      "rtf": 0.4844694480720772,
+      "rtf_std": 0.06341844425894261,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6270219447712103,
+      "duration_ratio_median": 1.1930818645240477,
+      "duration_explosion_fraction": 0.010416666666666666,
+      "wer_mean": 0.5004393424036282,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.8069327474687498,
+      "efficiency_inference_cost_per_item_usd": 0.014762439209628818,
+      "gate_failure_count": 22,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8627852474649748,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 2859.2522075005036,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 231.19043332652654,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.6957618418401506,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 825.5528253316245,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 397.3898526734802,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1455.8353446275496,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "baseline_new_ref",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_baseline_new_ref_ref_single_fillers",
+      "system": "cosyvoice2",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8542626742706743,
+      "speaker_sim_std": 0.02199119608162423,
+      "ttfb_ms": 1176.7011334999324,
+      "ttfb_ms_p50": 1176.7011334999324,
+      "ttfb_ms_p95": 1391.4502605499933,
+      "ttfb_ms_p99": 1598.7936847799037,
+      "rtf": 0.5861373528175516,
+      "rtf_std": 0.07576875431933079,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6123940826848496,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.2918333333333333,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.6546554375699998,
+      "efficiency_inference_cost_per_item_usd": 0.014171941641243666,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8420862078666687,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1617.0282700004464,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 231.19043332652654,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.6957618418401506,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 825.5528253316245,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 397.3898526734802,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1455.8353446275496,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "baseline_new_ref",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_ref_cache_ref_single_val96",
+      "system": "cosyvoice2",
+      "acceleration_variant": "ref_cache",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.8991172530998787,
+      "speaker_sim_std": 0.02972550690658163,
+      "ttfb_ms": 1326.2176044999023,
+      "ttfb_ms_p50": 1326.2176044999023,
+      "ttfb_ms_p95": 2053.1335494999894,
+      "ttfb_ms_p99": 2053.9862950501174,
+      "rtf": 0.42022671198326184,
+      "rtf_std": 0.03607215500909432,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6285418768723806,
+      "duration_ratio_median": 1.1801827554885471,
+      "duration_explosion_fraction": 0.010416666666666666,
+      "wer_mean": 0.46205703211517174,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.2720553506250005,
+      "efficiency_inference_cost_per_item_usd": 0.0126883035263125,
+      "gate_failure_count": 19,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8627852474649748,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 2859.2522075005036,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.16580474489529126,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.217927841837861,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 814.3285598418355,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 398.57836034693673,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1214.2929379540813,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "ref_cache",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_ref_cache_ref_single_fillers",
+      "system": "cosyvoice2",
+      "acceleration_variant": "ref_cache",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8534797416176907,
+      "speaker_sim_std": 0.020907442080232683,
+      "ttfb_ms": 950.1121014999399,
+      "ttfb_ms_p50": 950.1121014999399,
+      "ttfb_ms_p95": 1156.0545930499188,
+      "ttfb_ms_p99": 1182.6236450099855,
+      "rtf": 0.4812285150359979,
+      "rtf_std": 0.05455253156093203,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6062151110449503,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.29233333333333333,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.1411731366000004,
+      "efficiency_inference_cost_per_item_usd": 0.012180771385260001,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8420862078666687,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1617.0282700004464,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.16580474489529126,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.217927841837861,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 814.3285598418355,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 398.57836034693673,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1214.2929379540813,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "ref_cache",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_fp16_ref_single_val96",
+      "system": "cosyvoice2",
+      "acceleration_variant": "fp16",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.9012431812783083,
+      "speaker_sim_std": 0.030840046570415176,
+      "ttfb_ms": 1410.8088474999931,
+      "ttfb_ms_p50": 1410.8088474999931,
+      "ttfb_ms_p95": 2330.3490507502147,
+      "ttfb_ms_p99": 2339.253380149762,
+      "rtf": 0.4468328835247348,
+      "rtf_std": 0.0343599644890395,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6289688578496376,
+      "duration_ratio_median": 1.1484456927556521,
+      "duration_explosion_fraction": 0.020833333333333332,
+      "wer_mean": 0.6345734126984127,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.490668342927085,
+      "efficiency_inference_cost_per_item_usd": 0.013536036129795028,
+      "gate_failure_count": 21,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8627852474649748,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 2859.2522075005036,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.17485565306705378,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.6533001938638633,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 893.6972785612184,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 386.44354672448935,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1280.971342530613,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "fp16",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_fp16_ref_single_fillers",
+      "system": "cosyvoice2",
+      "acceleration_variant": "fp16",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8469013878527809,
+      "speaker_sim_std": 0.022848088294821992,
+      "ttfb_ms": 1006.0056450001866,
+      "ttfb_ms_p50": 1006.0056450001866,
+      "ttfb_ms_p95": 1205.9983126003544,
+      "ttfb_ms_p99": 1223.4063085499204,
+      "rtf": 0.5183915878057125,
+      "rtf_std": 0.059491578998888496,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6073036263970768,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.3173333333333333,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.3510416092100015,
+      "efficiency_inference_cost_per_item_usd": 0.012994594684603226,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8420862078666687,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1617.0282700004464,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.17485565306705378,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.6533001938638633,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 893.6972785612184,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 386.44354672448935,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1280.971342530613,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "fp16",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_load_jit_ref_single_val96",
+      "system": "cosyvoice2",
+      "acceleration_variant": "load_jit",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.9023705118580868,
+      "speaker_sim_std": 0.02575423326656201,
+      "ttfb_ms": 1381.4427810000325,
+      "ttfb_ms_p50": 1381.4427810000325,
+      "ttfb_ms_p95": 2306.9818542500116,
+      "ttfb_ms_p99": 2364.1570385499763,
+      "rtf": 0.4370605537201436,
+      "rtf_std": 0.036935907818985585,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6278242525301482,
+      "duration_ratio_median": 1.184725047975813,
+      "duration_explosion_fraction": 0.010416666666666666,
+      "wer_mean": 0.5097945845004669,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.4324020649895837,
+      "efficiency_inference_cost_per_item_usd": 0.013310092452015164,
+      "gate_failure_count": 24,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8627852474649748,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 2859.2522075005036,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.17520546940403972,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.2684723367491253,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 901.8140451581967,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 385.4201181683474,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1288.6802521224456,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "load_jit",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_load_jit_ref_single_fillers",
+      "system": "cosyvoice2",
+      "acceleration_variant": "load_jit",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8578545608018574,
+      "speaker_sim_std": 0.016587150577108488,
+      "ttfb_ms": 998.5838815000534,
+      "ttfb_ms_p50": 998.5838815000534,
+      "ttfb_ms_p95": 1207.7547682000386,
+      "ttfb_ms_p99": 1313.9877875502455,
+      "rtf": 0.494024530747352,
+      "rtf_std": 0.05312509327765292,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6074009623966719,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.26416666666666666,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.2951059823900004,
+      "efficiency_inference_cost_per_item_usd": 0.012777688753934558,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8420862078666687,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1617.0282700004464,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.17520546940403972,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.2684723367491253,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 901.8140451581967,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 385.4201181683474,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1288.6802521224456,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "load_jit",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_load_trt_ref_single_val96",
+      "system": "cosyvoice2",
+      "acceleration_variant": "load_trt",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.9011679906594126,
+      "speaker_sim_std": 0.02940119375134209,
+      "ttfb_ms": 1160.8474820000083,
+      "ttfb_ms_p50": 1160.8474820000083,
+      "ttfb_ms_p95": 1796.4047394997351,
+      "ttfb_ms_p99": 1848.7583268501537,
+      "rtf": 0.36786211712965167,
+      "rtf_std": 0.02850733482061409,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6274374792450352,
+      "duration_ratio_median": 1.1421362542981615,
+      "duration_explosion_fraction": 0.010416666666666666,
+      "wer_mean": 0.5158496732026144,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.832483302229169,
+      "efficiency_inference_cost_per_item_usd": 0.010983740805310891,
+      "gate_failure_count": 23,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8627852474649748,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 2859.2522075005036,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.17033682142798115,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.2263597806330446,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 904.4186963367407,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 151.11963592348545,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1056.937101479585,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "load_trt",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_load_trt_ref_single_fillers",
+      "system": "cosyvoice2",
+      "acceleration_variant": "load_trt",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8573394387960434,
+      "speaker_sim_std": 0.019462366327876384,
+      "ttfb_ms": 826.3153479999801,
+      "ttfb_ms_p50": 826.3153479999801,
+      "ttfb_ms_p95": 1035.225922750078,
+      "ttfb_ms_p99": 1134.4643244002373,
+      "rtf": 0.40040904630932883,
+      "rtf_std": 0.03291624619782185,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6098676197230816,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.2483333333333333,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.7191839701400022,
+      "efficiency_inference_cost_per_item_usd": 0.010544391173098456,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8420862078666687,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1617.0282700004464,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 0.17033682142798115,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.2263597806330446,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 904.4186963367407,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 151.11963592348545,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1056.937101479585,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "load_trt",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_baseline_new_ref_ref_concat_val96",
+      "system": "cosyvoice2",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_concat",
+      "prompt_set": "val96",
+      "speaker_sim": 0.9055420063112093,
+      "speaker_sim_std": 0.028720495720060985,
+      "ttfb_ms": 1985.4128090000813,
+      "ttfb_ms_p50": 1985.4128090000813,
+      "ttfb_ms_p95": 3387.965525999789,
+      "ttfb_ms_p99": 3537.985045550704,
+      "rtf": 0.7600949148664845,
+      "rtf_std": 0.3110803198390584,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.5773404985666275,
+      "duration_ratio_median": 0.9599548292194389,
+      "duration_explosion_fraction": 0.0,
+      "wer_mean": 0.46800716221447924,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 4.07340939877083,
+      "efficiency_inference_cost_per_item_usd": 0.015795776446344664,
+      "gate_failure_count": 1,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8627852474649748,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 2859.2522075005036,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 231.19043332652654,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.6957618418401506,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 825.5528253316245,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 397.3898526734802,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1455.8353446275496,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "baseline_new_ref",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_baseline_new_ref_ref_concat_fillers",
+      "system": "cosyvoice2",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_concat",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8637413069605827,
+      "speaker_sim_std": 0.027187631516316205,
+      "ttfb_ms": 1538.3036954995077,
+      "ttfb_ms_p50": 1538.3036954995077,
+      "ttfb_ms_p95": 1776.173649100383,
+      "ttfb_ms_p99": 2100.1472545007077,
+      "rtf": 1.0277634437515062,
+      "rtf_std": 0.2729903941300312,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.5505457848310471,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.22466666666666665,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.910473022819997,
+      "efficiency_inference_cost_per_item_usd": 0.015163945388490878,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8420862078666687,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1617.0282700004464,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_encoding_ms": {
+          "mean_ms": 231.19043332652654,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 1.6957618418401506,
+          "n": 196
+        },
+        "lm_prefill_decode_ms": {
+          "mean_ms": 825.5528253316245,
+          "n": 196
+        },
+        "flow_matching_vocoder_ms": {
+          "mean_ms": 397.3898526734802,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1455.8353446275496,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "cosyvoice2",
+        "acceleration_variant": "baseline_new_ref",
+        "tensorrt_version": "10.13.3.9",
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.3.1+cu121",
+        "torch_cuda_version": "12.1",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "model_checkpoint": "FunAudioLLM/CosyVoice2-0.5B"
+      }
+    },
+    {
+      "variant_id": "chatterbox_baseline_new_ref_ref_single_val96",
+      "system": "chatterbox",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.8804475593042898,
+      "speaker_sim_std": 0.033102388979090715,
+      "ttfb_ms": 1537.3723124998833,
+      "ttfb_ms_p50": 1537.3723124998833,
+      "ttfb_ms_p95": 3524.515201499753,
+      "ttfb_ms_p99": 4061.6606962003284,
+      "rtf": 0.5124715278833034,
+      "rtf_std": 0.1037875622754507,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6259706367503156,
+      "duration_ratio_median": 0.9813872068801732,
+      "duration_explosion_fraction": 0.0,
+      "wer_mean": 0.3815453384418902,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.074540742489584,
+      "efficiency_inference_cost_per_item_usd": 0.0119223857680985,
+      "gate_failure_count": 1,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8073432354987422,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1438.52208250064,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 74.23774257143364,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.2775165765189406,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 838.9805554745102,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 536.7217081836608,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1450.2197055663178,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "baseline_new_ref",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_baseline_new_ref_ref_single_fillers",
+      "system": "chatterbox",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8335312255497637,
+      "speaker_sim_std": 0.024398879803466837,
+      "ttfb_ms": 1039.2396185000052,
+      "ttfb_ms_p50": 1039.2396185000052,
+      "ttfb_ms_p95": 1450.366233899922,
+      "ttfb_ms_p99": 1547.476118399791,
+      "rtf": 0.7063232493519959,
+      "rtf_std": 0.13901238351812498,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.5938925332036512,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.2155,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.9515591127900005,
+      "efficiency_inference_cost_per_item_usd": 0.01144549033737456,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8112275004386902,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1344.3423864991928,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 74.23774257143364,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.2775165765189406,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 838.9805554745102,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 536.7217081836608,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1450.2197055663178,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "baseline_new_ref",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_ref_cache_ref_single_val96",
+      "system": "chatterbox",
+      "acceleration_variant": "ref_cache",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.8794545813273358,
+      "speaker_sim_std": 0.0286769009034388,
+      "ttfb_ms": 1681.0177820000263,
+      "ttfb_ms_p50": 1681.0177820000263,
+      "ttfb_ms_p95": 4003.2542912498457,
+      "ttfb_ms_p99": 4067.220322899629,
+      "rtf": 0.5628881841360482,
+      "rtf_std": 0.17009151285377688,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6223978823231112,
+      "duration_ratio_median": 0.9647356126409332,
+      "duration_explosion_fraction": 0.0,
+      "wer_mean": 0.46129188712522046,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.425344373010418,
+      "efficiency_inference_cost_per_item_usd": 0.013282724290895956,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8073432354987422,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1438.52208250064,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.0014102704194463476,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.45842873470176027,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 848.1643575051048,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 784.3638742142804,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1632.9900815459246,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "ref_cache",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_ref_cache_ref_single_fillers",
+      "system": "chatterbox",
+      "acceleration_variant": "ref_cache",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8349804215961032,
+      "speaker_sim_std": 0.020991116952747267,
+      "ttfb_ms": 1320.5986084999495,
+      "ttfb_ms_p50": 1320.5986084999495,
+      "ttfb_ms_p95": 1794.2991656500226,
+      "ttfb_ms_p99": 1943.0566404701822,
+      "rtf": 0.8530536226725981,
+      "rtf_std": 0.22276444421937058,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.5951926178402371,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.191,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 3.2883305980900013,
+      "efficiency_inference_cost_per_item_usd": 0.012751415319260117,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8112275004386902,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1344.3423864991928,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.0014102704194463476,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.45842873470176027,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 848.1643575051048,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 784.3638742142804,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1632.9900815459246,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "ref_cache",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_precision_bf16_or_fp16_ref_single_val96",
+      "system": "chatterbox",
+      "acceleration_variant": "precision_bf16_or_fp16",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.8828025203879162,
+      "speaker_sim_std": 0.02718211198297479,
+      "ttfb_ms": 1319.3443569998635,
+      "ttfb_ms_p50": 1319.3443569998635,
+      "ttfb_ms_p95": 3590.6618050007637,
+      "ttfb_ms_p99": 3787.3450049004514,
+      "rtf": 0.48846631320319106,
+      "rtf_std": 0.05766913619416819,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6270981956553715,
+      "duration_ratio_median": 0.9787213260104999,
+      "duration_explosion_fraction": 0.0,
+      "wer_mean": 0.39084595959595964,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.826606026718745,
+      "efficiency_inference_cost_per_item_usd": 0.010960950036942689,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8073432354987422,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1438.52208250064,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.0011936326885990305,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.390278219546584,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 1003.8388674999475,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 334.4365104592874,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1338.7932613214077,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "precision_bf16_or_fp16",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "precision_dtype_used": "bf16",
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_precision_bf16_or_fp16_ref_single_fillers",
+      "system": "chatterbox",
+      "acceleration_variant": "precision_bf16_or_fp16",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8361877406898298,
+      "speaker_sim_std": 0.026126539993149917,
+      "ttfb_ms": 900.6046155009244,
+      "ttfb_ms_p50": 900.6046155009244,
+      "ttfb_ms_p95": 1104.797205999148,
+      "ttfb_ms_p99": 1333.5381999993117,
+      "rtf": 0.5881045811742266,
+      "rtf_std": 0.06345157643297926,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.5906820046274286,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.3264999999999999,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.7135417856499955,
+      "efficiency_inference_cost_per_item_usd": 0.010522512035464981,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8112275004386902,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1344.3423864991928,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.0011936326885990305,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.390278219546584,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 1003.8388674999475,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 334.4365104592874,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1338.7932613214077,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "precision_bf16_or_fp16",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "precision_dtype_used": "bf16",
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_torch_compile_ref_single_val96",
+      "system": "chatterbox",
+      "acceleration_variant": "torch_compile",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.8836999360633933,
+      "speaker_sim_std": 0.026420531630874364,
+      "ttfb_ms": 1581.563945499738,
+      "ttfb_ms_p50": 1581.563945499738,
+      "ttfb_ms_p95": 3289.1746474998627,
+      "ttfb_ms_p99": 3459.780963350362,
+      "rtf": 0.5405382681222469,
+      "rtf_std": 0.13682284052188276,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6250960062379423,
+      "duration_ratio_median": 1.0127014302506727,
+      "duration_explosion_fraction": 0.0,
+      "wer_mean": 0.44385802469135804,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.8429393202083304,
+      "efficiency_inference_cost_per_item_usd": 0.011024286919474525,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8073432354987422,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1438.52208250064,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.001548326515742757,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.45623482141800936,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 843.528705994911,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 501.5513859387664,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1345.539783448987,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "torch_compile",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_torch_compile_ref_single_fillers",
+      "system": "chatterbox",
+      "acceleration_variant": "torch_compile",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8383088486535208,
+      "speaker_sim_std": 0.01664553772401759,
+      "ttfb_ms": 837.0342544999403,
+      "ttfb_ms_p50": 837.0342544999403,
+      "ttfb_ms_p95": 1032.5470610998082,
+      "ttfb_ms_p99": 1282.601809640069,
+      "rtf": 0.5480049756435632,
+      "rtf_std": 0.0706869665155738,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.5939169730458941,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.16983333333333334,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.7292217473999973,
+      "efficiency_inference_cost_per_item_usd": 0.010583315442695545,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8112275004386902,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1344.3423864991928,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.001548326515742757,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.45623482141800936,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 843.528705994911,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 501.5513859387664,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1345.539783448987,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "torch_compile",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_sentence_chunking_ref_single_val96",
+      "system": "chatterbox",
+      "acceleration_variant": "sentence_chunking",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": 0.881216485013244,
+      "speaker_sim_std": 0.029370606773315863,
+      "ttfb_ms": 1456.4972714997566,
+      "ttfb_ms_p50": 1456.4972714997566,
+      "ttfb_ms_p95": 3380.8255852500224,
+      "ttfb_ms_p99": 3723.4777787998605,
+      "rtf": 0.5053704209389754,
+      "rtf_std": 0.09822536988701318,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.6226448359027985,
+      "duration_ratio_median": 0.9830822197910841,
+      "duration_explosion_fraction": 0.0,
+      "wer_mean": 0.4451118326118326,
+      "n_clips": 96.0,
+      "n_successful": 96.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.9803637115208326,
+      "efficiency_inference_cost_per_item_usd": 0.011557188170230784,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8073432354987422,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1438.52208250064,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.0013614795413875015,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.4033413315993334,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 844.6892753520341,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 565.7402600306192,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1410.836083499993,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "sentence_chunking",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "chatterbox_sentence_chunking_ref_single_fillers",
+      "system": "chatterbox",
+      "acceleration_variant": "sentence_chunking",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": 0.8303397705680445,
+      "speaker_sim_std": 0.024847172644222888,
+      "ttfb_ms": 1008.0399724997733,
+      "ttfb_ms_p50": 1008.0399724997733,
+      "ttfb_ms_p95": 1439.839728950028,
+      "ttfb_ms_p99": 1551.7445774703083,
+      "rtf": 0.6508211325778157,
+      "rtf_std": 0.15038177086543222,
+      "rejected_reason": null,
+      "speaker_sim_radiohost_control": 0.5880824013760215,
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": 0.214,
+      "n_clips": 100.0,
+      "n_successful": 100.0,
+      "success_rate": 1.0,
+      "efficiency_inference_time_per_item_seconds": 2.8611491630599994,
+      "efficiency_inference_cost_per_item_usd": 0.011094900643421552,
+      "gate_failure_count": 0,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": 0.8112275004386902,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": 1344.3423864991928,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": {
+        "ref_conditioning_ms": {
+          "mean_ms": 0.0013614795413875015,
+          "n": 196
+        },
+        "text_frontend_ms": {
+          "mean_ms": 0.4033413315993334,
+          "n": 196
+        },
+        "lm_decode_ms": {
+          "mean_ms": 844.6892753520341,
+          "n": 196
+        },
+        "vocoder_ms": {
+          "mean_ms": 565.7402600306192,
+          "n": 196
+        },
+        "total_ms": {
+          "mean_ms": 1410.836083499993,
+          "n": 196
+        }
+      },
+      "environment": {
+        "system": "chatterbox",
+        "acceleration_variant": "sentence_chunking",
+        "tensorrt_version": null,
+        "vllm_version": null,
+        "cosyvoice2_git_sha": null,
+        "torch_version": "2.6.0+cu124",
+        "torch_cuda_version": "12.4",
+        "cuda_available": true,
+        "gpu_name": "NVIDIA H100 NVL",
+        "package_version": "0.1.7",
+        "model_checkpoint": "ResembleAI/chatterbox"
+      }
+    },
+    {
+      "variant_id": "cosyvoice2_vllm_backend_ref_single_val96",
+      "system": "cosyvoice2",
+      "acceleration_variant": "vllm_backend",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "vllm install timed out during setup (20-minute cutoff, no CUDA incompatibility observed) -- see intervention/cosyvoice2_vllm_install_timeout.md",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    },
+    {
+      "variant_id": "cosyvoice2_vllm_backend_ref_single_fillers",
+      "system": "cosyvoice2",
+      "acceleration_variant": "vllm_backend",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "vllm install timed out during setup (20-minute cutoff, no CUDA incompatibility observed) -- see intervention/cosyvoice2_vllm_install_timeout.md",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    },
+    {
+      "variant_id": "chatterbox_streaming_api_ref_single_val96",
+      "system": "chatterbox",
+      "acceleration_variant": "streaming_api",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "no native streaming API exists in chatterbox-tts==0.1.7 (verified: no `stream` token in the installed package's tts.py)",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    },
+    {
+      "variant_id": "chatterbox_streaming_api_ref_single_fillers",
+      "system": "chatterbox",
+      "acceleration_variant": "streaming_api",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "no native streaming API exists in chatterbox-tts==0.1.7 (verified: no `stream` token in the installed package's tts.py)",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    },
+    {
+      "variant_id": "f5_tts_baseline_new_ref_ref_single_val96",
+      "system": "f5_tts",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_single",
+      "prompt_set": "val96",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "S-0018-01 retry hung again inside F5TTS.__init__'s datasets-package import chain (confirmed via py-spy stack trace: blocked on an Azure Files SMB mount read, not a task-code bug) -- see intervention/f5_tts_retry_still_hangs.md",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    },
+    {
+      "variant_id": "f5_tts_baseline_new_ref_ref_single_fillers",
+      "system": "f5_tts",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_single",
+      "prompt_set": "fillers",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "S-0018-01 retry hung again inside F5TTS.__init__'s datasets-package import chain (confirmed via py-spy stack trace: blocked on an Azure Files SMB mount read, not a task-code bug) -- see intervention/f5_tts_retry_still_hangs.md",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    },
+    {
+      "variant_id": "f5_tts_baseline_new_ref_ref_concat_val96",
+      "system": "f5_tts",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_concat",
+      "prompt_set": "val96",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "S-0018-01 retry hung again inside F5TTS.__init__'s datasets-package import chain (confirmed via py-spy stack trace: blocked on an Azure Files SMB mount read, not a task-code bug) -- see intervention/f5_tts_retry_still_hangs.md",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    },
+    {
+      "variant_id": "f5_tts_baseline_new_ref_ref_concat_fillers",
+      "system": "f5_tts",
+      "acceleration_variant": "baseline_new_ref",
+      "condition": "ref_concat",
+      "prompt_set": "fillers",
+      "speaker_sim": null,
+      "speaker_sim_std": null,
+      "speaker_sim_radiohost_control": null,
+      "ttfb_ms": null,
+      "ttfb_ms_p50": null,
+      "ttfb_ms_p95": null,
+      "ttfb_ms_p99": null,
+      "rtf": null,
+      "rtf_std": null,
+      "rejected_reason": "S-0018-01 retry hung again inside F5TTS.__init__'s datasets-package import chain (confirmed via py-spy stack trace: blocked on an Azure Files SMB mount read, not a task-code bug) -- see intervention/f5_tts_retry_still_hangs.md",
+      "duration_ratio_median": null,
+      "duration_explosion_fraction": null,
+      "wer_mean": null,
+      "n_clips": null,
+      "n_successful": null,
+      "success_rate": null,
+      "efficiency_inference_time_per_item_seconds": null,
+      "efficiency_inference_cost_per_item_usd": null,
+      "gate_failure_count": null,
+      "t0018_baseline_speaker_sim_wrong_voice_reference": null,
+      "t0018_baseline_ttfb_ms_wrong_voice_reference": null,
+      "meets_ttfb_target_300ms": false,
+      "latency_breakdown": null,
+      "environment": null
+    }
+  ],
+  "cost_tracking": [
+    {
+      "timestamp_utc": "2026-09-18T13:04:22.328085+00:00",
+      "elapsed_hours_since_billing_anchor": 1.5865,
+      "estimated_cost_usd": 22.15,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "cosyvoice2 baseline_new_ref smoke gate PASSED",
+      "note": "1/1 successful, cold single-call StageTiming validated (fields sum to total)"
+    },
+    {
+      "timestamp_utc": "2026-09-18T14:29:48.972932+00:00",
+      "elapsed_hours_since_billing_anchor": 2.5692,
+      "estimated_cost_usd": 35.87,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "resume: implementation continuation after crash/watchdog fix",
+      "note": "downtime-corrected elapsed hours; resuming Milestone 3 variant sweep"
+    },
+    {
+      "timestamp_utc": "2026-09-18T15:23:54.324190+00:00",
+      "elapsed_hours_since_billing_anchor": 3.4707,
+      "estimated_cost_usd": 48.45,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "mid-sweep checkpoint",
+      "note": "cosyvoice2: baseline_new_ref,ref_cache done, fp16 running; chatterbox: baseline_new_ref,ref_cache,torch_compile done (precision_bf16_or_fp16 failed on real unsupported-dtype error, fixed and will be re-run), sentence_chunking running"
+    },
+    {
+      "timestamp_utc": "2026-09-18T15:45:51.548601+00:00",
+      "elapsed_hours_since_billing_anchor": 3.8366,
+      "estimated_cost_usd": 53.56,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "cosyvoice2 5/6 variants + chatterbox 6/6 variants done",
+      "note": "cosyvoice2: baseline_new_ref,ref_cache,fp16,load_jit done, load_trt running (vllm_backend null per intervention); chatterbox: all 6 variants done (streaming_api null - no native API at pinned 0.1.7; precision_bf16_or_fp16 fixed to T3-only bf16 after two real bugs found+fixed)"
+    },
+    {
+      "timestamp_utc": "2026-09-18T16:18:49.610283+00:00",
+      "elapsed_hours_since_billing_anchor": 4.386,
+      "estimated_cost_usd": 61.23,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "GPU sweep + closures complete; regen running",
+      "note": "cosyvoice2 5/6 sweep variants + ref_concat closure done; chatterbox 6/6 done; f5_tts null (confirmed hang, py-spy stack trace, intervention written); regenerating cosyvoice2 baseline_new_ref/ref_single latency_breakdown after filename-collision bug fix"
+    },
+    {
+      "timestamp_utc": "2026-09-18T16:32:46.324739+00:00",
+      "elapsed_hours_since_billing_anchor": 4.6185,
+      "estimated_cost_usd": 64.47,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "found+fixed chatterbox precision_bf16_or_fp16 0/196 bug during post-hoc inspection",
+      "note": "T3Cond conditioning tensors stayed fp32 after T3 weights cast to bf16, causing 196/196 dtype-mismatch failures despite exit=0; fixed via T3Cond.to(dtype=t3_param_dtype) at call time; re-running this one variant"
+    },
+    {
+      "timestamp_utc": "2026-09-18T16:51:13.646270+00:00",
+      "elapsed_hours_since_billing_anchor": 4.926,
+      "estimated_cost_usd": 68.77,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "chatterbox precision_bf16_or_fp16 re-run succeeded 196/196; all 11 real variant cells + 2 closures complete",
+      "note": ""
+    },
+    {
+      "timestamp_utc": "2026-09-18T19:27:33.309578+00:00",
+      "elapsed_hours_since_billing_anchor": 7.5315,
+      "estimated_cost_usd": 105.14,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "found+fixed ref_single prompt_text truncation bug (WER=1.0 for all cosyvoice2 ref_single); re-acquiring VM to redo 5 variants",
+      "note": "small.en+beam_size=5 truncated ref_single_transcript to first sentence only; switched to base.en; verified full transcript now captured"
+    },
+    {
+      "timestamp_utc": "2026-09-18T19:36:45.305701+00:00",
+      "elapsed_hours_since_billing_anchor": 6.0002,
+      "estimated_cost_usd": 83.76,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "VM re-acquired after watchdog idle-stop (correct, not incident); downtime accounting corrected",
+      "note": "downtime gap 2 (6064.65s) confirmed via az rest lastOperation + acquire billing_started_at; total confirmed downtime now 7653.65s"
+    },
+    {
+      "timestamp_utc": "2026-09-18T19:53:06.617342+00:00",
+      "elapsed_hours_since_billing_anchor": 6.2728,
+      "estimated_cost_usd": 87.57,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "cosyvoice2 baseline_new_ref ref_single re-run verified correct (spot-check WER now 0)",
+      "note": ""
+    },
+    {
+      "timestamp_utc": "2026-09-18T20:02:54.769392+00:00",
+      "elapsed_hours_since_billing_anchor": 6.4362,
+      "estimated_cost_usd": 89.85,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "cosyvoice2 ref_cache re-run done; fp16 running",
+      "note": ""
+    },
+    {
+      "timestamp_utc": "2026-09-18T20:12:42.236613+00:00",
+      "elapsed_hours_since_billing_anchor": 6.5994,
+      "estimated_cost_usd": 92.13,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "cosyvoice2 fp16 re-run in progress",
+      "note": ""
+    },
+    {
+      "timestamp_utc": "2026-09-18T20:17:36.042251+00:00",
+      "elapsed_hours_since_billing_anchor": 6.681,
+      "estimated_cost_usd": 93.27,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "cosyvoice2 fp16 re-run done; load_jit running",
+      "note": ""
+    },
+    {
+      "timestamp_utc": "2026-09-18T20:27:18.945376+00:00",
+      "elapsed_hours_since_billing_anchor": 6.8429,
+      "estimated_cost_usd": 95.53,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "cosyvoice2 load_jit re-run done; load_trt (final variant) running",
+      "note": ""
+    },
+    {
+      "timestamp_utc": "2026-09-18T20:37:01.644626+00:00",
+      "elapsed_hours_since_billing_anchor": 7.0048,
+      "estimated_cost_usd": 97.79,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "ALL cosyvoice2 ref_single variants re-run complete (5/5); pulling results, GPU work finished",
+      "note": ""
+    },
+    {
+      "timestamp_utc": "2026-09-18T20:39:59.242302+00:00",
+      "elapsed_hours_since_billing_anchor": 7.0541,
+      "estimated_cost_usd": 98.48,
+      "budget_hard_cap_usd": 100.0,
+      "milestone": "VM deallocated (teardown), GPU billing stopped",
+      "note": "All GPU work complete (12 original variant cells + 2 closures + 5-variant cosyvoice2 ref_single redo after prompt_text truncation fix). azure_ml_vm.py teardown confirmed deallocated=true, destroyed_at=2026-09-18T20:39:00.626630Z. Remaining implementation work (merge_and_score, run_gate_check, build_final_reports, build_comparison_set, build_listening_guide, answer asset) is CPU-only, no further GPU billing."
+    }
+  ],
+  "notes": [
+    "cosyvoice2_vllm_backend: NULL (never run). The `.venv-cosyvoice2-vllm` install hit its pre-authorized 20-minute cutoff mid-unpack during setup-machines (torch installed, vllm itself not reached; no CUDA/dependency incompatibility was ever observed, only a wall-clock cutoff). Not retried during implementation given the task's remaining time/budget. See intervention/cosyvoice2_vllm_install_timeout.md.",
+    "chatterbox_streaming_api: NULL (never run). Verified by reading the installed chatterbox-tts==0.1.7 package source directly (`grep -n stream chatterbox/tts.py`): no `stream` token appears anywhere in `tts.py` at this pinned version. No native streaming API exists to test, per the plan's own pre-registered fallback ('if no such API exists at this version, mark null with that reason recorded').",
+    "f5_tts (all conditions/prompt_sets): NULL. Retried (S-0018-01) in a fresh shell session on a freshly re-provisioned VM, with py-spy installed. Hung again inside `F5TTS.__init__`'s `datasets`-package import chain, confirmed via a working `py-spy dump` stack trace (t0018's own attempt could not get a working stack trace) to be blocked on `importlib` reading a source file from the VM's Azure Files SMB mount -- an infrastructure-level mount stall, not a task-code bug. Killed after ~7 minutes (well inside the 45-minute cap) per the plan's 'do not retry a third time' rule. See intervention/f5_tts_retry_still_hangs.md.",
+    "cosyvoice2_baseline_new_ref / ref_single: this task's own `latency_breakdown_<system>_<variant>.json` filename briefly omitted `condition`, so the ref_concat closure run (Milestone 4) clobbered the ref_single sweep's breakdown file for this one (system, variant) pair. Found during implementation; the filename now includes `condition` (`latency_breakdown_<system>_<variant>_<condition>.json`), and the ref_single baseline_new_ref cell was re-run once (196/196 successful) to regenerate the correct file. No other cell was affected -- every other (system, variant) pair only ever ran under `ref_single`.",
+    "chatterbox_precision_bf16_or_fp16: casting `s3gen` (vocoder + xvector speaker encoder) wholesale to bf16 OR fp16 breaks ref-conditioning on the pinned torch/torchaudio versions (`torch.fft.rfft`, used by the xvector mel-frontend, supports only float32/float64). Both were tried live during implementation and both failed identically. Fixed by casting only `model.t3` (the T3 LM decoder -- the stage this variant is actually meant to target) to bf16/fp16 and leaving S3Gen at fp32; `results/environment.json`'s `chatterbox_precision_bf16_or_fp16.precision_dtype_used` records which reduced-precision dtype was actually used (`bf16` -- the fp32-fallback branch was never triggered once S3Gen was correctly excluded from the cast)."
+  ]
+}
