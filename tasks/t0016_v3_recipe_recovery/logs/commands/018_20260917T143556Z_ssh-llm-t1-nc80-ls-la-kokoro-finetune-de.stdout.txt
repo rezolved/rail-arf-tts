@@ -1,0 +1,5 @@
+KOKORO_FINETUNE_OK
+/mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+Filesystem                                                                                  Size  Used Avail Use% Mounted on
+//brainpowstorage51fdd32f4.file.core.windows.net/code-391ff5ac-6576-460f-ba4d-7e03433c68b6  100T  1.9T   99T   2% /mnt/batch/tasks/shared/LS_root/mounts/clusters/llm-t1-nc80/code
+Linger=yes

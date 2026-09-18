@@ -1,0 +1,8 @@
+Building GE2E centroid from 1364 ElevenLabs reference clips...
+Loaded the voice encoder model on cpu in 0.03 seconds.
+Centroid built from 1364 clips (0 skipped/failed).
+Scoring 8 synthesized clips against the reference centroid...
+Loaded the voice encoder model on cpu in 0.04 seconds.
+speaker_sim mean=0.5660 std=0.0438 skipped=0
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/results/metrics.json: {'speaker_sim': 0.566, 'rtf': 1.9361, 'ttfb_ms': 6349.0}
+Appended metrics cross-check section to /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/results/v3_checkpoint_forensics.md

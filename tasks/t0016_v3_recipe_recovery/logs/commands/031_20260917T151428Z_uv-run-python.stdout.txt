@@ -1,0 +1,18 @@
+stage1 modules:
+  bert: ModuleForensics(label='stage1.bert', num_params=6292480, finite=True, weight_norm=186.5263513586749, mean_abs=0.050254248359306516, max_abs=13.43861198425293, dp_prefix_present=True, nonfinite_keys=())
+  bert_encoder: ModuleForensics(label='stage1.bert_encoder', num_params=393728, finite=True, weight_norm=13.089037195772413, mean_abs=0.018068901637401942, max_abs=0.03608434274792671, dp_prefix_present=True, nonfinite_keys=())
+  predictor: ModuleForensics(label='stage1.predictor', num_params=16194612, finite=True, weight_norm=141.67339312715512, mean_abs=0.027197357021702895, max_abs=0.9188086986541748, dp_prefix_present=True, nonfinite_keys=())
+  text_encoder: ModuleForensics(label='stage1.text_encoder', num_params=5606400, finite=True, weight_norm=310.7808866159331, mean_abs=0.02921760469605959, max_abs=4.5113606452941895, dp_prefix_present=True, nonfinite_keys=())
+  decoder: ModuleForensics(label='stage1.decoder', num_params=53276190, finite=True, weight_norm=196.9789152687716, mean_abs=0.01425205488185063, max_abs=1.008347749710083, dp_prefix_present=True, nonfinite_keys=())
+best modules:
+  bert: ModuleForensics(label='best.bert', num_params=6292480, finite=True, weight_norm=174.30746957716678, mean_abs=0.04708903796184259, max_abs=12.233077049255371, dp_prefix_present=False, nonfinite_keys=())
+  bert_encoder: ModuleForensics(label='best.bert_encoder', num_params=393728, finite=True, weight_norm=46.29557145639684, mean_abs=0.05890269917090785, max_abs=0.3316253423690796, dp_prefix_present=False, nonfinite_keys=())
+  predictor: ModuleForensics(label='best.predictor', num_params=16194612, finite=True, weight_norm=378.5872670389459, mean_abs=0.07120413980681244, max_abs=5.185624122619629, dp_prefix_present=False, nonfinite_keys=())
+  text_encoder: ModuleForensics(label='best.text_encoder', num_params=5606400, finite=True, weight_norm=373.45799575825055, mean_abs=0.08131212400655224, max_abs=4.398499011993408, dp_prefix_present=False, nonfinite_keys=())
+  decoder: ModuleForensics(label='best.decoder', num_params=53276190, finite=True, weight_norm=640.0960927522037, mean_abs=0.06725941526809182, max_abs=4.988377571105957, dp_prefix_present=False, nonfinite_keys=())
+stage1 sha256: 8a3375e306bc5a7522e21bd996ed9317ea1bb7ebbafc99a8e485a4263803bcac
+best sha256: a49f12dd5b9fbfdafaa94ae766253be3dc9626dd498bbc9494f2dc7c5bc27b3a
+stage1 all top-level net keys: {'bert': 6292480, 'bert_encoder': 393728, 'predictor': 16194612, 'decoder': 53276190, 'text_encoder': 5606400, 'predictor_encoder': 13880813, 'style_encoder': 13880813, 'diffusion': 43836160, 'text_aligner': 7868452, 'pitch_extractor': 5251148, 'mpd': 41105770, 'msd': 280902, 'wd': 1173634}
+
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/results/v3_module_weight_delta.raw.json
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/results/v3_checkpoint_forensics.md

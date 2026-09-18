@@ -1,0 +1,131 @@
+# Reconstructed Kokoro v3 Stage 2 StyleTTS2 training config (t0016, Milestone 4 Step 15).
+#
+# Schema copied from tasks/t0006_kokoro_v5_stage2_subset/code/config_david_v6c_stage2.yml (the
+# closest surviving relative of v3's actual launch config). Every field below carries exactly one
+# provenance tag:
+#   # confirmed: <file path or SHA-256>       -- a file directly states this value
+#   # inferred: <reasoning>                   -- derived from checkpoint/sample/log evidence
+#   # unknown: default from v6c                -- no evidence found; v6c's own value carried over
+#
+# See results/v3_checkpoint_forensics.md for the full evidence ledger, including the Multispeaker
+# Resolution and Config Diff vs v6c and t0009 sections.
+
+ASR_config: Utils/ASR/config.yml  # unknown: default from v6c (shared pretrained-submodule path, identical across all Kokoro Stage 2 configs seen in this project, including the VM's generic Configs/config.yml)
+ASR_path: Utils/ASR/epoch_00080.pth  # unknown: default from v6c
+F0_path: Utils/JDC/bst.t7  # unknown: default from v6c
+PLBERT_dir: Utils/PLBERT/  # unknown: default from v6c
+batch_size: 8  # unknown: default from v6c
+data_params:
+  OOD_data: ../training/OOD_texts.txt  # unknown: default from v6c
+  min_length: 50  # unknown: default from v6c
+  num_workers: 16  # unknown: default from v6c
+  root_path: '..'  # unknown: default from v6c
+  train_data: ../data/v3/train_list_266.txt  # unknown: 266-clip list itself is unrecoverable (see data/v3_train_list_UNRECOVERED.md); this path is a naming-convention guess following v6c's own ../data/v5/train_list_250.txt pattern, not a confirmed path
+  val_data: ../data/v5/val_list.txt  # unknown: default from v6c (v3 predates the v4/v5 data lineage per t0006's own description, so even this default is a weak guess -- flagged, not upgraded)
+epochs: 10  # unknown: default from v6c
+epochs_1st: 10  # unknown: default from v6c
+epochs_2nd: 10  # inferred: audio/epoch{0..3}_phrase*.wav plus audio/v3/ep{6,7,8} and audio/v3b/ep{6,7,8,9} samples span epochs 0-9 with no gaps (confirmed directly from the DVC-pulled file listing), i.e. at least 10 epoch checkpoints were saved -- consistent with v6c's own epochs_2nd=10 value, though the two 4-epoch and 6-9-epoch sample sets may represent different runs/checkpoints resumed from different starting points (see Per-Epoch Sample Gate Scores in results/v3_checkpoint_forensics.md)
+first_stage_path: first_stage_v3.pth  # confirmed: task_description.md's "What already exists" section explicitly names first_stage_v3.pth as v3's Stage 1 checkpoint, and tasks/t0006_kokoro_v5_stage2_subset/code/config_david_v6c_stage2.yml line 16 loads the identical filename. Byte-identity to the local stage1/first_stage.pth (SHA-256 8a3375e306bc5a7522e21bd996ed9317ea1bb7ebbafc99a8e485a4263803bcac) could NOT be confirmed: the VM's ~/kokoro-finetune is t0014's own later clone (see data/vm_inventory/inventory.json), not a preserved v3-era environment, and no first_stage_v3.pth was found anywhere on the VM or its persistent /mnt/cache/persist share.
+load_only_params: true  # confirmed: CLAUDE.md's own project convention states "Always start Stage 2 from first_stage.pth with load_only_params: true"
+log_dir: logs/kokoro-david-v3  # unknown: default naming convention (matches v6c's logs/kokoro-david-v6c and the VM's logs/v11/ pattern), not a confirmed path
+loss_params:
+  TMA_epoch: 0  # unknown: default from v6c
+  diff_epoch: 999  # unknown: default from v6c
+  joint_epoch: 6  # unknown: default from v6c. t0009's results/confound_table.md speculates 0 for v3 but explicitly labels it "speculated" (no evidence cited) -- not adopted here since it is no better evidenced than v6c's own value, and t0009's own analysis credits joint_epoch=6 as "the single largest contributing factor" to v6c's success.
+  lambda_F0: 1.0  # unknown: default from v6c
+  lambda_ce: 20.0  # unknown: default from v6c
+  lambda_diff: 0.0  # unknown: default from v6c
+  lambda_dur: 1.0  # unknown: default from v6c
+  lambda_gen: 0.2  # unknown: default from v6c's ACTUAL committed value (config_david_v6c_stage2.yml line 27: "lambda_gen: 0.2"). t0009's results/confound_table.md claims v6c's own lambda_gen was "1.0" and separately claims v3's was "1.0 (assumed)" -- but the confound table's v6c claim is directly contradicted by v6c's own committed file, which this task verified by reading the primary source rather than trusting the secondary table. Since the confound table is demonstrably wrong about v6c's own row, its "1.0 (assumed)" claim for v3 is not trusted either; v6c's real value is carried forward as the best available default instead.
+  lambda_mel: 5.0  # unknown: default from v6c
+  lambda_mono: 1.0  # unknown: default from v6c
+  lambda_norm: 1.0  # unknown: default from v6c
+  lambda_s2s: 1.0  # unknown: default from v6c
+  lambda_slm: 0.0  # inferred: tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/train_second_patch.diff's only training-loop patch wraps the entire SLM-adversarial block in "if loss_params.lambda_slm > 0:" -- upstream train_second.py ran this block unconditionally, so the patch was needed specifically to support lambda_slm<=0 without crashing, implying v3's actual run used lambda_slm<=0 (most likely exactly 0.0, matching v6c's own value, since anything >0 would not have required disabling the block)
+  lambda_sty: 0.0  # unknown: default from v6c
+model_params:
+  decoder:
+    gen_istft_hop_size: 5  # confirmed: tasks/t0006_kokoro_v5_stage2_subset/data/reference/v3/best/config.json "istftnet.gen_istft_hop_size"
+    gen_istft_n_fft: 20  # confirmed: best/config.json "istftnet.gen_istft_n_fft"
+    resblock_dilation_sizes:  # confirmed: best/config.json "istftnet.resblock_dilation_sizes"
+    - - 1
+      - 3
+      - 5
+    - - 1
+      - 3
+      - 5
+    - - 1
+      - 3
+      - 5
+    resblock_kernel_sizes:  # confirmed: best/config.json "istftnet.resblock_kernel_sizes"
+    - 3
+    - 7
+    - 11
+    type: istftnet  # confirmed: best/config.json has an "istftnet" key (not "hifigan")
+    upsample_initial_channel: 512  # confirmed: best/config.json "istftnet.upsample_initial_channel"
+    upsample_kernel_sizes:  # confirmed: best/config.json "istftnet.upsample_kernel_sizes"
+    - 20
+    - 12
+    upsample_rates:  # confirmed: best/config.json "istftnet.upsample_rates"
+    - 10
+    - 6
+  diffusion:
+    dist:
+      estimate_sigma_data: true  # unknown: default from v6c
+      mean: -3.0  # unknown: default from v6c
+      sigma_data: 0.2  # unknown: default from v6c
+      std: 1.0  # unknown: default from v6c
+    embedding_mask_proba: 0.1  # unknown: default from v6c
+    transformer:
+      head_features: 64  # unknown: default from v6c
+      multiplier: 2  # unknown: default from v6c
+      num_heads: 8  # unknown: default from v6c
+      num_layers: 3  # unknown: default from v6c
+  dim_in: 64  # confirmed: best/config.json "dim_in"
+  dropout: 0.2  # confirmed: best/config.json "dropout"
+  hidden_dim: 512  # confirmed: best/config.json "hidden_dim"
+  max_dur: 50  # confirmed: best/config.json "max_dur"
+  multispeaker: false  # inferred: checkpoint-shape forensics on stage1/first_stage.pth's net["diffusion"] shows exactly one cross-attention conditioning pathway per transformer block, with no second, distinctly-shaped conditioning block that StyleTransformer1d's extra `context_features=style_dim*2` argument would require -- suggestive of the simpler Transformer1d branch (multispeaker=false) per models.py:808's build_model() branch (VM copy: data/vm_inventory/kokoro_finetune_current/models.py). Does NOT meet the "confirmed" bar (no launch YAML or class-source shape proof recovered) -- see "Multispeaker Resolution" in results/v3_checkpoint_forensics.md for the full three-way contradiction and this verdict's reasoning. This DIRECTLY CONTRADICTS best/config.json's own "multispeaker": true, which is treated here as a secondary, one-inference-step-removed packaged-bundle artifact, not checkpoint-level proof.
+  n_layer: 3  # confirmed: best/config.json "n_layer"
+  n_mels: 80  # confirmed: best/config.json "n_mels"
+  n_token: 178  # confirmed: best/config.json "n_token"
+  plbert:
+    dropout: 0.1  # confirmed: best/config.json "plbert.dropout"
+    hidden_size: 768  # confirmed: best/config.json "plbert.hidden_size"
+    intermediate_size: 2048  # confirmed: best/config.json "plbert.intermediate_size"
+    max_position_embeddings: 512  # confirmed: best/config.json "plbert.max_position_embeddings"
+    num_attention_heads: 12  # confirmed: best/config.json "plbert.num_attention_heads"
+    num_hidden_layers: 12  # confirmed: best/config.json "plbert.num_hidden_layers"
+  slm:
+    hidden: 768  # unknown: default from v6c
+    initial_channel: 64  # unknown: default from v6c
+    model: microsoft/wavlm-base-plus  # unknown: default from v6c
+    nlayers: 13  # unknown: default from v6c
+    sr: 16000  # unknown: default from v6c
+  style_dim: 128  # confirmed: best/config.json "style_dim"
+  text_encoder_kernel_size: 5  # confirmed: best/config.json "text_encoder_kernel_size"
+optimizer_params:
+  bert_lr: 1.0e-06  # unknown: default from v6c
+  ft_lr: 1.0e-04  # unknown: default from v6c
+  lr: 1.0e-04  # unknown: default from v6c. t0009's confound_table.md lists v3's lr as "unknown"; v6c itself succeeded at lr=1e-4, and t0009's own key observation states "LR alone did not cause failure" across runs at both 1e-4 and 3e-5, so this default is not contradicted by any evidence but is also not confirmed by any.
+preprocess_params:
+  spect_params:
+    fmax: 8000  # unknown: default from v6c
+    fmin: 0  # unknown: default from v6c
+    hop_length: 300  # unknown: default from v6c
+    n_fft: 2048  # unknown: default from v6c
+    n_mels: 80  # unknown: default from v6c
+    win_length: 1200  # unknown: default from v6c
+  sr: 24000  # unknown: default from v6c
+pretrained_model: ''  # unknown: default from v6c
+save_freq: 1  # inferred: per-epoch audio samples exist for every epoch 0-9 with no gaps (audio/epoch{0..3} plus v3/v3b ep6-9), consistent with a checkpoint (and sample) saved every epoch -- matches v6c's own save_freq=1
+second_stage_load_pretrained: false  # unknown: default from v6c
+slmadv_params:
+  batch_percentage: 0.5  # unknown: default from v6c
+  iter: 10  # unknown: default from v6c
+  max_len: 500  # unknown: default from v6c
+  min_len: 100  # unknown: default from v6c
+  scale: 0.01  # unknown: default from v6c
+  sig: 1.5  # unknown: default from v6c
+  thresh: 5  # unknown: default from v6c
+train_LM: false  # unknown: default from v6c

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0016_v3_recipe_recovery",
+  "command": "uv run python -m tasks.t0016_v3_recipe_recovery.code.plot_module_weight_delta",
+  "exit_code": 0,
+  "duration_seconds": 7.152,
+  "started_at": "2026-09-17T15:34:10Z",
+  "completed_at": "2026-09-17T15:34:17Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery",
+  "stdout_file": "038_20260917T153410Z_uv-run-python.stdout.txt",
+  "stderr_file": "038_20260917T153410Z_uv-run-python.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

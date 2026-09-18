@@ -1,0 +1,79 @@
+{
+  "spec_version": "1",
+  "home_directory_present": true,
+  "home_directory_is_original_v3_env": false,
+  "home_directory_note": "~/kokoro-finetune is a symlink to /mnt/cache/persist/t0014_v11_decoder_fix_retrain/kokoro-finetune -- i.e. t0014's own StyleTTS2 clone used for the v11 retrain, not a preserved v3-era environment. No first_stage_v3.pth, no v3-named logs/ directory, no 266-clip data list exist anywhere under ~/kokoro-finetune or the resolved /mnt/cache/persist share. The share's other task-named directories (t0009, t0010, t0014_v11_decoder_fix_retrain, plus several directories from an unrelated LLM fine-tuning project sharing this VM pool) contain no v3 or t0002/t0006-referenced artifacts either.",
+  "first_stage_v3_remote_sha256": null,
+  "first_stage_v3_search_result": "not found under ~/kokoro-finetune or /mnt/cache/persist",
+  "models_py_found": true,
+  "models_py_multispeaker_finding": "models.py:808 `if args.multispeaker:` selects StyleTransformer1d vs. Transformer1d for `diffusion.diffusion.net`/`diffusion.unet` inside build_model(). `diffusion` IS a top-level key in the StyleTTS2 `nets` Munch (line ~850) and therefore a top-level key in any raw checkpoint's `net` dict, alongside the 5 bundled modules -- but it is NOT one of the 5 Kokoro-API bundle modules (bert/bert_encoder/predictor/text_encoder/decoder), so multispeaker's effect is invisible to a diff restricted to those 5 modules. It IS checkable via stage1/first_stage.pth's net['diffusion'] shape, per checkpoint_forensics.all_top_level_keys().",
+  "266_clip_list_found": false,
+  "kikiri_tts_symlink_broken": true,
+  "vm_session_minutes": 13.468,
+  "vm_ready_at": "2026-09-17T14:34:45.033597Z (per logs/steps/008_setup-machines/machine_log.json)",
+  "vm_billing_started_at": "2026-09-17T14:34:28.703377Z",
+  "vm_teardown_called_at": "2026-09-17T14:47:56.755481Z",
+  "vm_teardown_by": "implementation step (this step), not a later teardown step",
+  "entries": [
+    {
+      "path": "env/pip_freeze.txt",
+      "size_bytes": 5820,
+      "mtime_iso": "2026-09-17T15:46:06.219759+00:00",
+      "sha256": "f0bf442390fa821b96ff90dfb65258cbaac80565c18216171ed62c082e73b2a8"
+    },
+    {
+      "path": "env/versions.md",
+      "size_bytes": 1537,
+      "mtime_iso": "2026-09-17T15:46:23.153925+00:00",
+      "sha256": "bc7e3c4bf8b75511abe31dd3046dab2a0ca1732885b36108ca62e57b94428a67"
+    },
+    {
+      "path": "kokoro_finetune_current/Configs/config.yml",
+      "size_bytes": 3787,
+      "mtime_iso": "2026-09-17T14:46:29.883890+00:00",
+      "sha256": "082ba39597bdf1ad6eef10d2697fc7d4962a16e6ad8f4bb0c78c68a821dc50a5"
+    },
+    {
+      "path": "kokoro_finetune_current/Configs/config_ft.yml",
+      "size_bytes": 3470,
+      "mtime_iso": "2026-09-17T14:46:30.467896+00:00",
+      "sha256": "0500a3d9eb866f5b097260e405bdd13b525613ed6bda3eecda5b19485654395b"
+    },
+    {
+      "path": "kokoro_finetune_current/Configs/config_libritts.yml",
+      "size_bytes": 3708,
+      "mtime_iso": "2026-09-17T14:46:30.887901+00:00",
+      "sha256": "e7b9763ecfa3139431d20c1c6bbe79f8996185e4561441e649402ce72c7ec45d"
+    },
+    {
+      "path": "kokoro_finetune_current/Modules/diffusion.py.txt",
+      "size_bytes": 2630,
+      "mtime_iso": "2026-09-17T14:47:10.162308+00:00",
+      "sha256": "16a04f4b45dcc4949a1829764051741d62dc97e61b34da2f6b0babe0cf39cc95"
+    },
+    {
+      "path": "kokoro_finetune_current/models.py.txt",
+      "size_bytes": 27419,
+      "mtime_iso": "2026-09-17T14:46:29.048881+00:00",
+      "sha256": "519a1d50fe9bdaa27846ab0d18a8182f6cda8ff6b4c49089dcfb46d0aeabd310"
+    },
+    {
+      "path": "kokoro_finetune_current/v11_config.yml",
+      "size_bytes": 3457,
+      "mtime_iso": "2026-09-17T14:46:31.945912+00:00",
+      "sha256": "9416212d29f821f553444d5fffc7de769dd209ad308de8cf1d6c465811e4358a"
+    },
+    {
+      "path": "raw_dump.txt",
+      "size_bytes": 70766,
+      "mtime_iso": "2026-09-17T15:02:57.724172+00:00",
+      "sha256": "b9a298535a90917fc2b016dd26ace8219ed47e18ca629bf7b9291bdf9d4d1d62"
+    },
+    {
+      "path": "raw_dump_followup.txt",
+      "size_bytes": 176374,
+      "mtime_iso": "2026-09-17T14:45:14.696108+00:00",
+      "sha256": "f58166287508b337571f558df8c1760844aa0513bbddc0e2b5cd83069b9b7f30"
+    }
+  ]
+}

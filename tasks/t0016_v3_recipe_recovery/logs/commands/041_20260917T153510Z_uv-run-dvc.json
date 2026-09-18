@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0016_v3_recipe_recovery",
+  "command": "uv run dvc push tasks/t0016_v3_recipe_recovery/results/audio_samples.dvc",
+  "exit_code": 0,
+  "duration_seconds": 14.036,
+  "started_at": "2026-09-17T15:35:10Z",
+  "completed_at": "2026-09-17T15:35:24Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery",
+  "stdout_file": "041_20260917T153510Z_uv-run-dvc.stdout.txt",
+  "stderr_file": "041_20260917T153510Z_uv-run-dvc.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

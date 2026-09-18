@@ -1,0 +1,2 @@
+/home/azureuser/kokoro-finetune/Modules/diffusion
+/home/azureuser/kokoro-finetune/Modules/diffusion/diffusion.py

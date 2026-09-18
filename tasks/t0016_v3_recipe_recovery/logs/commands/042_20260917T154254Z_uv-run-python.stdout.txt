@@ -1,0 +1,1 @@
+Wrote /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/data/vm_inventory/inventory.json with 8 file entries.

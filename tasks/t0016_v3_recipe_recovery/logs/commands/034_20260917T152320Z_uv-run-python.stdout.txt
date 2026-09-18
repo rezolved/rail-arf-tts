@@ -1,0 +1,23 @@
+Loaded v3 best decoder: 145 missing, 0 unexpected keys
+[38;5;2m✔ Download and installation successful[0m
+You can now load the package via spacy.load('en_core_web_sm')
+Phase 1.5 validation gate: synthesizing 3 fixed gate texts first...
+  lining_up_suggestions_17: is_likely_noise=False, ttfb_s=4.741
+  lining_up_suggestions_10: is_likely_noise=False, ttfb_s=3.539
+  putting_them_head_to_head_15: is_likely_noise=False, ttfb_s=4.426
+Gate passed. Synthesizing 5 seed-42 val96 prompts...
+  val96_seed42_00 ('notedlooking into relevant retail tie options'): is_likely_noise=False
+  val96_seed42_01 ('i hear youlet me continue from where i left off'): is_likely_noise=False
+  val96_seed42_02 ('checking the one-click checkout capability'): is_likely_noise=False
+  val96_seed42_03 ('taking a look at what resolve ai is'): is_likely_noise=False
+  val96_seed42_04 ('llm sess 1f4bbf4db2604037 resp 3d246884a2e44045'): is_likely_noise=False
+
+Wrote 8 WAV files to /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0016_v3_recipe_recovery/tasks/t0016_v3_recipe_recovery/results/audio_samples/v3_shipped
+  lining_up_suggestions_17: ttfb_s=4.741 rtf=2.107 dur_s=2.250
+  lining_up_suggestions_10: ttfb_s=3.539 rtf=1.887 dur_s=1.875
+  putting_them_head_to_head_15: ttfb_s=4.426 rtf=2.299 dur_s=1.925
+  val96_seed42_00: ttfb_s=5.685 rtf=1.944 dur_s=2.925
+  val96_seed42_01: ttfb_s=5.890 rtf=2.014 dur_s=2.925
+  val96_seed42_02: ttfb_s=4.890 rtf=1.956 dur_s=2.500
+  val96_seed42_03: ttfb_s=3.855 rtf=1.590 dur_s=2.425
+  val96_seed42_04: ttfb_s=17.766 rtf=1.692 dur_s=10.500
