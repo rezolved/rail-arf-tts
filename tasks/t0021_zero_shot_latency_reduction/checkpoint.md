@@ -2,9 +2,9 @@
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
 updated_at: "2026-09-18T10:20:00Z"
-completed_steps: 2
-next_step_number: 3
-next_step_id: "init-folders"
+completed_steps: 3
+next_step_number: 4
+next_step_id: "research-papers"
 ---
 # Task Objective
 
@@ -28,6 +28,15 @@ output.
 benchmark, adapters, reference clips, and prompt sets this task will reuse. Result recorded in
 `logs/steps/002_check-deps/deps_report.json`.
 
+### Step 3 — init-folders
+
+Ran `init_task_folders` to create the mandatory task folder structure (`plan/`, `research/`,
+`results/`, `results/images/`, `corrections/`, `intervention/`, `code/`,
+`logs/{commands,searches,sessions,steps}/`, `assets/answer/`), recording
+`logs/steps/003_init-folders/folders_created.txt`. Populated the local `ctx/` aggregator cache
+(`task_types.json`, `costs.json`, `tasks.json`, `metrics.json`, `suggestions.json`) for downstream
+subagents to reuse instead of re-running aggregators; `ctx/` is gitignored and not committed.
+
 * * *
 
 ## Cross-Step Decisions
@@ -36,7 +45,8 @@ benchmark, adapters, reference clips, and prompt sets this task will reuse. Resu
 
 ## Next Step Notes
 
-Step 2 confirmed t0018 is complete and its assets (adapters, harness wiring, David reference clips,
-prompt sets) are usable as inputs. Proceed to step 3 (`init-folders`): create the mandatory task
-folder structure via `init_task_folders`, then populate the `ctx/` aggregator cache (task_types,
-costs, tasks, metrics, suggestions) before committing.
+Step 3 created the folder skeleton and seeded `tasks/t0021_zero_shot_latency_reduction/ctx/` with
+`task_types.json`, `costs.json`, `tasks.json`, `metrics.json`, and `suggestions.json` — read these
+instead of re-running aggregators. Proceed to step 4 (`research-papers`): review corpus papers on
+TTS latency optimization (streaming decoding, TensorRT/vLLM inference acceleration, flow-matching
+vocoders) relevant to CosyVoice2 and Chatterbox, per the step description in `step_tracker.json`.
