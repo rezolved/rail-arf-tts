@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T11:35:00Z"
-completed_steps: 7
-next_step_number: 8
-next_step_id: "setup-machines"
+updated_at: "2026-09-18T12:15:18Z"
+completed_steps: 8
+next_step_number: 9
+next_step_id: "implementation"
 ---
 # Task Objective
 
@@ -96,6 +96,28 @@ Wrote `plan/plan.md` (all 11 mandatory sections plus dedicated `## Owner Correct
 17-item `REQ-*` checklist where `REQ-11`..`REQ-17` map every owner-correction sub-requirement to a
 concrete Step by Step action. Caveat: the intervention file and the corrected references/centroid
 are created in implementation steps 1-2 (CPU-only, before GPU provisioning) — not yet on disk.
+
+### Step 8 — setup-machines
+
+Provisioned `LLM-T1-NC80` (2x NVIDIA H100 NVL, CUDA 12.2) via `/setup-remote-machine`; armed and
+confirmed the idle watchdog (PID 6807) before any build started, verified `/mnt/cache/persist`
+resolves to the real Azure Files mount (not ephemeral `/mnt`), and confirmed both t0018's
+`.venv-cosyvoice2` and `.venv-chatterbox` are intact and reusable. CosyVoice2's `load_jit`/
+`load_trt` export succeeded (`flow.encoder.fp32.zip`/`flow.encoder.fp16.zip` under
+`/mnt/cache/persist/t0021_zero_shot_latency_reduction/pretrained/cosyvoice2/`). The new
+`.venv-cosyvoice2-vllm` install hit its pre-authorized 20-minute cutoff mid-unpack (torch installed,
+vllm itself not reached) — documented in `intervention/cosyvoice2_vllm_install_timeout.md`, and the
+`vllm_backend` CosyVoice2 acceleration variant is null for this task per the plan's own
+pre-registered fallback; this does not affect the other 5 CosyVoice2 variants or any Chatterbox
+variant. `machine_log.json` recorded in `logs/steps/008_setup-machines/` with all required fields
+(watchdog_active, watchdog_pid, gpu_verified, cuda_version, smoke_test_output); `destroyed_at`
+remains `null` — the VM stays up for `implementation`. Caveat for the implementation step: the
+provisioning subagent left two long-running remote jobs (the TRT export and the vLLM install)
+running without registering any way to be resumed after ending its own turn — this step-executor
+caught and closed that gap directly via bounded synchronous SSH polling rather than leaving the step
+unmonitored; the watchdog protected the VM throughout so no idle-billing risk materialized, but
+future steps on this task should not assume a subagent's self-reported "I'll wait for the
+notification" actually corresponds to a real wakeup mechanism for remote (non-harness-tracked) work.
 
 * * *
 

@@ -1,0 +1,7 @@
++ cd /mnt/cache/persist/t0021_zero_shot_latency_reduction
++ python3 -m venv venvs/.venv-cosyvoice2-vllm
++ ./venvs/.venv-cosyvoice2-vllm/bin/pip install --upgrade pip -q
+WARNING: The directory '/mnt/pip_cache' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
++ timeout 1100 ./venvs/.venv-cosyvoice2-vllm/bin/pip install vllm==0.11.0 transformers==4.57.1 numpy==1.26.4
++ echo PIP_VLLM_EXIT:124
++ tail -40 logs/install_cosyvoice2_vllm.log

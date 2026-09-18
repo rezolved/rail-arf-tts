@@ -1,0 +1,41 @@
+EXPORT_TRT_EXIT:0
+[09/18/2026-12:03:04] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_3_0/block1/block/block_0/Pad_2440_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:05] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_4_0/block1/block/block_0/Pad_3015_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:07] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_5_0/block1/block/block_0/Pad_3590_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:08] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_6_0/block1/block/block_0/Pad_4165_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:10] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_7_0/block1/block/block_0/Pad_4740_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:11] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_8_0/block1/block/block_0/Pad_5315_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:12] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_9_0/block1/block/block_0/Pad_5890_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:14] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_10_0/block1/block/block_0/Pad_6465_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:15] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/mid_blocks_11_0/block1/block/block_0/Pad_7040_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:17] [TRT] [E] Error Code: 9: Skipping tactic 0x0000000000000000 due to exception [api_compile.cpp:validate_copy_operation:4953] Slice operation "/up_blocks_0_0/block1/block/block_0/Pad_7653_slice" has incorrect fill value type, slice op requires fill value type to be same as its input. In compileGraph at optimizer/myelin/codeGenerator.cpp:1425
+[09/18/2026-12:03:38] [TRT] [I] Detected 6 inputs and 1 output network tensors.
+[09/18/2026-12:03:41] [TRT] [I] Total Host Persistent Memory: 279088 bytes
+[09/18/2026-12:03:41] [TRT] [I] Total Device Persistent Memory: 0 bytes
+[09/18/2026-12:03:41] [TRT] [I] Max Scratch Memory: 324924416 bytes
+[09/18/2026-12:03:41] [TRT] [I] [BlockAssignment] Started assigning block shifts. This will take 300 steps to complete.
+[09/18/2026-12:03:41] [TRT] [I] [BlockAssignment] Algorithm ShiftNTopDown took 12.7486ms to assign 11 blocks to 300 nodes requiring 349547520 bytes.
+[09/18/2026-12:03:41] [TRT] [I] Total Activation Memory: 349545984 bytes
+[09/18/2026-12:03:41] [TRT] [I] Total Weights Memory: 142607008 bytes
+[09/18/2026-12:03:41] [TRT] [I] Compiler backend is used during engine execution.
+[09/18/2026-12:03:41] [TRT] [I] Engine generation completed in 126.213 seconds.
+[09/18/2026-12:03:41] [TRT] [I] [MemUsageStats] Peak memory usage of TRT CPU/GPU memory allocators: CPU 69 MiB, GPU 2308 MiB
+2026-09-18 12:03:42,953 INFO Succesfully convert onnx to trt...
+[09/18/2026-12:03:46] [TRT] [I] Loaded engine size: 175 MiB
+[09/18/2026-12:03:46] [TRT] [I] [MS] Running engine with multi stream info
+[09/18/2026-12:03:46] [TRT] [I] [MS] Number of aux streams is 1
+[09/18/2026-12:03:46] [TRT] [I] [MS] Number of total worker streams is 2
+[09/18/2026-12:03:46] [TRT] [I] [MS] The main stream provided by execute/enqueue calls is the first worker stream
+[09/18/2026-12:03:47] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +333, now: CPU 0, GPU 469 (MiB)
+Downloading Model to directory: /home/azureuser/.cache/modelscope/hub/pengzhendong/wetext
+Downloading Model to directory: /home/azureuser/.cache/modelscope/hub/pengzhendong/wetext
+Done in 301.1s
+load_trt/load_jit export completed successfully.
+2026-09-18 12:03:47,692 DEBUG Attempting to acquire lock 132281618217712 on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 12:03:47,692 DEBUG Lock 132281618217712 acquired on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 12:03:47,692 DEBUG Attempting to release lock 132281618217712 on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 12:03:47,692 DEBUG Lock 132281618217712 released on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 12:03:47,698 DEBUG Attempting to acquire lock 132281618218000 on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-09-18 12:03:47,699 DEBUG Lock 132281618218000 acquired on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-09-18 12:03:47,699 DEBUG Attempting to release lock 132281618218000 on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-09-18 12:03:47,699 DEBUG Lock 132281618218000 released on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock

@@ -1,0 +1,13 @@
+{
+  "task_id": "t0021_zero_shot_latency_reduction",
+  "vm_name": "LLM-T1-NC80",
+  "ssh_host_alias": "LLM-T1-NC80",
+  "hourly_cost_usd": 13.96,
+  "acquired_at": "2026-09-18T11:37:03.243044Z",
+  "started_vm": true,
+  "billing_started_at": "2026-09-18T11:29:10.875712Z",
+  "billing_anchor": "az_start_issued",
+  "search_started_at": "2026-09-18T11:28:58.472551Z",
+  "total_provisioning_seconds": 484.7704801130167,
+  "failed_attempts": []
+}

@@ -1,0 +1,7 @@
+2026-09-18T11:38:11Z arf-idle-watchdog: starting: threshold=3600s poll=60s idle_util<=5% grace=600s
+---RUNTIME---
+2026-09-17T19:28:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3060s/3600s
+2026-09-17T19:29:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3120s/3600s
+2026-09-17T19:30:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3180s/3600s
+2026-09-17T19:31:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3240s/3600s
+2026-09-18T11:38:11Z arf-idle-watchdog: starting: threshold=3600s poll=60s idle_util<=5% grace=600s

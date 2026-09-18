@@ -1,0 +1,3 @@
+6606
+EXIT:0
+-rw-rw-rw- 1 azureuser azureuser 6501281 Sep 17 19:31 /var/log/arf_idle_watchdog.log

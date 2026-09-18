@@ -1,0 +1,8 @@
+    PID ELAPSED CMD
+---
+---
+2026-09-17T19:27:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3000s/3600s
+2026-09-17T19:28:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3060s/3600s
+2026-09-17T19:29:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3120s/3600s
+2026-09-17T19:30:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3180s/3600s
+2026-09-17T19:31:02Z arf-idle-watchdog: idle: max_util=0% accumulated_idle=3240s/3600s

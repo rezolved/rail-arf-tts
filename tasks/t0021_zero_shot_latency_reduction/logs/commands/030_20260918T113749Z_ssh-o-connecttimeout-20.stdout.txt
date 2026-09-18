@@ -1,0 +1,6 @@
+azureus+    6723  0.0  0.0   7764  3200 ?        Ss   11:37   0:00 bash -c ps aux | grep idle_watchdog; echo ---; date -u; echo ---; uptime
+azureus+    6725  0.0  0.0   7008  1920 ?        S    11:37   0:00 grep idle_watchdog
+---
+Fri Sep 18 11:37:49 UTC 2026
+---
+ 11:37:49 up 7 min,  0 users,  load average: 0.04, 0.15, 0.10

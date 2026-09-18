@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_zero_shot_latency_reduction",
+  "command": "bash -c ssh -o ConnectTimeout=20 LLM-T1-NC80 'bash -s' < /tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/632781c0-3a57-4e0f-825f-dc71a72b011c/scratchpad/watchdog_install.sh",
+  "exit_code": 0,
+  "duration_seconds": 0.68,
+  "started_at": "2026-09-18T11:38:10Z",
+  "completed_at": "2026-09-18T11:38:11Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction",
+  "stdout_file": "031_20260918T113810Z_bash-c-ssh-o-connecttimeout-20-llm-t1-nc.stdout.txt",
+  "stderr_file": "031_20260918T113810Z_bash-c-ssh-o-connecttimeout-20-llm-t1-nc.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}

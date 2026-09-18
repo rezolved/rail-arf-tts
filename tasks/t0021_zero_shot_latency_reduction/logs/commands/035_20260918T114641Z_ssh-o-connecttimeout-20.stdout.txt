@@ -1,0 +1,31 @@
+EXPORT_JIT_EXIT:0
+[2026-09-18 11:50:17,151] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+There was a problem when trying to write in your cache folder (/home/azureuser/.cache/huggingface/hub). Please, ensure the directory exists and can be written to.
+/mnt/cache/persist/t0018_zero_shot_cloning_calibration/venvs/.venv-cosyvoice2/lib/python3.10/site-packages/diffusers/models/lora.py:393: FutureWarning: `LoRACompatibleLinear` is deprecated and will be removed in version 1.0.0. Use of `LoRACompatibleLinear` is deprecated. Please switch to PEFT backend by installing PEFT: `pip install peft`.
+  deprecate("LoRACompatibleLinear", "1.0.0", deprecation_message)
+2026-09-18 11:52:19,164 INFO input frame rate=25
+/mnt/cache/persist/t0018_zero_shot_cloning_calibration/venvs/.venv-cosyvoice2/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:28: UserWarning: torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.
+  warnings.warn("torch.nn.utils.weight_norm is deprecated in favor of torch.nn.utils.parametrizations.weight_norm.")
+[0;93m2026-09-18 11:52:36.018806340 [W:onnxruntime:, transformer_memcpy.cc:74 ApplyImpl] 8 Memcpy nodes are added to the graph main_graph for CUDAExecutionProvider. It might have negative impact on performance (including unable to run CUDA graph). Set session_options.log_severity_level=1 to see the detail logs before this message.[m
+[0;93m2026-09-18 11:52:36.020827262 [W:onnxruntime:, session_state.cc:1166 VerifyEachNodeIsAssignedToAnEp] Some nodes were not assigned to the preferred execution providers which may or may not have an negative impact on performance. e.g. ORT explicitly assigns shape related ops to CPU to improve perf.[m
+[0;93m2026-09-18 11:52:36.020833932 [W:onnxruntime:, session_state.cc:1168 VerifyEachNodeIsAssignedToAnEp] Rerunning with verbose output on a non-minimal build will show node assignments.[m
+2026-09-18 11:52:37,025 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-09-18 11:52:37,954 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 222
+2026-09-18 11:52:38,205 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+2026-09-18 11:52:38,663 DEBUG Starting new HTTPS connection (1): www.modelscope.cn:443
+2026-09-18 11:52:40,271 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/revisions HTTP/1.1" 200 222
+2026-09-18 11:52:40,522 DEBUG https://www.modelscope.cn:443 "GET /api/v1/models/pengzhendong/wetext/repo/files?Revision=master&Recursive=True HTTP/1.1" 200 None
+2026-09-18 11:52:40,788 INFO use wetext frontend
+2026-09-18 11:53:28,822 INFO successfully export flow_encoder
+Namespace(model_dir='/mnt/cache/persist/t0021_zero_shot_latency_reduction/pretrained/cosyvoice2')
+Downloading Model to directory: /home/azureuser/.cache/modelscope/hub/pengzhendong/wetext
+Downloading Model to directory: /home/azureuser/.cache/modelscope/hub/pengzhendong/wetext
+2026-09-18 11:53:28,849 DEBUG Attempting to acquire lock 137701885426416 on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 11:53:28,849 DEBUG Lock 137701885426416 acquired on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 11:53:28,849 DEBUG Attempting to release lock 137701885426416 on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 11:53:28,849 DEBUG Lock 137701885426416 released on /home/azureuser/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+2026-09-18 11:53:28,856 DEBUG Attempting to acquire lock 137701885427472 on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-09-18 11:53:28,856 DEBUG Lock 137701885427472 acquired on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-09-18 11:53:28,856 DEBUG Attempting to release lock 137701885427472 on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+2026-09-18 11:53:28,856 DEBUG Lock 137701885427472 released on /home/azureuser/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock

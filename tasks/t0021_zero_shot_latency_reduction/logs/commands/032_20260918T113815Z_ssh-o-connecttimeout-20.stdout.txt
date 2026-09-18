@@ -1,0 +1,5 @@
+6807 bash /opt/arf/idle_watchdog.sh
+6862 bash -c pgrep -af idle_watchdog.sh; echo ---; ps -o pid,etimes,cmd -p $(pgrep -f idle_watchdog.sh | head -1)
+---
+    PID ELAPSED CMD
+   6807       5 bash /opt/arf/idle_watchdog.sh

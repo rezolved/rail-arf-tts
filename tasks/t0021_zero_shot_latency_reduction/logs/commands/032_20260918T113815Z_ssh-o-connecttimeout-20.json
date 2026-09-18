@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_zero_shot_latency_reduction",
+  "command": "ssh -o ConnectTimeout=20 LLM-T1-NC80 pgrep -af idle_watchdog.sh; echo ---; ps -o pid,etimes,cmd -p $(pgrep -f idle_watchdog.sh | head -1)",
+  "exit_code": 0,
+  "duration_seconds": 0.431,
+  "started_at": "2026-09-18T11:38:15Z",
+  "completed_at": "2026-09-18T11:38:16Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction",
+  "stdout_file": "032_20260918T113815Z_ssh-o-connecttimeout-20.stdout.txt",
+  "stderr_file": "032_20260918T113815Z_ssh-o-connecttimeout-20.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}

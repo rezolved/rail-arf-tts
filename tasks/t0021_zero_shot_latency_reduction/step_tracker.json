@@ -103,10 +103,14 @@
       "step": 8,
       "name": "setup-machines",
       "description": "Provision LLM-T1-NC80, arm the idle watchdog, and prepare CosyVoice2/Chatterbox environments with TensorRT/vLLM builds.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-18T11:27:21Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/008_setup-machines/",
+      "current_owner": "step-executor/setup-machines",
+      "last_heartbeat_at": "2026-09-18T11:59:38Z",
+      "heartbeat_interval_seconds": 300,
+      "expected_completion_at": "2026-09-18T12:57:21Z"
     },
     {
       "step": 9,
