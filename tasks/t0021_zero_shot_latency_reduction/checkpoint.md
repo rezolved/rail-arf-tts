@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T11:05:00Z"
-completed_steps: 6
-next_step_number: 7
-next_step_id: "planning"
+updated_at: "2026-09-18T11:35:00Z"
+completed_steps: 7
+next_step_number: 8
+next_step_id: "setup-machines"
 ---
 # Task Objective
 
@@ -129,14 +129,33 @@ Binding requirements for every remaining t0021 step (planning, implementation, r
 
 * * *
 
+### Step 7 — planning
+
+Wrote `plan/plan.md` (762 lines, all 11 mandatory sections plus a dedicated `## Owner Correction`
+section and a `## Rejection Criteria` addendum); `verify_plan` passed with 0 errors/warnings. The
+plan defines a 6-variant cumulative-stack acceleration matrix per system
+(`baseline_new_ref → ref_cache → fp16 → load_jit → load_trt → vllm_backend` for CosyVoice2;
+`baseline_new_ref → ref_cache → precision_bf16_or_fp16 → torch_compile → sentence_chunking → streaming_api`
+for Chatterbox), new `StageTiming` instrumentation added to the copied adapters, and a 17-item
+`REQ-*` checklist where `REQ-11`..`REQ-17` map every owner-correction sub-requirement (corrected
+references/centroid from `data/v4/val/wavs`, disjoint 48/48 ref-source/centroid split, frozen
+"radiohost (wrong voice) control" column from t0018's `half_a_centroid.npy`, no by-name ElevenLabs
+voice resolution, paired same-session baseline re-run, the intervention file, the 3-way audio
+comparison set + `listening_guide.md`, and the gate-is-necessary-not-sufficient caveat) to a
+concrete numbered Step by Step action. Budget itemized to ~$78.18 against the $100 hard cap. Caveat
+for setup-machines/implementation: the intervention file
+(`intervention/owner_correction_wrong_david_voice.md`) and the corrected references/centroid are
+created in implementation Step 1-2 (CPU-only, before GPU provisioning) — not yet written on disk; do
+not skip them.
+
 ## Next Step Notes
 
-Steps 4-6 established the acceleration-lever priority order (LM/decoder stage first, per
-[Du2024]/vllm-omni#6870), the reuse/copy map for t0018/t0008/t0015/t0014 code, and the concrete fix
-for the CosyVoice2 30 s reference-duration failure. Proceed to step 7 (`planning`): design the
-per-stage latency profiling protocol and the acceleration-variant matrix (streaming, chunking,
-vLLM/TensorRT backends, precision) for both CosyVoice2 and Chatterbox, with budget and risk plan.
-Load `research/research_summary.md` first instead of the three full research files — it is
-specifically sized for planning/implementation consumption. Remember the still-unresolved question
-from research-internet: whether any acceleration lever shifts `speaker_sim`, which the plan should
-treat as a required paired measurement, not an assumption.
+Proceed to step 8 (`setup-machines`): provision `LLM-T1-NC80`, arm the idle watchdog and confirm its
+PID before any build (Lesson 8), then prepare the CosyVoice2/Chatterbox isolated venvs with
+TensorRT/vLLM builds per `plan/plan.md` step 4/6. Read `plan/plan.md` in full — it is self-contained
+and is now the authoritative source for implementation; do not re-derive anything from the research
+files. Remember: reference-clip and centroid construction (plan step 2) and the owner-correction
+intervention file (plan step 1) are CPU-only and must happen before GPU provisioning to avoid
+billing idle time. The still-unresolved research question — whether any acceleration lever shifts
+`speaker_sim` — is exactly what the paired-baseline variant sweep (plan steps 9/11) is designed to
+answer; treat it as a required measurement, not an assumption.
