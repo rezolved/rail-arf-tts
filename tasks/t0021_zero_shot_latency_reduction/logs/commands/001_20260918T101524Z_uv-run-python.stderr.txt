@@ -1,0 +1,3 @@
+usage: python3 -m arf.scripts.verificators.verify_task_dependencies
+       [-h] task_id
+python3 -m arf.scripts.verificators.verify_task_dependencies: error: unrecognized arguments: --format json
