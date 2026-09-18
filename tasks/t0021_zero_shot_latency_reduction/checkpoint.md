@@ -92,6 +92,41 @@ warnings). Also ran `/research-summarize` afterward, compressing all three resea
 
 ## Cross-Step Decisions
 
+### Owner correction (2026-09-18, injected by coordinator before step 7)
+
+The project owner found on 2026-09-18 that the ElevenLabs account has two voices named "David".
+Production (`brainpowa-voice-gateway` FluxCD) and the Kokoro training corpus `data/v4` use
+`voice_id=rWV5HleMkWb5oluMwkA7` ("David - narrator and newsreader", `model_id=eleven_flash_v2_5`,
+`output_format=pcm_24000`). t0008's harness resolved the voice by name and picked
+`5gLuKtB16QIQv1vuSas1` ("David - British Radio Host") instead, so `data/11labs_david` is the WRONG
+David, and t0018's `ref_single`/`ref_concat` clips (built from `data/11labs_david` half-A) cloned
+the wrong voice. t0018 is completed and immutable — this is not corrected retroactively there; it
+applies to t0021 from step 7 onward only.
+
+Binding requirements for every remaining t0021 step (planning, implementation, results, reporting):
+
+1. Build `ref_single` (~10 s) and `ref_concat` (<= 29.5 s) for CosyVoice2/Chatterbox from
+   `data/v4/val/wavs` (val_96, held-out newsreader voice) — NOT from `data/11labs_david`. Record
+   exact source filenames used.
+2. Build the speaker-similarity centroid from `data/v4/val/wavs` (the half not used for references),
+   not from `data/11labs_david`. Keep a second scoring column against the OLD `data/11labs_david`
+   centroid, labelled `"radiohost (wrong voice) control"`, so numbers stay comparable with t0018.
+3. Any ElevenLabs API call must pin `voice_id=rWV5HleMkWb5oluMwkA7`, `model_id=eleven_flash_v2_5`,
+   `output_format=pcm_24000`, `stability=0.5`, `similarity_boost=0.75`. Never resolve a voice by
+   name.
+4. Latency work (per-stage TTFB breakdown, acceleration variants) is unaffected in scope, but the
+   t0018 baseline setting must be RE-RUN with the NEW references in the same session as every
+   variant, so speed and similarity stay paired (Lesson 1).
+5. Write an `intervention/` file documenting this as an owner correction; cite it in `plan.md` and
+   in `results/`; explicitly note that t0018's `speaker_sim` values were measured against the wrong
+   voice.
+6. `results/audio_samples/` must place, per comparison text: the new-reference output, the old t0018
+   (wrong-voice-reference) output, and the `val_96` original of the production voice, side by side,
+   indexed in `results/listening_guide.md`.
+7. Gate caveat: t0015's `audio_quality_check.py` passes clips a human hears as "voice plus strong
+   noise" — treat its PASS as necessary, not sufficient. The owner will listen; do not report a
+   variant as clean on the automated gate alone.
+
 * * *
 
 ## Next Step Notes
