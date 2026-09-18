@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T23:05:00Z"
-completed_steps: 12
-next_step_number: 13
-next_step_id: "compare-literature"
+updated_at: "2026-09-18T23:15:00Z"
+completed_steps: 13
+next_step_number: 14
+next_step_id: "suggestions"
 ---
 # Task Objective
 
@@ -173,6 +173,20 @@ in `## Examples` for experiment-type tasks (not stated in `task_results_specific
 fixed by adding raw per-clip JSON excerpts; future `results` steps for experiment-type tasks should
 include fenced JSON/ code blocks in `## Examples` from the start, not just bulleted prose.
 
+### Step 13 — compare-literature
+
+A subagent wrote `results/compare_literature.md` (8 comparison-table rows plus a Prior Task
+Comparison subsection) comparing this task's own measured latency numbers against [Du2024]'s
+additive latency model (structurally confirmed: LM stage dominates at 814-1,004 ms vs. 151-785 ms
+combined flow-matching+vocoder), [Seo2026]'s 103-118 ms Chatterbox-Flash TTFP (framed as a
+different, disallowed fine-tuning lever, not a shortfall), [Kong2020]/[Kaneko2022]'s vocoder-only
+benchmarks (framed as a scope mismatch, not underperformance), and the `vllm-omni-6870` RFC's 182.8
+ms LM-stage figure (an unreconciled ~4.5-5x gap versus this task's 814-904 ms measurement, addressed
+with three explicit, unconfirmed hypotheses rather than silently dropped).
+`verify_compare_literature` passed (0 errors, 0 warnings) both as reported by the subagent and on
+this step-executor's own independent re-run. Caveat: one cosmetic typo (a stray space in an
+`intervention/` file path reference) was found and fixed during independent review; no other issues.
+
 * * *
 
 ## Cross-Step Decisions
@@ -227,34 +241,30 @@ open item in the PR description — do not silently merge with the data undurabl
 
 ## Next Step Notes
 
-Step 13 (`compare-literature`, optional, included per this task's `experiment-run` task type) is
-next, per `step_tracker.json`. Run
-`uv run python -m arf.scripts.utils.prestep t0021_zero_shot_latency_reduction compare-literature`,
-then spawn a subagent to execute the `/compare-literature` skill
-(`arf/skills/compare-literature/SKILL.md`) for this task — do not run the skill logic inline. The
-subagent should write `results/compare_literature.md` comparing this task's own measured numbers
-against the 5 cited papers' published figures, primarily: [Du2024] (CosyVoice 2)'s additive latency
-model `L_TTS = M*d_lm + M*d_fm + M*d_voc`, which this task's own `results/latency_breakdown.json`
-empirically confirms (LM stage dominates at 815-1,004 ms vs. 151-785 ms combined
-flow-matching+vocoder); [Seo2026] (Chatterbox-Flash)'s 103-118 ms TTFP, achieved via a
-decoding-scheme change this task's Forbidden list explicitly ruled out (no fine-tuning) — worth
-stating explicitly as "not a contradiction, a different, disallowed lever," not a discrepancy to
-explain away; [Kong2020]/[Kaneko2022] (HiFi-GAN/iSTFTNet)'s 150x-3,700x-real-time vocoder-only
-benchmarks, versus this task's own measured 151-785 ms flow-matching+vocoder stage (slower because
-it includes flow-matching, not vocoding alone — the comparison should state this scope difference
-explicitly, not present it as an apples-to-apples gap). Also address the `vllm-project/vllm-omni`
-GitHub-issue RFC's 357 ms (40.5+142.3+129.0 ms) per-stage TTFA decomposition cited in
-`research/research_internet.md` and `assets/answer/zero-shot-ttfb-floor/full_answer.md` — an
-order-of-magnitude faster than this task's own 815-1,004 ms measured LM stage on identically-pinned
-CosyVoice2-0.5B on H100 NVL; the discrepancy was noted but not reconciled in the answer asset (no
-reproducible methodology was available for that source) — `compare_literature.md` should either
-attempt reconciliation (e.g. by hypothesis: different batch size, different exact hardware, or the
-angle-1 "sequential vs. interleaved call shape" hypothesis from step 11/12's Analysis) or state
-plainly that reconciliation is not possible with the evidence in hand, not silently drop the
-discrepancy. All headline numbers to cite are in `results/results_detailed.md`'s Metrics Tables
-section and `results/tables.json`/`results/latency_breakdown.json` directly — do not re-derive them.
-After the subagent completes, verify `results/compare_literature.md` exists and run
-`uv run python -m arf.scripts.utils.run_with_logs --task-id t0021_zero_shot_latency_reduction -- uv run python -m arf.scripts.verificators.verify_compare_literature t0021_zero_shot_latency_reduction`,
+Step 14 (`suggestions`, mandatory) is next, per `step_tracker.json`. Run
+`uv run python -m arf.scripts.utils.prestep t0021_zero_shot_latency_reduction suggestions`, then
+spawn a subagent to execute the `/generate-suggestions` skill
+(`arf/skills/generate-suggestions/SKILL.md`) for this task — do not run the skill logic inline and
+do not restrict or override its instructions (Critical Rule 10). The subagent will review
+`results/results_summary.md`, `results/results_detailed.md`, and `results/compare_literature.md`
+(now present), check existing project suggestions for duplicates, and write
+`results/suggestions.json`. Material this task's own outputs already surface as strong candidate
+follow-ups, worth passing to the subagent as context (not as a restriction): (1) the never-run
+CosyVoice2 `vllm_backend` variant (`.venv-cosyvoice2-vllm` install hit its 20-minute cutoff,
+documented in `intervention/cosyvoice2_vllm_install_timeout.md`) — this is the one lever that could
+empirically distinguish the three unreconciled hypotheses in `results/compare_literature.md`'s
+Analysis for the `vllm-omni-6870` LM-stage gap (different hardware vs. different serving stack vs.
+sequential-vs-interleaved call shape); (2) a chunk-size-tuned CosyVoice2 streaming/interleaved
+variant, recommended in `research/research_summary.md` but never scheduled, which step 11's
+creative-thinking and step 13's Analysis both flag as the most likely lever to close the LM-stage
+"floor" if the call-shape hypothesis is correct; (3) a fine-tuning-permitted follow-up task
+explicitly modeled on [Seo2026] (Chatterbox-Flash), since this task's Forbidden list ruled out
+fine-tuning entirely and `results/compare_literature.md`'s Analysis frames the 103-118 ms TTFP gap
+as closeable only by that disallowed lever; (4) instrumenting a flow-matching/vocoder timing
+boundary (currently a single combined stage in `results/latency_breakdown.json`), which would let a
+future task compute a real Delta against [Kong2020]/[Kaneko2022]'s vocoder-only benchmarks instead
+of marking it N/A. After the subagent completes, verify `results/suggestions.json` exists and run
+`uv run python -m arf.scripts.utils.run_with_logs --task-id t0021_zero_shot_latency_reduction -- uv run python -m arf.scripts.verificators.verify_suggestions t0021_zero_shot_latency_reduction`,
 fixing all errors before proceeding.
 
 Carried-forward, not this step's job either: the `dvc push` gap documented in Cross-Step Decisions

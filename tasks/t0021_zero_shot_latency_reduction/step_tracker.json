@@ -179,10 +179,14 @@
       "step": 13,
       "name": "compare-literature",
       "description": "Compare achieved TTFB/speaker_sim figures against published CosyVoice2/Chatterbox/streaming-TTS latency benchmarks.",
-      "status": "pending",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-09-18T23:05:36Z",
       "completed_at": null,
-      "log_file": null
+      "log_file": "logs/steps/013_compare-literature/",
+      "current_owner": "step-executor/compare-literature",
+      "last_heartbeat_at": "2026-09-18T23:05:36Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-19T00:05:36Z"
     },
     {
       "step": 14,
