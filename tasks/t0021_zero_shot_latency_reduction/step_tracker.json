@@ -137,14 +137,15 @@
       "step": 10,
       "name": "teardown",
       "description": "Destroy the remote GPU instance and finalize cost tracking once all variants complete.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-18T22:44:02Z",
-      "completed_at": null,
+      "completed_at": "2026-09-18T22:47:52Z",
       "log_file": "logs/steps/010_teardown/",
-      "current_owner": "step-executor/teardown",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-18T22:44:02Z",
       "heartbeat_interval_seconds": 300,
-      "expected_completion_at": "2026-09-18T22:59:02Z"
+      "expected_completion_at": "2026-09-18T22:59:02Z",
+      "actual_duration_seconds": 230
     },
     {
       "step": 11,
