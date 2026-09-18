@@ -1,0 +1,4 @@
+2026-09-17 19:09:45,357 INFO __main__ Loaded 980 per-clip records
+2026-09-17 19:09:45,376 INFO __main__ Wrote metrics.json -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/metrics.json (12 variants)
+2026-09-17 19:09:45,384 INFO __main__ Wrote tables.json -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/tables.json (12 rows)
+2026-09-17 19:09:49,460 INFO __main__ Charts written to results/images/

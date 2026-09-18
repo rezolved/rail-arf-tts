@@ -1,0 +1,9 @@
+usage: flowmark [-h] [-o OUTPUT] [-w WIDTH] [-p] [-s] [-c] [--smartquotes]
+                [--ellipses] [--list-spacing {preserve,loose,tight}] [-i]
+                [--nobackup] [--auto] [--extend-include PATTERN]
+                [--exclude PATTERN] [--extend-exclude PATTERN]
+                [--no-respect-gitignore] [--force-exclude] [--list-files]
+                [--files-max-size BYTES] [--version] [--skill]
+                [--install-skill] [--agent-base DIR] [--docs]
+                [files ...]
+flowmark: error: unrecognized arguments: --check

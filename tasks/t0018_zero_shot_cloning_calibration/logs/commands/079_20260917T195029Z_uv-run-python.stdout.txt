@@ -1,0 +1,5 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/logs/steps/012_results
+
+[32m[1mPASSED[0m — no errors or warnings
+

@@ -1,0 +1,29 @@
+2026-09-17 17:41:10,350 INFO __main__ Building half-A/half-B split (seed=42) from /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/data/11labs_david
+2026-09-17 17:41:10,372 INFO tasks.t0008_tts_eval_harness_baselines.code.harness Reference split: half_A=679 clips, half_B=685 clips (seed=42)
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/code/scoring.py", line 83, in build_centroid
+    from resemblyzer import VoiceEncoder, preprocess_wav
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/.venv/lib/python3.14/site-packages/resemblyzer/__init__.py", line 3, in <module>
+    from resemblyzer.audio import preprocess_wav, wav_to_mel_spectrogram, trim_long_silences, \
+        normalize_volume
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/.venv/lib/python3.14/site-packages/resemblyzer/audio.py", line 6, in <module>
+    import webrtcvad
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/.venv/lib/python3.14/site-packages/webrtcvad.py", line 1, in <module>
+    import pkg_resources
+ModuleNotFoundError: No module named 'pkg_resources'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/code/build_references.py", line 163, in <module>
+    m = build_references()
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/code/build_references.py", line 105, in build_references
+    centroid, half_b_paths = build_reference_split(corpus_dir=DATA_11LABS_DAVID_DIR, seed=RANDOM_SEED)
+                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/code/harness.py", line 82, in build_reference_split
+    centroid = build_centroid(half_a)
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/code/scoring.py", line 85, in build_centroid
+    raise ImportError(
+        "resemblyzer is not installed. Install with: pip install '.[speaker-sim]'"
+    ) from e
+ImportError: resemblyzer is not installed. Install with: pip install '.[speaker-sim]'

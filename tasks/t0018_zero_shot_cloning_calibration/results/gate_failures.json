@@ -1,0 +1,79 @@
+{
+  "chatterbox_ref_single_val96": {
+    "failure_count": 0,
+    "n_checked": 96,
+    "failing_audio_paths": []
+  },
+  "chatterbox_ref_single_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "chatterbox_ref_concat_val96": {
+    "failure_count": 0,
+    "n_checked": 96,
+    "failing_audio_paths": []
+  },
+  "chatterbox_ref_concat_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  },
+  "cosyvoice2_ref_single_val96": {
+    "failure_count": 29,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0032.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0033.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0034.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0035.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0036.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0037.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0038.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0039.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0040.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0041.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0042.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0043.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0044.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0045.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0046.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0047.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0048.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0049.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0050.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0051.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0052.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0053.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0054.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0055.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0056.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0057.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0058.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0059.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/val96/0060.wav"
+    ]
+  },
+  "cosyvoice2_ref_single_fillers": {
+    "failure_count": 3,
+    "n_checked": 100,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/fillers/0060.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/fillers/0086.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/audio_samples/harness/cosyvoice2_ref_single/fillers/0099.wav"
+    ]
+  },
+  "elevenlabs_david_val96": {
+    "failure_count": 2,
+    "n_checked": 96,
+    "failing_audio_paths": [
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/data/synth_audio/elevenlabs_david/val96/0041.wav",
+      "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/data/synth_audio/elevenlabs_david/val96/0055.wav"
+    ]
+  },
+  "elevenlabs_david_fillers": {
+    "failure_count": 0,
+    "n_checked": 100,
+    "failing_audio_paths": []
+  }
+}

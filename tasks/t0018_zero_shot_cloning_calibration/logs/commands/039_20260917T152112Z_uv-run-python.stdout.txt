@@ -1,0 +1,13 @@
+{
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "vm_name": "LLM-T1-NC80",
+  "ssh_host_alias": "LLM-T1-NC80",
+  "hourly_cost_usd": 13.96,
+  "acquired_at": "2026-09-17T15:26:49.180910Z",
+  "started_vm": false,
+  "billing_started_at": "2026-09-17T15:21:13.433320Z",
+  "billing_anchor": "already_running",
+  "search_started_at": "2026-09-17T15:21:13.433266Z",
+  "total_provisioning_seconds": 335.747674120008,
+  "failed_attempts": []
+}

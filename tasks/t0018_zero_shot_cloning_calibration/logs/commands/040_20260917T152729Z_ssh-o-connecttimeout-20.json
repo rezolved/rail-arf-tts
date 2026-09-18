@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "command": "ssh -o ConnectTimeout=20 LLM-T1-NC80 bash -lc '\nset -e\nexport TERMINATE_CMD=\"az ml compute stop --name LLM-T1-NC80 --workspace-name brainpowa-northeurope --resource-group rezolve-AI\"\nexport IDLE_THRESHOLD_SECONDS=3600\nexport POLL_INTERVAL_SECONDS=60\nexport IDLE_UTIL_PERCENT=5\nexport GRACE_SECONDS=600\nexport WATCHDOG_LOG=/var/log/arf_idle_watchdog.log\nsudo touch $WATCHDOG_LOG && sudo chmod 666 $WATCHDOG_LOG || touch $WATCHDOG_LOG\nnohup env TERMINATE_CMD=\"$TERMINATE_CMD\" IDLE_THRESHOLD_SECONDS=$IDLE_THRESHOLD_SECONDS POLL_INTERVAL_SECONDS=$POLL_INTERVAL_SECONDS IDLE_UTIL_PERCENT=$IDLE_UTIL_PERCENT GRACE_SECONDS=$GRACE_SECONDS WATCHDOG_LOG=$WATCHDOG_LOG bash /opt/arf/idle_watchdog.sh >> $WATCHDOG_LOG 2>&1 &\ndisown\nsleep 2\necho WATCHDOG_PID_CHECK\nps aux | grep idle_watchdog | grep -v grep\n'",
+  "exit_code": 0,
+  "duration_seconds": 2.454,
+  "started_at": "2026-09-17T15:27:29Z",
+  "completed_at": "2026-09-17T15:27:32Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration",
+  "stdout_file": "040_20260917T152729Z_ssh-o-connecttimeout-20.stdout.txt",
+  "stderr_file": "040_20260917T152729Z_ssh-o-connecttimeout-20.stderr.txt",
+  "stdout_lines": 2,
+  "stderr_lines": 0,
+  "truncated": false
+}

@@ -1,0 +1,137 @@
+{
+  "paper_count": 7,
+  "papers": [
+    {
+      "paper_id": "10.21437_Interspeech.2021-41",
+      "title": "GAN Vocoder: Multi-Resolution Discriminator Is All You Need",
+      "year": 2021,
+      "authors": [
+        "Jaeseong You",
+        "Dalhyun Kim",
+        "Gyuhyeon Nam",
+        "Geumbyeol Hwang",
+        "Gyeongsu Chae"
+      ],
+      "citation_key": "You2021",
+      "categories": [],
+      "journal": "Interspeech 2021",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2010.05646",
+      "title": "HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis",
+      "year": 2020,
+      "authors": [
+        "Jungil Kong",
+        "Jaehyeon Kim",
+        "Jaekyoung Bae"
+      ],
+      "citation_key": "Kong2020",
+      "categories": [],
+      "journal": "NeurIPS 2020",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2203.02395",
+      "title": "iSTFTNet: Fast and Lightweight Mel-Spectrogram Vocoder Incorporating Inverse Short-Time Fourier Transform",
+      "year": 2022,
+      "authors": [
+        "Takuhiro Kaneko",
+        "Kou Tanaka",
+        "Hirokazu Kameoka",
+        "Shogo Seki"
+      ],
+      "citation_key": "Kaneko2022",
+      "categories": [],
+      "journal": "ICASSP 2022",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2306.07691",
+      "title": "StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models",
+      "year": 2023,
+      "authors": [
+        "Yinghao Aaron Li",
+        "Cong Han",
+        "Vinay S. Raghavan",
+        "Gavin Mischler",
+        "Nima Mesgarani"
+      ],
+      "citation_key": "Li2023",
+      "categories": [],
+      "journal": "NeurIPS 2023",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.1109_ICASSP.2018.8462665",
+      "title": "Generalized End-to-End Loss for Speaker Verification",
+      "year": 2018,
+      "authors": [
+        "Li Wan",
+        "Quan Wang",
+        "Alan Papir",
+        "Ignacio Lopez Moreno"
+      ],
+      "citation_key": "Wan2018",
+      "categories": [],
+      "journal": "2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2410.06885",
+      "title": "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching",
+      "year": 2024,
+      "authors": [
+        "Yushen Chen",
+        "Zhikang Niu",
+        "Ziyang Ma",
+        "Keqi Deng",
+        "Chunhui Wang",
+        "Jian Zhao",
+        "Kai Yu",
+        "Xie Chen"
+      ],
+      "citation_key": "Chen2024",
+      "categories": [],
+      "journal": "Annual Meeting of the Association for Computational Linguistics (ACL 2025)",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2412.10117",
+      "title": "CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models",
+      "year": 2024,
+      "authors": [
+        "Zhihao Du",
+        "Yuxuan Wang",
+        "Qian Chen",
+        "Xian Shi",
+        "Xiang Lv",
+        "Tianyu Zhao",
+        "Zhifu Gao",
+        "Yexin Yang",
+        "Changfeng Gao",
+        "Hui Wang",
+        "Fan Yu",
+        "Huadai Liu",
+        "Zhengyan Sheng",
+        "Yue Gu",
+        "Chong Deng",
+        "Wen Wang",
+        "Shiliang Zhang",
+        "Zhijie Yan",
+        "Jingren Zhou"
+      ],
+      "citation_key": "Du2024",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    }
+  ]
+}

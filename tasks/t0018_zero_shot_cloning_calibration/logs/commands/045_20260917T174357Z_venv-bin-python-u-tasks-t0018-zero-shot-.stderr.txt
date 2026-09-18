@@ -1,0 +1,11 @@
+2026-09-17 17:43:58,194 INFO __main__ half-A: 679 clips, half-B: 685 clips
+2026-09-17 17:45:46,318 INFO __main__ half-A centroid built from 679/679 clips
+2026-09-17 17:45:46,320 INFO __main__ Saved half-A centroid -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/data/references/half_a_centroid.npy
+2026-09-17 17:45:46,427 INFO __main__ ref_single: lining_up_suggestions_17.wav (1.67s)
+2026-09-17 17:45:46,503 INFO __main__ ref_concat: 26 clips, 30.79s -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/data/references/ref_concat.wav
+2026-09-17 17:45:46,504 INFO __main__ Saved manifest -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/data/references/manifest.json
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/code/build_references.py", line 204, in <module>
+    assert 8.0 <= m.ref_single_duration_s <= 12.0, f"ref_single duration out of range: {m.ref_single_duration_s}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ref_single duration out of range: 1.6718333333333333

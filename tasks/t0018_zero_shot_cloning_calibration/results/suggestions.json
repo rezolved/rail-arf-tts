@@ -1,0 +1,85 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0018-01",
+      "title": "Retry F5-TTS zero-shot measurement with py-spy/HF-lock hang diagnostics",
+      "description": "t0018's three F5-TTS attempts all hung indefinitely during model loading and were never diagnosed at the process level (root-owned /proc blocked deeper inspection, and the stale-HF-lock-file hypothesis was proposed but never tested). Re-attempt F5-TTS on a fresh, uncontended LLM-T1-NC80 session, running `py-spy dump --pid <pid>` on the hung process to capture the exact Python/native stack frame, and checking $HF_HOME for stale .lock files before killing it. This would finally resolve whether the cause is torch.load, huggingface_hub locking, or F5-TTS/misaki-specific code, and give F5-TTS's speaker_sim/TTFB numbers -- the only one of three named systems t0018 never measured. Recommended task types: tts-benchmark-run.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0018-02",
+      "title": "Re-run CosyVoice2 ref_concat with reference trimmed under its 30s hard limit",
+      "description": "CosyVoice2's ref_concat condition returned 0/196 on both prompt sets in t0018 because the shared 30.57s reference clip trips a hard `assert speech.shape[1] / 16000 <= 30` check in CosyVoice2's own frontend.py -- a 0.57s miss, not evidence the model can't use long references. Build a per-system-safe ref_concat clip for CosyVoice2 alone (e.g. 29.5s, trimmed from the same half-A source clips via t0018's code/build_references.py) and re-run just this one (system, condition) cell on both prompt sets with code/run_eval_zeroshot.py. This closes the one deliberately-testable-but-blocked cell in t0018's results at a cost bounded by t0018's own ref_single run. Recommended task types: tts-benchmark-run.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0018-03",
+      "title": "Human-listening check on whether CosyVoice2's high speaker_sim is a cleaner-voice metric artifact",
+      "description": "CosyVoice2 ref_single's GE2E speaker_sim (0.863 val96, 0.859 gate-passed-only) exceeds David's own half-A/half-B self-consistency ceiling (0.792) -- a synthetic clone scoring above the real voice's own self-similarity is a flag on the metric, since GE2E cosine may partly reward acoustically cleaner/more uniform synthesis rather than pure identity fidelity. Use t0018's already-built results/listening_guide.md to have a human owner rate each CosyVoice2 comparison clip against the ElevenLabs original on 'sounds like David' vs 'sounds like a generic/averaged voice', and check whether that ranking agrees with the GE2E ranking. Recommended task types: data-analysis, comparative-analysis.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0018-04",
+      "title": "Re-score Chatterbox WER with a larger ASR model to isolate measurement artifact from real quality",
+      "description": "t0018 measured Chatterbox ref_single val96 WER at 41.01% with faster-whisper base.en, dramatically worse than [Seo2026]'s published 1.99% for the identical open-weight checkpoint scored with Whisper-large-v3/HuBERT-large on easier LibriSpeech-PC sentences. t0018's own brand-name-vs-non-brand-name breakdown found no elevated WER specifically on brand-name text, suggesting the gap is dominated by ASR-model size and t0018's harder filler-text domain (numeric session IDs, brand names) rather than Chatterbox audio quality. Re-run WER scoring on t0018's already-saved Chatterbox audio (no new GPU synthesis needed) with a larger ASR model such as faster-whisper large-v3 to quantify how much of the 39-point gap is scorer size versus text domain versus genuine intelligibility. Recommended task types: data-analysis.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": "10.48550_arXiv.2605.30748",
+      "categories": []
+    },
+    {
+      "id": "S-0018-05",
+      "title": "Evaluate CosyVoice2 zero-shot output as synthetic training-data augmentation for Kokoro Stage 2",
+      "description": "t0018 showed CosyVoice2 ref_single reaches speaker_sim up to 0.863 on David, well above Kokoro v3's 0.588-0.631, but at 5-19x the TTFB budget, ruling it out as a direct production replacement. Its Apache-2.0 license permits using its high-similarity synthetic clips as additional David-voice training data (or a distillation target) for Kokoro Stage 2, reframing 'zero-shot cloning vs fine-tuning' as a combination rather than an either/or choice. Generate a batch of CosyVoice2 ref_single synthetic clips on filler-style text, mix them into a Kokoro Stage 2 training manifest alongside the real v4 corpus, and measure whether the fine-tuned checkpoint's speaker_sim improves relative to the current v3/v4 baselines. Recommended task types: experiment-run, build-model.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0018-06",
+      "title": "Register the two per-item efficiency fields as project metrics",
+      "description": "t0018 (and t0008 before it) computed efficiency_inference_time_per_item_seconds and efficiency_inference_cost_per_item_usd per variant but had to route them into results/tables.json instead of results/metrics.json because neither is registered in meta/metrics/ -- only rtf, speaker_sim, and ttfb_ms are. Register both via /add-metric so future TTS benchmark and fine-tuning-eval tasks can report them as first-class registered metrics queryable via aggregate_metric_results, instead of ad hoc table fields that differ from task to task. Recommended task types: infrastructure-setup.",
+      "kind": "evaluation",
+      "priority": "low",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0018-07",
+      "title": "Decide whether to restate the project's speaker_sim >= 0.85 success criterion",
+      "description": "t0018 showed CosyVoice2 ref_single clears speaker_sim >= 0.85 on val96 (0.863) zero-shot, contradicting the implicit assumption in project/description.md and t0008 that 0.85 sits above any reachable ceiling under GE2E-cosine scoring. But that number rests on one system, one condition, one session, a 30% hardened-gate failure rate, and 5-19x over the 300ms TTFB target, so restating the criterion now would be premature without a human decision. Hold a brainstorm to decide whether to split the single 0.85 speaker_sim bar into separate similarity, latency, and reliability bars in project/description.md, and whether Kokoro Stage 2 should remain the sole main line or run in parallel with a CosyVoice2-augmentation track (see the related augmentation suggestion). Recommended task types: brainstorming.",
+      "kind": "evaluation",
+      "priority": "high",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0018-08",
+      "title": "Design future multi-system TTS benchmarks with per-system safe reference durations",
+      "description": "t0018 used one literal shared reference-audio file (ref_concat, ~30.57s) across all three cloning systems for cross-system comparability, but each system had a different, only-discovered-at-runtime hard limit: F5-TTS silently auto-crops around ~15s, CosyVoice2 hard-errors at exactly 30s (cosyvoice/cli/frontend.py), and Chatterbox tolerated the full clip with no apparent limit. This uniform-duration design turned CosyVoice2's ref_concat cell into a binary pass/fail against an arbitrary 0.57s miss instead of a genuine reference-length measurement. Extend t0008's tts_eval_harness reference-building code (code/build_references.py) to accept a per-system safe-duration table (min(published_limit - safety_margin, target_duration)) and record the effective duration actually used per system-row in results/tables.json, so future multi-system benchmark tasks don't lose an entire data cell to one system's undocumented hard limit. Recommended task types: write-library.",
+      "kind": "evaluation",
+      "priority": "medium",
+      "source_task": "t0018_zero_shot_cloning_calibration",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}

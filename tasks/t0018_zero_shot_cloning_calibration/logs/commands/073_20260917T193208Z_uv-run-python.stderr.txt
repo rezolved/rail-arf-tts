@@ -1,0 +1,3 @@
+usage: python3 -m arf.scripts.verificators.verify_machines_destroyed
+       [-h] (--all | task_id)
+python3 -m arf.scripts.verificators.verify_machines_destroyed: error: unrecognized arguments: --task-id

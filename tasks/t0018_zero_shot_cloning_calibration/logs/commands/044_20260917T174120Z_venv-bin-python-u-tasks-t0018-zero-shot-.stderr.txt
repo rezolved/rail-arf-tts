@@ -1,0 +1,15 @@
+2026-09-17 17:41:21,123 INFO __main__ Building half-A/half-B split (seed=42) from /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/data/11labs_david
+2026-09-17 17:41:21,148 INFO tasks.t0008_tts_eval_harness_baselines.code.harness Reference split: half_A=679 clips, half_B=685 clips (seed=42)
+Traceback (most recent call last):
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/code/build_references.py", line 163, in <module>
+    m = build_references()
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/code/build_references.py", line 105, in build_references
+    centroid, half_b_paths = build_reference_split(corpus_dir=DATA_11LABS_DAVID_DIR, seed=RANDOM_SEED)
+                             ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/code/harness.py", line 82, in build_reference_split
+    centroid = build_centroid(half_a)
+  File "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0008_tts_eval_harness_baselines/code/scoring.py", line 109, in build_centroid
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: No clips long enough to embed (skipped=679, min_duration=1.6s)

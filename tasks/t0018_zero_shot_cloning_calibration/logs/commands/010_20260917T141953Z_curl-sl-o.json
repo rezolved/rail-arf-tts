@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "command": "curl -sL -o tasks/t0018_zero_shot_cloning_calibration/assets/paper/10.48550_arXiv.2407.05407/files/du_2024_cosyvoice-scalable-multilingual-zero-shot-tts.pdf https://arxiv.org/pdf/2407.05407 -D /tmp/headers.txt",
+  "exit_code": 0,
+  "duration_seconds": 0.261,
+  "started_at": "2026-09-17T14:19:53Z",
+  "completed_at": "2026-09-17T14:19:53Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration",
+  "stdout_file": "010_20260917T141953Z_curl-sl-o.stdout.txt",
+  "stderr_file": "010_20260917T141953Z_curl-sl-o.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}

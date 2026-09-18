@@ -1,0 +1,70 @@
+[
+  {
+    "spec_version": "10",
+    "provider": "azure_ml",
+    "instance_id": "LLM-T1-NC80",
+    "vm_name": "LLM-T1-NC80",
+    "offer_id": 0,
+    "search_criteria": {
+      "gpu_name": "H100 80GB",
+      "num_gpus": 2,
+      "min_gpu_ram": 80.0,
+      "min_cpu_ram": null,
+      "min_disk": null,
+      "min_reliability": 1.0,
+      "extra_filters": "azure-ml-pool"
+    },
+    "selected_offer": {
+      "vm_name": "LLM-T1-NC80",
+      "priority": 1,
+      "gpu": "H100",
+      "gpu_count": 2,
+      "gpu_ram_gb": 80.0,
+      "cpu_ram_gb": 0.0,
+      "disk_gb": 0.0,
+      "image": "26.01.05",
+      "region": "northeurope",
+      "hourly_cost_usd": 13.96
+    },
+    "selection_rationale": "Acquired LLM-T1-NC80 from the Azure ML pool (priority 1, pinned via --vm-name per plan/plan.md's paired-comparison requirement) at $13.96/hr. Only entry in project/azure_vm.json; a peer session on task/t0016_v3_recipe_recovery had contended for this same VM across the first two setup-machines attempts (see intervention/pool_busy_llm-t1-nc80.md), so this third attempt pinned the VM name and polled until it was free rather than rolling over to a nonexistent fallback.",
+    "image": "azure-ml-system-managed",
+    "disk_gb": 0,
+    "label": "t0018_zero_shot_cloning_calibration",
+    "ssh_host": "LLM-T1-NC80",
+    "ssh_port": 22,
+    "gpu_verified": "NVIDIA H100 NVL x2",
+    "cuda_version": "12.2",
+    "created_at": "2026-09-17T15:26:49.180910Z",
+    "ready_at": "2026-09-17T15:26:49.180910Z",
+    "destroyed_at": "2026-09-17T19:31:35.355592Z",
+    "total_duration_hours": 4.172756186666667,
+    "total_cost_usd": 58.25167636586667,
+    "hourly_cost_usd": 13.96,
+    "started_vm": false,
+    "billing_started_at": "2026-09-17T15:21:13.433320Z",
+    "billing_anchor": "acquired_at_fallback",
+    "billing_ended_at": "2026-09-17T19:31:35.355592Z",
+    "cost_attribution_method": "activity_log",
+    "cost_attribution_status": "verified",
+    "cost_attribution_notes": "Reconstructed 1 billable segment(s) from the provider activity log; the provider's final state agrees with what the provisioner observed at teardown.",
+    "billable_segments": [
+      {
+        "started_at": "2026-09-17T15:21:13.433320Z",
+        "ended_at": "2026-09-17T19:31:35.355592Z",
+        "hours": 4.172756186666667,
+        "source": "activity_log"
+      }
+    ],
+    "billable_hours": 4.172756186666667,
+    "wall_clock_span_hours": 4.172756186666667,
+    "stopped_hours": 0.0,
+    "search_started_at": "2026-09-17T15:21:13.433266Z",
+    "total_provisioning_seconds": 335.747674120008,
+    "failed_attempts": [],
+    "watchdog_active": true,
+    "watchdog_idle_timeout_seconds": 3600,
+    "checkpoint_path": null,
+    "heartbeat_path": null,
+    "smoke_test_output": "nvidia-smi --query-gpu=index,name,utilization.gpu,memory.used,memory.total --format=csv -> 0, NVIDIA H100 NVL, 0 %, 0 MiB, 95830 MiB / 1, NVIDIA H100 NVL, 0 %, 0 MiB, 95830 MiB. Per-venv `python -c 'import torch; print(torch.__version__, torch.cuda.is_available()); print(torch.cuda.device_count())'`: .venv-f5tts -> 2.5.1+cu121 True 2; .venv-chatterbox -> 2.6.0+cu124 True 2; .venv-cosyvoice2 -> 2.3.1+cu121 True 2. f5_tts import OK in .venv-f5tts. Watchdog PID confirmed via `pgrep -f idle_watchdog.sh` -> 5935, TERMINATE_CMD/env verified via /proc/<pid>/environ."
+  }
+]

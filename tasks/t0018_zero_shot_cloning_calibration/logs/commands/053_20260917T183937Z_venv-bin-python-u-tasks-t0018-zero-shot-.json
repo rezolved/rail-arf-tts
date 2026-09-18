@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "command": ".venv/bin/python -u tasks/t0018_zero_shot_cloning_calibration/code/track_cost.py --milestone GPU-bound synthesis phase COMPLETE: chatterbox both conditions 100pct success; cosyvoice2 ref_single 100pct success, ref_concat 0pct (hard 30s limit exceeded by clip, REQ-6 null); f5_tts null (REQ-7 hang); kokoro_v3_bundle not re-measured (hang), using t0008 stored numbers. Moving to CPU-only scoring/reporting.",
+  "exit_code": 0,
+  "duration_seconds": 0.093,
+  "started_at": "2026-09-17T18:39:37Z",
+  "completed_at": "2026-09-17T18:39:37Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration",
+  "stdout_file": "053_20260917T183937Z_venv-bin-python-u-tasks-t0018-zero-shot-.stdout.txt",
+  "stderr_file": "053_20260917T183937Z_venv-bin-python-u-tasks-t0018-zero-shot-.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 0,
+  "truncated": false
+}

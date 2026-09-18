@@ -1,0 +1,5 @@
+outs:
+- md5: ee3bd8ce34c840004fe024646aa3c70a
+  size: 2935196
+  hash: md5
+  path: ref_concat.wav

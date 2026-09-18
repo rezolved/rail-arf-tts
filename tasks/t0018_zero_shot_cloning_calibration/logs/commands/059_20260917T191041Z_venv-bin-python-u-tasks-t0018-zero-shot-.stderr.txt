@@ -1,0 +1,1 @@
+2026-09-17 19:10:41,733 INFO __main__ Wrote listening guide -> /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration/tasks/t0018_zero_shot_cloning_calibration/results/listening_guide.md

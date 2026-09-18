@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0018_zero_shot_cloning_calibration",
+  "command": ".venv/bin/python -u tasks/t0018_zero_shot_cloning_calibration/code/merge_and_score.py",
+  "exit_code": 0,
+  "duration_seconds": 1561.569,
+  "started_at": "2026-09-17T18:42:39Z",
+  "completed_at": "2026-09-17T19:08:41Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration",
+  "stdout_file": "055_20260917T184239Z_venv-bin-python-u-tasks-t0018-zero-shot-.stdout.txt",
+  "stderr_file": "055_20260917T184239Z_venv-bin-python-u-tasks-t0018-zero-shot-.stderr.txt",
+  "stdout_lines": 1,
+  "stderr_lines": 368,
+  "truncated": false
+}

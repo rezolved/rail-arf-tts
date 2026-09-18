@@ -1,0 +1,5 @@
+branch: task/t0018_zero_shot_cloning_calibration
+base_branch: main
+base_commit: f4379d9
+worktree_path: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0018_zero_shot_cloning_calibration
+created_at: 2026-09-17T13:47:41Z

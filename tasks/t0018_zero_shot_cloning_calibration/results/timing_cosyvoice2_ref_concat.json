@@ -1,0 +1,10 @@
+{
+  "variant_slug": "cosyvoice2_ref_concat",
+  "system": "cosyvoice2",
+  "condition": "ref_concat",
+  "n_clips": 196,
+  "n_successful": 0,
+  "wall_clock_s": 10.997942305999459,
+  "n_warmup": 50,
+  "n_warmup_ok": 0
+}

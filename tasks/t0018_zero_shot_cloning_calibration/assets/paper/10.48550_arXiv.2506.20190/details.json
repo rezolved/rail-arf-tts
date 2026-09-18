@@ -1,0 +1,49 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2506.20190",
+  "doi": "10.48550/arXiv.2506.20190",
+  "title": "An Exploration of ECAPA-TDNN and x-vector Speaker Representations in Zero-shot Multi-speaker TTS",
+  "url": "https://arxiv.org/abs/2506.20190",
+  "pdf_url": "https://arxiv.org/pdf/2506.20190",
+  "date_published": "2025-06-25",
+  "year": 2025,
+  "authors": [
+    {
+      "name": "Marie Kunešová",
+      "country": "CZ",
+      "institution": "University of West Bohemia in Pilsen",
+      "orcid": null
+    },
+    {
+      "name": "Zdeněk Hanzlíček",
+      "country": "CZ",
+      "institution": "University of West Bohemia in Pilsen",
+      "orcid": null
+    },
+    {
+      "name": "Jindřich Matoušek",
+      "country": "CZ",
+      "institution": "University of West Bohemia in Pilsen",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "University of West Bohemia in Pilsen",
+      "country": "CZ"
+    }
+  ],
+  "journal": "International Conference on Text, Speech, and Dialogue (TSD 2025)",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "Zero-shot multi-speaker text-to-speech (TTS) systems rely on speaker embeddings to synthesize speech in the voice of an unseen speaker, using only a short reference utterance. While many speaker embeddings have been developed for speaker recognition, their relative effectiveness in zero-shot TTS remains underexplored. In this work, we employ a YourTTS-based TTS system to compare three different speaker encoders - YourTTS's original H/ASP encoder, x-vector embeddings, and ECAPA-TDNN embeddings - within an otherwise fixed zero-shot TTS framework. All models were trained on the same dataset of Czech read speech and evaluated on 24 out-of-domain target speakers using both subjective and objective methods. The subjective evaluation was conducted via a listening test focused on speaker similarity, while the objective evaluation measured cosine distances between speaker embeddings extracted from synthesized and real utterances. Across both evaluations, the original H/ASP encoder consistently outperformed the alternatives, with ECAPA-TDNN showing better results than x-vectors. These findings suggest that, despite the popularity of ECAPA-TDNN in speaker recognition, it does not necessarily offer improvements for speaker similarity in zero-shot TTS in this configuration. Our study highlights the importance of empirical evaluation when reusing speaker recognition embeddings in TTS and provides a framework for additional future comparisons.",
+  "citation_key": "Kunesova2025",
+  "summary_path": "summary.md",
+  "files": [
+    "files/kunesova_2025_ecapa-tdnn-xvector-zeroshot-tts.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_added": "2026-09-17"
+}

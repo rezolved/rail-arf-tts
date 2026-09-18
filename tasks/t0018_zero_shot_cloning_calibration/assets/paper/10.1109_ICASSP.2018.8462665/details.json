@@ -1,0 +1,55 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.1109_ICASSP.2018.8462665",
+  "doi": "10.1109/ICASSP.2018.8462665",
+  "title": "Generalized End-to-End Loss for Speaker Verification",
+  "url": "https://arxiv.org/abs/1710.10467",
+  "pdf_url": "https://arxiv.org/pdf/1710.10467",
+  "date_published": "2018-04",
+  "year": 2018,
+  "authors": [
+    {
+      "name": "Li Wan",
+      "country": "US",
+      "institution": "Google Inc.",
+      "orcid": "0000-0003-0690-0272"
+    },
+    {
+      "name": "Quan Wang",
+      "country": "US",
+      "institution": "Google Inc.",
+      "orcid": "0000-0001-6913-8604"
+    },
+    {
+      "name": "Alan Papir",
+      "country": "US",
+      "institution": "Google Inc.",
+      "orcid": null
+    },
+    {
+      "name": "Ignacio Lopez Moreno",
+      "country": "US",
+      "institution": "Google Inc.",
+      "orcid": "0000-0002-0900-3473"
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Google Inc.",
+      "country": "US"
+    }
+  ],
+  "journal": "2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "In this paper, we propose a new loss function called generalized end-to-end (GE2E) loss, which makes the training of speaker verification models more efficient than our previous tuple-based end-to-end (TE2E) loss function. Unlike TE2E, the GE2E loss function updates the network in a way that emphasizes examples that are difficult to verify at each step of the training process. Additionally, the GE2E loss does not require an initial stage of example selection. With these properties, our model with the new loss function decreases speaker verification EER by more than 10%, while reducing the training time by 60% at the same time. We also introduce the MultiReader technique, which allows us to do domain adaptation - training a more accurate model that supports multiple keywords (i.e., “OK Google” and “Hey Google”) as well as multiple dialects.",
+  "citation_key": "Wan2018",
+  "summary_path": "summary.md",
+  "files": [
+    "files/wan_2018_ge2e-loss-speaker-verification.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_added": "2026-09-17"
+}

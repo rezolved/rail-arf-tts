@@ -1,0 +1,87 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2410.06885",
+  "doi": "10.48550/arXiv.2410.06885",
+  "title": "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching",
+  "url": "https://arxiv.org/abs/2410.06885",
+  "pdf_url": "https://arxiv.org/pdf/2410.06885",
+  "date_published": "2024-10-09",
+  "year": 2024,
+  "authors": [
+    {
+      "name": "Yushen Chen",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Zhikang Niu",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": "0009-0002-2709-9381"
+    },
+    {
+      "name": "Ziyang Ma",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": "0000-0002-0623-9114"
+    },
+    {
+      "name": "Keqi Deng",
+      "country": "GB",
+      "institution": "University of Cambridge",
+      "orcid": "0000-0003-1490-963X"
+    },
+    {
+      "name": "Chunhui Wang",
+      "country": "CN",
+      "institution": "Geely Automobile Research Institute (Ningbo) Company Ltd.",
+      "orcid": "0009-0009-7178-5742"
+    },
+    {
+      "name": "Jian Zhao",
+      "country": "CN",
+      "institution": "Geely Automobile Research Institute (Ningbo) Company Ltd.",
+      "orcid": "0009-0000-9678-8805"
+    },
+    {
+      "name": "Kai Yu",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": "0000-0002-7102-9826"
+    },
+    {
+      "name": "Xie Chen",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": "0000-0001-7423-617X"
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Shanghai Jiao Tong University",
+      "country": "CN"
+    },
+    {
+      "name": "University of Cambridge",
+      "country": "GB"
+    },
+    {
+      "name": "Geely Automobile Research Institute (Ningbo) Company Ltd.",
+      "country": "CN"
+    }
+  ],
+  "journal": "Annual Meeting of the Association for Computational Linguistics (ACL 2025)",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "This paper introduces F5-TTS, a fully non-autoregressive text-to-speech system based on flow matching with Diffusion Transformer (DiT). Without requiring complex designs such as duration model, text encoder, and phoneme alignment, the text input is simply padded with filler tokens to the same length as input speech, and then the denoising is performed for speech generation, which was originally proved feasible by E2 TTS. However, the original design of E2 TTS makes it hard to follow due to its slow convergence and low robustness. To address these issues, we first model the input with ConvNeXt to refine the text representation, making it easy to align with the speech. We further propose an inference-time Sway Sampling strategy, which significantly improves our model's performance and efficiency. This sampling strategy for flow step can be easily applied to existing flow matching based models without retraining. Our design allows faster training and achieves an inference RTF of 0.15, which is greatly improved compared to state-of-the-art diffusion-based TTS models. Trained on a public 100K hours multilingual dataset, our F5-TTS exhibits highly natural and expressive zero-shot ability, seamless code-switching capability, and speed control efficiency. We have released all codes and checkpoints to promote community development, at https://SWivid.github.io/F5-TTS/.",
+  "citation_key": "Chen2024",
+  "summary_path": "summary.md",
+  "files": [
+    "files/chen_2024_f5-tts-flow-matching.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0018_zero_shot_cloning_calibration",
+  "date_added": "2026-09-17"
+}
