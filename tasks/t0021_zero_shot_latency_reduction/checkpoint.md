@@ -88,6 +88,15 @@ the CosyVoice2 30 s hard-limit failure (S-0018-02). `verify_research_code` passe
 warnings). Also ran `/research-summarize` afterward, compressing all three research files into
 `research/research_summary.md` (119 lines, 8191 bytes).
 
+### Step 7 — planning
+
+Wrote `plan/plan.md` (all 11 mandatory sections plus dedicated `## Owner Correction` and
+`## Rejection Criteria` sections); `verify_plan` passed with 0 errors/warnings. The plan defines a
+6-variant cumulative-stack acceleration matrix per system, new `StageTiming` instrumentation, and a
+17-item `REQ-*` checklist where `REQ-11`..`REQ-17` map every owner-correction sub-requirement to a
+concrete Step by Step action. Caveat: the intervention file and the corrected references/centroid
+are created in implementation steps 1-2 (CPU-only, before GPU provisioning) — not yet on disk.
+
 * * *
 
 ## Cross-Step Decisions
@@ -128,25 +137,6 @@ Binding requirements for every remaining t0021 step (planning, implementation, r
    variant as clean on the automated gate alone.
 
 * * *
-
-### Step 7 — planning
-
-Wrote `plan/plan.md` (762 lines, all 11 mandatory sections plus a dedicated `## Owner Correction`
-section and a `## Rejection Criteria` addendum); `verify_plan` passed with 0 errors/warnings. The
-plan defines a 6-variant cumulative-stack acceleration matrix per system
-(`baseline_new_ref → ref_cache → fp16 → load_jit → load_trt → vllm_backend` for CosyVoice2;
-`baseline_new_ref → ref_cache → precision_bf16_or_fp16 → torch_compile → sentence_chunking → streaming_api`
-for Chatterbox), new `StageTiming` instrumentation added to the copied adapters, and a 17-item
-`REQ-*` checklist where `REQ-11`..`REQ-17` map every owner-correction sub-requirement (corrected
-references/centroid from `data/v4/val/wavs`, disjoint 48/48 ref-source/centroid split, frozen
-"radiohost (wrong voice) control" column from t0018's `half_a_centroid.npy`, no by-name ElevenLabs
-voice resolution, paired same-session baseline re-run, the intervention file, the 3-way audio
-comparison set + `listening_guide.md`, and the gate-is-necessary-not-sufficient caveat) to a
-concrete numbered Step by Step action. Budget itemized to ~$78.18 against the $100 hard cap. Caveat
-for setup-machines/implementation: the intervention file
-(`intervention/owner_correction_wrong_david_voice.md`) and the corrected references/centroid are
-created in implementation Step 1-2 (CPU-only, before GPU provisioning) — not yet written on disk; do
-not skip them.
 
 ## Next Step Notes
 
