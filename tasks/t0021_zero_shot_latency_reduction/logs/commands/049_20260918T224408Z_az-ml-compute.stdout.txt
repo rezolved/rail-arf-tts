@@ -1,0 +1,4 @@
+{
+  "powerState": null,
+  "state": null
+}

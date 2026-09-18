@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T22:45:00Z"
-completed_steps: 9
-next_step_number: 10
-next_step_id: "teardown"
+updated_at: "2026-09-18T23:05:00Z"
+completed_steps: 10
+next_step_number: 11
+next_step_id: "creative-thinking"
 ---
 # Task Objective
 
@@ -133,6 +133,18 @@ this closeout turn, not just trusted from the prior report. Final confirmed cost
 cap (a documented, self-corrected track_cost.py double-counting bug is explained in
 `cost_tracking.json`'s own final entry).
 
+### Step 10 — teardown
+
+Confirmation-only: `LLM-T1-NC80` was already deallocated mid-implementation, so this step
+re-confirmed via `az ml compute show` (state=Stopped) without any SSH or re-provisioning, then
+closed out `logs/steps/008_setup-machines/machine_log.json`'s previously-null `destroyed_at` (
+`2026-09-18T20:39:00.626630Z`), `total_duration_hours` (7.0378h), and `total_cost_usd` ($98.25)
+using the 3 billing windows already itemized in `results/cost_tracking.json`. Wrote the
+previously-missing `results/remote_machines_used.json` and `results/costs.json`.
+`verify_machines_destroyed` passed (0 errors, 3 expected warnings: legacy `spec_version`, Azure API
+check called without workspace/resource-group context so reports unreachable, and no
+`checkpoint_path` on a non-training GPU job).
+
 * * *
 
 ## Cross-Step Decisions
@@ -187,35 +199,25 @@ open item in the PR description — do not silently merge with the data undurabl
 
 ## Next Step Notes
 
-Step 10 (`teardown`) is next. **The GPU VM `LLM-T1-NC80` is already fully destroyed** —
-`results/cost_tracking.json`'s final entry (`2026-09-18T22:35:00Z`, `$98.25`) and multiple prior
-step-executor turns independently confirmed via `az` that the VM's last Running window ended at
-`destroyed_at=2026-09-18T20:39:00.626630Z` (`azure_ml_vm.py teardown` returned `deallocated=true`;
-SSH now times out). This step should NOT attempt to stop/deallocate anything — there is nothing left
-to tear down. It should instead:
+Step 11 (`creative-thinking`, optional) is next, per `step_tracker.json` — an out-of-the-box
+analysis step for alternative levers beyond the planned acceleration matrix (distillation, smaller
+models, etc.) toward the 300 ms TTFB target, described in `step_tracker.json` step 11's
+`description`. All GPU work is done and the machine is fully torn down (`machine_log.json` now has
+`destroyed_at=2026-09-18T20:39:00.626630Z`, `total_duration_hours=7.0378`, `total_cost_usd=98.25`;
+`results/remote_machines_used.json` and `results/costs.json` now exist and both verify clean). No
+further remote-machine work is expected for the rest of this task (steps 11-15 are all
+local/CPU-only: creative-thinking, results, compare-literature, suggestions, reporting) — do not
+provision anything new.
 
-1. Re-confirm cheaply (e.g.
-   `az ml compute show --name LLM-T1-NC80 --workspace-name brainpowa-northeurope --resource-group rezolve-AI --query provisioningState`
-   or equivalent, not a fresh SSH/VM-acquire attempt) that the VM is genuinely stopped, before
-   writing anything.
-2. **Update `logs/steps/008_setup-machines/machine_log.json`'s `destroyed_at`/
-   `total_duration_hours`/`total_cost_usd` fields** — these are still `null`/unset as of this commit
-   (the physical teardown happened mid-`implementation`, across 3 separate acquire/run/stop cycles,
-   but nothing has gone back and closed out the setup step's own log record). Use the 3 confirmed
-   windows already itemized in `results/cost_tracking.json`'s final entry (8658.12s + 12432.76s +
-   4245.22s = 25336.10s = 7.0378h = $98.25 total) as the source of truth, not a fresh recomputation.
-3. **Write `results/remote_machines_used.json` and `results/costs.json`** (per this task's
-   `SKILL.md` teardown-step contract) — neither file exists yet under `results/` (only
-   `cost_tracking.json`, an implementation-step working file, exists there today).
-   `results/costs.json` should reflect the same final `$98.25` total;
-   `results/remote_machines_used.json` should record `LLM-T1-NC80` with its 3 Running windows,
-   `destroyed_at`, and the watchdog fields already in `machine_log.json`.
-4. Run
-   `uv run python -m arf.scripts.verificators.verify_machines_destroyed --task-id t0021_zero_shot_latency_reduction`
-   and fix whatever it flags (likely exactly the null `destroyed_at` gap above).
-5. This step is expected to be short/confirmation-only — no new SSH session, no new spend risk (the
-   watchdog is a non-issue now since no VM exists to protect). Do not re-provision anything.
+Key inputs this step should build on: `results/latency_breakdown*.json` (12+ per-variant files) and
+`results/metrics.json`/`results/tables.json` for the achieved TTFB/speaker_sim numbers per
+acceleration variant across CosyVoice2 and Chatterbox; `research/research_summary.md` for the
+architectural latency model (`L_TTS = M*d_lm + M*d_fm + M*d_voc`) and prior evidence (e.g.
+Chatterbox-Flash's 103-118 ms TTFP required fine-tuning, not just engineering levers) that should
+ground whatever alternative levers this step proposes.
 
 Carried-forward, not this step's job: the `dvc push` gap documented in Cross-Step Decisions above
-(audio bytes not yet durable in blob storage) — that belongs to whichever step handles the PR/merge,
-not teardown.
+(this task's 5 `.dvc` pointer files are committed but the actual audio bytes have not been pushed to
+`azure://ml-dvc-datasets/datasets/rail-arf-tts` — Azure credential-chain issue, see
+`intervention/dvc_push_pull_credential_failure.md`) — that belongs to whichever step handles the
+task PR/merge, not creative-thinking.

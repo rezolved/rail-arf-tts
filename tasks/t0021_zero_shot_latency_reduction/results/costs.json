@@ -1,0 +1,7 @@
+{
+  "total_cost_usd": 98.25,
+  "breakdown": {
+    "azure-ml-2xh100": 98.25
+  },
+  "note": "Single LLM-T1-NC80 (2xH100 NVL, $13.96/hr) machine used across setup-machines and implementation, acquired/stopped across 3 confirmed Running windows during implementation (8658.12s + 12432.76s + 4245.22s = 25336.10s = 7.0378h). Final teardown (azure_ml_vm.py, deallocated=true) at 2026-09-18T20:39:00.626630Z occurred mid-implementation; this teardown step re-confirmed via `az ml compute show` that the VM remains state=Stopped (last_operation Stop/Succeeded at 2026-09-18T20:38:57.952Z) and closed out logs/steps/008_setup-machines/machine_log.json's destroyed_at/total_duration_hours/total_cost_usd fields, which had been left null. No GPU billing occurred after the final teardown; within the $100.0 task hard cap."
+}
