@@ -1,0 +1,6 @@
+outs:
+- md5: 4820438cd0a790aa335a0a82c5efe97d.dir
+  size: 86079197
+  nfiles: 256
+  hash: md5
+  path: owner_listening_set
