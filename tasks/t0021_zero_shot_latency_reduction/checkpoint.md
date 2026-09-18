@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T10:57:18Z"
-completed_steps: 5
-next_step_number: 6
-next_step_id: "research-code"
+updated_at: "2026-09-18T11:05:00Z"
+completed_steps: 6
+next_step_number: 7
+next_step_id: "planning"
 ---
 # Task Objective
 
@@ -69,6 +69,25 @@ bf16-decoder recommendation now rests solely on `[Chatterbox-TTS-Server-GH]`, an
 evidence should be treated as weak/unverified (`[LlasaQuant2026]`'s full text could not be
 retrieved).
 
+### Step 6 — research-code
+
+Wrote `research/research_code.md` (5 tasks cited, 2 libraries surveyed: `tts_eval_harness` from
+t0008 relevant, `t0009_training_safeguards` not relevant) documenting what t0021 can reuse from
+t0018/t0008/t0015/t0014. Key output for planning/implementation: import `tts_eval_harness` (t0008)
+via library for `SynthResult`, scoring, and prompt loading; copy (do not import) t0018's
+`adapters_zeroshot.py`, `run_eval_zeroshot.py`, `constants.py`, `paths.py`, `build_references.py`,
+`run_gate_check.py`, `track_cost.py`, and `report_zeroshot.py` into t0021's own `code/`; also copy
+t0015's `audio_quality_check.py` (233 lines) directly rather than repeating t0018's disallowed
+cross-task import of it. Caveat: none of t0018's three adapters (F5-TTS, CosyVoice2, Chatterbox)
+records intermediate per-stage timestamps, so the per-stage latency breakdown this task needs is
+genuinely new instrumentation; CosyVoice2's adapter already exposes `load_jit`/`load_trt`/`fp16`
+flags (all currently `False`) ready to flip per variant; isolated venvs already diverge on
+torch/CUDA (Chatterbox `2.6.0+cu124` vs CosyVoice2 `2.3.1+cu121`), so any vLLM/TensorRT install must
+respect per-venv isolation; set `REF_CONCAT_TARGET_DURATION_S = 29.5` (from t0018's `30.0`) to fix
+the CosyVoice2 30 s hard-limit failure (S-0018-02). `verify_research_code` passed (0 errors, 0
+warnings). Also ran `/research-summarize` afterward, compressing all three research files into
+`research/research_summary.md` (119 lines, 8191 bytes).
+
 * * *
 
 ## Cross-Step Decisions
@@ -77,11 +96,12 @@ retrieved).
 
 ## Next Step Notes
 
-Steps 4-5 established: (a) the additive latency-model schema `L_TTS = M*d_lm + M*d_fm + M*d_voc`
-([Du2024]) with LM/decoder-stage acceleration prioritized over vocoder work, and (b) the closest
-available per-stage TTFA breakdown (vllm-omni issue #6870: ~11% prefill / ~40% AR decode / ~36%
-flow) plus a validated bf16-decoder lever (~40% throughput, H100-confirmed,
-[Chatterbox-TTS-Server-GH]). Proceed to step 6 (`research-code`): review t0018's adapters, harness
-wiring, reference clips, and prompt sets in `code/` and `data/references/` for reuse, per the step
-description in `step_tracker.json`. Read `research/research_internet.md` first for the
-acceleration-lever priority order and the caveat on the `[Lian2026]` citation correction.
+Steps 4-6 established the acceleration-lever priority order (LM/decoder stage first, per
+[Du2024]/vllm-omni#6870), the reuse/copy map for t0018/t0008/t0015/t0014 code, and the concrete fix
+for the CosyVoice2 30 s reference-duration failure. Proceed to step 7 (`planning`): design the
+per-stage latency profiling protocol and the acceleration-variant matrix (streaming, chunking,
+vLLM/TensorRT backends, precision) for both CosyVoice2 and Chatterbox, with budget and risk plan.
+Load `research/research_summary.md` first instead of the three full research files — it is
+specifically sized for planning/implementation consumption. Remember the still-unresolved question
+from research-internet: whether any acceleration lever shifts `speaker_sim`, which the plan should
+treat as a required paired measurement, not an assumption.
