@@ -1,0 +1,61 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2604.16395",
+  "doi": "10.48550/arXiv.2604.16395",
+  "title": "Stream2LLM: Overlap Context Streaming and Prefill for Reduced Time-to-First-Token (TTFT)",
+  "url": "https://arxiv.org/abs/2604.16395",
+  "pdf_url": "https://arxiv.org/pdf/2604.16395",
+  "date_published": "2026-03-29",
+  "year": 2026,
+  "authors": [
+    {
+      "name": "Rajveer Bachkaniwala",
+      "country": "US",
+      "institution": "Georgia Institute of Technology",
+      "orcid": null
+    },
+    {
+      "name": "Chengqi Luo",
+      "country": "US",
+      "institution": "Georgia Institute of Technology",
+      "orcid": null
+    },
+    {
+      "name": "Richard So",
+      "country": "US",
+      "institution": "Georgia Institute of Technology",
+      "orcid": null
+    },
+    {
+      "name": "Divya Mahajan",
+      "country": "US",
+      "institution": "Georgia Institute of Technology",
+      "orcid": null
+    },
+    {
+      "name": "Kexin Rong",
+      "country": "US",
+      "institution": "Georgia Institute of Technology",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Georgia Institute of Technology",
+      "country": "US"
+    }
+  ],
+  "journal": "9th MLSys Conference (MLSys 2026)",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "Context retrieval systems for LLM inference face a critical challenge: high retrieval latency creates a fundamental tension between waiting for complete context (poor time-to-first-token) and proceeding without it (reduced quality). Streaming context incrementally-overlapping retrieval with inference-can mitigate this latency, but doing so with concurrent requests introduces new challenges: requests contend for GPU compute and memory, and scheduling must adapt to dynamic context arrivals. We present STREAM2LLM, a streaming-aware LLM serving system for concurrent prefill-decode disaggregated deployments. STREAM2LLM introduces adaptive scheduling and preemption for two distinct retrieval patterns: append-mode (progressive context accumulation) and update-mode (iterative refinement with cache invalidation). It decouples scheduling decisions from resource acquisition, enabling flexible preemption strategies guided by hardware-specific cost models, and uses longest common prefix matching to minimize redundant computation when input changes dynamically. To evaluate STREAM2LLM, we collect two large-scale, real-world streaming workloads based on web crawling and approximate nearest neighbor search. Our evaluation demonstrates that streaming architecture delivers up to 11x TTFT improvements, with cost-aware scheduling providing critical benefits under memory pressure, all while maintaining throughput parity with non-streaming baselines.",
+  "citation_key": "Bachkaniwala2026",
+  "summary_path": "summary.md",
+  "files": [
+    "files/bachkaniwala_2026_stream2llm.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0021_zero_shot_latency_reduction",
+  "date_added": "2026-09-18"
+}

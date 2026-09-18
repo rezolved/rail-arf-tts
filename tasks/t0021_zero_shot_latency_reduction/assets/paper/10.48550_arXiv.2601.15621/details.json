@@ -1,0 +1,44 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2601.15621",
+  "doi": "10.48550/arXiv.2601.15621",
+  "title": "Qwen3-TTS Technical Report",
+  "url": "https://arxiv.org/abs/2601.15621",
+  "pdf_url": "https://arxiv.org/pdf/2601.15621",
+  "date_published": "2026-01-22",
+  "year": 2026,
+  "authors": [
+    { "name": "Hangrui Hu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Xinfa Zhu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Ting He", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Dake Guo", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Bin Zhang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Xiong Wang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Zhifang Guo", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Ziyue Jiang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Hongkun Hao", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Zishan Guo", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Xinyu Zhang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Pei Zhang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Baosong Yang", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Jin Xu", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Jingren Zhou", "country": "CN", "institution": "Alibaba Group", "orcid": null },
+    { "name": "Junyang Lin", "country": "CN", "institution": "Alibaba Group", "orcid": null }
+  ],
+  "institutions": [
+    { "name": "Alibaba Group", "country": "CN" }
+  ],
+  "journal": "preprint",
+  "venue_type": "preprint",
+  "categories": [],
+  "abstract": "In this report, we present the Qwen3-TTS series, a family of advanced multilingual, controllable, robust, and streaming text-to-speech models. Qwen3-TTS supports state-of-the-art 3-second voice cloning and description-based control, allowing both the creation of entirely novel voices and fine-grained manipulation over the output speech. Trained on over 5 million hours of speech data spanning 10 languages, Qwen3-TTS adopts a dual-track LM architecture for real-time synthesis, coupled with two speech tokenizers: 1) Qwen-TTS-Tokenizer-25Hz is a single-codebook codec emphasizing semantic content, which offers seamlessly integration with Qwen-Audio and enables streaming waveform reconstruction via a block-wise DiT. 2) Qwen-TTS-Tokenizer-12Hz achieves extreme bitrate reduction and ultra-low-latency streaming, enabling immediate first-packet emission (97 ms) through its 12.5 Hz, 16-layer multi-codebook design and a lightweight causal ConvNet. Extensive experiments indicate state-of-the-art performance across diverse objective and subjective benchmark (e.g., TTS multilingual test set, InstructTTSEval, and our long speech test set). To facilitate community research and development, we release both tokenizers and models under the Apache 2.0 license.",
+  "citation_key": "Hu2026",
+  "summary_path": "summary.md",
+  "files": [
+    "files/hu_2026_qwen3-tts-technical-report.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0021_zero_shot_latency_reduction",
+  "date_added": "2026-09-18"
+}

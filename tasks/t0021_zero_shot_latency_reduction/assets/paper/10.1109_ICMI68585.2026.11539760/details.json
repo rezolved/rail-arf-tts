@@ -1,0 +1,35 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.1109_ICMI68585.2026.11539760",
+  "doi": "10.1109/ICMI68585.2026.11539760",
+  "title": "Towards Lightweight Voice Cloning: Quantization of LLaMA-based TTS Transformers",
+  "url": "https://ieeexplore.ieee.org/document/11539760/",
+  "pdf_url": "http://xplorestaging.ieee.org/ielx8/11539750/11539751/11539760.pdf?arnumber=11539760",
+  "date_published": "2026-04-09",
+  "year": 2026,
+  "authors": [
+    {
+      "name": "Ali Zain",
+      "country": "US",
+      "institution": "QLU.ai",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "QLU.ai",
+      "country": "US"
+    }
+  ],
+  "journal": "2026 IEEE 5th International Conference on Computing and Machine Intelligence (ICMI)",
+  "venue_type": "conference",
+  "categories": [],
+  "abstract": "Recent advancements in Text-to-Speech (TTS) have been propelled by Large Language Models (LLMs), leading to systems like Llasa that achieve remarkable naturalness and speaker similarity in voice cloning. However, these models, with parameter counts in the billions, present significant challenges for deployment on resource-constrained devices due to their substantial memory footprint and computational demands. This paper investigates the application of post-training quantization (PTQ) to the Llasa family of TTS models (1B, 3B, and 8B parameters). Our goal is to drastically reduce their size while maintaining high-fidelity voice cloning performance. We apply an 8-bit (INT8) quantization scheme and evaluate the trade-offs between model compression and synthesis quality using a suite of objective metrics. Our experiments reveal that INT8 quantization provides a substantial reduction in model size, making large models more accessible for resource-constrained environments. This efficiency gain comes at the cost of a modest, predictable decrease in synthesis quality and, in our software-based setup, an increase in inference latency. Furthermore, we note issues of output stability, suggesting that quantization is a mitigant, not a panacea. These findings highlight a critical trade-off between model footprint and performance, providing a practical guide for deploying large-scale TTS models.",
+  "citation_key": "Zain2026",
+  "summary_path": "summary.md",
+  "files": [],
+  "download_status": "failed",
+  "download_failure_reason": "IEEE Xplore blocks automated access: both the abstract landing page (https://ieeexplore.ieee.org/abstract/document/11539760/) and the direct PDF link from the CrossRef record (http://xplorestaging.ieee.org/ielx8/11539750/11539751/11539760.pdf?arnumber=11539760) return HTTP 418 to automated fetch tools (WebFetch and curl with a browser user-agent both tested). The paper is not open access (OpenAlex open_access.is_oa=false, oa_status=closed) and no repository or preprint copy was found on OpenAlex, Semantic Scholar, or general web search. Full-text access requires an authenticated IEEE Xplore subscription/institutional login, which is not available in this environment. Metadata (title, single author Ali Zain of QLU.ai, DOI 10.1109/ICMI68585.2026.11539760, venue, date, and full abstract) was successfully resolved via CrossRef (api.crossref.org/works/10.1109/icmi68585.2026.11539760), OpenAlex (W7163148850), and Semantic Scholar (paperId 02475d0a3501dbc031860e51e7871ceee27abf50).",
+  "added_by_task": "t0021_zero_shot_latency_reduction",
+  "date_added": "2026-09-18"
+}

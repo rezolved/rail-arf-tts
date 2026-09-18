@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T10:30:00Z"
-completed_steps: 4
-next_step_number: 5
-next_step_id: "research-internet"
+updated_at: "2026-09-18T10:57:18Z"
+completed_steps: 5
+next_step_number: 6
+next_step_id: "research-code"
 ---
 # Task Objective
 
@@ -53,6 +53,22 @@ for CosyVoice2's backbone or reports a measured per-stage ms breakdown on H100 �
 establish those numbers empirically. Verificator passed (0 errors, 1 expected `RP-W003` warning from
 the empty categories registry).
 
+### Step 5 — research-internet
+
+Wrote `research/research_internet.md` (21 queries, 15 sources, 8 discovered papers) addressing all
+six gaps from `research_papers.md`. Key new evidence: a `vllm-project/vllm-omni` RFC (issue #6870,
+non-peer-reviewed, GPU unstated) gives the closest available per-stage TTFA decomposition (357 ms
+median: 40.5 ms prefill, 142.3 ms AR decode, 129.0 ms first flow chunk) and shows the flow-matching
+stage is architecturally batch-1 — Gap 2 narrowed, not closed. Gap 6 (does acceleration shift
+`speaker_sim`?) remains fully unresolved; no source measures this for any zero-shot TTS system, so
+t0021's own paired measurement will be novel. All 8 discovered papers were added to the corpus via
+`/add-paper` subagents and pass their verificator. Caveat for downstream steps: one citation
+(`[Lian2026]`, dots.tts) was corrected in this step after full-text review showed the paper does not
+support the bf16-acoustic/quantized-LLM-trunk precision claim originally attributed to it — the
+bf16-decoder recommendation now rests solely on `[Chatterbox-TTS-Server-GH]`, and int8-LM-trunk
+evidence should be treated as weak/unverified (`[LlasaQuant2026]`'s full text could not be
+retrieved).
+
 * * *
 
 ## Cross-Step Decisions
@@ -61,10 +77,11 @@ the empty categories registry).
 
 ## Next Step Notes
 
-Step 4 established the additive latency-model schema (`L_TTS = M*d_lm + M*d_fm + M*d_voc`, [Du2024])
-and the prioritization order (LM/decoder-stage acceleration first, vocoder last) that should carry
-into planning. Proceed to step 5 (`research-internet`): research CosyVoice2 and Chatterbox
-acceleration paths — `load_jit`/`load_trt`, the vLLM LLM backend, `torch.compile`, streaming APIs,
-and chunking strategies — per the step description in `step_tracker.json`. Read
-`research/research_papers.md` first; it flags that no reviewed paper covers vLLM/TensorRT-LLM
-benchmarks for CosyVoice2's Qwen2.5-0.5B backbone, so this is the gap research-internet must fill.
+Steps 4-5 established: (a) the additive latency-model schema `L_TTS = M*d_lm + M*d_fm + M*d_voc`
+([Du2024]) with LM/decoder-stage acceleration prioritized over vocoder work, and (b) the closest
+available per-stage TTFA breakdown (vllm-omni issue #6870: ~11% prefill / ~40% AR decode / ~36%
+flow) plus a validated bf16-decoder lever (~40% throughput, H100-confirmed,
+[Chatterbox-TTS-Server-GH]). Proceed to step 6 (`research-code`): review t0018's adapters, harness
+wiring, reference clips, and prompt sets in `code/` and `data/references/` for reuse, per the step
+description in `step_tracker.json`. Read `research/research_internet.md` first for the
+acceleration-lever priority order and the caveat on the `[Lian2026]` citation correction.

@@ -1,0 +1,65 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2509.09631",
+  "doi": "10.48550/arXiv.2509.09631",
+  "title": "DiFlow-TTS: Compact and Low-Latency Zero-Shot Text-to-Speech with Discrete Flow Matching",
+  "url": "https://arxiv.org/abs/2509.09631",
+  "pdf_url": "https://arxiv.org/pdf/2509.09631",
+  "date_published": "2025-09-11",
+  "year": 2025,
+  "authors": [
+    {
+      "name": "Ngoc-Son Nguyen",
+      "country": "VN",
+      "institution": "FPT Software AI Center",
+      "orcid": null
+    },
+    {
+      "name": "Thanh V. T. Tran",
+      "country": "VN",
+      "institution": "FPT Software AI Center",
+      "orcid": null
+    },
+    {
+      "name": "Hieu-Nghia Huynh-Nguyen",
+      "country": "VN",
+      "institution": "FPT Software AI Center",
+      "orcid": null
+    },
+    {
+      "name": "Truong-Son Hy",
+      "country": "US",
+      "institution": "University of Alabama at Birmingham",
+      "orcid": null
+    },
+    {
+      "name": "Van Nguyen",
+      "country": "VN",
+      "institution": "FPT Software AI Center",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "FPT Software AI Center",
+      "country": "VN"
+    },
+    {
+      "name": "University of Alabama at Birmingham",
+      "country": "US"
+    }
+  ],
+  "journal": "preprint",
+  "venue_type": "preprint",
+  "categories": [],
+  "abstract": "Zero-shot text-to-speech (TTS) has made significant progress in replicating unseen voices, yet balancing generation quality and inference efficiency remains challenging. Autoregressive models suffer from high latency, while diffusion-based approaches are constrained by training-time configurations. Moreover, most flow-based methods operate in continuous space, which introduces optimization challenges because continuous token spaces are inherently more complex than discrete ones. To address these limitations, we propose DiFlow-TTS, a novel zero-shot TTS framework based on discrete flow matching. The model consists of a deterministic Phoneme-Content Mapper for linguistic modeling and a Factorized Discrete Flow Denoiser that simultaneously generates prosody and acoustic token streams. Experimental results demonstrate the effectiveness of our approach across multiple evaluation metrics.",
+  "citation_key": "Nguyen2025",
+  "summary_path": "summary.md",
+  "files": [
+    "files/nguyen_2025_diflow-tts-discrete-flow-matching.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0021_zero_shot_latency_reduction",
+  "date_added": "2026-09-18"
+}

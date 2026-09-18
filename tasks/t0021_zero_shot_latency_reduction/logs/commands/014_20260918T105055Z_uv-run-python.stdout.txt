@@ -1,0 +1,332 @@
+{
+  "paper_count": 17,
+  "papers": [
+    {
+      "paper_id": "10.21437_Interspeech.2021-41",
+      "title": "GAN Vocoder: Multi-Resolution Discriminator Is All You Need",
+      "year": 2021,
+      "authors": [
+        "Jaeseong You",
+        "Dalhyun Kim",
+        "Gyuhyeon Nam",
+        "Geumbyeol Hwang",
+        "Gyeongsu Chae"
+      ],
+      "citation_key": "You2021",
+      "categories": [],
+      "journal": "Interspeech 2021",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2010.05646",
+      "title": "HiFi-GAN: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis",
+      "year": 2020,
+      "authors": [
+        "Jungil Kong",
+        "Jaehyeon Kim",
+        "Jaekyoung Bae"
+      ],
+      "citation_key": "Kong2020",
+      "categories": [],
+      "journal": "NeurIPS 2020",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2203.02395",
+      "title": "iSTFTNet: Fast and Lightweight Mel-Spectrogram Vocoder Incorporating Inverse Short-Time Fourier Transform",
+      "year": 2022,
+      "authors": [
+        "Takuhiro Kaneko",
+        "Kou Tanaka",
+        "Hirokazu Kameoka",
+        "Shogo Seki"
+      ],
+      "citation_key": "Kaneko2022",
+      "categories": [],
+      "journal": "ICASSP 2022",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2306.07691",
+      "title": "StyleTTS 2: Towards Human-Level Text-to-Speech through Style Diffusion and Adversarial Training with Large Speech Language Models",
+      "year": 2023,
+      "authors": [
+        "Yinghao Aaron Li",
+        "Cong Han",
+        "Vinay S. Raghavan",
+        "Gavin Mischler",
+        "Nima Mesgarani"
+      ],
+      "citation_key": "Li2023",
+      "categories": [],
+      "journal": "NeurIPS 2023",
+      "download_status": "success",
+      "added_by_task": "t0014_v11_decoder_fix_retrain"
+    },
+    {
+      "paper_id": "10.1109_ICASSP.2018.8462665",
+      "title": "Generalized End-to-End Loss for Speaker Verification",
+      "year": 2018,
+      "authors": [
+        "Li Wan",
+        "Quan Wang",
+        "Alan Papir",
+        "Ignacio Lopez Moreno"
+      ],
+      "citation_key": "Wan2018",
+      "categories": [],
+      "journal": "2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2112.02418",
+      "title": "YourTTS: Towards Zero-Shot Multi-Speaker TTS and Zero-Shot Voice Conversion for everyone",
+      "year": 2022,
+      "authors": [
+        "Edresson Casanova",
+        "Julian Weber",
+        "Christopher Shulby",
+        "Arnaldo Candido Junior",
+        "Eren Golge",
+        "Moacir Antonelli Ponti"
+      ],
+      "citation_key": "Casanova2022",
+      "categories": [],
+      "journal": "Proceedings of the 39th International Conference on Machine Learning (ICML 2022), PMLR 162:2709-2720",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2407.05407",
+      "title": "CosyVoice: A Scalable Multilingual Zero-shot Text-to-speech Synthesizer based on Supervised Semantic Tokens",
+      "year": 2024,
+      "authors": [
+        "Zhihao Du",
+        "Qian Chen",
+        "Shiliang Zhang",
+        "Kai Hu",
+        "Heng Lu",
+        "Yexin Yang",
+        "Hangrui Hu",
+        "Siqi Zheng",
+        "Yue Gu",
+        "Ziyang Ma",
+        "Zhifu Gao",
+        "Zhijie Yan"
+      ],
+      "citation_key": "Du2024a",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2410.06885",
+      "title": "F5-TTS: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching",
+      "year": 2024,
+      "authors": [
+        "Yushen Chen",
+        "Zhikang Niu",
+        "Ziyang Ma",
+        "Keqi Deng",
+        "Chunhui Wang",
+        "Jian Zhao",
+        "Kai Yu",
+        "Xie Chen"
+      ],
+      "citation_key": "Chen2024",
+      "categories": [],
+      "journal": "Annual Meeting of the Association for Computational Linguistics (ACL 2025)",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2412.10117",
+      "title": "CosyVoice 2: Scalable Streaming Speech Synthesis with Large Language Models",
+      "year": 2024,
+      "authors": [
+        "Zhihao Du",
+        "Yuxuan Wang",
+        "Qian Chen",
+        "Xian Shi",
+        "Xiang Lv",
+        "Tianyu Zhao",
+        "Zhifu Gao",
+        "Yexin Yang",
+        "Changfeng Gao",
+        "Hui Wang",
+        "Fan Yu",
+        "Huadai Liu",
+        "Zhengyan Sheng",
+        "Yue Gu",
+        "Chong Deng",
+        "Wen Wang",
+        "Shiliang Zhang",
+        "Zhijie Yan",
+        "Jingren Zhou"
+      ],
+      "citation_key": "Du2024",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2506.20190",
+      "title": "An Exploration of ECAPA-TDNN and x-vector Speaker Representations in Zero-shot Multi-speaker TTS",
+      "year": 2025,
+      "authors": [
+        "Marie Kunešová",
+        "Zdeněk Hanzlíček",
+        "Jindřich Matoušek"
+      ],
+      "citation_key": "Kunesova2025",
+      "categories": [],
+      "journal": "International Conference on Text, Speech, and Dialogue (TSD 2025)",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2605.30748",
+      "title": "Chatterbox-Flash: Prior-Calibrated Block Diffusion for Streaming Zero-Shot TTS",
+      "year": 2026,
+      "authors": [
+        "Deokjin Seo",
+        "Gangin Park",
+        "Kihyun Nam"
+      ],
+      "citation_key": "Seo2026",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0018_zero_shot_cloning_calibration"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2509.09631",
+      "title": "DiFlow-TTS: Compact and Low-Latency Zero-Shot Text-to-Speech with Discrete Flow Matching",
+      "year": 2025,
+      "authors": [
+        "Ngoc-Son Nguyen",
+        "Thanh V. T. Tran",
+        "Hieu-Nghia Huynh-Nguyen",
+        "Truong-Son Hy",
+        "Van Nguyen"
+      ],
+      "citation_key": "Nguyen2025",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0021_zero_shot_latency_reduction"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2601.15621",
+      "title": "Qwen3-TTS Technical Report",
+      "year": 2026,
+      "authors": [
+        "Hangrui Hu",
+        "Xinfa Zhu",
+        "Ting He",
+        "Dake Guo",
+        "Bin Zhang",
+        "Xiong Wang",
+        "Zhifang Guo",
+        "Ziyue Jiang",
+        "Hongkun Hao",
+        "Zishan Guo",
+        "Xinyu Zhang",
+        "Pei Zhang",
+        "Baosong Yang",
+        "Jin Xu",
+        "Jingren Zhou",
+        "Junyang Lin"
+      ],
+      "citation_key": "Hu2026",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0021_zero_shot_latency_reduction"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2602.08607",
+      "title": "VocalNet-MDM: Accelerating Streaming Speech LLM via Self-Distilled Masked Diffusion Modeling",
+      "year": 2026,
+      "authors": [
+        "Ziyang Cheng",
+        "Yuhao Wang",
+        "Heyang Liu",
+        "Ronghua Wu",
+        "Qunshan Gu",
+        "Yanfeng Wang",
+        "Yu Wang"
+      ],
+      "citation_key": "Cheng2026",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0021_zero_shot_latency_reduction"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2604.12438",
+      "title": "An Ultra-Low Latency, End-to-End Streaming Speech Synthesis Architecture via Block-Wise Generation and Depth-Wise Codec Decoding",
+      "year": 2026,
+      "authors": [
+        "Tianhui Su",
+        "Tien-Ping Tan",
+        "Salima Mdhaffar",
+        "Yannick Estève",
+        "Aghilas Sini"
+      ],
+      "citation_key": "Su2026",
+      "categories": [],
+      "journal": "preprint",
+      "download_status": "success",
+      "added_by_task": "t0021_zero_shot_latency_reduction"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2604.16395",
+      "title": "Stream2LLM: Overlap Context Streaming and Prefill for Reduced Time-to-First-Token (TTFT)",
+      "year": 2026,
+      "authors": [
+        "Rajveer Bachkaniwala",
+        "Chengqi Luo",
+        "Richard So",
+        "Divya Mahajan",
+        "Kexin Rong"
+      ],
+      "citation_key": "Bachkaniwala2026",
+      "categories": [],
+      "journal": "9th MLSys Conference (MLSys 2026)",
+      "download_status": "success",
+      "added_by_task": "t0021_zero_shot_latency_reduction"
+    },
+    {
+      "paper_id": "10.48550_arXiv.2606.09141",
+      "title": "FlashTTS: Fast Streaming TTS with MTP Acceleration and X-pred Mean Flow Distillation",
+      "year": 2026,
+      "authors": [
+        "Hanke Xie",
+        "Xiaming Ren",
+        "Dake Guo",
+        "Ruonan You",
+        "Wenhao Li",
+        "Jingbin Hu",
+        "Guobin Ma",
+        "Huakang Chen",
+        "Kejie Xu",
+        "Rui Huang",
+        "Weiguo Tan",
+        "Xianrong Wang",
+        "Lei Xie"
+      ],
+      "citation_key": "Xie2026",
+      "categories": [],
+      "journal": "Interspeech 2026",
+      "download_status": "success",
+      "added_by_task": "t0021_zero_shot_latency_reduction"
+    }
+  ]
+}

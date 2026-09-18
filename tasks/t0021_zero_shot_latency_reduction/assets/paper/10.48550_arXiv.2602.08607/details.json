@@ -1,0 +1,77 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2602.08607",
+  "doi": "10.48550/arXiv.2602.08607",
+  "title": "VocalNet-MDM: Accelerating Streaming Speech LLM via Self-Distilled Masked Diffusion Modeling",
+  "url": "https://arxiv.org/abs/2602.08607",
+  "pdf_url": "https://arxiv.org/pdf/2602.08607",
+  "date_published": "2026-02-09",
+  "year": 2026,
+  "authors": [
+    {
+      "name": "Ziyang Cheng",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Yuhao Wang",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Heyang Liu",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Ronghua Wu",
+      "country": "CN",
+      "institution": "Ant Group",
+      "orcid": null
+    },
+    {
+      "name": "Qunshan Gu",
+      "country": "CN",
+      "institution": "Ant Group",
+      "orcid": null
+    },
+    {
+      "name": "Yanfeng Wang",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    },
+    {
+      "name": "Yu Wang",
+      "country": "CN",
+      "institution": "Shanghai Jiao Tong University",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Shanghai Jiao Tong University",
+      "country": "CN"
+    },
+    {
+      "name": "Ant Group",
+      "country": "CN"
+    }
+  ],
+  "journal": "preprint",
+  "venue_type": "preprint",
+  "categories": [],
+  "abstract": "Recent Speech Large Language Models (LLMs) have achieved impressive capabilities in end-to-end speech interaction. However, the prevailing autoregressive paradigm imposes strict serial constraints, limiting generation efficiency and introducing exposure bias. In this paper, we investigate Masked Diffusion Modeling (MDM) as a non-autoregressive paradigm for speech LLMs and introduce VocalNet-MDM. To adapt MDM for streaming speech interaction, we address two critical challenges: training-inference mismatch and iterative overhead. We propose Hierarchical Block-wise Masking to align training objectives with the progressive masked states encountered during block diffusion decoding, and Iterative Self-Distillation to compress multi-step refinement into fewer steps for low-latency inference. Trained on a limited scale of only 6K hours of speech data, VocalNet-MDM achieves a 3.7x-10x decoding speedup and reduces first-chunk latency by 34% compared to AR baselines. It maintains competitive recognition accuracy while achieving state-of-the-art text quality and speech naturalness, demonstrating that MDM is a promising and scalable alternative for low-latency, efficient speech LLMs.",
+  "citation_key": "Cheng2026",
+  "summary_path": "summary.md",
+  "files": [
+    "files/cheng_2026_vocalnet-mdm-streaming-speech-llm.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0021_zero_shot_latency_reduction",
+  "date_added": "2026-09-18"
+}

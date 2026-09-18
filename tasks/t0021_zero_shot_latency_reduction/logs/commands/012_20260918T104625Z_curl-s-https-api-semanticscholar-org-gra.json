@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_zero_shot_latency_reduction",
+  "command": "curl -s https://api.semanticscholar.org/graph/v1/paper/arXiv:2601.15621?fields=title,authors,authors.affiliations,year,venue,abstract,externalIds -o /tmp/s2_qwen3tts.json",
+  "exit_code": 0,
+  "duration_seconds": 0.692,
+  "started_at": "2026-09-18T10:46:25Z",
+  "completed_at": "2026-09-18T10:46:26Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction",
+  "stdout_file": "012_20260918T104625Z_curl-s-https-api-semanticscholar-org-gra.stdout.txt",
+  "stderr_file": "012_20260918T104625Z_curl-s-https-api-semanticscholar-org-gra.stderr.txt",
+  "stdout_lines": 0,
+  "stderr_lines": 0,
+  "truncated": false
+}
