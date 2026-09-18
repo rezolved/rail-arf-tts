@@ -193,14 +193,15 @@
       "step": 14,
       "name": "suggestions",
       "description": "Write suggestions.json, including a production-integration feasibility task if 300 ms is reached, or a distillation follow-up if not.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-18T23:13:48Z",
-      "completed_at": null,
+      "completed_at": "2026-09-18T23:19:33Z",
       "log_file": "logs/steps/014_suggestions/",
-      "current_owner": "step-executor/suggestions",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-18T23:13:48Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-19T00:13:48Z"
+      "expected_completion_at": "2026-09-19T00:13:48Z",
+      "actual_duration_seconds": 345
     },
     {
       "step": 15,
