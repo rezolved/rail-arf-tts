@@ -1,0 +1,145 @@
+{
+  "task_id": "t0021_zero_shot_latency_reduction",
+  "steps": [
+    {
+      "step": 1,
+      "name": "create-branch",
+      "description": "Create task/t0021_zero_shot_latency_reduction branch from main.",
+      "status": "in_progress",
+      "started_at": "2026-09-18T10:13:25Z",
+      "completed_at": null,
+      "log_file": "logs/steps/001_create-branch/",
+      "current_owner": "step-executor/create-branch",
+      "last_heartbeat_at": "2026-09-18T10:13:25Z",
+      "heartbeat_interval_seconds": 1800,
+      "expected_completion_at": "2026-09-18T11:13:25Z"
+    },
+    {
+      "step": 2,
+      "name": "check-deps",
+      "description": "Verify t0018_zero_shot_cloning_calibration is completed and confirm its adapters, references and prompt sets are usable.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 3,
+      "name": "init-folders",
+      "description": "Create the mandatory task folder structure and seed the aggregator cache.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 4,
+      "name": "research-papers",
+      "description": "Review corpus papers on TTS latency optimization: streaming decoding, TensorRT/vLLM inference acceleration, flow-matching vocoders.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 5,
+      "name": "research-internet",
+      "description": "Research CosyVoice2 and Chatterbox acceleration paths: load_jit/load_trt, vLLM LLM backend, torch.compile, streaming APIs, chunking strategies.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 6,
+      "name": "research-code",
+      "description": "Review t0018's adapters, harness wiring, reference clips and prompt sets in code/ and data/references/ for reuse.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 7,
+      "name": "planning",
+      "description": "Design the per-stage latency profiling protocol and the acceleration-variant matrix for both systems, with budget and risk plan.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 8,
+      "name": "setup-machines",
+      "description": "Provision LLM-T1-NC80, arm the idle watchdog, and prepare CosyVoice2/Chatterbox environments with TensorRT/vLLM builds.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 9,
+      "name": "implementation",
+      "description": "Run per-stage latency profiling and acceleration variants for CosyVoice2 and Chatterbox, plus the S-0018-02 and F5-TTS closure cells.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 10,
+      "name": "teardown",
+      "description": "Destroy the remote GPU instance and finalize cost tracking once all variants complete.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 11,
+      "name": "creative-thinking",
+      "description": "Consider alternative levers beyond the planned acceleration matrix (e.g. distillation, smaller models) for reaching the 300 ms target.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 12,
+      "name": "results",
+      "description": "Write results_summary.md, results_detailed.md, metrics.json, latency_breakdown.json and charts.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 13,
+      "name": "compare-literature",
+      "description": "Compare achieved TTFB/speaker_sim figures against published CosyVoice2/Chatterbox/streaming-TTS latency benchmarks.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 14,
+      "name": "suggestions",
+      "description": "Write suggestions.json, including a production-integration feasibility task if 300 ms is reached, or a distillation follow-up if not.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    },
+    {
+      "step": 15,
+      "name": "reporting",
+      "description": "Final verification pass, session capture, and reporting.",
+      "status": "pending",
+      "started_at": null,
+      "completed_at": null,
+      "log_file": null
+    }
+  ],
+  "spec_version": "7"
+}
