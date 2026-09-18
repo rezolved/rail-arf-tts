@@ -145,6 +145,20 @@ previously-missing `results/remote_machines_used.json` and `results/costs.json`.
 check called without workspace/resource-group context so reports unreachable, and no
 `checkpoint_path` on a non-training GPU job).
 
+### Step 11 — creative-thinking
+
+Wrote a four-part creative-thinking analysis inline in
+`logs/steps/011_creative-thinking/step_log.md` (matching t0018's established convention of no
+separate `research/creative_thinking.md`). Key findings for `results`/`suggestions`: (1) the
+LM-decode "floor" may partly reflect a non-pipelined call shape — CosyVoice2 never got a
+chunk-size-tuned streaming variant despite research recommending one; (2) batch-1
+memory-bandwidth-bound decode explains why precision/JIT levers left LM decode flat-or-worse and
+predicts `vllm_backend`/speculative decoding as the correct next levers; (3) stripping the LM stage,
+CosyVoice2's non-LM stages alone already total ≈152.5 ms; (4) `ttfb_ms_p95` (e.g. Chatterbox
+`ref_cache` val96 p95=4,003 ms) tells a different story than the p50 numbers used to pick "best"
+variants, plus a product-architecture aside on caching the finite filler catalog. No code or
+committed measurement was changed.
+
 * * *
 
 ## Cross-Step Decisions
@@ -194,30 +208,6 @@ full detail in `intervention/dvc_push_pull_credential_failure.md`). Whichever la
 task PR/merge (per `CLAUDE.md`'s "Run `dvc push` before merging the task PR" rule) must either retry
 `dvc push` from a session with working Azure Blob Storage credentials, or explicitly flag this as an
 open item in the PR description — do not silently merge with the data undurable.
-
-### Step 11 — creative-thinking
-
-Wrote a four-part creative-thinking analysis inline in
-`logs/steps/011_creative-thinking/step_log.md` (matching t0018's established convention of no
-separate `research/creative_thinking.md`, since neither `logs_specification.md` nor
-`step_registry.py` specify a dedicated output path for this step), grounded entirely in
-`results/tables.json`'s 22 variant rows and `research/research_summary.md`. Key findings for
-`results`/`suggestions`: (1) the measured LM-decode "floor" (815-1,004 ms) may partly reflect a
-sequential (non-pipelined) LM-then-flow-matching call shape rather than a pure architectural limit —
-CosyVoice2 never got a chunk-size-tuned streaming variant despite research explicitly recommending
-one (Approach 3), a genuine gap distinct from `vllm_backend`'s/`streaming_api`'s documented
-install/availability failures; (2) the batch-1, memory-bandwidth-bound nature of autoregressive
-decode explains why every precision/JIT lever left LM decode flat-or-worse, and predicts
-`vllm_backend` (untested) and speculative decoding (never proposed anywhere in this task) are the
-mechanistically correct next levers; (3) stripping the LM stage out, CosyVoice2's non-LM stages
-alone already total ≈152.5 ms (`load_trt`) — comfortably under 300 ms — quantifying how much a
-pipelining fix could plausibly buy if (1) is validated; (4) `ttfb_ms_p95` tells a different story
-than the p50 numbers the answer asset selected variants on (e.g. Chatterbox `ref_cache` val96 p95 is
-4,003 ms, the single worst tail in the matrix, despite being a theoretically "free" caching win),
-and a product-architecture aside: `data/filler_prompts_100.json` is sampled from a finite 1,358-clip
-catalog, so offline precomputation/caching of production filler audio may be a more effective
-near-term path to sub-300ms filler UX than any runtime lever tested here. No code or committed
-measurement was changed; this is a critique/idea layer for downstream steps.
 
 * * *
 
