@@ -61,14 +61,15 @@
       "step": 5,
       "name": "research-internet",
       "description": "Research CosyVoice2 and Chatterbox acceleration paths: load_jit/load_trt, vLLM LLM backend, torch.compile, streaming APIs, chunking strategies.",
-      "status": "in_progress",
+      "status": "completed",
       "started_at": "2026-09-18T10:27:19Z",
-      "completed_at": null,
+      "completed_at": "2026-09-18T10:58:10Z",
       "log_file": "logs/steps/005_research-internet/",
-      "current_owner": "step-executor/research-internet",
+      "current_owner": null,
       "last_heartbeat_at": "2026-09-18T10:27:19Z",
       "heartbeat_interval_seconds": 1800,
-      "expected_completion_at": "2026-09-18T11:27:19Z"
+      "expected_completion_at": "2026-09-18T11:27:19Z",
+      "actual_duration_seconds": 1851
     },
     {
       "step": 6,
