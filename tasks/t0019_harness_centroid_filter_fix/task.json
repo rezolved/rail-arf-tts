@@ -1,0 +1,24 @@
+{
+  "spec_version": 4,
+  "task_id": "t0019_harness_centroid_filter_fix",
+  "task_index": 19,
+  "name": "Fix the TTS harness centroid filter and re-establish the speaker_sim baseline",
+  "short_description": "Fix tts_eval_harness's MIN_CLIP_DURATION_S filter that now rejects the whole 11labs_david corpus, re-score the v3/base/ElevenLabs baselines, and ship the harness as a corrected library.",
+  "long_description_file": "task_description.md",
+  "status": "not_started",
+  "dependencies": [
+    "t0008_tts_eval_harness_baselines",
+    "t0016_v3_recipe_recovery"
+  ],
+  "start_time": null,
+  "end_time": null,
+  "expected_assets": {
+    "library": 1
+  },
+  "task_types": [
+    "write-library",
+    "data-analysis",
+    "correction"
+  ],
+  "source_suggestion": "S-0016-04"
+}
