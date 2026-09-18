@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T23:15:00Z"
-completed_steps: 13
-next_step_number: 14
-next_step_id: "suggestions"
+updated_at: "2026-09-18T23:20:00Z"
+completed_steps: 14
+next_step_number: 15
+next_step_id: "reporting"
 ---
 # Task Objective
 
@@ -187,6 +187,19 @@ with three explicit, unconfirmed hypotheses rather than silently dropped).
 this step-executor's own independent re-run. Caveat: one cosmetic typo (a stray space in an
 `intervention/` file path reference) was found and fixed during independent review; no other issues.
 
+### Step 14 — suggestions
+
+A subagent executed `/generate-suggestions`, reading `task_description.md`'s Expected Outputs
+together with `results/results_summary.md`, `results/results_detailed.md`,
+`results/compare_literature.md`, and the `cosyvoice2_vllm_install_timeout.md` intervention, then
+wrote `results/suggestions.json` (7 suggestions, `S-0021-01`..`S-0021-07`) after deduplicating
+against 41 existing project suggestions and 21 project tasks via the aggregators (no overlaps).
+Since neither system reached the 300 ms TTFB target, the suggestions lead with the
+distillation/smaller-backbone lever (`S-0021-05`) rather than a production-integration task, per
+`task_description.md`'s Expected Outputs, plus 6 other untested engineering-lever candidates this
+task's own analysis surfaced. `verify_suggestions` passed 0 errors/0 warnings on both the subagent's
+run and this step-executor's independent re-run.
+
 * * *
 
 ## Cross-Step Decisions
@@ -241,34 +254,30 @@ open item in the PR description — do not silently merge with the data undurabl
 
 ## Next Step Notes
 
-Step 14 (`suggestions`, mandatory) is next, per `step_tracker.json`. Run
-`uv run python -m arf.scripts.utils.prestep t0021_zero_shot_latency_reduction suggestions`, then
-spawn a subagent to execute the `/generate-suggestions` skill
-(`arf/skills/generate-suggestions/SKILL.md`) for this task — do not run the skill logic inline and
-do not restrict or override its instructions (Critical Rule 10). The subagent will review
-`results/results_summary.md`, `results/results_detailed.md`, and `results/compare_literature.md`
-(now present), check existing project suggestions for duplicates, and write
-`results/suggestions.json`. Material this task's own outputs already surface as strong candidate
-follow-ups, worth passing to the subagent as context (not as a restriction): (1) the never-run
-CosyVoice2 `vllm_backend` variant (`.venv-cosyvoice2-vllm` install hit its 20-minute cutoff,
-documented in `intervention/cosyvoice2_vllm_install_timeout.md`) — this is the one lever that could
-empirically distinguish the three unreconciled hypotheses in `results/compare_literature.md`'s
-Analysis for the `vllm-omni-6870` LM-stage gap (different hardware vs. different serving stack vs.
-sequential-vs-interleaved call shape); (2) a chunk-size-tuned CosyVoice2 streaming/interleaved
-variant, recommended in `research/research_summary.md` but never scheduled, which step 11's
-creative-thinking and step 13's Analysis both flag as the most likely lever to close the LM-stage
-"floor" if the call-shape hypothesis is correct; (3) a fine-tuning-permitted follow-up task
-explicitly modeled on [Seo2026] (Chatterbox-Flash), since this task's Forbidden list ruled out
-fine-tuning entirely and `results/compare_literature.md`'s Analysis frames the 103-118 ms TTFP gap
-as closeable only by that disallowed lever; (4) instrumenting a flow-matching/vocoder timing
-boundary (currently a single combined stage in `results/latency_breakdown.json`), which would let a
-future task compute a real Delta against [Kong2020]/[Kaneko2022]'s vocoder-only benchmarks instead
-of marking it N/A. After the subagent completes, verify `results/suggestions.json` exists and run
-`uv run python -m arf.scripts.utils.run_with_logs --task-id t0021_zero_shot_latency_reduction -- uv run python -m arf.scripts.verificators.verify_suggestions t0021_zero_shot_latency_reduction`,
-fixing all errors before proceeding.
+Step 15 (`reporting`, mandatory, final task step) is next, per `step_tracker.json`. Run
+`uv run python -m arf.scripts.utils.prestep t0021_zero_shot_latency_reduction reporting`, then run
+ALL relevant verificators with `run_with_logs.py` per `execute-task/SKILL.md` Phase 6's `reporting`
+section: `verify_task_file.py`, `verify_task_dependencies.py`, `verify_suggestions.py`,
+`verify_task_metrics.py`, `verify_task_results.py`, `verify_task_folder.py`, `verify_logs.py`,
+`verify_compare_literature.py` (compare-literature ran in step 13), `verify_machines_destroyed.py`
+(remote machines were used in steps 8-10) — no paper/predictions/model/library asset verificators
+apply (this task produced no such assets) and `corrections/` is empty so `verify_corrections.py` is
+not needed. Then run `capture_task_sessions` via `run_with_logs.py` to populate `logs/sessions/`.
+Update `task.json`: set `status` to `"completed"` and set `end_time` (do not touch `start_time`).
+This is the final checkpoint update — set `next_step_number` and `next_step_id` to `null` and
+`completed_steps` to 15.
 
-Carried-forward, not this step's job either: the `dvc push` gap documented in Cross-Step Decisions
-above (this task's 5 `.dvc` pointer files are committed but the actual audio bytes have not been
-pushed to `azure://ml-dvc-datasets/datasets/rail-arf-tts` — Azure credential-chain issue, see
-`intervention/dvc_push_pull_credential_failure.md`) — that belongs to whichever step handles the
-task PR/merge, most likely `reporting` (step 15) or the coordinator's own Phase 7.
+Two carried-forward items the reporting step (or the coordinator's Phase 7) must not silently drop:
+(1) the `dvc push` gap documented in Cross-Step Decisions above — this task's 5 `.dvc` pointer files
+are committed but the actual audio bytes have not been pushed to
+`azure://ml-dvc-datasets/datasets/rail-arf-tts` (Azure credential-chain issue, see
+`intervention/dvc_push_pull_credential_failure.md`) — either retry `dvc push` from a session with
+working Azure Blob Storage credentials, or explicitly flag this as an open item in the PR
+description; (2) `results/suggestions.json` now exists with 7 candidates (`S-0021-01`..`S-0021-07`,
+verified 0 errors/0 warnings) — the strongest, per `task_description.md`'s Expected Outputs, is
+`S-0021-05` (evaluate a distilled/smaller AR backbone), since neither CosyVoice2 nor Chatterbox
+reached the 300 ms TTFB target in this task and the gap is framed as architectural
+(LM-decode-bound); the other 6 (`vllm_backend` retry, chunk-size-tuned streaming, a
+fine-tuning-permitted Chatterbox-Flash follow-up, flow-matching/vocoder stage-split instrumentation,
+speculative decoding, and a Chatterbox `ref_cache` tail-latency repeat-run) are untested
+engineering-lever candidates worth surfacing in the final report's forward-looking section.

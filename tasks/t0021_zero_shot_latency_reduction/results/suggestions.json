@@ -1,0 +1,75 @@
+{
+  "spec_version": "2",
+  "suggestions": [
+    {
+      "id": "S-0021-01",
+      "title": "Retry CosyVoice2 vllm_backend install with an extended timeout and benchmark it",
+      "description": "t0021's .venv-cosyvoice2-vllm install (vllm for swulling/CosyVoice2-0.5B-vllm) hit its 20-minute setup cutoff: wheels downloaded, torch unpacked, but killed before reaching vllm -- no CUDA/torch incompatibility observed, only a wall-clock cutoff (intervention/cosyvoice2_vllm_install_timeout.md). This is the one untested lever that could distinguish continuous-batching/paged-KV-cache serving-stack effects from the flat-or-worse precision/JIT results measured (CosyVoice2 LM stage stayed 814-904ms across fp16/load_jit/load_trt), and the only way to test 'different serving stack' against 'sequential call shape' for the unreconciled ~4.5-5x gap against the vllm-omni RFC's 182.8ms LM-stage figure (results/compare_literature.md Analysis). Re-run with a 60+ minute install budget on LLM-T1-NC80, then run the same 196-prompt sweep as the other CosyVoice2 variants. Recommended task types: tts-benchmark-run, experiment-run.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0021_zero_shot_latency_reduction",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0021-02",
+      "title": "Measure a chunk-size-tuned, time-to-first-flow-chunk CosyVoice2 streaming variant",
+      "description": "research_summary.md's Approach 3 recommended smaller CosyVoice2 streaming chunk sizes (near-zero quality cost on typical text per Du2024 Table 8), but t0021's plan never scheduled this -- all 5 variants used the default, non-tuned call shape. For load_trt, lm_prefill_decode_ms (904.4ms) plus flow_matching_vocoder_ms (151.1ms) sums almost exactly to total_ms (1,056.9ms), consistent with a sequential (LM-to-completion, then flow-matching) pipeline, not an interleaved one (results_detailed.md 'angle 1'; step 11 creative-thinking). Stripping the LM stage as a ceiling estimate leaves non-LM stages at ~152.5ms, under 300ms -- so a properly interleaved, token_hop_len-tuned streaming variant measuring time-to-first-flow-chunk is the likeliest lever to close the gap. Bare stream=True alone is insufficient: t0018 measured 2.86s p50 with stream=True and an un-tuned chunk size. Recommended task types: tts-benchmark-run, experiment-run.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0021_zero_shot_latency_reduction",
+      "source_paper": "10.48550_arXiv.2412.10117",
+      "categories": []
+    },
+    {
+      "id": "S-0021-03",
+      "title": "Fine-tuning-permitted follow-up modeled on Chatterbox-Flash's block-diffusion decoder (Seo2026)",
+      "description": "t0021's Forbidden list ruled out fine-tuning, so compare_literature.md's Analysis frames Seo2026's 103-118ms TTFP (Chatterbox-Flash, same T3 decoder, H100) as a different, disallowed lever, not a contradiction: t0021's best reachable Chatterbox TTFB (837.034ms, torch_compile) is 719-734ms slower, and every engineering-only lever tested left the LM/T3-decode stage flat or worse (838.98-1,003.84ms). Seo2026 closes this gap by fine-tuning the same T3 decoder into a block-diffusion decoding objective (D=16-32, alpha=0.5-0.75), not a serving-side change. A follow-up task with fine-tuning explicitly authorized (a project-level decision, since it lifts t0021's binding Forbidden-list constraint) should reproduce Seo2026's decoding-objective fine-tune on Chatterbox's T3 decoder and re-measure TTFB/TTFP on this task's harness and corrected David reference/centroid. Recommended task types: build-model, tts-benchmark-run, experiment-run.",
+      "kind": "experiment",
+      "priority": "medium",
+      "source_task": "t0021_zero_shot_latency_reduction",
+      "source_paper": "10.48550_arXiv.2605.30748",
+      "categories": []
+    },
+    {
+      "id": "S-0021-04",
+      "title": "Instrument a flow-matching vs. vocoder timing boundary inside the combined flow_matching_vocoder_ms stage",
+      "description": "t0021's latency_breakdown.json treats flow-matching and vocoding as one combined stage (flow_matching_vocoder_ms for CosyVoice2, vocoder_ms for Chatterbox) because no call boundary was instrumented (results/compare_literature.md Methodology Differences and Limitations). This makes the combined 151.120-784.364ms stage impossible to compare against vocoder-only published benchmarks: HiFi-GAN's 3,701x real-time (Kong2020) and iSTFTNet's 245.68x real-time (Kaneko2022) are both marked 'N/A' instead of a computable delta. A follow-up task should add a second timing checkpoint between the flow-matching model's output and the vocoder's input in both adapters (cosyvoice/cli/model.py and ChatterboxTTS.generate()'s S3Gen call), producing separate flow_matching_ms and vocoder_ms fields, so a future comparison can compute a real, scope-matched delta against Kong2020/Kaneko2022 instead of N/A. Recommended task types: tts-benchmark-run, experiment-run.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0021_zero_shot_latency_reduction",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0021-05",
+      "title": "Evaluate a distilled or smaller AR backbone as the primary lever to close the 300ms gap",
+      "description": "Neither CosyVoice2 (826.315ms p50, load_trt) nor Chatterbox (837.034ms p50, torch_compile) reaches 300ms TTFB: the AR LM prefill/decode stage (814.3-1,003.8ms across all 10 variants) is 55-85% of total TTFB and moved under ~10% for any tested serving-side lever (caching, precision, JIT, TensorRT, torch.compile) -- consistent with batch-1 decoding being memory-bandwidth-bound, not compute-bound, so precision/JIT changes miss the bottleneck (results_detailed.md Analysis; creative-thinking step 11 angle 2). Since fine-tuning was forbidden and engineering-only acceleration plateaued, task_description.md's Expected Outputs names a distilled/smaller backbone as the next lever: benchmark a smaller/distilled Qwen2.5-class LM for CosyVoice2, or a smaller T3 decoder for Chatterbox, on this task's harness and corrected David reference/centroid, to see if lower per-token memory traffic reaches 300ms without a fine-tune. Recommended task types: build-model, tts-benchmark-run, experiment-run.",
+      "kind": "experiment",
+      "priority": "high",
+      "source_task": "t0021_zero_shot_latency_reduction",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0021-06",
+      "title": "Test speculative decoding as a decoding-algorithm-level lever for the LM/decode stage",
+      "description": "Every precision/JIT/TensorRT lever t0021 tested moved the LM prefill/decode stage by under 10%, and in most cases (CosyVoice2 fp16/load_jit/load_trt, Chatterbox precision_bf16_or_fp16) made it slightly worse than the ref_cache baseline -- the expected signature of a memory-bandwidth-bound, not compute-bound, batch-1 autoregressive decode loop (creative-thinking step 11 angle 2). Speculative decoding (a small draft model proposing multiple tokens per step, verified in parallel by the full LM) targets that exact bottleneck without vllm_backend's full serving-stack swap (S-0021-01) or fine-tuning (the draft model is a small, off-the-shelf/distilled model used only at inference time, distinct from S-0021-05's backbone-replacement lever). Flagged in step 11 creative-thinking as a concrete candidate never in t0021's tested matrix (precision/backend/chunking only). Recommended task types: experiment-run, tts-benchmark-run.",
+      "kind": "technique",
+      "priority": "medium",
+      "source_task": "t0021_zero_shot_latency_reduction",
+      "source_paper": null,
+      "categories": []
+    },
+    {
+      "id": "S-0021-07",
+      "title": "Repeat-run Chatterbox ref_cache across multiple sessions to resolve its val96 tail-latency anomaly",
+      "description": "Chatterbox's ref_cache variant is a theoretically risk-free caching win (reduces ref_conditioning_ms to near-zero, per REQ-2), but on val96 it has the single worst p95 of any Chatterbox variant measured (4,003.254ms, versus 3,524.515ms for un-cached baseline_new_ref) -- concurrent with an unexplained 46% rise in its own vocoder_ms (536.722 to 784.364ms) in the same run. results_detailed.md's Analysis (angle 4) and step 11 creative-thinking flag this as an unresolved measurement-variance anomaly per LESSONS.md Lesson 1 (cold/warm-cache measurements are not silently pairable), not a confirmed caching cost -- measured once, never re-run. A follow-up task should re-measure Chatterbox ref_cache across 3+ independent GPU sessions to determine whether the val96 p95 regression and vocoder_ms rise are a genuine effect or within-session GPU-state noise, before ref_cache is relied on as a 'free' production lever. Recommended task types: tts-benchmark-run, experiment-run.",
+      "kind": "experiment",
+      "priority": "low",
+      "source_task": "t0021_zero_shot_latency_reduction",
+      "source_paper": null,
+      "categories": []
+    }
+  ]
+}
