@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T23:20:00Z"
-completed_steps: 11
-next_step_number: 12
-next_step_id: "results"
+updated_at: "2026-09-18T23:05:00Z"
+completed_steps: 12
+next_step_number: 13
+next_step_id: "compare-literature"
 ---
 # Task Objective
 
@@ -159,6 +159,20 @@ CosyVoice2's non-LM stages alone already total ≈152.5 ms; (4) `ttfb_ms_p95` (e
 variants, plus a product-architecture aside on caching the finite filler catalog. No code or
 committed measurement was changed.
 
+### Step 12 — results
+
+Wrote `results/results_summary.md` and `results/results_detailed.md` (spec_version "2") against the
+already-produced `metrics.json`/`tables.json`/`latency_breakdown.json` — no regeneration, every
+quoted number cross-checked exactly against its JSON source. Folded in all four of step 11's
+creative-thinking angles into `## Analysis`, embedded and captioned all 3 existing charts, and wrote
+the mandatory 17-row `## Task Requirement Coverage` (REQ-1..REQ-17: 15 `Done`, 2 `Partial` — REQ-3
+for the 2 pre-registered-but-never-run levers, REQ-16 for the listening guide's missing
+`t0018_old_ref` column, both pre-existing documented gaps, not new). Caveat:
+`verify_task_results.py` has an undocumented `TR-E020` rule requiring at least one fenced code block
+in `## Examples` for experiment-type tasks (not stated in `task_results_specification.md`'s prose) —
+fixed by adding raw per-clip JSON excerpts; future `results` steps for experiment-type tasks should
+include fenced JSON/ code blocks in `## Examples` from the start, not just bulleted prose.
+
 * * *
 
 ## Cross-Step Decisions
@@ -213,31 +227,38 @@ open item in the PR description — do not silently merge with the data undurabl
 
 ## Next Step Notes
 
-Step 12 (`results`, required) is next, per `step_tracker.json`. Write `results/results_summary.md`
-and `results/results_detailed.md` per `task_results_specification.md`, using the already-produced
-`results/metrics.json`, `results/tables.json`, `results/costs.json`, and
-`results/remote_machines_used.json` (all implementation/teardown outputs, already verified clean —
-do not regenerate them). The answer asset at `assets/answer/zero-shot-ttfb-floor/` already contains
-the core headline synthesis (826 ms CosyVoice2 `load_trt` floor, 837 ms Chatterbox `torch_compile`
-floor, neither meets 300 ms, gap characterized as architectural) — `results_detailed.md` should
-summarize the same numbers consistently with that asset, not contradict them, while drawing on step
-11's four analysis angles for the `## Analysis`/discrepancy-with-assumptions discussion: (a) the
-LM-decode-floor-may-be-an-instrumentation-artifact hypothesis (untested CosyVoice2 streaming
-chunk-size lever), (b) the batch-1/memory-bandwidth explanation plus speculative decoding as an
-unproposed lever, (c) the ≈152.5 ms non-LM-stage ceiling for CosyVoice2 if LM decode were
-pipelined/hidden, and (d) `ttfb_ms_p95` tail-latency numbers (already in `tables.json`, no new
-measurement needed) that should be reported alongside p50, plus the Chatterbox `ref_cache` val96
-tail anomaly (p95 4,003 ms) worth flagging as an unresolved measurement-variance caveat per
-`LESSONS.md` Lesson 1. Full detail for all four angles is in
-`logs/steps/011_creative-thinking/step_log.md`. Charts already exist in `results/images/`
-(`latency_breakdown_stacked.png`, `ttfb_p50_p95_by_variant.png` — this one already covers angle
-(d)'s p50/p95 point, verify its content before re-deriving it — and
-`ttfb_vs_speaker_sim_variants.png`, produced during implementation); `results_detailed.md` must
-embed all three with `![description](images/filename.png)` per `task_results_specification.md` — do
-not treat the existing charts as already "done" without checking they are embedded and captioned.
+Step 13 (`compare-literature`, optional, included per this task's `experiment-run` task type) is
+next, per `step_tracker.json`. Run
+`uv run python -m arf.scripts.utils.prestep t0021_zero_shot_latency_reduction compare-literature`,
+then spawn a subagent to execute the `/compare-literature` skill
+(`arf/skills/compare-literature/SKILL.md`) for this task — do not run the skill logic inline. The
+subagent should write `results/compare_literature.md` comparing this task's own measured numbers
+against the 5 cited papers' published figures, primarily: [Du2024] (CosyVoice 2)'s additive latency
+model `L_TTS = M*d_lm + M*d_fm + M*d_voc`, which this task's own `results/latency_breakdown.json`
+empirically confirms (LM stage dominates at 815-1,004 ms vs. 151-785 ms combined
+flow-matching+vocoder); [Seo2026] (Chatterbox-Flash)'s 103-118 ms TTFP, achieved via a
+decoding-scheme change this task's Forbidden list explicitly ruled out (no fine-tuning) — worth
+stating explicitly as "not a contradiction, a different, disallowed lever," not a discrepancy to
+explain away; [Kong2020]/[Kaneko2022] (HiFi-GAN/iSTFTNet)'s 150x-3,700x-real-time vocoder-only
+benchmarks, versus this task's own measured 151-785 ms flow-matching+vocoder stage (slower because
+it includes flow-matching, not vocoding alone — the comparison should state this scope difference
+explicitly, not present it as an apples-to-apples gap). Also address the `vllm-project/vllm-omni`
+GitHub-issue RFC's 357 ms (40.5+142.3+129.0 ms) per-stage TTFA decomposition cited in
+`research/research_internet.md` and `assets/answer/zero-shot-ttfb-floor/full_answer.md` — an
+order-of-magnitude faster than this task's own 815-1,004 ms measured LM stage on identically-pinned
+CosyVoice2-0.5B on H100 NVL; the discrepancy was noted but not reconciled in the answer asset (no
+reproducible methodology was available for that source) — `compare_literature.md` should either
+attempt reconciliation (e.g. by hypothesis: different batch size, different exact hardware, or the
+angle-1 "sequential vs. interleaved call shape" hypothesis from step 11/12's Analysis) or state
+plainly that reconciliation is not possible with the evidence in hand, not silently drop the
+discrepancy. All headline numbers to cite are in `results/results_detailed.md`'s Metrics Tables
+section and `results/tables.json`/`results/latency_breakdown.json` directly — do not re-derive them.
+After the subagent completes, verify `results/compare_literature.md` exists and run
+`uv run python -m arf.scripts.utils.run_with_logs --task-id t0021_zero_shot_latency_reduction -- uv run python -m arf.scripts.verificators.verify_compare_literature t0021_zero_shot_latency_reduction`,
+fixing all errors before proceeding.
 
 Carried-forward, not this step's job either: the `dvc push` gap documented in Cross-Step Decisions
 above (this task's 5 `.dvc` pointer files are committed but the actual audio bytes have not been
 pushed to `azure://ml-dvc-datasets/datasets/rail-arf-tts` — Azure credential-chain issue, see
 `intervention/dvc_push_pull_credential_failure.md`) — that belongs to whichever step handles the
-task PR/merge.
+task PR/merge, most likely `reporting` (step 15) or the coordinator's own Phase 7.
