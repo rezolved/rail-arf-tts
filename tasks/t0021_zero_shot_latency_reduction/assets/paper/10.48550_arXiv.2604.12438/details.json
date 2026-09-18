@@ -1,0 +1,69 @@
+{
+  "spec_version": "3",
+  "paper_id": "10.48550_arXiv.2604.12438",
+  "doi": "10.48550/arXiv.2604.12438",
+  "title": "An Ultra-Low Latency, End-to-End Streaming Speech Synthesis Architecture via Block-Wise Generation and Depth-Wise Codec Decoding",
+  "url": "https://arxiv.org/abs/2604.12438",
+  "pdf_url": "https://arxiv.org/pdf/2604.12438",
+  "date_published": "2026-04-14",
+  "year": 2026,
+  "authors": [
+    {
+      "name": "Tianhui Su",
+      "country": "MY",
+      "institution": "School of Computer Sciences, Universiti Sains Malaysia",
+      "orcid": null
+    },
+    {
+      "name": "Tien-Ping Tan",
+      "country": "MY",
+      "institution": "School of Computer Sciences, Universiti Sains Malaysia",
+      "orcid": null
+    },
+    {
+      "name": "Salima Mdhaffar",
+      "country": "FR",
+      "institution": "LIA, Avignon Université",
+      "orcid": null
+    },
+    {
+      "name": "Yannick Estève",
+      "country": "FR",
+      "institution": "LIA, Avignon Université",
+      "orcid": null
+    },
+    {
+      "name": "Aghilas Sini",
+      "country": "FR",
+      "institution": "LIUM, Le Mans Université",
+      "orcid": null
+    }
+  ],
+  "institutions": [
+    {
+      "name": "Universiti Sains Malaysia",
+      "country": "MY"
+    },
+    {
+      "name": "Avignon Université",
+      "country": "FR"
+    },
+    {
+      "name": "Le Mans Université",
+      "country": "FR"
+    }
+  ],
+  "journal": "preprint",
+  "venue_type": "preprint",
+  "categories": [],
+  "abstract": "Real-time speech synthesis requires a rigorous balance between inference latency and acoustic fidelity to support interactive human-computer applications. Conventional continuous text-to-speech pipelines necessitate computationally intensive neural vocoders to reconstruct phase information, creating a significant streaming bottleneck. Furthermore, regression-based speech synthesis acoustic modeling frequently induces spectral over-smoothing artifacts that degrade perceptual quality. To address these limitations, this paper proposes a novel end-to-end non-autoregressive architecture optimized for ultra-low latency block-wise generation, which directly models the highly compressed discrete latent space of the Mimi neural audio codec. By integrating a modified FastSpeech 2 backbone with a progressive depth-wise sequential decoding strategy, the proposed architecture dynamically conditions 32 layers of residual vector quantization codes. This mechanism effectively resolves phonetic alignment degradation and manages the structural complexity of high-fidelity discrete representations without introducing temporal autoregressive overhead. Experimental evaluations conducted on English and Malay single-speaker datasets validate the language-independent deployment capability of the proposed architecture. Compared to conventional continuous regression models, the proposed architecture demonstrates quantitative improvements in fundamental voicing accuracy and effectively mitigates high-frequency spectral degradation. Furthermore, it achieves ultra-low latency inference, translating to a 10.6-fold absolute acceleration over conventional cascaded continuous pipelines. Crucially, the architecture achieves an average time-to-first-byte latency of 48.99 milliseconds, falling significantly below the human perception threshold for real-time interactive streaming. The results firmly establish the proposed discrete architecture as a highly optimized solution for deploying high-quality, real-time streaming speech interfaces in resource-constrained environments.",
+  "citation_key": "Su2026",
+  "summary_path": "summary.md",
+  "files": [
+    "files/su_2026_ultra-low-latency-streaming-tts.pdf"
+  ],
+  "download_status": "success",
+  "download_failure_reason": null,
+  "added_by_task": "t0021_zero_shot_latency_reduction",
+  "date_added": "2026-09-18"
+}
