@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T20:45:00Z"
-completed_steps: 8
-next_step_number: 9
-next_step_id: "implementation"
+updated_at: "2026-09-18T22:45:00Z"
+completed_steps: 9
+next_step_number: 10
+next_step_id: "teardown"
 ---
 # Task Objective
 
@@ -119,6 +119,20 @@ unmonitored; the watchdog protected the VM throughout so no idle-billing risk ma
 future steps on this task should not assume a subagent's self-reported "I'll wait for the
 notification" actually corresponds to a real wakeup mechanism for remote (non-harness-tracked) work.
 
+### Step 9 — implementation
+
+Ran the full 12-cell CosyVoice2/Chatterbox acceleration sweep plus both closures against the
+corrected `data/v4/val/wavs` references; two real bugs surfaced and were fixed mid-sweep — a
+`transcribe_references.py` Whisper truncation bug that fed CosyVoice2 a 1/15th-length `prompt_text`
+(all `ref_single` variants redone after the fix) and a duplicate `merge_and_score` process from a
+confused resume (killed before causing damage). All owner-correction requirements (dual-centroid
+scoring with a `speaker_sim_radiohost_control` column, gate-necessary-not-sufficient caveat, 3-way
+comparison set) and all REQ-1..REQ-17 items were independently re-verified against real verificator
+runs (`verify_task_metrics`, `aggregate_metrics --format ids`, the answer verificator, ruff/mypy) by
+this closeout turn, not just trusted from the prior report. Final confirmed cost: $98.25 of the $100
+cap (a documented, self-corrected track_cost.py double-counting bug is explained in
+`cost_tracking.json`'s own final entry).
+
 * * *
 
 ## Cross-Step Decisions
@@ -158,201 +172,50 @@ Binding requirements for every remaining t0021 step (planning, implementation, r
    noise" — treat its PASS as necessary, not sufficient. The owner will listen; do not report a
    variant as clean on the automated gate alone.
 
+### `dvc push` still pending for this task's audio (2026-09-18, noted at implementation closeout)
+
+This task's 5 `.dvc` pointer files (`data/references/{ref_single,ref_concat}.wav.dvc`,
+`results/audio_samples/{comparison_set,harness,references}.dvc`) are committed to git, but the
+actual audio bytes have NOT been pushed to `azure://ml-dvc-datasets/datasets/rail-arf-tts` —
+`dvc push` hangs in this environment (Azure credential-chain issue, not a data/methodology problem;
+full detail in `intervention/dvc_push_pull_credential_failure.md`). Whichever later step handles the
+task PR/merge (per `CLAUDE.md`'s "Run `dvc push` before merging the task PR" rule) must either retry
+`dvc push` from a session with working Azure Blob Storage credentials, or explicitly flag this as an
+open item in the PR description — do not silently merge with the data undurable.
+
 * * *
 
 ## Next Step Notes
 
-Step 9 (`implementation`) is `paused_waiting` (pause_count=5, resume_after `2026-09-18T23:30:00Z`,
-`watchdog_active=true`, `current_owner=null`). This note supersedes the pause_count=4 note below;
-keep the history below for context but trust this paragraph first on resume.
+Step 10 (`teardown`) is next. **The GPU VM `LLM-T1-NC80` is already fully destroyed** —
+`results/cost_tracking.json`'s final entry (`2026-09-18T22:35:00Z`, `$98.25`) and multiple prior
+step-executor turns independently confirmed via `az` that the VM's last Running window ended at
+`destroyed_at=2026-09-18T20:39:00.626630Z` (`azure_ml_vm.py teardown` returned `deallocated=true`;
+SSH now times out). This step should NOT attempt to stop/deallocate anything — there is nothing left
+to tear down. It should instead:
 
-**What happened between pause_count=4 and pause_count=5:** a step-executor turn resumed (unaware of
-the coordinator's pause_count=4 recovery commit `068843e` at the time), independently re-verified
-the same facts the coordinator had already established — GPU VM `LLM-T1-NC80` deallocated
-(`destroyed_at=2026-09-18T20:39:00.626630Z`, SSH now times out), all 5 CosyVoice2 `ref_single` redo
-variants complete and resynced — and re-ran the now-redundant-but-harmless idempotent steps (rsync,
-`azure_ml_vm.py teardown`, a `track_cost.py` checkpoint append). It then launched its OWN
-`merge_and_score` invocation, unaware the coordinator's `merge_and_score` (PID `2215682`, started
-`20:38:02Z`) was already running — this created a genuine duplicate process on this 4-core machine
-(tracked as background-task-id `bsmg7sszf`, PIDs `2216058`/`2216060`/`2216064`, started `20:40:53Z`).
-The step-executor caught its own duplicate before it caused real damage, killed it (PIDs
-2216058/2216060/2216064; `bsmg7sszf` correctly reports `failed`/exit 1 as a direct result — this is
-expected, not a real failure), confirmed the surviving PID `2215682` was undisturbed and still
-healthy (CPU time still climbing: 00:13:23→00:18:27 across the check), and re-registered the pause
-via `heartbeat.pause_step` (bumping `pause_count` 4→5, `resume_after` tightened slightly to
-`23:30:00Z` on the same ~3-hour-duration basis as the coordinator's own `23:45:00Z` estimate — both
-are consistent with the first `merge_and_score` run's actual 16:23→19:22Z duration for the same
-~2156-row workload). No data was lost or corrupted; the only effect was one wasted ~2-minute duplicate
-process-start, now cleaned up.
+1. Re-confirm cheaply (e.g.
+   `az ml compute show --name LLM-T1-NC80 --workspace-name brainpowa-northeurope --resource-group rezolve-AI --query provisioningState`
+   or equivalent, not a fresh SSH/VM-acquire attempt) that the VM is genuinely stopped, before
+   writing anything.
+2. **Update `logs/steps/008_setup-machines/machine_log.json`'s `destroyed_at`/
+   `total_duration_hours`/`total_cost_usd` fields** — these are still `null`/unset as of this commit
+   (the physical teardown happened mid-`implementation`, across 3 separate acquire/run/stop cycles,
+   but nothing has gone back and closed out the setup step's own log record). Use the 3 confirmed
+   windows already itemized in `results/cost_tracking.json`'s final entry (8658.12s + 12432.76s +
+   4245.22s = 25336.10s = 7.0378h = $98.25 total) as the source of truth, not a fresh recomputation.
+3. **Write `results/remote_machines_used.json` and `results/costs.json`** (per this task's
+   `SKILL.md` teardown-step contract) — neither file exists yet under `results/` (only
+   `cost_tracking.json`, an implementation-step working file, exists there today).
+   `results/costs.json` should reflect the same final `$98.25` total;
+   `results/remote_machines_used.json` should record `LLM-T1-NC80` with its 3 Running windows,
+   `destroyed_at`, and the watchdog fields already in `machine_log.json`.
+4. Run
+   `uv run python -m arf.scripts.verificators.verify_machines_destroyed --task-id t0021_zero_shot_latency_reduction`
+   and fix whatever it flags (likely exactly the null `destroyed_at` gap above).
+5. This step is expected to be short/confirmation-only — no new SSH session, no new spend risk (the
+   watchdog is a non-issue now since no VM exists to protect). Do not re-provision anything.
 
-**Lesson for whoever reads this next:** before launching a new long-running local job for this step,
-always check `ps aux | grep merge_and_score` (or the equivalent for whatever script is next) first —
-another agent (this step-executor or the coordinator) may already have one in flight. This step's
-own history is proof that "the file doesn't exist yet, therefore no one has started making it" is not
-a safe assumption once multiple agents can touch the same worktree.
-
-**What happened between pause_count=3 and pause_count=4:** the step-executor resumed at
-`2026-09-18T21:00:00Z`, drove all 5 CosyVoice2 `ref_single` redo variants to completion
-(`ref_cache`, `fp16`, `load_jit`, `load_trt` — `baseline_new_ref` was already done at the prior
-pause), resynced and committed the corrected `results/per_clip_metrics_cosyvoice2_*_ref_single.json`
-/ `latency_breakdown_*` / `timing_*` files (commit `dddc35d`), and correctly stopped the GPU VM
-(`LLM-T1-NC80` confirmed `Stopped` at `20:38:57Z` — no billing risk). It then launched a FRESH
-`uv run -m tasks.t0021_zero_shot_latency_reduction.code.merge_and_score` locally (PID `2215682`,
-started `2026-09-18T20:38:14Z`) to rebuild `results/per_clip_metrics.json` from all corrected
-per-variant source files — but ended its turn twice in a row claiming it would "wait for the
-merge_and_score rerun to complete" with no registered pause. **The coordinator caught this and drove
-the recovery inline** (per the execute-task skill's Critical Rule on never re-delegating recovery to
-a fresh subagent): committed the outstanding redo-result files directly, then called
-`heartbeat.pause_step` itself with an accurate sentinel and a `resume_after` of `23:45:00Z` (based
-on the first `merge_and_score` run's ~3h duration, 16:23→19:22Z, for the same ~2156-row workload).
-
-**On resume:** check `ps -p 2215682` and whether `results/per_clip_metrics.json`'s mtime is newer
-than `2026-09-18T19:22Z` (the stale first-run version). If the fresh run succeeded, proceed straight
-to `plan/plan.md` Milestone 5 (steps 3-7 in the pause_count=3 note below are still the correct
-remaining sequence — `run_gate_check`, `build_final_reports`, `build_comparison_set` +
-`build_listening_guide`, the `answer` asset, closing verificators). If the PID is gone and the file
-is still stale, the job crashed — check
-`/tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/632781c0-3a57-4e0f-825f-dc71a72b011c/scratchpad/merge2.log`
-for stderr and write an intervention file.
-
-**Process note (now the THIRD time this exact lesson has mattered on this task):** a bare background
-shell command — local `run_in_background` Bash or a remote `nohup`/tmux job — never notifies the
-coordinator by itself. Only a committed `heartbeat.pause_step` call with a concrete `resume_after`
-makes a wait safe and visible. If the next resumer is still running when a turn must end, call
-`pause_step` before ending the turn — do not assume anything else will.
-
-### Superseded note (pause_count=3, kept for history only — see paragraph above for current state)
-
-**What happened between pause_count=2 and pause_count=3:** the local `merge_and_score.py` job (PID
-591111\) did finish and wrote `results/per_clip_metrics.json` at 19:22:10Z, but a post-hoc
-inspection of that output (aggregate WER=0.9352, catastrophically high) found a real bug, not a
-scoring artifact: `code/transcribe_references.py` used `WhisperModel("small.en", beam_size=5)` to
-build `ref_single`'s `prompt_text`, which silently truncated the transcript to only the clip's first
-sentence despite the returned segment's timestamps correctly spanning the full 15.08s clip. A
-`prompt_text` describing 1/15th of the actual reference audio confused CosyVoice2's zero-shot
-conditioning badly enough that every `ref_single` CosyVoice2 variant (`baseline_new_ref` included)
-synthesized audio unrelated to the requested text (confirmed by direct listening: e.g. "checking for
-the latest press release" produced "A wolf profferpate."). This is fully written up in
-`intervention/cosyvoice2_ref_single_prompt_text_truncated.md`. Fix: switched `WHISPER_MODEL_SIZE` to
-`"base.en"` with plain defaults (matches t0008's own setting); re-ran `transcribe_references.py`;
-`data/references/manifest.json`'s `ref_single_transcript` now holds the full multi-sentence text.
-`chatterbox`'s `ref_single` and cosyvoice2's `ref_concat` were NOT affected (different transcript /
-never anomalous WER) and are not being re-run.
-
-The VM (`LLM-T1-NC80`) had been correctly idle-stopped by the watchdog during the long CPU-only
-`merge_and_score` wait (not an incident — see `code/constants.py`'s `VM_CONFIRMED_DOWNTIME_SECONDS`
-Gap 2 comment) and was re-acquired at 19:28:26Z specifically to redo the 5 affected CosyVoice2
-`ref_single` variants (`baseline_new_ref`, `ref_cache`, `fp16`, `load_jit`, `load_trt`) against the
-corrected transcript. This step-executor turn directly confirmed via SSH: VM state Running, idle
-watchdog armed and PID-confirmed (PID 5695), and a real tmux session `cosyvoice2_rerun` running
-`run_cosyvoice2_sweep.sh` (a simple sequential-loop script at
-`/mnt/cache/persist/t0021_zero_shot_latency_reduction/repo/run_cosyvoice2_sweep.sh`, logging to
-`tasks/t0021_zero_shot_latency_reduction/logs/cosyvoice2_sweep.log` on the VM, echoing
-`ALL_COSYVOICE2_VARIANTS_DONE` at the very end). As of this pause: variant 1/5 (`baseline_new_ref`)
-finished (exit=0, 19:51:55Z, 196/196); its corrected
-`results/per_clip_metrics_cosyvoice2_baseline_new_ref_ref_single.json` already resynced to this
-local worktree (a live sync mechanism mirrors the VM's persist dir back here — no manual rsync
-needed) and is committed. Variant 2/5 (`ref_cache`, PID 7756) is in progress; this step-executor
-directly verified it is NOT stuck via two spaced checks (CPU time 00:02:14→00:04:10, GPU memory
-3MiB→3889MiB, log advancing through model-load/onnxruntime-init) — it is genuinely progressing
-through a slow model-load off the Azure Files persist mount, the same slow-I/O pattern noted in step
-8\. 3 variants remain after `ref_cache` (`fp16`, `load_jit`, `load_trt`), each expected ~11-13
-minutes based on variant 1's timing, so completion is expected roughly 20:40-20:50Z; `resume_after`
-is set to 21:00Z for buffer.
-
-**Caveat carried forward and now resolved by construction:** the earlier concern (pause_count=2
-note, below) about `merge_and_score.py` possibly having read a stale pre-16:47:42Z
-`chatterbox_precision_bf16_or_fp16_ref_single` source file no longer needs separate handling —
-`merge_and_score.py`'s `main()` globs and `read_text()`s every `per_clip_metrics_*.json` file fresh
-at call time (confirmed by reading its source this turn), so the FULL re-run required below
-(triggered by the cosyvoice2 fix) will naturally pick up both the already-corrected chatterbox file
-and the freshly redone cosyvoice2 files in one pass. No separate re-run-just-one-variant step is
-needed.
-
-**On resume (after `ALL_COSYVOICE2_VARIANTS_DONE` appears in the VM's `cosyvoice2_sweep.log`,
-checked via the recorded `liveness_probe`):**
-
-1. Confirm all 5 `results/per_clip_metrics_cosyvoice2_<variant>_ref_single.json` files resynced
-   locally with post-fix data (spot-check: `text` field's WER should no longer show the ~0.94
-   gibberish signature once scored).
-2. Re-run `uv run python -m tasks.t0021_zero_shot_latency_reduction.code.merge_and_score` in full
-   (fast, CPU-only, no GPU needed — just re-reads existing JSON files and re-scores ~2156 clips).
-3. Run `code/run_gate_check.py` (writes `hardened_gate_pass` per clip + `results/gate_failures.json`
-   — remember the owner-correction caveat: PASS is necessary, not sufficient).
-4. Run `code/build_final_reports.py` (writes `results/metrics.json`, `results/tables.json`,
-   `results/latency_breakdown.json`, and the 3 required charts under `results/images/`).
-5. Run `code/build_comparison_set.py` then `code/build_listening_guide.py` (the 3-way audio
-   comparison set + `results/listening_guide.md`; `build_comparison_set.py` already documents a
-   real, already-resolved deviation — t0018's old-ref audio is unreachable via `dvc pull` due to an
-   Azure credential-chain mismatch specific to `dvc`'s constrained credential chain, so the
-   `t0018_old_ref` column is intentionally `-`; this is expected, not a new bug to chase).
-6. Write the answer asset:
-   `assets/answer/zero-shot-ttfb-floor/{details.json,short_answer.md, full_answer.md}` per
-   `meta/asset_types/answer/specification.md` v2 (already read in full this turn — v2 requires
-   `short_answer_path`/`full_answer_path` in `details.json`; `meta/categories/` is currently empty,
-   so an empty `categories` list is expected, matching the `RP-W003`-style warning precedent from
-   step 4).
-7. Run the implementation step's closing verificators per `plan/plan.md`'s Verification Criteria
-   section: `verify_task_metrics`, `aggregate_metrics --format ids` (expect exactly `rtf`,
-   `speaker_sim`, `ttfb_ms`), the answer-asset verificator, and the file-existence/REQ-coverage
-   checks.
-8. Do NOT kill/restart PID 7756 or the `cosyvoice2_rerun` tmux session on resume unless a fresh
-   check shows it is actually stuck (no CPU-time/GPU-memory/log movement across two checks spaced
-   >=60s apart) — it was healthy as of this pause.
-
-Caveat (re-affirmed, this is now the second time this exact lesson mattered on this task): a bare
-background shell command (local `run_in_background` Bash, or a remote `nohup`/tmux job) does not by
-itself notify the coordinator — only `heartbeat.pause_step` with a concrete `resume_after` makes the
-wait visible and safe. Ending a turn on an unregistered background poll, even a well-intentioned
-bounded one, leaves the tracker in a half-consistent state (`paused_waiting` status with a stale
-`current_owner` still set) exactly as the coordinator caught this turn. Every pause from here on
-must go through `heartbeat.pause_step` before the turn ends, with `current_owner` verified `null`
-afterward.
-
-* * *
-
-### Superseded note (pause_count=2, kept for history only — see paragraph above for current state)
-
-Step 9 (`implementation`) is `paused_waiting` (pause_count=2, resume_after `2026-09-18T19:45:00Z`).
-GPU work is 100% done and the VM is torn down (`cost_tracking.json` final entry $68.77/4.93h at
-16:51Z); all remaining work is CPU-only on this local machine. The 11-variant sweep produced all
-`per_clip_metrics_<variant>.json` and `latency_breakdown_<variant>.json` files in `results/`. A
-local scoring job (`uv run -m tasks.t0021_zero_shot_latency_reduction.code.merge_and_score`, PID
-591111, started 2026-09-18T16:23:11Z) is merging all 2156 per-clip rows and computing dual-centroid
-speaker_sim + duration_ratio + WER (faster-whisper `base.en` int8 on CPU). As of this pause (18:44Z,
-elapsed 2:21) it is still alive and healthy (182% CPU across 2 hot compute threads, no crash) but
-`results/per_clip_metrics.json` has not appeared yet. This is the THIRD executor turn to encounter
-this same job still running — see the resume_sentinel recorded on the step tracker
-(`tasks/t0021_zero_shot_latency_reduction/step_tracker.json`, step 9) for the full check procedure.
-
-On resume: `ps -p 591111` and check `results/per_clip_metrics.json` is non-empty.
-
-* If present: merge_and_score succeeded. **Before trusting it**, verify the
-  `chatterbox_precision_bf16_or_fp16_ref_single` rows are not stale — that source file
-  (`results/per_clip_metrics_chatterbox_precision_bf16_or_fp16_ref_single.json`) was rewritten at
-  `16:47:42Z` (a bug-fix re-run; T3Cond dtype mismatch, see `results/cost_tracking.json` 16:32/16:51
-  entries) which is 24 minutes AFTER merge_and_score's glob+read at process start (16:23:11Z). If
-  the merged output shows null/suspicious `speaker_sim`/`wer` for that variant's 196 rows, re-run
-  `merge_and_score` (fast — no GPU, just re-reads the now-final JSON files and re-scores ~2156
-  clips) before proceeding. Once confirmed good, proceed to `plan/plan.md` Milestone 5:
-  `run_gate_check`, `report_zeroshot` charts, `build_comparison_set`, `build_listening_guide`, the
-  `answer` asset, and the implementation step's closing verificators.
-* If PID 591111 is gone and `per_clip_metrics.json` is still absent/empty: the job crashed. Read
-  `/tmp/claude-1000/-home-azureuser-rail-metarepo-real-repos-rail-arf-tts/632781c0-3a57-4e0f-825f-dc71a72b011c/tasks/bbnr9u1zw.output`
-  for stderr — note this file legitimately reads EMPTY even for a healthy live job because it is fed
-  via a plain `tail -40` (no `-f`) that buffers everything until the upstream process hits EOF;
-  emptiness alone is not evidence of a hang. Diagnose and either fix-and-rerun or write an
-  `intervention/` file.
-* If PID 591111 is still alive and healthy: do NOT kill/restart it. Poll with real bounded sleeps
-  for up to ~15-20 minutes; if it finishes, proceed as above. If not, `pause_step` again with a new
-  concrete `resume_after` (this is pause_count=2 already — a third pause without a materially better
-  ETA basis would trip `ST-E010`; use elapsed time and thread CPU activity, not a guess).
-
-Caveat carried from step 8 (now doubly confirmed): never end a turn claiming "the background job
-will notify me" — there is no such mechanism for a bare shell PID. Either drive it to completion
-with real synchronous polling (bounded, e.g. via repeated `sleep`-loop Bash calls) or transition to
-`paused_waiting` via `heartbeat.pause_step` with a concrete `resume_after` and commit. Per the owner
-correction above (still binding), the `intervention/` file for the wrong-ElevenLabs-voice correction
-and the new `ref_single`/`ref_concat` references + corrected centroid must already exist from
-implementation steps 1-2 — confirm this on resume if starting fresh context, but do not redo it if
-already present.
+Carried-forward, not this step's job: the `dvc push` gap documented in Cross-Step Decisions above
+(audio bytes not yet durable in blob storage) — that belongs to whichever step handles the PR/merge,
+not teardown.

@@ -1,0 +1,15 @@
+{
+  "spec_version": "1",
+  "task_id": "t0021_zero_shot_latency_reduction",
+  "command": "uv run python -m meta.asset_types.answer.verificator --task-id t0021_zero_shot_latency_reduction zero-shot-ttfb-floor",
+  "exit_code": 0,
+  "duration_seconds": 0.259,
+  "started_at": "2026-09-18T22:38:07Z",
+  "completed_at": "2026-09-18T22:38:07Z",
+  "working_directory": "/home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction",
+  "stdout_file": "047_20260918T223807Z_uv-run-python.stdout.txt",
+  "stderr_file": "047_20260918T223807Z_uv-run-python.stderr.txt",
+  "stdout_lines": 5,
+  "stderr_lines": 0,
+  "truncated": false
+}
