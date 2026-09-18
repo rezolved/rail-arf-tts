@@ -1,7 +1,7 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T18:44:37Z"
+updated_at: "2026-09-18T19:56:31Z"
 completed_steps: 8
 next_step_number: 9
 next_step_id: "implementation"
@@ -161,6 +161,100 @@ Binding requirements for every remaining t0021 step (planning, implementation, r
 * * *
 
 ## Next Step Notes
+
+Step 9 (`implementation`) is `paused_waiting` (pause_count=3, resume_after `2026-09-18T21:00:00Z`,
+`watchdog_active=true`, `current_owner=null`). This note supersedes the pause_count=2 note below,
+which described a since-resolved local CPU job; keep the history below for context but trust this
+paragraph first on resume.
+
+**What happened between pause_count=2 and pause_count=3:** the local `merge_and_score.py` job (PID
+591111) did finish and wrote `results/per_clip_metrics.json` at 19:22:10Z, but a post-hoc inspection
+of that output (aggregate WER=0.9352, catastrophically high) found a real bug, not a scoring
+artifact: `code/transcribe_references.py` used `WhisperModel("small.en", beam_size=5)` to build
+`ref_single`'s `prompt_text`, which silently truncated the transcript to only the clip's first
+sentence despite the returned segment's timestamps correctly spanning the full 15.08s clip. A
+`prompt_text` describing 1/15th of the actual reference audio confused CosyVoice2's zero-shot
+conditioning badly enough that every `ref_single` CosyVoice2 variant (`baseline_new_ref` included)
+synthesized audio unrelated to the requested text (confirmed by direct listening: e.g. "checking for
+the latest press release" produced "A wolf profferpate."). This is fully written up in
+`intervention/cosyvoice2_ref_single_prompt_text_truncated.md`. Fix: switched
+`WHISPER_MODEL_SIZE` to `"base.en"` with plain defaults (matches t0008's own setting); re-ran
+`transcribe_references.py`; `data/references/manifest.json`'s `ref_single_transcript` now holds the
+full multi-sentence text. `chatterbox`'s `ref_single` and cosyvoice2's `ref_concat` were NOT affected
+(different transcript / never anomalous WER) and are not being re-run.
+
+The VM (`LLM-T1-NC80`) had been correctly idle-stopped by the watchdog during the long CPU-only
+`merge_and_score` wait (not an incident — see `code/constants.py`'s `VM_CONFIRMED_DOWNTIME_SECONDS`
+Gap 2 comment) and was re-acquired at 19:28:26Z specifically to redo the 5 affected CosyVoice2
+`ref_single` variants (`baseline_new_ref`, `ref_cache`, `fp16`, `load_jit`, `load_trt`) against the
+corrected transcript. This step-executor turn directly confirmed via SSH: VM state Running, idle
+watchdog armed and PID-confirmed (PID 5695), and a real tmux session `cosyvoice2_rerun` running
+`run_cosyvoice2_sweep.sh` (a simple sequential-loop script at
+`/mnt/cache/persist/t0021_zero_shot_latency_reduction/repo/run_cosyvoice2_sweep.sh`, logging to
+`tasks/t0021_zero_shot_latency_reduction/logs/cosyvoice2_sweep.log` on the VM, echoing
+`ALL_COSYVOICE2_VARIANTS_DONE` at the very end). As of this pause: variant 1/5 (`baseline_new_ref`)
+finished (exit=0, 19:51:55Z, 196/196); its corrected
+`results/per_clip_metrics_cosyvoice2_baseline_new_ref_ref_single.json` already resynced to this
+local worktree (a live sync mechanism mirrors the VM's persist dir back here — no manual rsync
+needed) and is committed. Variant 2/5 (`ref_cache`, PID 7756) is in progress; this step-executor
+directly verified it is NOT stuck via two spaced checks (CPU time 00:02:14→00:04:10, GPU memory
+3MiB→3889MiB, log advancing through model-load/onnxruntime-init) — it is genuinely progressing
+through a slow model-load off the Azure Files persist mount, the same slow-I/O pattern noted in step
+8. 3 variants remain after `ref_cache` (`fp16`, `load_jit`, `load_trt`), each expected ~11-13 minutes
+based on variant 1's timing, so completion is expected roughly 20:40-20:50Z; `resume_after` is set to
+21:00Z for buffer.
+
+**Caveat carried forward and now resolved by construction:** the earlier concern (pause_count=2
+note, below) about `merge_and_score.py` possibly having read a stale pre-16:47:42Z
+`chatterbox_precision_bf16_or_fp16_ref_single` source file no longer needs separate handling —
+`merge_and_score.py`'s `main()` globs and `read_text()`s every `per_clip_metrics_*.json` file fresh
+at call time (confirmed by reading its source this turn), so the FULL re-run required below
+(triggered by the cosyvoice2 fix) will naturally pick up both the already-corrected chatterbox file
+and the freshly redone cosyvoice2 files in one pass. No separate re-run-just-one-variant step is
+needed.
+
+**On resume (after `ALL_COSYVOICE2_VARIANTS_DONE` appears in the VM's `cosyvoice2_sweep.log`, checked
+via the recorded `liveness_probe`):**
+
+1. Confirm all 5 `results/per_clip_metrics_cosyvoice2_<variant>_ref_single.json` files resynced
+   locally with post-fix data (spot-check: `text` field's WER should no longer show the ~0.94
+   gibberish signature once scored).
+2. Re-run `uv run python -m tasks.t0021_zero_shot_latency_reduction.code.merge_and_score` in full
+   (fast, CPU-only, no GPU needed — just re-reads existing JSON files and re-scores ~2156 clips).
+3. Run `code/run_gate_check.py` (writes `hardened_gate_pass` per clip + `results/gate_failures.json`
+   — remember the owner-correction caveat: PASS is necessary, not sufficient).
+4. Run `code/build_final_reports.py` (writes `results/metrics.json`, `results/tables.json`,
+   `results/latency_breakdown.json`, and the 3 required charts under `results/images/`).
+5. Run `code/build_comparison_set.py` then `code/build_listening_guide.py` (the 3-way audio
+   comparison set + `results/listening_guide.md`; `build_comparison_set.py` already documents a
+   real, already-resolved deviation — t0018's old-ref audio is unreachable via `dvc pull` due to an
+   Azure credential-chain mismatch specific to `dvc`'s constrained credential chain, so the
+   `t0018_old_ref` column is intentionally `-`; this is expected, not a new bug to chase).
+6. Write the answer asset: `assets/answer/zero-shot-ttfb-floor/{details.json,short_answer.md,
+   full_answer.md}` per `meta/asset_types/answer/specification.md` v2 (already read in full this
+   turn — v2 requires `short_answer_path`/`full_answer_path` in `details.json`; `meta/categories/` is
+   currently empty, so an empty `categories` list is expected, matching the `RP-W003`-style warning
+   precedent from step 4).
+7. Run the implementation step's closing verificators per `plan/plan.md`'s Verification Criteria
+   section: `verify_task_metrics`, `aggregate_metrics --format ids` (expect exactly `rtf`,
+   `speaker_sim`, `ttfb_ms`), the answer-asset verificator, and the file-existence/REQ-coverage
+   checks.
+8. Do NOT kill/restart PID 7756 or the `cosyvoice2_rerun` tmux session on resume unless a fresh check
+   shows it is actually stuck (no CPU-time/GPU-memory/log movement across two checks spaced >=60s
+   apart) — it was healthy as of this pause.
+
+Caveat (re-affirmed, this is now the second time this exact lesson mattered on this task): a bare
+background shell command (local `run_in_background` Bash, or a remote `nohup`/tmux job) does not by
+itself notify the coordinator — only `heartbeat.pause_step` with a concrete `resume_after` makes the
+wait visible and safe. Ending a turn on an unregistered background poll, even a well-intentioned
+bounded one, leaves the tracker in a half-consistent state (`paused_waiting` status with a stale
+`current_owner` still set) exactly as the coordinator caught this turn. Every pause from here on must
+go through `heartbeat.pause_step` before the turn ends, with `current_owner` verified `null`
+afterward.
+
+* * *
+
+### Superseded note (pause_count=2, kept for history only — see paragraph above for current state)
 
 Step 9 (`implementation`) is `paused_waiting` (pause_count=2, resume_after `2026-09-18T19:45:00Z`).
 GPU work is 100% done and the VM is torn down (`cost_tracking.json` final entry $68.77/4.93h at
