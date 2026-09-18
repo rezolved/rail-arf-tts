@@ -162,9 +162,34 @@ Binding requirements for every remaining t0021 step (planning, implementation, r
 
 ## Next Step Notes
 
-Step 9 (`implementation`) is `paused_waiting` (pause_count=4, resume_after `2026-09-18T23:45:00Z`,
-`watchdog_active=true`, `current_owner=null`). This note supersedes the pause_count=3 note below;
+Step 9 (`implementation`) is `paused_waiting` (pause_count=5, resume_after `2026-09-18T23:30:00Z`,
+`watchdog_active=true`, `current_owner=null`). This note supersedes the pause_count=4 note below;
 keep the history below for context but trust this paragraph first on resume.
+
+**What happened between pause_count=4 and pause_count=5:** a step-executor turn resumed (unaware of
+the coordinator's pause_count=4 recovery commit `068843e` at the time), independently re-verified
+the same facts the coordinator had already established — GPU VM `LLM-T1-NC80` deallocated
+(`destroyed_at=2026-09-18T20:39:00.626630Z`, SSH now times out), all 5 CosyVoice2 `ref_single` redo
+variants complete and resynced — and re-ran the now-redundant-but-harmless idempotent steps (rsync,
+`azure_ml_vm.py teardown`, a `track_cost.py` checkpoint append). It then launched its OWN
+`merge_and_score` invocation, unaware the coordinator's `merge_and_score` (PID `2215682`, started
+`20:38:02Z`) was already running — this created a genuine duplicate process on this 4-core machine
+(tracked as background-task-id `bsmg7sszf`, PIDs `2216058`/`2216060`/`2216064`, started `20:40:53Z`).
+The step-executor caught its own duplicate before it caused real damage, killed it (PIDs
+2216058/2216060/2216064; `bsmg7sszf` correctly reports `failed`/exit 1 as a direct result — this is
+expected, not a real failure), confirmed the surviving PID `2215682` was undisturbed and still
+healthy (CPU time still climbing: 00:13:23→00:18:27 across the check), and re-registered the pause
+via `heartbeat.pause_step` (bumping `pause_count` 4→5, `resume_after` tightened slightly to
+`23:30:00Z` on the same ~3-hour-duration basis as the coordinator's own `23:45:00Z` estimate — both
+are consistent with the first `merge_and_score` run's actual 16:23→19:22Z duration for the same
+~2156-row workload). No data was lost or corrupted; the only effect was one wasted ~2-minute duplicate
+process-start, now cleaned up.
+
+**Lesson for whoever reads this next:** before launching a new long-running local job for this step,
+always check `ps aux | grep merge_and_score` (or the equivalent for whatever script is next) first —
+another agent (this step-executor or the coordinator) may already have one in flight. This step's
+own history is proof that "the file doesn't exist yet, therefore no one has started making it" is not
+a safe assumption once multiple agents can touch the same worktree.
 
 **What happened between pause_count=3 and pause_count=4:** the step-executor resumed at
 `2026-09-18T21:00:00Z`, drove all 5 CosyVoice2 `ref_single` redo variants to completion
