@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T23:05:00Z"
-completed_steps: 10
-next_step_number: 11
-next_step_id: "creative-thinking"
+updated_at: "2026-09-18T23:20:00Z"
+completed_steps: 11
+next_step_number: 12
+next_step_id: "results"
 ---
 # Task Objective
 
@@ -195,29 +195,59 @@ task PR/merge (per `CLAUDE.md`'s "Run `dvc push` before merging the task PR" rul
 `dvc push` from a session with working Azure Blob Storage credentials, or explicitly flag this as an
 open item in the PR description — do not silently merge with the data undurable.
 
+### Step 11 — creative-thinking
+
+Wrote a four-part creative-thinking analysis inline in
+`logs/steps/011_creative-thinking/step_log.md` (matching t0018's established convention of no
+separate `research/creative_thinking.md`, since neither `logs_specification.md` nor
+`step_registry.py` specify a dedicated output path for this step), grounded entirely in
+`results/tables.json`'s 22 variant rows and `research/research_summary.md`. Key findings for
+`results`/`suggestions`: (1) the measured LM-decode "floor" (815-1,004 ms) may partly reflect a
+sequential (non-pipelined) LM-then-flow-matching call shape rather than a pure architectural limit —
+CosyVoice2 never got a chunk-size-tuned streaming variant despite research explicitly recommending
+one (Approach 3), a genuine gap distinct from `vllm_backend`'s/`streaming_api`'s documented
+install/availability failures; (2) the batch-1, memory-bandwidth-bound nature of autoregressive
+decode explains why every precision/JIT lever left LM decode flat-or-worse, and predicts
+`vllm_backend` (untested) and speculative decoding (never proposed anywhere in this task) are the
+mechanistically correct next levers; (3) stripping the LM stage out, CosyVoice2's non-LM stages
+alone already total ≈152.5 ms (`load_trt`) — comfortably under 300 ms — quantifying how much a
+pipelining fix could plausibly buy if (1) is validated; (4) `ttfb_ms_p95` tells a different story
+than the p50 numbers the answer asset selected variants on (e.g. Chatterbox `ref_cache` val96 p95 is
+4,003 ms, the single worst tail in the matrix, despite being a theoretically "free" caching win),
+and a product-architecture aside: `data/filler_prompts_100.json` is sampled from a finite 1,358-clip
+catalog, so offline precomputation/caching of production filler audio may be a more effective
+near-term path to sub-300ms filler UX than any runtime lever tested here. No code or committed
+measurement was changed; this is a critique/idea layer for downstream steps.
+
 * * *
 
 ## Next Step Notes
 
-Step 11 (`creative-thinking`, optional) is next, per `step_tracker.json` — an out-of-the-box
-analysis step for alternative levers beyond the planned acceleration matrix (distillation, smaller
-models, etc.) toward the 300 ms TTFB target, described in `step_tracker.json` step 11's
-`description`. All GPU work is done and the machine is fully torn down (`machine_log.json` now has
-`destroyed_at=2026-09-18T20:39:00.626630Z`, `total_duration_hours=7.0378`, `total_cost_usd=98.25`;
-`results/remote_machines_used.json` and `results/costs.json` now exist and both verify clean). No
-further remote-machine work is expected for the rest of this task (steps 11-15 are all
-local/CPU-only: creative-thinking, results, compare-literature, suggestions, reporting) — do not
-provision anything new.
+Step 12 (`results`, required) is next, per `step_tracker.json`. Write `results/results_summary.md`
+and `results/results_detailed.md` per `task_results_specification.md`, using the already-produced
+`results/metrics.json`, `results/tables.json`, `results/costs.json`, and
+`results/remote_machines_used.json` (all implementation/teardown outputs, already verified clean —
+do not regenerate them). The answer asset at `assets/answer/zero-shot-ttfb-floor/` already contains
+the core headline synthesis (826 ms CosyVoice2 `load_trt` floor, 837 ms Chatterbox `torch_compile`
+floor, neither meets 300 ms, gap characterized as architectural) — `results_detailed.md` should
+summarize the same numbers consistently with that asset, not contradict them, while drawing on step
+11's four analysis angles for the `## Analysis`/discrepancy-with-assumptions discussion: (a) the
+LM-decode-floor-may-be-an-instrumentation-artifact hypothesis (untested CosyVoice2 streaming
+chunk-size lever), (b) the batch-1/memory-bandwidth explanation plus speculative decoding as an
+unproposed lever, (c) the ≈152.5 ms non-LM-stage ceiling for CosyVoice2 if LM decode were
+pipelined/hidden, and (d) `ttfb_ms_p95` tail-latency numbers (already in `tables.json`, no new
+measurement needed) that should be reported alongside p50, plus the Chatterbox `ref_cache` val96
+tail anomaly (p95 4,003 ms) worth flagging as an unresolved measurement-variance caveat per
+`LESSONS.md` Lesson 1. Full detail for all four angles is in
+`logs/steps/011_creative-thinking/step_log.md`. Charts already exist in `results/images/`
+(`latency_breakdown_stacked.png`, `ttfb_p50_p95_by_variant.png` — this one already covers angle
+(d)'s p50/p95 point, verify its content before re-deriving it — and
+`ttfb_vs_speaker_sim_variants.png`, produced during implementation); `results_detailed.md` must
+embed all three with `![description](images/filename.png)` per `task_results_specification.md` — do
+not treat the existing charts as already "done" without checking they are embedded and captioned.
 
-Key inputs this step should build on: `results/latency_breakdown*.json` (12+ per-variant files) and
-`results/metrics.json`/`results/tables.json` for the achieved TTFB/speaker_sim numbers per
-acceleration variant across CosyVoice2 and Chatterbox; `research/research_summary.md` for the
-architectural latency model (`L_TTS = M*d_lm + M*d_fm + M*d_voc`) and prior evidence (e.g.
-Chatterbox-Flash's 103-118 ms TTFP required fine-tuning, not just engineering levers) that should
-ground whatever alternative levers this step proposes.
-
-Carried-forward, not this step's job: the `dvc push` gap documented in Cross-Step Decisions above
-(this task's 5 `.dvc` pointer files are committed but the actual audio bytes have not been pushed to
-`azure://ml-dvc-datasets/datasets/rail-arf-tts` — Azure credential-chain issue, see
+Carried-forward, not this step's job either: the `dvc push` gap documented in Cross-Step Decisions
+above (this task's 5 `.dvc` pointer files are committed but the actual audio bytes have not been
+pushed to `azure://ml-dvc-datasets/datasets/rail-arf-tts` — Azure credential-chain issue, see
 `intervention/dvc_push_pull_credential_failure.md`) — that belongs to whichever step handles the
-task PR/merge, not creative-thinking.
+task PR/merge.
