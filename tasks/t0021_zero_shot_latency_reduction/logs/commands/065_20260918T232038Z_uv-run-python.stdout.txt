@@ -1,0 +1,15 @@
+
+Verifying: /home/azureuser/rail-metarepo/real-repos/rail-arf-tts-worktrees/t0021_zero_shot_latency_reduction/tasks/t0021_zero_shot_latency_reduction/logs
+
+[33m[1mWARNINGS:[0m
+[33m  LG-W004 warning: Command log 001_20260918T101524Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 025_20260918T113710Z_ssh-o-connecttimeout-20.json has non-zero exit code: 127[0m
+[33m  LG-W004 warning: Command log 038_20260918T123601Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W004 warning: Command log 042_20260918T135626Z_uv-run-python.json has non-zero exit code: 75[0m
+[33m  LG-W004 warning: Command log 051_20260918T224626Z_uv-run-python.json has non-zero exit code: 2[0m
+[33m  LG-W004 warning: Command log 064_20260918T232037Z_uv-run-python.json has non-zero exit code: 1[0m
+[33m  LG-W007 warning: logs/sessions/ contains no captured session transcript JSONL files[0m
+[33m  LG-W008 warning: logs/sessions/capture_report.json does not exist[0m
+
+[33m[1mPASSED[0m — 0 error(s), 8 warning(s)
+

@@ -57,3 +57,40 @@ uv run dvc push tasks/t0021_zero_shot_latency_reduction/data/references/ref_sing
 
 Until then, the local `.dvc/cache` on THIS machine is the only copy of the pushed data; do not
 assume `dvc pull` will succeed for this task's data from a different machine.
+
+## Retry at `reporting` step (2026-09-18T23:23Z)
+
+Per the `reporting` step's mandate to genuinely retry (not just assume prior failure still holds),
+this step-executor re-ran `dvc push -v` for all 5 pointer files from this same worktree/session. The
+retry did NOT hang this time (unlike the earlier `timeout 60`/`timeout 30` no-output hangs) — it
+failed fast (exit 0 from the wrapping shell because `dvc` itself caught and logged the error rather
+than crashing) with a clearer root cause:
+
+```text
+azure.core.exceptions.ClientAuthenticationError: DefaultAzureCredential failed to retrieve a token
+from the included credentials.
+Attempted credentials:
+	EnvironmentCredential: environment variables are not fully configured.
+	WorkloadIdentityCredential: missing required arguments 'tenant_id', 'client_id', 'token_file_path'.
+	ManagedIdentityCredential: Unexpected response "{'error': 'SSO failure, to mitigated it please try
+	to click Jupyter/JupyterLab.'}"
+```
+
+This confirms the earlier hypothesis: `dvc`'s Azure credential chain never reaches a credential this
+Azure ML compute instance actually has configured. `az account show` works locally (interactive CLI
+session for `VladimirGorovoy@rezolve.com`), but `dvc`'s chain does not include `AzureCliCredential`,
+and the instance's `ManagedIdentityCredential` path fails with an Azure-ML-specific SSO error rather
+than succeeding. Separately, `az storage account keys list` (an alternate path to get a usable
+account key for `dvc remote modify --local azureblob account_key ...`) also failed in this
+environment with `ModuleNotFoundError: No module named 'azure.mgmt.storage.operations'` — the `az`
+CLI installation on this box is itself missing a required submodule for storage-account management
+commands. No `AZURE_STORAGE_CONNECTION_STRING` or equivalent env var/`.env` file is present in this
+worktree to fall back to.
+
+**Conclusion**: this is still an environment/credential-configuration gap, not a data or methodology
+problem, and not something resolvable by retrying the same command again. It needs either (a) a
+service-principal client secret or SAS token wired into `dvc remote modify`, or (b) a working
+`az storage account keys list` (which needs the `az` CLI's storage submodule fixed), or (c) an
+Azure-ML-side fix to why `ManagedIdentityCredential`'s SSO path fails on this compute instance. This
+remains an open, prominently-flagged item for whoever merges this task's PR — see `checkpoint.md`'s
+final Next Step Notes.

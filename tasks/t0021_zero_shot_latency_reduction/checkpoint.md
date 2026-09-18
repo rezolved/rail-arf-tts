@@ -1,10 +1,10 @@
 ---
 spec_version: "1"
 task_id: "t0021_zero_shot_latency_reduction"
-updated_at: "2026-09-18T23:20:00Z"
-completed_steps: 14
-next_step_number: 15
-next_step_id: "reporting"
+updated_at: "2026-09-18T23:25:00Z"
+completed_steps: 15
+next_step_number: null
+next_step_id: null
 ---
 # Task Objective
 
@@ -200,6 +200,21 @@ distillation/smaller-backbone lever (`S-0021-05`) rather than a production-integ
 task's own analysis surfaced. `verify_suggestions` passed 0 errors/0 warnings on both the subagent's
 run and this step-executor's independent re-run.
 
+### Step 15 — reporting
+
+Ran all 9 required verificators (`verify_task_file`, `verify_task_dependencies`,
+`verify_suggestions`, `verify_task_metrics`, `verify_task_results`, `verify_task_folder`,
+`verify_logs`, `verify_compare_literature`, `verify_machines_destroyed`) — all passed, 0 errors,
+only pre-existing/expected warnings (a stray gitignored `ctx/` cache directory was found by
+`verify_task_folder` and removed). Ran `capture_task_sessions` (0 transcripts matched this
+worktree). Genuinely retried the pending `dvc push` per the coordinator's request: it no longer
+hangs but still fails, now with a specific root cause (`DefaultAzureCredential` exhausts all 3
+attempted credential types, including a Managed-Identity "SSO failure" unique to this Azure ML
+compute instance; the `az storage account keys list` fallback also fails with a missing `az` CLI
+submodule) — documented as a dated addendum in `intervention/dvc_push_pull_credential_failure.md`.
+Set `task.json` `status` to `"completed"` and `end_time` to `2026-09-18T23:25:00Z`. This is the
+task's final step.
+
 * * *
 
 ## Cross-Step Decisions
@@ -254,30 +269,34 @@ open item in the PR description — do not silently merge with the data undurabl
 
 ## Next Step Notes
 
-Step 15 (`reporting`, mandatory, final task step) is next, per `step_tracker.json`. Run
-`uv run python -m arf.scripts.utils.prestep t0021_zero_shot_latency_reduction reporting`, then run
-ALL relevant verificators with `run_with_logs.py` per `execute-task/SKILL.md` Phase 6's `reporting`
-section: `verify_task_file.py`, `verify_task_dependencies.py`, `verify_suggestions.py`,
-`verify_task_metrics.py`, `verify_task_results.py`, `verify_task_folder.py`, `verify_logs.py`,
-`verify_compare_literature.py` (compare-literature ran in step 13), `verify_machines_destroyed.py`
-(remote machines were used in steps 8-10) — no paper/predictions/model/library asset verificators
-apply (this task produced no such assets) and `corrections/` is empty so `verify_corrections.py` is
-not needed. Then run `capture_task_sessions` via `run_with_logs.py` to populate `logs/sessions/`.
-Update `task.json`: set `status` to `"completed"` and set `end_time` (do not touch `start_time`).
-This is the final checkpoint update — set `next_step_number` and `next_step_id` to `null` and
-`completed_steps` to 15.
+Task t0021 is COMPLETE. All 15 steps finished; `next_step_number`/`next_step_id` are `null` and
+`task.json` `status` is `"completed"`. Nothing further to execute in this worktree — the remaining
+work is the coordinator's Phase 7 (PR creation and merge) and Phase 8/9 (final verification and
+overview sync) from the main repo.
 
-Two carried-forward items the reporting step (or the coordinator's Phase 7) must not silently drop:
-(1) the `dvc push` gap documented in Cross-Step Decisions above — this task's 5 `.dvc` pointer files
-are committed but the actual audio bytes have not been pushed to
-`azure://ml-dvc-datasets/datasets/rail-arf-tts` (Azure credential-chain issue, see
-`intervention/dvc_push_pull_credential_failure.md`) — either retry `dvc push` from a session with
-working Azure Blob Storage credentials, or explicitly flag this as an open item in the PR
-description; (2) `results/suggestions.json` now exists with 7 candidates (`S-0021-01`..`S-0021-07`,
-verified 0 errors/0 warnings) — the strongest, per `task_description.md`'s Expected Outputs, is
-`S-0021-05` (evaluate a distilled/smaller AR backbone), since neither CosyVoice2 nor Chatterbox
-reached the 300 ms TTFB target in this task and the gap is framed as architectural
-(LM-decode-bound); the other 6 (`vllm_backend` retry, chunk-size-tuned streaming, a
-fine-tuning-permitted Chatterbox-Flash follow-up, flow-matching/vocoder stage-split instrumentation,
-speculative decoding, and a Chatterbox `ref_cache` tail-latency repeat-run) are untested
-engineering-lever candidates worth surfacing in the final report's forward-looking section.
+**PROMINENT OPEN ITEM for the coordinator's PR description — `dvc push` still not durable.** This
+task's 5 `.dvc` pointer files (`data/references/{ref_single,ref_concat}.wav.dvc`,
+`results/audio_samples/{comparison_set,harness,references}.dvc`) are committed to git (satisfying
+"only `.dvc` pointer files are committed, never raw audio blobs"), but the actual audio bytes have
+**not** been uploaded to `azure://ml-dvc-datasets/datasets/rail-arf-tts`. This step-executor made a
+genuine retry attempt at reporting time (not just assumed the earlier failure still held): the
+`dvc push` no longer hangs, but it still fails, now with a precise root cause —
+`DefaultAzureCredential` exhausts `EnvironmentCredential`, `WorkloadIdentityCredential`, and
+`ManagedIdentityCredential` (the last fails with an Azure-ML-specific "SSO failure" unique to this
+compute instance), and the `az storage account keys list` fallback also fails
+(`ModuleNotFoundError: No module named 'azure.mgmt.storage.operations'` in the local `az` CLI). Full
+detail and the exact retry command are in `intervention/dvc_push_pull_credential_failure.md`. This
+is an infrastructure/credential-config issue outside task scope (`CLAUDE.md` Key Rule 0) — the PR
+description must call it out explicitly as a known open item (data is not yet `dvc pull`-able by
+teammates) rather than merging silently; resolving it needs a session with working Azure Blob
+Storage credentials (service-principal secret, SAS token, or an `az` CLI with its storage submodule
+intact) to run the `dvc push` command documented in that intervention file.
+
+Secondary reminder: `results/suggestions.json` has 7 candidates (`S-0021-01`..`S-0021-07`, verified
+0 errors/0 warnings). The strongest, per `task_description.md`'s Expected Outputs, is `S-0021-05`
+(evaluate a distilled/smaller AR backbone), since neither CosyVoice2 nor Chatterbox reached the 300
+ms TTFB target and the gap is framed as architectural (LM-decode-bound). The other 6 (`vllm_backend`
+retry, chunk-size-tuned streaming, a fine-tuning-permitted Chatterbox-Flash follow-up,
+flow-matching/vocoder stage-split instrumentation, speculative decoding, and a Chatterbox
+`ref_cache` tail-latency repeat-run) are untested engineering-lever candidates worth citing in the
+PR summary's forward-looking section.

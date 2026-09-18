@@ -5,12 +5,12 @@
   "name": "Can zero-shot cloning reach 300 ms TTFB? CosyVoice2 and Chatterbox latency work",
   "short_description": "Profile where CosyVoice2 and Chatterbox spend their 1.3-2.9 s TTFB and test streaming, chunking, vLLM/TensorRT backends and precision to find the best reachable TTFB at unchanged speaker_sim.",
   "long_description_file": "task_description.md",
-  "status": "in_progress",
+  "status": "completed",
   "dependencies": [
     "t0018_zero_shot_cloning_calibration"
   ],
   "start_time": "2026-09-18T10:13:15Z",
-  "end_time": null,
+  "end_time": "2026-09-18T23:25:00Z",
   "expected_assets": {
     "answer": 1
   },
